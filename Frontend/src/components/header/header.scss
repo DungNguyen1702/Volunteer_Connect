@@ -1,0 +1,144 @@
+@import '../../constants/colors.scss';
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    font-size: 16px;
+}
+
+.header-container{
+    position: sticky;
+    top : 0;
+    width: 100%;
+    z-index: 999;
+}
+
+.header-wrapper {
+    height: 80px;
+    width: 100%;
+    background-color: $background-header;
+    transition: transform .2s cubic-bezier(.4,0,.2,1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+
+    & .logo {
+        margin-left: 20px;
+        height: 80px;
+        width: 80px;
+    }
+
+    & .button-group-left {
+        height: 70px;
+        width: 200px;
+        & .button {
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 10px;
+            opacity: 1;
+            border : 0px;
+            background-color: #F3E9E3;
+            border-radius: 10%;
+
+            & .ant-btn-icon .anticon {
+                font-size : 25px;
+            }
+
+            &.active {
+                background-color: #257769;
+            }
+        }
+    }
+
+
+
+    & .search{
+        width: 550px;
+        display: flex;
+        justify-content: center;
+        &  .ant-input-search{
+            width: 500px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+
+            & .ant-input-wrapper .ant-input {
+                background-color: #CBF3E7;
+                padding-left: 20px;
+            }
+        }
+    }
+
+    & .button-group-right {
+        height: 70px;
+        width: 150px;
+        margin : 0px 20px;
+        & .button {
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 10px;
+            opacity: 1;
+            border : 0px;
+            background-color: #257769;
+            border-radius: 10%;
+
+            & .ant-btn-icon .anticon{
+                font-size: 25px;
+                color : #FFFFFF
+            }
+
+            &:hover .ant-btn-icon .anticon {
+                color : #257769;
+            }
+        }
+    }
+
+    & .account-info {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;    
+        width: 250px;
+        margin-right: 20px;
+
+        & .no-user {
+            & .button {
+                padding : 0px 20px;
+                height: 50px;
+                background-color: $accent;
+                color :$white;
+            }
+            & .button:hover {
+                background-color: $white;
+                color : $primary_green;
+                border : 0px
+            }
+        }
+    }
+}
+
+.account-name {
+    color : #257769;
+}
+
+.button-search {
+    width: 55px;
+    height: 55px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 10px;
+    opacity: 1;
+    border : 0px;
+    background-color: #257769;
+    border-radius: 10%;
+}

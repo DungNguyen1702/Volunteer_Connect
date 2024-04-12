@@ -1,0 +1,63 @@
+@import '../../../constants/colors.scss';
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    font-size: 15px;
+}
+
+.user-homepage-wrapper {
+    margin-top: 20px;
+    width: 100%;
+}
+
+.slide-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 15px;
+    & .blur-slide {
+        position: absolute;
+        height: 500px;
+        width: 1200px;
+        background-color: grey;
+        opacity: 0.5;
+        z-index: 1;
+    }
+
+    & .carousel {
+        height: 500px;
+        width: 1200px;
+        background-color: white;
+        
+    }
+}
+
+.slide img {
+    height: 500px;
+    width: 1200px;
+    object-fit: contain;
+    
+}
+
+.content-wrapper {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 20% 60% 20%;
+}
+
+.left-content-wrapper {
+    background-color: red;
+}
+
+.center-content-wrapper {
+    background-color: blue;
+}
+
+.right-content-wrapper {
+    background-color: green;
+}

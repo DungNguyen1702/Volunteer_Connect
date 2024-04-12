@@ -1,0 +1,76 @@
+@import '../../constants/colors.scss';
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    font-size: 16px;
+}
+
+.footer-wrapper {
+    width: 100%;
+    background-color: $background-footer;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    & .icons-wrapper {
+        width: 500px;
+        margin : 20px;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        padding : 10px 0px;
+        & .icon {
+            width: 60px;
+            height: 60px;
+        }
+    }
+
+    & .info-wrapper {
+        display: grid;
+        width: 100%;
+        grid-template-columns: 30% 40% 30%;
+        padding-bottom: 20px;
+
+        & .info{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-size: 15px;
+            padding : 0 30px;
+        }
+
+        & .google-maps{
+            display: flex;
+            justify-self: center;
+            align-items: center;
+            flex-direction: row;
+
+            & .map {
+                width: 500px;
+                height: 250px;
+                border: none;
+            }
+        }
+
+        & .logo-and-slogan{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            & .logo{
+                height: 170px;
+                width: 170px;
+            }
+
+            & .slogan {
+                text-align: center;
+                color : $accent
+            }
+        }
+    }
+}
