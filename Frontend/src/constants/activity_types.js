@@ -1,4 +1,4 @@
-export const types = {
+export const TYPES = {
     1 : "Social and Environmental",
     2 : "Community Service",
     3 : "Education and Development",

@@ -1,0 +1,74 @@
+@import '../../../constants/colors.scss';
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    font-size: 16px;
+}
+
+.big-post-wrapper {
+    width: 90%;
+    background-color: $background_big_post;
+    margin : 10px 0px;
+    border-radius: 15px;
+}
+
+.big-post-header {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.post-title {
+    color: $primary_green;
+}
+
+.post-status {
+    padding : 8px;
+    border-radius: 20px;
+}
+
+.big-post-info {
+    display: flex;
+    justify-content: space-between;
+    margin : 20px 60px;
+}
+
+.big-post-date, .big-post-register {
+    color: $subText;
+}
+
+.big-post-type {
+    color: $secondary_green;
+}
+
+.big-post-content {
+    display: flex;
+    padding : 0 30px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.big-post-img {
+    height: 250px;
+    width: auto;
+    margin-right: 20px;
+}
+
+.big-post-footer {
+    display: flex;
+    margin : 20px 30px;
+    justify-content: end;
+}
+
+.big-post-comment, .big-post-participant {
+    color : $subText
+}
+
+.big-post-comment {
+    margin-right: 100px;
+}

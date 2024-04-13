@@ -1,0 +1,62 @@
+@import '../../../constants/colors.scss';
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    font-size: 16px;
+}
+
+.small-post-wrapper {
+    width: 80%;
+    background-color: $light_gray;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    padding : 10px 0px;
+    flex-direction: column;
+    margin : 10px 0px;
+}
+
+.small-post-title {
+    color : $secondary_green !important;
+}
+
+.post-like-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 80%;
+
+    & h4{
+        text-align: center;
+        margin-left: 10px;
+    }
+}
+
+.post-image {
+    height: auto;
+    width: 80%;
+    border-radius: 10px;
+    margin-top : 10px
+}
+
+.post-type {
+    text-align: left;
+    width: 80%;
+    color: $subText;
+    margin : 7px 0px;
+}
+
+.post-date-participants-wrapper {
+    margin : 5px 0px;
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+    & p {
+        font-size: 10px;
+        color : $subText;
+    }
+}

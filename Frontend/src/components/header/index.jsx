@@ -1,6 +1,6 @@
 import "./header.scss";
-import { icons } from "../../constants/icons";
-import { Avatar, Button, Space } from "antd";
+import { ICONS } from "../../constants/icons";
+import { Avatar, Button } from "antd";
 import {
     BellOutlined,
     CalendarOutlined,
@@ -66,7 +66,7 @@ function Header() {
     return (
         <div class="header-container">
             <div class="header-wrapper">
-                <img src={icons.logo} alt="Logo" class="header-wrapper logo" />
+                <img src={ICONS.logo} alt="Logo" class="header-wrapper logo" />
                 <div class="header-wrapper button-group-left">
                     {user !== null ? (
                         <>

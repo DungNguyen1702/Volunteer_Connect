@@ -1,14 +1,14 @@
 import "./footer.scss";
-import { icons } from "../../constants/icons";
+import { ICONS } from "../../constants/icons";
 
 function Footer() {
     return (
         <div class="footer-wrapper">
             <div class="icons-wrapper">
-                <img alt="icon-facebook" class="icon" src={icons.facebook} />
-                <img alt="icon-ins" class="icon" src={icons.ins} />
-                <img alt="icon-youtube" class="icon" src={icons.youtube} />
-                <img alt="icon-gmail" class="icon" src={icons.gmail} />
+                <img alt="icon-facebook" class="icon" src={ICONS.facebook} />
+                <img alt="icon-ins" class="icon" src={ICONS.ins} />
+                <img alt="icon-youtube" class="icon" src={ICONS.youtube} />
+                <img alt="icon-gmail" class="icon" src={ICONS.gmail} />
             </div>
             <div class="info-wrapper">
                 <div class="info">
@@ -36,7 +36,7 @@ function Footer() {
                     ></iframe>
                 </div>
                 <div class="logo-and-slogan">
-                    <img alt="logo" src={icons.logo} class="logo" />
+                    <img alt="logo" src={ICONS.logo} class="logo" />
                     <div class="slogan">
                         <h2>Volunteer connection</h2>
                         <h4>- Live, learn and grow & connect -</h4>

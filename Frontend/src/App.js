@@ -1,6 +1,8 @@
 import React, { useEffect } from 'react'
 import { BrowserRouter } from 'react-router-dom'
 import AllRoutes from './views/routes'
+import { Helmet } from 'react-helmet';
+import { ICONS } from './constants/icons';
 
 function App() {
     useEffect(() => {
@@ -16,7 +18,12 @@ function App() {
 
     return (
         <BrowserRouter>
+            <Helmet>
+                <title>Volunteer connection</title>
+            </Helmet>
+
             {/* <AuthProvider> */}
+            
                 <AllRoutes />
             {/* </AuthProvider> */}
         </BrowserRouter>

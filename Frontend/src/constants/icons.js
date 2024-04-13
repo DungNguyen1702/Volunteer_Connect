@@ -1,4 +1,4 @@
-export const icons = {
+export const ICONS = {
     logo : require("../assets/icons/logo.png"),
     event : require("../assets/icons/event.png"),
     homepage : require("../assets/icons/home.png"),

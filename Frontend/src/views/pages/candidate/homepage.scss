@@ -7,6 +7,7 @@
 
 html, body {
     font-size: 15px;
+    background-color: $background;
 }
 
 .user-homepage-wrapper {
@@ -47,17 +48,32 @@ html, body {
 .content-wrapper {
     width: 100%;
     display: grid;
-    grid-template-columns: 20% 60% 20%;
+    margin-bottom: 20px;
 }
 
-.left-content-wrapper {
-    background-color: red;
+.left-content-wrapper, .right-content-wrapper {
+    height: fit-content;
+    background-color: #9CD9C7;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-left: 10px;
+    margin-right: 10px;
+    border-radius: 20px;
+    padding-bottom: 10px;
+    padding-top : 10px
 }
 
 .center-content-wrapper {
-    background-color: blue;
+    display: flex;
+    background-color: $light_orange;
+    flex-direction: column;
+    align-items: center;
+    padding : 15px 0px;
+    border-radius: 20px;
 }
 
-.right-content-wrapper {
-    background-color: green;
+.two-side-header {
+    color: $primary_green;
+    margin : 10px 0px;
 }
