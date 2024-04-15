@@ -16,7 +16,7 @@ import com.PBL5.VolunteerConnection.model.Account;
 import com.PBL5.VolunteerConnection.repository.AccountRepository;
 
 @Service
-public class TestLogin implements UserDetailsService {
+public class AccountDetailsService implements UserDetailsService {
 
     @Autowired
     private AccountRepository accountRepository;
