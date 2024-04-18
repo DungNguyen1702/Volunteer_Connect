@@ -42,13 +42,14 @@ public class JwtFillterConfig extends OncePerRequestFilter {
                 DecodedJWT decodedJWT = jwtVerifier.verify(token);
                 String account = decodedJWT.getSubject();
                 String[] roles = decodedJWT.getClaim("roles").asArray(String.class);
+                System.out.print(roles);
                 Collection<SimpleGrantedAuthority> authorities = new ArrayList<>();
                 Arrays.stream(roles).forEach(
                         role -> {
                             authorities.add(new SimpleGrantedAuthority(role));
                         }
                 );
-                UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken = new UsernamePasswordAuthenticationToken(account, roles);
+                UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken = new UsernamePasswordAuthenticationToken(account,null,  authorities);
                 SecurityContextHolder.getContext().setAuthentication(usernamePasswordAuthenticationToken);
                 filterChain.doFilter(request, response);
             } catch (Exception e) {

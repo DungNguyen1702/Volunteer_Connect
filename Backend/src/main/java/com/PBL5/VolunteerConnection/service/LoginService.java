@@ -29,7 +29,7 @@ public class LoginService {
         authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(authenticationRequest.getAccount(), authenticationRequest.getPassword()));
         Account account = accountRepository.findByAccount(authenticationRequest.getAccount()).orElseThrow();
         Collection<SimpleGrantedAuthority> authorities = new ArrayList<>();
-        authorities.add(new SimpleGrantedAuthority(account.getRole()));
+        authorities.add(new SimpleGrantedAuthority(String.valueOf(account.getRole())));
         var jwtToken = jwtService.generateToken(account, authorities);
         var jwtRefreshToken = jwtService.generateRefreshToken(account, authorities);
         return AuthenticationResponse.builder()

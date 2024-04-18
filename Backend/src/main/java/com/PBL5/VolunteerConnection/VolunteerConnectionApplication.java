@@ -17,13 +17,13 @@ public class VolunteerConnectionApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(VolunteerConnectionApplication.class, args);
 	}
-	@Bean
-	CommandLineRunner run(AccountService accountService){
-		return args -> {
-//			accountService.createAccount(new Account("nguyenkhoi10", "password", "Nguyen KHoi", "1"));
-			Account account = new Account("nguyenkhoi10", "password", "Nguyen KHoi", "1");
-			System.out.print(account.getAuthorities());
-		};
-	}
+//	@Bean
+//	CommandLineRunner run(AccountService accountService){
+//		return args -> {
+////			accountService.createAccount(new Account("nguyenkhoi10", "password", "Nguyen KHoi", "1"));
+//			Account account = new Account("nguyenkhoi10", "password", "Nguyen KHoi", "1");
+//			System.out.print(account.getAuthorities());
+//		};
+//	}
 }
 	

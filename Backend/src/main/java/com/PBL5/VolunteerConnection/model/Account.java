@@ -38,7 +38,7 @@ public class Account implements UserDetails {
     @Column(name = "status")
     private Boolean status;
     @Column(name = "role")
-    private String role;
+    private int role;
     @Column(name = "createdat")
     private Date createdAt;
     @Column(name = "updatedat")
@@ -46,7 +46,7 @@ public class Account implements UserDetails {
     @Column(name = "isdeleted")
     private Boolean isDeleted;
 
-    public Account(String account, String password, String name, String role) {
+    public Account(String account, String password, String name, int role) {
         this.account = account;
         this.password = password;
         this.name = name;
@@ -67,7 +67,7 @@ public class Account implements UserDetails {
     @Override
     public Collection<SimpleGrantedAuthority>getAuthorities() {
         Collection<SimpleGrantedAuthority> authorities = new ArrayList<>();
-        authorities.add(new SimpleGrantedAuthority(role));
+        authorities.add(new SimpleGrantedAuthority(String.valueOf(role)));
         return authorities;
     }
 
