@@ -7,17 +7,17 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.PBL5.VolunteerConnection.model.Account;
-import com.PBL5.VolunteerConnection.service.AccountService;
+import com.PBL5.VolunteerConnection.service.AccountServiceImpl;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 
 
 @RestController
-@RequestMapping("/v1")
+@RequestMapping("/api/v1/auth")
 public class RegisterController {
     @Autowired
-    private AccountService accountService;
+    private AccountServiceImpl accountService;
     @PostMapping("/register") 
     public ResponseEntity<String> registerAccount(@RequestBody Account account){
         ResponseEntity<String> responseEntity = null;
