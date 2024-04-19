@@ -42,7 +42,6 @@ public class JwtFillterConfig extends OncePerRequestFilter {
                 DecodedJWT decodedJWT = jwtVerifier.verify(token);
                 String account = decodedJWT.getSubject();
                 String[] roles = decodedJWT.getClaim("roles").asArray(String.class);
-                System.out.print(roles);
                 Collection<SimpleGrantedAuthority> authorities = new ArrayList<>();
                 Arrays.stream(roles).forEach(
                         role -> {

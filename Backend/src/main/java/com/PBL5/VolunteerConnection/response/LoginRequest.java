@@ -1,4 +1,4 @@
-package com.PBL5.VolunteerConnection.auth;
+package com.PBL5.VolunteerConnection.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class AuthenticationResponse {
-    private String token;
-    private String refreshToken;
+public class LoginRequest {
+    private String account;
+    private String password;
 }

@@ -1,15 +1,12 @@
 package com.PBL5.VolunteerConnection.controller;
 
-import com.PBL5.VolunteerConnection.auth.AuthenticationRequest;
-import com.PBL5.VolunteerConnection.auth.AuthenticationResponse;
-import com.PBL5.VolunteerConnection.model.Account;
-import com.PBL5.VolunteerConnection.service.AccountServiceImpl;
+import com.PBL5.VolunteerConnection.response.LoginRequest;
+import com.PBL5.VolunteerConnection.response.LoginResponse;
 import com.PBL5.VolunteerConnection.service.LoginService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -19,7 +16,7 @@ public class LoginController {
     @Autowired
     private LoginService loginService;
     @PostMapping("/login")
-    public ResponseEntity<AuthenticationResponse> loginAccount(@RequestBody AuthenticationRequest authenticationRequest){
+    public ResponseEntity<LoginResponse> loginAccount(@RequestBody LoginRequest authenticationRequest){
         return ResponseEntity.ok(loginService.authenticate(authenticationRequest));
     }
 

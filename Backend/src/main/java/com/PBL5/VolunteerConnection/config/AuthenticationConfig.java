@@ -23,7 +23,7 @@ public class AuthenticationConfig {
     private AccountRepository accountRepository;
     @Bean
     public UserDetailsService userDetailsService(){
-        return username -> accountRepository.findByAccount(username).orElseThrow(()->new UsernameNotFoundException("Account was not found!!"));
+        return username -> accountRepository.findByAccount(username);
     }
     @Bean
     public AuthenticationProvider authenticationProvider(){

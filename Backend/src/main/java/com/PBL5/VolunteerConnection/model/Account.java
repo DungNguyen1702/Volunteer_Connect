@@ -7,12 +7,7 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import org.springframework.security.core.GrantedAuthority;
@@ -43,8 +38,7 @@ public class Account implements UserDetails {
     private Date createdAt;
     @Column(name = "updatedat")
     private Date updatedAt;
-    @Column(name = "isdeleted")
-    private Boolean isDeleted;
+//    @OneToOne(mappedBy = "account")
 
     public Account(String account, String password, String name, int role) {
         this.account = account;
@@ -55,7 +49,6 @@ public class Account implements UserDetails {
         this.role = role;
         this.createdAt = Date.valueOf(LocalDate.now());
         this.updatedAt = Date.valueOf(LocalDate.now());
-        this.isDeleted = false;
 
     }
 
