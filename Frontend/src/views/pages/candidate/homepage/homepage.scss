@@ -1,4 +1,4 @@
-@import '../../../constants/colors.scss';
+@import '../../../../constants/colors.scss';
 
 * {
     margin: 0;
@@ -53,7 +53,7 @@ html, body {
 
 .left-content-wrapper, .right-content-wrapper {
     height: fit-content;
-    background-color: #9CD9C7;
+    background-color: $background-footer;
     display: flex;
     align-items: center;
     flex-direction: column;

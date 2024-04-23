@@ -8,5 +8,6 @@ export const ICONS = {
     facebook : require('../assets/icons/facebook.png'),
     ins : require('../assets/icons/instagram.png'),
     gmail : require('../assets/icons/gmail.png'),
-    youtube : require('../assets/icons/youtube.png')
+    youtube : require('../assets/icons/youtube.png'),
+    register : require('../assets/icons/registerButton.png')
 };

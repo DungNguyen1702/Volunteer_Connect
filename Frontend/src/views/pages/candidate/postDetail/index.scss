@@ -1,0 +1,182 @@
+@import '../../../../constants/colors.scss';
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    font-size: 15px;
+    background-color: $background;
+}
+
+.post-detail-wrapper {
+    margin: 20px 20px;
+}
+
+.post-detail-info-wrapper {
+    display: flex;
+    padding : 10px 0px;
+}
+
+.post-title {
+    color: $primary_green;
+}
+
+.post-date {
+    width: 100%;
+    text-align: right;
+    margin : 10px 50px;
+    color : $subText;
+}
+
+.post-img {
+    height: 600px;
+    width: 900px;
+    object-fit: contain;
+    border-radius: 10px;
+}
+
+.post-hr {
+    width: 85%;
+    background-color: black;
+    height: 0.5px;
+    margin-top: 20px;
+}
+
+.post-act-org-info {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 85%;
+    margin : 20px 40px;
+}
+
+.org-ava {
+    height:35px;
+    width: 35px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-left: 6px;
+}
+
+.post-act-org-left {
+    margin-left: 20px;
+}
+
+.post-act-org-right {
+    margin-right: 20px;
+}
+
+.post-act-org-item {
+    margin : 20px 0px;
+}
+
+.post-act-org-item-org {
+    display: flex;
+    align-items: center;
+}
+
+.post-act-org-item-org-click-zone {
+    display: flex;
+    align-items: center;
+    margin-left: 4px;
+}
+
+
+.post-act-org-wrapper {
+    margin : 10px 0px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.post-detail-main {
+    flex : 70%;
+    display: flex;
+    background-color: $light_orange;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding : 25px 30px;
+    border-radius: 20px;
+}
+
+.post-detail-popular-acts {
+    flex : 30%;
+    display: flex;
+    overflow-y: auto;
+    background-color: $background-footer;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-left: 20px;
+    border-radius: 20px;
+    padding-bottom: 10px;
+    padding-top : 10px
+}
+
+.post-content {
+    width: 90%;
+    margin-top : 10px;
+    margin-bottom: 20px;
+}
+
+.post-content div > * {
+    margin: 15px 0;
+}
+
+
+.post-detail-popular-acts-header {
+    color: $primary_green;
+    margin : 10px 0px;
+}
+
+.register-icon {
+    height: 24px;
+    width: 24px;
+    margin-right : 10px;
+    color:  red;
+}
+
+.act-content {
+    width: 80%;
+    margin : 0px 10px;
+    color: $text;
+}
+
+.post-register-button {
+    background-color: $button;
+    display: flex;
+    // width: 300px;
+    width: 200px;
+    border-radius: 15px;
+    align-items: center;
+    justify-content: center;
+    padding : 20px 10px
+    
+}
+
+.post-register-button:hover {
+    background-color: white;
+    .button-register-text  {
+        color : $button
+    }
+}
+
+.button-register-text {
+    color: white;
+}
+
+.post-comment-wrapper {
+    background-color: $background_comment_holder;
+    padding : 20px 20px;
+    border-radius: 20px;
+    margin-top: 10px;
+}
+
+.post-comment-reply {
+    margin-bottom : 20px;
+}

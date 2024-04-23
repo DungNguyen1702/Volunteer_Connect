@@ -180,10 +180,10 @@
             "createdAt": "2024-04-03"
         }
     ],
-    "Posts-Activities" : [
+    "Posts-Activities": [
         {
             "id": 1,
-            "activity" : {
+            "activity": {
                 "id": 1,
                 "image": "https://capitalcampaignpro.com/wp-content/uploads/2023/02/capital-campaign-volunteers.jpg",
                 "email": "activity1@example.com",
@@ -198,8 +198,8 @@
                 "updatedAt": "2024-04-05",
                 "isDeleted": false,
                 "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-                "participants" : 10,
-                "comments" : 10               
+                "participants": 10,
+                "comments": 10
             },
             "title": "Post 1 for Activity 1",
             "image": "https://capitalcampaignpro.com/wp-content/uploads/2023/02/capital-campaign-volunteers.jpg",
@@ -223,8 +223,9 @@
                 "updatedAt": "2024-04-05",
                 "isDeleted": false,
                 "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-                "participants" : 10,
-                "comments" : 10},
+                "participants": 10,
+                "comments": 10
+            },
             "title": "Post 2 for Activity 1",
             "image": "https://fjwp.s3.amazonaws.com/blog/wp-content/uploads/2020/10/15153848/The-Career-Benefits-of-Volunteering-During-Your-Job-Search-2-1024x512.jpg",
             "content": "<h2>GIỚI THIỆU CHUNG:</h2>\n<p>Alpha Lady là tổ chức phi lợi nhuận do các bạn trẻ thành lập với mục đích tôn lên giá trị của người phụ nữ trong cuộc sống, giúp mỗi bạn nữ hiểu rõ giá trị vẻ đẹp đích thực của bản thân cũng như truyền những năng lượng yêu bản thân đến cho tất cả mọi người. Dự án mong muốn có thể tác động một phần tích cực vào cuộc sống của mọi người, giúp mọi người tự tin hơn và ngày càng tiến gần đến hạnh phúc.</p>\n<p>Sau khi nhận được những lá đơn đầy tiềm năng từ các bạn trẻ khắp mọi miền tổ quốc, Alpha Lady rất vui, biết ơn khi được đón nhận sự yêu thương, quan tâm từ mọi người. Để có thể giúp sự mệnh tổ chức ngày càng bay xa hơn, lan toả đến nhiều người cũng như đáp lại sự yêu mến, quan tâm từ mọi người, tổ chức quyết định sẽ gia hạn đơn ứng tuyển thành viên gen 3.0 để có thể chiêu mộ những nhân tố mới về với tổ chức. Cơ hội một lần nữa gõ cửa, bạn đã sẵn sàng mở cửa đón nhận nó chưa nào? Nếu câu trả lời là có thì nhanh nhanh điền đơn đồng hành cùng Alpha Lady bạn nhé!</p>\n<h3>VỊ TRÍ ỨNG TUYỂN:</h3>\n<ul>\n  <li>Ban Nội dung</li>\n  <li>Ban Dịch thuật</li>\n  <li>Ban Design</li>\n  <li>Ban Nhân sự</li>\n  <li>Ban Đại sứ truyền thông</li>\n  <li>Ban Điều hành</li>\n  <li>Ban Audio</li>\n</ul>\n<h3>ĐỊA ĐIỂM:</h3>\n<p>Toàn quốc.</p>\n<h3>MÔ TẢ CÔNG VIỆC:</h3>\n<p><strong>1. Ban Nội dung</strong></p>\n<ul>\n  <li>Lên ý tưởng, triển khai viết bài, chỉnh sửa nội dung bài đăng dự án;</li>\n  <li>Xây dựng kế hoạch hoạt động dự án.</li>\n</ul>\n<p>... (các vị trí khác tương tự)</p>\n<h3>QUYỀN LỢI CHUNG:</h3>\n<ul>\n  <li>Được làm việc trong môi trường chuyên nghiệp, vui vẻ, gặp gỡ bạn bè cùng sở thích, chia sẻ kinh nghiệm;</li>\n  <li>Có cơ hội làm việc, phát triển bản thân trong môi trường thân thiện, thoải mái;</li>\n  <li>Nâng cao kỹ năng mềm, kỹ năng văn phòng;</li>\n  <li>Được giấy chứng nhận sau khi hoàn thành xuất sắc công việc sau 3 tháng hoạt động.</li>\n</ul>\n<h3>THAM GIA ỨNG TUYỂN:</h3>\n<p><a href=\"#\">TẠI ĐÂY</a></p>\n<h3>THÔNG TIN CHI TIẾT:</h3>\n<p><a href=\"#\">TẠI ĐÂY</a></p>\n<p>Post Views: 1,472</p>\n<p>Shortlink: <a href=\"https://ivolunteervietnam.com?p=82830\">https://ivolunteervietnam.com?p=82830</a></p>\n</div>",
@@ -247,8 +248,8 @@
                 "updatedAt": "2024-04-05",
                 "isDeleted": false,
                 "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-                "participants" : 10,
-                "comments" : 10
+                "participants": 10,
+                "comments": 10
             },
             "title": "Post 1 for Activity 2",
             "image": "https://www.oceans-research.com/wp-content/uploads/2022/01/Types-of-Volunteer-Programs-and-How-to-pick-the-right-one.jpg",
@@ -272,8 +273,8 @@
                 "updatedAt": "2024-04-05",
                 "isDeleted": false,
                 "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-                "participants" : 10,
-                "comments" : 10
+                "participants": 10,
+                "comments": 10
             },
             "title": "Post 1 for Activity 3",
             "image": "https://www.oceans-research.com/wp-content/uploads/2022/01/Short-term.jpg",
@@ -297,13 +298,205 @@
                 "updatedAt": "2024-04-05",
                 "isDeleted": false,
                 "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-                "participants" : 10,
-                "comments" : 10
+                "participants": 10,
+                "comments": 10
             },
             "title": "Post 1 for Activity 3",
             "image": "https://kindful.com/wp-content/uploads/volunteer-management_Feature.jpg",
             "content": "<h2>GIỚI THIỆU CHUNG:</h2>\n<p>Alpha Lady là tổ chức phi lợi nhuận do các bạn trẻ thành lập với mục đích tôn lên giá trị của người phụ nữ trong cuộc sống, giúp mỗi bạn nữ hiểu rõ giá trị vẻ đẹp đích thực của bản thân cũng như truyền những năng lượng yêu bản thân đến cho tất cả mọi người. Dự án mong muốn có thể tác động một phần tích cực vào cuộc sống của mọi người, giúp mọi người tự tin hơn và ngày càng tiến gần đến hạnh phúc.</p>\n<p>Sau khi nhận được những lá đơn đầy tiềm năng từ các bạn trẻ khắp mọi miền tổ quốc, Alpha Lady rất vui, biết ơn khi được đón nhận sự yêu thương, quan tâm từ mọi người. Để có thể giúp sự mệnh tổ chức ngày càng bay xa hơn, lan toả đến nhiều người cũng như đáp lại sự yêu mến, quan tâm từ mọi người, tổ chức quyết định sẽ gia hạn đơn ứng tuyển thành viên gen 3.0 để có thể chiêu mộ những nhân tố mới về với tổ chức. Cơ hội một lần nữa gõ cửa, bạn đã sẵn sàng mở cửa đón nhận nó chưa nào? Nếu câu trả lời là có thì nhanh nhanh điền đơn đồng hành cùng Alpha Lady bạn nhé!</p>\n<h3>VỊ TRÍ ỨNG TUYỂN:</h3>\n<ul>\n  <li>Ban Nội dung</li>\n  <li>Ban Dịch thuật</li>\n  <li>Ban Design</li>\n  <li>Ban Nhân sự</li>\n  <li>Ban Đại sứ truyền thông</li>\n  <li>Ban Điều hành</li>\n  <li>Ban Audio</li>\n</ul>\n<h3>ĐỊA ĐIỂM:</h3>\n<p>Toàn quốc.</p>\n<h3>MÔ TẢ CÔNG VIỆC:</h3>\n<p><strong>1. Ban Nội dung</strong></p>\n<ul>\n  <li>Lên ý tưởng, triển khai viết bài, chỉnh sửa nội dung bài đăng dự án;</li>\n  <li>Xây dựng kế hoạch hoạt động dự án.</li>\n</ul>\n<p>... (các vị trí khác tương tự)</p>\n<h3>QUYỀN LỢI CHUNG:</h3>\n<ul>\n  <li>Được làm việc trong môi trường chuyên nghiệp, vui vẻ, gặp gỡ bạn bè cùng sở thích, chia sẻ kinh nghiệm;</li>\n  <li>Có cơ hội làm việc, phát triển bản thân trong môi trường thân thiện, thoải mái;</li>\n  <li>Nâng cao kỹ năng mềm, kỹ năng văn phòng;</li>\n  <li>Được giấy chứng nhận sau khi hoàn thành xuất sắc công việc sau 3 tháng hoạt động.</li>\n</ul>\n<h3>THAM GIA ỨNG TUYỂN:</h3>\n<p><a href=\"#\">TẠI ĐÂY</a></p>\n<h3>THÔNG TIN CHI TIẾT:</h3>\n<p><a href=\"#\">TẠI ĐÂY</a></p>\n<p>Post Views: 1,472</p>\n<p>Shortlink: <a href=\"https://ivolunteervietnam.com?p=82830\">https://ivolunteervietnam.com?p=82830</a></p>\n</div>",
             "createdAt": "2024-04-03"
         }
-    ]
+    ],
+    "Post-detail": {
+        "Activity": {
+            "id": 2,
+            "image": "https://capitalcampaignpro.com/wp-content/uploads/2023/02/capital-campaign-volunteers.jpg",
+            "email": "activity2@example.com",
+            "name": "Activity 2",
+            "type": 2,
+            "deadline": "2024-04-30",
+            "date_start": "2024-04-01",
+            "date_end": "2024-04-15",
+            "location": "Da Nang",
+            "organization_id": 1,
+            "createdAt": "2024-04-01",
+            "updatedAt": "2024-04-05",
+            "isDeleted": false,
+            "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+            "participants" : 1
+        },
+        "Post": {
+            "id": 1,
+            "activity_id": 1,
+            "title": "Post 1 for Activity 1",
+            "image": "https://capitalcampaignpro.com/wp-content/uploads/2023/02/capital-campaign-volunteers.jpg",
+            "content": "<h2>GIỚI THIỆU CHUNG:</h2>\n<p>Alpha Lady là tổ chức phi lợi nhuận do các bạn trẻ thành lập với mục đích tôn lên giá trị của người phụ nữ trong cuộc sống, giúp mỗi bạn nữ hiểu rõ giá trị vẻ đẹp đích thực của bản thân cũng như truyền những năng lượng yêu bản thân đến cho tất cả mọi người. Dự án mong muốn có thể tác động một phần tích cực vào cuộc sống của mọi người, giúp mọi người tự tin hơn và ngày càng tiến gần đến hạnh phúc.</p>\n<p>Sau khi nhận được những lá đơn đầy tiềm năng từ các bạn trẻ khắp mọi miền tổ quốc, Alpha Lady rất vui, biết ơn khi được đón nhận sự yêu thương, quan tâm từ mọi người. Để có thể giúp sự mệnh tổ chức ngày càng bay xa hơn, lan toả đến nhiều người cũng như đáp lại sự yêu mến, quan tâm từ mọi người, tổ chức quyết định sẽ gia hạn đơn ứng tuyển thành viên gen 3.0 để có thể chiêu mộ những nhân tố mới về với tổ chức. Cơ hội một lần nữa gõ cửa, bạn đã sẵn sàng mở cửa đón nhận nó chưa nào? Nếu câu trả lời là có thì nhanh nhanh điền đơn đồng hành cùng Alpha Lady bạn nhé!</p>\n<h3>VỊ TRÍ ỨNG TUYỂN:</h3>\n<ul>\n  <li>Ban Nội dung</li>\n  <li>Ban Dịch thuật</li>\n  <li>Ban Design</li>\n  <li>Ban Nhân sự</li>\n  <li>Ban Đại sứ truyền thông</li>\n  <li>Ban Điều hành</li>\n  <li>Ban Audio</li>\n</ul>\n<h3>ĐỊA ĐIỂM:</h3>\n<p>Toàn quốc.</p>\n<h3>MÔ TẢ CÔNG VIỆC:</h3>\n<p><strong>1. Ban Nội dung</strong></p>\n<ul>\n  <li>Lên ý tưởng, triển khai viết bài, chỉnh sửa nội dung bài đăng dự án;</li>\n  <li>Xây dựng kế hoạch hoạt động dự án.</li>\n</ul>\n<p>... (các vị trí khác tương tự)</p>\n<h3>QUYỀN LỢI CHUNG:</h3>\n<ul>\n  <li>Được làm việc trong môi trường chuyên nghiệp, vui vẻ, gặp gỡ bạn bè cùng sở thích, chia sẻ kinh nghiệm;</li>\n  <li>Có cơ hội làm việc, phát triển bản thân trong môi trường thân thiện, thoải mái;</li>\n  <li>Nâng cao kỹ năng mềm, kỹ năng văn phòng;</li>\n  <li>Được giấy chứng nhận sau khi hoàn thành xuất sắc công việc sau 3 tháng hoạt động.</li>\n</ul>\n<h3>THAM GIA ỨNG TUYỂN:</h3>\n<p><a href=\"#\">TẠI ĐÂY</a></p>\n<h3>THÔNG TIN CHI TIẾT:</h3>\n<p><a href=\"#\">TẠI ĐÂY</a></p>\n<p>Post Views: 1,472</p>\n<p>Shortlink: <a href=\"https://ivolunteervietnam.com?p=82830\">https://ivolunteervietnam.com?p=82830</a></p>\n</div>",
+            "createdAt": "2024-04-02"
+        },
+        "Organization": {
+            "id": 2,
+            "account": "account2",
+            "password": "password2",
+            "name": "User 2",
+            "avatar": "https://didongviet.vn/dchannel/wp-content/uploads/2023/08/hinh-nen-3d-hinh-nen-iphone-dep-3d-didongviet-2.jpg",
+            "status": true,
+            "role": 2,
+            "createdAt": "2024-04-10",
+            "updatedAt": "2024-04-10",
+            "isDeleted": false
+        },
+        "Comments": [
+            {
+                "id": 1,
+                "comment_parent_id": null,
+                "activity_id": 2,
+                "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+                "account": {
+                    "id": 2,
+                    "account": "account2",
+                    "password": "password2",
+                    "name": "User 2",
+                    "avatar": "https://didongviet.vn/dchannel/wp-content/uploads/2023/08/hinh-nen-3d-hinh-nen-iphone-dep-3d-didongviet-2.jpg",
+                    "status": true,
+                    "role": 2,
+                    "createdAt": "2024-04-10",
+                    "updatedAt": "2024-04-10",
+                    "isDeleted": false
+                },
+                "createdAt": "2024-04-19",
+                "updatedAt": "2024-04-19",
+                "isDeleted": false,
+                "replies": [
+                    {
+                        "id": 2,
+                        "comment_parent_id": 1,
+                        "activity_id": 2,
+                        "content": "Cảm ơn bạn!",
+                        "account": {
+                            "id": 2,
+                            "account": "account2",
+                            "password": "password2",
+                            "name": "User 2",
+                            "avatar": "https://didongviet.vn/dchannel/wp-content/uploads/2023/08/hinh-nen-3d-hinh-nen-iphone-dep-3d-didongviet-2.jpg",
+                            "status": true,
+                            "role": 2,
+                            "replies": [
+                                {
+                                    "id": 2,
+                                    "comment_parent_id": 1,
+                                    "activity_id": 2,
+                                    "content": "Cảm ơn bạn!",
+                                    "account": {
+                                        "id": 2,
+                                        "account": "account2",
+                                        "password": "password2",
+                                        "name": "User 2",
+                                        "avatar": "https://didongviet.vn/dchannel/wp-content/uploads/2023/08/hinh-nen-3d-hinh-nen-iphone-dep-3d-didongviet-2.jpg",
+                                        "status": true,
+                                        "role": 2,
+                                        "createdAt": "2024-04-10",
+                                        "updatedAt": "2024-04-10",
+                                        "isDeleted": false
+                                    },
+                                    "createdAt": "2024-04-19",
+                                    "updatedAt": "2024-04-19",
+                                    "isDeleted": false
+                                },
+                                {
+                                    "id": 3,
+                                    "comment_parent_id": 1,
+                                    "activity_id": 2,
+                                    "content": "Tôi hoàn toàn đồng ý!",
+                                    "account": {
+                                        "id": 2,
+                                        "account": "account2",
+                                        "password": "password2",
+                                        "name": "User 2",
+                                        "avatar": "https://didongviet.vn/dchannel/wp-content/uploads/2023/08/hinh-nen-3d-hinh-nen-iphone-dep-3d-didongviet-2.jpg",
+                                        "status": true,
+                                        "role": 2,
+                                        "createdAt": "2024-04-10",
+                                        "updatedAt": "2024-04-10",
+                                        "isDeleted": false
+                                    },
+                                    "createdAt": "2024-04-19",
+                                    "updatedAt": "2024-04-19",
+                                    "isDeleted": false
+                                }
+                            ],
+                            "createdAt": "2024-04-10",
+                            "updatedAt": "2024-04-10",
+                            "isDeleted": false
+                        },
+                        "createdAt": "2024-04-19",
+                        "updatedAt": "2024-04-19",
+                        "isDeleted": false
+                    },
+                    {
+                        "id": 3,
+                        "comment_parent_id": 1,
+                        "activity_id": 2,
+                        "content": "Tôi hoàn toàn đồng ý!",
+                        "account": {
+                            "id": 2,
+                            "account": "account2",
+                            "password": "password2",
+                            "name": "User 2",
+                            "avatar": "https://didongviet.vn/dchannel/wp-content/uploads/2023/08/hinh-nen-3d-hinh-nen-iphone-dep-3d-didongviet-2.jpg",
+                            "status": true,
+                            "role": 2,
+                            "createdAt": "2024-04-10",
+                            "updatedAt": "2024-04-10",
+                            "isDeleted": false
+                        },
+                        "createdAt": "2024-04-19",
+                        "updatedAt": "2024-04-19",
+                        "isDeleted": false
+                    }
+                ]
+            },
+            {
+                "id": 4,
+                "comment_parent_id": null,
+                "activity_id": 2,
+                "content": "Tôi muốn biết thêm về chủ đề này.",
+                "account": {
+                    "id": 2,
+                    "account": "account2",
+                    "password": "password2",
+                    "name": "User 2",
+                    "avatar": "https://didongviet.vn/dchannel/wp-content/uploads/2023/08/hinh-nen-3d-hinh-nen-iphone-dep-3d-didongviet-2.jpg",
+                    "status": true,
+                    "role": 2,
+                    "createdAt": "2024-04-10",
+                    "updatedAt": "2024-04-10",
+                    "isDeleted": false
+                },
+                "createdAt": "2024-04-19",
+                "updatedAt": "2024-04-19",
+                "isDeleted": false
+            },
+            {
+                "id": 5,
+                "comment_parent_id": null,
+                "activity_id": 2,
+                "content": "Bài viết không đủ sâu sắc.",
+                "account": {
+                    "id": 2,
+                    "account": "account2",
+                    "password": "password2",
+                    "name": "User 2",
+                    "avatar": "https://didongviet.vn/dchannel/wp-content/uploads/2023/08/hinh-nen-3d-hinh-nen-iphone-dep-3d-didongviet-2.jpg",
+                    "status": true,
+                    "role": 2,
+                    "createdAt": "2024-04-10",
+                    "updatedAt": "2024-04-10",
+                    "isDeleted": false
+                },
+                "createdAt": "2024-04-19",
+                "updatedAt": "2024-04-19",
+                "isDeleted": false
+            }
+        ]
+    }
 }

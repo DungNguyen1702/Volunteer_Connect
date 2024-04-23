@@ -1,5 +1,5 @@
 CREATE TABLE `Accounts` (
-  `id` int PRIMARY KEY,
+  `id` int PRIMARY KEY AUTO_INCREMENT,
   `account` varchar(255),
   `password` varchar(255),
   `name` varchar(255),
@@ -7,20 +7,16 @@ CREATE TABLE `Accounts` (
   `status` boolean,
   `role` int,
   `createdAt` date,
-  `updatedAt` date,
-  `isDeleted` boolean
+  `updatedAt` date
 );
 
 CREATE TABLE `Users` (
-  `id` int PRIMARY KEY,
+  `id` int PRIMARY KEY AUTO_INCREMENT,
   `account_id` int,
   `tel` varchar(255),
   `address` varchar(255),
   `gender` varchar(255),
-  `birthday` date,
-  `createdAt` date,
-  `updatedAt` date,
-  `isDeleted` boolean
+  `birthday` date
 );
 
 CREATE TABLE `likePosts` (
@@ -31,7 +27,7 @@ CREATE TABLE `likePosts` (
 );
 
 CREATE TABLE `Posts` (
-  `id` int PRIMARY KEY,
+  `id` int PRIMARY KEY AUTO_INCREMENT,
   `activity_id` int,
   `title` varchar(255),
   `image` varchar(255),
@@ -41,7 +37,7 @@ CREATE TABLE `Posts` (
 );
 
 CREATE TABLE `Activities` (
-  `id` int PRIMARY KEY,
+  `id` int PRIMARY KEY AUTO_INCREMENT,
   `image` varchar(255),
   `email` varchar(255),
   `name` varchar(255),
@@ -57,10 +53,10 @@ CREATE TABLE `Activities` (
   `content` varchar(255)
 );
 
-CREATE TABLE `ActivityComments` (
-  `id` int PRIMARY KEY,
+CREATE TABLE `PostComments` (
+  `id` int PRIMARY KEY AUTO_INCREMENT,
   `comment_parent_id` int,
-  `activity_id` int,
+  `post_id` int,
   `content` varchar(255),
   `account_id` int,
   `createdAt` date,
@@ -69,7 +65,7 @@ CREATE TABLE `ActivityComments` (
 );
 
 CREATE TABLE `RegistrationForms` (
-  `id` int PRIMARY KEY,
+  `id` int PRIMARY KEY AUTO_INCREMENT,
   `activity_id` int,
   `user_id` int,
   `isConfirmed` boolean,
@@ -77,7 +73,7 @@ CREATE TABLE `RegistrationForms` (
 );
 
 CREATE TABLE `Candidates` (
-  `id` int PRIMARY KEY,
+  `id` int PRIMARY KEY AUTO_INCREMENT,
   `user_id` int,
   `activity_id` int,
   `certificate` varchar(255),
@@ -86,7 +82,7 @@ CREATE TABLE `Candidates` (
 );
 
 CREATE TABLE `Chats` (
-  `id` int PRIMARY KEY,
+  `id` int PRIMARY KEY AUTO_INCREMENT,
   `sender_id` int,
   `receiver_id` int,
   `content` varchar(255),
@@ -94,7 +90,7 @@ CREATE TABLE `Chats` (
 );
 
 CREATE TABLE `Notifications` (
-  `id` int PRIMARY KEY,
+  `id` int PRIMARY KEY AUTO_INCREMENT,
   `title` varchar(255),
   `status` varchar(255),
   `account_id` int,
@@ -103,7 +99,7 @@ CREATE TABLE `Notifications` (
 );
 
 CREATE TABLE `TableTasks` (
-  `id` int PRIMARY KEY,
+  `id` int PRIMARY KEY AUTO_INCREMENT, 
   `activity_id` int,
   `name` varchar(255),
   `color` varchar(255),
@@ -112,7 +108,7 @@ CREATE TABLE `TableTasks` (
 );
 
 CREATE TABLE `Tasks` (
-  `id` int PRIMARY KEY,
+  `id` int PRIMARY KEY AUTO_INCREMENT,
   `date_start` date,
   `date_end` date,
   `description` varchar(255),
@@ -125,7 +121,7 @@ CREATE TABLE `Tasks` (
 );
 
 CREATE TABLE `TaskComments` (
-  `id` int PRIMARY KEY,
+  `id` int PRIMARY KEY AUTO_INCREMENT,
   `comment_parent_id` int,
   `content` varchar(255),
   `task_id` int,
@@ -150,11 +146,11 @@ ALTER TABLE `Candidates` ADD FOREIGN KEY (`activity_id`) REFERENCES `Activities`
 
 ALTER TABLE `Activities` ADD FOREIGN KEY (`organization_id`) REFERENCES `Accounts` (`id`);
 
-ALTER TABLE `ActivityComments` ADD FOREIGN KEY (`comment_parent_id`) REFERENCES `ActivityComments` (`id`);
+ALTER TABLE `PostComments` ADD FOREIGN KEY (`comment_parent_id`) REFERENCES `PostComments` (`id`);
 
-ALTER TABLE `ActivityComments` ADD FOREIGN KEY (`account_id`) REFERENCES `Accounts` (`id`);
+ALTER TABLE `PostComments` ADD FOREIGN KEY (`account_id`) REFERENCES `Accounts` (`id`);
 
-ALTER TABLE `ActivityComments` ADD FOREIGN KEY (`activity_id`) REFERENCES `Activities` (`id`);
+ALTER TABLE `PostComments` ADD FOREIGN KEY (`post_id`) REFERENCES `Activities` (`id`);
 
 ALTER TABLE `Notifications` ADD FOREIGN KEY (`account_id`) REFERENCES `Accounts` (`id`);
 
@@ -175,5 +171,3 @@ ALTER TABLE `Chats` ADD FOREIGN KEY (`receiver_id`) REFERENCES `Users` (`id`);
 ALTER TABLE `likePosts` ADD FOREIGN KEY (`user_id`) REFERENCES `Users` (`id`);
 
 ALTER TABLE `likePosts` ADD FOREIGN KEY (`post_id`) REFERENCES `Posts` (`id`);
-
-

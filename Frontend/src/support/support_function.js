@@ -48,6 +48,14 @@ function getStringComment(comment) {
     }
 }
 
+function getStringReply(reply) {
+    if (reply === 0 || reply === 1) {
+        return reply + " reply";
+    } else {
+        return reply + " replies";
+    }
+}
+
 function convertToHTML(htmlString)
 {
     return <div dangerouslySetInnerHTML={{ __html: htmlString }} />;
@@ -90,8 +98,9 @@ const Utils = {
     ActivityStatus,
     getStringParticipant,
     getStringComment,
+    getStringReply,
     convertToHTML,
-    mainContentHTML
+    mainContentHTML,
 };
 
 export default Utils;

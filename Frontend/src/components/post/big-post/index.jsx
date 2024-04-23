@@ -3,15 +3,18 @@ import "./index.scss";
 import SupportFunction from "../../../support/support_function";
 import { useState } from "react";
 import { Button } from "antd";
+import { useNavigate } from "react-router-dom";
 
 const COLOR_STATUS = {
     "On going": "#52CF80",
-    UpComing: "#61BED7",
-    Happened: "#D06969",
+    "UpComing": "#61BED7",
+    "Happened": "#D06969",
 };
 
 function BigPost(props) {
     const data = props.data;
+
+    const navigate = useNavigate();
 
     const [like, setLike] = useState(data.isLiked);
 
@@ -26,7 +29,8 @@ function BigPost(props) {
     );
 
     const clickAct = ()=>{
-        console.log('big post ' + data.id)
+        console.log('big post ' + data.id);
+        navigate(`/activity-detail/${data.id}`)
     }
 
     return (
