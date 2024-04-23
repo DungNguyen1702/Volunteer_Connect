@@ -24,19 +24,20 @@ public class UserServiceImpl implements  UserService{
     private UserRespository userRespository;
     @Autowired
     private AccountRepository accountRepository;
-
+    @Autowired
     private JwtService jwtService;
     @Override
     public StatusResponse createUser(CreateUserRequest createUserRequest) {
             try{
                 String token = createUserRequest.getToken();
-                Algorithm algorithm = Algorithm.HMAC256("testing".getBytes());
-                JWTVerifier jwtVerifier = JWT.require(algorithm).build();
-                DecodedJWT decodedJWT = jwtVerifier.verify(token);
-                String account = decodedJWT.getSubject();
-                String[] roles = decodedJWT.getClaim("roles").asArray(String.class);
+//                Algorithm algorithm = Algorithm.HMAC256("testing".getBytes());
+//                JWTVerifier jwtVerifier = JWT.require(algorithm).build();
+//                DecodedJWT decodedJWT = jwtVerifier.verify(token);
+//                String account = decodedJWT.getSubject();
+//                String[] roles = decodedJWT.getClaim("roles").asArray(String.class);
 //                user.put(account, roles);
-                Account authAccount = accountRepository.findByAccount(account);
+                System.out.print(jwtService.getUsername(token));
+                Account authAccount = accountRepository.findByAccount(jwtService.getUsername(token));
                 userRespository.save(new User(authAccount.getId(), createUserRequest.getTel(), createUserRequest.getAddress(), createUserRequest.getGender(), createUserRequest.getBirthday()));
                 return  StatusResponse.builder()
                         .success(ResponseEntity.status(HttpStatus.CREATED).body("User has been created sucessfully!!"))

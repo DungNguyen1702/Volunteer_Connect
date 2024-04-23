@@ -48,7 +48,9 @@ public class JwtService {
         String username = "";
         for (String key : user.keySet()) {
             username = key;
+            System.out.print(username);
         }
+
         return username;
     }
     public String[] getRole(String token){
