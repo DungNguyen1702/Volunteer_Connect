@@ -3,12 +3,15 @@ import SupportFunction from "../../../support/support_function";
 import { HeartFilled, HeartOutlined } from "@ant-design/icons";
 import { Button } from "antd";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 
 
 function SmallPost(props) {
     const data = props.data;
     const needLike = props.needLike;
+
+    const navigate = useNavigate();
 
     const [like, setLike] = useState(data.isLiked);
 
@@ -18,7 +21,8 @@ function SmallPost(props) {
     };
 
     const clickAct = ()=>{
-        console.log('small post ' + data.id)
+        console.log('small post ' + data.id);
+        navigate(`/activity-detail/${data.id}`)
     }
 
     return (

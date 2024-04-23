@@ -5,6 +5,7 @@ import com.auth0.jwt.JWT;
 import com.auth0.jwt.JWTVerifier;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.interfaces.DecodedJWT;
+import org.springframework.data.util.Pair;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.stereotype.Service;
@@ -32,7 +33,7 @@ public class JwtService {
                 .sign(algorithm);
 
     }
-    public Map<String, String[]>verifyToken(String token){
+    public Map<String, String[]> decodeToken(String token){
         Map<String, String[]> user = new HashMap<>();
         Algorithm algorithm = Algorithm.HMAC256(SECRECT_KEY.getBytes());
         JWTVerifier jwtVerifier = JWT.require(algorithm).build();
@@ -41,5 +42,21 @@ public class JwtService {
         String[] roles = decodedJWT.getClaim("roles").asArray(String.class);
         user.put(account, roles);
         return user;
+    }
+    public String getUsername(String token){
+        Map<String, String[]> user= decodeToken(token);
+        String username = "";
+        for (String key : user.keySet()) {
+            username = key;
+        }
+        return username;
+    }
+    public String[] getRole(String token){
+        Map<String, String[]> user= decodeToken(token);
+        String[] role = null;
+        for (String key : user.keySet()) {
+            role = user.get(key);
+        }
+        return role;
     }
 }

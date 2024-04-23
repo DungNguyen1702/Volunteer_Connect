@@ -12,8 +12,15 @@ html, body {
 .big-post-wrapper {
     width: 90%;
     background-color: $background_big_post;
-    margin : 10px 0px;
+    margin : 15px 0px;
     border-radius: 15px;
+    transition: all 0.3s ease;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.big-post-wrapper:hover {
+    transform: scale(1.05); /* Phóng to lên 1.05 lần */
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.5); /* Điều chỉnh giá trị rgba để tùy chỉnh màu sắc và độ đậm của bóng */
 }
 
 .big-post-header {
@@ -55,7 +62,7 @@ html, body {
 
 .big-post-img {
     height: 250px;
-    width: auto;
+    width: 350px;
     margin-right: 20px;
 }
 

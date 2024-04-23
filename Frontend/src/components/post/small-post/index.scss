@@ -18,6 +18,13 @@ html, body {
     padding : 10px 0px;
     flex-direction: column;
     margin : 10px 0px;
+    transition: all 0.3s ease;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.small-post-wrapper:hover {
+    transform: scale(1.05); /* Phóng to lên 1.05 lần */
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5); /* Điều chỉnh giá trị rgba để tùy chỉnh màu sắc và độ đậm của bóng */
 }
 
 .small-post-title {

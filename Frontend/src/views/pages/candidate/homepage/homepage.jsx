@@ -1,10 +1,10 @@
 import { Carousel, Pagination } from "antd";
 import "./homepage.scss";
-import { IMAGES } from "../../../constants/images";
+import { IMAGES } from "../../../../constants/images";
 import React, { useEffect, useState } from "react";
-import fake_data from "../../../data/fake_data.json";
-import SmallPost from "../../../components/post/small-post";
-import BigPost from "../../../components/post/big-post";
+import fake_data from "../../../../data/fake_data.json";
+import SmallPost from "../../../../components/post/small-post";
+import BigPost from "../../../../components/post/big-post";
 
 function addIsLikedField(posts) {
     return posts.map((post) => ({
@@ -13,13 +13,17 @@ function addIsLikedField(posts) {
     }));
 }
 
-function UserHomepage() {
+function UserHomepage(props) {
+    const isLogined = props.isLogined;
+
     const [likedPosts, setLikedPosts] = useState(
         addIsLikedField(fake_data["Posts-Activities"])
     );
 
     const limit = 4;
     const [startIndex, setStartIndex] = useState(0);
+    const [user, setUser] = useState(isLogined ? fake_data.Accounts[1] : null);
+    // const [user, setUser] = useState(null);
     const [listShowActs, setListShowActs] = useState(
         likedPosts.slice(startIndex, startIndex + limit)
     );
@@ -29,8 +33,10 @@ function UserHomepage() {
         setListShowActs(likedPosts.slice(startIndex, startIndex + limit));
     }, [startIndex, likedPosts]);
 
-    const [user, setUser] = useState(fake_data.Accounts[1]);
-    // const [user, setUser] = useState(null);
+    useEffect(()=>{
+        setUser(isLogined ? fake_data.Accounts[1] : null)
+    },[isLogined])
+
 
     const changePage = (page, pageSize) => {
         setStartIndex((page - 1) * limit);

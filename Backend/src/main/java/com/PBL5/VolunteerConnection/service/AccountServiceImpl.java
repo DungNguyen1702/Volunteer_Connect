@@ -11,6 +11,9 @@ import org.springframework.stereotype.Service;
 import com.PBL5.VolunteerConnection.model.Account;
 import com.PBL5.VolunteerConnection.repository.AccountRepository;
 
+import java.sql.Date;
+import java.time.LocalDate;
+
 @Service
 @RequiredArgsConstructor
 public class AccountServiceImpl implements  AccountService{
@@ -22,6 +25,7 @@ public class AccountServiceImpl implements  AccountService{
         if (accountRepository.findByAccount(account.getAccount()) == null){
             try{
                 account.setPassword(passwordEncoder.encode(account.getPassword()));
+                account.setCreatedAt(Date.valueOf(LocalDate.now()));
                 accountRepository.save(account);
                 return  StatusResponse.builder()
                         .success(ResponseEntity.status(HttpStatus.CREATED).body("Account " + account.getAccount()+"has been created sucessfully!!"))
