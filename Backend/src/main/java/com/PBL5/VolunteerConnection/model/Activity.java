@@ -34,7 +34,7 @@ public class Activity {
     private int organizationId;
     @Column(name = "createdAt")
     private Date createdAt;
-    @Column(name = "updateAt")
+    @Column(name = "updatedAt")
     private Date updateAt;
     @Column(name = "isDeleted")
     private int isDeleted;
