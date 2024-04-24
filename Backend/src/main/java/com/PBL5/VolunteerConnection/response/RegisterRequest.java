@@ -10,8 +10,11 @@ import java.util.Date;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class CreateUserRequest {
-    private String token;
+public class RegisterRequest {
+    private String account;
+    private String password;
+    private String name;
+    private int role;
     private String tel;
     private String gender;
     private String address;

@@ -1,5 +1,8 @@
 package com.PBL5.VolunteerConnection.service;
 
+import com.PBL5.VolunteerConnection.model.User;
+import com.PBL5.VolunteerConnection.repository.UserRespository;
+import com.PBL5.VolunteerConnection.response.RegisterRequest;
 import com.PBL5.VolunteerConnection.response.StatusResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,12 +24,26 @@ public class AccountServiceImpl implements  AccountService{
     PasswordEncoder passwordEncoder;
     @Autowired
     private AccountRepository accountRepository;
-    public StatusResponse createAccount(Account account){
-        if (accountRepository.findByAccount(account.getAccount()) == null){
+    @Autowired
+    private UserRespository userRespository;
+    public StatusResponse createAccount(RegisterRequest registerRequest){
+        Account account = new Account(registerRequest.getAccount(),
+                            passwordEncoder.encode(registerRequest.getPassword()),
+                            registerRequest.getName(),
+                            registerRequest.getRole());
+        if (accountRepository.findByAccount(registerRequest.getAccount()) == null){
             try{
-                account.setPassword(passwordEncoder.encode(account.getPassword()));
-                account.setCreatedAt(Date.valueOf(LocalDate.now()));
                 accountRepository.save(account);
+                int account_id = accountRepository.findByAccount(account.getAccount()).getId();
+                if(account.getRole() == 1){
+                    userRespository.save(new User(account_id,
+                            registerRequest.getTel(),
+                            registerRequest.getAddress(),
+                            registerRequest.getGender(),
+                            Date.valueOf(LocalDate.now())));
+                }
+
+
                 return  StatusResponse.builder()
                         .success(ResponseEntity.status(HttpStatus.CREATED).body("Account " + account.getAccount()+"has been created sucessfully!!"))
                         .build();
