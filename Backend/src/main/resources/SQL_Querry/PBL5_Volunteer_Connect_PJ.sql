@@ -45,6 +45,7 @@ CREATE TABLE `Activities` (
   `deadline` date,
   `date_start` date,
   `date_end` date,
+  `country` int,
   `location` varchar(255),
   `organization_id` int,
   `createdAt` date,
@@ -130,44 +131,44 @@ CREATE TABLE `TaskComments` (
   `updatedAt` date
 );
 
-ALTER TABLE `Candidates` ADD FOREIGN KEY (`user_id`) REFERENCES `Users` (`id`);
+ALTER TABLE `Candidates` ADD FOREIGN KEY (`user_id`) REFERENCES `Users` (`id`) ON DELETE CASCADE;
 
-ALTER TABLE `RegistrationForms` ADD FOREIGN KEY (`user_id`) REFERENCES `Users` (`id`);
+ALTER TABLE `RegistrationForms` ADD FOREIGN KEY (`user_id`) REFERENCES `Users` (`id`) ON DELETE CASCADE;
 
-ALTER TABLE `Tasks` ADD FOREIGN KEY (`table_task_id`) REFERENCES `TableTasks` (`id`);
+ALTER TABLE `Tasks` ADD FOREIGN KEY (`table_task_id`) REFERENCES `TableTasks` (`id`) ON DELETE CASCADE;
 
-ALTER TABLE `RegistrationForms` ADD FOREIGN KEY (`activity_id`) REFERENCES `Activities` (`id`);
+ALTER TABLE `RegistrationForms` ADD FOREIGN KEY (`activity_id`) REFERENCES `Activities` (`id`); ON DELETE CASCADE
 
-ALTER TABLE `Users` ADD FOREIGN KEY (`account_id`) REFERENCES `Accounts` (`id`);
+ALTER TABLE `Users` ADD FOREIGN KEY (`account_id`) REFERENCES `Accounts` (`id`) ON DELETE CASCADE ;
 
-ALTER TABLE `Posts` ADD FOREIGN KEY (`activity_id`) REFERENCES `Activities` (`id`);
+ALTER TABLE `Posts` ADD FOREIGN KEY (`activity_id`) REFERENCES `Activities` (`id`) ON DELETE CASCADE;
 
-ALTER TABLE `Candidates` ADD FOREIGN KEY (`activity_id`) REFERENCES `Activities` (`id`);
+ALTER TABLE `Candidates` ADD FOREIGN KEY (`activity_id`) REFERENCES `Activities` (`id`) ON DELETE CASCADE;
 
-ALTER TABLE `Activities` ADD FOREIGN KEY (`organization_id`) REFERENCES `Accounts` (`id`);
+ALTER TABLE `Activities` ADD FOREIGN KEY (`organization_id`) REFERENCES `Accounts` (`id`) ON DELETE CASCADE;
 
-ALTER TABLE `PostComments` ADD FOREIGN KEY (`comment_parent_id`) REFERENCES `PostComments` (`id`);
+ALTER TABLE `PostComments` ADD FOREIGN KEY (`comment_parent_id`) REFERENCES `PostComments` (`id`) ON DELETE CASCADE ;
 
-ALTER TABLE `PostComments` ADD FOREIGN KEY (`account_id`) REFERENCES `Accounts` (`id`);
+ALTER TABLE `PostComments` ADD FOREIGN KEY (`account_id`) REFERENCES `Accounts` (`id`) ON DELETE CASCADE;
 
-ALTER TABLE `PostComments` ADD FOREIGN KEY (`post_id`) REFERENCES `Activities` (`id`);
+ALTER TABLE `PostComments` ADD FOREIGN KEY (`post_id`) REFERENCES `Activities` (`id`) ON DELETE CASCADE;
 
-ALTER TABLE `Notifications` ADD FOREIGN KEY (`account_id`) REFERENCES `Accounts` (`id`);
+ALTER TABLE `Notifications` ADD FOREIGN KEY (`account_id`) REFERENCES `Accounts` (`id`) ON DELETE CASCADE;
 
-ALTER TABLE `TableTasks` ADD FOREIGN KEY (`activity_id`) REFERENCES `Activities` (`id`);
+ALTER TABLE `TableTasks` ADD FOREIGN KEY (`activity_id`) REFERENCES `Activities` (`id`) ON DELETE CASCADE;
 
-ALTER TABLE `Tasks` ADD FOREIGN KEY (`candidate_id`) REFERENCES `Candidates` (`id`);
+ALTER TABLE `Tasks` ADD FOREIGN KEY (`candidate_id`) REFERENCES `Candidates` (`id`) ON DELETE CASCADE;
 
-ALTER TABLE `TaskComments` ADD FOREIGN KEY (`comment_parent_id`) REFERENCES `TaskComments` (`id`);
+ALTER TABLE `TaskComments` ADD FOREIGN KEY (`comment_parent_id`) REFERENCES `TaskComments` (`id`) ON DELETE CASCADE;
 
-ALTER TABLE `TaskComments` ADD FOREIGN KEY (`task_id`) REFERENCES `Tasks` (`id`);
+ALTER TABLE `TaskComments` ADD FOREIGN KEY (`task_id`) REFERENCES `Tasks` (`id`) ON DELETE CASCADE;
 
-ALTER TABLE `TaskComments` ADD FOREIGN KEY (`account_id`) REFERENCES `Accounts` (`id`);
+ALTER TABLE `TaskComments` ADD FOREIGN KEY (`account_id`) REFERENCES `Accounts` (`id`) ON DELETE CASCADE;
 
-ALTER TABLE `Chats` ADD FOREIGN KEY (`sender_id`) REFERENCES `Users` (`id`);
+ALTER TABLE `Chats` ADD FOREIGN KEY (`sender_id`) REFERENCES `Users` (`id`) ON DELETE CASCADE;
 
-ALTER TABLE `Chats` ADD FOREIGN KEY (`receiver_id`) REFERENCES `Users` (`id`);
+ALTER TABLE `Chats` ADD FOREIGN KEY (`receiver_id`) REFERENCES `Users` (`id`) ON DELETE CASCADE;
 
-ALTER TABLE `likePosts` ADD FOREIGN KEY (`user_id`) REFERENCES `Users` (`id`);
+ALTER TABLE `LikePosts` ADD FOREIGN KEY (`user_id`) REFERENCES `Users` (`id`) ON DELETE CASCADE;
 
-ALTER TABLE `likePosts` ADD FOREIGN KEY (`post_id`) REFERENCES `Posts` (`id`);
+ALTER TABLE `LikePosts` ADD FOREIGN KEY (`post_id`) REFERENCES `Posts` (`id`) ON DELETE CASCADE;

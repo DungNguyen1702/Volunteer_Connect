@@ -3,14 +3,10 @@ package com.PBL5.VolunteerConnection.model;
 import java.sql.Date;
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collection;
-import java.util.List;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -39,6 +35,8 @@ public class Account implements UserDetails {
     @Column(name = "updatedat")
     private Date updatedAt;
 //    @OneToOne(mappedBy = "account")
+//    @JoinColumn()
+//    private User;
 
     public Account(String account, String password, String name, int role) {
         this.account = account;
