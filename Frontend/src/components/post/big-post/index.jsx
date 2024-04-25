@@ -4,12 +4,8 @@ import SupportFunction from "../../../support/support_function";
 import { useState } from "react";
 import { Button } from "antd";
 import { useNavigate } from "react-router-dom";
+import { COLOR_FONT, COLOR_STATUS } from "../../../constants/color_status";
 
-const COLOR_STATUS = {
-    "On going": "#52CF80",
-    "UpComing": "#61BED7",
-    "Happened": "#D06969",
-};
 
 function BigPost(props) {
     const data = props.data;
@@ -61,7 +57,7 @@ function BigPost(props) {
                 <h2 class="post-title">{data.title}</h2>
                 <div
                     class="post-status"
-                    style={{ backgroundColor: COLOR_STATUS[activity_status] }}
+                    style={{ backgroundColor: COLOR_STATUS[activity_status], color : COLOR_FONT[activity_status] }}
                 >
                     {activity_status}
                 </div>
@@ -78,7 +74,7 @@ function BigPost(props) {
             <div class='big-post-content'>
                 <img alt='big-post-img' src={data.image} class='big-post-img'/>
                 <div>
-                {SupportFunction.mainContentHTML(data.content, 6000)}
+                {SupportFunction.mainContentHTML(data.content, 700)}
                 </div>
             </div>
 

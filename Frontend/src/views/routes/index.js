@@ -24,11 +24,7 @@ const AllRoutes = () => {
             <Route element={<PublicRoute />}>
                 <Route
                     path="/user-homepage"
-                    element={<MainLayout component={UserHomePage} stateButton={1} isLogined ={false}/>}
-                />
-                <Route
-                    path="/user-homepage/isLogined"
-                    element={<MainLayout component={UserHomePage} stateButton={1} isLogined ={true}/>}
+                    element={<MainLayout component={UserHomePage} stateButton={1}/>}
                 />
             </Route>
 

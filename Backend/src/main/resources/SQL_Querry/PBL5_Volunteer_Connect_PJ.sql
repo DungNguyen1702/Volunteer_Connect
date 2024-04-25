@@ -19,7 +19,7 @@ CREATE TABLE `Users` (
   `birthday` date
 );
 
-CREATE TABLE `likePosts` (
+CREATE TABLE `LikePosts` (
   `user_id` int,
   `post_id` int,
   `createdAt` date,
@@ -168,6 +168,6 @@ ALTER TABLE `Chats` ADD FOREIGN KEY (`sender_id`) REFERENCES `Users` (`id`);
 
 ALTER TABLE `Chats` ADD FOREIGN KEY (`receiver_id`) REFERENCES `Users` (`id`);
 
-ALTER TABLE `likePosts` ADD FOREIGN KEY (`user_id`) REFERENCES `Users` (`id`);
+ALTER TABLE `LikePosts` ADD FOREIGN KEY (`user_id`) REFERENCES `Users` (`id`);
 
-ALTER TABLE `likePosts` ADD FOREIGN KEY (`post_id`) REFERENCES `Posts` (`id`);
+ALTER TABLE `LikePosts` ADD FOREIGN KEY (`post_id`) REFERENCES `Posts` (`id`);

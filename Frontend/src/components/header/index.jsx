@@ -10,7 +10,7 @@ import {
     SearchOutlined,
     TeamOutlined,
 } from "@ant-design/icons";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Search from "antd/es/input/Search";
 import fakeData from "../../data/fake_data.json";
 import getItemDropDownAccount from "./dropdown";
@@ -25,17 +25,14 @@ const TruncateText = (text, maxLength) => {
 
 function Header(props) { 
 
-    const isLogined = props.isLogined;
     
     const activeButton = props.stateButton;
     const navigate = useNavigate();
     const [search, setSearch] = useState("");
 
-    useEffect(()=>{
-        setUser(isLogined ? fakeData.Accounts[1] : null)
-    },[isLogined])
+    
 
-    const [user, setUser] = useState(isLogined ? fakeData.Accounts[1] : null);
+    const [user, setUser] = useState(fakeData.Accounts[1]);
     // const [user, setUser] = useState(null);
     const numberOfNoti = 10;
     const numberOfChat = 10;
@@ -69,8 +66,6 @@ function Header(props) {
 
     const clickLogin = () => {
         console.log("Login");
-        console.log(isLogined)
-        navigate('/user-homepage/isLogined')
     };
 
     const clickRegister = () => {

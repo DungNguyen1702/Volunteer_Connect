@@ -14,7 +14,6 @@ function addIsLikedField(posts) {
 }
 
 function UserHomepage(props) {
-    const isLogined = props.isLogined;
 
     const [likedPosts, setLikedPosts] = useState(
         addIsLikedField(fake_data["Posts-Activities"])
@@ -22,7 +21,7 @@ function UserHomepage(props) {
 
     const limit = 4;
     const [startIndex, setStartIndex] = useState(0);
-    const [user, setUser] = useState(isLogined ? fake_data.Accounts[1] : null);
+    const [user, setUser] = useState(fake_data.Accounts[1]);
     // const [user, setUser] = useState(null);
     const [listShowActs, setListShowActs] = useState(
         likedPosts.slice(startIndex, startIndex + limit)
@@ -32,10 +31,6 @@ function UserHomepage(props) {
         console.log(startIndex);
         setListShowActs(likedPosts.slice(startIndex, startIndex + limit));
     }, [startIndex, likedPosts]);
-
-    useEffect(()=>{
-        setUser(isLogined ? fake_data.Accounts[1] : null)
-    },[isLogined])
 
 
     const changePage = (page, pageSize) => {

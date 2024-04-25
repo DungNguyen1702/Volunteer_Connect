@@ -1,5 +1,4 @@
 import { BookOutlined, HeartOutlined, LogoutOutlined, SettingOutlined, UserOutlined } from "@ant-design/icons";
-import { useNavigate } from "react-router-dom";
 
 import("./index.scss");
 
@@ -7,7 +6,6 @@ function getItemDropDownAccount(role, navigate) {
     console.log(role);
 
     const handlerClickLogout = ()=>{
-        navigate('/user-homepage/isLogined')
     }
 
     const itemsCandidate = [
@@ -25,7 +23,7 @@ function getItemDropDownAccount(role, navigate) {
             label: (
                 <div class="item-wrapper">
                     <SettingOutlined className="item-icon"/>
-                    <p class="item-title">Settings</p>
+                    <p class="item-title">Security</p>
                 </div>
             ),
         },
@@ -73,7 +71,7 @@ function getItemDropDownAccount(role, navigate) {
             label: (
                 <div class="item-wrapper">
                     <SettingOutlined className="item-icon"/>
-                    <p class="item-title">Settings</p>
+                    <p class="item-title">Security</p>
                 </div>
             ),
         },
@@ -112,7 +110,7 @@ function getItemDropDownAccount(role, navigate) {
             label: (
                 <div class="item-wrapper">
                     <SettingOutlined className="item-icon"/>
-                    <p class="item-title">Settings</p>
+                    <p class="item-title">Security</p>
                 </div>
             ),
         },

@@ -4,8 +4,8 @@ import Header from "../header";
 function MainLayout (props) {
     return (
         <div>
-            <Header stateButton={props.stateButton} isLogined = {props.isLogined}/>
-                <props.component isLogined={props.isLogined}/>
+            <Header stateButton={props.stateButton}/>
+                <props.component/>
             <Footer/>
         </div>
     )
