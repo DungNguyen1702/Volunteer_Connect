@@ -1,5 +1,6 @@
 package com.PBL5.VolunteerConnection.controller;
 
+import com.PBL5.VolunteerConnection.response.RegisterRequest;
 import com.PBL5.VolunteerConnection.response.StatusResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -19,7 +20,7 @@ public class RegisterController {
     @Autowired
     private AccountServiceImpl accountService;
     @PostMapping("/register")
-    public ResponseEntity<StatusResponse> registerAccount(@RequestBody Account account){
-        return ResponseEntity.ok(accountService.createAccount(account));
+    public ResponseEntity<StatusResponse> registerAccount(@RequestBody RegisterRequest registerRequest){
+        return ResponseEntity.ok(accountService.createAccount(registerRequest));
     }
 }
