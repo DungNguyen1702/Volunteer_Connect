@@ -11,15 +11,12 @@ import java.util.Date;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class LoginResponse {
+public class UpdateAccountRequest {
     private String token;
-    private String refreshToken;
-    private int id;
-    private String account;
     private String name;
+    private String tel;
+    private String gender;
+    private String address;
+    private Date birthday;
     private String avatar;
-    private Boolean status;
-    private Date createdDate;
-    private Date updatedDate;
-    private Boolean isDeleted;
 }

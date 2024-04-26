@@ -34,11 +34,11 @@ public class Account implements UserDetails {
     private Date createdAt;
     @Column(name = "updatedat")
     private Date updatedAt;
-//    @OneToOne(mappedBy = "account")
-//    @JoinColumn()
-//    private User;
-
-    public Account(String account, String password, String name, int role) {
+    @Column(name = "isDeleted")
+    private Boolean isDeleted;
+    @Column(name = "isValid")
+    private Boolean isValid;
+    public Account(String account, String password, String name, int role)  {
         this.account = account;
         this.password = password;
         this.name = name;
@@ -46,7 +46,9 @@ public class Account implements UserDetails {
         this.status = null;
         this.role = role;
         this.createdAt = Date.valueOf(LocalDate.now());
-        this.updatedAt = null;
+        this.updatedAt = Date.valueOf(LocalDate.now());
+        this.isDeleted = false;
+        this.isValid = true;
 
     }
 
@@ -89,6 +91,9 @@ public class Account implements UserDetails {
 
     @Override
     public boolean isEnabled() {
-        return true;
+        if (this.isValid){
+            return true;
+        }
+        return false;
     }
 }

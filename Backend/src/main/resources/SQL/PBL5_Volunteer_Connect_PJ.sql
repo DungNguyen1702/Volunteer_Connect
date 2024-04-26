@@ -7,7 +7,9 @@ CREATE TABLE `Accounts` (
   `status` boolean,
   `role` int,
   `createdAt` date,
-  `updatedAt` date
+  `updatedAt` date,
+  `isDeleted` boolean,
+  `isValid` boolean
 );
 
 CREATE TABLE `Users` (
@@ -20,10 +22,10 @@ CREATE TABLE `Users` (
 );
 
 CREATE TABLE `LikePosts` (
-  `user_id` int,
+  `id` int PRIMARY KEY AUTO_INCREMENT,
+  `account_id` int,
   `post_id` int,
-  `createdAt` date,
-  PRIMARY KEY (`user_id`, `post_id`)
+  `createdAt` date
 );
 
 CREATE TABLE `Posts` (
@@ -169,6 +171,6 @@ ALTER TABLE `Chats` ADD FOREIGN KEY (`sender_id`) REFERENCES `Users` (`id`) ON D
 
 ALTER TABLE `Chats` ADD FOREIGN KEY (`receiver_id`) REFERENCES `Users` (`id`) ON DELETE CASCADE;
 
-ALTER TABLE `LikePosts` ADD FOREIGN KEY (`user_id`) REFERENCES `Users` (`id`) ON DELETE CASCADE;
+ALTER TABLE `LikePosts` ADD FOREIGN KEY (`account_id`) REFERENCES `Users` (`id`) ON DELETE CASCADE;
 
 ALTER TABLE `LikePosts` ADD FOREIGN KEY (`post_id`) REFERENCES `Posts` (`id`) ON DELETE CASCADE;
