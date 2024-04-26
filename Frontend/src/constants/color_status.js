@@ -7,5 +7,5 @@ export const COLOR_STATUS = {
 export const COLOR_FONT = {
     "On going": "#ffffff",
     "UpComing": "#ffffff",
-    "Happened": "#000000",
+    "Happened": "#ffffff",
 };

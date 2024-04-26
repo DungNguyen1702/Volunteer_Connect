@@ -26,7 +26,7 @@ function BigPost(props) {
 
     const clickAct = ()=>{
         console.log('big post ' + data.id);
-        navigate(`/activity-detail/${data.id}`)
+        navigate(`/post-detail/${data.id}`)
     }
 
     return (

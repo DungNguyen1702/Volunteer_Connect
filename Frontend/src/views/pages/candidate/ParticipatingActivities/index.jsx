@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import "./participatingActivities.scss";
+import "./index.scss";
 import { Button, DatePicker, Pagination, Radio, Select, Space } from "antd";
 import { STATUS } from "../../../../constants/activity_status";
 import { COUNTRY } from "../../../../constants/activity_countries";
@@ -13,11 +13,11 @@ import ActivityComponent from "../../../../components/activity";
 function ParticipatingActivities() {
     
     const limit = 6;
-    const listAct = fake_data.Activity_Detail;
+    const listAct = fake_data.Activity_Detail_List;
 
-    const [type, setType] = useState();
-    const [country, setCountry] = useState();
-    const [status, setStatus] = useState();
+    const [type, setType] = useState(0);
+    const [country, setCountry] = useState(0);
+    const [status, setStatus] = useState(0);
     const [dateStart, setDateStart] = useState();
     const [dateEnd, setDateEnd] = useState();
     const [sortBy, setSortBy] = useState(1);
@@ -92,6 +92,10 @@ function ParticipatingActivities() {
                     <p class="tabbar-title">Category</p>
                     <Radio.Group onChange={onChangeType} value={type}>
                         <Space direction="vertical">
+                            <Radio value={0} className="tabbar-radio">
+                                All
+                            </Radio>
+                            
                             {Object.entries(TYPES).map(([key, value]) => (
                                 <Radio value={key} className="tabbar-radio">
                                     {value}
@@ -105,6 +109,9 @@ function ParticipatingActivities() {
                     <p class="tabbar-title">Country</p>
                     <Radio.Group onChange={onChangeCountry} value={country}>
                         <Space direction="vertical">
+                            <Radio value={0} className="tabbar-radio">
+                                All
+                            </Radio>
                             {Object.entries(COUNTRY).map(([key, value]) => (
                                 <Radio value={key} className="tabbar-radio">
                                     {value}
@@ -118,6 +125,9 @@ function ParticipatingActivities() {
                     <p class="tabbar-title">Status</p>
                     <Radio.Group onChange={onChangeStatus} value={status}>
                         <Space direction="vertical">
+                            <Radio value={0} className="tabbar-radio">
+                                All
+                            </Radio>
                             {Object.entries(STATUS).map(([key, value]) => (
                                 <Radio value={key} className="tabbar-radio">
                                     {value}
@@ -130,14 +140,14 @@ function ParticipatingActivities() {
                 <div class="tabbar-date">
                     <p class="tabbar-title">Date</p>
                     <div class="tabbar-date-start">
-                        <p class="tabbar-date-title">Date Start</p>
+                        <p class="tabbar-date-title">Start date</p>
                         <DatePicker
                             onChange={onChangeDateStart}
                             placeholder="2023-04-23"
                         />
                     </div>
                     <div class="tabbar-date-end">
-                        <p class="tabbar-date-title">Date End</p>
+                        <p class="tabbar-date-title">End date</p>
                         <DatePicker
                             onChange={onChangeDateEnd}
                             placeholder="2023-04-23"
@@ -165,9 +175,9 @@ function ParticipatingActivities() {
                             onChange={onChangeSortBy}
                             className="content-sort-select"
                             options={[
-                                { value: 1, label: "date start" },
-                                { value: 2, label: "date end" },
-                                { value: 3, label: "deadline register" },
+                                { value: 1, label: "Start date" },
+                                { value: 2, label: "End date" },
+                                { value: 3, label: "Registration date" },
                             ]}
                             style={{
                                 width : "150px",

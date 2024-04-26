@@ -7,8 +7,9 @@ import { Button } from "antd";
 import { ICONS } from "../../../../constants/icons";
 import Comment from "../../../../components/comment/comment";
 import InputComment from "../../../../components/comment/inputComment/inputComment";
+import OrganizationIcon from "../../../../components/organization";
 
-function ActivityDetail(props) {
+function PostDetail() {
     const { id } = useParams();
 
     const data = fakeData["Post-detail"];
@@ -65,20 +66,12 @@ function ActivityDetail(props) {
                                     {SupportFunction.ActivityType(act.type)}
                                 </p>
                                 <div class="post-act-org-item-org">
-                                    <p>
+                                    <p
+                                        style={{marginRight : '7px'}}
+                                    >
                                         <strong>Organization : </strong>
                                     </p>
-                                    <div
-                                        class="post-act-org-item-org-click-zone"
-                                        onClick={handlerClickOrg}
-                                    >
-                                        <p>{org.name}</p>
-                                        <img
-                                            alt="org-ava"
-                                            src={org.avatar}
-                                            class="org-ava"
-                                        />
-                                    </div>
+                                    <OrganizationIcon name={org.name} avatar={org.avatar} id={org.id}/>
                                 </div>
                             </div>
                         </div>
@@ -117,4 +110,4 @@ function ActivityDetail(props) {
     );
 }
 
-export default ActivityDetail;
+export default PostDetail;

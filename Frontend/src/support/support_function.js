@@ -55,6 +55,22 @@ function getStringReply(reply) {
     }
 }
 
+function getStringPost(post) {
+    if (post === 0 || post === 1) {
+        return post + " post";
+    } else {
+        return post + " posts";
+    }
+}
+
+function getStringApplyForm(form) {
+    if (form === 0 || form === 1) {
+        return form + " form";
+    } else {
+        return form + " forms";
+    }
+}
+
 function convertToHTML(htmlString) {
     return <div dangerouslySetInnerHTML={{ __html: htmlString }} />;
 }
@@ -83,7 +99,6 @@ function truncateHTMLString(htmlString, maxLength) {
     }
 }
 
-
 function mainContentHTML(htmlString, maxLength) {
     // Lấy nội dung được cắt bớt độ dài
     const truncatedContent = truncateHTMLString(htmlString, maxLength);
@@ -105,6 +120,11 @@ function getCurrentlyDate() {
     return formattedDate;
 }
 
+function removeSpaceInString(str)
+{
+    return str.replace(/\s+/g, '');
+}
+
 const Utils = {
     TruncateText,
     ActivityType,
@@ -114,8 +134,11 @@ const Utils = {
     getStringParticipant,
     getStringComment,
     getStringReply,
+    getStringPost,
+    getStringApplyForm,
     convertToHTML,
     mainContentHTML,
+    removeSpaceInString,
 };
 
 export default Utils;
