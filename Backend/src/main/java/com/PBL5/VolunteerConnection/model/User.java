@@ -14,7 +14,7 @@ public class User {
     @Column(name= "id")
     private int id;
     @Column(name = "account_id")
-    private int account_id;
+    private int accountId;
     @Column(name = "tel")
     private String tel;
     @Column(name = "address")
@@ -26,8 +26,8 @@ public class User {
     public User(){
 
     }
-    public User(int account_id, String tel, String gender, String address,  java.util.Date birthday){
-        this.account_id = account_id;
+    public User(int accountId, String tel, String gender, String address,  java.util.Date birthday){
+        this.accountId = accountId;
         this.tel = tel;
         this.address = address;
         this.gender = gender;

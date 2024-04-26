@@ -27,6 +27,11 @@ public class LoginService {
     public LoginResponse authenticate(LoginRequest loginRequest) {
         authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(loginRequest.getAccount(), loginRequest.getPassword()));
         Account account = accountRepository.findByAccount(loginRequest.getAccount());
+        if (account.getIsDeleted()){
+            return LoginResponse.builder()
+                    .isDeleted(true).
+                    build();
+        }
         Collection<SimpleGrantedAuthority> authorities = new ArrayList<>();
         authorities.add(new SimpleGrantedAuthority(String.valueOf(account.getRole())));
         var jwtToken = jwtService.generateToken(account, authorities);
