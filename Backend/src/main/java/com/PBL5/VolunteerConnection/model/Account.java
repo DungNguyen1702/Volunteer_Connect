@@ -46,7 +46,7 @@ public class Account implements UserDetails {
         this.status = null;
         this.role = role;
         this.createdAt = Date.valueOf(LocalDate.now());
-        this.updatedAt = null;
+        this.updatedAt = Date.valueOf(LocalDate.now());
         this.isDeleted = false;
         this.isValid = true;
 

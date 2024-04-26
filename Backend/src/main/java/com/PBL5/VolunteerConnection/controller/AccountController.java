@@ -21,9 +21,8 @@ public class AccountController {
     public ResponseEntity<StatusResponse> updateAccount(@RequestBody UpdateAccountRequest updateRequest){
         return ResponseEntity.ok(accountService.updateAccount(updateRequest));
     }
-    @PostMapping("/delete")
+    @DeleteMapping("/delete")
     public ResponseEntity<StatusResponse> deleteAccount(@RequestParam String token){
-//        String token = request.getAttribute("token").toString();
         return ResponseEntity.ok(accountService.deleteAccount(token));
     }
 
