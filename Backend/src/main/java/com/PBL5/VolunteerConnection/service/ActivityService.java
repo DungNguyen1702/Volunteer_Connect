@@ -1,10 +1,11 @@
 package com.PBL5.VolunteerConnection.service;
 
-import com.PBL5.VolunteerConnection.model.Activity;
+import com.PBL5.VolunteerConnection.response.ActivityDetailResponse;
 import com.PBL5.VolunteerConnection.response.ActivityRequest;
 import com.PBL5.VolunteerConnection.response.ActivityResponse;
-import com.PBL5.VolunteerConnection.response.AllActivityResponse;
 import com.PBL5.VolunteerConnection.response.StatusResponse;
+
+import java.util.List;
 
 public interface ActivityService {
     StatusResponse createActivity(ActivityRequest activityRequest);
@@ -12,6 +13,7 @@ public interface ActivityService {
     StatusResponse updateActivity(ActivityRequest activityRequest);
 
     StatusResponse deleteActivity(ActivityRequest activityRequest);
-    AllActivityResponse getAllActivity(ActivityRequest token);
+    List<ActivityResponse> getAllActivity(ActivityRequest activityRequest);
+    ActivityDetailResponse getActivityDetail(ActivityRequest activityRequest);
     Boolean hasActivity(String token, int organizationId);
 }

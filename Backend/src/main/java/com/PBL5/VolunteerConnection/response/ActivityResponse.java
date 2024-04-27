@@ -14,8 +14,8 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @NoArgsConstructor
 public class ActivityResponse extends Activity{
-    private int participants;
-    private int comments;
+    protected int participants;
+    protected int comments;
 
     public ActivityResponse(Activity activity) {
         this.id = activity.getId();
@@ -35,4 +35,5 @@ public class ActivityResponse extends Activity{
         this.updateAt = activity.getUpdateAt();
 
     }
+
 }

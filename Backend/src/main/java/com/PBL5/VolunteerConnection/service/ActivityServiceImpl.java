@@ -1,8 +1,10 @@
 package com.PBL5.VolunteerConnection.service;
 
+import com.PBL5.VolunteerConnection.model.Account;
+import com.PBL5.VolunteerConnection.repository.AccountRepository;
+import com.PBL5.VolunteerConnection.response.ActivityDetailResponse;
 import com.PBL5.VolunteerConnection.response.ActivityRequest;
 import com.PBL5.VolunteerConnection.response.ActivityResponse;
-import com.PBL5.VolunteerConnection.response.AllActivityResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -23,7 +25,8 @@ public class ActivityServiceImpl implements ActivityService {
     private ActivityRepository activityRepository;
     @Autowired
     private AccountService accountService;
-
+    @Autowired
+    private AccountRepository accountRepository;
     @Override
     public StatusResponse createActivity(ActivityRequest activity) {
         // TODO Auto-generated method stub
@@ -110,15 +113,26 @@ public class ActivityServiceImpl implements ActivityService {
     }
 
     @Override
-    public AllActivityResponse getAllActivity(ActivityRequest getAllReq) {
+    public List<ActivityResponse> getAllActivity(ActivityRequest getAllReq) {
         int organizationId = accountService.getAccountId(getAllReq.getToken());
         List<Activity> activityList = activityRepository.findAllByOrganizationId(organizationId);
         List<ActivityResponse> activityResponseList = new ArrayList<>();
-        for(int i = 0; i < activityList.size(); i ++){
+        for (int i = 0; i < activityList.size(); i ++){
             activityResponseList.add(new ActivityResponse(activityList.get(i)));
         }
-        return AllActivityResponse.builder().activityResponseList(activityResponseList).build();
+        return activityResponseList;
+//        return AllActivityResponse.builder().activityResponseList(activityResponseList).build();
 
+    }
+
+    @Override
+    public ActivityDetailResponse getActivityDetail(ActivityRequest activityRequest) {
+        Activity activityDetail = activityRepository.findById(activityRequest.getId());
+        if (hasActivity(activityRequest.getToken(), activityDetail.getOrganizationId())){
+            Account organization = accountRepository.findById(activityDetail.getOrganizationId());
+            return new ActivityDetailResponse(new ActivityResponse(activityDetail), null, 0, 0, organization);
+        }
+        return null;
     }
 
 }
