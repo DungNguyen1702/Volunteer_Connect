@@ -44,13 +44,12 @@ public class Activity {
     @Column(name = "updateAt")
     private Date updateAt;
     @Column(name = "isDeleted")
-    private int isDeleted;
+    private Boolean isDeleted;
     @Column(name = "content")
     private String content;
 
     public Activity(String image, String email, String name, int type, Date deadline, Date dateStart, Date dateEnd,
-            int country, String location, int organizationId, int isDeleted,
-            String content) {
+            int country, String location, int organizationId, String content) {
         this.image = image;
         this.email = email;
         this.name = name;
@@ -61,7 +60,7 @@ public class Activity {
         this.country = country;
         this.location = location;
         this.organizationId = organizationId;
-        this.isDeleted = isDeleted;
+        this.isDeleted = false;
         this.content = content;
         this.createdAt = Date.valueOf(LocalDate.now());
         this.updateAt = Date.valueOf(LocalDate.now());

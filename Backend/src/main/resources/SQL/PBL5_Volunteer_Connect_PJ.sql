@@ -139,8 +139,7 @@ ALTER TABLE `RegistrationForms` ADD FOREIGN KEY (`user_id`) REFERENCES `Users` (
 
 ALTER TABLE `Tasks` ADD FOREIGN KEY (`table_task_id`) REFERENCES `TableTasks` (`id`) ON DELETE CASCADE;
 
-ALTER TABLE `RegistrationForms` ADD FOREIGN KEY (`activity_id`) REFERENCES `Activities` (`id`); ON DELETE CASCADE
-
+ALTER TABLE `RegistrationForms` ADD FOREIGN KEY (`activity_id`) REFERENCES `Activities` (`id`) ON DELETE CASCADE;
 ALTER TABLE `Users` ADD FOREIGN KEY (`account_id`) REFERENCES `Accounts` (`id`) ON DELETE CASCADE ;
 
 ALTER TABLE `Posts` ADD FOREIGN KEY (`activity_id`) REFERENCES `Activities` (`id`) ON DELETE CASCADE;

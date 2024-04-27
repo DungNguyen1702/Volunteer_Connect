@@ -1,5 +1,6 @@
 package com.PBL5.VolunteerConnection.controller;
 
+import com.PBL5.VolunteerConnection.response.ActivityRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -21,17 +22,17 @@ public class ActivityController {
     private ActivityService activityService;
 
     @PostMapping("/create")
-    ResponseEntity<StatusResponse> createActivity(@RequestBody Activity activity) {
-        return ResponseEntity.ok(activityService.createActivity(activity));
+    ResponseEntity<StatusResponse> createActivity(@RequestBody ActivityRequest activityRequest) {
+        return ResponseEntity.ok(activityService.createActivity(activityRequest));
     }
 
     @PostMapping("/update")
-    ResponseEntity<StatusResponse> updatePost(@RequestBody Activity activity) {
-        return ResponseEntity.ok(activityService.updateActivity(activity));
+    ResponseEntity<StatusResponse> updatePost(@RequestBody ActivityRequest activityRequest) {
+        return ResponseEntity.ok(activityService.updateActivity(activityRequest));
     }
 
     @DeleteMapping("/delete")
-    ResponseEntity<StatusResponse> deletePost(@RequestParam int id) {
-        return ResponseEntity.ok(activityService.deleteActivity(id));
+    ResponseEntity<StatusResponse> deletePost(@RequestBody ActivityRequest activityRequest) {
+        return ResponseEntity.ok(activityService.deleteActivity(activityRequest));
     }
 }

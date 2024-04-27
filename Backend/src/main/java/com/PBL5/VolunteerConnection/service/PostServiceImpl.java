@@ -2,6 +2,7 @@ package com.PBL5.VolunteerConnection.service;
 
 import com.PBL5.VolunteerConnection.model.Post;
 import com.PBL5.VolunteerConnection.repository.PostRespository;
+import com.PBL5.VolunteerConnection.response.PostRequest;
 import com.PBL5.VolunteerConnection.response.StatusResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,9 +18,10 @@ public class PostServiceImpl implements PostService{
     @Autowired
     private PostRespository postRespository;
     @Override
-    public StatusResponse createPost(Post post) {
+    public StatusResponse createPost(PostRequest postRequest) {
         try{
-            Post createPost = new Post(post.getActivityId(), post.getTitle(), post.getImage(), post.getContent());
+
+            Post createPost = new Post(postRequest.getActivityId(), postRequest.getTitle(), postRequest.getImage(), postRequest.getContent());
             postRespository.save(createPost);
             return  StatusResponse.builder()
                     .success(ResponseEntity.status(HttpStatus.CREATED).body("Post " + createPost.getTitle()+"has been created sucessfully!!"))
@@ -32,12 +34,12 @@ public class PostServiceImpl implements PostService{
     }
 
     @Override
-    public StatusResponse updatePost(Post post) {
+    public StatusResponse updatePost(PostRequest postRequest) {
         try{
-            Post updatePost = postRespository.findById(post.getId());
-            updatePost.setContent(post.getContent());
-            updatePost.setTitle(post.getTitle());
-            updatePost.setImage(post.getImage());
+            Post updatePost = postRespository.findById(postRequest.getId());
+            updatePost.setContent(postRequest.getContent());
+            updatePost.setTitle(postRequest.getTitle());
+            updatePost.setImage(postRequest.getImage());
             updatePost.setUpdateAt(Date.valueOf(LocalDate.now()));
             postRespository.save(updatePost);
             return  StatusResponse.builder()
@@ -50,9 +52,9 @@ public class PostServiceImpl implements PostService{
         }
     }
     @Override
-    public StatusResponse deletePost(int id) {
+    public StatusResponse deletePost(PostRequest postRequest) {
         try{
-            postRespository.deleteById(id);
+            postRespository.deleteById(postRequest.getId());
             return  StatusResponse.builder()
                     .success(ResponseEntity.status(HttpStatus.ACCEPTED).body("Post has been deleted sucessfully!!"))
                     .build();

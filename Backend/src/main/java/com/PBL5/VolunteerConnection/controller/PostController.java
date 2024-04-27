@@ -1,6 +1,7 @@
 package com.PBL5.VolunteerConnection.controller;
 
 import com.PBL5.VolunteerConnection.model.Post;
+import com.PBL5.VolunteerConnection.response.PostRequest;
 import com.PBL5.VolunteerConnection.response.StatusResponse;
 import com.PBL5.VolunteerConnection.service.PostService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,15 +16,15 @@ public class PostController {
     @Autowired
     private PostService postService;
     @PostMapping("/create")
-    ResponseEntity<StatusResponse> createPost(@RequestBody Post post){
-        return ResponseEntity.ok(postService.createPost(post));
+    ResponseEntity<StatusResponse> createPost(@RequestBody PostRequest postRequest){
+        return ResponseEntity.ok(postService.createPost(postRequest));
     }
     @PostMapping("/update")
-    ResponseEntity<StatusResponse> updatePost(@RequestBody Post post){
-        return ResponseEntity.ok(postService.updatePost(post));
+    ResponseEntity<StatusResponse> updatePost(@RequestBody PostRequest postRequest){
+        return ResponseEntity.ok(postService.updatePost(postRequest));
     }
     @DeleteMapping("/delete")
-    ResponseEntity<StatusResponse> deletePost(@RequestParam int id){
-        return ResponseEntity.ok(postService.deletePost(id));
+    ResponseEntity<StatusResponse> deletePost(@RequestBody PostRequest postRequest){
+        return ResponseEntity.ok(postService.deletePost(postRequest));
     }
 }

@@ -85,6 +85,7 @@ public class AccountServiceImpl implements  AccountService{
                 user.setBirthday(request.getBirthday());
                 userRespository.save(user);
             }
+
         }catch (Exception e){
             return StatusResponse.builder()
                     .fail(ResponseEntity.status(HttpStatus.CONFLICT).body("Updated Fail"))
@@ -103,6 +104,7 @@ public class AccountServiceImpl implements  AccountService{
             account.setIsDeleted(true);
             account.setIsValid(false);
             accountRepository.save(account);
+
         }catch (Exception e){
             return StatusResponse.builder()
                     .fail(ResponseEntity.status(HttpStatus.NOT_ACCEPTABLE).body("Delete Fail"))
@@ -112,6 +114,12 @@ public class AccountServiceImpl implements  AccountService{
                 .success(ResponseEntity.status(HttpStatus.ACCEPTED).body("Account " + username +"has been deleted sucessfully!!"))
                 .build();
 
+
+    }
+
+    @Override
+    public int getAccountId(String token) {
+        return accountRepository.findByAccount(jwtService.getUsername(token)).getId();
 
     }
 
