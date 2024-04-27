@@ -1,16 +1,10 @@
 package com.PBL5.VolunteerConnection.controller;
 
 import com.PBL5.VolunteerConnection.response.ActivityRequest;
+import com.PBL5.VolunteerConnection.response.AllActivityResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
-
-import com.PBL5.VolunteerConnection.model.Activity;
+import org.springframework.web.bind.annotation.*;
 
 import com.PBL5.VolunteerConnection.response.StatusResponse;
 import com.PBL5.VolunteerConnection.service.ActivityService;
@@ -34,5 +28,9 @@ public class ActivityController {
     @DeleteMapping("/delete")
     ResponseEntity<StatusResponse> deletePost(@RequestBody ActivityRequest activityRequest) {
         return ResponseEntity.ok(activityService.deleteActivity(activityRequest));
+    }
+    @PostMapping("/getAllActivity")
+    ResponseEntity<AllActivityResponse> getAllActivity (@RequestBody ActivityRequest token){
+        return ResponseEntity.ok(activityService.getAllActivity(token));
     }
 }

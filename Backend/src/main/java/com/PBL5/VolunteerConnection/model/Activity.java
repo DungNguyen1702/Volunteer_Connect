@@ -18,35 +18,35 @@ public class Activity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private int id;
+    protected int id;
     @Column(name = "image")
-    private String image;
+    protected String image;
     @Column(name = "email")
-    private String email;
+    protected String email;
     @Column(name = "name")
-    private String name;
+    protected String name;
     @Column(name = "type")
-    private int type;
+    protected int type;
     @Column(name = "deadline")
-    private Date deadline;
+    protected Date deadline;
     @Column(name = "date_start")
-    private Date dateStart;
+    protected Date dateStart;
     @Column(name = "date_end")
-    private Date dateEnd;
+    protected Date dateEnd;
     @Column(name = "country")
-    private int country;
+    protected int country;
     @Column(name = "location")
-    private String location;
+    protected String location;
     @Column(name = "organization_id")
-    private int organizationId;
+    protected int organizationId;
     @Column(name = "createdAt")
-    private Date createdAt;
+    protected Date createdAt;
     @Column(name = "updateAt")
-    private Date updateAt;
+    protected Date updateAt;
     @Column(name = "isDeleted")
-    private Boolean isDeleted;
+    protected Boolean isDeleted;
     @Column(name = "content")
-    private String content;
+    protected String content;
 
     public Activity(String image, String email, String name, int type, Date deadline, Date dateStart, Date dateEnd,
             int country, String location, int organizationId, String content) {

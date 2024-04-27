@@ -1,6 +1,8 @@
 package com.PBL5.VolunteerConnection.service;
 
 import com.PBL5.VolunteerConnection.response.ActivityRequest;
+import com.PBL5.VolunteerConnection.response.ActivityResponse;
+import com.PBL5.VolunteerConnection.response.AllActivityResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -12,6 +14,8 @@ import com.PBL5.VolunteerConnection.response.StatusResponse;
 
 import java.sql.Date;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class ActivityServiceImpl implements ActivityService {
@@ -23,7 +27,6 @@ public class ActivityServiceImpl implements ActivityService {
     @Override
     public StatusResponse createActivity(ActivityRequest activity) {
         // TODO Auto-generated method stub
-
         try {
             int organizationId = accountService.getAccountId(activity.getToken());
             Activity creActivity = new Activity(activity.getImage(), activity.getEmail(), activity.getName(),
@@ -100,9 +103,22 @@ public class ActivityServiceImpl implements ActivityService {
                     .build();
         }
     }
+
     public Boolean hasActivity(String token, int organizationId){
         int accountId = accountService.getAccountId(token);
         return accountId == organizationId;
+    }
+
+    @Override
+    public AllActivityResponse getAllActivity(ActivityRequest getAllReq) {
+        int organizationId = accountService.getAccountId(getAllReq.getToken());
+        List<Activity> activityList = activityRepository.findAllByOrganizationId(organizationId);
+        List<ActivityResponse> activityResponseList = new ArrayList<>();
+        for(int i = 0; i < activityList.size(); i ++){
+            activityResponseList.add(new ActivityResponse(activityList.get(i)));
+        }
+        return AllActivityResponse.builder().activityResponseList(activityResponseList).build();
+
     }
 
 }

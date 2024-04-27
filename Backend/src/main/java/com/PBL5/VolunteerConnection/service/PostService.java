@@ -8,4 +8,5 @@ public interface PostService {
     StatusResponse createPost(PostRequest post);
     StatusResponse updatePost(PostRequest post);
     StatusResponse deletePost(PostRequest post);
+
 }
