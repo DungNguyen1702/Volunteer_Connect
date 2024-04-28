@@ -20,7 +20,7 @@ public class Candidate {
     private int activityId;
     @Column(name = "certificate")
     private String certificate;
-    @Column(name = "date_ear_certificate")
+    @Column(name = "date_earn_certificate")
     private Date dateCertificate;
     @Column(name = "createdAt")
     private Date createdAt;
