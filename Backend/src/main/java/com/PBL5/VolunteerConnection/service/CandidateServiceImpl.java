@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.PBL5.VolunteerConnection.model.Candidate;
 
-import com.PBL5.VolunteerConnection.repository.ActivityRepository;
+import com.PBL5.VolunteerConnection.repository.activity.ActivityRepository;
 import com.PBL5.VolunteerConnection.repository.CandidateRepository;
 import com.PBL5.VolunteerConnection.response.CandidateRequest;
 import com.PBL5.VolunteerConnection.response.StatusResponse;

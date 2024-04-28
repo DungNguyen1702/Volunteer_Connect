@@ -43,7 +43,8 @@ public class AccountServiceImpl implements  AccountService{
                             registerRequest.getTel(),
                             registerRequest.getAddress(),
                             registerRequest.getGender(),
-                            Date.valueOf(LocalDate.now())));
+                            Date.valueOf(LocalDate.now()),
+                            registerRequest.getEmail()));
                 }
                 else{
                     account.setIsValid(false);
@@ -122,7 +123,6 @@ public class AccountServiceImpl implements  AccountService{
         return accountRepository.findByAccount(jwtService.getUsername(token)).getId();
 
     }
-
 
 }
 

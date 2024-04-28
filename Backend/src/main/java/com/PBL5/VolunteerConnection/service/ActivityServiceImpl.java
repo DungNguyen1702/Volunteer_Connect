@@ -2,6 +2,7 @@ package com.PBL5.VolunteerConnection.service;
 
 import com.PBL5.VolunteerConnection.model.Account;
 import com.PBL5.VolunteerConnection.repository.AccountRepository;
+import com.PBL5.VolunteerConnection.repository.activity.MyActivityRepository;
 import com.PBL5.VolunteerConnection.response.ActivityDetailResponse;
 import com.PBL5.VolunteerConnection.response.ActivityRequest;
 import com.PBL5.VolunteerConnection.response.ActivityResponse;
@@ -11,7 +12,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import com.PBL5.VolunteerConnection.model.Activity;
-import com.PBL5.VolunteerConnection.repository.ActivityRepository;
+import com.PBL5.VolunteerConnection.repository.activity.ActivityRepository;
 import com.PBL5.VolunteerConnection.response.StatusResponse;
 
 import java.sql.Date;
@@ -27,6 +28,8 @@ public class ActivityServiceImpl implements ActivityService {
     private AccountService accountService;
     @Autowired
     private AccountRepository accountRepository;
+    @Autowired
+    private MyActivityRepository myActivityRepository;
     @Override
     public StatusResponse createActivity(ActivityRequest activity) {
         // TODO Auto-generated method stub
@@ -115,7 +118,12 @@ public class ActivityServiceImpl implements ActivityService {
     @Override
     public List<ActivityResponse> getAllActivity(ActivityRequest getAllReq) {
         int organizationId = accountService.getAccountId(getAllReq.getToken());
-        List<Activity> activityList = activityRepository.findAllByOrganizationId(organizationId);
+        List<Activity> activityList = myActivityRepository.findAllByOrganizationIdAndTypeAndLocationAndDateStartAndDateEnd(
+                organizationId,
+                getAllReq.getType(),
+                getAllReq.getLocation(),
+                getAllReq.getDateStart(),
+                getAllReq.getDateEnd());
         List<ActivityResponse> activityResponseList = new ArrayList<>();
         for (int i = 0; i < activityList.size(); i ++){
             activityResponseList.add(new ActivityResponse(activityList.get(i)));

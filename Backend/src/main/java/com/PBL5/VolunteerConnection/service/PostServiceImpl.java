@@ -1,12 +1,10 @@
 package com.PBL5.VolunteerConnection.service;
 
 import com.PBL5.VolunteerConnection.model.Post;
-import com.PBL5.VolunteerConnection.repository.AccountRepository;
-import com.PBL5.VolunteerConnection.repository.ActivityRepository;
+import com.PBL5.VolunteerConnection.repository.activity.ActivityRepository;
 import com.PBL5.VolunteerConnection.repository.PostRespository;
 import com.PBL5.VolunteerConnection.response.PostRequest;
 import com.PBL5.VolunteerConnection.response.StatusResponse;
-import lombok.RequiredArgsConstructor;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
