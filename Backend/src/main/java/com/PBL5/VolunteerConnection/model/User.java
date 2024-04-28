@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.Data;
 
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Data
@@ -25,6 +26,7 @@ public class User {
     private Date birthday;
     @Column(name = "email")
     private String email;
+
     public User(){
 
     }

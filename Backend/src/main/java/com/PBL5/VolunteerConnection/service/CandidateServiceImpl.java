@@ -1,5 +1,6 @@
 package com.PBL5.VolunteerConnection.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -107,29 +108,23 @@ public class CandidateServiceImpl implements CandidateService {
     }
 
     @Override
-    public StatusResponse SelectAllCandidate(CandidateRequest candidate) {
+    public List<Candidate> selectAllCandidate(CandidateRequest candidate) {
         // TODO Auto-generated method stub
+        List<Candidate> candidatelList = new ArrayList<>();
         try {
             int organizationId = activityRepository.findById(candidate.getActivityId()).getOrganizationId();
             if (activityService.hasActivity(candidate.getToken(), organizationId)) {
-                List<Candidate> candidatelList = candidateRepository.findByActivityId(candidate.getActivityId());
-                return StatusResponse.builder()
-                        .success(ResponseEntity.status(HttpStatus.ACCEPTED)
-                                .body(candidatelList.toString()))
-                        .build();
-            } else {
-                return StatusResponse.builder()
-                        .success(ResponseEntity.status(HttpStatus.NOT_ACCEPTABLE)
-                                .body("Cant not select all candidates because you are not owner!!"))
-                        .build();
+                candidatelList = candidateRepository.findByActivityId(candidate.getActivityId());
             }
+            return candidatelList;
 
         } catch (Exception e) {
             // TODO: handle exception
-            return StatusResponse.builder()
-                    .fail(ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Exception from server!! " + e))
-                    .build();
+            return candidatelList;
         }
+
     }
+
+
 
 }

@@ -38,6 +38,7 @@ public class Account implements UserDetails {
     private Boolean isDeleted;
     @Column(name = "isValid")
     private Boolean isValid;
+
     public Account(String account, String password, String name, int role)  {
         this.account = account;
         this.password = password;

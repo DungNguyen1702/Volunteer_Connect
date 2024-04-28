@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 
 import java.sql.Date;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -101,46 +102,26 @@ public class PostServiceImpl implements PostService {
         }
 
     }
-
     @Override
-    public StatusResponse SelectAllPost(PostRequest postRequest) {
+    public List<Post> SelectAllPost(PostRequest postRequest) {
         // TODO Auto-generated method stub
         try {
-            int organizationId = activityRepository.findById(postRequest.getActivityId()).getOrganizationId();
-            if (activityService.hasActivity(postRequest.getToken(), organizationId)) {
-                List<Post> postlList = postRespository.findByActivityId(postRequest.getActivityId());
-                return StatusResponse.builder()
-                        .success(ResponseEntity.status(HttpStatus.ACCEPTED)
-                                .body(postlList.toString()))
-                        .build();
-            } else {
-                return StatusResponse.builder()
-                        .success(ResponseEntity.status(HttpStatus.NOT_ACCEPTABLE)
-                                .body("Cant not select all posts because you are not owner!!"))
-                        .build();
-            }
+           return  postRespository.findByActivityId(postRequest.getActivityId());
 
         } catch (Exception e) {
             // TODO: handle exception
-            return StatusResponse.builder()
-                    .fail(ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Exception from server!! " + e))
-                    .build();
+            return null;
         }
     }
 
     @Override
-    public StatusResponse SelectAll() {
+    public List<Post> SelectAll() {
         try {
             List<Post> postlList = postRespository.findAll();
-            return StatusResponse.builder()
-                    .success(ResponseEntity.status(HttpStatus.OK)
-                            .body(postlList.toString()))
-                    .build();
+            return postlList;
         } catch (Exception e) {
             // TODO: handle exception
-            return StatusResponse.builder()
-                    .fail(ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Exception from server!! " + e))
-                    .build();
+            return null;
         }
     }
 }

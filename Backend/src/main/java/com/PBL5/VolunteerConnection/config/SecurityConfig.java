@@ -31,7 +31,8 @@ public class SecurityConfig {
                         .requestMatchers("api/v1/auth/**").permitAll()
                         .requestMatchers("api/v1/account/**").authenticated()
                         .requestMatchers("api/v1/post/**").hasAuthority("2")
-                        .requestMatchers("api/v1/activity/**").hasAuthority("2"))
+                        .requestMatchers("api/v1/activity/**").hasAuthority("2")
+                        .requestMatchers("api/v1/candidate/**").hasAuthority("1"))
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authenticationProvider(authenticationProvider)
                 .addFilterBefore(jwtFillterConfig, UsernamePasswordAuthenticationFilter.class);

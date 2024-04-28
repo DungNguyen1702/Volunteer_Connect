@@ -2,10 +2,9 @@ package com.PBL5.VolunteerConnection.service;
 
 import com.PBL5.VolunteerConnection.model.Account;
 import com.PBL5.VolunteerConnection.repository.AccountRepository;
+import com.PBL5.VolunteerConnection.repository.UserRespository;
 import com.PBL5.VolunteerConnection.repository.activity.MyActivityRepository;
-import com.PBL5.VolunteerConnection.response.ActivityDetailResponse;
-import com.PBL5.VolunteerConnection.response.ActivityRequest;
-import com.PBL5.VolunteerConnection.response.ActivityResponse;
+import com.PBL5.VolunteerConnection.response.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,7 +12,6 @@ import org.springframework.stereotype.Service;
 
 import com.PBL5.VolunteerConnection.model.Activity;
 import com.PBL5.VolunteerConnection.repository.activity.ActivityRepository;
-import com.PBL5.VolunteerConnection.response.StatusResponse;
 
 import java.sql.Date;
 import java.time.LocalDate;
@@ -30,6 +28,8 @@ public class ActivityServiceImpl implements ActivityService {
     private AccountRepository accountRepository;
     @Autowired
     private MyActivityRepository myActivityRepository;
+    @Autowired
+    private UserRespository userRespository;
     @Override
     public StatusResponse createActivity(ActivityRequest activity) {
         // TODO Auto-generated method stub
@@ -125,8 +125,8 @@ public class ActivityServiceImpl implements ActivityService {
                 getAllReq.getDateStart(),
                 getAllReq.getDateEnd());
         List<ActivityResponse> activityResponseList = new ArrayList<>();
-        for (int i = 0; i < activityList.size(); i ++){
-            activityResponseList.add(new ActivityResponse(activityList.get(i)));
+        for (Activity activity : activityList) {
+            activityResponseList.add(new ActivityResponse(activity));
         }
         return activityResponseList;
 //        return AllActivityResponse.builder().activityResponseList(activityResponseList).build();
@@ -142,5 +142,13 @@ public class ActivityServiceImpl implements ActivityService {
         }
         return null;
     }
+    @Override
+    public List<Activity> selectAllActivitiesByCandidate(CandidateRequest candidateRequest) {
+        int accountId = accountService.getAccountId(candidateRequest.getToken());
+        if (candidateRequest.getUserId() == userRespository.findByAccountId(accountId).getId()){
+            return activityRepository.findActivitiesByAccountId(accountId);
+        }
+        return null;
 
+    }
 }

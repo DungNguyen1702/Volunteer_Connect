@@ -13,4 +13,5 @@ public interface PostRespository extends JpaRepository<Post, Integer> {
     Post findById(int id);
 
     List<Post> findAll();
+
 }

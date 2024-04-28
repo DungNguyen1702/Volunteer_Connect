@@ -10,6 +10,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("api/v1/post")
 public class PostController {
@@ -32,12 +34,12 @@ public class PostController {
     }
 
     @GetMapping("/selectAll")
-    ResponseEntity<StatusResponse> selectAllPost(@RequestBody PostRequest postRequest) {
+    ResponseEntity<List<Post>> selectAllPost(@RequestBody PostRequest postRequest) {
         return ResponseEntity.ok(postService.SelectAllPost(postRequest));
     }
 
     @GetMapping("/select")
-    ResponseEntity<StatusResponse> selectAll() {
+    ResponseEntity<List<Post>> selectAll() {
         return ResponseEntity.ok(postService.SelectAll());
     }
 }

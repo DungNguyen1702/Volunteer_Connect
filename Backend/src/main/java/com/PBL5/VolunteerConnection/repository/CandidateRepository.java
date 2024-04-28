@@ -10,6 +10,5 @@ import com.PBL5.VolunteerConnection.model.Candidate;
 @Repository
 public interface CandidateRepository extends JpaRepository<Candidate, Integer> {
     List<Candidate> findByActivityId(int activityId);
-
     Candidate findById(int id);
 }

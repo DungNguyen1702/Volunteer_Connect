@@ -1,12 +1,11 @@
 package com.PBL5.VolunteerConnection.repository.activity;
 
 import com.PBL5.VolunteerConnection.model.Activity;
+
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
-import jakarta.persistence.criteria.CriteriaBuilder;
-import jakarta.persistence.criteria.CriteriaQuery;
-import jakarta.persistence.criteria.Predicate;
-import jakarta.persistence.criteria.Root;
+import jakarta.persistence.criteria.*;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -47,10 +46,22 @@ public class MyActivityRepositoryImpl implements MyActivityRepository{
         }
 
         query.where(cb.and(predicates.toArray(new Predicate[0])));
-        return em.createQuery(query).getResultList();
+        List<Activity> resultList = em.createQuery(query).getResultList();
+        em.close();
+        return resultList;
     }
 
-
-
-
+    @Override
+    public List findActivitiesByUserIdCriteria(Integer accountId) {
+        EntityManager em = entityManagerFactory.createEntityManager();
+        return em.createQuery(
+                        "SELECT a.* " +
+                        "FROM activities a\n" +
+                        "JOIN candidates c ON a.id = c.activity_id\n" +
+                        "JOIN users u ON c.user_id = u.id\n" +
+                        "JOIN accounts acc ON u.account_id = acc.id\n" +
+                        "WHERE acc.id = 1 and a.isDeleted = 0")
+                .setParameter("accountId", accountId)
+                .getResultList();
+    }
 }

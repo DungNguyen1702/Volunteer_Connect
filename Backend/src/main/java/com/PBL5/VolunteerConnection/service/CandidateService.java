@@ -1,7 +1,11 @@
 package com.PBL5.VolunteerConnection.service;
 
+
+import com.PBL5.VolunteerConnection.model.Candidate;
 import com.PBL5.VolunteerConnection.response.CandidateRequest;
 import com.PBL5.VolunteerConnection.response.StatusResponse;
+
+import java.util.List;
 
 public interface CandidateService {
     StatusResponse createCandidate(CandidateRequest candidate);
@@ -10,5 +14,5 @@ public interface CandidateService {
 
     StatusResponse deleteCandidate(CandidateRequest candidate);
 
-    StatusResponse SelectAllCandidate(CandidateRequest candidate);
+    List<Candidate> selectAllCandidate(CandidateRequest candidate);
 }
