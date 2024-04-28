@@ -3,7 +3,8 @@ package com.PBL5.VolunteerConnection.model;
 import jakarta.persistence.*;
 import lombok.Data;
 
-import java.util.Date;
+import java.time.LocalDate;
+import java.sql.Date;
 
 @Entity
 @Data
@@ -23,4 +24,16 @@ public class Candidate {
     private Date dateCertificate;
     @Column(name = "createdAt")
     private Date createdAt;
+
+    public Candidate() {
+    }
+
+    public Candidate(int userId, int activityId, String certificate, Date dateCertificate) {
+        this.userId = userId;
+        this.activityId = activityId;
+        this.certificate = certificate;
+        this.dateCertificate = dateCertificate;
+        this.createdAt = Date.valueOf(LocalDate.now());
+    }
+
 }

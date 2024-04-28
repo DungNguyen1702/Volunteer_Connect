@@ -15,16 +15,29 @@ import org.springframework.web.bind.annotation.*;
 public class PostController {
     @Autowired
     private PostService postService;
+
     @PostMapping("/create")
-    ResponseEntity<StatusResponse> createPost(@RequestBody PostRequest postRequest){
+    ResponseEntity<StatusResponse> createPost(@RequestBody PostRequest postRequest) {
         return ResponseEntity.ok(postService.createPost(postRequest));
     }
+
     @PostMapping("/update")
-    ResponseEntity<StatusResponse> updatePost(@RequestBody PostRequest postRequest){
+    ResponseEntity<StatusResponse> updatePost(@RequestBody PostRequest postRequest) {
         return ResponseEntity.ok(postService.updatePost(postRequest));
     }
+
     @DeleteMapping("/delete")
-    ResponseEntity<StatusResponse> deletePost(@RequestBody PostRequest postRequest){
+    ResponseEntity<StatusResponse> deletePost(@RequestBody PostRequest postRequest) {
         return ResponseEntity.ok(postService.deletePost(postRequest));
+    }
+
+    @GetMapping("/selectAll")
+    ResponseEntity<StatusResponse> selectAllPost(@RequestBody PostRequest postRequest) {
+        return ResponseEntity.ok(postService.SelectAllPost(postRequest));
+    }
+
+    @GetMapping("/select")
+    ResponseEntity<StatusResponse> selectAll() {
+        return ResponseEntity.ok(postService.SelectAll());
     }
 }
