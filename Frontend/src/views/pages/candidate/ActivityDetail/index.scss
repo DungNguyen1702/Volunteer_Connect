@@ -19,7 +19,7 @@ html, body {
 .activity-detail-header {
     width: 100%;
     position: relative;
-    margin : 10px 0px;
+    margin-top : 10px;
 }
 
 #activity-image {
@@ -139,7 +139,10 @@ html, body {
 .tab-button-icon{
     width: 20px;
     height: 20px;
-    margin-right: 10px;
+}
+
+.tab-button-text{
+    margin-left : 10px;
 }
 
 .tabbar-button {
@@ -162,4 +165,11 @@ html, body {
     width: 100%;
     justify-content: end;
     margin-bottom: 20px;
+}
+
+.activity-tab-content{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }

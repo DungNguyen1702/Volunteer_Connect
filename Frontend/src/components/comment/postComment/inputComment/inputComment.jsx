@@ -1,5 +1,5 @@
 import "./inputComment.scss";
-import fakeData from "../../../data/fake_data.json";
+import fakeData from "../../../../data/fake_data.json";
 import { useState } from "react";
 import { Button } from "antd";
 
@@ -13,9 +13,7 @@ function InputComment(props) {
         console.log(inputValue);
     };
 
-    const handlerClickReply = ()=>{
-
-    }
+    const handlerClickReply = () => {};
 
     return (
         <div class="input-comment-wrapper">
@@ -27,10 +25,7 @@ function InputComment(props) {
                 value={inputValue}
                 onChange={handlerChangeInput}
             />
-            <Button
-                className="reply-button"
-                onClick={handlerClickReply}
-            >
+            <Button className="reply-button" onClick={handlerClickReply}>
                 <p>Save</p>
             </Button>
         </div>

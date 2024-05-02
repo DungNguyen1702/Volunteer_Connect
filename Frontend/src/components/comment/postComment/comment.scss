@@ -1,0 +1,49 @@
+@import '../../../constants/colors.scss';
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    font-size: 15px;
+    background-color: $background;
+}
+
+.comment-wrapper {
+    display: flex;
+    margin: 10px 0px;
+    padding : 0px 0px;
+}
+
+.comment-content {
+    display: flex;
+    flex-direction: column;
+    margin-left : 20px;
+    width: 100%;
+}
+
+.comment-button-group {
+    display: flex;
+    justify-content: end;
+    width: 100%;
+}
+
+.comment-button-item {
+    color: $subText;
+    margin : 0px 10px;
+    text-decoration: underline;
+}
+
+.comment-button-item:hover {
+    color: $primary_green;
+    font-weight: bold;
+}
+
+.account-ava {
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+

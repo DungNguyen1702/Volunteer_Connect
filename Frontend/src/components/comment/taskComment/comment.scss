@@ -1,4 +1,4 @@
-@import '../../constants/colors.scss';
+@import '../../../constants/colors.scss';
 
 * {
     margin: 0;
@@ -33,6 +33,12 @@ html, body {
     color: $subText;
     margin : 0px 10px;
     text-decoration: underline;
+}
+
+.comment-button-item-show-margin {
+    margin-top: 0px;
+    margin-left: 0px;
+    margin-bottom: 10px;
 }
 
 .comment-button-item:hover {

@@ -111,10 +111,6 @@ html, body {
     color : $primary_green
 }
 
-.ant-select-selector { 
-    background-color: $background_input_green !important;
-}
-
 .content-sort-button {
     background-color: $button;
     color : $white;
@@ -128,10 +124,21 @@ html, body {
     border: 1px solid $button !important;
 }  
 
-.ant-input-outlined {
+.content-sort-select {
     background-color: $background_input_green !important;
     width: 45%;
     height: 35px;
+    color: $black !important;
+    .ant-select-selector { 
+        background-color: $background_input_green !important;
+    }
+}
+
+.content-header {
+    .ant-input-outlined { 
+        background-color: $background_input_green !important;
+        width: 45%;
+    }
 }
 
 .content-create-button {
@@ -159,6 +166,7 @@ html, body {
     padding : 0px 20px;
     gap : 30px;
     margin : 20px 0px;
+    width: 100%;
 }
 
 .tabbar-date-title {

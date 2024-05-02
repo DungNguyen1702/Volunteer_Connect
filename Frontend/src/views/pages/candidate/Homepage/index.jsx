@@ -248,6 +248,7 @@ function UserHomepage(props) {
                                 width : "30%",
                                 textAlign : "center"
                             }}
+                            className="select-item"
                         />
 
                         <h3 class='button-country-status-sort-title'>Sort order : </h3>
@@ -258,10 +259,7 @@ function UserHomepage(props) {
                                 { value: 1, label: "Increase" },
                                 { value: 2, label: "Decrease" },
                             ]}
-                            style={{
-                                width : "35%",
-                                textAlign : "center"
-                            }}
+                            className="select-item"
                         />
                     </div>
                 </div>

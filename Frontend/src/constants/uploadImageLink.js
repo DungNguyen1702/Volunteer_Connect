@@ -1,0 +1,1 @@
+export const UPLOADIMAGELINK = 'https://highx5-manager-event-mobile.onrender.com/api/upload_image'

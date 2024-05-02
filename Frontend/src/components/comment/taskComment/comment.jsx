@@ -1,10 +1,10 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import "./comment.scss";
-import SupportFunction from "../../support/support_function";
-import InputComment from "./inputComment/inputComment";
+import SupportFunction from "../../../support/support_function";
+import TaskInputComment from "./inputComment/inputComment";
 
-function Comment(props) {
-    const data = props.data;
+function TaskComment(props) {
+    const {data} = props;
     const replies = data.replies;
 
     const [showReplies, setShowReplies] = useState(false);
@@ -56,42 +56,35 @@ function Comment(props) {
                 </div>
 
                 {/* reply box */}
-                <div> 
-                    {showReplyBox && <InputComment data={data}/>}
-                </div>
+                <div>{showReplyBox && <TaskInputComment data={data} />}</div>
 
-                {replies && !showReplies && <p
-                    className="comment-button-item"
-                    style={{
-                        marginTop: "0px",
-                        marginLeft: "0px",
-                        marginBottom: "10px",
-                    }}
-                    onClick={handlerClickShowMore}
-                >
-                    Show{" "}
-                    {SupportFunction.getStringReply(
-                        replies ? replies.length : 0
-                    )}
-                </p>}
-                {replies && showReplies 
-                    && replies.map((reply) => (
-                        <Comment data={reply} key={reply.id} />
+                {replies && !showReplies && (
+                    <p
+                        className="comment-button-item comment-button-item-show-margin"
+                        onClick={handlerClickShowMore}
+                    >
+                        Show{" "}
+                        {SupportFunction.getStringReply(
+                            replies ? replies.length : 0
+                        )}
+                    </p>
+                )}
+                {replies &&
+                    showReplies &&
+                    replies.map((reply) => (
+                        <TaskComment data={reply} key={reply.id} />
                     ))}
-                {replies && showReplies && <p
-                    className="comment-button-item"
-                    style={{
-                        marginTop: "0px",
-                        marginLeft: "0px",
-                        marginBottom: "10px",
-                    }}
-                    onClick={handlerClickShowMore}
-                >
-                    Show less
-                </p>}
+                {replies && showReplies && (
+                    <p
+                        className="comment-button-item comment-button-item-show-margin"
+                        onClick={handlerClickShowMore}
+                    >
+                        Show less
+                    </p>
+                )}
             </div>
         </div>
     );
 }
 
-export default Comment;
+export default TaskComment;

@@ -9,3 +9,57 @@ html, body {
     font-size: 15px;
     background-color: $background;
 }
+
+.memeber-management-wrapper {
+    display: flex;
+    width: 95%;
+    flex-direction: column;
+    background-color: $light_orange;
+    padding : 10px 20px;
+    border-radius: 20px;
+    margin : 20px 0px;
+    position: relative;
+}
+
+.member-management-title {
+    color: $accent;
+    width: 100%;
+    text-align: center;
+    margin : 10px 0px;
+}
+
+.apply-form-button {
+    background-color: $button !important;
+    color : $white !important;
+    position: absolute;
+    top : 20px;
+    right : 20px
+}
+
+.apply-form-button:hover {
+    background-color: $white !important;
+    color : $button !important;
+    border : 1px solid $button
+}
+
+.button-have-certificate {
+    background-color: $button_orange !important;
+    color : $white !important;
+}
+
+.button-have-certificate:hover {
+    background-color: $white !important;
+    color : $button_orange !important;
+    border : 1px solid $button_orange !important
+}
+
+.button-delete {
+    background-color: $danger !important;
+    color : $white !important;
+}
+
+.button-delete:hover {
+    background-color: $white !important;
+    color : $danger !important;
+    border : 1px solid $danger !important;
+}

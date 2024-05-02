@@ -1,0 +1,33 @@
+@import '../../../../../../../constants/colors.scss';
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    font-size: 15px;
+    background-color: $background;
+}
+
+.button-confirm-apply-form {
+    background-color: $success !important;
+    color : $white !important;
+}
+
+.button-confirm-apply-form:hover {
+    background-color: $white !important;
+    color : $success !important;
+    border: 1px solid $success !important;
+}
+
+.button-deny-apply-form {
+    background-color: $danger !important;
+    color : $white !important;
+}
+
+.button-deny-apply-form:hover {
+    background-color: $white !important;
+    color : $danger !important;
+    border: 1px solid $danger !important;
+}

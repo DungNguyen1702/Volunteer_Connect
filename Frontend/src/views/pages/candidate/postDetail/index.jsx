@@ -5,8 +5,8 @@ import SmallPost from "../../../../components/post/small-post";
 import SupportFunction from "../../../../support/support_function";
 import { Button } from "antd";
 import { ICONS } from "../../../../constants/icons";
-import Comment from "../../../../components/comment/comment";
-import InputComment from "../../../../components/comment/inputComment/inputComment";
+import Comment from "../../../../components/comment/postComment/comment";
+import InputComment from "../../../../components/comment/postComment/inputComment/inputComment";
 import OrganizationIcon from "../../../../components/organization";
 
 function PostDetail() {
@@ -66,12 +66,14 @@ function PostDetail() {
                                     {SupportFunction.ActivityType(act.type)}
                                 </p>
                                 <div class="post-act-org-item-org">
-                                    <p
-                                        style={{marginRight : '7px'}}
-                                    >
+                                    <p style={{ marginRight: "7px" }}>
                                         <strong>Organization : </strong>
                                     </p>
-                                    <OrganizationIcon name={org.name} avatar={org.avatar} id={org.id}/>
+                                    <OrganizationIcon
+                                        name={org.name}
+                                        avatar={org.avatar}
+                                        id={org.id}
+                                    />
                                 </div>
                             </div>
                         </div>
@@ -102,9 +104,13 @@ function PostDetail() {
                     ))}
                 </div>
             </div>
-            <div class='post-comment-wrapper'>
-                <div class='post-comment-reply'><InputComment/></div>
-                {comments.map(comment => <Comment data={comment} key={comment.id} />)}
+            <div class="post-comment-wrapper">
+                <div class="post-comment-reply">
+                    <InputComment />
+                </div>
+                {comments.map((comment) => (
+                    <Comment data={comment} key={comment.id} />
+                ))}
             </div>
         </div>
     );

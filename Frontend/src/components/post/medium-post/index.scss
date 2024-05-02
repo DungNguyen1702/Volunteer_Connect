@@ -1,0 +1,93 @@
+@import '../../../constants/colors.scss';
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    font-size: 16px;
+}
+
+.medium-post-wrapper {
+    width: 90%;
+    background-color: $background_big_post;
+    border-radius: 15px;
+    transition: all 0.3s ease;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.medium-post-wrapper:hover {
+    transform: scale(1.05); /* Phóng to lên 1.05 lần */
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.5); /* Điều chỉnh giá trị rgba để tùy chỉnh màu sắc và độ đậm của bóng */
+}
+
+.medium-post-header {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 20px;
+    position: relative;
+}
+
+.medium-post-delete-button {
+    position: absolute;
+    top : -4px;
+    left : 20px;
+    background-color: $button_orange !important;
+    color: $white !important;
+}
+
+.medium-post-delete-button:hover {
+    border : 1px solid $button_orange !important;
+    color : $button_orange !important;
+    background-color: white !important;
+}
+
+.post-title {
+    color: $primary_green;
+}
+
+.medium-post-info {
+    display: flex;
+    justify-content: space-between;
+    margin : 10px 0px;
+    width: 100%;
+}
+
+.medium-post-date{
+    width: 100%;
+    color: $subText;
+    margin-left : 20px;
+}
+
+.medium-post-type {
+    color: $secondary_green;
+}
+
+.medium-post-content {
+    display: flex;
+    padding : 0 30px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.medium-post-img {
+    height: 30%;
+    width: 40%;
+    margin-right: 20px;
+}
+
+.medium-post-footer {
+    display: flex;
+    margin : 10px 20px;
+    justify-content: end;
+}
+
+.medium-post-comment {
+    color : $subText
+}
+
+.accent-color {
+    color : $accent
+}

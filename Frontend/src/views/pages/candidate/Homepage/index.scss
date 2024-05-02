@@ -174,10 +174,14 @@ html, body {
     justify-content: space-between;
 }
 
-.ant-select-selector { 
-    background-color: $accent !important;
-    color: $white !important;
-    font-weight: bold !important;
+.select-item {
+    .ant-select-selector { 
+        background-color: $accent !important;
+        color: $white !important;
+        font-weight: bold !important;
+    }
+    width : 35%;
+    text-align: center;
 }
 
 .ant-select-arrow {
