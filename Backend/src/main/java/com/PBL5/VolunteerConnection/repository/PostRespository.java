@@ -9,5 +9,9 @@ import java.util.List;
 @Repository
 public interface PostRespository extends JpaRepository<Post, Integer> {
     List<Post> findByActivityId(int activityId);
+
     Post findById(int id);
+
+    List<Post> findAll();
+
 }

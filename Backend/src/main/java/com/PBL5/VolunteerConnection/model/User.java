@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.Data;
 
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Data
@@ -23,14 +24,18 @@ public class User {
     private String gender;
     @Column(name = "birthday")
     private Date birthday;
+    @Column(name = "email")
+    private String email;
+
     public User(){
 
     }
-    public User(int accountId, String tel, String gender, String address,  java.util.Date birthday){
+    public User(int accountId, String tel, String gender, String address,  java.util.Date birthday, String email){
         this.accountId = accountId;
         this.tel = tel;
         this.address = address;
         this.gender = gender;
         this.birthday = birthday;
+        this.email = email;
     }
 }
