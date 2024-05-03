@@ -5,10 +5,13 @@ import { Button, Input } from "antd";
 import 'react-toastify/dist/ReactToastify.css';
 import { toast } from "react-toastify";
 import auth from "../../api/authAPI";
+import useAuth from "../../hooks/useAuth";
 
 const FrameComponent = () => {
     const [account, setAccount] = useState('');
     const [password, setPassword] = useState('');
+
+    const {setToken, token} = useAuth();
 
     const onChangeAccount = (e)=>{
         setAccount(e.target.value);
@@ -25,8 +28,12 @@ const FrameComponent = () => {
                 }
 
                 const response = await auth.login(values);
-
+                
                 if(response.status === 200){
+                    // console.log(response.data.token)
+                    console.log(setToken)
+                    // setToken(response.data.token)
+                    localStorage.setItem('token',response.data.token)
                     toast.success('Login success')
                 }
             }

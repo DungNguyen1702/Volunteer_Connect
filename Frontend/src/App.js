@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { BrowserRouter } from "react-router-dom";
 import AllRoutes from "./views/routes";
+import { AuthProvider } from "./contexts/AccountContext";
 
 function App() {
     useEffect(() => {
@@ -16,9 +17,9 @@ function App() {
 
     return (
         <BrowserRouter>
-            {/* <AuthProvider> */}
-            <AllRoutes />
-            {/* </AuthProvider> */}
+            <AuthProvider>
+                <AllRoutes />
+            </AuthProvider>
         </BrowserRouter>
     );
 }

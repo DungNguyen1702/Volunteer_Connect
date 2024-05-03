@@ -39,11 +39,21 @@ html, body {
     margin: 10px 0px;
     padding : 20px;
     border-radius: 20px;
-    height: 200px;
 }
 
 .list-people-content-title {
     color : $accent;
+}
+
+.search-bar-wrapper {
+    background-color: $background-search-list-people;
+    padding : 20px;
+    border-radius: 20px;
+    z-index: 100;
+}
+
+.search-bar {
+    background-color: $search-list-people !important;
 }
 
 #search-bar {
