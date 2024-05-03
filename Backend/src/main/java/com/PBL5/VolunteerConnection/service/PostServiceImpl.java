@@ -1,7 +1,7 @@
 package com.PBL5.VolunteerConnection.service;
 
 import com.PBL5.VolunteerConnection.model.Post;
-import com.PBL5.VolunteerConnection.repository.activity.ActivityRepository;
+import com.PBL5.VolunteerConnection.repository.ActivityRepository;
 import com.PBL5.VolunteerConnection.repository.PostRespository;
 import com.PBL5.VolunteerConnection.response.PostRequest;
 import com.PBL5.VolunteerConnection.response.StatusResponse;
@@ -13,7 +13,6 @@ import org.springframework.stereotype.Service;
 
 import java.sql.Date;
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -30,7 +29,6 @@ public class PostServiceImpl implements PostService {
     @Override
     public StatusResponse createPost(String token, PostRequest postRequest) {
         try {
-            token = token.substring("Bearer ".length());
 
             int organizationId = activityRepository.findById(postRequest.getActivityId()).getOrganizationId();
             if (organizationId == jwtService.getId(token)) {
@@ -58,7 +56,6 @@ public class PostServiceImpl implements PostService {
     @Override
     public StatusResponse updatePost(String token, PostRequest postRequest) {
         try {
-            token = token.substring("Bearer ".length());
 
             int organizationId = activityRepository.findById(postRequest.getActivityId()).getOrganizationId();
             if (organizationId == jwtService.getId(token)) {
@@ -88,7 +85,6 @@ public class PostServiceImpl implements PostService {
     @Override
     public StatusResponse deletePost(String token, PostRequest postRequest) {
         try {
-            token = token.substring("Bearer ".length());
 
             int organizationId = activityRepository.findById(postRequest.getActivityId()).getOrganizationId();
             if (organizationId == jwtService.getId(token)) {

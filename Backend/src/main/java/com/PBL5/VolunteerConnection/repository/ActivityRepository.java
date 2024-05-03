@@ -1,4 +1,4 @@
-package com.PBL5.VolunteerConnection.repository.activity;
+package com.PBL5.VolunteerConnection.repository;
 
 
 import java.util.List;
@@ -13,6 +13,7 @@ import com.PBL5.VolunteerConnection.model.Activity;
 @Repository
 public interface ActivityRepository extends JpaRepository<Activity, Integer> {
     Activity findById(int id);
+    Activity findByIdAndOrganizationId(int id, int organizationId);
     @Query(
                 "SELECT a " +
                     "FROM Activity a " +

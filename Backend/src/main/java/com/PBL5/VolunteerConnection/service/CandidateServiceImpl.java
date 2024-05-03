@@ -1,8 +1,13 @@
 package com.PBL5.VolunteerConnection.service;
 
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
+import com.PBL5.VolunteerConnection.model.Activity;
+import com.PBL5.VolunteerConnection.response.CandidateDetailResponse;
+import com.PBL5.VolunteerConnection.response.UserDetailResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -10,7 +15,7 @@ import org.springframework.stereotype.Service;
 
 import com.PBL5.VolunteerConnection.model.Candidate;
 
-import com.PBL5.VolunteerConnection.repository.activity.ActivityRepository;
+import com.PBL5.VolunteerConnection.repository.ActivityRepository;
 import com.PBL5.VolunteerConnection.repository.CandidateRepository;
 import com.PBL5.VolunteerConnection.response.CandidateRequest;
 import com.PBL5.VolunteerConnection.response.StatusResponse;
@@ -20,7 +25,7 @@ public class CandidateServiceImpl implements CandidateService {
     @Autowired
     private CandidateRepository candidateRepository;
     @Autowired
-    private ActivityService activityService;
+    private AccountService accountService;
     @Autowired
     private ActivityRepository activityRepository;
     @Autowired
@@ -30,7 +35,6 @@ public class CandidateServiceImpl implements CandidateService {
     public StatusResponse createCandidate(String token, CandidateRequest candidate) {
         // TODO Auto-generated method stub
         try {
-            token = token.substring("Bearer ".length());
 
             int organizationId = activityRepository.findById(candidate.getActivityId()).getOrganizationId();
             if (organizationId == jwtService.getId(token)) {
@@ -60,7 +64,6 @@ public class CandidateServiceImpl implements CandidateService {
     public StatusResponse updateCandidate(String token, CandidateRequest candidate) {
         // TODO Auto-generated method stub
         try {
-            token = token.substring("Bearer ".length());
 
             int organizationId = activityRepository.findById(candidate.getActivityId()).getOrganizationId();
             if (organizationId == jwtService.getId(token)) {
@@ -93,7 +96,6 @@ public class CandidateServiceImpl implements CandidateService {
         // TODO Auto-generated method stub
         try {
             token = token.substring("Bearer ".length());
-
             int organizationId = activityRepository.findById(candidate.getActivityId()).getOrganizationId();
             if (organizationId == jwtService.getId(token)) {
                 candidateRepository.deleteById(candidate.getId());
@@ -121,7 +123,6 @@ public class CandidateServiceImpl implements CandidateService {
 
         List<Candidate> candidatelList = new ArrayList<>();
         try {
-            token = token.substring("Bearer ".length());
 
             int organizationId = activityRepository.findById(candidate.getActivityId()).getOrganizationId();
             if (organizationId == jwtService.getId(token)) {
@@ -136,6 +137,16 @@ public class CandidateServiceImpl implements CandidateService {
 
     }
 
+    @Override
+    public List<CandidateDetailResponse> getCandidateDetail(String token, int activityId) {
+        List<Candidate> candidatelList = candidateRepository.findByActivityId(activityId);
+        List<CandidateDetailResponse> candidateDetailResponseList = new ArrayList<>();
+//        for(Candidate candidate : candidatelList){
+//            candidateDetailResponseList.add(new CandidateDetailResponse(candidate.getId(), accountService.getInfoUser() ,
+//                    candidate.getActivityId(), candidate.getCertificate(), candidate.getDateCertificate(), candidate.getCreatedAt()));
+//        }
+        return null;
+    }
 
 
 }

@@ -7,21 +7,18 @@ import lombok.NoArgsConstructor;
 
 import java.sql.Date;
 
-
 @Data
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class LoginResponse {
-    private String token;
-    private String refreshToken;
+public class UserDetailResponse {
     private int id;
-    private String account;
-    private String name;
-    private String avatar;
-    private Boolean status;
+    private AccountDetailResponse account;
+    private String tel;
+    private String address;
+    private String gender;
+    private Date birthday;
     private Date createdAt;
     private Date updatedAt;
     private Boolean isDeleted;
-    private String backgroundNoAva;
 }

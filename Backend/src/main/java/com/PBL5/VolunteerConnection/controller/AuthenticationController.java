@@ -2,7 +2,7 @@ package com.PBL5.VolunteerConnection.controller;
 
 import com.PBL5.VolunteerConnection.response.LoginRequest;
 import com.PBL5.VolunteerConnection.response.LoginResponse;
-import com.PBL5.VolunteerConnection.response.RegisterRequest;
+import com.PBL5.VolunteerConnection.response.AccountRequest;
 import com.PBL5.VolunteerConnection.response.StatusResponse;
 import com.PBL5.VolunteerConnection.service.AccountService;
 import com.PBL5.VolunteerConnection.service.LoginService;
@@ -11,7 +11,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.PBL5.VolunteerConnection.service.AccountServiceImpl;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -25,7 +24,7 @@ public class AuthenticationController {
     @Autowired
     private LoginService loginService;
     @PostMapping("/register")
-    public ResponseEntity<StatusResponse> registerAccount(@RequestBody RegisterRequest registerRequest){
+    public ResponseEntity<StatusResponse> registerAccount(@RequestBody AccountRequest registerRequest){
         return ResponseEntity.ok(accountService.createAccount(registerRequest));
     }
     @PostMapping("/login")

@@ -15,11 +15,13 @@ public class ActivityDetailResponse extends  ActivityResponse{
     private int postNumber;
     private int applyForms;
     private Account account;
-    public ActivityDetailResponse(ActivityResponse activityResponse, List<Post> postList, int postNumber, int applyForms, Account account){
+    private List<CandidateDetailResponse> candidateDetailResponseList;
+    public ActivityDetailResponse(ActivityResponse activityResponse, List<Post> postList, int postNumber, int applyForms, Account account, List<CandidateDetailResponse> candidateDetailResponseList){
         super(activityResponse);
         this.postList = postList;
-        this.postNumber = postNumber;
+        this.postNumber = postList.size();
         this.applyForms = applyForms;
         this.account = account;
+        this.candidateDetailResponseList = candidateDetailResponseList;
     }
 }
