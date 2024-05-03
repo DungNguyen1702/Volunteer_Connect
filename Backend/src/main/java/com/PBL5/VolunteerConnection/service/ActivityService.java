@@ -6,13 +6,13 @@ import com.PBL5.VolunteerConnection.response.*;
 import java.util.List;
 
 public interface ActivityService {
-    StatusResponse createActivity(ActivityRequest activityRequest);
+    StatusResponse createActivity(String token, ActivityRequest activityRequest);
 
-    StatusResponse updateActivity(ActivityRequest activityRequest);
+    StatusResponse updateActivity(String token, ActivityRequest activityRequest);
 
-    StatusResponse deleteActivity(ActivityRequest activityRequest);
-    List<ActivityResponse> getAllActivity(ActivityRequest activityRequest);
-    ActivityDetailResponse getActivityDetail(ActivityRequest activityRequest);
-    List<Activity> selectAllActivitiesByCandidate(CandidateRequest activityRequest);
-    Boolean hasActivity(String token, int id);
+    StatusResponse deleteActivity(String token, ActivityRequest activityRequest);
+    List<ActivityResponse> getAllActivity(String token);
+    ActivityDetailResponse getActivityDetail(String token, ActivityRequest activityRequest);
+    List<Activity> selectAllActivitiesByCandidate(String token, CandidateRequest activityRequest);
+
 }

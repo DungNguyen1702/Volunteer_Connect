@@ -19,18 +19,18 @@ public class PostController {
     private PostService postService;
 
     @PostMapping("/create")
-    ResponseEntity<StatusResponse> createPost(@RequestBody PostRequest postRequest) {
-        return ResponseEntity.ok(postService.createPost(postRequest));
+    ResponseEntity<StatusResponse> createPost(@RequestHeader("Authorization") String token, @RequestBody PostRequest postRequest) {
+        return ResponseEntity.ok(postService.createPost(token, postRequest));
     }
 
     @PostMapping("/update")
-    ResponseEntity<StatusResponse> updatePost(@RequestBody PostRequest postRequest) {
-        return ResponseEntity.ok(postService.updatePost(postRequest));
+    ResponseEntity<StatusResponse> updatePost(@RequestHeader("Authorization") String token, @RequestBody PostRequest postRequest) {
+        return ResponseEntity.ok(postService.updatePost(token, postRequest));
     }
 
     @DeleteMapping("/delete")
-    ResponseEntity<StatusResponse> deletePost(@RequestBody PostRequest postRequest) {
-        return ResponseEntity.ok(postService.deletePost(postRequest));
+    ResponseEntity<StatusResponse> deletePost(@RequestHeader("Authorization") String token,@RequestBody PostRequest postRequest) {
+        return ResponseEntity.ok(postService.deletePost(token, postRequest));
     }
 
     @GetMapping("/selectAll")

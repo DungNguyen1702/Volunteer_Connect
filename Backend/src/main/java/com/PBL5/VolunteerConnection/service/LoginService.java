@@ -44,8 +44,8 @@ public class LoginService {
                 .name(account.getName())
                 .avatar(account.getAvatar())
                 .status(account.getStatus())
-                .createdDate(account.getCreatedAt())
-                .updatedDate(account.getUpdatedAt())
+                .createdAt(account.getCreatedAt())
+                .updatedAt(account.getUpdatedAt())
                 .build();
 
     }

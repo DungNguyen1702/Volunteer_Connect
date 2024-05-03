@@ -18,7 +18,7 @@ public class AccountController {
     @Autowired
     AccountService accountService;
     @PostMapping("/update")
-    public ResponseEntity<StatusResponse> updateAccount(@RequestBody UpdateAccountRequest updateRequest){
+    public ResponseEntity<StatusResponse> updateAccount(@RequestHeader("Authorization") String token,  @RequestBody UpdateAccountRequest updateRequest){
         return ResponseEntity.ok(accountService.updateAccount(updateRequest));
     }
     @DeleteMapping("/delete")

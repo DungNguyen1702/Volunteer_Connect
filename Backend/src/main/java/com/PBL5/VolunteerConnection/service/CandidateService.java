@@ -8,11 +8,11 @@ import com.PBL5.VolunteerConnection.response.StatusResponse;
 import java.util.List;
 
 public interface CandidateService {
-    StatusResponse createCandidate(CandidateRequest candidate);
+    StatusResponse createCandidate(String token, CandidateRequest candidate);
 
-    StatusResponse updateCandidate(CandidateRequest candidate);
+    StatusResponse updateCandidate(String token, CandidateRequest candidate);
 
-    StatusResponse deleteCandidate(CandidateRequest candidate);
+    StatusResponse deleteCandidate(String token, CandidateRequest candidate);
 
-    List<Candidate> selectAllCandidate(CandidateRequest candidate);
+    List<Candidate> selectAllCandidate(String token, CandidateRequest candidate);
 }

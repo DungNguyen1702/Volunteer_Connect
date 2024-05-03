@@ -23,13 +23,15 @@ public class CandidateServiceImpl implements CandidateService {
     private ActivityService activityService;
     @Autowired
     private ActivityRepository activityRepository;
+    @Autowired
+    private JwtService jwtService;
 
     @Override
-    public StatusResponse createCandidate(CandidateRequest candidate) {
+    public StatusResponse createCandidate(String token, CandidateRequest candidate) {
         // TODO Auto-generated method stub
         try {
             int organizationId = activityRepository.findById(candidate.getActivityId()).getOrganizationId();
-            if (activityService.hasActivity(candidate.getToken(), organizationId)) {
+            if (organizationId == jwtService.getId(token)) {
                 Candidate createCandidate = new Candidate(candidate.getUserId(),
                         candidate.getActivityId(),
                         candidate.getCertificate(), candidate.getDateCertificate());
@@ -53,11 +55,11 @@ public class CandidateServiceImpl implements CandidateService {
     }
 
     @Override
-    public StatusResponse updateCandidate(CandidateRequest candidate) {
+    public StatusResponse updateCandidate(String token, CandidateRequest candidate) {
         // TODO Auto-generated method stub
         try {
             int organizationId = activityRepository.findById(candidate.getActivityId()).getOrganizationId();
-            if (activityService.hasActivity(candidate.getToken(), organizationId)) {
+            if (organizationId == jwtService.getId(token)) {
                 Candidate updateCandidate = candidateRepository.findById(candidate.getId());
                 updateCandidate.setActivityId(candidate.getActivityId());
                 updateCandidate.setCertificate(candidate.getCertificate());
@@ -83,11 +85,11 @@ public class CandidateServiceImpl implements CandidateService {
     }
 
     @Override
-    public StatusResponse deleteCandidate(CandidateRequest candidate) {
+    public StatusResponse deleteCandidate(String token, CandidateRequest candidate) {
         // TODO Auto-generated method stub
         try {
             int organizationId = activityRepository.findById(candidate.getActivityId()).getOrganizationId();
-            if (activityService.hasActivity(candidate.getToken(), organizationId)) {
+            if (organizationId == jwtService.getId(token)) {
                 candidateRepository.deleteById(candidate.getId());
                 return StatusResponse.builder()
                         .success(ResponseEntity.status(HttpStatus.ACCEPTED)
@@ -108,12 +110,12 @@ public class CandidateServiceImpl implements CandidateService {
     }
 
     @Override
-    public List<Candidate> selectAllCandidate(CandidateRequest candidate) {
+    public List<Candidate> selectAllCandidate(String token, CandidateRequest candidate) {
         // TODO Auto-generated method stub
         List<Candidate> candidatelList = new ArrayList<>();
         try {
             int organizationId = activityRepository.findById(candidate.getActivityId()).getOrganizationId();
-            if (activityService.hasActivity(candidate.getToken(), organizationId)) {
+            if (organizationId == jwtService.getId(token)) {
                 candidatelList = candidateRepository.findByActivityId(candidate.getActivityId());
             }
             return candidatelList;

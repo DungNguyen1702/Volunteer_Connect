@@ -48,6 +48,7 @@ public class JwtFilterConfig extends OncePerRequestFilter {
                 error.put("error_message", e.getMessage());
                 response.setContentType(MimeTypeUtils.APPLICATION_JSON_VALUE);
                 new ObjectMapper().writeValue(response.getOutputStream(), error);
+
             }
         } else {
             filterChain.doFilter(request, response);

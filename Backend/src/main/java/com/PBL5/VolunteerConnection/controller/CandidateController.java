@@ -6,12 +6,7 @@ import com.PBL5.VolunteerConnection.response.ActivityRequest;
 import com.PBL5.VolunteerConnection.service.ActivityService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.PBL5.VolunteerConnection.response.CandidateRequest;
 import com.PBL5.VolunteerConnection.response.StatusResponse;
@@ -28,26 +23,26 @@ public class CandidateController {
     private ActivityService activityService;
 
     @PostMapping("/create")
-    ResponseEntity<StatusResponse> createCandidate(@RequestBody CandidateRequest CandidateRequest) {
-        return ResponseEntity.ok(candidateService.createCandidate(CandidateRequest));
+    ResponseEntity<StatusResponse> createCandidate(@RequestHeader("Authorization") String token , @RequestBody CandidateRequest CandidateRequest) {
+        return ResponseEntity.ok(candidateService.createCandidate(token, CandidateRequest));
     }
 
     @PostMapping("/update")
-    ResponseEntity<StatusResponse> updateCandidate(@RequestBody CandidateRequest CandidateRequest) {
-        return ResponseEntity.ok(candidateService.updateCandidate(CandidateRequest));
+    ResponseEntity<StatusResponse> updateCandidate(@RequestHeader("Authorization") String token ,@RequestBody CandidateRequest CandidateRequest) {
+        return ResponseEntity.ok(candidateService.updateCandidate(token, CandidateRequest));
     }
 
     @DeleteMapping("/delete")
-    ResponseEntity<StatusResponse> deleteCandidate(@RequestBody CandidateRequest CandidateRequest) {
-        return ResponseEntity.ok(candidateService.deleteCandidate(CandidateRequest));
+    ResponseEntity<StatusResponse> deleteCandidate(@RequestHeader("Authorization") String token ,@RequestBody CandidateRequest CandidateRequest) {
+        return ResponseEntity.ok(candidateService.deleteCandidate(token, CandidateRequest));
     }
 
     @GetMapping("/selectAll")
-    ResponseEntity<List<Candidate>> selectAllCandidate(@RequestBody CandidateRequest CandidateRequest) {
-        return ResponseEntity.ok(candidateService.selectAllCandidate(CandidateRequest));
+    ResponseEntity<List<Candidate>> selectAllCandidate(@RequestHeader("Authorization") String token,@RequestBody CandidateRequest CandidateRequest) {
+        return ResponseEntity.ok(candidateService.selectAllCandidate(token, CandidateRequest));
     }
-    @PostMapping("/selectAllActivity")
-    ResponseEntity<List<Activity>> selectAllActivity(@RequestBody CandidateRequest candidateRequest){
-        return ResponseEntity.ok(activityService.selectAllActivitiesByCandidate(candidateRequest));
+    @GetMapping("/selectAllActivity")
+    ResponseEntity<List<Activity>> selectAllActivity(@RequestHeader("Authorization") String token ,@RequestBody CandidateRequest candidateRequest){
+        return ResponseEntity.ok(activityService.selectAllActivitiesByCandidate(token,candidateRequest));
     }
 }

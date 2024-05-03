@@ -9,7 +9,7 @@ import org.springframework.http.ResponseEntity;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class    StatusResponse {
+public class StatusResponse {
     private ResponseEntity<String> success;
     private ResponseEntity<String> fail;
 }
