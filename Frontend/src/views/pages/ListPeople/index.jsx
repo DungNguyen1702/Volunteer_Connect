@@ -4,33 +4,39 @@ import { useEffect, useRef, useState } from "react";
 import FakeData from "../../../data/fake_data.json";
 import { Anchor, Pagination } from "antd";
 import OrganizationItem from "./Component/OrganizationItem";
+import CandidateItem from "./Component/CandidateItem";
 
 function ListPeople() {
     const [search, setSearch] = useState("");
 
     const limit = 6;
-    
 
     const listAllOrganization = FakeData.ListAccountOrganization;
     const listPopularOrganization = listAllOrganization.slice(0, 5);
     const listAllCandidate = FakeData.ListAccountCandidate;
     const listEnthusiasticCandidate = listAllCandidate.slice(0, 5);
 
-
     const [startIndexOrg, setStartIndexOrg] = useState(0);
     const [startIndexCan, setStartIndexCan] = useState(0);
 
-    const [showListOrg, setShowListOrg] = useState(listAllOrganization.slice(startIndexOrg, startIndexOrg + limit));
-    const [showListCan, setShowListCan] = useState(listAllCandidate.slice(startIndexCan, startIndexCan + limit));
+    const [showListOrg, setShowListOrg] = useState(
+        listAllOrganization.slice(startIndexOrg, startIndexOrg + limit)
+    );
+    const [showListCan, setShowListCan] = useState(
+        listAllCandidate.slice(startIndexCan, startIndexCan + limit)
+    );
 
-    useEffect(()=>{
-        setShowListOrg(startIndexOrg, startIndexOrg + limit);
-    },[startIndexOrg]);
+    useEffect(() => {
+        setShowListOrg(
+            listAllOrganization.slice(startIndexOrg, startIndexOrg + limit)
+        );
+    }, [startIndexOrg, listAllOrganization]);
 
-    useEffect(()=>{
-        setShowListCan(startIndexCan, startIndexCan + limit);
-    },[startIndexCan]);
-    
+    useEffect(() => {
+        setShowListCan(
+            listAllCandidate.slice(startIndexCan, startIndexCan + limit)
+        );
+    }, [startIndexCan, listAllCandidate]);
 
     const topRef = useRef(null);
     const [targetOffset, setTargetOffset] = useState();
@@ -115,12 +121,13 @@ function ListPeople() {
                         {showListOrg.map((organization) => (
                             <OrganizationItem organizationInfo={organization} />
                         ))}
-                        <Pagination
-                            total={listAllOrganization.length}
-                            pageSize={limit}
-                            onChange={onChangePageOrg}
-                        />
                     </div>
+                    <Pagination
+                        total={listAllOrganization.length}
+                        pageSize={limit}
+                        onChange={onChangePageOrg}
+                        className="list-people-pagination"
+                    />
                 </div>
 
                 {/* Enthusiastic candidate   */}
@@ -131,20 +138,27 @@ function ListPeople() {
                     <h3 class="list-people-content-title">
                         Enthusiastic candidate
                     </h3>
-                    <div class="list-people-content-grid-layout"></div>
+                    <div class="list-people-content-grid-layout">
+                        {listEnthusiasticCandidate.map((candidate) => (
+                            <CandidateItem candidateInfo={candidate} />
+                        ))}
+                    </div>
                 </div>
 
                 {/* All candidate   */}
                 <div id="allCandidate" class="list-people-content-big-holder">
                     <h3 class="list-people-content-title">All candidate</h3>
                     <div class="list-people-content-grid-layout">
-                        
-                        <Pagination
-                            total={listAllOrganization.length}
-                            pageSize={limit}
-                            onChange={onChangePageOrg}
-                        />
+                        {showListCan.map((candidate) => (
+                            <CandidateItem candidateInfo={candidate} />
+                        ))}
                     </div>
+                    <Pagination
+                        total={listAllOrganization.length}
+                        pageSize={limit}
+                        onChange={onChangePageCan}
+                        className="list-people-pagination"
+                    />
                 </div>
             </div>
         </div>

@@ -10,14 +10,14 @@ function CandidateItem(props) {
         e.stopPropagation();
         console.log("chat with " + candidateInfo.id);
     };
-    const onClickOrganization = ()=>{
-        console.log("click on organization " + candidateInfo.id);    
+    const onClickCandidate = ()=>{
+        console.log("click on candidate " + candidateInfo.id);    
     }
 
     return (
         <div 
             class="organization-item-wrapper"
-            onClick={onClickOrganization}
+            onClick={onClickCandidate}
         >
             <AvatarAccount
                 name={candidateInfo.name}
@@ -29,14 +29,20 @@ function CandidateItem(props) {
             <h3 class="color-primary-green margin-10">
                 {candidateInfo.name}
             </h3>
-            <p class="organization-item-paragraph">
-                <strong class="color-primary-green">Email : </strong>{" "}
+            <div class="candidate-item-paragraph">
+                <strong class="color-primary-green width-30">Email : </strong>{" "}
                 {candidateInfo.account}
-            </p>
-            <hr class="organization-item-hr" />
-            
+            </div>
+            <div class="candidate-item-paragraph">
+                <strong class="color-primary-green width-30">Birthday : </strong>{" "}
+                {candidateInfo.user.birthday}
+            </div>
+            <div class="candidate-item-paragraph">
+                <strong class="color-primary-green width-30">Address : </strong>{" "}
+                {candidateInfo.user.address}
+            </div>
             <Button
-                className="organization-item-button-chat"
+                className="candidate-item-button-chat"
                 onClick={onClickChat}
             >
                 Chat

@@ -56,14 +56,21 @@ html, body {
     background-color: $search-list-people !important;
 }
 
-#search-bar {
-    position: sticky;
-    top : 90px;
-}
+// #search-bar {
+//     position: sticky;
+//     top : 90px;
+// }
 
 .list-people-content-grid-layout {
     display: grid;
     grid-template-columns: 30% 30% 30%;
     justify-content: space-between;
     width: 100%;
+}
+
+.list-people-pagination {
+    width: 100%;
+    display: flex;
+    justify-content: end;
+    margin-top: 10px;
 }

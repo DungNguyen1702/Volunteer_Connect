@@ -9,3 +9,59 @@ html, body {
     font-size: 15px;
     background-color: $background;
 }
+
+.candidate-item-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: $background_input_green;
+    margin : 10px;
+    padding : 10px;
+    padding-top: 20px;
+    width: 100%;
+    border-radius: 20px;
+}
+
+.candidate-item-wrapper:hover {
+    transform: scale(1.02); /* Phóng to lên 1.05 lần */
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.5); /* Điều chỉnh giá trị rgba để tùy chỉnh màu sắc và độ đậm của bóng */
+}
+
+.candidate-item-hr {
+    width: 85%;
+    border: 1px solid black;
+    margin : 10px 0px;
+}
+
+.candidate-item-paragraph {
+    width: 85%;
+    text-align: left;
+    display: flex;
+    justify-content: space-between;
+}
+
+.color-primary-green{
+    color : $primary-green
+}
+
+.width-30 {
+    width: 30%;
+}
+
+.margin-10 {
+    margin : 5px 0px;
+}
+
+.candidate-item-button-chat {
+    background-color: $button !important;
+    color: $white !important;
+    padding : 0px 20px !important;
+    margin : 10px 0px;
+}
+
+.candidate-item-button-chat:hover {
+    background-color: $white !important;
+    color : $button !important;
+    border: 1px solid $button;
+}

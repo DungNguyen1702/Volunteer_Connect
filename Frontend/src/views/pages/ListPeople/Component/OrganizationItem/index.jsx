@@ -30,7 +30,7 @@ function OrganizationItem(props) {
                 {organizationInfo.name}
             </h3>
             <p class="organization-item-paragraph">
-                <strong class="color-primary-green">Email : </strong>{" "}
+                <strong class="color-primary-green width-30">Email : </strong>{" "}
                 {organizationInfo.account}
             </p>
             <hr class="organization-item-hr" />
