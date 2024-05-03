@@ -1,6 +1,6 @@
 import "./header.scss";
 import { ICONS } from "../../constants/icons";
-import { Avatar, Badge, Button, Dropdown } from "antd";
+import { Badge, Button, Dropdown } from "antd";
 import {
     BellOutlined,
     CalendarOutlined,
@@ -15,6 +15,8 @@ import Search from "antd/es/input/Search";
 import fakeData from "../../data/fake_data.json";
 import getItemDropDownAccount from "./dropdown";
 import { useNavigate } from "react-router-dom";
+import AvatarAccount from "../avatar/AvatarAccount";
+import useAuth from "../../hooks/useAuth";
 
 const TruncateText = (text, maxLength) => {
     if (text.length <= maxLength) {
@@ -23,30 +25,27 @@ const TruncateText = (text, maxLength) => {
     return <span>{`${text.slice(0, maxLength)}...`}</span>;
 };
 
-function Header(props) { 
-
-    
+function Header(props) {
     const activeButton = props.stateButton;
     const navigate = useNavigate();
     const [search, setSearch] = useState("");
 
-    
+    const { account } = useAuth();
 
-    const [user, setUser] = useState(fakeData.Accounts[1]);
-    // const [user, setUser] = useState(null);
     const numberOfNoti = 10;
     const numberOfChat = 10;
 
     const clickHomePage = () => {
-        navigate('/user-homepage')
+        console.log();
+        navigate("/user-homepage");
     };
 
     const clickEvent = () => {
-        navigate('/participating-activity')
+        navigate("/participating-activity");
     };
 
     const clickGroupPeople = () => {
-        navigate('/people-searching')
+        navigate("/people-searching");
     };
 
     const clickSearch = () => {
@@ -77,7 +76,7 @@ function Header(props) {
             <div class="header-wrapper">
                 <img src={ICONS.logo} alt="Logo" class="header-wrapper logo" />
                 <div class="header-wrapper button-group-left">
-                    {user !== null ? (
+                    {account !== null ? (
                         <>
                             <Button
                                 className={`header-wrapper button-group-left button ${
@@ -160,7 +159,7 @@ function Header(props) {
                     />
                 </div>
                 <div class="header-wrapper button-group-right">
-                    {user !== null ? (
+                    {account !== null ? (
                         <>
                             <Badge count={numberOfChat} overflowCount={9}>
                                 <Button
@@ -182,23 +181,30 @@ function Header(props) {
                 </div>
 
                 <div class="header-wrapper account-info">
-                    {user !== null ? (
+                    {account !== null ? (
                         <Dropdown
-                            menu={{ items : getItemDropDownAccount(user.role, navigate)}}
+                            menu={{
+                                items: getItemDropDownAccount(
+                                    account.role
+                                ),
+                            }}
                             placement="bottom"
                             arrow={{ pointAtCenter: true }}
                             // trigger={["hover"]}
                         >
                             <div class="header-wrapper account-info have-user">
-                                <Avatar
-                                    src={user.avatar}
-                                    style={{
-                                        width: "60px",
-                                        height: "60px",
-                                    }}
+                                <AvatarAccount
+                                    name={account.name}
+                                    avatar={account.avatar}
+                                    backgroundNoAva={
+                                        account.backgroundNoAva
+                                            ? account.backgroundNoAva
+                                            : "#257769"
+                                    }
+                                    size={55}
                                 />
                                 <h3 class="account-name">
-                                    {TruncateText(user.name, 7)}
+                                    {TruncateText(account.name, 7)}
                                 </h3>
                                 <CaretDownOutlined
                                     style={{

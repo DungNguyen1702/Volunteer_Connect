@@ -25,10 +25,10 @@ export const AuthProvider = ({ children }) => {
 
             accountInfoAPI.getInfoByToken()
                 .then ((response)=> {
-                    setAccount(response.data.profile)
+                    setAccount(response.data)
                     localStorage.setItem(
                         'account',
-                        JSON.stringify( response.data.profile),
+                        JSON.stringify( response.data),
                     )
                 })
                 .catch((error) => {
