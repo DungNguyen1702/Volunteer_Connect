@@ -12,7 +12,7 @@
     align-items: flex-start;
     justify-content: flex-start;
     padding: 0 0 10.5px;
-    color: var(--color-teal-400);
+    color: #257769;
     font-family: Inter;
   }
   .enterYourCredentials,
@@ -23,12 +23,12 @@
   .enterYourCredentials {
     width: 372px;
     height: 0;
-    font-size: var(--font-size-base);
+    font-size: 16px;
     display: none;
     max-width: 100%;
   }
   .name {
-    font-size: var(--font-size-sm);
+    font-size: 14px;
     font-family: Poppins;
     color: #000;
     text-align: left;
@@ -51,7 +51,7 @@
     justify-content: center;
     font-family: Poppins;
     font-weight: 500;
-    font-size: var(--font-size-3xs);
+    font-size: 10px;
     color: #d9d9d9;
   }
   .inputNameFieldWrapper,
@@ -62,19 +62,19 @@
     justify-content: flex-start;
   }
   .inputNameFieldWrapper {
-    border-radius: var(--br-3xs);
-    border: 1px solid var(--muted);
+    border-radius: 10px;
+    border: 1px solid #d9d9d9;
     overflow: hidden;
     flex-direction: row;
-    padding: 8px var(--padding-3xs) var(--padding-8xs);
+    padding: 8px 10px 5px;
   }
   .nameInputFieldParent {
     flex-direction: column;
-    padding: 0 0 var(--padding-8xs);
+    padding: 0 0 5px;
   }
   .name1 {
     position: relative;
-    font-size: var(--font-size-sm);
+    font-size: 14px;
     font-weight: 500;
     font-family: Poppins;
     color: #000;
@@ -98,8 +98,8 @@
     justify-content: center;
     font-family: Poppins;
     font-weight: 500;
-    font-size: var(--font-size-3xs);
-    color: var(--muted);
+    font-size: 10px;
+    color: #d9d9d9;
   }
   .frameParent,
   .frameWrapper {
@@ -108,24 +108,24 @@
     justify-content: flex-start;
   }
   .frameWrapper {
-    border-radius: var(--br-3xs);
-    border: 1px solid var(--muted);
+    border-radius: 10px;
+    border: 1px solid #d9d9d9;
     overflow: hidden;
     flex-direction: row;
     align-items: center;
-    padding: var(--padding-6xs) var(--padding-3xs);
+    padding: 7px 10px;
   }
   .frameParent {
     flex-direction: column;
     align-items: flex-start;
-    padding: 0 0 var(--padding-8xs);
+    padding: 0 0 5px;
   }
   .name2 {
     position: relative;
-    font-size: var(--font-size-sm);
+    font-size: 14px;
     font-weight: 500;
     font-family: Poppins;
-    color: var(--color-black);
+    color: #000;
     text-align: left;
     display: inline-block;
     min-width: 69px;
@@ -144,10 +144,10 @@
     background-color: transparent;
     height: 15px;
     justify-content: center;
-    font-family: var(--font-poppins);
+    font-family: Poppins;
     font-weight: 500;
-    font-size: var(--font-size-3xs);
-    color: var(--muted);
+    font-size: 10px;
+    color: #d9d9d9;
   }
   .frameContainer,
   .frameGroup {
@@ -156,24 +156,24 @@
     justify-content: flex-start;
   }
   .frameContainer {
-    border-radius: var(--br-3xs);
-    border: 1px solid var(--muted);
+    border-radius: 10px;
+    border: 1px solid #d9d9d9;
     overflow: hidden;
     flex-direction: row;
     align-items: center;
-    padding: var(--padding-6xs) var(--padding-3xs);
+    padding: 7px 10px;
   }
   .frameGroup {
     flex-direction: column;
     align-items: flex-start;
-    padding: 0 0 var(--padding-8xs);
+    padding: 0 0 5px;
   }
   .checkbox {
     width: 9px;
     height: 9.8px;
     position: relative;
-    border-radius: var(--br-11xs);
-    border: 1px solid var(--color-black);
+    border-radius: 2px;
+    border: 1px solid #000;
     box-sizing: border-box;
   }
   .checkboxWrapper {
@@ -181,17 +181,17 @@
     flex-direction: column;
     align-items: flex-start;
     justify-content: flex-start;
-    padding: var(--padding-10xs-2) 0 0;
+    padding: 2.2px 0 0;
   }
   .termsPolicy {
     text-decoration: underline;
   }
   .iAgreeToContainer {
     position: relative;
-    font-size: var(--font-size-4xs);
+    font-size: 9px;
     font-weight: 500;
-    font-family: var(--font-poppins);
-    color: var(--color-black);
+    font-family: Poppins;
+    color: #000;
     text-align: left;
     display: inline-block;
     min-width: 128px;
@@ -219,10 +219,10 @@
   .name3 {
     align-self: stretch;
     position: relative;
-    font-size: var(--font-size-sm);
+    font-size: 14px;
     font-weight: 500;
-    font-family: var(--font-poppins);
-    color: var(--color-black);
+    font-family: Poppins;
+    color: #000;
     text-align: left;
   }
   .nameFrame {
@@ -239,10 +239,10 @@
   .name4 {
     align-self: stretch;
     position: relative;
-    font-size: var(--font-size-3xs);
+    font-size: 10px;
     font-weight: 500;
-    font-family: var(--font-poppins);
-    color: var(--muted);
+    font-family: Poppins;
+    color: #d9d9d9;
     text-align: left;
   }
   .nameWrapper1 {
@@ -261,13 +261,13 @@
   }
   .frameWrapper1 {
     flex: 1;
-    border-radius: var(--br-3xs);
-    background-color: var(--color-teal-400);
-    border: 1px solid var(--color-teal-400);
+    border-radius: 10px;
+    background-color: #257769;
+    border: 1px solid #257769;
     box-sizing: border-box;
     overflow: hidden;
     align-items: center;
-    padding: var(--padding-3xs) 0 var(--padding-3xs) var(--padding-3xs);
+    padding: 10px 0 10px 10px;
   }
   .frameDiv {
     width: 404px;
@@ -275,10 +275,10 @@
   }
   .login {
     position: relative;
-    font-size: var(--font-size-smi);
+    font-size: 13px;
     display: inline-block;
-    font-family: var(--font-poppins);
-    color: var(--color-white);
+    font-family: Poppins;
+    color: #fff;
     text-align: left;
     min-width: 48px;
     z-index: 1;
@@ -292,7 +292,7 @@
   }
   .loginButton {
     flex-direction: column;
-    padding: var(--padding-7xs) 0 0;
+    padding: 6px 0 0;
     margin-left: -219px;
   }
   .instanceParent,
@@ -302,8 +302,8 @@
   .instanceParent {
     cursor: pointer;
     border: 0;
-    padding: 0 0 var(--padding-10xs);
-    background-color: var(--edf2f7);
+    padding: 0 0 3px;
+    background-color: #edf2f7;
     align-self: stretch;
     height: 35px;
     flex-direction: row;
@@ -319,7 +319,7 @@
     position: absolute;
     top: 9px;
     left: 0;
-    border-top: 2px solid var(--color-whitesmoke-200);
+    border-top: 2px solid #f5f5f5;
     box-sizing: border-box;
     width: 402px;
     height: 2px;
@@ -334,13 +334,13 @@
     position: absolute;
     top: 0;
     left: 190px;
-    background-color: var(--color-white);
+    background-color: #fff;
     overflow: hidden;
     display: flex;
     flex-direction: row;
     align-items: flex-start;
     justify-content: flex-start;
-    padding: 0 var(--padding-8xs-5);
+    padding: 0 4.5px;
     z-index: 1;
   }
   .dividerParent {
@@ -355,10 +355,10 @@
     flex-direction: row;
     align-items: flex-start;
     justify-content: flex-start;
-    padding: 0 var(--padding-10xs);
+    padding: 0 3px;
     box-sizing: border-box;
     max-width: 100%;
-    font-size: var(--font-size-4xs);
+    font-size: 9px;
   }
   .icons8Google1 {
     height: 24px;
@@ -370,10 +370,10 @@
   }
   .signInWith {
     position: relative;
-    font-size: var(--font-size-xs);
+    font-size: 12px;
     font-weight: 500;
-    font-family: var(--font-poppins);
-    color: var(--color-black);
+    font-family: Poppins;
+    color: #000;
     text-align: left;
     display: inline-block;
     min-width: 116px;
@@ -383,7 +383,7 @@
     flex-direction: column;
     align-items: flex-start;
     justify-content: flex-start;
-    padding: var(--padding-10xs) 0 0;
+    padding: 3px 0 0;
   }
   .icons8Google1Parent {
     flex-direction: row;
@@ -398,16 +398,16 @@
   }
   .googleButtonContent {
     cursor: pointer;
-    border: 1px solid var(--muted);
-    padding: var(--padding-11xs) var(--padding-lgi);
+    border: 1px solid #d9d9d9;
+    padding: 2px 19px;
     background-color: transparent;
-    border-radius: var(--br-3xs);
+    border-radius: 10px;
     overflow: hidden;
     flex-direction: row;
   }
   .googleButtonContentWrapper {
     flex-direction: column;
-    padding: var(--padding-11xs) 0 0;
+    padding: 2px 0 0;
   }
   .icons8AppleLogo1 {
     height: 24px;
@@ -419,10 +419,10 @@
   }
   .signInWith1 {
     position: relative;
-    font-size: var(--font-size-xs);
+    font-size: 12px;
     font-weight: 500;
-    font-family: var(--font-poppins);
-    color: var(--color-black);
+    font-family: Poppins;
+    color: #000;
     text-align: left;
     display: inline-block;
     min-width: 108px;
@@ -432,7 +432,7 @@
     flex-direction: column;
     align-items: flex-start;
     justify-content: flex-start;
-    padding: var(--padding-10xs) 0 0;
+    padding: 3px 0 0;
   }
   .icons8AppleLogo1Parent {
     gap: var(--gap-3xs);
@@ -447,10 +447,10 @@
   }
   .appleLoginArea {
     cursor: pointer;
-    border: 1px solid var(--muted);
-    padding: var(--padding-11xs) var(--padding-4xl);
+    border: 1px solid #d9d9d9;
+    padding: 2px 23px;
     background-color: transparent;
-    border-radius: var(--br-3xs);
+    border-radius: 10px;
     overflow: hidden;
   }
   .googleLoginArea {
@@ -460,7 +460,7 @@
     white-space: pre-wrap;
   }
   .signIn {
-    color: var(--color-teal-400);
+    color: #257769;
   }
   .haveAnAccountContainer {
     position: relative;
@@ -481,12 +481,12 @@
   }
   .signInPromptArea,
   .signInPromptAreaWrapper {
-    padding: 0 0 var(--padding-11xs);
+    padding: 0 0 2px;
   }
   .signInPromptAreaWrapper {
     align-self: stretch;
     justify-content: center;
-    padding: 0 var(--padding-xl) 0 var(--padding-7xl);
+    padding: 0 20px 0 26px;
   }
   .socialLoginArea {
     width: 403px;
@@ -496,7 +496,7 @@
     justify-content: flex-start;
     gap: var(--gap-4xl);
     max-width: 100%;
-    font-size: var(--font-size-sm);
+    font-size: 14px;
   }
   .inputAreaParent,
   .mainContainerInner {
@@ -517,7 +517,7 @@
     left: 0;
     width: 100%;
     flex-direction: row;
-    padding: 0 0 var(--padding-45xl) 0;
+    padding: 0 0 64px 0;
     box-sizing: border-box;
     max-width: 100%;
   }
@@ -542,7 +542,7 @@
     flex-direction: column;
     align-items: flex-start;
     justify-content: flex-start;
-    padding: var(--padding-4xs) 0 0;
+    padding: 9px 0 0;
     box-sizing: border-box;
     min-width: 477px;
     max-width: 100%;
@@ -550,7 +550,7 @@
   .foregroundIcon {
     width: 686px;
     position: relative;
-    border-radius: var(--br-11xl);
+    border-radius: 30px;
     max-height: 100%;
     object-fit: cover;
     max-width: 100%;
@@ -558,21 +558,21 @@
   .signUp {
     width: 100%;
     position: relative;
-    background-color: var(--color-whitesmoke-100);
+    background-color: #faf6f4;
     overflow: hidden;
     display: flex;
     flex-direction: row;
     align-items: flex-start;
     justify-content: space-between;
-    padding: var(--padding-10xl) var(--padding-10xl) var(--padding-5xl) 138px;
+    padding: 29px 29px 24px 138px;
     box-sizing: border-box;
     line-height: normal;
     letter-spacing: normal;
     gap: var(--gap-xl);
     text-align: left;
     font-size: 35px;
-    color: var(--color-black);
-    font-family: var(--font-poppins);
+    color: #000;
+    font-family: Poppins;
   }
   @media screen and (max-width: 1350px) {
     .foregroundIcon,
@@ -610,7 +610,7 @@
       min-height: 871;
     }
     .signUp {
-      padding-left: var(--padding-xl);
+      padding-left: 20px;
       box-sizing: border-box;
     }
   }

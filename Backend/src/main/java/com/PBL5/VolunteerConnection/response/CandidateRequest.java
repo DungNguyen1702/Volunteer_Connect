@@ -19,4 +19,6 @@ public class CandidateRequest {
     private int organizationId;
     private String certificate;
     private Date dateCertificate;
+    private int activityType;
+    private String activityLocation;
 }

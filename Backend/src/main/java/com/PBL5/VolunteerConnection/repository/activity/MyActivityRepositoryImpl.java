@@ -51,17 +51,5 @@ public class MyActivityRepositoryImpl implements MyActivityRepository{
         return resultList;
     }
 
-    @Override
-    public List findActivitiesByUserIdCriteria(Integer accountId) {
-        EntityManager em = entityManagerFactory.createEntityManager();
-        return em.createQuery(
-                        "SELECT a.* " +
-                        "FROM activities a\n" +
-                        "JOIN candidates c ON a.id = c.activity_id\n" +
-                        "JOIN users u ON c.user_id = u.id\n" +
-                        "JOIN accounts acc ON u.account_id = acc.id\n" +
-                        "WHERE acc.id = 1 and a.isDeleted = 0")
-                .setParameter("accountId", accountId)
-                .getResultList();
-    }
+
 }

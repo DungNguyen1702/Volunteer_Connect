@@ -17,6 +17,8 @@ import java.sql.Date;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
+import java.util.stream.Collectors;
 
 @Service
 public class ActivityServiceImpl implements ActivityService {
@@ -116,18 +118,25 @@ public class ActivityServiceImpl implements ActivityService {
     }
 
     @Override
-    public List<ActivityResponse> getAllActivity(ActivityRequest getAllReq) {
-        int organizationId = accountService.getAccountId(getAllReq.getToken());
+    public List<ActivityResponse> getAllActivity(ActivityRequest activityRequest) {
+        int organizationId = accountService.getAccountId(activityRequest.getToken());
         List<Activity> activityList = myActivityRepository.findAllByOrganizationIdAndTypeAndLocationAndDateStartAndDateEnd(
                 organizationId,
-                getAllReq.getType(),
-                getAllReq.getLocation(),
-                getAllReq.getDateStart(),
-                getAllReq.getDateEnd());
+                activityRequest.getType(),
+                activityRequest.getLocation(),
+                activityRequest.getDateStart(),
+                activityRequest.getDateEnd());
         List<ActivityResponse> activityResponseList = new ArrayList<>();
         for (Activity activity : activityList) {
             activityResponseList.add(new ActivityResponse(activity));
         }
+//        List<Activity> activities = activityRepository.findAllByOrganizationId(organizationId);
+//        List<Activity> filteredActivities = activities.stream()
+//                .filter(activity ->
+//                        (activityRequest.getType() == null || activity.getLocation().equals(activityRequest.getActivityLocation())) &&
+//                                (activityRequest.getActivityType() == 0 || activity.getType() == activityRequest.getActivityType())
+//                )
+//                .collect(Collectors.toList());
         return activityResponseList;
 //        return AllActivityResponse.builder().activityResponseList(activityResponseList).build();
 
@@ -143,10 +152,17 @@ public class ActivityServiceImpl implements ActivityService {
         return null;
     }
     @Override
-    public List<Activity> selectAllActivitiesByCandidate(CandidateRequest candidateRequest) {
-        int accountId = accountService.getAccountId(candidateRequest.getToken());
-        if (candidateRequest.getUserId() == userRespository.findByAccountId(accountId).getId()){
-            return activityRepository.findActivitiesByAccountId(accountId);
+    public List<Activity> selectAllActivitiesByCandidate(CandidateRequest activityRequest) {
+        int accountId = accountService.getAccountId(activityRequest.getToken());
+        if (activityRequest.getUserId() == userRespository.findByAccountId(accountId).getId()){
+            List<Activity> activities = activityRepository.findActivitiesByAccountId(accountId);
+            List<Activity> filteredActivities = activities.stream()
+                    .filter(activity ->
+                            (activityRequest.getActivityLocation() == null || activity.getLocation().equals(activityRequest.getActivityLocation())) &&
+                                    (activityRequest.getActivityType() == 0 || activity.getType() == activityRequest.getActivityType())
+                    )
+                    .collect(Collectors.toList());
+            return  filteredActivities;
         }
         return null;
 
