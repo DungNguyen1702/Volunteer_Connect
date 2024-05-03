@@ -480,15 +480,15 @@
   width: 100%;
   background-color : #d9d9d9 !important
 }
-.button-login {
-  background-color: $button !important;
-  color : $white !important;
+.buttonLogin{
+    background-color: #277869; 
+    color: #ffffff; 
+    width: 550px; 
+    height: 30px; 
 }
 
-.button-login:hover {
-    background-color: $white !important;
-    color : $button !important;
-    border : 1px solid $button !important;
+.buttonLogin:hover {
+    background-color: #205c4b; /* Màu nền hover */
 }
 @media screen and (max-width: 800px) {
     .welcomeBack {

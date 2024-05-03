@@ -2,6 +2,7 @@ package com.PBL5.VolunteerConnection.service;
 
 import com.PBL5.VolunteerConnection.model.User;
 import com.PBL5.VolunteerConnection.repository.UserRespository;
+import com.PBL5.VolunteerConnection.response.LoginResponse;
 import com.PBL5.VolunteerConnection.response.RegisterRequest;
 import com.PBL5.VolunteerConnection.response.StatusResponse;
 import com.PBL5.VolunteerConnection.response.UpdateAccountRequest;
@@ -119,7 +120,21 @@ public class AccountServiceImpl implements  AccountService{
 
     }
 
-
+    @Override
+    public LoginResponse getInfoAccount(String token) {
+        token = token.substring("Bearer ".length());
+        String username = jwtService.getUsername(token);
+        Account account = accountRepository.findByAccount(username);
+        return LoginResponse.builder()
+                .id(account.getId())
+                .account(account.getAccount())
+                .name(account.getName())
+                .avatar(account.getAvatar())
+                .status(account.getStatus())
+                .createdAt(account.getCreatedAt())
+                .updatedAt(account.getUpdatedAt())
+                .build();
+    }
 
 
 }

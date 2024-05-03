@@ -30,6 +30,8 @@ public class CandidateServiceImpl implements CandidateService {
     public StatusResponse createCandidate(String token, CandidateRequest candidate) {
         // TODO Auto-generated method stub
         try {
+            token = token.substring("Bearer ".length());
+
             int organizationId = activityRepository.findById(candidate.getActivityId()).getOrganizationId();
             if (organizationId == jwtService.getId(token)) {
                 Candidate createCandidate = new Candidate(candidate.getUserId(),
@@ -58,6 +60,8 @@ public class CandidateServiceImpl implements CandidateService {
     public StatusResponse updateCandidate(String token, CandidateRequest candidate) {
         // TODO Auto-generated method stub
         try {
+            token = token.substring("Bearer ".length());
+
             int organizationId = activityRepository.findById(candidate.getActivityId()).getOrganizationId();
             if (organizationId == jwtService.getId(token)) {
                 Candidate updateCandidate = candidateRepository.findById(candidate.getId());
@@ -88,6 +92,8 @@ public class CandidateServiceImpl implements CandidateService {
     public StatusResponse deleteCandidate(String token, CandidateRequest candidate) {
         // TODO Auto-generated method stub
         try {
+            token = token.substring("Bearer ".length());
+
             int organizationId = activityRepository.findById(candidate.getActivityId()).getOrganizationId();
             if (organizationId == jwtService.getId(token)) {
                 candidateRepository.deleteById(candidate.getId());
@@ -112,8 +118,11 @@ public class CandidateServiceImpl implements CandidateService {
     @Override
     public List<Candidate> selectAllCandidate(String token, CandidateRequest candidate) {
         // TODO Auto-generated method stub
+
         List<Candidate> candidatelList = new ArrayList<>();
         try {
+            token = token.substring("Bearer ".length());
+
             int organizationId = activityRepository.findById(candidate.getActivityId()).getOrganizationId();
             if (organizationId == jwtService.getId(token)) {
                 candidatelList = candidateRepository.findByActivityId(candidate.getActivityId());

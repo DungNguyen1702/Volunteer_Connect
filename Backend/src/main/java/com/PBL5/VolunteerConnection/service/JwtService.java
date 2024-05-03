@@ -44,7 +44,9 @@ public class JwtService {
         return user;
     }
     public int getId(String token){
+
         Map<String, String[]> user= decodeToken(token);
+
         String id = "";
         for (String key : user.keySet()) {
             id = key;
@@ -53,6 +55,7 @@ public class JwtService {
         return Integer.parseInt(id.split(",")[0]);
     }
     public String[] getRole(String token){
+
         Map<String, String[]> user= decodeToken(token);
         String[] role = null;
         for (String key : user.keySet()) {
@@ -61,6 +64,7 @@ public class JwtService {
         return role;
     }
     public String getUsername(String token){
+
         Map<String, String[]> user= decodeToken(token);
         String username = "";
         for (String key : user.keySet()) {
