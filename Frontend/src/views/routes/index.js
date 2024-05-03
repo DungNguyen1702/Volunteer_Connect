@@ -22,6 +22,9 @@ const PostDetail = LoadableComponent(() =>
 const ActivityDetail = LoadableComponent(() => 
     import("../pages/candidate/ActivityDetail/index.jsx")
 );
+const CreatePost = LoadableComponent(() =>
+    import("../pages/candidate/CreatePost/index.jsx")
+)
 
 
 const AllRoutes = () => {
@@ -38,9 +41,15 @@ const AllRoutes = () => {
                         <MainLayout component={UserHomePage} stateButton={1} />
                     }
                 />
+
                 <Route
                     path="/post-detail/:id"
                     element={<MainLayout component={PostDetail} />}
+                />
+
+                <Route
+                    path="/create-post/:activityId"
+                    element={<MainLayout component={CreatePost} />}
                 />
 
                 <Route

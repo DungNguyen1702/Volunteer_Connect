@@ -2097,5 +2097,22 @@
                 }
             ]
         }
-    ]
+    ],
+    "ActivityCreatePost" : {
+        "id": 2,
+        "image": "https://capitalcampaignpro.com/wp-content/uploads/2023/02/capital-campaign-volunteers.jpg",
+        "email": "activity2@example.com",
+        "name": "Activity 2",
+        "type": 2,
+        "deadline": "2024-04-30",
+        "date_start": "2024-04-01",
+        "date_end": "2024-04-15",
+        "location": "Da Nang",
+        "country" : 1,
+        "organization_id": 1,
+        "createdAt": "2024-04-01",
+        "updatedAt": "2024-04-05",
+        "isDeleted": false,
+        "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+    }
 }

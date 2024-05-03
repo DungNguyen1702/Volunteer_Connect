@@ -59,10 +59,9 @@ html, body {
     display: flex;
     margin-top : 10px;
     margin-bottom: 30px;
-}
-
-.ant-input-outlined {
-    background-color: $background_input_green !important;
-    width: 400px;
-    margin : 0px 20px;
+    .ant-input-outlined {
+        background-color: $background_input_green !important;
+        width: 400px;
+        margin : 0px 20px;
+    }
 }

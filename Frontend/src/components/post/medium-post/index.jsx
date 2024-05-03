@@ -1,20 +1,18 @@
-import { DeleteOutlined, HeartFilled, HeartOutlined } from "@ant-design/icons";
+import { DeleteOutlined } from "@ant-design/icons";
 import "./index.scss";
 import SupportFunction from "../../../support/support_function";
-import { useState } from "react";
 import { Button } from "antd";
 import { useNavigate } from "react-router-dom";
-import { COLOR_FONT, COLOR_STATUS } from "../../../constants/color_status";
 
 
 function MediumPost(props) {
-    const { data } = props;
+    const { data, deletePost } = props;
 
     const navigate = useNavigate();
 
     const onClickDelete = (e) => {
         e.stopPropagation();
-        console.log("Delete post with id " + data.id)
+        deletePost(data.id);
     };
 
     const clickAct = ()=>{

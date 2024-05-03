@@ -4,11 +4,13 @@ import "./index.scss";
 import { Button, Pagination } from "antd";
 import { FormOutlined } from "@ant-design/icons";
 import { ActivityDetailContext } from "..";
+import { useNavigate } from "react-router-dom";
 
 function PostManagement() {
-    const {postList} = useContext(ActivityDetailContext)
+    const {postList, actInfo, deletePost} = useContext(ActivityDetailContext);
 
     const limit = 12;
+    const navigate = useNavigate();
 
     const [startIndex, setStartIndex] = useState(0);
     const [showPostList, setShowPostList] = useState(
@@ -23,7 +25,7 @@ function PostManagement() {
         setStartIndex((page - 1) * limit);
     };
     const onCreatePost =()=>{
-
+        navigate(`/create-post/${actInfo.id}`)
     }
 
     return (
@@ -36,12 +38,12 @@ function PostManagement() {
             >
                 Create post
             </Button>
-            <h3 class='error-no-post'>There is no post in this activity</h3>
+            {!postList && <h3 class='error-no-post'>There is no post in this activity</h3>}
             <div class="post-management-grid-layout">
                 {postList && (
                     showPostList.map((post) => (
                         <div class="post-management-item">
-                            <MediumPost data={post} />
+                            <MediumPost data={post} deletePost={deletePost}/>
                         </div>
                     ))
                 )}

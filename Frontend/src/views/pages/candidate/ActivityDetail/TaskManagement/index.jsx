@@ -115,6 +115,7 @@ function TaskManagement() {
                             onChange={onChangeSearch}
                             value={search}
                             size="large"
+                            className='task-management-search-input'
                         />
                         <Avatar.Group
                             maxCount={3}

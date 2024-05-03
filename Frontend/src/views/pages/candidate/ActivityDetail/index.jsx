@@ -25,11 +25,12 @@ function ActivityDetail() {
         data.date_end
     );
     const org = data.Organization;
-    const [tabButton, setTabButton] = useState(3);
+    const [tabButton, setTabButton] = useState(2);
     const [isDeleteAct, setIsDeleteAct] = useState(false);
     const [isUpdateAct, setIsUpdateAct] = useState(false);
     const [listCandidate, setListCandidate] = useState(data.candidates);
     const [listApplyForm, setListApplyForm] = useState(data.applyForms)
+    const [listPost, setListPost] = useState(data.posts);
 
     const onClickUpdate = () => {
         setIsUpdateAct(true);
@@ -93,6 +94,11 @@ function ActivityDetail() {
         const newListApplyForm = listApplyForm.filter((applyForm) => applyForm.id !== applyFormId)
 
         setListApplyForm(newListApplyForm)
+    };
+
+    const deletePost = (postId)=>{
+        const newListPost = listPost.filter(post => post.id !== postId);
+        setListPost(newListPost)
     }
 
     return (
@@ -334,11 +340,13 @@ function ActivityDetail() {
                     value={{
                         listCandidate: listCandidate,
                         listApplyForm : listApplyForm,
-                        postList: data.posts,
+                        postList: listPost,
+                        actInfo : data,
                         updateCandidate: updateCandidate,
                         deleteCandidate: deleteCandidate,
                         confirmApplyForm : confirmApplyForm,
-                        denyApplyForm : denyApplyForm
+                        denyApplyForm : denyApplyForm,
+                        deletePost : deletePost,
                     }}
                 >
                     {tabButton === 1 ? (
