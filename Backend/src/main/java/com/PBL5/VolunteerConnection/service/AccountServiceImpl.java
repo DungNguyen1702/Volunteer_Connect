@@ -2,10 +2,7 @@ package com.PBL5.VolunteerConnection.service;
 
 import com.PBL5.VolunteerConnection.model.User;
 import com.PBL5.VolunteerConnection.repository.UserRespository;
-import com.PBL5.VolunteerConnection.response.LoginResponse;
-import com.PBL5.VolunteerConnection.response.RegisterRequest;
-import com.PBL5.VolunteerConnection.response.StatusResponse;
-import com.PBL5.VolunteerConnection.response.UpdateAccountRequest;
+import com.PBL5.VolunteerConnection.response.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -30,7 +27,7 @@ public class AccountServiceImpl implements  AccountService{
     private UserRespository userRespository;
     @Autowired
     private JwtService jwtService;
-    public StatusResponse createAccount(RegisterRequest registerRequest){
+    public StatusResponse createAccount(AccountRequest registerRequest){
         Account account = new Account(registerRequest.getAccount(),
                             passwordEncoder.encode(registerRequest.getPassword()),
                             registerRequest.getName(),
@@ -44,7 +41,7 @@ public class AccountServiceImpl implements  AccountService{
                             registerRequest.getTel(),
                             registerRequest.getAddress(),
                             registerRequest.getGender(),
-                            Date.valueOf(LocalDate.now()),
+                            registerRequest.getBirthday(),
                             registerRequest.getEmail()));
                 }
                 else{
@@ -69,8 +66,7 @@ public class AccountServiceImpl implements  AccountService{
     }
 
     @Override
-    public StatusResponse updateAccount(UpdateAccountRequest request) {
-        String token = request.getToken();
+    public StatusResponse updateAccount(String token, AccountRequest request) {
 //        int id = jwtService.getId(token);
         String username = jwtService.getUsername(token);
         String role = jwtService.getRole(token)[0];
@@ -121,11 +117,10 @@ public class AccountServiceImpl implements  AccountService{
     }
 
     @Override
-    public LoginResponse getInfoAccount(String token) {
-        token = token.substring("Bearer ".length());
+    public AccountDetailResponse getInfoAccount(String token) {
         String username = jwtService.getUsername(token);
         Account account = accountRepository.findByAccount(username);
-        return LoginResponse.builder()
+        return AccountDetailResponse.builder()
                 .id(account.getId())
                 .account(account.getAccount())
                 .name(account.getName())
@@ -135,6 +130,21 @@ public class AccountServiceImpl implements  AccountService{
                 .updatedAt(account.getUpdatedAt())
                 .build();
     }
+    @Override
+    public UserDetailResponse getInfoUser(String token) {
+        String username = jwtService.getUsername(token);
+//        getInfoAccount(token);
+        return UserDetailResponse.builder()
+//                .id(account.getId())
+//                .account(account.getAccount())
+//                .name(account.getName())
+//                .avatar(account.getAvatar())
+//                .status(account.getStatus())
+//                .createdAt(account.getCreatedAt())
+//                .updatedAt(account.getUpdatedAt())
+                .build();
+    }
+
 
 
 }

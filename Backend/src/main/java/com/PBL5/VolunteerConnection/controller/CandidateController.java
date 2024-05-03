@@ -19,30 +19,31 @@ import java.util.List;
 public class CandidateController {
     @Autowired
     private CandidateService candidateService;
-    @Autowired
-    private ActivityService activityService;
 
     @PostMapping("/create")
     ResponseEntity<StatusResponse> createCandidate(@RequestHeader("Authorization") String token , @RequestBody CandidateRequest CandidateRequest) {
+        token = token.substring("Bearer ".length());
+
         return ResponseEntity.ok(candidateService.createCandidate(token, CandidateRequest));
     }
 
     @PostMapping("/update")
     ResponseEntity<StatusResponse> updateCandidate(@RequestHeader("Authorization") String token ,@RequestBody CandidateRequest CandidateRequest) {
+        token = token.substring("Bearer ".length());
+
         return ResponseEntity.ok(candidateService.updateCandidate(token, CandidateRequest));
     }
 
     @DeleteMapping("/delete")
     ResponseEntity<StatusResponse> deleteCandidate(@RequestHeader("Authorization") String token ,@RequestBody CandidateRequest CandidateRequest) {
+        token = token.substring("Bearer ".length());
         return ResponseEntity.ok(candidateService.deleteCandidate(token, CandidateRequest));
     }
 
     @GetMapping("/selectAll")
     ResponseEntity<List<Candidate>> selectAllCandidate(@RequestHeader("Authorization") String token,@RequestBody CandidateRequest CandidateRequest) {
+        token = token.substring("Bearer ".length());
         return ResponseEntity.ok(candidateService.selectAllCandidate(token, CandidateRequest));
     }
-    @GetMapping("/selectAllActivity")
-    ResponseEntity<List<Activity>> selectAllActivity(@RequestHeader("Authorization") String token ,@RequestBody CandidateRequest candidateRequest){
-        return ResponseEntity.ok(activityService.selectAllActivitiesByCandidate(token,candidateRequest));
-    }
+
 }

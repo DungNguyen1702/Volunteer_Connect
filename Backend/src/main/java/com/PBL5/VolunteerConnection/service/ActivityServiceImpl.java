@@ -3,7 +3,6 @@ package com.PBL5.VolunteerConnection.service;
 import com.PBL5.VolunteerConnection.model.Account;
 import com.PBL5.VolunteerConnection.repository.AccountRepository;
 import com.PBL5.VolunteerConnection.repository.UserRespository;
-import com.PBL5.VolunteerConnection.repository.activity.MyActivityRepository;
 import com.PBL5.VolunteerConnection.response.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -11,7 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import com.PBL5.VolunteerConnection.model.Activity;
-import com.PBL5.VolunteerConnection.repository.activity.ActivityRepository;
+import com.PBL5.VolunteerConnection.repository.ActivityRepository;
 
 import java.sql.Date;
 import java.time.LocalDate;
@@ -35,7 +34,6 @@ public class ActivityServiceImpl implements ActivityService {
     public StatusResponse createActivity(String token, ActivityRequest activity) {
         // TODO Auto-generated method stub
         try {
-            token = token.substring("Bearer ".length());
 
             int organizationId = jwtService.getId(token);
             Activity creActivity = new Activity(activity.getImage(), activity.getEmail(), activity.getName(),
@@ -57,7 +55,6 @@ public class ActivityServiceImpl implements ActivityService {
     public StatusResponse updateActivity(String token, ActivityRequest updateReq) {
         // TODO Auto-generated method stub
         try {
-            token = token.substring("Bearer ".length());
 
             Activity updateActivity = activityRepository.findById(jwtService.getId(token));
             updateActivity.setImage(updateReq.getImage());
@@ -86,7 +83,6 @@ public class ActivityServiceImpl implements ActivityService {
     public StatusResponse deleteActivity(String token, ActivityRequest deleteRequest) {
         // TODO Auto-generated method stub
         try {
-            token = token.substring("Bearer ".length());
 
             Activity deleteActivity = activityRepository.findById(jwtService.getId(token));
                 deleteActivity.setIsDeleted(true);
@@ -105,7 +101,6 @@ public class ActivityServiceImpl implements ActivityService {
 
     @Override
     public List<ActivityResponse> getAllActivity(String token) {
-        token = token.substring("Bearer ".length());
         int organizationId = jwtService.getId(token);
 //        List<Activity> activityList = myActivityRepository.findAllByOrganizationIdAndTypeAndLocationAndDateStartAndDateEnd(
 //                organizationId,
@@ -131,16 +126,15 @@ public class ActivityServiceImpl implements ActivityService {
     }
 
     @Override
-    public ActivityDetailResponse getActivityDetail(String token, ActivityRequest activityRequest) {
-        token = token.substring("Bearer ".length());
-
-        Activity activityDetail = activityRepository.findById(activityRequest.getId());
-            Account organization = accountRepository.findById(activityDetail.getOrganizationId());
-            return new ActivityDetailResponse(new ActivityResponse(activityDetail), null, 0, 0, organization);
+    public ActivityDetailResponse getActivityDetail(String token, int id) {
+        int organizationId = jwtService.getId(token);
+        Activity activityDetail = activityRepository.findByIdAndOrganizationId(id, organizationId);
+        Account organization = accountRepository.findById(activityDetail.getOrganizationId());
+        List<CandidateDetailResponse> candidateDetailResponseList = new ArrayList<>();
+        return new ActivityDetailResponse(new ActivityResponse(activityDetail), null, 0, 0, organization, null);
     }
     @Override
     public List<Activity> selectAllActivitiesByCandidate(String token, CandidateRequest activityRequest) {
-        token = token.substring("Bearer ".length());
 
         int id = jwtService.getId(token);
             List<Activity> activities = activityRepository.findActivitiesByAccountId(id);

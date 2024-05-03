@@ -3,7 +3,8 @@ package com.PBL5.VolunteerConnection.model;
 import jakarta.persistence.*;
 import lombok.Data;
 
-import java.util.Date;
+
+import java.sql.Date;
 import java.util.List;
 
 @Entity
@@ -30,7 +31,7 @@ public class User {
     public User(){
 
     }
-    public User(int accountId, String tel, String gender, String address,  java.util.Date birthday, String email){
+    public User(int accountId, String tel, String gender, String address,  Date birthday, String email){
         this.accountId = accountId;
         this.tel = tel;
         this.address = address;

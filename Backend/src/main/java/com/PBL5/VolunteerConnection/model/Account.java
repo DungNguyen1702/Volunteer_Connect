@@ -38,6 +38,8 @@ public class Account implements UserDetails {
     private Boolean isDeleted;
     @Column(name = "isValid")
     private Boolean isValid;
+    @Column(name = "backgroundNoAva")
+    private String backgroundNoAva;
 
     public Account(String account, String password, String name, int role)  {
         this.account = account;
@@ -50,6 +52,7 @@ public class Account implements UserDetails {
         this.updatedAt = Date.valueOf(LocalDate.now());
         this.isDeleted = false;
         this.isValid = true;
+        this.backgroundNoAva = "#9b59b6";
 
     }
 
