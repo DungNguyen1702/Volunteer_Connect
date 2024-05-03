@@ -39,14 +39,38 @@ html, body {
     margin: 10px 0px;
     padding : 20px;
     border-radius: 20px;
-    height: 200px;
 }
 
 .list-people-content-title {
     color : $accent;
 }
 
-#search-bar {
-    position: sticky;
-    top : 90px;
+.search-bar-wrapper {
+    background-color: $background-search-list-people;
+    padding : 20px;
+    border-radius: 20px;
+    z-index: 100;
+}
+
+.search-bar {
+    background-color: $search-list-people !important;
+}
+
+// #search-bar {
+//     position: sticky;
+//     top : 90px;
+// }
+
+.list-people-content-grid-layout {
+    display: grid;
+    grid-template-columns: 30% 30% 30%;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.list-people-pagination {
+    width: 100%;
+    display: flex;
+    justify-content: end;
+    margin-top: 10px;
 }

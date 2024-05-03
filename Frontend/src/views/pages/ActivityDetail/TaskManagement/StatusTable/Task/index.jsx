@@ -6,7 +6,7 @@ import { TaskDataContext } from "../..";
 import { useContext, useState } from "react";
 import { useDrag } from "react-dnd";
 import TaskDetail from "../TaskDetail";
-import CandidateAva from "../../../../../../components/avatar/candidateAvatar";
+import AvatarAccount from "../../../../../../components/avatar/AvatarAccount";
 
 function TaskItem(props) {
     const { listCandidate, showingTaskTableID } = useContext(TaskDataContext);
@@ -76,7 +76,7 @@ function TaskItem(props) {
                             )}
                         </p>
                         {candidate ? (
-                            <CandidateAva
+                            <AvatarAccount
                                 name={candidate.user.account.name}
                                 avatar={candidate.user.account.avatar}
                                 backgroundNoAva={

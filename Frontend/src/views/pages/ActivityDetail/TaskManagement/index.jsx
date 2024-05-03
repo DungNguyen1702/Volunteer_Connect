@@ -6,7 +6,7 @@ import { PlusOutlined } from "@ant-design/icons";
 import { createContext, useContext, useState } from "react";
 import StatusTable from "./StatusTable";
 import Search from "antd/es/transfer/search";
-import CandidateAva from "../../../../components/avatar/candidateAvatar";
+import AvatarAccount from "../../../../components/avatar/AvatarAccount";
 import { ActivityDetailContext } from "..";
 
 export const TaskDataContext = createContext();
@@ -127,7 +127,7 @@ function TaskManagement() {
                         >
                             {listCandidate.map((candidate) => (
                                 <>
-                                    <CandidateAva
+                                    <AvatarAccount
                                         name={candidate.user.account.name}
                                         avatar={candidate.user.account.avatar}
                                         backgroundNoAva={

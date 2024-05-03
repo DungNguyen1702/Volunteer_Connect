@@ -15,12 +15,6 @@ const LogIn = () => {
                 progress={undefined}
                 theme="colored"
             />
-            <div className={styles.frameParent}>
-                <div className={styles.nameWrapper}>
-                    <div className={styles.name}>Name</div>
-                </div>
-                <div className={styles.frameChild} />
-            </div>
             <div className={styles.logInInner}>
                 <FrameComponent3 />
             </div>

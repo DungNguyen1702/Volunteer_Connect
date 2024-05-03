@@ -5,10 +5,13 @@ import { Button, Input } from "antd";
 import 'react-toastify/dist/ReactToastify.css';
 import { toast } from "react-toastify";
 import auth from "../../api/authAPI";
+import useAuth from "../../hooks/useAuth";
 
 const FrameComponent = () => {
     const [account, setAccount] = useState('');
     const [password, setPassword] = useState('');
+
+    const {setToken} = useAuth();
 
     const onChangeAccount = (e)=>{
         setAccount(e.target.value);
@@ -23,10 +26,13 @@ const FrameComponent = () => {
                     account : account,
                     password : password,
                 }
+                console.log(values)
 
                 const response = await auth.login(values);
-
+                
                 if(response.status === 200){
+                    setToken(response.data.token)
+                    localStorage.setItem('token',response.data.token)
                     toast.success('Login success')
                 }
             }
@@ -35,8 +41,8 @@ const FrameComponent = () => {
             }
             finally{
             }
-        }
-        callAPI()
+        };
+        callAPI();
     }
 
     return (
@@ -77,7 +83,7 @@ const FrameComponent = () => {
                         </div>
                         <div className={styles.forgotPasswordOption}>
                             <div className={styles.forgotPassword1}>
-                                forgot password
+                                Forgot password
                             </div>
                         </div>
                     </div>
@@ -92,7 +98,7 @@ const FrameComponent = () => {
                 </div>
                 <div className={styles.loginFormInner}>
                         <Button
-                            className="button-login"
+                            className={styles.buttonLogin}
                             onClick={onClickLogin}
                         >
                             Login

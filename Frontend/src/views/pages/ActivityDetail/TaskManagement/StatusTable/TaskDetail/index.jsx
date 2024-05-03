@@ -6,7 +6,7 @@ import {
     TASK_STATUS_COLOR,
     TASK_STATUS,
 } from "../../../../../../constants/task_status";
-import CandidateAva from "../../../../../../components/avatar/candidateAvatar";
+import AvatarAccount from "../../../../../../components/avatar/AvatarAccount";
 import { UserOutlined } from "@ant-design/icons";
 import TextArea from "antd/es/input/TextArea";
 import TaskInputComment from "../../../../../../components/comment/taskComment/inputComment/inputComment";
@@ -177,7 +177,7 @@ function TaskDetail(props) {
                                             value={candidate.id}
                                             className="task-detail-assinee-item"
                                         >
-                                            <CandidateAva
+                                            <AvatarAccount
                                                 name={
                                                     candidate.user.account.name
                                                 }

@@ -6,7 +6,7 @@ import {
     SnippetsOutlined,
     UploadOutlined,
 } from "@ant-design/icons";
-import CandidateAva from "../../../../components/avatar/candidateAvatar";
+import AvatarAccount from "../../../../components/avatar/AvatarAccount";
 import UserIcon from "../../../../components/user";
 import { useContext, useState } from "react";
 import { ActivityDetailContext } from "..";

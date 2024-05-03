@@ -6,7 +6,7 @@ import {
     TASK_STATUS_COLOR,
     TASK_STATUS,
 } from "../../../../../../constants/task_status";
-import CandidateAva from "../../../../../../components/avatar/candidateAvatar";
+import AvatarAccount from "../../../../../../components/avatar/AvatarAccount";
 import { UserOutlined } from "@ant-design/icons";
 import TextArea from "antd/es/input/TextArea";
 import SupportFunction from "../../../../../../support/support_function";
@@ -195,7 +195,7 @@ function CreateTask(props) {
                                             value={candidate.id}
                                             className="create-task-assinee-item"
                                         >
-                                            <CandidateAva
+                                            <AvatarAccount
                                                 name={
                                                     candidate.user.account.name
                                                 }
