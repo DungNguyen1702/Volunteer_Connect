@@ -7,6 +7,5 @@ import java.util.List;
 
 public interface MyActivityRepository {
     List<Activity> findAllByOrganizationIdAndTypeAndLocationAndDateStartAndDateEnd(int organizationId, Integer type, String location, Date dateStart, Date dateEnd);
-    List<Activity> findActivitiesByUserIdCriteria(Integer userId);
 
 }
