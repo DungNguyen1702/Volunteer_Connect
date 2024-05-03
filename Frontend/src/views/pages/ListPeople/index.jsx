@@ -3,12 +3,13 @@ import "./index.scss";
 import { useEffect, useRef, useState } from "react";
 import FakeData from "../../../data/fake_data.json";
 import { Anchor } from "antd";
+import OrganizationItem from "./Component/OrganizationItem";
 
 function ListPeople() {
     const [search, setSearch] = useState("");
 
     const listAllOrganization = FakeData.ListAccountOrganization;
-    const listPopularOrganization = listAllOrganization.slice(0, 6);
+    const listPopularOrganization = listAllOrganization.slice(0, 5);
     const listAllCandidate = FakeData.ListAccountCandidate;
     const listEnthusiasticCandidate = listAllCandidate.slice(0, 5);
 
@@ -74,7 +75,9 @@ function ListPeople() {
                     <h3 class="list-people-content-title">
                         Popular organization
                     </h3>
-                    <div class="list-people-content-grid-layout"></div>
+                    <div class="list-people-content-grid-layout">
+                        <OrganizationItem organizationInfo={listPopularOrganization[0]}/>
+                    </div>
                 </div>
 
                 {/* All organization  */}

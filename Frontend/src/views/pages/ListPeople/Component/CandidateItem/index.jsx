@@ -1,10 +1,10 @@
 import React from 'react'
 import './index.scss'
 
-function OrganizationItem() {
+function CandidateItem() {
   return (
-    <div>OrganizationItem</div>
+    <div>CandidateItem</div>
   )
 }
 
-export default OrganizationItem
+export default CandidateItem
