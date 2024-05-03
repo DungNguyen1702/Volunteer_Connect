@@ -24,14 +24,27 @@ const ActivityDetail = LoadableComponent(() =>
 );
 const CreatePost = LoadableComponent(() =>
     import("../pages/CreatePost/index.jsx")
+);
+const Introduce = LoadableComponent(()=>
+    import('../pages/Introduce/Introduce.js')
+);
+const About = LoadableComponent(()=>
+    import('../pages/About/About.js')
+);
+const Service = LoadableComponent(()=>
+    import('../pages/Service/Service.js')
+);
+const Contact = LoadableComponent(()=>
+    import('../pages/Contact/index.jsx')
 )
+
 
 
 const AllRoutes = () => {
     return (
         
         <Routes>
-            <Route path="/" element={<Navigate to={"/user-homepage"} />} />
+            <Route path="/" element={<Navigate to={"/introduce"} />} />
 
             {/* // public route  */}
             <Route element={<PublicRoute />}>
@@ -77,6 +90,27 @@ const AllRoutes = () => {
                     path="/activity-detail/:id"
                     element={<MainLayout component={ActivityDetail} />}
                 />
+
+                <Route 
+                    path="/introduce" 
+                    element={<Introduce />} 
+                />
+
+                <Route 
+                    path="/about" 
+                    element={<About />} 
+                />
+
+                <Route 
+                    path="/service" 
+                    element={<Service />} 
+                />
+                
+                <Route 
+                    path="/contact" 
+                    element={<Contact />} 
+                />
+            
             </Route>
 
             {/* guest route */}

@@ -1,5 +1,5 @@
 import "./HeroStyle.css";
-import FrameComponent2 from "./gInterface/FrameComponent2";
+import FrameComponent2 from "../gInterface/FrameComponent2";
 function Hero(props) {
     return (
         <>
@@ -11,9 +11,9 @@ function Hero(props) {
                     src="/image-1@2x.png"
                 />
             </div>
-            <FrameComponent2/>
+            <FrameComponent2 />
         </>
-    )
+    );
 }
 
 export default Hero;
