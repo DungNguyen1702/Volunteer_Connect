@@ -5,7 +5,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.Date;
+import java.sql.Date;
+
 
 @Data
 @Builder
@@ -19,7 +20,7 @@ public class LoginResponse {
     private String name;
     private String avatar;
     private Boolean status;
-    private Date createdDate;
-    private Date updatedDate;
+    private Date createdAt;
+    private Date updatedAt;
     private Boolean isDeleted;
 }

@@ -12,5 +12,4 @@ public interface AccountService {
     StatusResponse createAccount(RegisterRequest account);
     StatusResponse updateAccount(UpdateAccountRequest request);
     StatusResponse deleteAccount(String token);
-    int getAccountId(String token);
 }

@@ -19,25 +19,25 @@ public class ActivityController {
     private ActivityService activityService;
 
     @PostMapping("/create")
-    ResponseEntity<StatusResponse> createActivity(@RequestBody ActivityRequest activityRequest) {
-        return ResponseEntity.ok(activityService.createActivity(activityRequest));
+    ResponseEntity<StatusResponse> createActivity(@RequestHeader("Authorization") String token , @RequestBody ActivityRequest activityRequest) {
+        return ResponseEntity.ok(activityService.createActivity(token, activityRequest));
     }
 
     @PostMapping("/update")
-    ResponseEntity<StatusResponse> updatePost(@RequestBody ActivityRequest activityRequest) {
-        return ResponseEntity.ok(activityService.updateActivity(activityRequest));
+    ResponseEntity<StatusResponse> updatePost(@RequestHeader("Authorization") String token ,@RequestBody ActivityRequest activityRequest) {
+        return ResponseEntity.ok(activityService.updateActivity(token, activityRequest));
     }
 
     @DeleteMapping("/delete")
-    ResponseEntity<StatusResponse> deletePost(@RequestBody ActivityRequest activityRequest) {
-        return ResponseEntity.ok(activityService.deleteActivity(activityRequest));
+    ResponseEntity<StatusResponse> deletePost(@RequestHeader("Authorization") String token ,@RequestBody ActivityRequest activityRequest) {
+        return ResponseEntity.ok(activityService.deleteActivity(token ,activityRequest));
     }
-    @PostMapping("/getAllActivity")
-    ResponseEntity<List<ActivityResponse>> getAllActivity (@RequestBody ActivityRequest activityRequest){
-        return ResponseEntity.ok(activityService.getAllActivity(activityRequest));
+    @GetMapping("/getAllActivity")
+    ResponseEntity<List<ActivityResponse>> getAllActivity (@RequestHeader("Authorization") String token){
+        return ResponseEntity.ok(activityService.getAllActivity(token));
     }
     @GetMapping("/getActivityDetail")
-    ResponseEntity<ActivityDetailResponse> getActivityDetail(@RequestBody ActivityRequest activityRequest){
-        return ResponseEntity.ok(activityService.getActivityDetail(activityRequest));
+    ResponseEntity<ActivityDetailResponse> getActivityDetail(@RequestHeader("Authorization") String token ,@RequestBody ActivityRequest activityRequest){
+        return ResponseEntity.ok(activityService.getActivityDetail(token, activityRequest));
     }
 }

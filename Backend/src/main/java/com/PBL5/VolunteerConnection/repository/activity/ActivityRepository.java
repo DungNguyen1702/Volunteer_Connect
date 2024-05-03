@@ -22,5 +22,5 @@ public interface ActivityRepository extends JpaRepository<Activity, Integer> {
                     "WHERE acc.id = 1 AND a.isDeleted = false"
     )
     List<Activity> findActivitiesByAccountId(@Param("accountId") int accountId);
-    List<Activity> findAllByOrganizationId(int organizatioId);
+    List<Activity> findAllByOrganizationId(int organizationId);
 }

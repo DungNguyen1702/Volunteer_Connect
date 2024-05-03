@@ -24,12 +24,14 @@ public class PostServiceImpl implements PostService {
     private ActivityService activityService;
     @Autowired
     private ActivityRepository activityRepository;
+    @Autowired
+    private JwtService jwtService;
 
     @Override
-    public StatusResponse createPost(PostRequest postRequest) {
+    public StatusResponse createPost(String token, PostRequest postRequest) {
         try {
             int organizationId = activityRepository.findById(postRequest.getActivityId()).getOrganizationId();
-            if (activityService.hasActivity(postRequest.getToken(), organizationId)) {
+            if (organizationId == jwtService.getId(token)) {
                 Post createPost = new Post(postRequest.getActivityId(), postRequest.getTitle(), postRequest.getImage(),
                         postRequest.getContent());
                 postRespository.save(createPost);
@@ -52,10 +54,10 @@ public class PostServiceImpl implements PostService {
     }
 
     @Override
-    public StatusResponse updatePost(PostRequest postRequest) {
+    public StatusResponse updatePost(String token, PostRequest postRequest) {
         try {
             int organizationId = activityRepository.findById(postRequest.getActivityId()).getOrganizationId();
-            if (activityService.hasActivity(postRequest.getToken(), organizationId)) {
+            if (organizationId == jwtService.getId(token)) {
                 Post updatePost = postRespository.findById(postRequest.getId());
                 updatePost.setContent(postRequest.getContent());
                 updatePost.setTitle(postRequest.getTitle());
@@ -80,10 +82,10 @@ public class PostServiceImpl implements PostService {
     }
 
     @Override
-    public StatusResponse deletePost(PostRequest postRequest) {
+    public StatusResponse deletePost(String token, PostRequest postRequest) {
         try {
             int organizationId = activityRepository.findById(postRequest.getActivityId()).getOrganizationId();
-            if (activityService.hasActivity(postRequest.getToken(), organizationId)) {
+            if (organizationId == jwtService.getId(token)) {
                 postRespository.deleteById(postRequest.getId());
                 return StatusResponse.builder()
                         .success(ResponseEntity.status(HttpStatus.ACCEPTED).body("Post has been deleted sucessfully!!"))

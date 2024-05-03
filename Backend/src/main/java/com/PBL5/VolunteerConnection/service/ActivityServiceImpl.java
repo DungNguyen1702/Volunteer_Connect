@@ -17,7 +17,6 @@ import java.sql.Date;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 import java.util.stream.Collectors;
 
 @Service
@@ -29,14 +28,14 @@ public class ActivityServiceImpl implements ActivityService {
     @Autowired
     private AccountRepository accountRepository;
     @Autowired
-    private MyActivityRepository myActivityRepository;
+    private JwtService jwtService;
     @Autowired
     private UserRespository userRespository;
     @Override
-    public StatusResponse createActivity(ActivityRequest activity) {
+    public StatusResponse createActivity(String token, ActivityRequest activity) {
         // TODO Auto-generated method stub
         try {
-            int organizationId = accountService.getAccountId(activity.getToken());
+            int organizationId = jwtService.getId(token);
             Activity creActivity = new Activity(activity.getImage(), activity.getEmail(), activity.getName(),
                                         activity.getType(), activity.getDeadline(), activity.getDateStart(), activity.getDateEnd(), activity.getCountry(),
                                         activity.getLocation(), organizationId,
@@ -53,28 +52,20 @@ public class ActivityServiceImpl implements ActivityService {
     }
 
     @Override
-    public StatusResponse updateActivity(ActivityRequest updateReq) {
+    public StatusResponse updateActivity(String token, ActivityRequest updateReq) {
         // TODO Auto-generated method stub
         try {
-            Activity updateActivity = activityRepository.findById(updateReq.getId());
-            if (hasActivity(updateReq.getToken(),updateActivity.getOrganizationId())){
-                updateActivity.setImage(updateReq.getImage());
-                updateActivity.setEmail(updateReq.getEmail());
-                updateActivity.setDeadline(updateReq.getDeadline());
-                updateActivity.setDateStart(updateReq.getDateStart());
-                updateActivity.setDateEnd(updateReq.getDateEnd());
-                updateActivity.setCountry(updateReq.getCountry());
-                updateActivity.setLocation(updateReq.getLocation());
-                updateActivity.setContent(updateReq.getContent());
-                updateActivity.setUpdateAt(Date.valueOf(LocalDate.now()));
-                activityRepository.save(updateActivity);
-            }
-            else{
-                return StatusResponse.builder()
-                        .success(ResponseEntity.status(HttpStatus.NOT_ACCEPTABLE)
-                                .body("Activity " + updateActivity.getName() + "cant not be updated because you are not owner!!"))
-                        .build();
-            }
+            Activity updateActivity = activityRepository.findById(jwtService.getId(token));
+            updateActivity.setImage(updateReq.getImage());
+            updateActivity.setEmail(updateReq.getEmail());
+            updateActivity.setDeadline(updateReq.getDeadline());
+            updateActivity.setDateStart(updateReq.getDateStart());
+            updateActivity.setDateEnd(updateReq.getDateEnd());
+            updateActivity.setCountry(updateReq.getCountry());
+            updateActivity.setLocation(updateReq.getLocation());
+            updateActivity.setContent(updateReq.getContent());
+            updateActivity.setUpdateAt(Date.valueOf(LocalDate.now()));
+            activityRepository.save(updateActivity);
             return StatusResponse.builder()
                     .success(ResponseEntity.status(HttpStatus.ACCEPTED)
                             .body("Activity " + updateActivity.getName() + "has been updated sucessfully!!"))
@@ -88,20 +79,12 @@ public class ActivityServiceImpl implements ActivityService {
     }
 
     @Override
-    public StatusResponse deleteActivity(ActivityRequest deleteRequest) {
+    public StatusResponse deleteActivity(String token, ActivityRequest deleteRequest) {
         // TODO Auto-generated method stub
         try {
-            Activity deleteActivity = activityRepository.findById(deleteRequest.getId());
-            if (hasActivity(deleteRequest.getToken(),deleteActivity.getOrganizationId())){
+            Activity deleteActivity = activityRepository.findById(jwtService.getId(token));
                 deleteActivity.setIsDeleted(true);
                 activityRepository.save(deleteActivity);
-            }
-            else{
-                return StatusResponse.builder()
-                        .success(ResponseEntity.status(HttpStatus.NOT_ACCEPTABLE)
-                                .body("Activity " + deleteActivity.getName() + "cant not be deleted because you are not owner!!"))
-                        .build();
-            }
             return StatusResponse.builder()
                     .success(ResponseEntity.status(HttpStatus.ACCEPTED).body("Activity has been deleted sucessfully!!"))
                     .build();
@@ -112,20 +95,19 @@ public class ActivityServiceImpl implements ActivityService {
         }
     }
 
-    public Boolean hasActivity(String token, int organizationId){
-        int accountId = accountService.getAccountId(token);
-        return accountId == organizationId;
-    }
+
 
     @Override
-    public List<ActivityResponse> getAllActivity(ActivityRequest activityRequest) {
-        int organizationId = accountService.getAccountId(activityRequest.getToken());
-        List<Activity> activityList = myActivityRepository.findAllByOrganizationIdAndTypeAndLocationAndDateStartAndDateEnd(
-                organizationId,
-                activityRequest.getType(),
-                activityRequest.getLocation(),
-                activityRequest.getDateStart(),
-                activityRequest.getDateEnd());
+    public List<ActivityResponse> getAllActivity(String token) {
+        token = token.substring("Bearer ".length());
+        int organizationId = jwtService.getId(token);
+//        List<Activity> activityList = myActivityRepository.findAllByOrganizationIdAndTypeAndLocationAndDateStartAndDateEnd(
+//                organizationId,
+//                token.getType(),
+//                token.getLocation(),
+//                token.getDateStart(),
+//                token.getDateEnd());
+        List<Activity> activityList = activityRepository.findAllByOrganizationId(organizationId);
         List<ActivityResponse> activityResponseList = new ArrayList<>();
         for (Activity activity : activityList) {
             activityResponseList.add(new ActivityResponse(activity));
@@ -143,19 +125,15 @@ public class ActivityServiceImpl implements ActivityService {
     }
 
     @Override
-    public ActivityDetailResponse getActivityDetail(ActivityRequest activityRequest) {
+    public ActivityDetailResponse getActivityDetail(String token, ActivityRequest activityRequest) {
         Activity activityDetail = activityRepository.findById(activityRequest.getId());
-        if (hasActivity(activityRequest.getToken(), activityDetail.getOrganizationId())){
             Account organization = accountRepository.findById(activityDetail.getOrganizationId());
             return new ActivityDetailResponse(new ActivityResponse(activityDetail), null, 0, 0, organization);
-        }
-        return null;
     }
     @Override
-    public List<Activity> selectAllActivitiesByCandidate(CandidateRequest activityRequest) {
-        int accountId = accountService.getAccountId(activityRequest.getToken());
-        if (activityRequest.getUserId() == userRespository.findByAccountId(accountId).getId()){
-            List<Activity> activities = activityRepository.findActivitiesByAccountId(accountId);
+    public List<Activity> selectAllActivitiesByCandidate(String token, CandidateRequest activityRequest) {
+        int id = jwtService.getId(token);
+            List<Activity> activities = activityRepository.findActivitiesByAccountId(id);
             List<Activity> filteredActivities = activities.stream()
                     .filter(activity ->
                             (activityRequest.getActivityLocation() == null || activity.getLocation().equals(activityRequest.getActivityLocation())) &&
@@ -163,8 +141,5 @@ public class ActivityServiceImpl implements ActivityService {
                     )
                     .collect(Collectors.toList());
             return  filteredActivities;
-        }
-        return null;
-
     }
 }

@@ -70,6 +70,7 @@ public class AccountServiceImpl implements  AccountService{
     @Override
     public StatusResponse updateAccount(UpdateAccountRequest request) {
         String token = request.getToken();
+//        int id = jwtService.getId(token);
         String username = jwtService.getUsername(token);
         String role = jwtService.getRole(token)[0];
         try{
@@ -118,11 +119,7 @@ public class AccountServiceImpl implements  AccountService{
 
     }
 
-    @Override
-    public int getAccountId(String token) {
-        return accountRepository.findByAccount(jwtService.getUsername(token)).getId();
 
-    }
 
 
 }

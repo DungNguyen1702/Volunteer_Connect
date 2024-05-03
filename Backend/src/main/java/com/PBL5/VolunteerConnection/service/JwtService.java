@@ -19,7 +19,7 @@ public class JwtService {
     public String generateToken(Account account, Collection<SimpleGrantedAuthority> authorities){
         Algorithm algorithm = Algorithm.HMAC256(SECRET_KEY.getBytes());
         return JWT.create()
-                .withSubject(account.getUsername())
+                .withSubject(String.valueOf(account.getId()) +","+account.getAccount())
                 .withExpiresAt(new Date(System.currentTimeMillis() + 50*60*1000))
                 .withClaim("roles", authorities.stream().map(GrantedAuthority::getAuthority).collect(Collectors.toList()))
                 .sign(algorithm);
@@ -43,14 +43,14 @@ public class JwtService {
         user.put(account, roles);
         return user;
     }
-    public String getUsername(String token){
+    public int getId(String token){
         Map<String, String[]> user= decodeToken(token);
-        String username = "";
+        String id = "";
         for (String key : user.keySet()) {
-            username = key;
+            id = key;
         }
 
-        return username;
+        return Integer.parseInt(id.split(",")[0]);
     }
     public String[] getRole(String token){
         Map<String, String[]> user= decodeToken(token);
@@ -59,6 +59,14 @@ public class JwtService {
             role = user.get(key);
         }
         return role;
+    }
+    public String getUsername(String token){
+        Map<String, String[]> user= decodeToken(token);
+        String username = "";
+        for (String key : user.keySet()) {
+            username = key;
+        }
+        return username.split(",")[1];
     }
 
 }
