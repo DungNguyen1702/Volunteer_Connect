@@ -77,7 +77,7 @@ const FrameComponent = () => {
                         </div>
                         <div className={styles.forgotPasswordOption}>
                             <div className={styles.forgotPassword1}>
-                                forgot password
+                                Forgot password
                             </div>
                         </div>
                     </div>
@@ -92,7 +92,7 @@ const FrameComponent = () => {
                 </div>
                 <div className={styles.loginFormInner}>
                         <Button
-                            className="button-login"
+                            className={styles.buttonLogin}
                             onClick={onClickLogin}
                         >
                             Login
