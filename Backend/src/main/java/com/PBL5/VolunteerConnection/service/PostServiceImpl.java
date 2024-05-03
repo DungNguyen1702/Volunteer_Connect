@@ -30,6 +30,8 @@ public class PostServiceImpl implements PostService {
     @Override
     public StatusResponse createPost(String token, PostRequest postRequest) {
         try {
+            token = token.substring("Bearer ".length());
+
             int organizationId = activityRepository.findById(postRequest.getActivityId()).getOrganizationId();
             if (organizationId == jwtService.getId(token)) {
                 Post createPost = new Post(postRequest.getActivityId(), postRequest.getTitle(), postRequest.getImage(),
@@ -56,6 +58,8 @@ public class PostServiceImpl implements PostService {
     @Override
     public StatusResponse updatePost(String token, PostRequest postRequest) {
         try {
+            token = token.substring("Bearer ".length());
+
             int organizationId = activityRepository.findById(postRequest.getActivityId()).getOrganizationId();
             if (organizationId == jwtService.getId(token)) {
                 Post updatePost = postRespository.findById(postRequest.getId());
@@ -84,6 +88,8 @@ public class PostServiceImpl implements PostService {
     @Override
     public StatusResponse deletePost(String token, PostRequest postRequest) {
         try {
+            token = token.substring("Bearer ".length());
+
             int organizationId = activityRepository.findById(postRequest.getActivityId()).getOrganizationId();
             if (organizationId == jwtService.getId(token)) {
                 postRespository.deleteById(postRequest.getId());
@@ -108,6 +114,7 @@ public class PostServiceImpl implements PostService {
     public List<Post> SelectAllPost(PostRequest postRequest) {
         // TODO Auto-generated method stub
         try {
+
            return  postRespository.findByActivityId(postRequest.getActivityId());
 
         } catch (Exception e) {

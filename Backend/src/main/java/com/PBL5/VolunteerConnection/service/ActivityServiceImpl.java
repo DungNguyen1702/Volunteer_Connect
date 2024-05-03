@@ -35,6 +35,8 @@ public class ActivityServiceImpl implements ActivityService {
     public StatusResponse createActivity(String token, ActivityRequest activity) {
         // TODO Auto-generated method stub
         try {
+            token = token.substring("Bearer ".length());
+
             int organizationId = jwtService.getId(token);
             Activity creActivity = new Activity(activity.getImage(), activity.getEmail(), activity.getName(),
                                         activity.getType(), activity.getDeadline(), activity.getDateStart(), activity.getDateEnd(), activity.getCountry(),
@@ -55,6 +57,8 @@ public class ActivityServiceImpl implements ActivityService {
     public StatusResponse updateActivity(String token, ActivityRequest updateReq) {
         // TODO Auto-generated method stub
         try {
+            token = token.substring("Bearer ".length());
+
             Activity updateActivity = activityRepository.findById(jwtService.getId(token));
             updateActivity.setImage(updateReq.getImage());
             updateActivity.setEmail(updateReq.getEmail());
@@ -82,6 +86,8 @@ public class ActivityServiceImpl implements ActivityService {
     public StatusResponse deleteActivity(String token, ActivityRequest deleteRequest) {
         // TODO Auto-generated method stub
         try {
+            token = token.substring("Bearer ".length());
+
             Activity deleteActivity = activityRepository.findById(jwtService.getId(token));
                 deleteActivity.setIsDeleted(true);
                 activityRepository.save(deleteActivity);
@@ -126,12 +132,16 @@ public class ActivityServiceImpl implements ActivityService {
 
     @Override
     public ActivityDetailResponse getActivityDetail(String token, ActivityRequest activityRequest) {
+        token = token.substring("Bearer ".length());
+
         Activity activityDetail = activityRepository.findById(activityRequest.getId());
             Account organization = accountRepository.findById(activityDetail.getOrganizationId());
             return new ActivityDetailResponse(new ActivityResponse(activityDetail), null, 0, 0, organization);
     }
     @Override
     public List<Activity> selectAllActivitiesByCandidate(String token, CandidateRequest activityRequest) {
+        token = token.substring("Bearer ".length());
+
         int id = jwtService.getId(token);
             List<Activity> activities = activityRepository.findActivitiesByAccountId(id);
             List<Activity> filteredActivities = activities.stream()

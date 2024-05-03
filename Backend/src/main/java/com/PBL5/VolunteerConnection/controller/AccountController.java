@@ -1,5 +1,6 @@
 package com.PBL5.VolunteerConnection.controller;
 
+import com.PBL5.VolunteerConnection.response.LoginResponse;
 import com.PBL5.VolunteerConnection.response.StatusResponse;
 import com.PBL5.VolunteerConnection.response.UpdateAccountRequest;
 import com.PBL5.VolunteerConnection.service.AccountService;
@@ -22,8 +23,12 @@ public class AccountController {
         return ResponseEntity.ok(accountService.updateAccount(updateRequest));
     }
     @DeleteMapping("/delete")
-    public ResponseEntity<StatusResponse> deleteAccount(@RequestParam String token){
+    public ResponseEntity<StatusResponse> deleteAccount(@RequestHeader("Authorization") String token){
         return ResponseEntity.ok(accountService.deleteAccount(token));
+    }
+    @GetMapping("/detail")
+    public ResponseEntity<LoginResponse> getInfoAccount(@RequestHeader("Authorization") String token){
+        return ResponseEntity.ok(accountService.getInfoAccount(token));
     }
 
 }
