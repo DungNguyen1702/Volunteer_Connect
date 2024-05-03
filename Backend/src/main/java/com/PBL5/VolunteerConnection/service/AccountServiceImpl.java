@@ -124,6 +124,7 @@ public class AccountServiceImpl implements  AccountService{
                 .id(account.getId())
                 .account(account.getAccount())
                 .name(account.getName())
+                .role(account.getRole())
                 .avatar(account.getAvatar())
                 .status(account.getStatus())
                 .createdAt(account.getCreatedAt())
