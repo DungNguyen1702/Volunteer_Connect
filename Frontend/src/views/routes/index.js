@@ -7,23 +7,23 @@ import LoadableComponent from "../../components/loadable-component";
 import MainLayout from "../../components/layout/MainLayout.jsx";
 
 const UserHomePage = LoadableComponent(() =>
-    import("../pages/candidate/Homepage/index.jsx")
+    import("../pages/Homepage/index.jsx")
 );
 
-const PeopleSearching = LoadableComponent(() =>
-    import("../pages/candidate/PeopleSearching/peopleSearching.jsx")
+const ListPeople = LoadableComponent(() =>
+    import("../pages/ListPeople/index.jsx")
 );
 const ParticipatingActivities = LoadableComponent(() =>
-    import("../pages/candidate/ParticipatingActivities/index.jsx")
+    import("../pages/ParticipatingActivities/index.jsx")
 );
 const PostDetail = LoadableComponent(() =>
-    import("../pages/candidate/PostDetail/index.jsx")
+    import("../pages/PostDetail/index.jsx")
 );
 const ActivityDetail = LoadableComponent(() => 
-    import("../pages/candidate/ActivityDetail/index.jsx")
+    import("../pages/ActivityDetail/index.jsx")
 );
 const CreatePost = LoadableComponent(() =>
-    import("../pages/candidate/CreatePost/index.jsx")
+    import("../pages/CreatePost/index.jsx")
 )
 
 
@@ -66,7 +66,7 @@ const AllRoutes = () => {
                     path="/people-searching"
                     element={
                         <MainLayout
-                            component={PeopleSearching}
+                            component={ListPeople}
                             stateButton={3}
                         />
                     }

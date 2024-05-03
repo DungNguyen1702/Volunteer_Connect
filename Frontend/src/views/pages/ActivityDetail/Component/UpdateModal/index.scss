@@ -1,0 +1,57 @@
+@import '../../../../../constants/colors.scss';
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    font-size: 15px;
+    background-color: $background;
+}
+
+.update-act-item {
+    margin : 15px 0px;
+    width: 100%;
+}
+
+.update-act-title {
+    color : $primary_green;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.display-flex {
+    display: flex;
+    justify-content: space-between;
+}
+
+.update-act-input{
+    width: 100%;
+    margin : 0px !important;
+    background-color: $white !important;
+}
+
+.update-act-width-50 {
+    width: 46%;
+}
+
+.update-act-select {
+    width: 100%;
+    background-color: $white !important;
+}
+
+.button-confirm {
+    background-color: $button !important;
+    color : $white !important;
+}
+
+.button-confirm:hover {
+    background-color: $white !important;
+    color : $button !important;
+    border: 1px solid $button !important;
+}
+
+.margin-10 {
+    margin : 10px 0px;
+}

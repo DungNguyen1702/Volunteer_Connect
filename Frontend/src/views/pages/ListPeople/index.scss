@@ -1,0 +1,52 @@
+@import '../../../constants/colors.scss';
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    font-size: 15px;
+    background-color: $background;
+}
+
+.list-people-wrapper {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    margin : 20px 0px;
+    position: relative;
+}
+
+.list-people-navigation { 
+    width: 20%;
+    margin : 0px 20px;
+    background-color: $activity-tabbar;
+    padding : 10px;
+    border-radius: 20px;
+    height: fit-content;
+    position: sticky;
+    top : 90px;
+}
+
+.list-people-content-wrapper {
+    width: 75%;
+    margin : 0px 20px;
+}
+
+.list-people-content-big-holder {
+    background-color: $background-people-list-content;
+    margin: 10px 0px;
+    padding : 20px;
+    border-radius: 20px;
+    height: 200px;
+}
+
+.list-people-content-title {
+    color : $accent;
+}
+
+#search-bar {
+    position: sticky;
+    top : 90px;
+}

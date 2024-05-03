@@ -2098,7 +2098,7 @@
             ]
         }
     ],
-    "ActivityCreatePost" : {
+    "ActivityCreatePost": {
         "id": 2,
         "image": "https://capitalcampaignpro.com/wp-content/uploads/2023/02/capital-campaign-volunteers.jpg",
         "email": "activity2@example.com",
@@ -2108,11 +2108,388 @@
         "date_start": "2024-04-01",
         "date_end": "2024-04-15",
         "location": "Da Nang",
-        "country" : 1,
+        "country": 1,
         "organization_id": 1,
         "createdAt": "2024-04-01",
         "updatedAt": "2024-04-05",
         "isDeleted": false,
         "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-    }
+    },
+    "ListAccountOrganization": [
+        {
+            "id": 1,
+            "account": "account1",
+            "password": "password1",
+            "name": "Name 1",
+            "avatar": null,
+            "status": true,
+            "role": 2,
+            "createdAt": "2024-05-03",
+            "updatedAt": "2024-05-03",
+            "backgroundNoAva": "#4CAF50",
+            "activity" : {
+                "name" : "Hiking Adventure in the Mountains"
+            }
+        },
+        {
+            "id": 2,
+            "account": "account2",
+            "password": "password2",
+            "name": "Name 2",
+            "avatar": "https://gcs.tripi.vn/public-tripi/tripi-feed/img/474088qgc/avatar-phong-canh-dep_112806483.jpg",
+            "status": true,
+            "role": 2,
+            "createdAt": "2024-05-03",
+            "updatedAt": "2024-05-03",
+            "backgroundNoAva": "#9C27B0",
+            "activity" : {
+                "name" : "Cooking Class: Learn to Make Sushi"
+            }
+        },
+        {
+            "id": 3,
+            "account": "account3",
+            "password": "password3",
+            "name": "Name 3",
+            "avatar": "https://gcs.tripi.vn/public-tripi/tripi-feed/img/474088ebe/anh-avatar-thien-nhien-hung-vi-dep-nhat_085321020.jpg",
+            "status": true,
+            "role": 2,
+            "createdAt": "2024-05-03",
+            "updatedAt": "2024-05-03",
+            "backgroundNoAva": "#FF9800",
+            "activity" : {
+                "name" : "Art Workshop: Painting with Watercolors"
+            }
+            
+        },
+        {
+            "id": 4,
+            "account": "account4",
+            "password": "password4",
+            "name": "Name 4",
+            "avatar": "https://gcs.tripi.vn/public-tripi/tripi-feed/img/474088TVy/anh-avatar-thien-nhien-song-suoi-dep-nhat_085321450.jpg",
+            "status": true,
+            "role": 2,
+            "createdAt": "2024-05-03",
+            "updatedAt": "2024-05-03",
+            "backgroundNoAva": "#2196F3",
+            "activity" : {
+                "name" : "Yoga Retreat for Inner Peace"
+            }
+        },
+        {
+            "id": 5,
+            "account": "account5",
+            "password": "password5",
+            "name": "Name 5",
+            "avatar": null,
+            "status": true,
+            "role": 2,
+            "createdAt": "2024-05-03",
+            "updatedAt": "2024-05-03",
+            "backgroundNoAva": "#FFEB3B",
+            "activity" : {
+                "name" : "Scuba Diving Expedition to Coral Reefs"
+            }
+        },
+        {
+            "id": 6,
+            "account": "account6",
+            "password": "password6",
+            "name": "Name 6",
+            "avatar": "https://gcs.tripi.vn/public-tripi/tripi-feed/img/474088nth/anh-avatar-thien-nhien-troi-may-dep-nhat_085321642.jpg",
+            "status": true,
+            "role": 2,
+            "createdAt": "2024-05-03",
+            "updatedAt": "2024-05-03",
+            "backgroundNoAva": "#E91E63",
+            "activity" : null
+        },
+        {
+            "id": 7,
+            "account": "account7",
+            "password": "password7",
+            "name": "Name 7",
+            "avatar": null,
+            "status": true,
+            "role": 2,
+            "createdAt": "2024-05-03",
+            "updatedAt": "2024-05-03",
+            "backgroundNoAva": "#795548",
+            "activity" : {
+                "name" : "Cultural Tour: Exploring Ancient Temples"
+            }
+        },
+        {
+            "id": 8,
+            "account": "account8",
+            "password": "password8",
+            "name": "Name 8",
+            "avatar": "https://gcs.tripi.vn/public-tripi/tripi-feed/img/474088lfn/avatar-anime-thien-nhien-nhat-ban_085321897.jpg",
+            "status": true,
+            "role": 2,
+            "createdAt": "2024-05-03",
+            "updatedAt": "2024-05-03",
+            "backgroundNoAva": "#FFC107",
+            "activity" : null
+        },
+        {
+            "id": 9,
+            "account": "account9",
+            "password": "password9",
+            "name": "Name 9",
+            "avatar": "https://gcs.tripi.vn/public-tripi/tripi-feed/img/474088lqJ/avatar-bau-troi-hoang-hon-dep_085322299.jpg",
+            "status": true,
+            "role": 2,
+            "createdAt": "2024-05-03",
+            "updatedAt": "2024-05-03",
+            "backgroundNoAva": "#607D8B",
+            "activity" : null
+        },
+        {
+            "id": 10,
+            "account": "account10",
+            "password": "password10",
+            "name": "Name 10",
+            "avatar": null,
+            "status": true,
+            "role": 2,
+            "createdAt": "2024-05-03",
+            "updatedAt": "2024-05-03",
+            "backgroundNoAva": "#FF5722",
+            "activity" : null
+        }
+    ],
+    "ListAccountCandidate": [
+        {
+            "id": 1,
+            "account": "account1",
+            "password": "password1",
+            "name": "Name 1",
+            "avatar": "https://gcs.tripi.vn/public-tripi/tripi-feed/img/474088lqJ/avatar-bau-troi-hoang-hon-dep_085322299.jpg",
+            "status": true,
+            "role": 2,
+            "createdAt": "2024-05-03",
+            "updatedAt": "2024-05-03",
+            "backgroundNoAva": "#4CAF50",
+            "user": {
+                "id": 1,
+                "account_id": 1,
+                "tel": "0123456789",
+                "address": "Address 1",
+                "gender": "Male",
+                "birthday": "2000-01-01",
+                "createdAt": "2024-05-03",
+                "updatedAt": "2024-05-03",
+                "isDeleted": false
+            }
+        },
+        {
+            "id": 2,
+            "account": "account2",
+            "password": "password2",
+            "name": "Name 2",
+            "avatar": null,
+            "status": true,
+            "role": 2,
+            "createdAt": "2024-05-03",
+            "updatedAt": "2024-05-03",
+            "backgroundNoAva": "#9C27B0",
+            "user": {
+                "id": 2,
+                "account_id": 2,
+                "tel": "0123456789",
+                "address": "Address 2",
+                "gender": "Female",
+                "birthday": "2000-01-01",
+                "createdAt": "2024-05-03",
+                "updatedAt": "2024-05-03",
+                "isDeleted": false
+            }
+        },
+        {
+            "id": 3,
+            "account": "account3",
+            "password": "password3",
+            "name": "Name 3",
+            "avatar": "https://gcs.tripi.vn/public-tripi/tripi-feed/img/474088AVP/avatar-bau-troi-xanh-dep_085322572.jpg",
+            "status": true,
+            "role": 2,
+            "createdAt": "2024-05-03",
+            "updatedAt": "2024-05-03",
+            "backgroundNoAva": "#FF9800",
+            "user": {
+                "id": 3,
+                "account_id": 3,
+                "tel": "0123456789",
+                "address": "Address 3",
+                "gender": "Male",
+                "birthday": "2000-01-01",
+                "createdAt": "2024-05-03",
+                "updatedAt": "2024-05-03",
+                "isDeleted": false
+            }
+        },
+        {
+            "id": 4,
+            "account": "account4",
+            "password": "password4",
+            "name": "Name 4",
+            "avatar": null,
+            "status": true,
+            "role": 2,
+            "createdAt": "2024-05-03",
+            "updatedAt": "2024-05-03",
+            "backgroundNoAva": "#2196F3",
+            "user": {
+                "id": 4,
+                "account_id": 4,
+                "tel": "0123456789",
+                "address": "Address 4",
+                "gender": "Female",
+                "birthday": "2000-01-01",
+                "createdAt": "2024-05-03",
+                "updatedAt": "2024-05-03",
+                "isDeleted": false
+            }
+        },
+        {
+            "id": 5,
+            "account": "account5",
+            "password": "password5",
+            "name": "Name 5",
+            "avatar": "https://gcs.tripi.vn/public-tripi/tripi-feed/img/474088XRH/avatar-canh-dong-hoa-tim_085322752.jpg",
+            "status": true,
+            "role": 2,
+            "createdAt": "2024-05-03",
+            "updatedAt": "2024-05-03",
+            "backgroundNoAva": "#FFEB3B",
+            "user": {
+                "id": 5,
+                "account_id": 5,
+                "tel": "0123456789",
+                "address": "Address 5",
+                "gender": "Male",
+                "birthday": "2000-01-01",
+                "createdAt": "2024-05-03",
+                "updatedAt": "2024-05-03",
+                "isDeleted": false
+            }
+        },
+        {
+            "id": 6,
+            "account": "account6",
+            "password": "password6",
+            "name": "Name 6",
+            "avatar": "https://gcs.tripi.vn/public-tripi/tripi-feed/img/474088fCh/avatar-phong-canh-bien-dep_085322993.jpg",
+            "status": true,
+            "role": 2,
+            "createdAt": "2024-05-03",
+            "updatedAt": "2024-05-03",
+            "backgroundNoAva": "#E91E63",
+            "user": {
+                "id": 6,
+                "account_id": 6,
+                "tel": "0123456789",
+                "address": "Address 6",
+                "gender": "Female",
+                "birthday": "2000-01-01",
+                "createdAt": "2024-05-03",
+                "updatedAt": "2024-05-03",
+                "isDeleted": false
+            }
+        },
+        {
+            "id": 7,
+            "account": "account7",
+            "password": "password7",
+            "name": "Name 7",
+            "avatar": null,
+            "status": true,
+            "role": 2,
+            "createdAt": "2024-05-03",
+            "updatedAt": "2024-05-03",
+            "backgroundNoAva": "#795548",
+            "user": {
+                "id": 7,
+                "account_id": 7,
+                "tel": "0123456789",
+                "address": "Address 7",
+                "gender": "Male",
+                "birthday": "2000-01-01",
+                "createdAt": "2024-05-03",
+                "updatedAt": "2024-05-03",
+                "isDeleted": false
+            }
+        },
+        {
+            "id": 8,
+            "account": "account8",
+            "password": "password8",
+            "name": "Name 8",
+            "avatar": "https://gcs.tripi.vn/public-tripi/tripi-feed/img/474088RSo/avatar-phong-canh-chieu-ta_085323181.jpg",
+            "status": true,
+            "role": 2,
+            "createdAt": "2024-05-03",
+            "updatedAt": "2024-05-03",
+            "backgroundNoAva": "#FFC107",
+            "user": {
+                "id": 8,
+                "account_id": 8,
+                "tel": "0123456789",
+                "address": "Address 8",
+                "gender": "Female",
+                "birthday": "2000-01-01",
+                "createdAt": "2024-05-03",
+                "updatedAt": "2024-05-03",
+                "isDeleted": false
+            }
+        },
+        {
+            "id": 9,
+            "account": "account9",
+            "password": "password9",
+            "name": "Name 9",
+            "avatar": null,
+            "status": true,
+            "role": 2,
+            "createdAt": "2024-05-03",
+            "updatedAt": "2024-05-03",
+            "backgroundNoAva": "#607D8B",
+            "user": {
+                "id": 9,
+                "account_id": 9,
+                "tel": "0123456789",
+                "address": "Address 9",
+                "gender": "Male",
+                "birthday": "2000-01-01",
+                "createdAt": "2024-05-03",
+                "updatedAt": "2024-05-03",
+                "isDeleted": false
+            }
+        },
+        {
+            "id": 10,
+            "account": "account10",
+            "password": "password10",
+            "name": "Name 10",
+            "avatar": "https://gcs.tripi.vn/public-tripi/tripi-feed/img/474088KZq/avatar-phong-canh-dep_085323320.jpg",
+            "status": true,
+            "role": 2,
+            "createdAt": "2024-05-03",
+            "updatedAt": "2024-05-03",
+            "backgroundNoAva": "#FF5722",
+            "user": {
+                "id": 10,
+                "account_id": 10,
+                "tel": "0123456789",
+                "address": "Address 10",
+                "gender": "Female",
+                "birthday": "2000-01-01",
+                "createdAt": "2024-05-03",
+                "updatedAt": "2024-05-03",
+                "isDeleted": false
+            }
+        }
+    ]
 }
