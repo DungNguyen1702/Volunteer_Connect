@@ -1,0 +1,421 @@
+.frameChild {
+    height: 131px;
+    width: 956px;
+    position: relative;
+    border-radius: var(--br-11xl) 0 0 var(--br-11xl);
+    background-color: #277869;
+    display: none;
+    max-width: 100%;
+}
+
+.welcome {
+    margin: 0;
+    position: relative;
+    font-size: inherit;
+    font-weight: 700;
+    font-family: inherit;
+    z-index: 1;
+}
+
+.rectangleParent {
+    flex: 1;
+    border-radius: var(--br-11xl) 0 0 var(--br-11xl);
+    background-color: #277869;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: var(--padding-23xl) var(--padding-352xl) var(--padding-22xl);
+    box-sizing: border-box;
+    max-width: 100%;
+}
+
+.frameItem {
+    height: 131px;
+    width: 429px;
+    position: relative;
+    border-radius: 0 var(--br-11xl) var(--br-11xl) 0;
+    background-color: var(--color-gainsboro);
+    display: none;
+    max-width: 100%;
+}
+
+.homePage {
+    margin: 0;
+    position: relative;
+    font-size: inherit;
+    font-weight: 700;
+    font-family: inherit;
+    z-index: 1;
+}
+
+.frameGroup,
+.rectangleGroup {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    max-width: 100%;
+}
+
+.rectangleGroup {
+    width: 429px;
+    border-radius: 0 var(--br-11xl) var(--br-11xl) 0;
+    background-color: var(--color-gainsboro);
+    justify-content: center;
+    padding: var(--padding-23xl) var(--padding-xl) var(--padding-22xl) var(--padding-28xl);
+    box-sizing: border-box;
+    min-width: 429px;
+    white-space: nowrap;
+    color: var(--color-teal-400);
+}
+
+.frameGroup {
+    align-self: stretch;
+    justify-content: flex-start;
+    row-gap: 20px;
+}
+
+.frameInner {
+    width: 671px;
+    height: 605px;
+    position: relative;
+    border-radius: var(--br-11xl);
+    background-color: var(--color-peru);
+    display: none;
+    max-width: 100%;
+}
+
+.whatsVolunteerConnect {
+    margin: 0;
+    position: relative;
+    font-size: inherit;
+    font-weight: 500;
+    font-family: inherit;
+    z-index: 1;
+}
+
+.explanationnavdkadkacds {
+    width: 389px;
+    position: relative;
+    display: inline-block;
+    flex-shrink: 0;
+    max-width: 100%;
+    max-height: 48px;
+    word-break: break-word;
+    z-index: 1;
+}
+
+.explanationnavdkadkacdsWrapper,
+.whatsVolunteerConnectParent {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    max-width: 100%;
+}
+
+.explanationnavdkadkacdsWrapper {
+    flex-direction: row;
+    padding: 0 var(--padding-60xl);
+    box-sizing: border-box;
+    font-size: var(--font-size-xl);
+    color: var(--color-black);
+}
+
+.whatsVolunteerConnectParent {
+    flex-direction: column;
+    gap: var(--gap-82xl);
+}
+
+.rectangleIcon {
+    height: 191px;
+    width: 267px;
+    position: relative;
+    object-fit: cover;
+    z-index: 1;
+}
+
+.rectangleWrapper {
+    width: 625px;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 0 var(--padding-xl);
+    box-sizing: border-box;
+    max-width: 100%;
+}
+
+.rectangleContainer,
+.rectangleDiv {
+    width: 671px;
+    height: 700px;
+    position: relative;
+    border-radius: var(--br-11xl);
+    background-color: var(--color-peru);
+    display: none;
+}
+
+.rectangleContainer {
+    flex: 1;
+    background-color: var(--color-peru);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: var(--padding-45xl) var(--padding-sm) 0;
+    box-sizing: border-box;
+    gap: var(--gap-129xl);
+}
+
+.rectangleDiv {
+    width: 671px;
+    height: 605px;
+    position: relative;
+    background-color: var(--color-linen);
+    display: none;
+    z-index: 1;
+}
+
+.volunteerConnection {
+    margin: 0;
+    position: relative;
+    font-size: inherit;
+    font-weight: 500;
+    font-family: inherit;
+    z-index: 1;
+}
+
+.explanationnavdkadkacds1 {
+    height: 196px;
+    width: 389px;
+    position: relative;
+    display: inline-block;
+    flex-shrink: 0;
+    max-width: 100%;
+    max-height: 196px;
+    word-break: break-word;
+    z-index: 1;
+}
+
+.explanationnavdkadkacdsContainer,
+.volunteerConnectionParent {
+    align-self: stretch;
+    display: flex;
+    align-items: flex-start;
+    max-width: 100%;
+}
+
+.explanationnavdkadkacdsContainer {
+    flex-direction: row;
+    justify-content: flex-end;
+    padding: 0 var(--padding-17xl);
+    box-sizing: border-box;
+    font-size: var(--font-size-xl);
+    color: var(--color-black);
+}
+
+.volunteerConnectionParent {
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: var(--gap-58xl);
+}
+
+.frameChild1 {
+    height: 239px;
+    flex: 1;
+    position: relative;
+    max-width: 100%;
+    overflow: hidden;
+    object-fit: cover;
+    mix-blend-mode: darken;
+    z-index: 2;
+}
+
+.groupDiv,
+.rectangleFrame {
+    display: flex;
+    box-sizing: border-box;
+    max-width: 100%;
+}
+
+.rectangleFrame {
+    width: 357px;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-end;
+    padding: 0 var(--padding-27xl);
+    margin-top: -24px;
+}
+
+.groupDiv {
+    flex: 0.7356;
+    border-radius: var(--br-11xl);
+    background-color: var(--color-linen);
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: flex-start;
+    padding: var(--padding-45xl) var(--padding-143xl) 0 var(--padding-17xl);
+    min-width: 503px;
+}
+
+.frameContainer {
+    align-self: stretch;
+    flex-direction: row;
+    gap: var(--gap-24xl);
+    font-size: var(--font-size-26xl);
+    color: var(--color-saddlebrown);
+    font-family: var(--font-rubik);
+}
+
+.frameContainer,
+.frameParent,
+.introduceInner {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    max-width: 100%;
+}
+
+.frameParent {
+    flex: 1;
+    flex-direction: column;
+    gap: var(--gap-7xl);
+}
+
+.introduceInner {
+    align-self: stretch;
+    flex-direction: row;
+    padding: 0 var(--padding-9xl) var(--padding-3xl) var(--padding-8xl);
+    box-sizing: border-box;
+    text-align: left;
+    font-size: var(--font-size-21xl);
+    color: var(--color-white);
+    font-family: var(--font-inter);
+}
+
+@media screen and (max-width: 1350px) {
+    .rectangleGroup {
+        flex: 1;
+    }
+
+    .frameGroup {
+        flex-wrap: wrap;
+    }
+
+    .groupDiv,
+    .rectangleContainer {
+        flex: 1;
+    }
+
+    .frameContainer {
+        flex-wrap: wrap;
+    }
+}
+
+@media screen and (max-width: 1125px) {
+    .rectangleParent {
+        padding-left: var(--padding-166xl);
+        padding-right: var(--padding-166xl);
+        box-sizing: border-box;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .welcome {
+        font-size: var(--font-size-13xl);
+    }
+
+    .rectangleGroup {
+        min-width: 100%;
+    }
+
+    .whatsVolunteerConnect {
+        font-size: var(--font-size-17xl);
+    }
+
+    .explanationnavdkadkacdsWrapper {
+        padding-left: var(--padding-20xl);
+        padding-right: var(--padding-20xl);
+        box-sizing: border-box;
+    }
+
+    .whatsVolunteerConnectParent {
+        gap: var(--gap-31xl);
+    }
+
+    .rectangleContainer {
+        gap: var(--gap-55xl);
+        padding-top: var(--padding-23xl);
+        box-sizing: border-box;
+    }
+
+    .volunteerConnection {
+        font-size: var(--font-size-17xl);
+    }
+
+    .volunteerConnectionParent {
+        gap: var(--gap-19xl);
+    }
+
+    .groupDiv {
+        padding-top: var(--padding-23xl);
+        padding-right: var(--padding-62xl);
+        box-sizing: border-box;
+        min-width: 100%;
+    }
+
+    .frameContainer {
+        gap: var(--gap-2xl);
+    }
+}
+
+@media screen and (max-width: 450px) {
+    .welcome {
+        font-size: var(--font-size-5xl);
+    }
+
+    .rectangleParent {
+        padding-left: var(--padding-73xl);
+        padding-right: var(--padding-73xl);
+        box-sizing: border-box;
+    }
+
+    .rectangleGroup {
+        padding-left: var(--padding-xl);
+        box-sizing: border-box;
+    }
+
+    .whatsVolunteerConnect {
+        font-size: var(--font-size-8xl);
+    }
+
+    .explanationnavdkadkacds {
+        font-size: var(--font-size-base);
+    }
+
+    .whatsVolunteerConnectParent {
+        gap: var(--gap-6xl);
+    }
+
+    .rectangleContainer {
+        gap: var(--gap-18xl);
+    }
+
+    .volunteerConnection {
+        font-size: var(--font-size-8xl);
+    }
+
+    .explanationnavdkadkacds1 {
+        font-size: var(--font-size-base);
+    }
+
+    .rectangleFrame {
+        padding-left: var(--padding-xl);
+    }
+
+    .groupDiv,
+    .rectangleFrame {
+        padding-right: var(--padding-xl);
+        box-sizing: border-box;
+    }
+}

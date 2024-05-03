@@ -1,0 +1,103 @@
+.name {
+    height: 20px;
+    flex: 1;
+    position: relative;
+    font-weight: 500;
+    display: inline-block;
+  }
+  .nameWrapper {
+    width: 40px;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
+  .frameChild {
+    align-self: stretch;
+    height: 32px;
+    border-radius: 10px;
+    border: 1px solid #d9d9d9;
+    box-sizing: border-box;
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+  .frameParent,
+  .logInInner {
+    width: 404px;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    max-width: 100%;
+  }
+  .frameParent {
+    height: 57.5px;
+    display: none;
+  }
+  .logInInner {
+    display: flex;
+    padding: 201px 0 0;
+    box-sizing: border-box;
+    min-width: 404px;
+  }
+  .backgroundRectIcon {
+    width: 540px;
+    position: relative;
+    border-radius: 30px;
+    max-height: 100%;
+    object-fit: cover;
+    max-width: 100%;
+  }
+  .logIn {
+    width: 100%;
+    position: relative;
+    background-color: #faf6f4;
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding: 29px 29px 25px 175px;
+    box-sizing: border-box;
+    line-height: normal;
+    letter-spacing: normal;
+    gap: var(--gap-xl);
+    text-align: left;
+    font-size: 13px;
+    color: #000;
+    font-family: Poppins;
+  }
+  @media screen and (max-width: 1350px) {
+    .backgroundRectIcon,
+    .logInInner {
+      flex: 1;
+    }
+    .logIn {
+      flex-wrap: wrap;
+    }
+  }
+  @media screen and (max-width: 800px) {
+    .logIn,
+    .logInInner {
+      box-sizing: border-box;
+    }
+    .logInInner {
+      padding-top: 131px;
+      min-width: 100%;
+    }
+    .logIn {
+      padding-left: 87px;
+    }
+  }
+  @media screen and (max-width: 450px) {
+    .logIn,
+    .logInInner {
+      box-sizing: border-box;
+    }
+    .logInInner {
+      padding-top: 85px;
+    }
+    .logIn {
+      padding-left: 20px;
+    }
+  }
+  

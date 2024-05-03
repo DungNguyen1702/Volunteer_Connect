@@ -1,0 +1,493 @@
+.welcomeBack {
+    margin: 0;
+    flex: 1;
+    position: relative;
+    font-size: inherit;
+    font-weight: 800;
+    font-family: inherit;
+    display: inline-block;
+    max-width: 100%;
+  }
+  .headerRectIcon {
+    height: 179px;
+    width: 204px;
+    position: absolute;
+    margin: 0 !important;
+    top: -172px;
+    left: 73px;
+    object-fit: cover;
+    z-index: 1;
+  }
+  .welcomeBackParent {
+    width: 359px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: 0 9px 18px 0;
+    box-sizing: border-box;
+    position: relative;
+    max-width: 100%;
+  }
+  .name {
+    margin: 0;
+    position: relative;
+    font-size: 14px;
+    font-weight: 500;
+    font-family: Poppins;
+    color: #000;
+    text-align: left;
+    display: inline-block;
+    min-width: 100px;
+  }
+  .nameWrapper,
+  .passwordFieldChild {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
+  .passwordFieldChild {
+    width: 82px;
+    border: 0;
+    outline: 0;
+    background-color: transparent;
+    height: 15px;
+    justify-content: center;
+    font-family: Poppins;
+    font-weight: 500;
+    font-size: 10px;
+    color: #d9d9d9;
+  }
+  .frameGroup,
+  .passwordField {
+    align-self: stretch;
+    display: flex;
+    justify-content: flex-start;
+  }
+  .passwordField {
+    border-radius: 10px;
+    border: 1px solid #d9d9d9;
+    overflow: hidden;
+    flex-direction: row;
+    align-items: center;
+    padding: 7px 10px;
+  }
+  .frameGroup {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0 0 5.6px;
+  }
+  .name1 {
+    margin: 0;
+    position: relative;
+    font-size: 14px;
+    font-weight: 500;
+    font-family: Poppins;
+    color: #000;
+    text-align: left;
+    display: inline-block;
+    min-width: 69px;
+  }
+  .forgotPasswordChild,
+  .nameContainer {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
+  .forgotPasswordChild {
+    width: 31px;
+    border: 0;
+    outline: 0;
+    background-color: transparent;
+    height: 15px;
+    justify-content: center;
+    font-family: Poppins;
+    font-weight: 500;
+    font-size: 10px;
+    color: #d9d9d9;
+  }
+  .forgotPassword,
+  .frameContainer {
+    align-self: stretch;
+    display: flex;
+    justify-content: flex-start;
+  }
+  .forgotPassword {
+    border-radius: 10px;
+    border: 1px solid #d9d9d9;
+    overflow: hidden;
+    flex-direction: row;
+    align-items: center;
+    padding: 7px 10px;
+  }
+  .frameContainer {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0 0 5.6px;
+  }
+  .forgotPassword1 {
+    position: relative;
+    font-size: 10px;
+    font-weight: 500;
+    font-family: Poppins;
+    color: #0c2a92;
+    text-align: left;
+    display: inline-block;
+    min-width: 83px;
+    z-index: 1;
+  }
+  .forgotPasswordOption,
+  .loginOptions {
+    align-self: stretch;
+    display: flex;
+    align-items: flex-start;
+  }
+  .forgotPasswordOption {
+    flex-direction: row;
+    justify-content: flex-end;
+    padding: 0 4px;
+    margin-top: -58.6px;
+  }
+  .loginOptions {
+    height: 58.6px;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+  .checkbox {
+    width: 9px;
+    height: 10px;
+    position: relative;
+    border-radius: 2px;
+    border: 1px solid #000;
+    box-sizing: border-box;
+  }
+  .checkboxWrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: 2.2px 0 0;
+  }
+  .rememberFor30 {
+    position: relative;
+    font-size: 9px;
+    font-weight: 500;
+    font-family: Poppins;
+    color: #000;
+    text-align: left;
+    display: inline-block;
+    min-width: 104px;
+  }
+  .loginFields,
+  .rememberMeSettings {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: var(--gap-7xs);
+  }
+  .loginFields {
+    align-self: stretch;
+    flex-direction: column;
+    gap: 20px;
+  }
+  .name2,
+  .nameFrame {
+    width: 43px;
+    display: none;
+  }
+  .name2 {
+    align-self: stretch;
+    position: relative;
+    font-size: 14px;
+    font-weight: 500;
+    font-family: Poppins;
+    color: #000;
+    text-align: left;
+    white-space: nowrap;
+  }
+  .nameFrame {
+    height: 21px;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
+  .name3,
+  .nameWrapper1 {
+    width: 31px;
+    display: none;
+  }
+  .name3 {
+    align-self: stretch;
+    position: relative;
+    font-size: 10px;
+    font-weight: 500;
+    font-family: Poppins;
+    color: #d9d9d9;
+    text-align: left;
+  }
+  .nameWrapper1 {
+    height: 15px;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
+  }
+  .frameDiv,
+  .frameWrapper {
+    align-self: stretch;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    max-width: 100%;
+  }
+  .frameWrapper {
+    flex: 1;
+    border-radius: 10px;
+    background-color: #257769;
+    border: 1px solid #257769;
+    box-sizing: border-box;
+    overflow: hidden;
+    align-items: center;
+    padding: 10px 0 10px 10px;
+  }
+  .frameDiv {
+    width: 404px;
+    align-items: flex-start;
+  }
+  .login {
+    position: relative;
+    font-size: 13px;
+    display: inline-block;
+    font-family: Poppins;
+    color: #fff;
+    text-align: left;
+    min-width: 36px;
+    white-space: nowrap;
+    z-index: 1;
+  }
+  .instanceParent,
+  .loginFormInner,
+  .loginWrapper {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
+  .loginWrapper {
+    flex-direction: column;
+    padding: 6px 0 0;
+    margin-left: -219px;
+  }
+  .instanceParent,
+  .loginFormInner {
+    align-self: stretch;
+    flex-direction: row;
+    box-sizing: border-box;
+    max-width: 100%;
+  }
+  .instanceParent {
+    cursor: pointer;
+    border: 0;
+    padding: 0 0 3.4px;
+    background-color: transparent;
+    flex: 1;
+  }
+  .loginFormInner {
+    height: 50.2px;
+    padding: 0 0 14.8px;
+  }
+  .frameChild {
+    height: 2px;
+    width: 402px;
+    position: absolute;
+    margin: 0 !important;
+    bottom: 3px;
+    left: -191px;
+    border-top: 2px solid #f5f5f5;
+    box-sizing: border-box;
+  }
+  .or {
+    position: relative;
+    font-size: 9px;
+    font-weight: 500;
+    font-family: Poppins;
+    color: #000;
+    text-align: left;
+    display: inline-block;
+    min-width: 11px;
+  }
+  .orWrapper {
+    background-color: #fff;
+    overflow: hidden;
+    justify-content: flex-start;
+    padding: 0 var(--padding-8xs-5);
+    z-index: 1;
+  }
+  .lineParent,
+  .loginForm,
+  .loginFormChild,
+  .orWrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+  }
+  .lineParent {
+    justify-content: flex-start;
+    position: relative;
+  }
+  .loginForm,
+  .loginFormChild {
+    align-self: stretch;
+    justify-content: center;
+    padding: 0 22px 0 20px;
+  }
+  .loginForm {
+    margin: 0;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 0 0 15.6px;
+    box-sizing: border-box;
+    gap: 19.9px;
+    max-width: 100%;
+  }
+  .icons8Google1 {
+    height: 24px;
+    width: 24px;
+    position: relative;
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+  .signInWith {
+    position: relative;
+    font-size: 12px;
+    font-weight: 500;
+    font-family: Poppins;
+    color: #000;
+    text-align: left;
+    display: inline-block;
+    min-width: 116px;
+  }
+  .socialLoginButtons,
+  .socialLoginIcons {
+    display: flex;
+    justify-content: flex-start;
+  }
+  .socialLoginIcons {
+    flex-direction: row;
+    align-items: center;
+    gap: var(--gap-3xs);
+  }
+  .socialLoginButtons {
+    cursor: pointer;
+    border: 1px solid #d9d9d9;
+    padding: 2px 19px;
+    background-color: transparent;
+    border-radius: 10px;
+    overflow: hidden;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .icons8AppleLogo1 {
+    height: 24px;
+    width: 24px;
+    position: relative;
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+  .signInWith1 {
+    position: relative;
+    font-size: 12px;
+    font-weight: 500;
+    font-family: Poppins;
+    color: #000;
+    text-align: left;
+    display: inline-block;
+    min-width: 108px;
+  }
+  .icons8AppleLogo1Parent,
+  .socialLoginButtons1 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .icons8AppleLogo1Parent {
+    flex-direction: row;
+    gap: 10px;
+  }
+  .socialLoginButtons1 {
+    cursor: pointer;
+    border: 1px solid #d9d9d9;
+    padding: 2px 23px;
+    background-color: transparent;
+    border-radius: 10px;
+    overflow: hidden;
+    flex-direction: column;
+  }
+  .socialLoginOptions {
+    align-self: stretch;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 23px;
+  }
+  .dontHaveAn {
+    white-space: pre-wrap;
+  }
+  .signUp {
+    color: #257769;
+  }
+  .dontHaveAnContainer {
+    margin: 0;
+    position: relative;
+    font-size: inherit;
+    font-weight: 500;
+    font-family: inherit;
+  }
+  .dontHaveAnAccountSignUpWrapper {
+    align-self: stretch;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 0 20px 0 35px;
+  }
+  .frameParent,
+  .socialLogins {
+    align-self: stretch;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 22.8px;
+    font-size: 12px;
+    color: #000;
+    font-family: Poppins;
+  }
+  .frameParent {
+    gap: var(--gap-54xl-4);
+    max-width: 100%;
+    text-align: left;
+    font-size: 40px;
+    color: #257769;
+    font-family: Inter;
+  }
+  @media screen and (max-width: 800px) {
+    .welcomeBack {
+      font-size: 32px;
+    }
+  }
+  @media screen and (max-width: 450px) {
+    .welcomeBack {
+      font-size: 24px;
+    }
+    .socialLoginOptions {
+      flex-wrap: wrap;
+    }
+    .frameParent {
+      gap: 37px;
+    }
+  }
+  
