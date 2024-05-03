@@ -1,0 +1,212 @@
+.frameChild {
+    width: 1385px;
+    height: 311px;
+    position: relative;
+    border-radius: var(--br-11xl);
+    background-color: var(--color-mediumaquamarine-300);
+    display: none;
+    max-width: 100%;
+  }
+  .locationDetailsIcon,
+  .locationDetailsIcon1,
+  .locationDetailsIcon2,
+  .locationDetailsIcon3 {
+    height: 58.6px;
+    width: 60px;
+    position: relative;
+    object-fit: cover;
+    min-height: 59px;
+    z-index: 1;
+  }
+  .frameWrapper,
+  .locationDetailsParent {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    max-width: 100%;
+  }
+  .locationDetailsParent {
+    width: 531px;
+    justify-content: space-between;
+    gap: var(--gap-xl);
+  }
+  .frameWrapper {
+    width: 1275px;
+    justify-content: center;
+  }
+  .vietnamSigaporeIndonesia {
+    color: var(--color-black);
+  }
+  .countryRegionContainer {
+    width: 308.9px;
+    position: relative;
+    display: inline-block;
+    z-index: 1;
+  }
+  .nguyenLuongBang {
+    color: var(--color-black);
+  }
+  .headOfficeContainer {
+    align-self: stretch;
+    position: relative;
+    z-index: 1;
+  }
+  .officeInfo,
+  .officeInfoWrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
+  .officeInfo {
+    align-self: stretch;
+    gap: var(--gap-17xl);
+  }
+  .officeInfoWrapper {
+    width: 372px;
+    padding: var(--padding-14xl) 0 0;
+    box-sizing: border-box;
+    max-width: 100%;
+  }
+  .frameItem {
+    width: 408px;
+    position: relative;
+    max-height: 100%;
+    object-fit: cover;
+    max-width: 100%;
+    z-index: 1;
+  }
+  .liveLearnAnd {
+    position: absolute;
+    margin: 0 !important;
+    right: -311px;
+    bottom: 38px;
+    z-index: 1;
+  }
+  .frameInner {
+    height: 125px;
+    width: 126px;
+    position: relative;
+    object-fit: cover;
+    z-index: 2;
+  }
+  .liveLearnAndGrowConnectParent {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+    position: relative;
+    min-width: 126px;
+  }
+  .volunteerConnection {
+    margin: 0;
+    position: relative;
+    font-size: inherit;
+    font-weight: 400;
+    font-family: inherit;
+    z-index: 1;
+  }
+  .frameGroup,
+  .volunteerConnectionWrapper {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
+  .volunteerConnectionWrapper {
+    flex-direction: column;
+    padding: var(--padding-8xl) 0 0;
+    font-size: var(--font-size-11xl);
+    color: var(--color-teal-300);
+  }
+  .frameGroup {
+    flex-direction: row;
+    row-gap: 20px;
+  }
+  .frameContainer {
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: var(--padding-10xl) 0 0;
+    box-sizing: border-box;
+    font-size: var(--font-size-xl);
+    color: var(--color-darkcyan);
+  }
+  .frameContainer,
+  .frameParent,
+  .introduceInner,
+  .rectangleParent {
+    display: flex;
+    align-items: flex-start;
+    max-width: 100%;
+  }
+  .frameParent {
+    align-self: stretch;
+    flex-direction: row;
+    justify-content: center;
+    gap: var(--gap-32xl);
+    text-align: left;
+    font-size: var(--font-size-mini);
+    color: var(--color-teal-100);
+    font-family: var(--font-inter);
+  }
+  .introduceInner,
+  .rectangleParent {
+    justify-content: flex-start;
+    box-sizing: border-box;
+  }
+  .rectangleParent {
+    flex: 1;
+    border-radius: var(--br-11xl);
+    background-color: var(--color-mediumaquamarine-300);
+    flex-direction: column;
+    padding: var(--padding-mid) var(--padding-xl) var(--padding-3xl)
+      var(--padding-36xl);
+    gap: var(--gap-11xl-4);
+  }
+  .introduceInner {
+    align-self: stretch;
+    flex-direction: row;
+    padding: 0 var(--padding-9xl) 0 var(--padding-8xl);
+  }
+  @media screen and (max-width: 1350px) {
+    .frameParent {
+      flex-wrap: wrap;
+    }
+    .rectangleParent {
+      padding-left: var(--padding-8xl);
+      box-sizing: border-box;
+    }
+  }
+  @media screen and (max-width: 800px) {
+    .frameInner,
+    .liveLearnAndGrowConnectParent {
+      flex: 1;
+    }
+    .volunteerConnection {
+      font-size: var(--font-size-5xl);
+    }
+    .frameGroup {
+      flex-wrap: wrap;
+    }
+    .frameParent {
+      gap: var(--gap-6xl);
+    }
+    .rectangleParent {
+      gap: var(--gap-mini);
+    }
+  }
+  @media screen and (max-width: 450px) {
+    .locationDetailsParent {
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .officeInfo {
+      gap: var(--gap-lg);
+    }
+    .liveLearnAnd {
+      font-size: var(--font-size-base);
+    }
+    .volunteerConnection {
+      font-size: var(--font-size-lg);
+    }
+  }
+  
