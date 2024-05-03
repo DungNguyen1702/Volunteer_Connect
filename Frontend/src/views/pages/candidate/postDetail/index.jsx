@@ -5,10 +5,11 @@ import SmallPost from "../../../../components/post/small-post";
 import SupportFunction from "../../../../support/support_function";
 import { Button } from "antd";
 import { ICONS } from "../../../../constants/icons";
-import Comment from "../../../../components/comment/comment";
-import InputComment from "../../../../components/comment/inputComment/inputComment";
+import Comment from "../../../../components/comment/postComment/comment";
+import InputComment from "../../../../components/comment/postComment/inputComment/inputComment";
+import OrganizationIcon from "../../../../components/organization";
 
-function ActivityDetail(props) {
+function PostDetail() {
     const { id } = useParams();
 
     const data = fakeData["Post-detail"];
@@ -65,20 +66,14 @@ function ActivityDetail(props) {
                                     {SupportFunction.ActivityType(act.type)}
                                 </p>
                                 <div class="post-act-org-item-org">
-                                    <p>
+                                    <p style={{ marginRight: "7px" }}>
                                         <strong>Organization : </strong>
                                     </p>
-                                    <div
-                                        class="post-act-org-item-org-click-zone"
-                                        onClick={handlerClickOrg}
-                                    >
-                                        <p>{org.name}</p>
-                                        <img
-                                            alt="org-ava"
-                                            src={org.avatar}
-                                            class="org-ava"
-                                        />
-                                    </div>
+                                    <OrganizationIcon
+                                        name={org.name}
+                                        avatar={org.avatar}
+                                        id={org.id}
+                                    />
                                 </div>
                             </div>
                         </div>
@@ -109,12 +104,16 @@ function ActivityDetail(props) {
                     ))}
                 </div>
             </div>
-            <div class='post-comment-wrapper'>
-                <div class='post-comment-reply'><InputComment/></div>
-                {comments.map(comment => <Comment data={comment} key={comment.id} />)}
+            <div class="post-comment-wrapper">
+                <div class="post-comment-reply">
+                    <InputComment />
+                </div>
+                {comments.map((comment) => (
+                    <Comment data={comment} key={comment.id} />
+                ))}
             </div>
         </div>
     );
 }
 
-export default ActivityDetail;
+export default PostDetail;

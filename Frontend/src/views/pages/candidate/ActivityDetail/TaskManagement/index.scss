@@ -1,0 +1,67 @@
+@import '../../../../../constants/colors.scss';
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    font-size: 15px;
+    background-color: $background;
+}
+
+.task-management-wrapper {
+    display: flex;
+    width: 100%;
+}
+
+.task-management-tabbar-wrapper {
+    flex : 25%;
+    background-color: $task_management_tabbar;
+    padding-top: -4px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding : 20px 0px;
+}
+
+.task-management-content-wrapper {
+    flex: 80%;
+    overflow: hidden;
+}
+
+.task-management-create-button {
+    background-color: $button !important;
+    width: 94%;
+    color : $white;
+    border-radius: 20px;
+    margin : 10px 0px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 25px 0px !important;
+}
+
+.task-management-create-button:hover {
+    background-color: $white !important;
+    color: $button !important;
+    border: 1px solid $button !important;
+}
+
+.task-management-create-area {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.task-management-content-header {
+    display: flex;
+    margin-top : 10px;
+    margin-bottom: 30px;
+    .ant-input-outlined {
+        background-color: $background_input_green !important;
+        width: 400px;
+        margin : 0px 20px;
+    }
+}

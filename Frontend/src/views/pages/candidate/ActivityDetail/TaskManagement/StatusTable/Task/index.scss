@@ -1,0 +1,77 @@
+@import '../../../../../../../constants/colors.scss';
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.task-item-wrapper{
+    width: 95%;
+    display: flex;
+    background-color: $white;
+    margin : 10px 0px;
+    border-radius: 10px;
+    min-height: fit-content;
+}
+
+.task-item-description {
+    width: 100%;
+}
+
+.task-item-container{
+    display: flex;
+    width: 100%;
+}
+
+.task-item-wrapper:hover {
+    transform: scale(1, 1.05); /* Phóng to lên 1.05 lần */
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.5); /* Điều chỉnh giá trị rgba để tùy chỉnh màu sắc và độ đậm của bóng */
+}
+
+.task-color-status-task{
+    width: 20px;
+    height: 100%;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+
+.task-item-content{
+    padding : 10px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+}
+
+.task-item-title{
+    color: $accent;
+}
+
+.task-item-date-container{
+    width: 100%;
+    margin : 10px 0px;
+}
+
+.task-date-end {
+    margin-top : 5px
+}
+
+.primary-green-color-style {
+    color: $primary_green;
+}
+
+.task-item-footer {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-top : 10px;
+    align-items: end;
+}
+
+.task-item-comment-number{
+    color : $subText;
+}
+
+.avatar-no-user-item {
+    background-color: $background-no-user-avatar;
+}

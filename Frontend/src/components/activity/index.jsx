@@ -1,6 +1,7 @@
 import "./index.scss";
 import SupportFunction from "../../support/support_function";
 import { COLOR_STATUS, COLOR_FONT } from "../../constants/color_status";
+import { useNavigate } from "react-router-dom";
 
 function ActivityComponent(props) {
     const data = props.data;
@@ -12,9 +13,12 @@ function ActivityComponent(props) {
     const location = `${data.location}, ${SupportFunction.ActivityCountry(
         data.country
     )}`;
+    const navigate = useNavigate();
+
 
     const onClickAct = () => {
         console.log("click act " + data.id);
+        navigate(`/activity-detail/${data.id}`)
     };
 
     return (

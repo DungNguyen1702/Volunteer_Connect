@@ -22,7 +22,7 @@ function SmallPost(props) {
 
     const clickAct = ()=>{
         console.log('small post ' + data.id);
-        navigate(`/activity-detail/${data.id}`)
+        navigate(`/post-detail/${data.id}`)
     }
 
     return (

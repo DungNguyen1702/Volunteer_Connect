@@ -1,0 +1,55 @@
+@import '../../../../../../constants/colors.scss';
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.task-table-item-wrapper {
+    display: flex;
+    width: 85%;
+    padding : 10px 4%;
+    justify-content: space-around;
+    align-items: center;
+    border-radius: 20px;
+    margin : 10px 0px;
+}
+
+.task-table-item-wrapper:hover {
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.5); /* Điều chỉnh giá trị rgba để tùy chỉnh màu sắc và độ đậm của bóng */
+    transform: scale(1.05);
+}
+
+.showing-task-table {
+    box-shadow: 0px 0px 15px $accent;
+    opacity: 0.7;
+    border: 1px solid $primary_green;
+}
+
+#task-table-button-container {
+    flex: 30%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#task-table-item-name, #task-table-item-input-name {
+    flex : 60%;
+    margin-right: 10px;
+}
+
+#task-table-item-input-name {
+    margin-right: 5px;
+    padding-left: 5px;
+    height: 30px;
+    border-radius: 10px;
+}
+
+.task-table-item-button {
+    border : 0px;
+}
+
+.task-table-item-button:hover {
+    background-color: $button !important;
+    color : $white !important;
+}

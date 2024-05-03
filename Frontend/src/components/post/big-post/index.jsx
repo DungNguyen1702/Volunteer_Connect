@@ -26,7 +26,7 @@ function BigPost(props) {
 
     const clickAct = ()=>{
         console.log('big post ' + data.id);
-        navigate(`/activity-detail/${data.id}`)
+        navigate(`/post-detail/${data.id}`)
     }
 
     return (
@@ -80,8 +80,8 @@ function BigPost(props) {
 
             {/* big post footer  */}
             <div class='big-post-footer'>
-                <p class='big-post-comment'>{SupportFunction.getStringComment(data.activity.comments)}</p>
-                <p class='big-post-participant'>{SupportFunction.getStringParticipant(data.activity.participants)}</p>
+                <p class='big-post-comment'>{SupportFunction.getStringComment(data.comments)}</p>
+                <p class='big-post-participant'>{SupportFunction.getStringParticipant(data.participants)}</p>
             </div>
         </div>
     );

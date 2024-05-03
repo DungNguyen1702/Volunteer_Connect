@@ -1,0 +1,13 @@
+@import '../../../../../../constants/colors.scss';
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.status-table-wrapper {
+    display: flex;
+    overflow-x: auto;
+    width: 100%;
+    margin : 0px 10px;
+}

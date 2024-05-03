@@ -10,7 +10,8 @@
             "role": 1,
             "createdAt": "2024-04-10",
             "updatedAt": "2024-04-10",
-            "isDeleted": false
+            "isDeleted": false,
+            "backgroundNoAva": "#1abc9c"
         },
         {
             "id": 2,
@@ -22,7 +23,8 @@
             "role": 3,
             "createdAt": "2024-04-10",
             "updatedAt": "2024-04-10",
-            "isDeleted": false
+            "isDeleted": false,
+            "backgroundNoAva": "#e74c3c"
         },
         {
             "id": 3,
@@ -34,7 +36,8 @@
             "role": 3,
             "createdAt": "2024-04-10",
             "updatedAt": "2024-04-10",
-            "isDeleted": false
+            "isDeleted": false,
+            "backgroundNoAva": "#e74c3c"
         }
     ],
     "Users": [
@@ -82,7 +85,7 @@
             "deadline": "2024-04-30",
             "date_start": "2024-04-01",
             "date_end": "2024-04-15",
-            "country" : 4,
+            "country": 4,
             "location": "Da Nang",
             "organization_id": 1,
             "createdAt": "2024-04-01",
@@ -99,7 +102,7 @@
             "deadline": "2024-04-30",
             "date_start": "2024-04-01",
             "date_end": "2024-04-15",
-            "country" : 3,
+            "country": 3,
             "location": "Da Nang",
             "organization_id": 1,
             "createdAt": "2024-04-01",
@@ -116,7 +119,7 @@
             "deadline": "2024-04-30",
             "date_start": "2024-04-01",
             "date_end": "2024-04-15",
-            "country" : 2,
+            "country": 2,
             "location": "Da Nang",
             "organization_id": 1,
             "createdAt": "2024-04-01",
@@ -133,7 +136,7 @@
             "deadline": "2024-04-30",
             "date_start": "2024-04-01",
             "date_end": "2024-04-15",
-            "country" : 1,
+            "country": 1,
             "location": "Da Nang",
             "organization_id": 1,
             "createdAt": "2024-04-01",
@@ -142,7 +145,671 @@
             "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
         }
     ],
-    "Activity_Detail": [
+    "Activity_Detail": {
+        "id": 1,
+        "image": "https://capitalcampaignpro.com/wp-content/uploads/2023/02/capital-campaign-volunteers.jpg",
+        "email": "activity1@example.com",
+        "name": "Activity 1",
+        "type": 1,
+        "deadline": "2024-04-30",
+        "date_start": "2024-04-01",
+        "date_end": "2024-04-15",
+        "country": 4,
+        "location": "Da Nang",
+        "organization_id": 1,
+        "createdAt": "2024-04-01",
+        "updatedAt": "2024-04-05",
+        "isDeleted": false,
+        "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+        "participants": 10,
+        "comments": 10,
+        "postNumber": 10,
+        "posts": [
+            {
+                "id": 1,
+                "activity_id": 1,
+                "title": "Post 1 for Activity 1",
+                "image": "https://capitalcampaignpro.com/wp-content/uploads/2023/02/capital-campaign-volunteers.jpg",
+                "content": "<h2>GIỚI THIỆU CHUNG:</h2>\n<p>Alpha Lady là tổ chức phi lợi nhuận do các bạn trẻ thành lập với mục đích tôn lên giá trị của người phụ nữ trong cuộc sống, giúp mỗi bạn nữ hiểu rõ giá trị vẻ đẹp đích thực của bản thân cũng như truyền những năng lượng yêu bản thân đến cho tất cả mọi người. Dự án mong muốn có thể tác động một phần tích cực vào cuộc sống của mọi người, giúp mọi người tự tin hơn và ngày càng tiến gần đến hạnh phúc.</p>\n<p>Sau khi nhận được những lá đơn đầy tiềm năng từ các bạn trẻ khắp mọi miền tổ quốc, Alpha Lady rất vui, biết ơn khi được đón nhận sự yêu thương, quan tâm từ mọi người. Để có thể giúp sự mệnh tổ chức ngày càng bay xa hơn, lan toả đến nhiều người cũng như đáp lại sự yêu mến, quan tâm từ mọi người, tổ chức quyết định sẽ gia hạn đơn ứng tuyển thành viên gen 3.0 để có thể chiêu mộ những nhân tố mới về với tổ chức. Cơ hội một lần nữa gõ cửa, bạn đã sẵn sàng mở cửa đón nhận nó chưa nào? Nếu câu trả lời là có thì nhanh nhanh điền đơn đồng hành cùng Alpha Lady bạn nhé!</p>\n<h3>VỊ TRÍ ỨNG TUYỂN:</h3>\n<ul>\n  <li>Ban Nội dung</li>\n  <li>Ban Dịch thuật</li>\n  <li>Ban Design</li>\n  <li>Ban Nhân sự</li>\n  <li>Ban Đại sứ truyền thông</li>\n  <li>Ban Điều hành</li>\n  <li>Ban Audio</li>\n</ul>\n<h3>ĐỊA ĐIỂM:</h3>\n<p>Toàn quốc.</p>\n<h3>MÔ TẢ CÔNG VIỆC:</h3>\n<p><strong>1. Ban Nội dung</strong></p>\n<ul>\n  <li>Lên ý tưởng, triển khai viết bài, chỉnh sửa nội dung bài đăng dự án;</li>\n  <li>Xây dựng kế hoạch hoạt động dự án.</li>\n</ul>\n<p>... (các vị trí khác tương tự)</p>\n<h3>QUYỀN LỢI CHUNG:</h3>\n<ul>\n  <li>Được làm việc trong môi trường chuyên nghiệp, vui vẻ, gặp gỡ bạn bè cùng sở thích, chia sẻ kinh nghiệm;</li>\n  <li>Có cơ hội làm việc, phát triển bản thân trong môi trường thân thiện, thoải mái;</li>\n  <li>Nâng cao kỹ năng mềm, kỹ năng văn phòng;</li>\n  <li>Được giấy chứng nhận sau khi hoàn thành xuất sắc công việc sau 3 tháng hoạt động.</li>\n</ul>\n<h3>THAM GIA ỨNG TUYỂN:</h3>\n<p><a href=\"#\">TẠI ĐÂY</a></p>\n<h3>THÔNG TIN CHI TIẾT:</h3>\n<p><a href=\"#\">TẠI ĐÂY</a></p>\n<p>Post Views: 1,472</p>\n<p>Shortlink: <a href=\"https://ivolunteervietnam.com?p=82830\">https://ivolunteervietnam.com?p=82830</a></p>\n</div>",
+                "createdAt": "2024-04-02",
+                "comments": 10
+            },
+            {
+                "id": 2,
+                "activity_id": 1,
+                "title": "Post 2 for Activity 1",
+                "image": "https://fjwp.s3.amazonaws.com/blog/wp-content/uploads/2020/10/15153848/The-Career-Benefits-of-Volunteering-During-Your-Job-Search-2-1024x512.jpg",
+                "content": "<h2>GIỚI THIỆU CHUNG:</h2>\n<p>Alpha Lady là tổ chức phi lợi nhuận do các bạn trẻ thành lập với mục đích tôn lên giá trị của người phụ nữ trong cuộc sống, giúp mỗi bạn nữ hiểu rõ giá trị vẻ đẹp đích thực của bản thân cũng như truyền những năng lượng yêu bản thân đến cho tất cả mọi người. Dự án mong muốn có thể tác động một phần tích cực vào cuộc sống của mọi người, giúp mọi người tự tin hơn và ngày càng tiến gần đến hạnh phúc.</p>\n<p>Sau khi nhận được những lá đơn đầy tiềm năng từ các bạn trẻ khắp mọi miền tổ quốc, Alpha Lady rất vui, biết ơn khi được đón nhận sự yêu thương, quan tâm từ mọi người. Để có thể giúp sự mệnh tổ chức ngày càng bay xa hơn, lan toả đến nhiều người cũng như đáp lại sự yêu mến, quan tâm từ mọi người, tổ chức quyết định sẽ gia hạn đơn ứng tuyển thành viên gen 3.0 để có thể chiêu mộ những nhân tố mới về với tổ chức. Cơ hội một lần nữa gõ cửa, bạn đã sẵn sàng mở cửa đón nhận nó chưa nào? Nếu câu trả lời là có thì nhanh nhanh điền đơn đồng hành cùng Alpha Lady bạn nhé!</p>\n<h3>VỊ TRÍ ỨNG TUYỂN:</h3>\n<ul>\n  <li>Ban Nội dung</li>\n  <li>Ban Dịch thuật</li>\n  <li>Ban Design</li>\n  <li>Ban Nhân sự</li>\n  <li>Ban Đại sứ truyền thông</li>\n  <li>Ban Điều hành</li>\n  <li>Ban Audio</li>\n</ul>\n<h3>ĐỊA ĐIỂM:</h3>\n<p>Toàn quốc.</p>\n<h3>MÔ TẢ CÔNG VIỆC:</h3>\n<p><strong>1. Ban Nội dung</strong></p>\n<ul>\n  <li>Lên ý tưởng, triển khai viết bài, chỉnh sửa nội dung bài đăng dự án;</li>\n  <li>Xây dựng kế hoạch hoạt động dự án.</li>\n</ul>\n<p>... (các vị trí khác tương tự)</p>\n<h3>QUYỀN LỢI CHUNG:</h3>\n<ul>\n  <li>Được làm việc trong môi trường chuyên nghiệp, vui vẻ, gặp gỡ bạn bè cùng sở thích, chia sẻ kinh nghiệm;</li>\n  <li>Có cơ hội làm việc, phát triển bản thân trong môi trường thân thiện, thoải mái;</li>\n  <li>Nâng cao kỹ năng mềm, kỹ năng văn phòng;</li>\n  <li>Được giấy chứng nhận sau khi hoàn thành xuất sắc công việc sau 3 tháng hoạt động.</li>\n</ul>\n<h3>THAM GIA ỨNG TUYỂN:</h3>\n<p><a href=\"#\">TẠI ĐÂY</a></p>\n<h3>THÔNG TIN CHI TIẾT:</h3>\n<p><a href=\"#\">TẠI ĐÂY</a></p>\n<p>Post Views: 1,472</p>\n<p>Shortlink: <a href=\"https://ivolunteervietnam.com?p=82830\">https://ivolunteervietnam.com?p=82830</a></p>\n</div>",
+                "createdAt": "2024-04-03",
+                "comments": 10
+            },
+            {
+                "id": 3,
+                "activity_id": 2,
+                "title": "Post 1 for Activity 2",
+                "image": "https://www.oceans-research.com/wp-content/uploads/2022/01/Types-of-Volunteer-Programs-and-How-to-pick-the-right-one.jpg",
+                "content": "<h2>GIỚI THIỆU CHUNG:</h2>\n<p>Alpha Lady là tổ chức phi lợi nhuận do các bạn trẻ thành lập với mục đích tôn lên giá trị của người phụ nữ trong cuộc sống, giúp mỗi bạn nữ hiểu rõ giá trị vẻ đẹp đích thực của bản thân cũng như truyền những năng lượng yêu bản thân đến cho tất cả mọi người. Dự án mong muốn có thể tác động một phần tích cực vào cuộc sống của mọi người, giúp mọi người tự tin hơn và ngày càng tiến gần đến hạnh phúc.</p>\n<p>Sau khi nhận được những lá đơn đầy tiềm năng từ các bạn trẻ khắp mọi miền tổ quốc, Alpha Lady rất vui, biết ơn khi được đón nhận sự yêu thương, quan tâm từ mọi người. Để có thể giúp sự mệnh tổ chức ngày càng bay xa hơn, lan toả đến nhiều người cũng như đáp lại sự yêu mến, quan tâm từ mọi người, tổ chức quyết định sẽ gia hạn đơn ứng tuyển thành viên gen 3.0 để có thể chiêu mộ những nhân tố mới về với tổ chức. Cơ hội một lần nữa gõ cửa, bạn đã sẵn sàng mở cửa đón nhận nó chưa nào? Nếu câu trả lời là có thì nhanh nhanh điền đơn đồng hành cùng Alpha Lady bạn nhé!</p>\n<h3>VỊ TRÍ ỨNG TUYỂN:</h3>\n<ul>\n  <li>Ban Nội dung</li>\n  <li>Ban Dịch thuật</li>\n  <li>Ban Design</li>\n  <li>Ban Nhân sự</li>\n  <li>Ban Đại sứ truyền thông</li>\n  <li>Ban Điều hành</li>\n  <li>Ban Audio</li>\n</ul>\n<h3>ĐỊA ĐIỂM:</h3>\n<p>Toàn quốc.</p>\n<h3>MÔ TẢ CÔNG VIỆC:</h3>\n<p><strong>1. Ban Nội dung</strong></p>\n<ul>\n  <li>Lên ý tưởng, triển khai viết bài, chỉnh sửa nội dung bài đăng dự án;</li>\n  <li>Xây dựng kế hoạch hoạt động dự án.</li>\n</ul>\n<p>... (các vị trí khác tương tự)</p>\n<h3>QUYỀN LỢI CHUNG:</h3>\n<ul>\n  <li>Được làm việc trong môi trường chuyên nghiệp, vui vẻ, gặp gỡ bạn bè cùng sở thích, chia sẻ kinh nghiệm;</li>\n  <li>Có cơ hội làm việc, phát triển bản thân trong môi trường thân thiện, thoải mái;</li>\n  <li>Nâng cao kỹ năng mềm, kỹ năng văn phòng;</li>\n  <li>Được giấy chứng nhận sau khi hoàn thành xuất sắc công việc sau 3 tháng hoạt động.</li>\n</ul>\n<h3>THAM GIA ỨNG TUYỂN:</h3>\n<p><a href=\"#\">TẠI ĐÂY</a></p>\n<h3>THÔNG TIN CHI TIẾT:</h3>\n<p><a href=\"#\">TẠI ĐÂY</a></p>\n<p>Post Views: 1,472</p>\n<p>Shortlink: <a href=\"https://ivolunteervietnam.com?p=82830\">https://ivolunteervietnam.com?p=82830</a></p>\n</div>",
+                "createdAt": "2024-04-02",
+                "comments": 10
+            },
+            {
+                "id": 4,
+                "activity_id": 3,
+                "title": "Post 1 for Activity 3",
+                "image": "https://www.oceans-research.com/wp-content/uploads/2022/01/Short-term.jpg",
+                "content": "<h2>GIỚI THIỆU CHUNG:</h2>\n<p>Alpha Lady là tổ chức phi lợi nhuận do các bạn trẻ thành lập với mục đích tôn lên giá trị của người phụ nữ trong cuộc sống, giúp mỗi bạn nữ hiểu rõ giá trị vẻ đẹp đích thực của bản thân cũng như truyền những năng lượng yêu bản thân đến cho tất cả mọi người. Dự án mong muốn có thể tác động một phần tích cực vào cuộc sống của mọi người, giúp mọi người tự tin hơn và ngày càng tiến gần đến hạnh phúc.</p>\n<p>Sau khi nhận được những lá đơn đầy tiềm năng từ các bạn trẻ khắp mọi miền tổ quốc, Alpha Lady rất vui, biết ơn khi được đón nhận sự yêu thương, quan tâm từ mọi người. Để có thể giúp sự mệnh tổ chức ngày càng bay xa hơn, lan toả đến nhiều người cũng như đáp lại sự yêu mến, quan tâm từ mọi người, tổ chức quyết định sẽ gia hạn đơn ứng tuyển thành viên gen 3.0 để có thể chiêu mộ những nhân tố mới về với tổ chức. Cơ hội một lần nữa gõ cửa, bạn đã sẵn sàng mở cửa đón nhận nó chưa nào? Nếu câu trả lời là có thì nhanh nhanh điền đơn đồng hành cùng Alpha Lady bạn nhé!</p>\n<h3>VỊ TRÍ ỨNG TUYỂN:</h3>\n<ul>\n  <li>Ban Nội dung</li>\n  <li>Ban Dịch thuật</li>\n  <li>Ban Design</li>\n  <li>Ban Nhân sự</li>\n  <li>Ban Đại sứ truyền thông</li>\n  <li>Ban Điều hành</li>\n  <li>Ban Audio</li>\n</ul>\n<h3>ĐỊA ĐIỂM:</h3>\n<p>Toàn quốc.</p>\n<h3>MÔ TẢ CÔNG VIỆC:</h3>\n<p><strong>1. Ban Nội dung</strong></p>\n<ul>\n  <li>Lên ý tưởng, triển khai viết bài, chỉnh sửa nội dung bài đăng dự án;</li>\n  <li>Xây dựng kế hoạch hoạt động dự án.</li>\n</ul>\n<p>... (các vị trí khác tương tự)</p>\n<h3>QUYỀN LỢI CHUNG:</h3>\n<ul>\n  <li>Được làm việc trong môi trường chuyên nghiệp, vui vẻ, gặp gỡ bạn bè cùng sở thích, chia sẻ kinh nghiệm;</li>\n  <li>Có cơ hội làm việc, phát triển bản thân trong môi trường thân thiện, thoải mái;</li>\n  <li>Nâng cao kỹ năng mềm, kỹ năng văn phòng;</li>\n  <li>Được giấy chứng nhận sau khi hoàn thành xuất sắc công việc sau 3 tháng hoạt động.</li>\n</ul>\n<h3>THAM GIA ỨNG TUYỂN:</h3>\n<p><a href=\"#\">TẠI ĐÂY</a></p>\n<h3>THÔNG TIN CHI TIẾT:</h3>\n<p><a href=\"#\">TẠI ĐÂY</a></p>\n<p>Post Views: 1,472</p>\n<p>Shortlink: <a href=\"https://ivolunteervietnam.com?p=82830\">https://ivolunteervietnam.com?p=82830</a></p>\n</div>",
+                "createdAt": "2024-04-03",
+                "comments": 10
+            },
+            {
+                "id": 5,
+                "activity_id": 4,
+                "title": "Post 1 for Activity 3",
+                "image": "https://kindful.com/wp-content/uploads/volunteer-management_Feature.jpg",
+                "content": "<h2>GIỚI THIỆU CHUNG:</h2>\n<p>Alpha Lady là tổ chức phi lợi nhuận do các bạn trẻ thành lập với mục đích tôn lên giá trị của người phụ nữ trong cuộc sống, giúp mỗi bạn nữ hiểu rõ giá trị vẻ đẹp đích thực của bản thân cũng như truyền những năng lượng yêu bản thân đến cho tất cả mọi người. Dự án mong muốn có thể tác động một phần tích cực vào cuộc sống của mọi người, giúp mọi người tự tin hơn và ngày càng tiến gần đến hạnh phúc.</p>\n<p>Sau khi nhận được những lá đơn đầy tiềm năng từ các bạn trẻ khắp mọi miền tổ quốc, Alpha Lady rất vui, biết ơn khi được đón nhận sự yêu thương, quan tâm từ mọi người. Để có thể giúp sự mệnh tổ chức ngày càng bay xa hơn, lan toả đến nhiều người cũng như đáp lại sự yêu mến, quan tâm từ mọi người, tổ chức quyết định sẽ gia hạn đơn ứng tuyển thành viên gen 3.0 để có thể chiêu mộ những nhân tố mới về với tổ chức. Cơ hội một lần nữa gõ cửa, bạn đã sẵn sàng mở cửa đón nhận nó chưa nào? Nếu câu trả lời là có thì nhanh nhanh điền đơn đồng hành cùng Alpha Lady bạn nhé!</p>\n<h3>VỊ TRÍ ỨNG TUYỂN:</h3>\n<ul>\n  <li>Ban Nội dung</li>\n  <li>Ban Dịch thuật</li>\n  <li>Ban Design</li>\n  <li>Ban Nhân sự</li>\n  <li>Ban Đại sứ truyền thông</li>\n  <li>Ban Điều hành</li>\n  <li>Ban Audio</li>\n</ul>\n<h3>ĐỊA ĐIỂM:</h3>\n<p>Toàn quốc.</p>\n<h3>MÔ TẢ CÔNG VIỆC:</h3>\n<p><strong>1. Ban Nội dung</strong></p>\n<ul>\n  <li>Lên ý tưởng, triển khai viết bài, chỉnh sửa nội dung bài đăng dự án;</li>\n  <li>Xây dựng kế hoạch hoạt động dự án.</li>\n</ul>\n<p>... (các vị trí khác tương tự)</p>\n<h3>QUYỀN LỢI CHUNG:</h3>\n<ul>\n  <li>Được làm việc trong môi trường chuyên nghiệp, vui vẻ, gặp gỡ bạn bè cùng sở thích, chia sẻ kinh nghiệm;</li>\n  <li>Có cơ hội làm việc, phát triển bản thân trong môi trường thân thiện, thoải mái;</li>\n  <li>Nâng cao kỹ năng mềm, kỹ năng văn phòng;</li>\n  <li>Được giấy chứng nhận sau khi hoàn thành xuất sắc công việc sau 3 tháng hoạt động.</li>\n</ul>\n<h3>THAM GIA ỨNG TUYỂN:</h3>\n<p><a href=\"#\">TẠI ĐÂY</a></p>\n<h3>THÔNG TIN CHI TIẾT:</h3>\n<p><a href=\"#\">TẠI ĐÂY</a></p>\n<p>Post Views: 1,472</p>\n<p>Shortlink: <a href=\"https://ivolunteervietnam.com?p=82830\">https://ivolunteervietnam.com?p=82830</a></p>\n</div>",
+                "createdAt": "2024-04-03",
+                "comments": 10
+            }
+        ],
+        "applyFormNumber": 10,
+        "Organization": {
+            "id": 1,
+            "account": "account1",
+            "password": "password1",
+            "name": "User 1",
+            "avatar": "https://didongviet.vn/dchannel/wp-content/uploads/2023/08/hinh-nen-3d-hinh-nen-iphone-dep-3d-didongviet@2x.jpg",
+            "status": true,
+            "role": 1,
+            "createdAt": "2024-04-10",
+            "updatedAt": "2024-04-10",
+            "isDeleted": false
+        },
+        "candidates": [
+            {
+                "id": 1,
+                "user": {
+                    "id": 1,
+                    "account": {
+                        "id": 1,
+                        "account": "user1@example.com",
+                        "password": "password123",
+                        "name": "John Doe",
+                        "avatar": null,
+                        "status": true,
+                        "role": 1,
+                        "createdAt": "2024-04-28",
+                        "updatedAt": "2024-04-28",
+                        "backgroundNoAva": "#9b59b6"
+                    },
+                    "tel": "0123456789",
+                    "address": "123 ABC Street, XYZ City",
+                    "gender": "Male",
+                    "birthday": "1990-05-15",
+                    "createdAt": "2024-04-28",
+                    "updatedAt": "2024-04-28",
+                    "isDeleted": false
+                },
+                "activity_id": 1,
+                "certificate": null,
+                "date_earn_certificate": null,
+                "createdAt": "2024-04-28"
+            },
+            {
+                "id": 2,
+                "user": {
+                    "id": 2,
+                    "account": {
+                        "id": 2,
+                        "account": "user2@example.com",
+                        "password": "password456",
+                        "name": "Jane Smith",
+                        "avatar": null,
+                        "status": true,
+                        "role": 1,
+                        "createdAt": "2024-04-28",
+                        "updatedAt": "2024-04-28",
+                        "backgroundNoAva": "#9b59b6"
+                    },
+                    "tel": "0987654321",
+                    "address": "456 XYZ Avenue, ABC City",
+                    "gender": "Female",
+                    "birthday": "1995-08-20",
+                    "createdAt": "2024-04-28",
+                    "updatedAt": "2024-04-28",
+                    "isDeleted": false
+                },
+                "activity_id": 2,
+                "certificate": "https://www.vietnamworks.com/hrinsider/wp-content/uploads/2023/12/anh-den-ngau.jpeg",
+                "date_earn_certificate": "2024-04-28",
+                "createdAt": "2024-04-28"
+            },
+            {
+                "id": 3,
+                "user": {
+                    "id": 3,
+                    "account": {
+                        "id": 3,
+                        "account": "user3@example.com",
+                        "password": "password789",
+                        "name": "Alice Johnson",
+                        "avatar": "https://www.vietnamworks.com/hrinsider/wp-content/uploads/2023/12/anh-den-ngau.jpeg",
+                        "status": true,
+                        "role": 1,
+                        "createdAt": "2024-04-28",
+                        "updatedAt": "2024-04-28",
+                        "backgroundNoAva": "#9b59b6"
+                    },
+                    "tel": "0345678901",
+                    "address": "789 QRS Road, DEF City",
+                    "gender": "Male",
+                    "birthday": "1985-12-10",
+                    "createdAt": "2024-04-28",
+                    "updatedAt": "2024-04-28",
+                    "isDeleted": false
+                },
+                "activity_id": 3,
+                "certificate": "https://www.vietnamworks.com/hrinsider/wp-content/uploads/2023/12/anh-den-ngau.jpeg",
+                "date_earn_certificate": "2024-04-28",
+                "createdAt": "2024-04-28"
+            },
+            {
+                "id": 4,
+                "user": {
+                    "id": 4,
+                    "account": {
+                        "id": 4,
+                        "account": "user4@example.com",
+                        "password": "password987",
+                        "name": "Emma Wilson",
+                        "avatar": "https://www.vietnamworks.com/hrinsider/wp-content/uploads/2023/12/anh-den-ngau-005.jpg",
+                        "status": true,
+                        "role": 1,
+                        "createdAt": "2024-04-28",
+                        "updatedAt": "2024-04-28",
+                        "backgroundNoAva": "#9b59b6"
+                    },
+                    "tel": "0765432109",
+                    "address": "1011 MNO Lane, GHI City",
+                    "gender": "Female",
+                    "birthday": "1998-03-25",
+                    "createdAt": "2024-04-28",
+                    "updatedAt": "2024-04-28",
+                    "isDeleted": false
+                },
+                "activity_id": 4,
+                "certificate": null,
+                "date_earn_certificate": null,
+                "createdAt": "2024-04-28"
+            },
+            {
+                "id": 5,
+                "user": {
+                    "id": 5,
+                    "account": {
+                        "id": 5,
+                        "account": "user5@example.com",
+                        "password": "password321",
+                        "name": "Michael Brown",
+                        "avatar": "https://www.vietnamworks.com/hrinsider/wp-content/uploads/2023/12/anh-den-ngau-005.jpg",
+                        "status": true,
+                        "role": 1,
+                        "createdAt": "2024-04-28",
+                        "updatedAt": "2024-04-28",
+                        "backgroundNoAva": "#9b59b6"
+                    },
+                    "tel": "0234567891",
+                    "address": "1213 JKL Street, MNO City",
+                    "gender": "Male",
+                    "birthday": "1987-07-05",
+                    "createdAt": "2024-04-28",
+                    "updatedAt": "2024-04-28",
+                    "isDeleted": false
+                },
+                "activity_id": 5,
+                "certificate": null,
+                "date_earn_certificate": null,
+                "createdAt": "2024-04-28"
+            },
+            {
+                "id": 6,
+                "user": {
+                    "id": 6,
+                    "account": {
+                        "id": 6,
+                        "account": "user6@example.com",
+                        "password": "password654",
+                        "name": "Sophia Miller",
+                        "avatar": "https://www.vietnamworks.com/hrinsider/wp-content/uploads/2023/12/anh-den-ngau-003.jpg",
+                        "status": true,
+                        "role": 1,
+                        "createdAt": "2024-04-28",
+                        "updatedAt": "2024-04-28",
+                        "backgroundNoAva": "#9b59b6"
+                    },
+                    "tel": "0543210987",
+                    "address": "1415 PQR Avenue, STU City",
+                    "gender": "Female",
+                    "birthday": "1993-10-30",
+                    "createdAt": "2024-04-28",
+                    "updatedAt": "2024-04-28",
+                    "isDeleted": false
+                },
+                "activity_id": 6,
+                "certificate": null,
+                "date_earn_certificate": null,
+                "createdAt": "2024-04-28"
+            },
+            {
+                "id": 7,
+                "user": {
+                    "id": 7,
+                    "account": {
+                        "id": 7,
+                        "account": "user7@example.com",
+                        "password": "password135",
+                        "name": "Olivia Taylor",
+                        "avatar": "https://www.vietnamworks.com/hrinsider/wp-content/uploads/2023/12/anh-den-ngau-002.jpg",
+                        "status": true,
+                        "role": 1,
+                        "createdAt": "2024-04-28",
+                        "updatedAt": "2024-04-28",
+                        "backgroundNoAva": "#9b59b6"
+                    },
+                    "tel": "0456789123",
+                    "address": "1617 VWX Road, YZA City",
+                    "gender": "Male",
+                    "birthday": "1982-02-18",
+                    "createdAt": "2024-04-28",
+                    "updatedAt": "2024-04-28",
+                    "isDeleted": false
+                },
+                "activity_id": 7,
+                "certificate": null,
+                "date_earn_certificate": null,
+                "createdAt": "2024-04-28"
+            },
+            {
+                "id": 8,
+                "user": {
+                    "id": 8,
+                    "account": {
+                        "id": 8,
+                        "account": "user8@example.com",
+                        "password": "password246",
+                        "name": "William Martinez",
+                        "avatar": "https://www.vietnamworks.com/hrinsider/wp-content/uploads/2023/12/anh-den-ngau-002.jpg",
+                        "status": true,
+                        "role": 1,
+                        "createdAt": "2024-04-28",
+                        "updatedAt": "2024-04-28",
+                        "backgroundNoAva": "#9b59b6"
+                    },
+                    "tel": "0567891234",
+                    "address": "1819 XYZ Street, ZAB City",
+                    "gender": "Female",
+                    "birthday": "1996-09-12",
+                    "createdAt": "2024-04-28",
+                    "updatedAt": null,
+                    "isDeleted": false
+                },
+                "activity_id": 8,
+                "certificate": null,
+                "date_earn_certificate": null,
+                "createdAt": "2024-04-28"
+            },
+            {
+                "id": 9,
+                "user": {
+                    "id": 9,
+                    "account": {
+                        "id": 9,
+                        "account": "user9@example.com",
+                        "password": "password753",
+                        "name": "David Anderson",
+                        "avatar": "https://www.vietnamworks.com/hrinsider/wp-content/uploads/2023/12/anh-den-ngau-001.jpg",
+                        "status": true,
+                        "role": 1,
+                        "createdAt": "2024-04-28",
+                        "updatedAt": "2024-04-28",
+                        "backgroundNoAva": "#9b59b6"
+                    },
+                    "tel": "0678912345",
+                    "address": "2021 RST Avenue, CDE City",
+                    "gender": "Male",
+                    "birthday": "1989-11-27",
+                    "createdAt": "2024-04-28",
+                    "updatedAt": "2024-04-28",
+                    "isDeleted": false
+                },
+                "activity_id": 9,
+                "certificate": "https://www.vietnamworks.com/hrinsider/wp-content/uploads/2023/12/anh-den-ngau-001.jpg",
+                "date_earn_certificate": "2024-04-28",
+                "createdAt": "2024-04-28"
+            },
+            {
+                "id": 10,
+                "user": {
+                    "id": 10,
+                    "account": {
+                        "id": 10,
+                        "account": "user10@example.com",
+                        "password": "password951",
+                        "name": "Ethan Harris",
+                        "avatar": "https://www.vietnamworks.com/hrinsider/wp-content/uploads/2023/12/anh-den-ngau-001.jpg",
+                        "status": true,
+                        "role": 1,
+                        "createdAt": "2024-04-28",
+                        "updatedAt": "2024-04-28",
+                        "backgroundNoAva": "#9b59b6"
+                    },
+                    "tel": "0789123456",
+                    "address": "2122 UVW Road, DEF City",
+                    "gender": "Female",
+                    "birthday": "1997-06-14",
+                    "createdAt": "2024-04-28",
+                    "updatedAt": "2024-04-28",
+                    "isDeleted": false
+                },
+                "activity_id": 10,
+                "certificate": null,
+                "date_earn_certificate": null,
+                "createdAt": "2024-04-28"
+            }
+        ],
+        "applyForms": [
+            {
+                "id": 1,
+                "activity_id": 101,
+                "user_id": 201,
+                "user": {
+                    "id": 10,
+                    "account": {
+                        "id": 10,
+                        "account": "user10@example.com",
+                        "password": "password951",
+                        "name": "Ethan Harris",
+                        "avatar": "https://www.vietnamworks.com/hrinsider/wp-content/uploads/2023/12/anh-den-ngau-001.jpg",
+                        "status": true,
+                        "role": 1,
+                        "createdAt": "2024-04-28",
+                        "updatedAt": "2024-04-28",
+                        "backgroundNoAva": "#2ecc71"
+                    },
+                    "tel": "0789123456",
+                    "address": "2122 UVW Road, DEF City",
+                    "gender": "Female",
+                    "birthday": "1997-06-14",
+                    "createdAt": "2024-04-28",
+                    "updatedAt": "2024-04-28",
+                    "isDeleted": false
+                },
+                "isConfirmed": null,
+                "createdAt": "2024-05-01"
+            },
+            {
+                "id": 2,
+                "activity_id": 102,
+                "user_id": 202,
+                "user": {
+                    "id": 11,
+                    "account": {
+                        "id": 11,
+                        "account": "user11@example.com",
+                        "password": "password952",
+                        "name": "Emma Thompson",
+                        "avatar": "https://www.vietnamworks.com/hrinsider/wp-content/uploads/2023/12/anh-den-ngau-002.jpg",
+                        "status": true,
+                        "role": 1,
+                        "createdAt": "2024-04-29",
+                        "updatedAt": "2024-04-29",
+                        "backgroundNoAva": "#3498db"
+                    },
+                    "tel": "0789123457",
+                    "address": "2123 UVW Road, DEF City",
+                    "gender": "Male",
+                    "birthday": "1995-08-21",
+                    "createdAt": "2024-04-29",
+                    "updatedAt": "2024-04-29",
+                    "isDeleted": false
+                },
+                "isConfirmed": null,
+                "createdAt": "2024-05-02"
+            },
+            {
+                "id": 3,
+                "activity_id": 103,
+                "user_id": 203,
+                "user": {
+                    "id": 12,
+                    "account": {
+                        "id": 12,
+                        "account": "user12@example.com",
+                        "password": "password953",
+                        "name": "Oliver Johnson",
+                        "avatar": "https://www.vietnamworks.com/hrinsider/wp-content/uploads/2023/12/anh-den-ngau-003.jpg",
+                        "status": true,
+                        "role": 1,
+                        "createdAt": "2024-04-30",
+                        "updatedAt": "2024-04-30",
+                        "backgroundNoAva": "#9b59b6"
+                    },
+                    "tel": "0789123458",
+                    "address": "2124 UVW Road, DEF City",
+                    "gender": "Male",
+                    "birthday": "1996-12-05",
+                    "createdAt": "2024-04-30",
+                    "updatedAt": "2024-04-30",
+                    "isDeleted": false
+                },
+                "isConfirmed": null,
+                "createdAt": "2024-05-03"
+            },
+            {
+                "id": 4,
+                "activity_id": 104,
+                "user_id": 204,
+                "user": {
+                    "id": 13,
+                    "account": {
+                        "id": 13,
+                        "account": "user13@example.com",
+                        "password": "password954",
+                        "name": "Ava Taylor",
+                        "avatar": "https://www.vietnamworks.com/hrinsider/wp-content/uploads/2023/12/anh-den-ngau-004.jpg",
+                        "status": true,
+                        "role": 1,
+                        "createdAt": "2024-05-01",
+                        "updatedAt": "2024-05-01",
+                        "backgroundNoAva": "#f1c40f"
+                    },
+                    "tel": "0789123459",
+                    "address": "2125 UVW Road, DEF City",
+                    "gender": "Female",
+                    "birthday": "1998-02-18",
+                    "createdAt": "2024-05-01",
+                    "updatedAt": "2024-05-01",
+                    "isDeleted": false
+                },
+                "isConfirmed": null,
+                "createdAt": "2024-05-04"
+            },
+            {
+                "id": 5,
+                "activity_id": 105,
+                "user_id": 205,
+                "user": {
+                    "id": 14,
+                    "account": {
+                        "id": 14,
+                        "account": "user14@example.com",
+                        "password": "password955",
+                        "name": "William Brown",
+                        "avatar": "https://www.vietnamworks.com/hrinsider/wp-content/uploads/2023/12/anh-den-ngau-005.jpg",
+                        "status": true,
+                        "role": 1,
+                        "createdAt": "2024-05-02",
+                        "updatedAt": "2024-05-02",
+                        "backgroundNoAva": "#e74c3c"
+                    },
+                    "tel": "0789123460",
+                    "address": "2126 UVW Road, DEF City",
+                    "gender": "Male",
+                    "birthday": "1999-10-29",
+                    "createdAt": "2024-05-02",
+                    "updatedAt": "2024-05-02",
+                    "isDeleted": false
+                },
+                "isConfirmed": null,
+                "createdAt": "2024-05-05"
+            },
+            {
+                "id": 6,
+                "activity_id": 106,
+                "user_id": 206,
+                "user": {
+                    "id": 15,
+                    "account": {
+                        "id": 15,
+                        "account": "user15@example.com",
+                        "password": "password956",
+                        "name": "Sophia Wilson",
+                        "avatar": "https://www.vietnamworks.com/hrinsider/wp-content/uploads/2023/12/anh-den-ngau-006.jpg",
+                        "status": true,
+                        "role": 1,
+                        "createdAt": "2024-05-03",
+                        "updatedAt": "2024-05-03",
+                        "backgroundNoAva": "#1abc9c"
+                    },
+                    "tel": "0789123461",
+                    "address": "2127 UVW Road, DEF City",
+                    "gender": "Female",
+                    "birthday": "2000-07-12",
+                    "createdAt": "2024-05-03",
+                    "updatedAt": "2024-05-03",
+                    "isDeleted": false
+                },
+                "isConfirmed": null,
+                "createdAt": "2024-05-06"
+            },
+            {
+                "id": 7,
+                "activity_id": 107,
+                "user_id": 207,
+                "user": {
+                    "id": 16,
+                    "account": {
+                        "id": 16,
+                        "account": "user16@example.com",
+                        "password": "password957",
+                        "name": "James Miller",
+                        "avatar": "https://www.vietnamworks.com/hrinsider/wp-content/uploads/2023/12/anh-den-ngau-007.jpg",
+                        "status": true,
+                        "role": 1,
+                        "createdAt": "2024-05-04",
+                        "updatedAt": "2024-05-04",
+                        "backgroundNoAva": "#3498db"
+                    },
+                    "tel": "0789123462",
+                    "address": "2128 UVW Road, DEF City",
+                    "gender": "Male",
+                    "birthday": "2001-03-25",
+                    "createdAt": "2024-05-04",
+                    "updatedAt": "2024-05-04",
+                    "isDeleted": false
+                },
+                "isConfirmed": null,
+                "createdAt": "2024-05-07"
+            },
+            {
+                "id": 8,
+                "activity_id": 108,
+                "user_id": 208,
+                "user": {
+                    "id": 17,
+                    "account": {
+                        "id": 17,
+                        "account": "user17@example.com",
+                        "password": "password958",
+                        "name": "Emily Anderson",
+                        "avatar": "https://www.vietnamworks.com/hrinsider/wp-content/uploads/2023/12/anh-den-ngau-008.jpg",
+                        "status": true,
+                        "role": 1,
+                        "createdAt": "2024-05-05",
+                        "updatedAt": "2024-05-05",
+                        "backgroundNoAva": "#9b59b6"
+                    },
+                    "tel": "0789123463",
+                    "address": "2129 UVW Road, DEF City",
+                    "gender": "Female",
+                    "birthday": "2002-09-08",
+                    "createdAt": "2024-05-05",
+                    "updatedAt": "2024-05-05",
+                    "isDeleted": false
+                },
+                "isConfirmed": null,
+                "createdAt": "2024-05-08"
+            },
+            {
+                "id": 9,
+                "activity_id": 109,
+                "user_id": 209,
+                "user": {
+                    "id": 18,
+                    "account": {
+                        "id": 18,
+                        "account": "user18@example.com",
+                        "password": "password959",
+                        "name": "Noah Martinez",
+                        "avatar": "https://www.vietnamworks.com/hrinsider/wp-content/uploads/2023/12/anh-den-ngau-009.jpg",
+                        "status": true,
+                        "role": 1,
+                        "createdAt": "2024-05-06",
+                        "updatedAt": "2024-05-06",
+                        "backgroundNoAva": "#e74c3c"
+                    },
+                    "tel": "0789123464",
+                    "address": "2130 UVW Road, DEF City",
+                    "gender": "Male",
+                    "birthday": "2003-01-14",
+                    "createdAt": "2024-05-06",
+                    "updatedAt": "2024-05-06",
+                    "isDeleted": false
+                },
+                "isConfirmed": null,
+                "createdAt": "2024-05-09"
+            },
+            {
+                "id": 10,
+                "activity_id": 110,
+                "user_id": 210,
+                "user": {
+                    "id": 19,
+                    "account": {
+                        "id": 19,
+                        "account": "user19@example.com",
+                        "password": "password960",
+                        "name": "Isabella Garcia",
+                        "avatar": "https://www.vietnamworks.com/hrinsider/wp-content/uploads/2023/12/anh-den-ngau-010.jpg",
+                        "status": true,
+                        "role": 1,
+                        "createdAt": "2024-05-07",
+                        "updatedAt": "2024-05-07",
+                        "backgroundNoAva": "#1abc9c"
+                    },
+                    "tel": "0789123465",
+                    "address": "2131 UVW Road, DEF City",
+                    "gender": "Female",
+                    "birthday": "2004-05-27",
+                    "createdAt": "2024-05-07",
+                    "updatedAt": "2024-05-07",
+                    "isDeleted": false
+                },
+                "isConfirmed": null,
+                "createdAt": "2024-05-10"
+            }
+        ]
+    },
+    "Activity_Detail_List": [
         {
             "id": 1,
             "image": "https://capitalcampaignpro.com/wp-content/uploads/2023/02/capital-campaign-volunteers.jpg",
@@ -152,7 +819,7 @@
             "deadline": "2024-04-30",
             "date_start": "2024-04-01",
             "date_end": "2024-04-15",
-            "country" : 4,
+            "country": 4,
             "location": "Da Nang",
             "organization_id": 1,
             "createdAt": "2024-04-01",
@@ -171,7 +838,7 @@
             "deadline": "2024-04-30",
             "date_start": "2024-04-01",
             "date_end": "2024-04-15",
-            "country" : 3,
+            "country": 3,
             "location": "Da Nang",
             "organization_id": 1,
             "createdAt": "2024-04-01",
@@ -190,7 +857,7 @@
             "deadline": "2024-04-30",
             "date_start": "2024-04-01",
             "date_end": "2024-04-15",
-            "country" : 2,
+            "country": 2,
             "location": "Da Nang",
             "organization_id": 1,
             "createdAt": "2024-04-01",
@@ -209,7 +876,7 @@
             "deadline": "2024-04-30",
             "date_start": "2024-04-01",
             "date_end": "2024-04-15",
-            "country" : 1,
+            "country": 1,
             "location": "Da Nang",
             "organization_id": 1,
             "createdAt": "2024-04-01",
@@ -228,7 +895,7 @@
             "deadline": "2024-04-30",
             "date_start": "2024-04-01",
             "date_end": "2024-04-15",
-            "country" : 4,
+            "country": 4,
             "location": "Da Nang",
             "organization_id": 1,
             "createdAt": "2024-04-01",
@@ -247,7 +914,7 @@
             "deadline": "2024-04-30",
             "date_start": "2024-04-01",
             "date_end": "2024-04-15",
-            "country" : 3,
+            "country": 3,
             "location": "Da Nang",
             "organization_id": 1,
             "createdAt": "2024-04-01",
@@ -266,7 +933,7 @@
             "deadline": "2024-04-30",
             "date_start": "2024-04-01",
             "date_end": "2024-04-15",
-            "country" : 2,
+            "country": 2,
             "location": "Da Nang",
             "organization_id": 1,
             "createdAt": "2024-04-01",
@@ -285,7 +952,86 @@
             "deadline": "2024-04-30",
             "date_start": "2024-04-01",
             "date_end": "2024-04-15",
-            "country" : 1,
+            "country": 1,
+            "location": "Da Nang",
+            "organization_id": 1,
+            "createdAt": "2024-04-01",
+            "updatedAt": "2024-04-05",
+            "isDeleted": false,
+            "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+            "participants": 10,
+            "comments": 10
+        },
+
+        {
+            "id": 9,
+            "image": "https://capitalcampaignpro.com/wp-content/uploads/2023/02/capital-campaign-volunteers.jpg",
+            "email": "activity4@example.com",
+            "name": "Activity 4",
+            "type": 4,
+            "deadline": "2024-04-30",
+            "date_start": "2024-04-01",
+            "date_end": "2024-04-15",
+            "country": 1,
+            "location": "Da Nang",
+            "organization_id": 1,
+            "createdAt": "2024-04-01",
+            "updatedAt": "2024-04-05",
+            "isDeleted": false,
+            "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+            "participants": 10,
+            "comments": 10
+        },
+
+        {
+            "id": 10,
+            "image": "https://capitalcampaignpro.com/wp-content/uploads/2023/02/capital-campaign-volunteers.jpg",
+            "email": "activity4@example.com",
+            "name": "Activity 4",
+            "type": 4,
+            "deadline": "2024-04-30",
+            "date_start": "2024-04-01",
+            "date_end": "2024-04-15",
+            "country": 1,
+            "location": "Da Nang",
+            "organization_id": 1,
+            "createdAt": "2024-04-01",
+            "updatedAt": "2024-04-05",
+            "isDeleted": false,
+            "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+            "participants": 10,
+            "comments": 10
+        },
+
+        {
+            "id": 11,
+            "image": "https://capitalcampaignpro.com/wp-content/uploads/2023/02/capital-campaign-volunteers.jpg",
+            "email": "activity4@example.com",
+            "name": "Activity 4",
+            "type": 4,
+            "deadline": "2024-04-30",
+            "date_start": "2024-04-01",
+            "date_end": "2024-04-15",
+            "country": 1,
+            "location": "Da Nang",
+            "organization_id": 1,
+            "createdAt": "2024-04-01",
+            "updatedAt": "2024-04-05",
+            "isDeleted": false,
+            "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+            "participants": 10,
+            "comments": 10
+        },
+        {
+            "id": 12,
+            "image": "https://capitalcampaignpro.com/wp-content/uploads/2023/02/capital-campaign-volunteers.jpg",
+            "email": "activity4@example.com",
+            "name": "Activity 4",
+            "type": 4,
+            "deadline": "2024-04-30",
+            "date_start": "2024-04-01",
+            "date_end": "2024-04-15",
+            "country": 1,
             "location": "Da Nang",
             "organization_id": 1,
             "createdAt": "2024-04-01",
@@ -355,14 +1101,14 @@
                 "createdAt": "2024-04-01",
                 "updatedAt": "2024-04-05",
                 "isDeleted": false,
-                "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-                "participants": 10,
-                "comments": 10
+                "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
             },
             "title": "Post 1 for Activity 1",
             "image": "https://capitalcampaignpro.com/wp-content/uploads/2023/02/capital-campaign-volunteers.jpg",
             "content": "<h2>GIỚI THIỆU CHUNG:</h2>\n<p>Alpha Lady là tổ chức phi lợi nhuận do các bạn trẻ thành lập với mục đích tôn lên giá trị của người phụ nữ trong cuộc sống, giúp mỗi bạn nữ hiểu rõ giá trị vẻ đẹp đích thực của bản thân cũng như truyền những năng lượng yêu bản thân đến cho tất cả mọi người. Dự án mong muốn có thể tác động một phần tích cực vào cuộc sống của mọi người, giúp mọi người tự tin hơn và ngày càng tiến gần đến hạnh phúc.</p>\n<p>Sau khi nhận được những lá đơn đầy tiềm năng từ các bạn trẻ khắp mọi miền tổ quốc, Alpha Lady rất vui, biết ơn khi được đón nhận sự yêu thương, quan tâm từ mọi người. Để có thể giúp sự mệnh tổ chức ngày càng bay xa hơn, lan toả đến nhiều người cũng như đáp lại sự yêu mến, quan tâm từ mọi người, tổ chức quyết định sẽ gia hạn đơn ứng tuyển thành viên gen 3.0 để có thể chiêu mộ những nhân tố mới về với tổ chức. Cơ hội một lần nữa gõ cửa, bạn đã sẵn sàng mở cửa đón nhận nó chưa nào? Nếu câu trả lời là có thì nhanh nhanh điền đơn đồng hành cùng Alpha Lady bạn nhé!</p>\n<h3>VỊ TRÍ ỨNG TUYỂN:</h3>\n<ul>\n  <li>Ban Nội dung</li>\n  <li>Ban Dịch thuật</li>\n  <li>Ban Design</li>\n  <li>Ban Nhân sự</li>\n  <li>Ban Đại sứ truyền thông</li>\n  <li>Ban Điều hành</li>\n  <li>Ban Audio</li>\n</ul>\n<h3>ĐỊA ĐIỂM:</h3>\n<p>Toàn quốc.</p>\n<h3>MÔ TẢ CÔNG VIỆC:</h3>\n<p><strong>1. Ban Nội dung</strong></p>\n<ul>\n  <li>Lên ý tưởng, triển khai viết bài, chỉnh sửa nội dung bài đăng dự án;</li>\n  <li>Xây dựng kế hoạch hoạt động dự án.</li>\n</ul>\n<p>... (các vị trí khác tương tự)</p>\n<h3>QUYỀN LỢI CHUNG:</h3>\n<ul>\n  <li>Được làm việc trong môi trường chuyên nghiệp, vui vẻ, gặp gỡ bạn bè cùng sở thích, chia sẻ kinh nghiệm;</li>\n  <li>Có cơ hội làm việc, phát triển bản thân trong môi trường thân thiện, thoải mái;</li>\n  <li>Nâng cao kỹ năng mềm, kỹ năng văn phòng;</li>\n  <li>Được giấy chứng nhận sau khi hoàn thành xuất sắc công việc sau 3 tháng hoạt động.</li>\n</ul>\n<h3>THAM GIA ỨNG TUYỂN:</h3>\n<p><a href=\"#\">TẠI ĐÂY</a></p>\n<h3>THÔNG TIN CHI TIẾT:</h3>\n<p><a href=\"#\">TẠI ĐÂY</a></p>\n<p>Post Views: 1,472</p>\n<p>Shortlink: <a href=\"https://ivolunteervietnam.com?p=82830\">https://ivolunteervietnam.com?p=82830</a></p>\n</div>",
-            "createdAt": "2024-04-02"
+            "createdAt": "2024-04-02",
+            "participants": 10,
+            "comments": 10
         },
         {
             "id": 2,
@@ -380,14 +1126,14 @@
                 "createdAt": "2024-04-01",
                 "updatedAt": "2024-04-05",
                 "isDeleted": false,
-                "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-                "participants": 10,
-                "comments": 10
+                "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
             },
             "title": "Post 2 for Activity 1",
             "image": "https://fjwp.s3.amazonaws.com/blog/wp-content/uploads/2020/10/15153848/The-Career-Benefits-of-Volunteering-During-Your-Job-Search-2-1024x512.jpg",
             "content": "<h2>GIỚI THIỆU CHUNG:</h2>\n<p>Alpha Lady là tổ chức phi lợi nhuận do các bạn trẻ thành lập với mục đích tôn lên giá trị của người phụ nữ trong cuộc sống, giúp mỗi bạn nữ hiểu rõ giá trị vẻ đẹp đích thực của bản thân cũng như truyền những năng lượng yêu bản thân đến cho tất cả mọi người. Dự án mong muốn có thể tác động một phần tích cực vào cuộc sống của mọi người, giúp mọi người tự tin hơn và ngày càng tiến gần đến hạnh phúc.</p>\n<p>Sau khi nhận được những lá đơn đầy tiềm năng từ các bạn trẻ khắp mọi miền tổ quốc, Alpha Lady rất vui, biết ơn khi được đón nhận sự yêu thương, quan tâm từ mọi người. Để có thể giúp sự mệnh tổ chức ngày càng bay xa hơn, lan toả đến nhiều người cũng như đáp lại sự yêu mến, quan tâm từ mọi người, tổ chức quyết định sẽ gia hạn đơn ứng tuyển thành viên gen 3.0 để có thể chiêu mộ những nhân tố mới về với tổ chức. Cơ hội một lần nữa gõ cửa, bạn đã sẵn sàng mở cửa đón nhận nó chưa nào? Nếu câu trả lời là có thì nhanh nhanh điền đơn đồng hành cùng Alpha Lady bạn nhé!</p>\n<h3>VỊ TRÍ ỨNG TUYỂN:</h3>\n<ul>\n  <li>Ban Nội dung</li>\n  <li>Ban Dịch thuật</li>\n  <li>Ban Design</li>\n  <li>Ban Nhân sự</li>\n  <li>Ban Đại sứ truyền thông</li>\n  <li>Ban Điều hành</li>\n  <li>Ban Audio</li>\n</ul>\n<h3>ĐỊA ĐIỂM:</h3>\n<p>Toàn quốc.</p>\n<h3>MÔ TẢ CÔNG VIỆC:</h3>\n<p><strong>1. Ban Nội dung</strong></p>\n<ul>\n  <li>Lên ý tưởng, triển khai viết bài, chỉnh sửa nội dung bài đăng dự án;</li>\n  <li>Xây dựng kế hoạch hoạt động dự án.</li>\n</ul>\n<p>... (các vị trí khác tương tự)</p>\n<h3>QUYỀN LỢI CHUNG:</h3>\n<ul>\n  <li>Được làm việc trong môi trường chuyên nghiệp, vui vẻ, gặp gỡ bạn bè cùng sở thích, chia sẻ kinh nghiệm;</li>\n  <li>Có cơ hội làm việc, phát triển bản thân trong môi trường thân thiện, thoải mái;</li>\n  <li>Nâng cao kỹ năng mềm, kỹ năng văn phòng;</li>\n  <li>Được giấy chứng nhận sau khi hoàn thành xuất sắc công việc sau 3 tháng hoạt động.</li>\n</ul>\n<h3>THAM GIA ỨNG TUYỂN:</h3>\n<p><a href=\"#\">TẠI ĐÂY</a></p>\n<h3>THÔNG TIN CHI TIẾT:</h3>\n<p><a href=\"#\">TẠI ĐÂY</a></p>\n<p>Post Views: 1,472</p>\n<p>Shortlink: <a href=\"https://ivolunteervietnam.com?p=82830\">https://ivolunteervietnam.com?p=82830</a></p>\n</div>",
-            "createdAt": "2024-04-03"
+            "createdAt": "2024-04-03",
+            "participants": 10,
+            "comments": 10
         },
         {
             "id": 3,
@@ -405,14 +1151,14 @@
                 "createdAt": "2024-04-01",
                 "updatedAt": "2024-04-05",
                 "isDeleted": false,
-                "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-                "participants": 10,
-                "comments": 10
+                "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
             },
             "title": "Post 1 for Activity 2",
             "image": "https://www.oceans-research.com/wp-content/uploads/2022/01/Types-of-Volunteer-Programs-and-How-to-pick-the-right-one.jpg",
             "content": "<h2>GIỚI THIỆU CHUNG:</h2>\n<p>Alpha Lady là tổ chức phi lợi nhuận do các bạn trẻ thành lập với mục đích tôn lên giá trị của người phụ nữ trong cuộc sống, giúp mỗi bạn nữ hiểu rõ giá trị vẻ đẹp đích thực của bản thân cũng như truyền những năng lượng yêu bản thân đến cho tất cả mọi người. Dự án mong muốn có thể tác động một phần tích cực vào cuộc sống của mọi người, giúp mọi người tự tin hơn và ngày càng tiến gần đến hạnh phúc.</p>\n<p>Sau khi nhận được những lá đơn đầy tiềm năng từ các bạn trẻ khắp mọi miền tổ quốc, Alpha Lady rất vui, biết ơn khi được đón nhận sự yêu thương, quan tâm từ mọi người. Để có thể giúp sự mệnh tổ chức ngày càng bay xa hơn, lan toả đến nhiều người cũng như đáp lại sự yêu mến, quan tâm từ mọi người, tổ chức quyết định sẽ gia hạn đơn ứng tuyển thành viên gen 3.0 để có thể chiêu mộ những nhân tố mới về với tổ chức. Cơ hội một lần nữa gõ cửa, bạn đã sẵn sàng mở cửa đón nhận nó chưa nào? Nếu câu trả lời là có thì nhanh nhanh điền đơn đồng hành cùng Alpha Lady bạn nhé!</p>\n<h3>VỊ TRÍ ỨNG TUYỂN:</h3>\n<ul>\n  <li>Ban Nội dung</li>\n  <li>Ban Dịch thuật</li>\n  <li>Ban Design</li>\n  <li>Ban Nhân sự</li>\n  <li>Ban Đại sứ truyền thông</li>\n  <li>Ban Điều hành</li>\n  <li>Ban Audio</li>\n</ul>\n<h3>ĐỊA ĐIỂM:</h3>\n<p>Toàn quốc.</p>\n<h3>MÔ TẢ CÔNG VIỆC:</h3>\n<p><strong>1. Ban Nội dung</strong></p>\n<ul>\n  <li>Lên ý tưởng, triển khai viết bài, chỉnh sửa nội dung bài đăng dự án;</li>\n  <li>Xây dựng kế hoạch hoạt động dự án.</li>\n</ul>\n<p>... (các vị trí khác tương tự)</p>\n<h3>QUYỀN LỢI CHUNG:</h3>\n<ul>\n  <li>Được làm việc trong môi trường chuyên nghiệp, vui vẻ, gặp gỡ bạn bè cùng sở thích, chia sẻ kinh nghiệm;</li>\n  <li>Có cơ hội làm việc, phát triển bản thân trong môi trường thân thiện, thoải mái;</li>\n  <li>Nâng cao kỹ năng mềm, kỹ năng văn phòng;</li>\n  <li>Được giấy chứng nhận sau khi hoàn thành xuất sắc công việc sau 3 tháng hoạt động.</li>\n</ul>\n<h3>THAM GIA ỨNG TUYỂN:</h3>\n<p><a href=\"#\">TẠI ĐÂY</a></p>\n<h3>THÔNG TIN CHI TIẾT:</h3>\n<p><a href=\"#\">TẠI ĐÂY</a></p>\n<p>Post Views: 1,472</p>\n<p>Shortlink: <a href=\"https://ivolunteervietnam.com?p=82830\">https://ivolunteervietnam.com?p=82830</a></p>\n</div>",
-            "createdAt": "2024-04-02"
+            "createdAt": "2024-04-02",
+            "participants": 10,
+            "comments": 10
         },
         {
             "id": 4,
@@ -430,14 +1176,14 @@
                 "createdAt": "2024-04-01",
                 "updatedAt": "2024-04-05",
                 "isDeleted": false,
-                "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-                "participants": 10,
-                "comments": 10
+                "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
             },
             "title": "Post 1 for Activity 3",
             "image": "https://www.oceans-research.com/wp-content/uploads/2022/01/Short-term.jpg",
             "content": "<h2>GIỚI THIỆU CHUNG:</h2>\n<p>Alpha Lady là tổ chức phi lợi nhuận do các bạn trẻ thành lập với mục đích tôn lên giá trị của người phụ nữ trong cuộc sống, giúp mỗi bạn nữ hiểu rõ giá trị vẻ đẹp đích thực của bản thân cũng như truyền những năng lượng yêu bản thân đến cho tất cả mọi người. Dự án mong muốn có thể tác động một phần tích cực vào cuộc sống của mọi người, giúp mọi người tự tin hơn và ngày càng tiến gần đến hạnh phúc.</p>\n<p>Sau khi nhận được những lá đơn đầy tiềm năng từ các bạn trẻ khắp mọi miền tổ quốc, Alpha Lady rất vui, biết ơn khi được đón nhận sự yêu thương, quan tâm từ mọi người. Để có thể giúp sự mệnh tổ chức ngày càng bay xa hơn, lan toả đến nhiều người cũng như đáp lại sự yêu mến, quan tâm từ mọi người, tổ chức quyết định sẽ gia hạn đơn ứng tuyển thành viên gen 3.0 để có thể chiêu mộ những nhân tố mới về với tổ chức. Cơ hội một lần nữa gõ cửa, bạn đã sẵn sàng mở cửa đón nhận nó chưa nào? Nếu câu trả lời là có thì nhanh nhanh điền đơn đồng hành cùng Alpha Lady bạn nhé!</p>\n<h3>VỊ TRÍ ỨNG TUYỂN:</h3>\n<ul>\n  <li>Ban Nội dung</li>\n  <li>Ban Dịch thuật</li>\n  <li>Ban Design</li>\n  <li>Ban Nhân sự</li>\n  <li>Ban Đại sứ truyền thông</li>\n  <li>Ban Điều hành</li>\n  <li>Ban Audio</li>\n</ul>\n<h3>ĐỊA ĐIỂM:</h3>\n<p>Toàn quốc.</p>\n<h3>MÔ TẢ CÔNG VIỆC:</h3>\n<p><strong>1. Ban Nội dung</strong></p>\n<ul>\n  <li>Lên ý tưởng, triển khai viết bài, chỉnh sửa nội dung bài đăng dự án;</li>\n  <li>Xây dựng kế hoạch hoạt động dự án.</li>\n</ul>\n<p>... (các vị trí khác tương tự)</p>\n<h3>QUYỀN LỢI CHUNG:</h3>\n<ul>\n  <li>Được làm việc trong môi trường chuyên nghiệp, vui vẻ, gặp gỡ bạn bè cùng sở thích, chia sẻ kinh nghiệm;</li>\n  <li>Có cơ hội làm việc, phát triển bản thân trong môi trường thân thiện, thoải mái;</li>\n  <li>Nâng cao kỹ năng mềm, kỹ năng văn phòng;</li>\n  <li>Được giấy chứng nhận sau khi hoàn thành xuất sắc công việc sau 3 tháng hoạt động.</li>\n</ul>\n<h3>THAM GIA ỨNG TUYỂN:</h3>\n<p><a href=\"#\">TẠI ĐÂY</a></p>\n<h3>THÔNG TIN CHI TIẾT:</h3>\n<p><a href=\"#\">TẠI ĐÂY</a></p>\n<p>Post Views: 1,472</p>\n<p>Shortlink: <a href=\"https://ivolunteervietnam.com?p=82830\">https://ivolunteervietnam.com?p=82830</a></p>\n</div>",
-            "createdAt": "2024-04-03"
+            "createdAt": "2024-04-03",
+            "participants": 10,
+            "comments": 10
         },
         {
             "id": 5,
@@ -455,14 +1201,14 @@
                 "createdAt": "2024-04-01",
                 "updatedAt": "2024-04-05",
                 "isDeleted": false,
-                "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-                "participants": 10,
-                "comments": 10
+                "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
             },
             "title": "Post 1 for Activity 3",
             "image": "https://kindful.com/wp-content/uploads/volunteer-management_Feature.jpg",
             "content": "<h2>GIỚI THIỆU CHUNG:</h2>\n<p>Alpha Lady là tổ chức phi lợi nhuận do các bạn trẻ thành lập với mục đích tôn lên giá trị của người phụ nữ trong cuộc sống, giúp mỗi bạn nữ hiểu rõ giá trị vẻ đẹp đích thực của bản thân cũng như truyền những năng lượng yêu bản thân đến cho tất cả mọi người. Dự án mong muốn có thể tác động một phần tích cực vào cuộc sống của mọi người, giúp mọi người tự tin hơn và ngày càng tiến gần đến hạnh phúc.</p>\n<p>Sau khi nhận được những lá đơn đầy tiềm năng từ các bạn trẻ khắp mọi miền tổ quốc, Alpha Lady rất vui, biết ơn khi được đón nhận sự yêu thương, quan tâm từ mọi người. Để có thể giúp sự mệnh tổ chức ngày càng bay xa hơn, lan toả đến nhiều người cũng như đáp lại sự yêu mến, quan tâm từ mọi người, tổ chức quyết định sẽ gia hạn đơn ứng tuyển thành viên gen 3.0 để có thể chiêu mộ những nhân tố mới về với tổ chức. Cơ hội một lần nữa gõ cửa, bạn đã sẵn sàng mở cửa đón nhận nó chưa nào? Nếu câu trả lời là có thì nhanh nhanh điền đơn đồng hành cùng Alpha Lady bạn nhé!</p>\n<h3>VỊ TRÍ ỨNG TUYỂN:</h3>\n<ul>\n  <li>Ban Nội dung</li>\n  <li>Ban Dịch thuật</li>\n  <li>Ban Design</li>\n  <li>Ban Nhân sự</li>\n  <li>Ban Đại sứ truyền thông</li>\n  <li>Ban Điều hành</li>\n  <li>Ban Audio</li>\n</ul>\n<h3>ĐỊA ĐIỂM:</h3>\n<p>Toàn quốc.</p>\n<h3>MÔ TẢ CÔNG VIỆC:</h3>\n<p><strong>1. Ban Nội dung</strong></p>\n<ul>\n  <li>Lên ý tưởng, triển khai viết bài, chỉnh sửa nội dung bài đăng dự án;</li>\n  <li>Xây dựng kế hoạch hoạt động dự án.</li>\n</ul>\n<p>... (các vị trí khác tương tự)</p>\n<h3>QUYỀN LỢI CHUNG:</h3>\n<ul>\n  <li>Được làm việc trong môi trường chuyên nghiệp, vui vẻ, gặp gỡ bạn bè cùng sở thích, chia sẻ kinh nghiệm;</li>\n  <li>Có cơ hội làm việc, phát triển bản thân trong môi trường thân thiện, thoải mái;</li>\n  <li>Nâng cao kỹ năng mềm, kỹ năng văn phòng;</li>\n  <li>Được giấy chứng nhận sau khi hoàn thành xuất sắc công việc sau 3 tháng hoạt động.</li>\n</ul>\n<h3>THAM GIA ỨNG TUYỂN:</h3>\n<p><a href=\"#\">TẠI ĐÂY</a></p>\n<h3>THÔNG TIN CHI TIẾT:</h3>\n<p><a href=\"#\">TẠI ĐÂY</a></p>\n<p>Post Views: 1,472</p>\n<p>Shortlink: <a href=\"https://ivolunteervietnam.com?p=82830\">https://ivolunteervietnam.com?p=82830</a></p>\n</div>",
-            "createdAt": "2024-04-03"
+            "createdAt": "2024-04-03",
+            "participants": 10,
+            "comments": 10
         }
     ],
     "Post-detail": {
@@ -481,7 +1227,7 @@
             "updatedAt": "2024-04-05",
             "isDeleted": false,
             "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-            "participants" : 1
+            "participants": 1
         },
         "Post": {
             "id": 1,
@@ -519,7 +1265,8 @@
                     "role": 2,
                     "createdAt": "2024-04-10",
                     "updatedAt": "2024-04-10",
-                    "isDeleted": false
+                    "isDeleted": false,
+                    "backgroundNoAva": "#9b59b6"
                 },
                 "createdAt": "2024-04-19",
                 "updatedAt": "2024-04-19",
@@ -538,6 +1285,7 @@
                             "avatar": "https://didongviet.vn/dchannel/wp-content/uploads/2023/08/hinh-nen-3d-hinh-nen-iphone-dep-3d-didongviet-2.jpg",
                             "status": true,
                             "role": 2,
+                            "backgroundNoAva": "#9b59b6",
                             "replies": [
                                 {
                                     "id": 2,
@@ -554,7 +1302,8 @@
                                         "role": 2,
                                         "createdAt": "2024-04-10",
                                         "updatedAt": "2024-04-10",
-                                        "isDeleted": false
+                                        "isDeleted": false,
+                                        "backgroundNoAva": "#9b59b6"
                                     },
                                     "createdAt": "2024-04-19",
                                     "updatedAt": "2024-04-19",
@@ -575,7 +1324,8 @@
                                         "role": 2,
                                         "createdAt": "2024-04-10",
                                         "updatedAt": "2024-04-10",
-                                        "isDeleted": false
+                                        "isDeleted": false,
+                                        "backgroundNoAva": "#9b59b6"
                                     },
                                     "createdAt": "2024-04-19",
                                     "updatedAt": "2024-04-19",
@@ -605,7 +1355,8 @@
                             "role": 2,
                             "createdAt": "2024-04-10",
                             "updatedAt": "2024-04-10",
-                            "isDeleted": false
+                            "isDeleted": false,
+                            "backgroundNoAva": "#9b59b6"
                         },
                         "createdAt": "2024-04-19",
                         "updatedAt": "2024-04-19",
@@ -628,7 +1379,8 @@
                     "role": 2,
                     "createdAt": "2024-04-10",
                     "updatedAt": "2024-04-10",
-                    "isDeleted": false
+                    "isDeleted": false,
+                    "backgroundNoAva": "#9b59b6"
                 },
                 "createdAt": "2024-04-19",
                 "updatedAt": "2024-04-19",
@@ -649,12 +1401,718 @@
                     "role": 2,
                     "createdAt": "2024-04-10",
                     "updatedAt": "2024-04-10",
-                    "isDeleted": false
+                    "isDeleted": false,
+                    "backgroundNoAva": "#9b59b6"
                 },
                 "createdAt": "2024-04-19",
                 "updatedAt": "2024-04-19",
                 "isDeleted": false
             }
         ]
+    },
+    "TableTasks": [
+        {
+            "id": 1,
+            "activity_id": 1,
+            "name": "Development",
+            "color": "#C98755",
+            "createdAt": "2024-04-27",
+            "updatedAt": "2024-04-27",
+            "Tasks": [
+                {
+                    "id": 1,
+                    "date_start": "2024-04-27",
+                    "date_end": "2024-04-28",
+                    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+                    "title": "Design Homepage",
+                    "status": 1,
+                    "table_task_id": 1,
+                    "candidate_id": null,
+                    "createdAt": "2024-04-27",
+                    "updatedAt": "2024-04-27",
+                    "TaskComments": [
+                        {
+                            "id": 1,
+                            "comment_parent_id": null,
+                            "content": "This is a comment on the design task.",
+                            "task_id": 1,
+                            "account_id": 3,
+                            "account": {
+                                "id": 3,
+                                "account": "account3",
+                                "password": "password3",
+                                "name": "User 3",
+                                "avatar": "https://didongviet.vn/dchannel/wp-content/uploads/2023/08/hinh-nen-3d-hinh-nen-iphone-dep-3d-didongviet-3@2x.jpg",
+                                "status": true,
+                                "role": 3,
+                                "createdAt": "2024-04-10",
+                                "updatedAt": "2024-04-10",
+                                "isDeleted": false,
+                                "backgroundNoAva": "#9b59b6"
+                            },
+                            "createdAt": "2024-04-27",
+                            "updatedAt": "2024-04-27"
+                        },
+                        {
+                            "id": 2,
+                            "comment_parent_id": null,
+                            "content": "Backend implementation is in progress.",
+                            "task_id": 2,
+                            "account_id": 3,
+                            "account": {
+                                "id": 3,
+                                "account": "account3",
+                                "password": "password3",
+                                "name": "User 3",
+                                "avatar": "https://didongviet.vn/dchannel/wp-content/uploads/2023/08/hinh-nen-3d-hinh-nen-iphone-dep-3d-didongviet-3@2x.jpg",
+                                "status": true,
+                                "role": 3,
+                                "createdAt": "2024-04-10",
+                                "updatedAt": "2024-04-10",
+                                "isDeleted": false,
+                                "backgroundNoAva": "#9b59b6"
+                            },
+                            "createdAt": "2024-04-28",
+                            "updatedAt": "2024-04-28"
+                        },
+                        {
+                            "id": 3,
+                            "comment_parent_id": null,
+                            "content": "Testing and debugging completed successfully.",
+                            "task_id": 3,
+                            "account_id": 3,
+                            "account": {
+                                "id": 3,
+                                "account": "account3",
+                                "password": "password3",
+                                "name": "User 3",
+                                "avatar": "https://didongviet.vn/dchannel/wp-content/uploads/2023/08/hinh-nen-3d-hinh-nen-iphone-dep-3d-didongviet-3@2x.jpg",
+                                "status": true,
+                                "role": 3,
+                                "createdAt": "2024-04-10",
+                                "updatedAt": "2024-04-10",
+                                "isDeleted": false,
+                                "backgroundNoAva": "#9b59b6"
+                            },
+                            "createdAt": "2024-04-29",
+                            "updatedAt": "2024-04-29"
+                        }
+                    ]
+                },
+                {
+                    "id": 2,
+                    "date_start": "2024-04-27",
+                    "date_end": "2024-04-28",
+                    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+                    "title": "Design Homepage",
+                    "status": 1,
+                    "table_task_id": 1,
+                    "candidate_id": null,
+                    "createdAt": "2024-04-27",
+                    "updatedAt": "2024-04-27",
+                    "TaskComments": [
+                        {
+                            "id": 1,
+                            "comment_parent_id": null,
+                            "content": "This is a comment on the design task.",
+                            "task_id": 1,
+                            "account_id": 3,
+                            "account": {
+                                "id": 3,
+                                "account": "account3",
+                                "password": "password3",
+                                "name": "User 3",
+                                "avatar": "https://didongviet.vn/dchannel/wp-content/uploads/2023/08/hinh-nen-3d-hinh-nen-iphone-dep-3d-didongviet-3@2x.jpg",
+                                "status": true,
+                                "role": 3,
+                                "createdAt": "2024-04-10",
+                                "updatedAt": "2024-04-10",
+                                "isDeleted": false,
+                                "backgroundNoAva": "#9b59b6"
+                            },
+                            "createdAt": "2024-04-27",
+                            "updatedAt": "2024-04-27"
+                        },
+                        {
+                            "id": 2,
+                            "comment_parent_id": null,
+                            "content": "Backend implementation is in progress.",
+                            "task_id": 2,
+                            "account_id": 3,
+                            "account": {
+                                "id": 3,
+                                "account": "account3",
+                                "password": "password3",
+                                "name": "User 3",
+                                "avatar": "https://didongviet.vn/dchannel/wp-content/uploads/2023/08/hinh-nen-3d-hinh-nen-iphone-dep-3d-didongviet-3@2x.jpg",
+                                "status": true,
+                                "role": 3,
+                                "createdAt": "2024-04-10",
+                                "updatedAt": "2024-04-10",
+                                "isDeleted": false,
+                                "backgroundNoAva": "#9b59b6"
+                            },
+                            "createdAt": "2024-04-28",
+                            "updatedAt": "2024-04-28"
+                        },
+                        {
+                            "id": 3,
+                            "comment_parent_id": null,
+                            "content": "Testing and debugging completed successfully.",
+                            "task_id": 3,
+                            "account_id": 3,
+                            "account": {
+                                "id": 3,
+                                "account": "account3",
+                                "password": "password3",
+                                "name": "User 3",
+                                "avatar": "https://didongviet.vn/dchannel/wp-content/uploads/2023/08/hinh-nen-3d-hinh-nen-iphone-dep-3d-didongviet-3@2x.jpg",
+                                "status": true,
+                                "role": 3,
+                                "createdAt": "2024-04-10",
+                                "updatedAt": "2024-04-10",
+                                "isDeleted": false,
+                                "backgroundNoAva": "#9b59b6"
+                            },
+                            "createdAt": "2024-04-29",
+                            "updatedAt": "2024-04-29"
+                        }
+                    ]
+                },
+                {
+                    "id": 3,
+                    "date_start": "2024-04-27",
+                    "date_end": "2024-04-28",
+                    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+                    "title": "Design Homepage",
+                    "status": 1,
+                    "table_task_id": 1,
+                    "candidate_id": null,
+                    "createdAt": "2024-04-27",
+                    "updatedAt": "2024-04-27",
+                    "TaskComments": [
+                        {
+                            "id": 1,
+                            "comment_parent_id": null,
+                            "content": "This is a comment on the design task.",
+                            "task_id": 1,
+                            "account_id": 3,
+                            "account": {
+                                "id": 3,
+                                "account": "account3",
+                                "password": "password3",
+                                "name": "User 3",
+                                "avatar": "https://didongviet.vn/dchannel/wp-content/uploads/2023/08/hinh-nen-3d-hinh-nen-iphone-dep-3d-didongviet-3@2x.jpg",
+                                "status": true,
+                                "role": 3,
+                                "createdAt": "2024-04-10",
+                                "updatedAt": "2024-04-10",
+                                "isDeleted": false,
+                                "backgroundNoAva": "#9b59b6"
+                            },
+                            "createdAt": "2024-04-27",
+                            "updatedAt": "2024-04-27"
+                        },
+                        {
+                            "id": 2,
+                            "comment_parent_id": null,
+                            "content": "Backend implementation is in progress.",
+                            "task_id": 2,
+                            "account_id": 3,
+                            "account": {
+                                "id": 3,
+                                "account": "account3",
+                                "password": "password3",
+                                "name": "User 3",
+                                "avatar": "https://didongviet.vn/dchannel/wp-content/uploads/2023/08/hinh-nen-3d-hinh-nen-iphone-dep-3d-didongviet-3@2x.jpg",
+                                "status": true,
+                                "role": 3,
+                                "createdAt": "2024-04-10",
+                                "updatedAt": "2024-04-10",
+                                "isDeleted": false,
+                                "backgroundNoAva": "#9b59b6"
+                            },
+                            "createdAt": "2024-04-28",
+                            "updatedAt": "2024-04-28"
+                        },
+                        {
+                            "id": 3,
+                            "comment_parent_id": null,
+                            "content": "Testing and debugging completed successfully.",
+                            "task_id": 3,
+                            "account_id": 3,
+                            "account": {
+                                "id": 3,
+                                "account": "account3",
+                                "password": "password3",
+                                "name": "User 3",
+                                "avatar": "https://didongviet.vn/dchannel/wp-content/uploads/2023/08/hinh-nen-3d-hinh-nen-iphone-dep-3d-didongviet-3@2x.jpg",
+                                "status": true,
+                                "role": 3,
+                                "createdAt": "2024-04-10",
+                                "updatedAt": "2024-04-10",
+                                "isDeleted": false,
+                                "backgroundNoAva": "#9b59b6"
+                            },
+                            "createdAt": "2024-04-29",
+                            "updatedAt": "2024-04-29"
+                        }
+                    ]
+                },
+                {
+                    "id": 4,
+                    "date_start": "2024-04-28",
+                    "date_end": "2024-04-29",
+                    "description": "Implement backend functionality",
+                    "title": "Backend Implementation",
+                    "status": 2,
+                    "table_task_id": 1,
+                    "candidate_id": null,
+                    "createdAt": "2024-04-28",
+                    "updatedAt": "2024-04-28"
+                },
+                {
+                    "id": 5,
+                    "date_start": "2024-04-29",
+                    "date_end": "2024-04-30",
+                    "description": "Perform testing and debugging",
+                    "title": "Testing and Debugging",
+                    "status": 3,
+                    "table_task_id": 2,
+                    "candidate_id": 2,
+                    "candidate": {
+                        "id": 1,
+                        "user": {
+                            "id": 1,
+                            "account": {
+                                "id": 1,
+                                "account": "user1@example.com",
+                                "password": "password123",
+                                "name": "John Doe",
+                                "avatar": null,
+                                "status": true,
+                                "role": 1,
+                                "createdAt": "2024-04-28",
+                                "updatedAt": "2024-04-28",
+                                "backgroundNoAva": "#9b59b6"
+                            },
+                            "tel": "0123456789",
+                            "address": "123 ABC Street, XYZ City",
+                            "gender": "Male",
+                            "birthday": "1990-05-15",
+                            "createdAt": "2024-04-28",
+                            "updatedAt": "2024-04-28",
+                            "isDeleted": false
+                        },
+                        "activity_id": 1,
+                        "certificate": null,
+                        "date_earn_certificate": "2024-04-28",
+                        "createdAt": "2024-04-28"
+                    },
+                    "createdAt": "2024-04-29",
+                    "updatedAt": "2024-04-29"
+                }
+            ]
+        },
+        {
+            "id": 2,
+            "activity_id": 1,
+            "name": "Testing",
+            "color": "#00B2FF",
+            "createdAt": "2024-04-27",
+            "updatedAt": "2024-04-27",
+            "Tasks": [
+                {
+                    "id": 1,
+                    "date_start": "2024-04-27",
+                    "date_end": "2024-04-28",
+                    "description": "Design homepage layout",
+                    "title": "Design Homepage",
+                    "status": 1,
+                    "table_task_id": 1,
+                    "candidate_id": 2,
+                    "candidate": {
+                        "id": 1,
+                        "user": {
+                            "id": 1,
+                            "account": {
+                                "id": 1,
+                                "account": "user1@example.com",
+                                "password": "password123",
+                                "name": "John Doe",
+                                "avatar": null,
+                                "status": true,
+                                "role": 1,
+                                "createdAt": "2024-04-28",
+                                "updatedAt": "2024-04-28",
+                                "backgroundNoAva": "#9b59b6"
+                            },
+                            "tel": "0123456789",
+                            "address": "123 ABC Street, XYZ City",
+                            "gender": "Male",
+                            "birthday": "1990-05-15",
+                            "createdAt": "2024-04-28",
+                            "updatedAt": "2024-04-28",
+                            "isDeleted": false
+                        },
+                        "activity_id": 1,
+                        "certificate": null,
+                        "date_earn_certificate": "2024-04-28",
+                        "createdAt": "2024-04-28"
+                    },
+                    "createdAt": "2024-04-27",
+                    "updatedAt": "2024-04-27"
+                },
+                {
+                    "id": 2,
+                    "date_start": "2024-04-28",
+                    "date_end": "2024-04-29",
+                    "description": "Implement backend functionality",
+                    "title": "Backend Implementation",
+                    "status": 2,
+                    "table_task_id": 1,
+                    "candidate_id": null,
+                    "createdAt": "2024-04-28",
+                    "updatedAt": "2024-04-28"
+                },
+                {
+                    "id": 3,
+                    "date_start": "2024-04-29",
+                    "date_end": "2024-04-30",
+                    "description": "Perform testing and debugging",
+                    "title": "Testing and Debugging",
+                    "status": 3,
+                    "table_task_id": 2,
+                    "candidate_id": 2,
+                    "candidate": {
+                        "id": 1,
+                        "user": {
+                            "id": 1,
+                            "account": {
+                                "id": 1,
+                                "account": "user1@example.com",
+                                "password": "password123",
+                                "name": "John Doe",
+                                "avatar": null,
+                                "status": true,
+                                "role": 1,
+                                "createdAt": "2024-04-28",
+                                "updatedAt": "2024-04-28",
+                                "backgroundNoAva": "#9b59b6"
+                            },
+                            "tel": "0123456789",
+                            "address": "123 ABC Street, XYZ City",
+                            "gender": "Male",
+                            "birthday": "1990-05-15",
+                            "createdAt": "2024-04-28",
+                            "updatedAt": "2024-04-28",
+                            "isDeleted": false
+                        },
+                        "activity_id": 1,
+                        "certificate": null,
+                        "date_earn_certificate": "2024-04-28",
+                        "createdAt": "2024-04-28"
+                    },
+                    "createdAt": "2024-04-29",
+                    "updatedAt": "2024-04-29",
+                    "TaskComments": [
+                        {
+                            "id": 1,
+                            "comment_parent_id": null,
+                            "content": "This is a comment on the design task.",
+                            "task_id": 1,
+                            "account_id": 3,
+                            "account": {
+                                "id": 3,
+                                "account": "account3",
+                                "password": "password3",
+                                "name": "User 3",
+                                "avatar": "https://didongviet.vn/dchannel/wp-content/uploads/2023/08/hinh-nen-3d-hinh-nen-iphone-dep-3d-didongviet-3@2x.jpg",
+                                "status": true,
+                                "role": 3,
+                                "createdAt": "2024-04-10",
+                                "updatedAt": "2024-04-10",
+                                "isDeleted": false,
+                                "backgroundNoAva": "#9b59b6"
+                            },
+                            "createdAt": "2024-04-27",
+                            "updatedAt": "2024-04-27"
+                        },
+                        {
+                            "id": 2,
+                            "comment_parent_id": null,
+                            "content": "Backend implementation is in progress.",
+                            "task_id": 2,
+                            "account_id": 3,
+                            "account": {
+                                "id": 3,
+                                "account": "account3",
+                                "password": "password3",
+                                "name": "User 3",
+                                "avatar": "https://didongviet.vn/dchannel/wp-content/uploads/2023/08/hinh-nen-3d-hinh-nen-iphone-dep-3d-didongviet-3@2x.jpg",
+                                "status": true,
+                                "role": 3,
+                                "createdAt": "2024-04-10",
+                                "updatedAt": "2024-04-10",
+                                "isDeleted": false,
+                                "backgroundNoAva": "#9b59b6"
+                            },
+                            "createdAt": "2024-04-28",
+                            "updatedAt": "2024-04-28"
+                        },
+                        {
+                            "id": 3,
+                            "comment_parent_id": null,
+                            "content": "Testing and debugging completed successfully.",
+                            "task_id": 3,
+                            "account_id": 3,
+                            "account": {
+                                "id": 3,
+                                "account": "account3",
+                                "password": "password3",
+                                "name": "User 3",
+                                "avatar": "https://didongviet.vn/dchannel/wp-content/uploads/2023/08/hinh-nen-3d-hinh-nen-iphone-dep-3d-didongviet-3@2x.jpg",
+                                "status": true,
+                                "role": 3,
+                                "createdAt": "2024-04-10",
+                                "updatedAt": "2024-04-10",
+                                "isDeleted": false,
+                                "backgroundNoAva": "#9b59b6"
+                            },
+                            "createdAt": "2024-04-29",
+                            "updatedAt": "2024-04-29"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 3,
+            "activity_id": 1,
+            "name": "Deployment",
+            "color": "#44D17D",
+            "createdAt": "2024-04-27",
+            "updatedAt": "2024-04-27",
+            "Tasks": [
+                {
+                    "id": 1,
+                    "date_start": "2024-04-27",
+                    "date_end": "2024-04-28",
+                    "description": "Design homepage layout",
+                    "title": "Design Homepage",
+                    "status": 1,
+                    "table_task_id": 1,
+                    "candidate_id": 2,
+                    "candidate": {
+                        "id": 1,
+                        "user": {
+                            "id": 1,
+                            "account": {
+                                "id": 1,
+                                "account": "user1@example.com",
+                                "password": "password123",
+                                "name": "John Doe",
+                                "avatar": null,
+                                "status": true,
+                                "role": 1,
+                                "createdAt": "2024-04-28",
+                                "updatedAt": "2024-04-28",
+                                "backgroundNoAva": "#9b59b6"
+                            },
+                            "tel": "0123456789",
+                            "address": "123 ABC Street, XYZ City",
+                            "gender": "Male",
+                            "birthday": "1990-05-15",
+                            "createdAt": "2024-04-28",
+                            "updatedAt": "2024-04-28",
+                            "isDeleted": false
+                        },
+                        "activity_id": 1,
+                        "certificate": null,
+                        "date_earn_certificate": "2024-04-28",
+                        "createdAt": "2024-04-28"
+                    },
+                    "createdAt": "2024-04-27",
+                    "updatedAt": "2024-04-27",
+                    "TaskComments": [
+                        {
+                            "id": 1,
+                            "comment_parent_id": null,
+                            "content": "This is a comment on the design task.",
+                            "task_id": 1,
+                            "account_id": 3,
+                            "account": {
+                                "id": 3,
+                                "account": "account3",
+                                "password": "password3",
+                                "name": "User 3",
+                                "avatar": "https://didongviet.vn/dchannel/wp-content/uploads/2023/08/hinh-nen-3d-hinh-nen-iphone-dep-3d-didongviet-3@2x.jpg",
+                                "status": true,
+                                "role": 3,
+                                "createdAt": "2024-04-10",
+                                "updatedAt": "2024-04-10",
+                                "isDeleted": false,
+                                "backgroundNoAva": "#9b59b6"
+                            },
+                            "createdAt": "2024-04-27",
+                            "updatedAt": "2024-04-27",
+                            "replies": [
+                                {
+                                    "id": 1,
+                                    "comment_parent_id": null,
+                                    "content": "This is a comment on the design task.",
+                                    "task_id": 1,
+                                    "account_id": 3,
+                                    "account": {
+                                        "id": 3,
+                                        "account": "account3",
+                                        "password": "password3",
+                                        "name": "User 3",
+                                        "avatar": "https://didongviet.vn/dchannel/wp-content/uploads/2023/08/hinh-nen-3d-hinh-nen-iphone-dep-3d-didongviet-3@2x.jpg",
+                                        "status": true,
+                                        "role": 3,
+                                        "createdAt": "2024-04-10",
+                                        "updatedAt": "2024-04-10",
+                                        "isDeleted": false,
+                                        "backgroundNoAva": "#9b59b6"
+                                    },
+                                    "createdAt": "2024-04-27",
+                                    "updatedAt": "2024-04-27"
+                                },
+                                {
+                                    "id": 1,
+                                    "comment_parent_id": null,
+                                    "content": "This is a comment on the design task.",
+                                    "task_id": 1,
+                                    "account_id": 3,
+                                    "account": {
+                                        "id": 3,
+                                        "account": "account3",
+                                        "password": "password3",
+                                        "name": "User 3",
+                                        "avatar": "https://didongviet.vn/dchannel/wp-content/uploads/2023/08/hinh-nen-3d-hinh-nen-iphone-dep-3d-didongviet-3@2x.jpg",
+                                        "status": true,
+                                        "role": 3,
+                                        "createdAt": "2024-04-10",
+                                        "updatedAt": "2024-04-10",
+                                        "isDeleted": false,
+                                        "backgroundNoAva": "#9b59b6"
+                                    },
+                                    "createdAt": "2024-04-27",
+                                    "updatedAt": "2024-04-27"
+                                },
+                                {
+                                    "id": 1,
+                                    "comment_parent_id": null,
+                                    "content": "This is a comment on the design task.",
+                                    "task_id": 1,
+                                    "account_id": 3,
+                                    "account": {
+                                        "id": 3,
+                                        "account": "account3",
+                                        "password": "password3",
+                                        "name": "User 3",
+                                        "avatar": "https://didongviet.vn/dchannel/wp-content/uploads/2023/08/hinh-nen-3d-hinh-nen-iphone-dep-3d-didongviet-3@2x.jpg",
+                                        "status": true,
+                                        "role": 3,
+                                        "createdAt": "2024-04-10",
+                                        "updatedAt": "2024-04-10",
+                                        "isDeleted": false,
+                                        "backgroundNoAva": "#9b59b6"
+                                    },
+                                    "createdAt": "2024-04-27",
+                                    "updatedAt": "2024-04-27"
+                                }
+                            ]
+                        },
+                        {
+                            "id": 2,
+                            "comment_parent_id": null,
+                            "content": "Backend implementation is in progress.",
+                            "task_id": 2,
+                            "account_id": 3,
+                            "account": {
+                                "id": 3,
+                                "account": "account3",
+                                "password": "password3",
+                                "name": "User 3",
+                                "avatar": "https://didongviet.vn/dchannel/wp-content/uploads/2023/08/hinh-nen-3d-hinh-nen-iphone-dep-3d-didongviet-3@2x.jpg",
+                                "status": true,
+                                "role": 3,
+                                "createdAt": "2024-04-10",
+                                "updatedAt": "2024-04-10",
+                                "isDeleted": false,
+                                "backgroundNoAva": "#9b59b6"
+                            },
+                            "createdAt": "2024-04-28",
+                            "updatedAt": "2024-04-28"
+                        },
+                        {
+                            "id": 3,
+                            "comment_parent_id": null,
+                            "content": "Testing and debugging completed successfully.",
+                            "task_id": 3,
+                            "account_id": 3,
+                            "account": {
+                                "id": 3,
+                                "account": "account3",
+                                "password": "password3",
+                                "name": "User 3",
+                                "avatar": "https://didongviet.vn/dchannel/wp-content/uploads/2023/08/hinh-nen-3d-hinh-nen-iphone-dep-3d-didongviet-3@2x.jpg",
+                                "status": true,
+                                "role": 3,
+                                "createdAt": "2024-04-10",
+                                "updatedAt": "2024-04-10",
+                                "isDeleted": false,
+                                "backgroundNoAva": "#9b59b6"
+                            },
+                            "createdAt": "2024-04-29",
+                            "updatedAt": "2024-04-29"
+                        }
+                    ]
+                },
+                {
+                    "id": 2,
+                    "date_start": "2024-04-28",
+                    "date_end": "2024-04-29",
+                    "description": "Implement backend functionality",
+                    "title": "Backend Implementation",
+                    "status": 2,
+                    "table_task_id": 1,
+                    "candidate_id": null,
+                    "createdAt": "2024-04-28",
+                    "updatedAt": "2024-04-28"
+                },
+                {
+                    "id": 3,
+                    "date_start": "2024-04-29",
+                    "date_end": "2024-04-30",
+                    "description": "Perform testing and debugging",
+                    "title": "Testing and Debugging",
+                    "status": 3,
+                    "table_task_id": 2,
+                    "candidate_id": null,
+                    "createdAt": "2024-04-29",
+                    "updatedAt": "2024-04-29"
+                }
+            ]
+        }
+    ],
+    "ActivityCreatePost" : {
+        "id": 2,
+        "image": "https://capitalcampaignpro.com/wp-content/uploads/2023/02/capital-campaign-volunteers.jpg",
+        "email": "activity2@example.com",
+        "name": "Activity 2",
+        "type": 2,
+        "deadline": "2024-04-30",
+        "date_start": "2024-04-01",
+        "date_end": "2024-04-15",
+        "location": "Da Nang",
+        "country" : 1,
+        "organization_id": 1,
+        "createdAt": "2024-04-01",
+        "updatedAt": "2024-04-05",
+        "isDeleted": false,
+        "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
     }
 }

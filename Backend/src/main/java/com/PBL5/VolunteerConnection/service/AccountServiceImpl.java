@@ -43,7 +43,8 @@ public class AccountServiceImpl implements  AccountService{
                             registerRequest.getTel(),
                             registerRequest.getAddress(),
                             registerRequest.getGender(),
-                            Date.valueOf(LocalDate.now())));
+                            Date.valueOf(LocalDate.now()),
+                            registerRequest.getEmail()));
                 }
                 else{
                     account.setIsValid(false);
@@ -75,6 +76,7 @@ public class AccountServiceImpl implements  AccountService{
             Account account = accountRepository.findByAccount(username);
             account.setName(request.getName());
             account.setAvatar(request.getAvatar());
+            account.setUpdatedAt(Date.valueOf(LocalDate.now()));
             accountRepository.save(account);
             if (role.equals("1")){
                 User user = userRespository.findByAccountId(account.getId());
@@ -82,7 +84,9 @@ public class AccountServiceImpl implements  AccountService{
                 user.setGender(request.getGender());
                 user.setAddress(request.getAddress());
                 user.setBirthday(request.getBirthday());
+                userRespository.save(user);
             }
+
         }catch (Exception e){
             return StatusResponse.builder()
                     .fail(ResponseEntity.status(HttpStatus.CONFLICT).body("Updated Fail"))
@@ -101,6 +105,7 @@ public class AccountServiceImpl implements  AccountService{
             account.setIsDeleted(true);
             account.setIsValid(false);
             accountRepository.save(account);
+
         }catch (Exception e){
             return StatusResponse.builder()
                     .fail(ResponseEntity.status(HttpStatus.NOT_ACCEPTABLE).body("Delete Fail"))
@@ -110,6 +115,12 @@ public class AccountServiceImpl implements  AccountService{
                 .success(ResponseEntity.status(HttpStatus.ACCEPTED).body("Account " + username +"has been deleted sucessfully!!"))
                 .build();
 
+
+    }
+
+    @Override
+    public int getAccountId(String token) {
+        return accountRepository.findByAccount(jwtService.getUsername(token)).getId();
 
     }
 

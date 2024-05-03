@@ -55,6 +55,22 @@ function getStringReply(reply) {
     }
 }
 
+function getStringPost(post) {
+    if (post === 0 || post === 1) {
+        return post + " post";
+    } else {
+        return post + " posts";
+    }
+}
+
+function getStringApplyForm(form) {
+    if (form === 0 || form === 1) {
+        return form + " form";
+    } else {
+        return form + " forms";
+    }
+}
+
 function convertToHTML(htmlString) {
     return <div dangerouslySetInnerHTML={{ __html: htmlString }} />;
 }
@@ -70,19 +86,19 @@ function truncateHTMLString(htmlString, maxLength) {
     const secondParagraph = paragraphs[1] ? paragraphs[1].textContent : ""; // Lấy nội dung của đoạn p thứ hai
 
     // Nối hai đoạn p lại với nhau
-    const combinedContent = firstParagraph + '<br><br/>' + secondParagraph;
+    const combinedContent = firstParagraph + "<br><br/>" + secondParagraph;
 
     // Kiểm tra độ dài nội dung
     if (combinedContent.length > maxLength) {
         // Nếu nội dung vượt quá maxLength, cắt bớt và thêm dấu "..."
-        const truncatedContent = combinedContent.substring(0, maxLength) + "...";
+        const truncatedContent =
+            combinedContent.substring(0, maxLength) + "...";
         return truncatedContent;
     } else {
         // Nếu không, trả về nội dung gốc
         return combinedContent;
     }
 }
-
 
 function mainContentHTML(htmlString, maxLength) {
     // Lấy nội dung được cắt bớt độ dài
@@ -104,6 +120,23 @@ function getCurrentlyDate() {
     const formattedDate = `${year}-${month}-${day}`;
     return formattedDate;
 }
+function removeSpaceInString(str) {
+    return str.replace(/\s+/g, "");
+}
+
+function randomHexColor() {
+    var randomColor = Math.floor(Math.random() * 16777215).toString(16);
+
+    while (randomColor.length < 6) {
+        randomColor = "0" + randomColor;
+    }
+
+    return "#" + randomColor;
+}
+
+function getFirstCharacter(str) {
+    return str.charAt(0);
+}
 
 const Utils = {
     TruncateText,
@@ -114,8 +147,13 @@ const Utils = {
     getStringParticipant,
     getStringComment,
     getStringReply,
+    getStringPost,
+    getStringApplyForm,
     convertToHTML,
     mainContentHTML,
+    removeSpaceInString,
+    randomHexColor,
+    getFirstCharacter,
 };
 
 export default Utils;

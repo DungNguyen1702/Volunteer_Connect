@@ -1,0 +1,55 @@
+@import '../../../../constants/colors.scss';
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    font-size: 15px;
+    background-color: $background;
+}
+
+.input-comment-wrapper {
+    width: 100%;
+    margin : 10px 0px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.replier-ava {
+    height: 40px;
+    width: 40px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.reply-input {
+    width: 85%;
+    height: 25px;
+    border-radius: 10px;
+    padding : 3px 10px;
+    border : 0.5px solid $primary_green;
+    background-color: $white !important;
+}
+
+.reply-button {
+    background-color: $button;
+    p {    
+        color: white;
+        font-weight: bold;
+    }
+    margin-left: 10px;
+}
+
+.reply-button:hover {
+    p{
+        color: $primary_green;
+    }
+}
+
+.custom-dropdown .ant-select-item {
+    display: flex !important;
+  }
