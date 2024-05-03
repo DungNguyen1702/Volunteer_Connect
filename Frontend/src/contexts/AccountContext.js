@@ -1,7 +1,8 @@
 // import axiosClient from 'api/axiosClient'
 import { createContext, useState, useEffect, useMemo } from 'react'
 import { useNavigate } from 'react-router-dom'
-// import accountInfoAPI from 'api/accountInfoAPI'
+import axiosClient from '../api/axiosClient'
+import accountInfoAPI from '../api/accountInfoAPI'
 const AccountContext = createContext({})
 
 export const AuthProvider = ({ children }) => {
@@ -18,22 +19,21 @@ export const AuthProvider = ({ children }) => {
     useEffect(() => {
         if (token !== 'null') {
             // Set authenticate token to axios
-            // axiosClient.defaults.headers.common[
-            //     'Authorization'
-            // ] = `Bearer ${token}`
+            axiosClient.application.defaults.headers.common[
+                'Authorization'
+            ] = `Bearer ${token}`
 
-            // // console.log(axiosClient.defaults);
-            // userInfoAPI.getInfo()
-            //     .then ((response)=> {
-            //         setUser(response.data.profile)
-            //         localStorage.setItem(
-            //             'user',
-            //             JSON.stringify( response.data.profile),
-            //         )
-            //     })
-            //     .catch((error) => {
-            //                     console.log(error)
-            //                 })
+            accountInfoAPI.getInfoByToken()
+                .then ((response)=> {
+                    setAccount(response.data.profile)
+                    localStorage.setItem(
+                        'account',
+                        JSON.stringify( response.data.profile),
+                    )
+                })
+                .catch((error) => {
+                                console.log(error)
+                            })
 
         } else {
             // User logout

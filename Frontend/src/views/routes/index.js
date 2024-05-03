@@ -36,6 +36,9 @@ const Service = LoadableComponent(()=>
 );
 const Contact = LoadableComponent(()=>
     import('../pages/Contact/index.jsx')
+);
+const Login = LoadableComponent(()=>
+    import('../pages/login/LogIn.js')
 )
 
 
@@ -110,6 +113,11 @@ const AllRoutes = () => {
                     path="/contact" 
                     element={<Contact />} 
                 />
+                <Route
+                    path='/login'
+                    element={<Login/>}
+                />
+
             
             </Route>
 
