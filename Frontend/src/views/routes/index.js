@@ -31,16 +31,12 @@ const Introduce = LoadableComponent(()=>
 const About = LoadableComponent(()=>
     import('../pages/About/About.js')
 );
-const Service = LoadableComponent(()=>
-    import('../pages/Service/Service.js')
-);
-const Contact = LoadableComponent(()=>
-    import('../pages/Contact/index.jsx')
-);
 const Login = LoadableComponent(()=>
     import('../pages/login/LogIn.js')
 )
-
+const SignUp = LoadableComponent(()=>
+    import('../pages/SignUp/SignUp.js')
+)
 
 
 const AllRoutes = () => {
@@ -102,16 +98,6 @@ const AllRoutes = () => {
                 <Route 
                     path="/about" 
                     element={<About />} 
-                />
-
-                <Route 
-                    path="/service" 
-                    element={<Service />} 
-                />
-                
-                <Route 
-                    path="/contact" 
-                    element={<Contact />} 
                 />
                 <Route
                     path='/login'
