@@ -12,6 +12,7 @@ import SupportFunction from "../../../support/support_function";
 import { COUNTRY } from "../../../constants/activity_countries";
 import { STATUS } from "../../../constants/activity_status";
 import { COLOR_FONT, COLOR_STATUS } from "../../../constants/color_status";
+import postAPI from "../../../api/postAPI.js";
 
 function addIsLikedField(posts) {
     return posts.map((post) => ({
@@ -31,7 +32,7 @@ function UserHomepage(props) {
     const [likedPosts, setLikedPosts] = useState(
         addIsLikedField(fake_data["Posts-Activities"])
     );
-    const [listPosts, setListPosts] = useState(fake_data["Posts-Activities"]);
+    const [listPosts, setListPosts] = useState([]);
     const [popularPosts, setPopularPost] = useState(fake_data["Posts-Activities"])
 
     const [listShowActs, setListShowActs] = useState(
@@ -47,6 +48,21 @@ function UserHomepage(props) {
     useEffect(() => {
         setListShowActs(listPosts.slice(startIndex, startIndex + limit));
     }, [startIndex, listPosts]);
+
+    useEffect(()=>{
+        const getAllPostApi = async()=>{
+            await postAPI.getAllPost()
+                .then ((response)=> {
+                    console.log(response.data)
+                    setListPosts(response.data)
+                })
+                .catch((error) => {
+                                console.log(error)
+                })
+        }
+
+        getAllPostApi();
+    },[])
 
     // set event
     const onChangePage = (page, pageSize) => {
@@ -293,7 +309,7 @@ function UserHomepage(props) {
                     ))}
 
                     <Pagination
-                        total={likedPosts.length}
+                        total={listPosts.length}
                         pageSize={limit}
                         onChange={onChangePage}
                     />

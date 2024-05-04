@@ -33,11 +33,13 @@ export const AuthProvider = ({ children }) => {
                 })
                 .catch((error) => {
                                 console.log(error)
-                            })
+                })
 
         } else {
             // User logout
-            setAccount('null')
+            delete axiosClient.application.defaults.headers.common['Authorization'];
+
+            setAccount('null');
             localStorage.setItem('token', null)
             localStorage.setItem('account', null)
         }

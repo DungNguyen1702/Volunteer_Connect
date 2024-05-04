@@ -92,13 +92,13 @@ function MemberManagement() {
         },
         {
             title: "earn certificate date",
-            width: 90,
+            width: 100,
             dataIndex: "certificateDate",
             align: "center",
         },
         {
             title: "certificate",
-            width: 50,
+            width: 70,
             dataIndex: "certificate",
             fixed: "right",
             align: "center",

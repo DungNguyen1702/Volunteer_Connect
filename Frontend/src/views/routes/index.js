@@ -33,10 +33,13 @@ const About = LoadableComponent(()=>
 );
 const Login = LoadableComponent(()=>
     import('../pages/login/LogIn.js')
-)
+);
 const SignUp = LoadableComponent(()=>
     import('../pages/SignUp/SignUp.js')
-)
+);
+const Profile = LoadableComponent(()=>
+    import('../pages/Profile/index.jsx')
+);
 
 
 const AllRoutes = () => {
@@ -108,6 +111,11 @@ const AllRoutes = () => {
                 <Route
                     path='/auth/register'
                     element={<SignUp/>}
+                />
+
+                <Route
+                    path='/profile/:page'
+                    element={<MainLayout component={Profile} />}
                 />
             </Route>
 
