@@ -31,8 +31,11 @@ function UserHomepage(props) {
     const [likedPosts, setLikedPosts] = useState(
         addIsLikedField(fake_data["Posts-Activities"])
     );
+    const [listPosts, setListPosts] = useState(fake_data["Posts-Activities"]);
+    const [popularPosts, setPopularPost] = useState(fake_data["Posts-Activities"])
+
     const [listShowActs, setListShowActs] = useState(
-        likedPosts.slice(startIndex, startIndex + limit)
+        listPosts.slice(startIndex, startIndex + limit)
     );
     const [selectedCategory, setSelectedCategory] = useState(0);
     const [selectedCountry, setSelectedCountry] = useState(0);
@@ -42,9 +45,8 @@ function UserHomepage(props) {
 
     // set useEffect
     useEffect(() => {
-        console.log(startIndex);
-        setListShowActs(likedPosts.slice(startIndex, startIndex + limit));
-    }, [startIndex, likedPosts]);
+        setListShowActs(listPosts.slice(startIndex, startIndex + limit));
+    }, [startIndex, listPosts]);
 
     // set event
     const onChangePage = (page, pageSize) => {
@@ -280,7 +282,7 @@ function UserHomepage(props) {
             >
                 <div class="left-content-wrapper">
                     <h2 class="two-side-header">Popular activities</h2>
-                    {likedPosts.map((post) => (
+                    {popularPosts.map((post) => (
                         <SmallPost data={post} key={post.id} />
                     ))}
                 </div>

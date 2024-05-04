@@ -2,7 +2,7 @@
 import { createContext, useState, useEffect, useMemo } from 'react'
 import { useNavigate } from 'react-router-dom'
 import axiosClient from '../api/axiosClient'
-import accountInfoAPI from '../api/accountInfoAPI'
+import accountInfoAPI from '../api/accountAPI'
 const AccountContext = createContext({})
 
 export const AuthProvider = ({ children }) => {

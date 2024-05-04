@@ -13,7 +13,7 @@ import {
 import { useState } from "react";
 import Search from "antd/es/input/Search";
 import fakeData from "../../data/fake_data.json";
-import getItemDropDownAccount from "./dropdown";
+import useDropdownNavigation from "./dropdown";
 import { useNavigate } from "react-router-dom";
 import AvatarAccount from "../avatar/AvatarAccount";
 import useAuth from "../../hooks/useAuth";
@@ -28,6 +28,7 @@ const TruncateText = (text, maxLength) => {
 function Header(props) {
     const activeButton = props.stateButton;
     const navigate = useNavigate();
+    const {getItemDropDownAccount} = useDropdownNavigation();
     const [search, setSearch] = useState("");
 
     const { account } = useAuth();
