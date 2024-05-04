@@ -19,35 +19,34 @@ const ParticipatingActivities = LoadableComponent(() =>
 const PostDetail = LoadableComponent(() =>
     import("../pages/PostDetail/index.jsx")
 );
-const ActivityDetail = LoadableComponent(() => 
+const ActivityDetail = LoadableComponent(() =>
     import("../pages/ActivityDetail/index.jsx")
 );
 const CreatePost = LoadableComponent(() =>
     import("../pages/CreatePost/index.jsx")
 );
-const Introduce = LoadableComponent(()=>
+const Introduce = LoadableComponent(() =>
     import('../pages/Introduce/Introduce.js')
 );
-const About = LoadableComponent(()=>
+const About = LoadableComponent(() =>
     import('../pages/About/About.js')
 );
-const Login = LoadableComponent(()=>
+const Login = LoadableComponent(() =>
     import('../pages/login/LogIn.js')
 )
-const SignUp = LoadableComponent(()=>
+const SignUp = LoadableComponent(() =>
     import('../pages/SignUp/SignUp.js')
 )
 
-
 const AllRoutes = () => {
     return (
-        
+
         <Routes>
             <Route path="/" element={<Navigate to={"/introduce"} />} />
 
             {/* // public route  */}
             <Route element={<PublicRoute />}>
-                
+
                 <Route
                     path="/user-homepage"
                     element={
@@ -90,24 +89,23 @@ const AllRoutes = () => {
                     element={<MainLayout component={ActivityDetail} />}
                 />
 
-                <Route 
-                    path="/introduce" 
-                    element={<Introduce />} 
+                <Route
+                    path="/introduce"
+                    element={<Introduce />}
                 />
 
-                <Route 
-                    path="/about" 
-                    element={<About />} 
+                <Route
+                    path="/about"
+                    element={<About />}
                 />
                 <Route
                     path='/login'
-                    element={<Login/>}
+                    element={<Login />}
                 />
                 <Route
                     path='/signup'
-                    element={<SignUp/>}
+                    element={<SignUp />}
                 />
-            
             </Route>
 
             {/* guest route */}
