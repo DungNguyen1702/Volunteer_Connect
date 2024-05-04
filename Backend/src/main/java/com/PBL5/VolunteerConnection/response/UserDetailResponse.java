@@ -19,9 +19,7 @@ public class UserDetailResponse {
     private String tel;
     private String address;
     private String gender;
-    private Date birthday;
-    private Date createdAt;
-    private Date updatedAt;
+    private String birthday;
     private Boolean isDeleted;
     public UserDetailResponse(User user, Account account){
         this.account = new AccountDetailResponse(account);
@@ -29,6 +27,6 @@ public class UserDetailResponse {
         this.tel = user.getTel();;
         this.address = user.getAddress();
         this.gender = user.getGender();
-        this.birthday = user.getBirthday();
+        this.birthday = user.getBirthday().toString();
     }
 }

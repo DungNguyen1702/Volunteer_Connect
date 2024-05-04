@@ -36,7 +36,6 @@ public class ActivityServiceImpl implements ActivityService {
     private CandidateService candidateService;
     @Override
     public StatusResponse createActivity(String token, ActivityRequest activity) {
-        // TODO Auto-generated method stub
         try {
 
             int organizationId = jwtService.getId(token);
@@ -106,27 +105,12 @@ public class ActivityServiceImpl implements ActivityService {
     @Override
     public List<ActivityResponse> getAllActivity(String token) {
         int organizationId = jwtService.getId(token);
-//        List<Activity> activityList = myActivityRepository.findAllByOrganizationIdAndTypeAndLocationAndDateStartAndDateEnd(
-//                organizationId,
-//                token.getType(),
-//                token.getLocation(),
-//                token.getDateStart(),
-//                token.getDateEnd());
         List<Activity> activityList = activityRepository.findAllByOrganizationId(organizationId);
         List<ActivityResponse> activityResponseList = new ArrayList<>();
         for (Activity activity : activityList) {
             activityResponseList.add(new ActivityResponse(activity));
         }
-//        List<Activity> activities = activityRepository.findAllByOrganizationId(organizationId);
-//        List<Activity> filteredActivities = activities.stream()
-//                .filter(activity ->
-//                        (activityRequest.getType() == null || activity.getLocation().equals(activityRequest.getActivityLocation())) &&
-//                                (activityRequest.getActivityType() == 0 || activity.getType() == activityRequest.getActivityType())
-//                )
-//                .collect(Collectors.toList());
         return activityResponseList;
-//        return AllActivityResponse.builder().activityResponseList(activityResponseList).build();
-
     }
 
     @Override
