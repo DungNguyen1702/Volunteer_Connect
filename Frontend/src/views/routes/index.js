@@ -107,7 +107,7 @@ const AllRoutes = () => {
 
                 <Route
                     path='/auth/register'
-                    element={<Login/>}
+                    element={<SignUp/>}
                 />
             </Route>
 
