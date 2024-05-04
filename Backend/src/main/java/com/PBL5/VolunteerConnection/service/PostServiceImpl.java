@@ -6,11 +6,8 @@ import com.PBL5.VolunteerConnection.repository.ActivityRepository;
 import com.PBL5.VolunteerConnection.repository.LikePostRepository;
 import com.PBL5.VolunteerConnection.repository.PostRespository;
 import com.PBL5.VolunteerConnection.request.PostRequest;
-import com.PBL5.VolunteerConnection.response.CandidateDetailResponse;
-import com.PBL5.VolunteerConnection.response.PostsActivitiesResponse;
-import com.PBL5.VolunteerConnection.response.StatusResponse;
+import com.PBL5.VolunteerConnection.response.*;
 
-import com.PBL5.VolunteerConnection.response.UserDetailResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -144,7 +141,7 @@ public class PostServiceImpl implements PostService {
                 Post post = postDetailDTO.getPost();
                 Activity activity = postDetailDTO.getActivity();
                 long participants = postDetailDTO.getParticipants();
-                postsActivitiesResponseArrayList.add(new PostsActivitiesResponse(activity, post, participants, 0));
+                postsActivitiesResponseArrayList.add(new PostsActivitiesResponse(new ActivityResponse(activity), post, participants, 0));
             }
             return postsActivitiesResponseArrayList;
 
