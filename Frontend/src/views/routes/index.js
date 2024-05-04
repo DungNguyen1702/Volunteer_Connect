@@ -113,12 +113,17 @@ const AllRoutes = () => {
                     path="/contact" 
                     element={<Contact />} 
                 />
+
                 <Route
-                    path='/login'
+                    path='/auth/login'
                     element={<Login/>}
                 />
 
-            
+                <Route
+                    path='/auth/register'
+                    element={<Login/>}
+                />
+
             </Route>
 
             {/* guest route */}

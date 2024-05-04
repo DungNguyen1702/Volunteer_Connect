@@ -30,7 +30,7 @@ const MenuItems = [
     },
     {
         title: "Login",
-        url: "/login",
+        url: "/auth/login",
         cName: "nav-links-mobile",
     },
 ];
