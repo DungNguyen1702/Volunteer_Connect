@@ -12,6 +12,15 @@ const axiosClient = {
         paramsSerializer: (params) => queryString.stringify(params),
     }),
 
+    applicationNoAuth : axios.create({
+        baseURL: 'http://localhost:8888',
+        
+        headers: {
+            'content-type': 'application/json',
+        },
+        paramsSerializer: (params) => queryString.stringify(params),
+    }),
+
     formData : axios.create({
         baseURL: process.env.API_URL,
         

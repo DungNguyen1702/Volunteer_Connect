@@ -33,10 +33,18 @@ const About = LoadableComponent(() =>
 );
 const Login = LoadableComponent(() =>
     import('../pages/login/LogIn.js')
+<<<<<<< HEAD
 )
 const SignUp = LoadableComponent(() =>
+=======
+);
+const SignUp = LoadableComponent(()=>
+>>>>>>> 0c04043011ffc011873dab2c60c6834194a37192
     import('../pages/SignUp/SignUp.js')
-)
+);
+const Profile = LoadableComponent(()=>
+    import('../pages/Profile/index.jsx')
+);
 
 const AllRoutes = () => {
     return (
@@ -98,14 +106,32 @@ const AllRoutes = () => {
                     path="/about"
                     element={<About />}
                 />
+
                 <Route
+<<<<<<< HEAD
                     path='/login'
                     element={<Login />}
+=======
+                    path='/auth/login'
+                    element={<Login/>}
+>>>>>>> 0c04043011ffc011873dab2c60c6834194a37192
                 />
+
                 <Route
+<<<<<<< HEAD
                     path='/signup'
                     element={<SignUp />}
                 />
+=======
+                    path='/auth/register'
+                    element={<SignUp/>}
+                />
+
+                <Route
+                    path='/profile/:page'
+                    element={<MainLayout component={Profile} />}
+                />
+>>>>>>> 0c04043011ffc011873dab2c60c6834194a37192
             </Route>
 
             {/* guest route */}
