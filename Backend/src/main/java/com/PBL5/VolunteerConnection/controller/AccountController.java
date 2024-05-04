@@ -16,18 +16,22 @@ import org.springframework.web.bind.annotation.*;
 public class AccountController {
     @Autowired
     AccountService accountService;
+
     @PostMapping("/update")
-    public ResponseEntity<StatusResponse> updateAccount(@RequestHeader("Authorization") String token,  @RequestBody AccountRequest updateRequest){
+    public ResponseEntity<StatusResponse> updateAccount(@RequestHeader("Authorization") String token,
+            @RequestBody AccountRequest updateRequest) {
         token = token.substring("Bearer ".length());
         return ResponseEntity.ok(accountService.updateAccount(token, updateRequest));
     }
+
     @DeleteMapping("/delete")
-    public ResponseEntity<StatusResponse> deleteAccount(@RequestHeader("Authorization") String token){
+    public ResponseEntity<StatusResponse> deleteAccount(@RequestHeader("Authorization") String token) {
         token = token.substring("Bearer ".length());
         return ResponseEntity.ok(accountService.deleteAccount(token));
     }
+
     @GetMapping("/detail")
-    public ResponseEntity<AccountDetailResponse> getInfoAccount(@RequestHeader("Authorization") String token){
+    public ResponseEntity<AccountDetailResponse> getInfoAccount(@RequestHeader("Authorization") String token) {
         token = token.substring("Bearer ".length());
         return ResponseEntity.ok(accountService.getInfoAccount(token));
     }
