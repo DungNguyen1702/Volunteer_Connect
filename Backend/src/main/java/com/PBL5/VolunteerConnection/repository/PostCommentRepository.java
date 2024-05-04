@@ -14,6 +14,6 @@ public interface PostCommentRepository extends JpaRepository<PostComment, Intege
     PostComment findById(int id);
 
     // List<PostComment> findByComment_parentId(int comment_parentId);
-
+    @SuppressWarnings("null")
     List<PostComment> findAll();
 }

@@ -27,20 +27,22 @@ public class VolunteerConnectionApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(VolunteerConnectionApplication.class, args);
 	}
+
 	@Bean
-	CommandLineRunner run(CandidateRepository candidateRepository){
+	CommandLineRunner run(CandidateRepository candidateRepository) {
 		return args -> {
 			List<CandidateDetailResponse> candidateDetailResponseList = new ArrayList<>();
 			List<CandidateDetailDTO> candidateDetailDTOList = candidateRepository.findAllByActivityId(1);
-			for(CandidateDetailDTO candidateDetailDTO : candidateDetailDTOList){
+			for (CandidateDetailDTO candidateDetailDTO : candidateDetailDTOList) {
 				Candidate candidate = candidateDetailDTO.getCandidate();
 				Account account = candidateDetailDTO.getAccount();
 				User user = candidateDetailDTO.getUser();
 				candidateDetailResponseList.add(new CandidateDetailResponse(candidate.getId(),
-						new UserDetailResponse(user, account), candidate.getActivityId(), candidate.getCertificate(), candidate.getDateCertificate(),candidate.getCreatedAt()));
+						new UserDetailResponse(user, account), candidate.getActivityId(),
+						candidate.getCertificate(),
+						candidate.getDateCertificate(), candidate.getCreatedAt()));
 			}
 			System.out.print(candidateDetailResponseList);
 		};
 	}
 }
-	
