@@ -44,4 +44,9 @@ public class PostController {
     ResponseEntity<List<PostsActivitiesResponse>> selectAll() {
         return ResponseEntity.ok(postService.selectAll());
     }
+    @PostMapping("/likePost")
+    ResponseEntity<StatusResponse> createLikePost(@RequestHeader("Authorization") String token, @RequestBody PostRequest postRequest) {
+        token = token.substring("Bearer ".length());
+        return ResponseEntity.ok(postService.createLikePost(token, postRequest));
+    }
 }

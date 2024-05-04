@@ -11,6 +11,7 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.stereotype.Service;
 
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.Collection;
 
@@ -43,8 +44,8 @@ public class LoginService {
                 .name(account.getName())
                 .avatar(account.getAvatar())
                 .status(account.getStatus())
-                .createdAt(account.getCreatedAt())
-                .updatedAt(account.getUpdatedAt())
+                .createdAt(account.getCreatedAt().toString())
+                .updatedAt(account.getUpdatedAt().toString())
                 .build();
 
     }
