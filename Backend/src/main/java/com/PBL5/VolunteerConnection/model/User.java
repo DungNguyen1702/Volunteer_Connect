@@ -25,18 +25,16 @@ public class User {
     private String gender;
     @Column(name = "birthday")
     private Date birthday;
-    @Column(name = "email")
-    private String email;
+
 
     public User(){
 
     }
-    public User(int accountId, String tel, String gender, String address,  Date birthday, String email){
+    public User(int accountId, String tel, String gender, String address,  Date birthday){
         this.accountId = accountId;
         this.tel = tel;
         this.address = address;
         this.gender = gender;
         this.birthday = birthday;
-        this.email = email;
     }
 }

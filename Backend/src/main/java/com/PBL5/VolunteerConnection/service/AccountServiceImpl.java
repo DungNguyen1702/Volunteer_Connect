@@ -42,8 +42,7 @@ public class AccountServiceImpl implements  AccountService{
                             registerRequest.getTel(),
                             registerRequest.getAddress(),
                             registerRequest.getGender(),
-                            registerRequest.getBirthday(),
-                            registerRequest.getEmail()));
+                            registerRequest.getBirthday()));
                 }
                 else{
                     account.setIsValid(false);
