@@ -139,7 +139,46 @@ function getFirstCharacter(str) {
 }
 
 function filterPost (listPost, category, country, status, sortBy, sortOrder){
+    
+    let filteredList = [...listPost];
 
+    if(parseInt(category) !== 0)
+        filteredList = [...filteredList.filter(post => parseInt(post.activity.type) === parseInt(category))]
+    if(parseInt(country) !== 0)
+        filteredList = [...filteredList.filter(post => parseInt(post.activity.country) === parseInt(country))]
+    if(parseInt(status) !== 0)
+        filteredList = [...filteredList.filter(post => STATUS[status] === ActivityStatus(post.activity.dateStart, post.activity.dateEnd))]
+
+    switch(sortBy) {
+        case 1 :
+            if(sortOrder === 1)
+                filteredList = [...filteredList.sort((a, b) => new Date(a.activity.dateStart) - new Date(b.activity.dateStart))];
+            else 
+                filteredList = [...filteredList.sort((a, b) => new Date(b.activity.dateStart) - new Date(a.activity.dateStart))];
+            break;
+        case 2 :
+            if(sortOrder === 1)
+                filteredList = [...filteredList.sort((a, b) => new Date(a.activity.dateEnd) - new Date(b.activity.dateEnd))];
+            else 
+                filteredList = [...filteredList.sort((a, b) => new Date(b.activity.dateEnd) - new Date(a.activity.dateEnd))];
+            break;
+        case 3 : 
+            if(sortOrder === 1)
+                filteredList = [...filteredList.sort((a, b) => new Date(a.activity.deadline) - new Date(b.activity.deadline))];
+            else 
+                filteredList = [...filteredList.sort((a, b) => new Date(b.activity.deadline) - new Date(a.activity.deadline))];
+            break;
+        case 4 : 
+            if(sortOrder === 1)
+                filteredList = [...filteredList.sort((a, b) => new Date(a.activity.createdAt) - new Date(b.activity.createdAt))];
+            else 
+                filteredList = [...filteredList.sort((a, b) => new Date(b.activity.createdAt) - new Date(a.activity.createdAt))];
+            break;
+        default : 
+            break;
+    }
+
+    return filteredList
 }
 
 const Utils = {
@@ -158,6 +197,7 @@ const Utils = {
     removeSpaceInString,
     randomHexColor,
     getFirstCharacter,
+    filterPost
 };
 
 export default Utils;

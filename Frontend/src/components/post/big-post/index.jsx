@@ -20,8 +20,8 @@ function BigPost(props) {
     };
 
     const activity_status = SupportFunction.ActivityStatus(
-        data.activity.date_start,
-        data.activity.date_end
+        data.activity.dateStart,
+        data.activity.dateEnd
     );
 
     const clickAct = ()=>{
@@ -65,7 +65,7 @@ function BigPost(props) {
 
             {/* big-post-info */}
             <div class='big-post-info'>
-                <p class='big-post-date'>{data.activity.date_start} - {data.activity.date_end}</p>
+                <p class='big-post-date'>{data.activity.dateStart} - {data.activity.dateEnd}</p>
                 <p class='big-post-type'><strong>{SupportFunction.ActivityType(data.activity.type)}</strong></p>
                 <p class='big-post-register'><strong style={{color: '#52C5BB'}}>Register: </strong>{data.activity.date_end}</p>
             </div>

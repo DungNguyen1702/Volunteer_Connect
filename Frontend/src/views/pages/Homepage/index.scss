@@ -71,6 +71,10 @@ html, body {
     align-items: center;
     padding : 15px 0px;
     border-radius: 20px;
+    justify-content: center;
+}
+.color-gray {
+    color : $subText
 }
 
 .two-side-header {
