@@ -12,6 +12,7 @@ import SupportFunction from "../../../support/support_function";
 import { COUNTRY } from "../../../constants/activity_countries";
 import { STATUS } from "../../../constants/activity_status";
 import { COLOR_FONT, COLOR_STATUS } from "../../../constants/color_status";
+import postAPI from "../../../api/postAPI.js";
 
 function addIsLikedField(posts) {
     return posts.map((post) => ({
@@ -31,8 +32,11 @@ function UserHomepage(props) {
     const [likedPosts, setLikedPosts] = useState(
         addIsLikedField(fake_data["Posts-Activities"])
     );
+    const [listPosts, setListPosts] = useState([]);
+    const [popularPosts, setPopularPost] = useState(fake_data["Posts-Activities"])
+
     const [listShowActs, setListShowActs] = useState(
-        likedPosts.slice(startIndex, startIndex + limit)
+        listPosts.slice(startIndex, startIndex + limit)
     );
     const [selectedCategory, setSelectedCategory] = useState(0);
     const [selectedCountry, setSelectedCountry] = useState(0);
@@ -42,9 +46,23 @@ function UserHomepage(props) {
 
     // set useEffect
     useEffect(() => {
-        console.log(startIndex);
-        setListShowActs(likedPosts.slice(startIndex, startIndex + limit));
-    }, [startIndex, likedPosts]);
+        setListShowActs(listPosts.slice(startIndex, startIndex + limit));
+    }, [startIndex, listPosts]);
+
+    useEffect(()=>{
+        const getAllPostApi = async()=>{
+            await postAPI.getAllPost()
+                .then ((response)=> {
+                    console.log(response.data)
+                    setListPosts(response.data)
+                })
+                .catch((error) => {
+                                console.log(error)
+                })
+        }
+
+        getAllPostApi();
+    },[])
 
     // set event
     const onChangePage = (page, pageSize) => {
@@ -280,7 +298,7 @@ function UserHomepage(props) {
             >
                 <div class="left-content-wrapper">
                     <h2 class="two-side-header">Popular activities</h2>
-                    {likedPosts.map((post) => (
+                    {popularPosts.map((post) => (
                         <SmallPost data={post} key={post.id} />
                     ))}
                 </div>
@@ -291,7 +309,7 @@ function UserHomepage(props) {
                     ))}
 
                     <Pagination
-                        total={likedPosts.length}
+                        total={listPosts.length}
                         pageSize={limit}
                         onChange={onChangePage}
                     />

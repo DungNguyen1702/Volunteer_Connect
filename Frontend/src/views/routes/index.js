@@ -33,10 +33,13 @@ const About = LoadableComponent(()=>
 );
 const Login = LoadableComponent(()=>
     import('../pages/login/LogIn.js')
-)
+);
 const SignUp = LoadableComponent(()=>
     import('../pages/SignUp/SignUp.js')
-)
+);
+const Profile = LoadableComponent(()=>
+    import('../pages/Profile/index.jsx')
+);
 
 
 const AllRoutes = () => {
@@ -99,15 +102,21 @@ const AllRoutes = () => {
                     path="/about" 
                     element={<About />} 
                 />
+
                 <Route
-                    path='/login'
+                    path='/auth/login'
                     element={<Login/>}
                 />
+
                 <Route
-                    path='/signup'
+                    path='/auth/register'
                     element={<SignUp/>}
                 />
-            
+
+                <Route
+                    path='/profile/:page'
+                    element={<MainLayout component={Profile} />}
+                />
             </Route>
 
             {/* guest route */}

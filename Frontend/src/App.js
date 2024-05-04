@@ -10,8 +10,8 @@ function App() {
         if (!localStorage.getItem("token")) {
             localStorage.setItem("token", null);
         }
-        if (!localStorage.getItem("user")) {
-            localStorage.setItem("user", null);
+        if (!localStorage.getItem("account")) {
+            localStorage.setItem("account", null);
         }
     }, []);
 

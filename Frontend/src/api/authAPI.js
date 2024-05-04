@@ -6,7 +6,7 @@ const auth = {
         return await axiosClient.application.post(url,credentials)
     },
     register : async(user)=>{
-        const url = 'api/auth/register'
+        const url = '/api/auth/register'
         return await axiosClient.application.post(url, user)
     }
 }

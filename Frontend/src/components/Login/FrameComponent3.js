@@ -6,6 +6,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { toast } from "react-toastify";
 import auth from "../../api/authAPI";
 import useAuth from "../../hooks/useAuth";
+import { useNavigate } from "react-router-dom";
 
 const FrameComponent = () => {
     const [account, setAccount] = useState('');
@@ -19,7 +20,9 @@ const FrameComponent = () => {
     const onChangePassword = (e) => {
         setPassword(e.target.value);
     };
-    const onClickLogin = () => {
+    const navigate = useNavigate();
+
+    const onClickLogin = ()=>{
         const callAPI = async () => {
             try {
                 const values = {
@@ -32,8 +35,11 @@ const FrameComponent = () => {
 
                 if (response.status === 200) {
                     setToken(response.data.token)
-                    localStorage.setItem('token', response.data.token)
-                    toast.success('Login success')
+                    localStorage.setItem('token',response.data.token)
+                    toast.success('Login success');
+                    setTimeout (() => (
+                        navigate('/user-homepage')
+                    ), 2000)
                 }
             }
             catch (e) {
