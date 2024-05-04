@@ -8,6 +8,7 @@ function Profile() {
 
   return (
     <div class='profile-wrapper'>Profile</div>
+    
   )
 }
 
