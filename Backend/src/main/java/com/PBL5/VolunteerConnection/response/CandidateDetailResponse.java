@@ -16,7 +16,7 @@ public class CandidateDetailResponse {
     private UserDetailResponse user;
     private int activity_id;
     private String certificate;
-    private Date date_earn_certificate;
-    private Date createAt;
+    private String date_earn_certificate;
+    private String createAt;
 
 }

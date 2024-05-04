@@ -13,9 +13,24 @@ import java.time.LocalDate;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class ActivityResponse extends Activity{
+public class ActivityResponse {
+    protected int id;
+    protected String image;
+    protected String email;
+    protected String name;
     protected int participants;
     protected int comments;
+    protected String deadline;
+    protected String dateStart;
+    protected String dateEnd;
+    protected String createdAt;
+    protected String updateAt;
+    protected int type;
+    protected int country;
+    protected String location;
+    protected int organizationId;
+    protected Boolean isDeleted;
+    protected String content;
 
     public ActivityResponse(Activity activity) {
         this.id = activity.getId();
@@ -23,16 +38,16 @@ public class ActivityResponse extends Activity{
         this.email = activity.getEmail();
         this.name = activity.getName();
         this.type = activity.getType();
-        this.deadline = activity.getDeadline();
-        this.dateStart = activity.getDateStart();
-        this.dateEnd = activity.getDateEnd();
+        this.deadline = activity.getDeadline().toString();
+        this.dateStart = activity.getDateStart().toString();
+        this.dateEnd = activity.getDateEnd().toString();
         this.country = activity.getCountry();
         this.location = activity.getLocation();
         this.organizationId = activity.getOrganizationId();
         this.isDeleted = activity.getIsDeleted();
         this.content = activity.getContent();
-        this.createdAt = activity.getCreatedAt();
-        this.updateAt = activity.getUpdateAt();
+        this.createdAt = activity.getCreatedAt().toString();
+        this.updateAt = activity.getUpdateAt().toString();
 
     }
 

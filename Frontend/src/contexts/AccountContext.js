@@ -2,7 +2,7 @@
 import { createContext, useState, useEffect, useMemo } from 'react'
 import { useNavigate } from 'react-router-dom'
 import axiosClient from '../api/axiosClient'
-import accountInfoAPI from '../api/accountInfoAPI'
+import accountInfoAPI from '../api/accountAPI'
 const AccountContext = createContext({})
 
 export const AuthProvider = ({ children }) => {
@@ -25,19 +25,21 @@ export const AuthProvider = ({ children }) => {
 
             accountInfoAPI.getInfoByToken()
                 .then ((response)=> {
-                    setAccount(response.data.profile)
+                    setAccount(response.data)
                     localStorage.setItem(
                         'account',
-                        JSON.stringify( response.data.profile),
+                        JSON.stringify( response.data),
                     )
                 })
                 .catch((error) => {
                                 console.log(error)
-                            })
+                })
 
         } else {
             // User logout
-            setAccount('null')
+            delete axiosClient.application.defaults.headers.common['Authorization'];
+
+            setAccount('null');
             localStorage.setItem('token', null)
             localStorage.setItem('account', null)
         }

@@ -20,8 +20,8 @@ public class LoginResponse {
     private String name;
     private String avatar;
     private Boolean status;
-    private Date createdAt;
-    private Date updatedAt;
+    private String createdAt;
+    private String updatedAt;
     private Boolean isDeleted;
     private String backgroundNoAva;
 }

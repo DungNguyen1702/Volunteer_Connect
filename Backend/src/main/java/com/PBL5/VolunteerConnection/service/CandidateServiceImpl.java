@@ -147,7 +147,7 @@ public class CandidateServiceImpl implements CandidateService {
             Account account = candidateDetailDTO.getAccount();
             User user = candidateDetailDTO.getUser();
             candidateDetailResponseList.add(new CandidateDetailResponse(candidate.getId(),
-                    new UserDetailResponse(user, account), candidate.getActivityId(), candidate.getCertificate(), candidate.getDateCertificate(),candidate.getCreatedAt()));
+                    new UserDetailResponse(user, account), candidate.getActivityId(), candidate.getCertificate(), candidate.getDateCertificate().toString(),candidate.getCreatedAt().toString()));
         }
         return candidateDetailResponseList;
     }

@@ -138,6 +138,10 @@ function getFirstCharacter(str) {
     return str.charAt(0);
 }
 
+function filterPost (listPost, category, country, status, sortBy, sortOrder){
+
+}
+
 const Utils = {
     TruncateText,
     ActivityType,
