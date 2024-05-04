@@ -1,8 +1,7 @@
 package com.PBL5.VolunteerConnection.controller;
 
 import com.PBL5.VolunteerConnection.response.AccountDetailResponse;
-import com.PBL5.VolunteerConnection.response.AccountRequest;
-import com.PBL5.VolunteerConnection.response.LoginResponse;
+import com.PBL5.VolunteerConnection.request.AccountRequest;
 import com.PBL5.VolunteerConnection.response.StatusResponse;
 import com.PBL5.VolunteerConnection.service.AccountService;
 import lombok.RequiredArgsConstructor;
