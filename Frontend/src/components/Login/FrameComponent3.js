@@ -11,35 +11,35 @@ const FrameComponent = () => {
     const [account, setAccount] = useState('');
     const [password, setPassword] = useState('');
 
-    const {setToken} = useAuth();
+    const { setToken } = useAuth();
 
-    const onChangeAccount = (e)=>{
+    const onChangeAccount = (e) => {
         setAccount(e.target.value);
     };
-    const onChangePassword = (e)=>{
+    const onChangePassword = (e) => {
         setPassword(e.target.value);
     };
-    const onClickLogin = ()=>{
+    const onClickLogin = () => {
         const callAPI = async () => {
             try {
                 const values = {
-                    account : account,
-                    password : password,
+                    account: account,
+                    password: password,
                 }
                 console.log(values)
 
                 const response = await auth.login(values);
-                
-                if(response.status === 200){
+
+                if (response.status === 200) {
                     setToken(response.data.token)
-                    localStorage.setItem('token',response.data.token)
+                    localStorage.setItem('token', response.data.token)
                     toast.success('Login success')
                 }
             }
             catch (e) {
                 toast.error('Login failed');
             }
-            finally{
+            finally {
             }
         };
         callAPI();
@@ -88,21 +88,22 @@ const FrameComponent = () => {
                         </div>
                     </div>
                     <div className={styles.rememberMeSettings}>
-                        <div className={styles.checkboxWrapper}>
-                            <div className={styles.checkbox} />
-                        </div>
+                        <label className={styles.checkboxWrapper}>
+                            <input type="checkbox" className={styles.checkbox} />
+                            <span className={styles.checkmark}></span>
+                        </label>
                         <div className={styles.rememberFor30}>
                             Remember for 30 days
                         </div>
                     </div>
                 </div>
                 <div className={styles.loginFormInner}>
-                        <Button
-                            className={styles.buttonLogin}
-                            onClick={onClickLogin}
-                        >
-                            Login
-                        </Button>
+                    <Button
+                        className={styles.buttonLogin}
+                        onClick={onClickLogin}
+                    >
+                        Login
+                    </Button>
                 </div>
                 <div className={styles.loginFormChild}>
                     <div className={styles.lineParent}>

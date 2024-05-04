@@ -1,8 +1,8 @@
 package com.PBL5.VolunteerConnection.controller;
 
-import com.PBL5.VolunteerConnection.response.LoginRequest;
+import com.PBL5.VolunteerConnection.request.LoginRequest;
 import com.PBL5.VolunteerConnection.response.LoginResponse;
-import com.PBL5.VolunteerConnection.response.AccountRequest;
+import com.PBL5.VolunteerConnection.request.AccountRequest;
 import com.PBL5.VolunteerConnection.response.StatusResponse;
 import com.PBL5.VolunteerConnection.service.AccountService;
 import com.PBL5.VolunteerConnection.service.LoginService;

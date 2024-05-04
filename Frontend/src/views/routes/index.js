@@ -103,7 +103,10 @@ const AllRoutes = () => {
                     path='/login'
                     element={<Login/>}
                 />
-
+                <Route
+                    path='/signup'
+                    element={<SignUp/>}
+                />
             
             </Route>
 

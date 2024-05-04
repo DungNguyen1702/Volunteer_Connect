@@ -1,4 +1,4 @@
-package com.PBL5.VolunteerConnection.response;
+package com.PBL5.VolunteerConnection.request;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -12,6 +12,7 @@ import lombok.NoArgsConstructor;
 public class PostRequest {
     private String token;
     private int id;
+    private int accountId;
     private int activityId;
     private String title;
     private String image;
