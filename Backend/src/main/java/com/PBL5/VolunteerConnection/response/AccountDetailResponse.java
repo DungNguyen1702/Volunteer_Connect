@@ -1,11 +1,14 @@
 package com.PBL5.VolunteerConnection.response;
 
+import com.PBL5.VolunteerConnection.model.Account;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.sql.Date;
+import java.time.LocalDate;
+
 @Data
 @Builder
 @AllArgsConstructor
@@ -21,4 +24,16 @@ public class AccountDetailResponse {
     private Date updatedAt;
     private Boolean isDeleted;
     private String backgroundNoAva;
+    public AccountDetailResponse(Account account){
+        this.id = account.getId();
+        this.account = account.getAccount();
+        this.name = account.getName();
+        this.avatar = account.getAvatar();
+        this.status = account.getStatus();
+        this.role = account.getRole();
+        this.createdAt = account.getCreatedAt();
+        this.updatedAt = account.getUpdatedAt();
+        this.isDeleted = account.getIsDeleted();
+        this.backgroundNoAva = account.getBackgroundNoAva();
+    }
 }

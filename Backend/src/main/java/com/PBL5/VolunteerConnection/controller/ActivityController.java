@@ -1,6 +1,8 @@
 package com.PBL5.VolunteerConnection.controller;
 
 import com.PBL5.VolunteerConnection.model.Activity;
+import com.PBL5.VolunteerConnection.request.ActivityRequest;
+import com.PBL5.VolunteerConnection.request.CandidateRequest;
 import com.PBL5.VolunteerConnection.response.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

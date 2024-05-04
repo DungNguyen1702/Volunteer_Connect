@@ -1,11 +1,11 @@
 package com.PBL5.VolunteerConnection.service;
 
-import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
-import com.PBL5.VolunteerConnection.model.Activity;
+import com.PBL5.VolunteerConnection.dto.CandidateDetailDTO;
+import com.PBL5.VolunteerConnection.model.Account;
+import com.PBL5.VolunteerConnection.model.User;
 import com.PBL5.VolunteerConnection.response.CandidateDetailResponse;
 import com.PBL5.VolunteerConnection.response.UserDetailResponse;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +17,7 @@ import com.PBL5.VolunteerConnection.model.Candidate;
 
 import com.PBL5.VolunteerConnection.repository.ActivityRepository;
 import com.PBL5.VolunteerConnection.repository.CandidateRepository;
-import com.PBL5.VolunteerConnection.response.CandidateRequest;
+import com.PBL5.VolunteerConnection.request.CandidateRequest;
 import com.PBL5.VolunteerConnection.response.StatusResponse;
 
 @Service
@@ -139,13 +139,17 @@ public class CandidateServiceImpl implements CandidateService {
 
     @Override
     public List<CandidateDetailResponse> getCandidateDetail(String token, int activityId) {
-        List<Candidate> candidatelList = candidateRepository.findByActivityId(activityId);
+//        List<Candidate> candidatelList = candidateRepository.findByActivityId(activityId);
         List<CandidateDetailResponse> candidateDetailResponseList = new ArrayList<>();
-//        for(Candidate candidate : candidatelList){
-//            candidateDetailResponseList.add(new CandidateDetailResponse(candidate.getId(), accountService.getInfoUser() ,
-//                    candidate.getActivityId(), candidate.getCertificate(), candidate.getDateCertificate(), candidate.getCreatedAt()));
-//        }
-        return null;
+        List<CandidateDetailDTO> candidateDetailDTOList = candidateRepository.findAllByActivityId(activityId);
+        for(CandidateDetailDTO candidateDetailDTO : candidateDetailDTOList){
+            Candidate candidate = candidateDetailDTO.getCandidate();
+            Account account = candidateDetailDTO.getAccount();
+            User user = candidateDetailDTO.getUser();
+            candidateDetailResponseList.add(new CandidateDetailResponse(candidate.getId(),
+                    new UserDetailResponse(user, account), candidate.getActivityId(), candidate.getCertificate(), candidate.getDateCertificate(),candidate.getCreatedAt()));
+        }
+        return candidateDetailResponseList;
     }
 
 

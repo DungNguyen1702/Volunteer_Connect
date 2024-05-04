@@ -1,6 +1,20 @@
 import styles from "./SignUp.module.css";
+import useAuth from "../../../hooks/useAuth";
+import { useState } from "react";
+import { Button, Input } from "antd";
 
 const SignUp = () => {
+  const [account, setAccount] = useState('');
+  const [password, setPassword] = useState('');
+  const onChangeAccount = (e) => {
+    setAccount(e.target.value);
+  };
+  const onChangePassword = (e) => {
+    setPassword(e.target.value);
+  };
+  const onClickLogin = () => {
+    
+}
   return (
     <div className={styles.signUp}>
       <div className={styles.mainContainerWrapper}>
@@ -12,74 +26,71 @@ const SignUp = () => {
                   Join to the Volunteer community
                 </h1>
               </div>
-              <div className={styles.enterYourCredentials}>
-                Enter your Credentials to access your account
-              </div>
               <form className={styles.loginArea}>
                 <div className={styles.nameInputArea}>
                   <div className={styles.nameInputFieldParent}>
                     <div className={styles.nameInputField}>
                       <div className={styles.name}>Name</div>
                     </div>
-                    <div className={styles.inputNameFieldWrapper}>
-                      <input
-                        className={styles.inputNameField}
-                        placeholder="Enter your name"
-                        type="text"
-                      />
-                    </div>
+                    <Input
+                      className='styles.input_Sign'
+                      placeholder="Enter your name"
+                      type="text"
+                      value={account}
+                      onChange={onChangeAccount}
+                    />
+
                   </div>
                   <div className={styles.frameParent}>
                     <div className={styles.nameWrapper}>
                       <div className={styles.name1}>Email address</div>
                     </div>
-                    <div className={styles.frameWrapper}>
-                      <input
-                        className={styles.frameChild}
-                        placeholder="Enter your email"
-                        type="text"
-                      />
-                    </div>
+                    <Input
+                      className='styles.input_Sign'
+                      placeholder="Enter your email address"
+                      type="text"
+                      value={account}
+                      onChange={onChangeAccount}
+                    />
                   </div>
                   <div className={styles.frameGroup}>
                     <div className={styles.nameContainer}>
                       <div className={styles.name2}>Password</div>
                     </div>
-                    <div className={styles.frameContainer}>
-                      <input
-                        className={styles.frameItem}
-                        placeholder="Name"
-                        type="text"
-                      />
+
+                    <Input.Password
+                      placeholder="Enter your password"
+                      value={password}
+                      onChange={onChangePassword}
+                    />
+                  </div>
+                  <div className={styles.frameGroup}>
+                    <div className={styles.nameContainer}>
+                      <div className={styles.name2}>Confirm Password</div>
                     </div>
+                    <Input.Password
+                      placeholder="Enter your password again"
+                      value={password}
+                      onChange={onChangePassword}
+                    />
                   </div>
                   <div className={styles.groupDiv}>
-                    <div className={styles.checkboxWrapper}>
-                      <div className={styles.checkbox} />
-                    </div>
+                    <label className={styles.checkboxWrapper}>
+                      <input type="checkbox" className={styles.checkbox} />
+                      <span className={styles.customCheckbox}></span>
+                    </label>
                     <div className={styles.iAgreeToContainer}>
                       {`I agree to the `}
-                      <span
-                        className={styles.termsPolicy}
-                      >{`terms & policy`}</span>
+                      <span className={styles.termsPolicy}>{`terms & policy`}</span>
                     </div>
                   </div>
                 </div>
-                <button className={styles.instanceParent}>
-                  <div className={styles.frameDiv}>
-                    <div className={styles.nameFrame}>
-                      <div className={styles.name3}>Name</div>
-                    </div>
-                    <div className={styles.frameWrapper1}>
-                      <div className={styles.nameWrapper1}>
-                        <div className={styles.name4}>Name</div>
-                      </div>
-                    </div>
-                  </div>
-                  <div className={styles.loginButton}>
-                    <b className={styles.login}>Signup</b>
-                  </div>
-                </button>
+                <Button
+                  className={styles.buttonSignUp}
+                  onClick={onClickLogin}
+                >
+                  Sign Up
+                </Button>
               </form>
               <div className={styles.dividerArea}>
                 <div className={styles.dividerParent}>
@@ -129,7 +140,7 @@ const SignUp = () => {
                         <span
                           className={styles.haveAnAccount}
                         >{`Have an account?  `}</span>
-                        <span className={styles.signIn}>Sign In</span>
+                        <span className={styles.signIn}>Log in</span>
                       </div>
                     </div>
                   </div>
@@ -149,7 +160,7 @@ const SignUp = () => {
         className={styles.foregroundIcon}
         loading="lazy"
         alt=""
-        src="/rectangle-701@2x.png.png"
+        src="/rectangle-701@2x.png"
       />
     </div>
   );

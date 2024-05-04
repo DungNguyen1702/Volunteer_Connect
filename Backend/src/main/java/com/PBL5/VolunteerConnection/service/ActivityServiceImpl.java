@@ -3,6 +3,8 @@ package com.PBL5.VolunteerConnection.service;
 import com.PBL5.VolunteerConnection.model.Account;
 import com.PBL5.VolunteerConnection.repository.AccountRepository;
 import com.PBL5.VolunteerConnection.repository.UserRespository;
+import com.PBL5.VolunteerConnection.request.ActivityRequest;
+import com.PBL5.VolunteerConnection.request.CandidateRequest;
 import com.PBL5.VolunteerConnection.response.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -30,6 +32,8 @@ public class ActivityServiceImpl implements ActivityService {
     private JwtService jwtService;
     @Autowired
     private UserRespository userRespository;
+    @Autowired
+    private CandidateService candidateService;
     @Override
     public StatusResponse createActivity(String token, ActivityRequest activity) {
         // TODO Auto-generated method stub
@@ -128,10 +132,13 @@ public class ActivityServiceImpl implements ActivityService {
     @Override
     public ActivityDetailResponse getActivityDetail(String token, int id) {
         int organizationId = jwtService.getId(token);
+        System.out.print(organizationId);
         Activity activityDetail = activityRepository.findByIdAndOrganizationId(id, organizationId);
+        System.out.print(activityDetail);
         Account organization = accountRepository.findById(activityDetail.getOrganizationId());
-        List<CandidateDetailResponse> candidateDetailResponseList = new ArrayList<>();
-        return new ActivityDetailResponse(new ActivityResponse(activityDetail), null, 0, 0, organization, null);
+        List<CandidateDetailResponse> candidates = candidateService.getCandidateDetail(token, id);
+        return new ActivityDetailResponse(new ActivityResponse(activityDetail), null, 0, 0,
+                new AccountDetailResponse(organization), candidates);
     }
     @Override
     public List<Activity> selectAllActivitiesByCandidate(String token, CandidateRequest activityRequest) {

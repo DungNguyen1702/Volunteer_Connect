@@ -24,7 +24,7 @@ public class Post {
     @Column(name = "content")
     private String content;
     @Column(name = "createdAt")
-    private Date createdAt;
+    private java.util.Date createdAt;
     @Column(name = "updatedAt")
     private Date updateAt;
     public Post(int activityId, String title, String image, String content) {
