@@ -1,6 +1,9 @@
 package com.PBL5.VolunteerConnection.service;
 
+import com.PBL5.VolunteerConnection.dto.ActivityDTO;
+import com.PBL5.VolunteerConnection.dto.PostActivityDetailDTO;
 import com.PBL5.VolunteerConnection.model.Account;
+import com.PBL5.VolunteerConnection.model.Post;
 import com.PBL5.VolunteerConnection.repository.AccountRepository;
 import com.PBL5.VolunteerConnection.repository.UserRespository;
 import com.PBL5.VolunteerConnection.request.ActivityRequest;
@@ -105,10 +108,12 @@ public class ActivityServiceImpl implements ActivityService {
     @Override
     public List<ActivityResponse> getAllActivity(String token) {
         int organizationId = jwtService.getId(token);
-        List<Activity> activityList = activityRepository.findAllByOrganizationId(organizationId);
         List<ActivityResponse> activityResponseList = new ArrayList<>();
-        for (Activity activity : activityList) {
-            activityResponseList.add(new ActivityResponse(activity));
+        List<Object[]> activityDTOS = activityRepository.getListActivityDetail(organizationId);
+        for (Object[] result : activityDTOS) {
+            ActivityDTO activityDTO = new ActivityDTO((Activity) result[0], (Long) result[1], (Long) result[2], (Long) result[3], (Long) result[4]);
+            activityResponseList.add(new ActivityResponse(activityDTO.getActivity(), activityDTO.getApplyFormNumbers(), activityDTO.getComments(), activityDTO.getParticipants(), activityDTO.getPostNumbers()));
+
         }
         return activityResponseList;
     }
@@ -116,13 +121,25 @@ public class ActivityServiceImpl implements ActivityService {
     @Override
     public ActivityDetailResponse getActivityDetail(String token, int id) {
         int organizationId = jwtService.getId(token);
-        System.out.print(organizationId);
-        Activity activityDetail = activityRepository.findByIdAndOrganizationId(id, organizationId);
-        System.out.print(activityDetail);
+        List<Object[]> activityDTO = activityRepository.getActivityWithPostsAndCounts( id, organizationId);
+        Activity activityDetail = (Activity)activityDTO.get(0)[0];
+        List< PostActivityDetailDTO> postActivityDetailDTOS = new ArrayList<>();
+        long registrationCount = (Long) activityDTO.get(0)[2];
+        long totalComments = 0;
+        for (Object[] result : activityDTO) {
+//            Activity activity = (Activity) result[0];
+            Post post = (Post) result[1];
+            Long commentCount = (Long) result[3];
+            totalComments += commentCount;
+            postActivityDetailDTOS.add(new PostActivityDetailDTO(post, commentCount));
+        }
         Account organization = accountRepository.findById(activityDetail.getOrganizationId());
         List<CandidateDetailResponse> candidates = candidateService.getCandidateDetail(token, id);
-        return new ActivityDetailResponse(new ActivityResponse(activityDetail), null, 0, 0,
+        int postNumber = postActivityDetailDTOS.size();
+        return new ActivityDetailResponse(new ActivityResponse(activityDetail,registrationCount, totalComments,candidates.size() ,  postNumber), postActivityDetailDTOS,
                 new AccountDetailResponse(organization), candidates);
+//        return new ActivityDetailResponse(new ActivityResponse(activityDetail), null, 0, 0,
+//                null,null);
     }
     @Override
     public List<Activity> selectAllActivitiesByCandidate(String token, CandidateRequest activityRequest) {

@@ -1,6 +1,5 @@
 package com.PBL5.VolunteerConnection.service;
 
-import com.PBL5.VolunteerConnection.dto.PostDetailDTO;
 import com.PBL5.VolunteerConnection.model.LikePost;
 import com.PBL5.VolunteerConnection.model.Post;
 import com.PBL5.VolunteerConnection.request.PostRequest;
@@ -20,6 +19,7 @@ public interface PostService {
 
     List<Post> SelectAll();
     List<PostsActivitiesResponse> selectAll();
+    List<PostsActivitiesResponse> selectAllByAccountId(String token);
     StatusResponse createLikePost(String token, PostRequest post);
     StatusResponse deleteLikePost(String token, PostRequest post);
     List<LikePost> getAllLikePost(String token);

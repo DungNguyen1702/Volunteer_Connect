@@ -18,8 +18,9 @@ public class ActivityResponse {
     protected String image;
     protected String email;
     protected String name;
-    protected int participants;
-    protected int comments;
+    protected long participants;
+    protected long comments;
+    protected long applyFormNumber;
     protected String deadline;
     protected String dateStart;
     protected String dateEnd;
@@ -31,8 +32,9 @@ public class ActivityResponse {
     protected int organizationId;
     protected Boolean isDeleted;
     protected String content;
+    protected long postNumber;
 
-    public ActivityResponse(Activity activity) {
+    public ActivityResponse(Activity activity, long applyFormNumber, long comments, long participants, long posts) {
         this.id = activity.getId();
         this.image = activity.getImage();
         this.email = activity.getEmail();
@@ -48,7 +50,12 @@ public class ActivityResponse {
         this.content = activity.getContent();
         this.createdAt = activity.getCreatedAt().toString();
         this.updateAt = activity.getUpdateAt().toString();
+        this.applyFormNumber = applyFormNumber;
+        this.comments = comments;
+        this.participants = participants;
+        this.postNumber = posts;
 
     }
+
 
 }
