@@ -20,8 +20,8 @@ public class AccountDetailResponse {
     private String avatar;
     private Boolean status;
     private int role;
-    private Date createdAt;
-    private Date updatedAt;
+    private String createdAt;
+    private String updatedAt;
     private Boolean isDeleted;
     private String backgroundNoAva;
     public AccountDetailResponse(Account account){
@@ -31,8 +31,11 @@ public class AccountDetailResponse {
         this.avatar = account.getAvatar();
         this.status = account.getStatus();
         this.role = account.getRole();
-        this.createdAt = account.getCreatedAt();
-        this.updatedAt = account.getUpdatedAt();
+        this.createdAt = account.getCreatedAt().toString();
+        this.updatedAt = null;
+        if(account.getUpdatedAt() != null){
+            this.updatedAt = account.getUpdatedAt().toString();
+        }
         this.isDeleted = account.getIsDeleted();
         this.backgroundNoAva = account.getBackgroundNoAva();
     }

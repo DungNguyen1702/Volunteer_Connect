@@ -8,11 +8,11 @@ import com.PBL5.VolunteerConnection.response.StatusResponse;
 
 public interface PostCommentService {
 
-    StatusResponse createPost(String token, PostCommentRequest postComment);
+    StatusResponse createPostComment(String token, PostCommentRequest postComment);
 
-    StatusResponse updpostComment(String token, PostCommentRequest postComment);
+    StatusResponse updatePostComment(String token, PostCommentRequest postComment);
 
-    StatusResponse deletePost(String token, PostCommentRequest postComment);
+    StatusResponse deletePostComment(String token, PostCommentRequest postComment);
 
     List<PostComment> selectAll();
 }

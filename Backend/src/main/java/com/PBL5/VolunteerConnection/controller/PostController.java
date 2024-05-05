@@ -40,8 +40,18 @@ public class PostController {
         return ResponseEntity.ok(postService.SelectAllPost(postRequest));
     }
 
-    @GetMapping("/select")
+    @GetMapping("/guest")
     ResponseEntity<List<PostsActivitiesResponse>> selectAll() {
         return ResponseEntity.ok(postService.selectAll());
+    }
+    @GetMapping("/select")
+    ResponseEntity<List<PostsActivitiesResponse>> selectAll(@RequestHeader("Authorization") String token) {
+        token = token.substring("Bearer ".length());
+        return ResponseEntity.ok(postService.selectAllByAccountId(token));
+    }
+    @PostMapping("/likePost")
+    ResponseEntity<StatusResponse> createLikePost(@RequestHeader("Authorization") String token, @RequestBody PostRequest postRequest) {
+        token = token.substring("Bearer ".length());
+        return ResponseEntity.ok(postService.createLikePost(token, postRequest));
     }
 }

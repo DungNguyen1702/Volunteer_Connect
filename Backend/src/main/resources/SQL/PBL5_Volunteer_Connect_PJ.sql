@@ -152,7 +152,7 @@ ALTER TABLE `PostComments` ADD FOREIGN KEY (`comment_parent_id`) REFERENCES `Pos
 
 ALTER TABLE `PostComments` ADD FOREIGN KEY (`account_id`) REFERENCES `Accounts` (`id`) ON DELETE CASCADE;
 
-ALTER TABLE `PostComments` ADD FOREIGN KEY (`post_id`) REFERENCES `Activities` (`id`) ON DELETE CASCADE;
+ALTER TABLE `PostComments` ADD FOREIGN KEY (`post_id`) REFERENCES `Posts` (`id`) ON DELETE CASCADE;
 
 ALTER TABLE `Notifications` ADD FOREIGN KEY (`account_id`) REFERENCES `Accounts` (`id`) ON DELETE CASCADE;
 
@@ -170,6 +170,6 @@ ALTER TABLE `Chats` ADD FOREIGN KEY (`sender_id`) REFERENCES `Users` (`id`) ON D
 
 ALTER TABLE `Chats` ADD FOREIGN KEY (`receiver_id`) REFERENCES `Users` (`id`) ON DELETE CASCADE;
 
-ALTER TABLE `LikePosts` ADD FOREIGN KEY (`account_id`) REFERENCES `Users` (`id`) ON DELETE CASCADE;
+ALTER TABLE `LikePosts` ADD FOREIGN KEY (`account_id`) REFERENCES `Accounts` (`id`) ON DELETE CASCADE;
 
 ALTER TABLE `LikePosts` ADD FOREIGN KEY (`post_id`) REFERENCES `Posts` (`id`) ON DELETE CASCADE;

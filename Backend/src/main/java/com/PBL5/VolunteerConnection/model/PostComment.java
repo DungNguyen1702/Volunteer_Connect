@@ -16,7 +16,7 @@ public class PostComment {
     @Column(name = "id")
     private int id;
     @Column(name = "comment_parent_id")
-    private int comment_parentId;
+    private Integer comment_parentId;
     @Column(name = "post_id")
     private int postId;
     @Column(name = "content")
@@ -30,13 +30,15 @@ public class PostComment {
     @Column(name = "isDeleted")
     private boolean isDeleted;
 
-    PostComment() {
+    public PostComment() {
 
     }
 
-    public PostComment(int id, int comment_parentId, int postId, String content, int accountId, boolean isDeleted) {
-        this.id = id;
+    public PostComment(Integer comment_parentId, int postId, String content, int accountId, boolean isDeleted) {
         this.comment_parentId = comment_parentId;
+        // if (comment_parentId == 0) {
+        // this.comment_parentId = this.id;
+        // }
         this.postId = postId;
         this.content = content;
         this.accountId = accountId;
@@ -45,4 +47,16 @@ public class PostComment {
         this.updatedAt = Date.valueOf(LocalDate.now());
     }
 
+    public PostComment(int postId, String content, int accountId) {
+
+        // if (comment_parentId == 0) {
+        // this.comment_parentId = this.id;
+        // }
+        this.postId = postId;
+        this.content = content;
+        this.accountId = accountId;
+
+        this.createdAt = Date.valueOf(LocalDate.now());
+        this.updatedAt = Date.valueOf(LocalDate.now());
+    }
 }
