@@ -113,8 +113,8 @@ const AllRoutes = () => {
                 />
 
                 <Route
-                    path='/profile/:page'
-                    element={<MainLayout component={Profile} />}
+                    path='/profile/:activepage'
+                    element={<Profile />}
                 />
                 
             </Route>
