@@ -1,0 +1,35 @@
+@import '../../../../../constants/colors.scss';
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    font-size: 15px;
+    background-color: $background;
+}
+
+.chat-bar-wrapper{
+    display: flex;
+    margin : 10px 0px;
+    width: 100%;
+}
+
+.justify-right{
+    justify-content: end;
+}
+
+.chat-bar-content-wrapper {
+    margin-left: 20px;
+    width: 70%;
+    background-color: $background-footer;   
+    padding : 10px 20px;
+    border-radius: 20px;
+}
+
+.chat-bar-date-chat{
+    width: 100%;
+    text-align: end;
+    color : $subText
+}
