@@ -24,15 +24,17 @@ public class PostsActivitiesResponse {
     private String createdAt;
     private long participants;
     private long comments;
-    public PostsActivitiesResponse(ActivityResponse activity, Post post, long participants, long comments){
+    private Boolean isLike;
+    public PostsActivitiesResponse(ActivityResponse activity, Post post, Boolean isLike){
         this.id = post.getId();
         this.activity = activity;
         this.title = post.getTitle();
         this.image = post.getImage();
         this.content = post.getContent();
         this.createdAt = post.getCreatedAt().toString();
-        this.participants = participants;
-        this.comments = comments;
+        this.participants = activity.getParticipants();
+        this.comments = activity.getComments();
+        this.isLike = isLike;
 
     }
 

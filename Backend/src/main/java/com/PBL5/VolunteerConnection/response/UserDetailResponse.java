@@ -27,6 +27,9 @@ public class UserDetailResponse {
         this.tel = user.getTel();;
         this.address = user.getAddress();
         this.gender = user.getGender();
-        this.birthday = user.getBirthday().toString();
+        this.birthday = null;
+        if(user.getBirthday() != null){
+            this.birthday = user.getBirthday().toString();
+        }
     }
 }

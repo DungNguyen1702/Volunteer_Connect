@@ -1,5 +1,7 @@
 package com.PBL5.VolunteerConnection.response;
 
+import com.PBL5.VolunteerConnection.dto.PostActivitiesDTO;
+import com.PBL5.VolunteerConnection.dto.PostActivityDetailDTO;
 import com.PBL5.VolunteerConnection.model.Account;
 import com.PBL5.VolunteerConnection.model.Activity;
 import com.PBL5.VolunteerConnection.model.Post;
@@ -29,13 +31,13 @@ public class ActivityDetailResponse{
     protected int organizationId;
     protected Boolean isDeleted;
     protected String content;
-    private List<Post> postList;
-    private int postNumber;
-    private int applyForms;
+    private List<PostActivityDetailDTO> postList;
+    private long postNumber;
+    private long applyForms;
     private AccountDetailResponse organization;
     private List<CandidateDetailResponse> candidates;
     private int participants;
-    public ActivityDetailResponse(ActivityResponse activity, List<Post> postList, int postNumber, int applyForms, AccountDetailResponse organization, List<CandidateDetailResponse> candidateDetailResponseList){
+    public ActivityDetailResponse(ActivityResponse activity, List<PostActivityDetailDTO> postList,  AccountDetailResponse organization, List<CandidateDetailResponse> candidateDetailResponseList){
         this.id = activity.getId();
         this.image = activity.getImage();
         this.email = activity.getEmail();
@@ -52,8 +54,8 @@ public class ActivityDetailResponse{
         this.createdAt = activity.getCreatedAt();
         this.updateAt = activity.getUpdateAt();
         this.postList = postList;
-        this.postNumber = postNumber;
-        this.applyForms = applyForms;
+        this.postNumber = activity.getPostNumber();
+        this.applyForms = activity.getApplyFormNumber();
         this.organization = organization;
         this.candidates = candidateDetailResponseList;
         this.participants = candidateDetailResponseList.size();

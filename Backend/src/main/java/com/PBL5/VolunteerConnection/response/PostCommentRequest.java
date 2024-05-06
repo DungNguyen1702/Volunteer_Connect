@@ -14,7 +14,7 @@ import lombok.NoArgsConstructor;
 public class PostCommentRequest {
     private String token;
     private int id;
-    private int comment_parentId;
+    private Integer comment_parentId;
     private int postId;
     private String content;
     private int accountId;

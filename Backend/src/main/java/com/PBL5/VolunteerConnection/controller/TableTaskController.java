@@ -12,41 +12,40 @@ import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.PBL5.VolunteerConnection.model.PostComment;
-import com.PBL5.VolunteerConnection.request.PostRequest;
-import com.PBL5.VolunteerConnection.response.PostCommentRequest;
+import com.PBL5.VolunteerConnection.model.TableTask;
+import com.PBL5.VolunteerConnection.request.TableTaskRequest;
 import com.PBL5.VolunteerConnection.response.StatusResponse;
-import com.PBL5.VolunteerConnection.service.PostCommentService;
+import com.PBL5.VolunteerConnection.service.TableTaskService;
 
 @RestController
-@RequestMapping("api/v1/postcomment")
-public class PostCommentController {
+@RequestMapping("api/v1/tabletask")
+public class TableTaskController {
     @Autowired
-    private PostCommentService postCommentService;
+    private TableTaskService tableTaskService;
 
     @PostMapping("/create")
     ResponseEntity<StatusResponse> createPostComment(@RequestHeader("Authorization") String token,
-            @RequestBody PostCommentRequest postCommentRequest) {
+            @RequestBody TableTaskRequest tableTaskRequest) {
         token = token.substring("Bearer ".length());
-        return ResponseEntity.ok(postCommentService.createPostComment(token, postCommentRequest));
+        return ResponseEntity.ok(tableTaskService.createTableTask(token, tableTaskRequest));
     }
 
     @PostMapping("/update")
     ResponseEntity<StatusResponse> updatePostComment(@RequestHeader("Authorization") String token,
-            @RequestBody PostCommentRequest postCommentRequest) {
+            @RequestBody TableTaskRequest tableTaskRequest) {
         token = token.substring("Bearer ".length());
-        return ResponseEntity.ok(postCommentService.updatePostComment(token, postCommentRequest));
+        return ResponseEntity.ok(tableTaskService.updateTableTask(token, tableTaskRequest));
     }
 
     @DeleteMapping("/delete")
     ResponseEntity<StatusResponse> deletePostComment(@RequestHeader("Authorization") String token,
-            @RequestBody PostCommentRequest postCommentRequest) {
+            @RequestBody TableTaskRequest tableTaskRequest) {
         token = token.substring("Bearer ".length());
-        return ResponseEntity.ok(postCommentService.deletePostComment(token, postCommentRequest));
+        return ResponseEntity.ok(tableTaskService.deleteTableTask(token, tableTaskRequest));
     }
 
     @GetMapping("/selectAll")
-    ResponseEntity<List<PostComment>> selectAll() {
-        return ResponseEntity.ok(postCommentService.selectAll());
+    ResponseEntity<List<TableTask>> selectAll() {
+        return ResponseEntity.ok(tableTaskService.selectAll());
     }
 }
