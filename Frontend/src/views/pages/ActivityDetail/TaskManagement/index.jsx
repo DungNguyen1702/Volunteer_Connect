@@ -1,13 +1,15 @@
 import "./index.scss";
 import FakeData from "../../../../data/fake_data.json";
 import TaskTableItem from "./TaskTable";
-import { Avatar, Button } from "antd";
+import { Avatar, Button, Dropdown } from "antd";
 import { PlusOutlined } from "@ant-design/icons";
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import StatusTable from "./StatusTable";
-import Search from "antd/es/transfer/search";
 import AvatarAccount from "../../../../components/avatar/AvatarAccount";
 import { ActivityDetailContext } from "..";
+import useDropDownListTaskItem from "./DropDown";
+import TextArea from "antd/es/input/TextArea";
+import TaskDetail from "./StatusTable/TaskDetail";
 
 export const TaskDataContext = createContext();
 
@@ -19,8 +21,21 @@ function TaskManagement() {
     const [createTask, setCreateTask] = useState(false);
     const [showingTaskTableID, setShowingTaskTableID] = useState(data[0].id);
 
-    const showListTask =
-        data.find((task) => task.id === showingTaskTableID)?.Tasks || [];
+    const [showListTask, setShowListTask] = useState(data.find((task) => task.id === showingTaskTableID)?.Tasks || []);
+    const [listTaskSearch, setListTaskSearch] = useState(showListTask);
+    
+    const {getItemDropDownSearchTask} = useDropDownListTaskItem();
+
+    useEffect(()=>{
+        setShowListTask(data.find((task) => task.id === showingTaskTableID)?.Tasks || [])
+    },[showingTaskTableID, data])        
+
+    useEffect(()=>{
+        if(search.length !== 0)
+            setListTaskSearch(showListTask.filter(task => task.title.toLowerCase().includes(search.toLowerCase())));
+        else
+            setListTaskSearch(showListTask);
+    },[showListTask, search]);
 
     const onClickCreateTask = () => {
         setCreateTask(!createTask);
@@ -56,6 +71,18 @@ function TaskManagement() {
     const addTaskTable = (newTaskTable) => {
         setData([...data, newTaskTable]);
     };
+
+    // Search support
+    const [visibleDetail, setVisibleDetail] = useState(false);
+    const [searchingTask, setSearchingTask] = useState(null);
+    const onClickItem = (task)=>{
+        setSearchingTask(task);
+        setVisibleDetail(true);
+    };
+    
+    const onCloseModal = ()=>{
+        setVisibleDetail(false);
+    }
 
     return (
         <TaskDataContext.Provider
@@ -110,13 +137,24 @@ function TaskManagement() {
                 </div>
                 <div class="task-management-content-wrapper">
                     <div class="task-management-content-header">
-                        <Search
-                            placeholder="Input name's task to search"
-                            onChange={onChangeSearch}
-                            value={search}
-                            size="large"
-                            className="task-management-search-input"
-                        />
+                        <Dropdown
+                            menu={{
+                                items: getItemDropDownSearchTask(listTaskSearch, onClickItem),
+                            }}
+                            trigger={["click"]}
+                            placement="bottom"
+                            className="asdasdas"
+                        >
+                            <TextArea
+                                placeholder="Input name's task to search"
+                                onChange={onChangeSearch}
+                                value={search}  
+                                size="large"
+                                className="task-management-search-input"
+                                autoSize={{ minRows: 1, maxRows: 1 }}
+                            />
+                        </Dropdown> 
+                        
                         <Avatar.Group
                             maxCount={3}
                             maxStyle={{
@@ -138,6 +176,11 @@ function TaskManagement() {
                                 </>
                             ))}
                         </Avatar.Group>
+                        {visibleDetail && <TaskDetail
+                            onCloseModal={onCloseModal}
+                            visibleDetail={visibleDetail}
+                            taskInfo={searchingTask}
+                        />}
                     </div>
 
                     <StatusTable listTask={showListTask} />

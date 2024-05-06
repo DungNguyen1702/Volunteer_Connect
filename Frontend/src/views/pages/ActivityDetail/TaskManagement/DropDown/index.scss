@@ -1,0 +1,22 @@
+@import '../../../../../constants/colors.scss';
+
+.search-task-item-wrapper{
+    display: flex;
+    flex-direction: column;
+    padding : 10px 0px;
+}
+
+.search-task-item-title {
+    color : $accent;
+    text-align: center;
+}
+
+.search-task-item-description {
+    word-break: break-all;
+    margin : 5px 0px;
+}
+
+.search-task-item-created-at{
+    color : $subText;
+    text-align: end;
+}

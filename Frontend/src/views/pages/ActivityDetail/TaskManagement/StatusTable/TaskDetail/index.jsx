@@ -16,14 +16,14 @@ import { TaskDataContext } from "../..";
 const { Option } = Select;
 
 function TaskDetail(props) {
-    const { visibleDetail, setVisibleDetail, taskInfo, listCandidate } = props;
-    const { updateTask, showingTaskTableID } = useContext(TaskDataContext);
+    const { visibleDetail, onCloseModal, taskInfo } = props;
+    const { updateTask, showingTaskTableID, listCandidate } = useContext(TaskDataContext);
 
     const [dateStart, setDateStart] = useState(
-        moment(taskInfo.date_start, "YYYY-MM-DD")
+        moment(taskInfo.dateStart, "YYYY-MM-DD")
     );
     const [dateEnd, setDateEnd] = useState(
-        moment(taskInfo.date_end, "YYYY-MM-DD")
+        moment(taskInfo.dateEnd, "YYYY-MM-DD")
     );
     const [status, setStatus] = useState(taskInfo.status);
     const [assignee, setAssignee] = useState(
@@ -36,19 +36,19 @@ function TaskDetail(props) {
 
     const onClickOk = () => {
         updateTask(showingTaskTableID, taskInfo.id, {
-            date_start: dateStart.format("YYYY-MM-DD"),
-            date_end: dateEnd.format("YYYY-MM-DD"),
+            dateStart: dateStart.format("YYYY-MM-DD"),
+            dateEnd: dateEnd.format("YYYY-MM-DD"),
             status: parseInt(status),
             candidate: assignee,
             candidate_id: assignee ? assignee.id : null,
             taskComments: taskComments,
             description: description,
         });
-        setVisibleDetail(false);
+        onCloseModal();
     };
 
     const onClickCancel = () => {
-        setVisibleDetail(false);
+        onCloseModal();
     };
 
     const onChangeDateStart = (date, dateString) => {

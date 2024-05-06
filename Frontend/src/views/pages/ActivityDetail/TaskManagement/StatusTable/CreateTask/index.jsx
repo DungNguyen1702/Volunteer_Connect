@@ -41,8 +41,8 @@ function CreateTask(props) {
 
         addTask(showingTaskTableID, {
             title: title,
-            date_start: dateStart && dateStart.format("YYYY-MM-DD"),
-            date_end: dateEnd && dateEnd.format("YYYY-MM-DD"),
+            dateStart: dateStart && dateStart.format("YYYY-MM-DD"),
+            dateEnd: dateEnd && dateEnd.format("YYYY-MM-DD"),
             status: parseInt(status),
             candidate: assignee,
             candidate_id: assignee ? assignee.id : null,
