@@ -21,8 +21,8 @@ function ActivityDetail() {
     const { id } = useParams();
     const [data, setData] = useState(fakeData.Activity_Detail);
     const activityStatus = SupportFunction.ActivityStatus(
-        data.date_start,
-        data.date_end
+        data.dateStart,
+        data.dateEnd
     );
     const org = data.Organization;
     const [tabButton, setTabButton] = useState(2);
@@ -199,7 +199,7 @@ function ActivityDetail() {
                                         Start date :{" "}
                                     </p>
                                     <p class="activity-header-info-item-content">
-                                        {data.date_start}
+                                        {data.dateStart}
                                     </p>
                                 </div>
                                 <div class="activity-header-info-item">
@@ -207,7 +207,7 @@ function ActivityDetail() {
                                         End date :{" "}
                                     </p>
                                     <p class="activity-header-info-item-content">
-                                        {data.date_end}
+                                        {data.dateEnd}
                                     </p>
                                 </div>
                                 <div class="activity-header-info-item">
@@ -215,7 +215,7 @@ function ActivityDetail() {
                                         Registration date :{" "}
                                     </p>
                                     <p class="activity-header-info-item-content">
-                                        {data.date_end}
+                                        {data.dateEnd}
                                     </p>
                                 </div>
                             </div>

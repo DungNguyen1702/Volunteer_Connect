@@ -2,9 +2,10 @@ import TextArea from "antd/es/input/TextArea";
 import "./index.scss";
 import { useEffect, useRef, useState } from "react";
 import FakeData from "../../../data/fake_data.json";
-import { Anchor, Pagination } from "antd";
+import { Anchor, Dropdown, Pagination } from "antd";
 import OrganizationItem from "./Component/OrganizationItem";
 import CandidateItem from "./Component/CandidateItem";
+import useDropDownListPeopleItem from "./Component/Dropdown";
 
 function ListPeople() {
     const [search, setSearch] = useState("");
@@ -25,6 +26,10 @@ function ListPeople() {
     const [showListCan, setShowListCan] = useState(
         listAllCandidate.slice(startIndexCan, startIndexCan + limit)
     );
+    const [listAccountSearch, setListAccountSearch] = useState([
+        ...listAllCandidate,
+        ...listAllOrganization,
+    ]);
 
     useEffect(() => {
         setShowListOrg(
@@ -37,6 +42,27 @@ function ListPeople() {
             listAllCandidate.slice(startIndexCan, startIndexCan + limit)
         );
     }, [startIndexCan, listAllCandidate]);
+
+    useEffect(()=>{
+        console.log(listAccountSearch)
+    },[listAccountSearch])
+
+    useEffect(() => {
+        if (search.length !== 0)
+            setListAccountSearch(
+                [...listAllCandidate, ...listAllOrganization].filter(
+                    (account) => (
+                        account.name
+                            .toLowerCase()
+                            .includes(search.toLowerCase()) ||
+                        account.account
+                            .toLowerCase()
+                            .includes(search.toLowerCase())
+                ))
+            );
+        else
+            setListAccountSearch([...listAllCandidate, ...listAllOrganization]);
+    }, [listAllCandidate, listAllOrganization, search]);
 
     const topRef = useRef(null);
     const [targetOffset, setTargetOffset] = useState();
@@ -55,6 +81,8 @@ function ListPeople() {
     const onChangePageCan = (page, pageSize) => {
         setStartIndexCan((page - 1) * limit);
     };
+
+    const { getItemDropDownSearchAccount } = useDropDownListPeopleItem();
 
     return (
         <div class="list-people-wrapper">
@@ -88,12 +116,20 @@ function ListPeople() {
             <div class="list-people-content-wrapper">
                 <div id="search-bar" class="search-bar-wrapper" ref={topRef}>
                     <h3 class="list-people-content-title">Searching</h3>
-                    <TextArea
-                        className="search-bar"
-                        value={search}
-                        onChange={onChangeSearch}
-                        autoSize
-                    />
+                    <Dropdown
+                        menu={{
+                            items: getItemDropDownSearchAccount(listAccountSearch),
+                        }}
+                        trigger={["click"]}
+                        placement="bottom"
+                    >
+                        <TextArea
+                            value={search}
+                            onChange={onChangeSearch}
+                            placeholder="Input account's name or email to search"
+                            autoSize={{ minRows: 1, maxRows: 1 }}
+                        />
+                    </Dropdown>
                 </div>
 
                 {/* Popular organization  */}

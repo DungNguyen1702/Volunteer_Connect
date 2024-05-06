@@ -32,7 +32,7 @@ function UserHomepage(props) {
     const [likedPosts, setLikedPosts] = useState(
         addIsLikedField(fake_data["Posts-Activities"])
     );
-    const [listPosts, setListPosts] = useState([]);
+    const [listPosts, setListPosts] = useState(fake_data["Posts-Activities"]);
     const [filterListPosts, setFilterListPosts] = useState(listPosts);
     const [popularPosts, setPopularPost] = useState(
         fake_data["Posts-Activities"]
@@ -49,56 +49,46 @@ function UserHomepage(props) {
 
     // set useEffect
     useEffect(() => {
-        setListShowActs(listPosts.slice(startIndex, startIndex + limit));
-    }, [startIndex, listPosts]);
+        setListShowActs(filterListPosts.slice(startIndex, startIndex + limit));
+    }, [startIndex, filterListPosts]);
+
+    // useEffect(() => {
+    //     const getAllPostApi = async () => {
+    //         await postAPI
+    //             .getAllPost()
+    //             .then((response) => {
+    //                 console.log(response.data);
+    //                 setListPosts(response.data);
+    //                 setFilterListPosts(
+    //                     SupportFunction.filterPost(
+    //                         response.data,
+    //                         parseInt(selectedCategory),
+    //                         parseInt(selectedCountry),
+    //                         parseInt(selectedStatus),
+    //                         sortBy,
+    //                         sortOrder
+    //                     )
+    //                 );
+    //             })
+    //             .catch((error) => {
+    //                 console.log(error);
+    //             });
+    //     };
+
+    //     getAllPostApi();
+    // },[]);
 
     useEffect(() => {
-        const getAllPostApi = async () => {
-            await postAPI
-                .getAllPost()
-                .then((response) => {
-                    console.log(response.data);
-                    setListPosts(response.data);
-                    setFilterListPosts(
-                        SupportFunction.filterPost(
-                            response.data,
-                            parseInt(selectedCategory),
-                            parseInt(selectedCountry),
-                            parseInt(selectedStatus),
-                            sortBy,
-                            sortOrder
-                        )
-                    );
-                })
-                .catch((error) => {
-                    console.log(error);
-                });
-        };
-
-        getAllPostApi();
-    },[]);
-
-    useEffect(() => {
-        // setFilterListPosts(
-        //     SupportFunction.filterPost(
-        //         listPosts,
-        //         selectedCategory,
-        //         selectedCountry,
-        //         selectedStatus,
-        //         sortBy,
-        //         sortOrder
-        //     )
-        // );
-        console.log(SupportFunction.filterPost(
-            listPosts,
-            parseInt(selectedCategory),
-            parseInt(selectedCountry),
-            parseInt(selectedStatus),
-            sortBy,
-            sortOrder
-        ))
-
-        
+        setFilterListPosts(
+            SupportFunction.filterPost(
+                listPosts,
+                selectedCategory,
+                selectedCountry,
+                selectedStatus,
+                sortBy,
+                sortOrder
+            )
+        );
     }, [
         selectedCategory,
         selectedCountry,
@@ -219,7 +209,7 @@ function UserHomepage(props) {
                     {/* Country  */}
                     <div class="button-country-status-wrapper">
                         <h3 class="button-country-status-sort-title">
-                            Country :{" "}
+                            Country:
                         </h3>
                         {/* all  */}
                         <Button
@@ -364,15 +354,23 @@ function UserHomepage(props) {
                 </div>
 
                 <div class="center-content-wrapper">
-                    {filterListPosts ? filterListPosts.map((post) => (
-                        <BigPost data={post} key={"big-post" + post.id} />
-                    )) : <p class='color-gray'>There is no posts in here</p>}
+                    {listShowActs.length !== 0 ? (
+                        listShowActs.map((post) => (
+                            <BigPost data={post} key={"big-post" + post.id} />
+                        ))
+                    ) : (
+                        <div class='height-100 justify-content'>
+                            <p class="color-gray">There is no posts in here</p>
+                        </div>
+                    )}
 
-                    <Pagination
-                        total={listPosts.length}
-                        pageSize={limit}
-                        onChange={onChangePage}
-                    />
+                    {filterListPosts.length !== 0 && (
+                        <Pagination
+                            total={filterListPosts.length}
+                            pageSize={limit}
+                            onChange={onChangePage}
+                        />
+                    )}
                 </div>
 
                 {user !== null ? (

@@ -32,7 +32,7 @@ function PostDetail() {
                     {/* post's title  */}
                     <h1 class="post-title">{post.title}</h1>
                     <p class="post-date">
-                        {act.date_start} - {act.date_end}
+                        {act.dateStart} - {act.dateEnd}
                     </p>
 
                     {/* image post  */}

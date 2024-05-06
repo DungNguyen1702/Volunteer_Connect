@@ -126,6 +126,7 @@ function MemberManagement() {
                 name={value.user.account.name}
                 avatar={value.user.account.avatar}
                 backgroundNoAva={value.user.account.backgroundNoAva}
+                id={value.user.account.id}
             />
         ),
         email: value.user.account.account,
