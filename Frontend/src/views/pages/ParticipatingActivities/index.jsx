@@ -15,7 +15,7 @@ import { TYPES } from "../../../constants/activity_types";
 import { SearchOutlined } from "@ant-design/icons";
 import Search from "antd/es/transfer/search";
 import fake_data from "../../../data/fake_data.json";
-import ActivityComponent from "../../../components/activity";
+import ActivityComponent from "../../../components/activity/big-activity";
 import CreateActModal from "./CreateActModal";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -46,25 +46,36 @@ function ParticipatingActivities() {
     }, [startIndex, filterListAct]);
 
     useEffect(() => {
-        const listAfterFilter = 
-            SupportFunction.filterAct(
-                listAct,
-                type,
-                country,
-                status,
-                sortBy,
-                sortOrder,
-                dateStart,
-                dateEnd
-            )
-        ;
-        if(search.length !== 0)
-            setFilterListAct(listAfterFilter.filter(act => act.name.toLowerCase().includes(search.toLowerCase())))
+        const listAfterFilter = SupportFunction.filterAct(
+            listAct,
+            type,
+            country,
+            status,
+            sortBy,
+            sortOrder,
+            dateStart,
+            dateEnd
+        );
+        if (search.length !== 0)
+            setFilterListAct(
+                listAfterFilter.filter((act) =>
+                    act.name.toLowerCase().includes(search.toLowerCase())
+                )
+            );
         else {
-            setFilterListAct(listAfterFilter)
+            setFilterListAct(listAfterFilter);
         }
-
-    }, [type, country, status, sortBy, sortOrder, listAct, dateStart, dateEnd, search]);
+    }, [
+        type,
+        country,
+        status,
+        sortBy,
+        sortOrder,
+        listAct,
+        dateStart,
+        dateEnd,
+        search,
+    ]);
 
     const changePage = (page, pageSize) => {
         setStartIndex((page - 1) * limit);
@@ -161,7 +172,10 @@ function ParticipatingActivities() {
                     <Checkbox.Group onChange={onChangeStatus} value={status}>
                         <Space direction="vertical">
                             {Object.entries(STATUS).map(([key, value]) => (
-                                <Checkbox value={value} className="tabbar-radio">
+                                <Checkbox
+                                    value={value}
+                                    className="tabbar-radio"
+                                >
                                     {value}
                                 </Checkbox>
                             ))}
@@ -275,20 +289,22 @@ function ParticipatingActivities() {
                 </div>
                 <hr class="header-hr" />
                 {filterListAct.length !== 0 ? (
-                    <div class='width-100'>
+                    <div class="width-100">
                         <div class="content-activity">
                             {showListAct.map((item) => (
                                 <ActivityComponent data={item} />
                             ))}
                         </div>
-                    
+
                         <Pagination
                             total={filterListAct.length}
                             pageSize={limit}
                             onChange={changePage}
                         />
                     </div>
-                ) : <p class='gray-color'>There is no activity</p>}
+                ) : (
+                    <p class="gray-color">There is no activity</p>
+                )}
             </div>
         </div>
     );

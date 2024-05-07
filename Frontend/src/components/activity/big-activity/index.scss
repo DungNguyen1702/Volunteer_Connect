@@ -1,0 +1,107 @@
+@import '../../../constants/colors.scss';
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    font-size: 15px;
+    background-color: $background;
+}
+
+.activity-component-wrapper{
+    display: flex;
+    justify-content: center;
+    background-color: $background_act_component;
+    border-radius: 15px;
+    flex-direction: column;
+}
+
+.activity-component-wrapper:hover {
+    transform: scale(1.05); /* Phóng to lên 1.05 lần */
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.5); /* Điều chỉnh giá trị rgba để tùy chỉnh màu sắc và độ đậm của bóng */
+}
+
+.activity-component-header {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top : 20px ;
+    margin-bottom: 5px;
+    position: relative;
+}
+
+#activity-component-name {
+    color: $accent;
+}
+
+#activity-component-status {
+    position: absolute;
+    top: 2px;
+    right : 25px;
+    padding : 5px 10px;
+    border-radius: 20px;
+    color: $white;
+}
+
+#activity-component-date {
+    margin-left: 20px;
+    color : $text
+}
+
+#activity-component-content-wrapper {
+    display: flex;
+    margin : 5px 0px;
+}
+
+#activity-component-img {
+    height: 200px;
+    width: 250px;
+    margin-right: 20px;
+    object-fit: contain;
+    margin-left: 20px;
+}
+
+#activity-component-main-content {
+    margin-right: 20px;
+}
+
+#activity-component-info-category {
+    margin-left: 20px;
+    margin-right : 20px;
+    width: 55%;
+    display: flex;
+    align-items: center;
+}
+
+#activity-component-info-location {
+    margin-left: 20px;
+    width: 50%;
+    display: flex;
+    align-items: center;
+}
+
+.activity-component-info-content {
+    margin-left: 5px;
+}
+
+#activity-component-info-wrapper {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+#activity-component-comment-parti-wrapper {
+    display: flex;
+    justify-content: end;
+}
+
+.activity-component-comment-parti-item {
+    color: $text;
+    margin-right: 20px;
+    margin-top : 5px;
+    margin-bottom: 20px;
+}

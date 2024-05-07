@@ -71,6 +71,22 @@ function getStringApplyForm(form) {
     }
 }
 
+function getStringCertificate(certificate) {
+    if (certificate === 0 || certificate === 1) {
+        return certificate + " certificate";
+    } else {
+        return certificate + " certificates";
+    }
+}
+
+function getStringActivity(activity) {
+    if (activity === 0 || activity === 1) {
+        return activity + " activity";
+    } else {
+        return activity + " activities";
+    }
+}
+
 function convertToHTML(htmlString) {
     return <div dangerouslySetInnerHTML={{ __html: htmlString }} />;
 }
@@ -367,6 +383,8 @@ const Utils = {
     getStringReply,
     getStringPost,
     getStringApplyForm,
+    getStringCertificate,
+    getStringActivity,
     convertToHTML,
     mainContentHTML,
     removeSpaceInString,

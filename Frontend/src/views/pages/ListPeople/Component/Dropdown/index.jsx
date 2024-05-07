@@ -6,7 +6,7 @@ const useDropDownListPeopleItem = ()=>{
     const navigate = useNavigate();
 
     const onClickAccount = (id)=>{
-        // navigate(`/post-detail/${id}`)
+        navigate(`/contact-user/${id}`);
     };
 
     const getItemDropDownSearchAccount = (accountList)=>{

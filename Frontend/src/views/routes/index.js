@@ -45,7 +45,7 @@ const ChatBox = LoadableComponent(()=>
 );
 const AccountContact = LoadableComponent(()=>
     import('../pages/ContactProfile/index.jsx')
-)
+);
 
 const AllRoutes = () => {
     return (
@@ -130,7 +130,7 @@ const AllRoutes = () => {
 
                 <Route
                     path='/contact-user/:accountId'
-                    element={<MainLayout component={AccountContact} isNoFooter={true}/>}
+                    element={<MainLayout component={AccountContact}/>}
                 />
             </Route>
 

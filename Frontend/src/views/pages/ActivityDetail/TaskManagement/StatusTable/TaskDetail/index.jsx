@@ -189,6 +189,7 @@ function TaskDetail(props) {
                                                     candidate.user.account
                                                         .backgroundNoAva
                                                 }
+                                                size={'default'}
                                             />
                                             <p class="assignee-name">
                                                 {SupportFunction.TruncateText(

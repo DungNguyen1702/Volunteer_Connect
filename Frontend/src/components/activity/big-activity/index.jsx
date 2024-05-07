@@ -1,6 +1,6 @@
 import "./index.scss";
-import SupportFunction from "../../support/support_function";
-import { COLOR_STATUS, COLOR_FONT } from "../../constants/color_status";
+import SupportFunction from "../../../support/support_function";
+import { COLOR_STATUS, COLOR_FONT } from "../../../constants/color_status";
 import { useNavigate } from "react-router-dom";
 
 function ActivityComponent(props) {
