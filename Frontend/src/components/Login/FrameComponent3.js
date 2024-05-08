@@ -7,6 +7,7 @@ import { toast } from "react-toastify";
 import auth from "../../api/authAPI";
 import useAuth from "../../hooks/useAuth";
 import { useNavigate } from "react-router-dom";
+import axiosClient from "../../api/axiosClient";
 
 const FrameComponent = () => {
     const [account, setAccount] = useState('');
@@ -43,6 +44,7 @@ const FrameComponent = () => {
                 }
             }
             catch (e) {
+                delete axiosClient.application.defaults.headers.common['Authorization'];
                 toast.error('Login failed');
             }
             finally {

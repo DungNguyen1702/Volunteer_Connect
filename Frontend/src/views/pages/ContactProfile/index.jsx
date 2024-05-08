@@ -16,9 +16,9 @@ function AccountContact() {
     const [startIndex, setStartIndex] = useState(0);
 
     // Data candidate
-    // const data = FakeData.CandidateContact;
+    const data = FakeData.CandidateContact;
     // Data organization
-    const data = FakeData.OrganizationContact;
+    // const data = FakeData.OrganizationContact;
     const listActivity = data.Activities;
     const [listShowAct, setListShowAct] = useState(
         listActivity ? listActivity.slice(startIndex, startIndex + limit) : []

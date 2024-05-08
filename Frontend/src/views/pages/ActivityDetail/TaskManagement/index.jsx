@@ -10,10 +10,13 @@ import { ActivityDetailContext } from "..";
 import useDropDownListTaskItem from "./DropDown";
 import TextArea from "antd/es/input/TextArea";
 import TaskDetail from "./StatusTable/TaskDetail";
+import useAuth from "../../../../hooks/useAuth";
 
 export const TaskDataContext = createContext();
 
 function TaskManagement() {
+    const { account } = useAuth();
+
     const { listCandidate } = useContext(ActivityDetailContext);
 
     const [data, setData] = useState(FakeData.TableTasks);
@@ -21,21 +24,28 @@ function TaskManagement() {
     const [createTask, setCreateTask] = useState(false);
     const [showingTaskTableID, setShowingTaskTableID] = useState(data[0].id);
 
-    const [showListTask, setShowListTask] = useState(data.find((task) => task.id === showingTaskTableID)?.Tasks || []);
+    const [showListTask, setShowListTask] = useState(
+        data.find((task) => task.id === showingTaskTableID)?.Tasks || []
+    );
     const [listTaskSearch, setListTaskSearch] = useState(showListTask);
-    
-    const {getItemDropDownSearchTask} = useDropDownListTaskItem();
 
-    useEffect(()=>{
-        setShowListTask(data.find((task) => task.id === showingTaskTableID)?.Tasks || [])
-    },[showingTaskTableID, data])        
+    const { getItemDropDownSearchTask } = useDropDownListTaskItem();
 
-    useEffect(()=>{
-        if(search.length !== 0)
-            setListTaskSearch(showListTask.filter(task => task.title.toLowerCase().includes(search.toLowerCase())));
-        else
-            setListTaskSearch(showListTask);
-    },[showListTask, search]);
+    useEffect(() => {
+        setShowListTask(
+            data.find((task) => task.id === showingTaskTableID)?.Tasks || []
+        );
+    }, [showingTaskTableID, data]);
+
+    useEffect(() => {
+        if (search.length !== 0)
+            setListTaskSearch(
+                showListTask.filter((task) =>
+                    task.title.toLowerCase().includes(search.toLowerCase())
+                )
+            );
+        else setListTaskSearch(showListTask);
+    }, [showListTask, search]);
 
     const onClickCreateTask = () => {
         setCreateTask(!createTask);
@@ -75,14 +85,14 @@ function TaskManagement() {
     // Search support
     const [visibleDetail, setVisibleDetail] = useState(false);
     const [searchingTask, setSearchingTask] = useState(null);
-    const onClickItem = (task)=>{
+    const onClickItem = (task) => {
         setSearchingTask(task);
         setVisibleDetail(true);
     };
-    
-    const onCloseModal = ()=>{
+
+    const onCloseModal = () => {
         setVisibleDetail(false);
-    }
+    };
 
     return (
         <TaskDataContext.Provider
@@ -105,14 +115,28 @@ function TaskManagement() {
                             showingTaskTableID={showingTaskTableID}
                         />
                     ))}
-                    {createTask ? (
-                        <div class="task-management-create-area">
-                            <TaskTableItem
-                                isCreate={true}
-                                setData={setData}
-                                listData={data}
-                                setCreateTask={setCreateTask}
-                            />
+                    {parseInt(account.role) === 2 &&
+                        (createTask ? (
+                            <div class="task-management-create-area">
+                                <TaskTableItem
+                                    isCreate={true}
+                                    setData={setData}
+                                    listData={data}
+                                    setCreateTask={setCreateTask}
+                                />
+                                <Button
+                                    className="task-management-create-button"
+                                    onClick={onClickCreateTask}
+                                    icon={
+                                        <PlusOutlined
+                                            style={{ fontSize: "20px" }}
+                                        />
+                                    }
+                                >
+                                    <h3>Cancel</h3>
+                                </Button>
+                            </div>
+                        ) : (
                             <Button
                                 className="task-management-create-button"
                                 onClick={onClickCreateTask}
@@ -122,24 +146,18 @@ function TaskManagement() {
                                     />
                                 }
                             >
-                                <h3>Cancel</h3>
+                                <h3>Create task table</h3>
                             </Button>
-                        </div>
-                    ) : (
-                        <Button
-                            className="task-management-create-button"
-                            onClick={onClickCreateTask}
-                            icon={<PlusOutlined style={{ fontSize: "20px" }} />}
-                        >
-                            <h3>Create task table</h3>
-                        </Button>
-                    )}
+                        ))}
                 </div>
                 <div class="task-management-content-wrapper">
                     <div class="task-management-content-header">
                         <Dropdown
                             menu={{
-                                items: getItemDropDownSearchTask(listTaskSearch, onClickItem),
+                                items: getItemDropDownSearchTask(
+                                    listTaskSearch,
+                                    onClickItem
+                                ),
                             }}
                             trigger={["click"]}
                             placement="bottom"
@@ -148,13 +166,13 @@ function TaskManagement() {
                             <TextArea
                                 placeholder="Input name's task to search"
                                 onChange={onChangeSearch}
-                                value={search}  
+                                value={search}
                                 size="large"
                                 className="task-management-search-input"
                                 autoSize={{ minRows: 1, maxRows: 1 }}
                             />
-                        </Dropdown> 
-                        
+                        </Dropdown>
+
                         <Avatar.Group
                             maxCount={3}
                             maxStyle={{
@@ -176,11 +194,13 @@ function TaskManagement() {
                                 </>
                             ))}
                         </Avatar.Group>
-                        {visibleDetail && <TaskDetail
-                            onCloseModal={onCloseModal}
-                            visibleDetail={visibleDetail}
-                            taskInfo={searchingTask}
-                        />}
+                        {visibleDetail && (
+                            <TaskDetail
+                                onCloseModal={onCloseModal}
+                                visibleDetail={visibleDetail}
+                                taskInfo={searchingTask}
+                            />
+                        )}
                     </div>
 
                     <StatusTable listTask={showListTask} />
