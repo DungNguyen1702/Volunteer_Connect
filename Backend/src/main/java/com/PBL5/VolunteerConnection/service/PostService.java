@@ -16,14 +16,11 @@ public interface PostService {
 
     StatusResponse deletePost(String token,PostRequest post);
 
-
-    List<Post> SelectAll();
     List<PostsActivitiesResponse> selectAll();
     List<PostsActivitiesResponse> selectAllByAccountId(String token);
     StatusResponse createLikePost(String token, PostRequest post);
-
+    List<PostsActivitiesResponse> selectAllLikePostByAccountID(String token);
     StatusResponse deleteLikePost(String token, PostRequest post);
-    List<LikePost> getAllLikePost(String token);
     PostDetailResponse getPostDetail(int id);
 
 }
