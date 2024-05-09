@@ -54,7 +54,7 @@ public interface ActivityRepository extends JpaRepository<Activity, Integer> {
             "LEFT join RegistrationForm r on a.id = r.activityId " +
             "LEFT JOIN Post p on p.activityId = a.id " +
             "LEFT JOIN PostComment cm on p.id = cm.postId " +
-            "where s.userId = :userId or r.userId = :userId " +
+            "where s.userId = :userId " +
             "GROUP BY a.id")
     List<Object[]> getListActivityDetailByCandidate(@Param("userId") int userId);
 
