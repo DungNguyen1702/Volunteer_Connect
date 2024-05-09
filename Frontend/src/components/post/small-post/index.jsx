@@ -5,8 +5,6 @@ import { Button } from "antd";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-
-
 function SmallPost(props) {
     const data = props.data;
     const needLike = props.needLike;
@@ -20,19 +18,21 @@ function SmallPost(props) {
         setLike(!like);
     };
 
-    const clickAct = ()=>{
-        console.log('small post ' + data.id);
-        navigate(`/post-detail/${data.id}`)
-    }
+    const clickAct = () => {
+        console.log("small post " + data.id);
+        navigate(`/post-detail/${data.id}`);
+    };
 
     return (
-        <div class="small-post-wrapper" 
-            onClick={clickAct}
-        >
+        <div class="small-post-wrapper" onClick={clickAct}>
             {needLike ? (
                 <div class="post-like-header">
                     <Button
-                        style={{border : 'none', boxShadow: 'none', background : '#f4f4f4'}}
+                        style={{
+                            border: "none",
+                            boxShadow: "none",
+                            background: "#f4f4f4",
+                        }}
                         onClick={clickLike}
                         icon={
                             like ? (
@@ -46,16 +46,26 @@ function SmallPost(props) {
                             )
                         }
                     />
-                    <h4 class="small-post-title">{SupportFunction.TruncateText(data.title, 24)}</h4>
+                    <h4 class="small-post-title">
+                        {SupportFunction.TruncateText(data.title, 24)}
+                    </h4>
                 </div>
             ) : (
-                <h4 class="small-post-title">{SupportFunction.TruncateText(data.title, 24)}</h4>
+                <h4 class="small-post-title">
+                    {SupportFunction.TruncateText(data.title, 24)}
+                </h4>
             )}
             <img alt="post-img" src={data.image} class="post-image" />
-            <h6 class="post-type">{SupportFunction.ActivityType(data.activity.type)}</h6>
+            <h6 class="post-type">
+                {SupportFunction.ActivityType(data.activity.type)}
+            </h6>
             <div class="post-date-participants-wrapper">
-                <p>{data.activity.date_start}</p>
-                <p>{SupportFunction.getStringParticipant(data.activity.participants)}</p>
+                <p>{data.activity.dateStart}</p>
+                <p>
+                    {SupportFunction.getStringParticipant(
+                        data.activity.participants
+                    )}
+                </p>
             </div>
         </div>
     );

@@ -19,19 +19,19 @@ const ParticipatingActivities = LoadableComponent(() =>
 const PostDetail = LoadableComponent(() =>
     import("../pages/PostDetail/index.jsx")
 );
-const ActivityDetail = LoadableComponent(() => 
+const ActivityDetail = LoadableComponent(() =>
     import("../pages/ActivityDetail/index.jsx")
 );
 const CreatePost = LoadableComponent(() =>
     import("../pages/CreatePost/index.jsx")
 );
-const Introduce = LoadableComponent(()=>
+const Introduce = LoadableComponent(() =>
     import('../pages/Introduce/Introduce.js')
 );
-const About = LoadableComponent(()=>
+const About = LoadableComponent(() =>
     import('../pages/About/About.js')
 );
-const Login = LoadableComponent(()=>
+const Login = LoadableComponent(() =>
     import('../pages/login/LogIn.js')
 );
 const SignUp = LoadableComponent(()=>
@@ -40,17 +40,22 @@ const SignUp = LoadableComponent(()=>
 const Profile = LoadableComponent(()=>
     import('../pages/Profile/index.jsx')
 );
-
+const ChatBox = LoadableComponent(()=>
+    import('../pages/ChatBox/index.jsx')
+);
+const AccountContact = LoadableComponent(()=>
+    import('../pages/ContactProfile/index.jsx')
+);
 
 const AllRoutes = () => {
     return (
-        
+
         <Routes>
             <Route path="/" element={<Navigate to={"/introduce"} />} />
 
             {/* // public route  */}
             <Route element={<PublicRoute />}>
-                
+
                 <Route
                     path="/user-homepage"
                     element={
@@ -93,14 +98,14 @@ const AllRoutes = () => {
                     element={<MainLayout component={ActivityDetail} />}
                 />
 
-                <Route 
-                    path="/introduce" 
-                    element={<Introduce />} 
+                <Route
+                    path="/introduce"
+                    element={<Introduce />}
                 />
 
-                <Route 
-                    path="/about" 
-                    element={<About />} 
+                <Route
+                    path="/about"
+                    element={<About />}
                 />
 
                 <Route
@@ -114,8 +119,18 @@ const AllRoutes = () => {
                 />
 
                 <Route
-                    path='/profile/:page'
-                    element={<MainLayout component={Profile} />}
+                    path='/profile/:activepage'
+                    element={<Profile />}
+                />
+
+                <Route
+                    path='/chat-box/:accountId'
+                    element={<MainLayout component={ChatBox} isNoFooter={true}/>}
+                />
+
+                <Route
+                    path='/contact-user/:accountId'
+                    element={<MainLayout component={AccountContact}/>}
                 />
             </Route>
 

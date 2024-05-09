@@ -14,15 +14,17 @@ import MemberManagement from "./MemberMangement";
 import { ToastContainer } from "react-toastify";
 import UpdateActModal from "./Component/UpdateModal";
 import DeleteActModal from "./Component/DeleteModal";
+import useAuth from "../../../hooks/useAuth";
 
 export const ActivityDetailContext = createContext();
 
 function ActivityDetail() {
     const { id } = useParams();
     const [data, setData] = useState(fakeData.Activity_Detail);
+    const { account } = useAuth();
     const activityStatus = SupportFunction.ActivityStatus(
-        data.date_start,
-        data.date_end
+        data.dateStart,
+        data.dateEnd
     );
     const org = data.Organization;
     const [tabButton, setTabButton] = useState(2);
@@ -123,41 +125,43 @@ function ActivityDetail() {
                 <img alt="activity-img" src={data.image} id="activity-image" />
                 <div id="activity-img-blur"></div>
                 <div id="activity-header-content-wrapper">
-                    <div id="activity-manager-button-wrapper">
-                        <Button
-                            className="activity-manager-button-item"
-                            onClick={onClickUpdate}
-                            icon={
-                                <EditOutlined className="activity-manager-button-icon" />
-                            }
-                        >
-                            Update
-                        </Button>
-                        <Button
-                            className="activity-manager-button-item"
-                            onClick={onClickDelete}
-                            icon={
-                                <DeleteOutlined className="activity-manager-button-icon" />
-                            }
-                        >
-                            Delete
-                        </Button>
-                        {isDeleteAct && (
-                            <DeleteActModal
-                                isDeleteAct={isDeleteAct}
-                                setIsDeleteAct={setIsDeleteAct}
-                                actId={data.id}
-                            />
-                        )}
-                        {isUpdateAct && (
-                            <UpdateActModal
-                                updateAct={updateAct}
-                                isUpdateAct={isUpdateAct}
-                                setIsUpdateAct={setIsUpdateAct}
-                                actInfo={data}
-                            />
-                        )}
-                    </div>
+                    {parseInt(account.role) === 2 && (
+                        <div id="activity-manager-button-wrapper">
+                            <Button
+                                className="activity-manager-button-item"
+                                onClick={onClickUpdate}
+                                icon={
+                                    <EditOutlined className="activity-manager-button-icon" />
+                                }
+                            >
+                                Update
+                            </Button>
+                            <Button
+                                className="activity-manager-button-item"
+                                onClick={onClickDelete}
+                                icon={
+                                    <DeleteOutlined className="activity-manager-button-icon" />
+                                }
+                            >
+                                Delete
+                            </Button>
+                            {isDeleteAct && (
+                                <DeleteActModal
+                                    isDeleteAct={isDeleteAct}
+                                    setIsDeleteAct={setIsDeleteAct}
+                                    actId={data.id}
+                                />
+                            )}
+                            {isUpdateAct && (
+                                <UpdateActModal
+                                    updateAct={updateAct}
+                                    isUpdateAct={isUpdateAct}
+                                    setIsUpdateAct={setIsUpdateAct}
+                                    actInfo={data}
+                                />
+                            )}
+                        </div>
+                    )}
                     <h1 id="activity-name">{data.name}</h1>
                     <h3
                         id="activity-status"
@@ -199,7 +203,7 @@ function ActivityDetail() {
                                         Start date :{" "}
                                     </p>
                                     <p class="activity-header-info-item-content">
-                                        {data.date_start}
+                                        {data.dateStart}
                                     </p>
                                 </div>
                                 <div class="activity-header-info-item">
@@ -207,7 +211,7 @@ function ActivityDetail() {
                                         End date :{" "}
                                     </p>
                                     <p class="activity-header-info-item-content">
-                                        {data.date_end}
+                                        {data.dateEnd}
                                     </p>
                                 </div>
                                 <div class="activity-header-info-item">
@@ -215,7 +219,7 @@ function ActivityDetail() {
                                         Registration date :{" "}
                                     </p>
                                     <p class="activity-header-info-item-content">
-                                        {data.date_end}
+                                        {data.dateEnd}
                                     </p>
                                 </div>
                             </div>

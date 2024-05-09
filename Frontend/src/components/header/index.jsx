@@ -1,4 +1,4 @@
-import "./header.scss";
+import "./index.scss";
 import { ICONS } from "../../constants/icons";
 import { Badge, Button, Dropdown } from "antd";
 import {
@@ -10,7 +10,7 @@ import {
     SearchOutlined,
     TeamOutlined,
 } from "@ant-design/icons";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Search from "antd/es/input/Search";
 import fakeData from "../../data/fake_data.json";
 import useDropdownNavigation from "./dropdown";
@@ -28,10 +28,25 @@ const TruncateText = (text, maxLength) => {
 function Header(props) {
     const activeButton = props.stateButton;
     const navigate = useNavigate();
-    const {getItemDropDownAccount} = useDropdownNavigation();
+    const { getItemDropDownAccount, getItemDropDownSearchPost } =
+        useDropdownNavigation();
     const [search, setSearch] = useState("");
+    const listPosts = fakeData["Posts-Activities"];
+    const [filterPosts, setFilterPosts] = useState(listPosts);
 
     const { account } = useAuth();
+
+    useEffect(() => {
+        if (search.length !== 0) {
+            setFilterPosts(
+                listPosts.filter((post) =>
+                    post.title.toLowerCase().includes(search.toLowerCase())
+                )
+            );
+        } else {
+            setFilterPosts(listPosts);
+        }
+    }, [listPosts, search]);
 
     const numberOfNoti = 10;
     const numberOfChat = 10;
@@ -53,15 +68,13 @@ function Header(props) {
         console.log(search);
     };
 
-    const clickChat = () => {};
+    const clickChat = () => {
+        navigate("/chat-box/null");
+    };
     const clickNoti = () => {};
 
     const handleChangeSearch = (e) => {
         setSearch(e.target.value);
-    };
-
-    const onClickAccount = () => {
-        console.log("account click");
     };
 
     const clickLogin = () => {
@@ -133,31 +146,39 @@ function Header(props) {
                     ) : null}
                 </div>
                 <div class="header-wrapper search">
-                    <Search
-                        placeholder="Type here to search"
-                        enterButton={
-                            <Button
-                                style={{
-                                    backgroundColor: "#257769",
-                                }}
-                                icon={
-                                    <SearchOutlined
-                                        style={{ color: "#FFFFFF" }}
-                                    />
-                                }
-                                onClick={clickSearch} // Điền hàm xử lý tìm kiếm của bạn vào đây
-                            />
-                        }
-                        // onSearch={onSearch}
-                        onChange={handleChangeSearch}
-                        value={search}
-                        size="large"
-                        inputStyle={{
-                            backgroundColor: "#F3E9E3",
-                            color: "#257769",
-                            border: "none",
+                    <Dropdown
+                        menu={{
+                            items: getItemDropDownSearchPost(filterPosts),
                         }}
-                    />
+                        trigger={["click"]}
+                        placement="bottom"
+                    >
+                        <Search
+                            placeholder="Type here to search"
+                            enterButton={
+                                <Button
+                                    style={{
+                                        backgroundColor: "#257769",
+                                    }}
+                                    icon={
+                                        <SearchOutlined
+                                            style={{ color: "#FFFFFF" }}
+                                        />
+                                    }
+                                    onClick={clickSearch} // Điền hàm xử lý tìm kiếm của bạn vào đây
+                                />
+                            }
+                            // onSearch={onSearch}
+                            onChange={handleChangeSearch}
+                            value={search}
+                            size="large"
+                            inputStyle={{
+                                backgroundColor: "#F3E9E3",
+                                color: "#257769",
+                                border: "none",
+                            }}
+                        />
+                    </Dropdown>
                 </div>
                 <div class="header-wrapper button-group-right">
                     {account !== null ? (
@@ -185,9 +206,7 @@ function Header(props) {
                     {account !== null ? (
                         <Dropdown
                             menu={{
-                                items: getItemDropDownAccount(
-                                    account.role
-                                ),
+                                items: getItemDropDownAccount(account.role),
                             }}
                             placement="bottom"
                             arrow={{ pointAtCenter: true }}

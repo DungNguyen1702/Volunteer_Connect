@@ -22,10 +22,10 @@ function UpdateActModal(props) {
         moment(actInfo.deadline, "YYYY-MM-DD")
     );
     const [dateStart, setDateStart] = useState(
-        moment(actInfo.date_start, "YYYY-MM-DD")
+        moment(actInfo.dateStart, "YYYY-MM-DD")
     );
     const [dateEnd, setDateEnd] = useState(
-        moment(actInfo.date_end, "YYYY-MM-DD")
+        moment(actInfo.dateEnd, "YYYY-MM-DD")
     );
     const [location, setLocation] = useState(actInfo.location);
     const [country, setCountry] = useState(actInfo.country + "");
@@ -69,8 +69,8 @@ function UpdateActModal(props) {
             email: email,
             type: parseInt(type),
             deadline: deadline.format("YYYY-MM-DD"),
-            date_start: dateStart.format("YYYY-MM-DD"),
-            date_end: dateEnd.format("YYYY-MM-DD"),
+            dateStart: dateStart.format("YYYY-MM-DD"),
+            dateEnd: dateEnd.format("YYYY-MM-DD"),
             location: location,
             country: parseInt(country),
             content: content,

@@ -12,7 +12,7 @@ function AvatarAccount(props) {
                     <Avatar
                         src={avatar}
                         shape={shape ? shape : "circle"}
-                        size={size ? size : "default"}
+                        size={size ? size : "large"}
                     />
                 ) : (
                     <Avatar
@@ -20,7 +20,7 @@ function AvatarAccount(props) {
                             backgroundColor: backgroundNoAva,
                         }}
                         shape={shape ? shape : "circle"}
-                        size={size ? size : "default"}
+                        size={size ? size : "large"}
                     >
                         {SupportFunction.getFirstCharacter(name)}
                     </Avatar>

@@ -1,10 +1,12 @@
+import { useNavigate } from "react-router-dom";
 import "./index.scss";
 
 function OrganizationIcon(props) {
     const { id ,name, avatar } = props;
+    const navigate = useNavigate();
 
     const handlerClickOrg = ()=>{
-        console.log("Account " + id)
+        navigate(`/contact-user/${id}`)
     };
 
     return (

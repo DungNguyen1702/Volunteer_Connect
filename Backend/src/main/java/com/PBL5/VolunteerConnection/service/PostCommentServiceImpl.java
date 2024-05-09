@@ -83,10 +83,11 @@ public class PostCommentServiceImpl implements PostCommentService {
             int userCommentId = jwtService.getId(token);
             int ownerPostId = 0;
             if (postComment.getPostId() != 0) {
-                // ownerPostId = activityRepository.findById(postRespository.findById(
-                // postComment.getPostId()).getActivityId()).getOrganizationId();
+                ownerPostId = activityRepository.findById(postRespository.findById(
+                        postComment.getPostId()).getActivityId()).getOrganizationId();
             }
-            if (userCommentId == postComment.getAccountId() || ownerPostId == postComment.getAccountId()) {
+            System.out.println(ownerPostId);
+            if (userCommentId == postComment.getAccountId() || ownerPostId == userCommentId) {
                 // postCommentRepository.deleteById(postComment.getId());
                 PostComment deleteComment = postCommentRepository.findById(postComment.getId());
                 deleteComment.setDeleted(true);

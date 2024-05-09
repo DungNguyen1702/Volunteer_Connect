@@ -9,7 +9,7 @@ import TaskDetail from "../TaskDetail";
 import AvatarAccount from "../../../../../../components/avatar/AvatarAccount";
 
 function TaskItem(props) {
-    const { listCandidate, showingTaskTableID } = useContext(TaskDataContext);
+    const {  showingTaskTableID } = useContext(TaskDataContext);
     const { taskInfo, colorStatus } = props;
 
     const [visibleDetail, setVisibleDetail] = useState(false);
@@ -31,6 +31,9 @@ function TaskItem(props) {
     const onClickTask = () => {
         setVisibleDetail(true);
     };
+    const onCloseModal = ()=>{
+        setVisibleDetail(false);
+    }
 
     return (
         <div
@@ -58,7 +61,7 @@ function TaskItem(props) {
                             <strong class="primary-green-color-style">
                                 Deadline :{" "}
                             </strong>
-                            {taskInfo.date_end}
+                            {taskInfo.dateEnd}
                         </p>
                     </div>
                     <div class="task-item-description">
@@ -88,6 +91,7 @@ function TaskItem(props) {
                                 <Avatar
                                     className="avatar-no-user-item"
                                     icon={<UserOutlined />}
+                                    size={"large"}
                                 />
                             </Tooltip>
                         )}
@@ -96,10 +100,9 @@ function TaskItem(props) {
             </div>
             {visibleDetail && (
                 <TaskDetail
-                    setVisibleDetail={setVisibleDetail}
                     visibleDetail={visibleDetail}
                     taskInfo={taskInfo}
-                    listCandidate={listCandidate}
+                    onCloseModal={onCloseModal}
                 />
             )}
         </div>
