@@ -74,11 +74,17 @@ function Header(props) {
     };
 
     const clickEvent = () => {
-        navigate("/participating-activity");
+        if(parseInt(account.role) === 3)
+            navigate("/admin/manage-activity");    
+        else
+            navigate("/participating-activity");
     };
 
     const clickGroupPeople = () => {
-        navigate("/people-searching");
+        if(parseInt(account.role) === 3 )
+            navigate("/admin/manage-account");
+        else
+            navigate("/people-searching");
     };
 
     const clickSearch = () => {
