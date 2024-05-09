@@ -71,6 +71,22 @@ function getStringApplyForm(form) {
     }
 }
 
+function getStringCertificate(certificate) {
+    if (certificate === 0 || certificate === 1) {
+        return certificate + " certificate";
+    } else {
+        return certificate + " certificates";
+    }
+}
+
+function getStringActivity(activity) {
+    if (activity === 0 || activity === 1) {
+        return activity + " activity";
+    } else {
+        return activity + " activities";
+    }
+}
+
 function convertToHTML(htmlString) {
     return <div dangerouslySetInnerHTML={{ __html: htmlString }} />;
 }
@@ -138,8 +154,222 @@ function getFirstCharacter(str) {
     return str.charAt(0);
 }
 
-function filterPost (listPost, category, country, status, sortBy, sortOrder){
+function filterPost(listPost, category, country, status, sortBy, sortOrder) {
+    let filteredList = [...listPost];
 
+    if (parseInt(category) !== 0)
+        filteredList = [
+            ...filteredList.filter(
+                (post) => parseInt(post.activity.type) === parseInt(category)
+            ),
+        ];
+    if (parseInt(country) !== 0)
+        filteredList = [
+            ...filteredList.filter(
+                (post) => parseInt(post.activity.country) === parseInt(country)
+            ),
+        ];
+    if (parseInt(status) !== 0)
+        filteredList = [
+            ...filteredList.filter(
+                (post) =>
+                    STATUS[status] ===
+                    ActivityStatus(
+                        post.activity.dateStart,
+                        post.activity.dateEnd
+                    )
+            ),
+        ];
+
+    switch (sortBy) {
+        case 1:
+            if (sortOrder === 1)
+                filteredList = [
+                    ...filteredList.sort(
+                        (a, b) =>
+                            new Date(a.activity.dateStart) -
+                            new Date(b.activity.dateStart)
+                    ),
+                ];
+            else
+                filteredList = [
+                    ...filteredList.sort(
+                        (a, b) =>
+                            new Date(b.activity.dateStart) -
+                            new Date(a.activity.dateStart)
+                    ),
+                ];
+            break;
+        case 2:
+            if (sortOrder === 1)
+                filteredList = [
+                    ...filteredList.sort(
+                        (a, b) =>
+                            new Date(a.activity.dateEnd) -
+                            new Date(b.activity.dateEnd)
+                    ),
+                ];
+            else
+                filteredList = [
+                    ...filteredList.sort(
+                        (a, b) =>
+                            new Date(b.activity.dateEnd) -
+                            new Date(a.activity.dateEnd)
+                    ),
+                ];
+            break;
+        case 3:
+            if (sortOrder === 1)
+                filteredList = [
+                    ...filteredList.sort(
+                        (a, b) =>
+                            new Date(a.activity.deadline) -
+                            new Date(b.activity.deadline)
+                    ),
+                ];
+            else
+                filteredList = [
+                    ...filteredList.sort(
+                        (a, b) =>
+                            new Date(b.activity.deadline) -
+                            new Date(a.activity.deadline)
+                    ),
+                ];
+            break;
+        case 4:
+            if (sortOrder === 1)
+                filteredList = [
+                    ...filteredList.sort(
+                        (a, b) =>
+                            new Date(a.activity.createdAt) -
+                            new Date(b.activity.createdAt)
+                    ),
+                ];
+            else
+                filteredList = [
+                    ...filteredList.sort(
+                        (a, b) =>
+                            new Date(b.activity.createdAt) -
+                            new Date(a.activity.createdAt)
+                    ),
+                ];
+            break;
+        default:
+            break;
+    }
+
+    return filteredList;
+}
+
+function filterAct(
+    listAct,
+    categoryList,
+    countryList,
+    statusList,
+    sortBy,
+    sortOrder,
+    dateStart,
+    dateEnd
+) {
+    let filteredList = [...listAct];
+
+    // filter By category
+    filteredList = [
+        ...filteredList.filter((act) => categoryList.includes(act.type + "")),
+    ];
+
+    // filter by country
+    filteredList = [
+        ...filteredList.filter((act) => countryList.includes(act.country + "")),
+    ];
+
+    // filter by status
+    filteredList = [
+        ...filteredList.filter((act) =>
+            statusList.includes(ActivityStatus(act.dateStart, act.dateEnd))
+        ),
+    ];
+
+    switch (sortBy) {
+        case 1:
+            if (sortOrder === 1)
+                filteredList = [
+                    ...filteredList.sort(
+                        (a, b) => new Date(a.dateStart) - new Date(b.dateStart)
+                    ),
+                ];
+            else
+                filteredList = [
+                    ...filteredList.sort(
+                        (a, b) => new Date(b.dateStart) - new Date(a.dateStart)
+                    ),
+                ];
+            break;
+        case 2:
+            if (sortOrder === 1)
+                filteredList = [
+                    ...filteredList.sort(
+                        (a, b) => new Date(a.dateEnd) - new Date(b.dateEnd)
+                    ),
+                ];
+            else
+                filteredList = [
+                    ...filteredList.sort(
+                        (a, b) => new Date(b.dateEnd) - new Date(a.dateEnd)
+                    ),
+                ];
+            break;
+        case 3:
+            if (sortOrder === 1)
+                filteredList = [
+                    ...filteredList.sort(
+                        (a, b) => new Date(a.deadline) - new Date(b.deadline)
+                    ),
+                ];
+            else
+                filteredList = [
+                    ...filteredList.sort(
+                        (a, b) => new Date(b.deadline) - new Date(a.deadline)
+                    ),
+                ];
+            break;
+        case 4:
+            if (sortOrder === 1)
+                filteredList = [
+                    ...filteredList.sort(
+                        (a, b) => new Date(a.createdAt) - new Date(b.createdAt)
+                    ),
+                ];
+            else
+                filteredList = [
+                    ...filteredList.sort(
+                        (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
+                    ),
+                ];
+            break;
+        default:
+            break;
+    }
+
+    if(dateStart)
+        {
+            filteredList = [
+                ...filteredList.filter((act) =>
+                    new Date(act.dateStart) >= new Date(dateStart)
+                )
+            ]
+        }
+
+    if(dateEnd)
+        {
+            filteredList = [
+                ...filteredList.filter((act) =>
+                    new Date(act.dateEnd) <= new Date(dateEnd)
+                )
+            ]
+        }
+
+    return filteredList;
 }
 
 const Utils = {
@@ -153,11 +383,15 @@ const Utils = {
     getStringReply,
     getStringPost,
     getStringApplyForm,
+    getStringCertificate,
+    getStringActivity,
     convertToHTML,
     mainContentHTML,
     removeSpaceInString,
     randomHexColor,
     getFirstCharacter,
+    filterPost,
+    filterAct,
 };
 
 export default Utils;

@@ -83,8 +83,8 @@
             "name": "Activity 1",
             "type": 1,
             "deadline": "2024-04-30",
-            "date_start": "2024-04-01",
-            "date_end": "2024-04-15",
+            "dateStart": "2024-04-01",
+            "dateEnd": "2024-04-15",
             "country": 4,
             "location": "Da Nang",
             "organization_id": 1,
@@ -100,8 +100,8 @@
             "name": "Activity 2",
             "type": 2,
             "deadline": "2024-04-30",
-            "date_start": "2024-04-01",
-            "date_end": "2024-04-15",
+            "dateStart": "2024-04-01",
+            "dateEnd": "2024-04-15",
             "country": 3,
             "location": "Da Nang",
             "organization_id": 1,
@@ -117,8 +117,8 @@
             "name": "Activity 3",
             "type": 3,
             "deadline": "2024-04-30",
-            "date_start": "2024-04-01",
-            "date_end": "2024-04-15",
+            "dateStart": "2024-04-01",
+            "dateEnd": "2024-04-15",
             "country": 2,
             "location": "Da Nang",
             "organization_id": 1,
@@ -134,8 +134,8 @@
             "name": "Activity 4",
             "type": 4,
             "deadline": "2024-04-30",
-            "date_start": "2024-04-01",
-            "date_end": "2024-04-15",
+            "dateStart": "2024-04-01",
+            "dateEnd": "2024-04-15",
             "country": 1,
             "location": "Da Nang",
             "organization_id": 1,
@@ -152,8 +152,8 @@
         "name": "Activity 1",
         "type": 1,
         "deadline": "2024-04-30",
-        "date_start": "2024-04-01",
-        "date_end": "2024-04-15",
+        "dateStart": "2024-04-01",
+        "dateEnd": "2024-04-15",
         "country": 4,
         "location": "Da Nang",
         "organization_id": 1,
@@ -231,7 +231,7 @@
                     "id": 1,
                     "account": {
                         "id": 1,
-                        "account": "user1@example.com",
+                        "account": "user1@example.com", 
                         "password": "password123",
                         "name": "John Doe",
                         "avatar": null,
@@ -817,8 +817,8 @@
             "name": "Activity 1",
             "type": 1,
             "deadline": "2024-04-30",
-            "date_start": "2024-04-01",
-            "date_end": "2024-04-15",
+            "dateStart": "2024-04-01",
+            "dateEnd": "2024-04-15",
             "country": 4,
             "location": "Da Nang",
             "organization_id": 1,
@@ -827,7 +827,8 @@
             "isDeleted": false,
             "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
             "participants": 10,
-            "comments": 10
+            "comments": 10,
+            "applyFormNumber": 10
         },
         {
             "id": 2,
@@ -836,8 +837,8 @@
             "name": "Activity 2",
             "type": 2,
             "deadline": "2024-04-30",
-            "date_start": "2024-04-01",
-            "date_end": "2024-04-15",
+            "dateStart": "2024-04-01",
+            "dateEnd": "2024-04-15",
             "country": 3,
             "location": "Da Nang",
             "organization_id": 1,
@@ -855,8 +856,8 @@
             "name": "Activity 3",
             "type": 3,
             "deadline": "2024-04-30",
-            "date_start": "2024-04-01",
-            "date_end": "2024-04-15",
+            "dateStart": "2024-04-01",
+            "dateEnd": "2024-04-15",
             "country": 2,
             "location": "Da Nang",
             "organization_id": 1,
@@ -874,8 +875,8 @@
             "name": "Activity 4",
             "type": 4,
             "deadline": "2024-04-30",
-            "date_start": "2024-04-01",
-            "date_end": "2024-04-15",
+            "dateStart": "2024-04-01",
+            "dateEnd": "2024-04-15",
             "country": 1,
             "location": "Da Nang",
             "organization_id": 1,
@@ -893,8 +894,8 @@
             "name": "Activity 1",
             "type": 1,
             "deadline": "2024-04-30",
-            "date_start": "2024-04-01",
-            "date_end": "2024-04-15",
+            "dateStart": "2024-04-01",
+            "dateEnd": "2024-04-15",
             "country": 4,
             "location": "Da Nang",
             "organization_id": 1,
@@ -912,8 +913,8 @@
             "name": "Activity 2",
             "type": 2,
             "deadline": "2024-04-30",
-            "date_start": "2024-04-01",
-            "date_end": "2024-04-15",
+            "dateStart": "2024-04-01",
+            "dateEnd": "2024-04-15",
             "country": 3,
             "location": "Da Nang",
             "organization_id": 1,
@@ -931,8 +932,8 @@
             "name": "Activity 3",
             "type": 3,
             "deadline": "2024-04-30",
-            "date_start": "2024-04-01",
-            "date_end": "2024-04-15",
+            "dateStart": "2024-04-01",
+            "dateEnd": "2024-04-15",
             "country": 2,
             "location": "Da Nang",
             "organization_id": 1,
@@ -950,8 +951,8 @@
             "name": "Activity 4",
             "type": 4,
             "deadline": "2024-04-30",
-            "date_start": "2024-04-01",
-            "date_end": "2024-04-15",
+            "dateStart": "2024-04-01",
+            "dateEnd": "2024-04-15",
             "country": 1,
             "location": "Da Nang",
             "organization_id": 1,
@@ -970,8 +971,8 @@
             "name": "Activity 4",
             "type": 4,
             "deadline": "2024-04-30",
-            "date_start": "2024-04-01",
-            "date_end": "2024-04-15",
+            "dateStart": "2024-04-01",
+            "dateEnd": "2024-04-15",
             "country": 1,
             "location": "Da Nang",
             "organization_id": 1,
@@ -990,8 +991,8 @@
             "name": "Activity 4",
             "type": 4,
             "deadline": "2024-04-30",
-            "date_start": "2024-04-01",
-            "date_end": "2024-04-15",
+            "dateStart": "2024-04-01",
+            "dateEnd": "2024-04-15",
             "country": 1,
             "location": "Da Nang",
             "organization_id": 1,
@@ -1010,8 +1011,8 @@
             "name": "Activity 4",
             "type": 4,
             "deadline": "2024-04-30",
-            "date_start": "2024-04-01",
-            "date_end": "2024-04-15",
+            "dateStart": "2024-04-01",
+            "dateEnd": "2024-04-15",
             "country": 1,
             "location": "Da Nang",
             "organization_id": 1,
@@ -1028,9 +1029,9 @@
             "email": "activity4@example.com",
             "name": "Activity 4",
             "type": 4,
-            "deadline": "2024-04-30",
-            "date_start": "2024-04-01",
-            "date_end": "2024-04-15",
+            "deadline": "2024-05-30",
+            "dateStart": "2024-06-01",
+            "dateEnd": "2024-07-15",
             "country": 1,
             "location": "Da Nang",
             "organization_id": 1,
@@ -1094,9 +1095,10 @@
                 "name": "Activity 1",
                 "type": 1,
                 "deadline": "2024-04-30",
-                "date_start": "2024-04-01",
-                "date_end": "2024-04-15",
+                "dateStart": "2024-04-15",
+                "dateEnd": "2024-04-15",
                 "location": "Da Nang",
+                "country" : 1,
                 "organization_id": 1,
                 "createdAt": "2024-04-01",
                 "updatedAt": "2024-04-05",
@@ -1119,8 +1121,9 @@
                 "name": "Activity 1",
                 "type": 1,
                 "deadline": "2024-04-30",
-                "date_start": "2024-04-01",
-                "date_end": "2024-04-15",
+                "dateStart": "2024-04-01",
+                "dateEnd": "2024-04-15",
+                "country" : 1,
                 "location": "Da Nang",
                 "organization_id": 1,
                 "createdAt": "2024-04-01",
@@ -1144,9 +1147,10 @@
                 "name": "Activity 2",
                 "type": 2,
                 "deadline": "2024-04-30",
-                "date_start": "2024-04-01",
-                "date_end": "2024-04-15",
+                "dateStart": "2024-04-01",
+                "dateEnd": "2024-04-15",
                 "location": "Da Nang",
+                "country" : 1,
                 "organization_id": 1,
                 "createdAt": "2024-04-01",
                 "updatedAt": "2024-04-05",
@@ -1169,9 +1173,10 @@
                 "name": "Activity 3",
                 "type": 3,
                 "deadline": "2024-04-30",
-                "date_start": "2024-04-01",
-                "date_end": "2024-04-15",
+                "dateStart": "2024-04-01",
+                "dateEnd": "2024-04-15",
                 "location": "Da Nang",
+                "country" : 1,
                 "organization_id": 1,
                 "createdAt": "2024-04-01",
                 "updatedAt": "2024-04-05",
@@ -1194,9 +1199,10 @@
                 "name": "Activity 4",
                 "type": 4,
                 "deadline": "2024-04-30",
-                "date_start": "2024-04-01",
-                "date_end": "2024-04-15",
+                "dateStart": "2024-04-01",
+                "dateEnd": "2024-04-15",
                 "location": "Da Nang",
+                "country" : 1,
                 "organization_id": 1,
                 "createdAt": "2024-04-01",
                 "updatedAt": "2024-04-05",
@@ -1217,17 +1223,17 @@
             "image": "https://capitalcampaignpro.com/wp-content/uploads/2023/02/capital-campaign-volunteers.jpg",
             "email": "activity2@example.com",
             "name": "Activity 2",
-            "type": 2,
+            "type": 2,  
             "deadline": "2024-04-30",
-            "date_start": "2024-04-01",
-            "date_end": "2024-04-15",
+            "dateStart": "2024-04-01",
+            "dateEnd": "2024-04-15",
             "location": "Da Nang",
             "organization_id": 1,
             "createdAt": "2024-04-01",
             "updatedAt": "2024-04-05",
             "isDeleted": false,
             "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-            "participants": 1
+            "participants": 1   
         },
         "Post": {
             "id": 1,
@@ -1421,8 +1427,8 @@
             "Tasks": [
                 {
                     "id": 1,
-                    "date_start": "2024-04-27",
-                    "date_end": "2024-04-28",
+                    "dateStart": "2024-04-27",
+                    "dateEnd": "2024-04-28",
                     "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
                     "title": "Design Homepage",
                     "status": 1,
@@ -1501,8 +1507,8 @@
                 },
                 {
                     "id": 2,
-                    "date_start": "2024-04-27",
-                    "date_end": "2024-04-28",
+                    "dateStart": "2024-04-27",
+                    "dateEnd": "2024-04-28",
                     "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
                     "title": "Design Homepage",
                     "status": 1,
@@ -1581,8 +1587,8 @@
                 },
                 {
                     "id": 3,
-                    "date_start": "2024-04-27",
-                    "date_end": "2024-04-28",
+                    "dateStart": "2024-04-27",
+                    "dateEnd": "2024-04-28",
                     "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
                     "title": "Design Homepage",
                     "status": 1,
@@ -1661,8 +1667,8 @@
                 },
                 {
                     "id": 4,
-                    "date_start": "2024-04-28",
-                    "date_end": "2024-04-29",
+                    "dateStart": "2024-04-28",
+                    "dateEnd": "2024-04-29",
                     "description": "Implement backend functionality",
                     "title": "Backend Implementation",
                     "status": 2,
@@ -1673,8 +1679,8 @@
                 },
                 {
                     "id": 5,
-                    "date_start": "2024-04-29",
-                    "date_end": "2024-04-30",
+                    "dateStart": "2024-04-29",
+                    "dateEnd": "2024-04-30",
                     "description": "Perform testing and debugging",
                     "title": "Testing and Debugging",
                     "status": 3,
@@ -1724,8 +1730,8 @@
             "Tasks": [
                 {
                     "id": 1,
-                    "date_start": "2024-04-27",
-                    "date_end": "2024-04-28",
+                    "dateStart": "2024-04-27",
+                    "dateEnd": "2024-04-28",
                     "description": "Design homepage layout",
                     "title": "Design Homepage",
                     "status": 1,
@@ -1765,8 +1771,8 @@
                 },
                 {
                     "id": 2,
-                    "date_start": "2024-04-28",
-                    "date_end": "2024-04-29",
+                    "dateStart": "2024-04-28",
+                    "dateEnd": "2024-04-29",
                     "description": "Implement backend functionality",
                     "title": "Backend Implementation",
                     "status": 2,
@@ -1777,8 +1783,8 @@
                 },
                 {
                     "id": 3,
-                    "date_start": "2024-04-29",
-                    "date_end": "2024-04-30",
+                    "dateStart": "2024-04-29",
+                    "dateEnd": "2024-04-30",
                     "description": "Perform testing and debugging",
                     "title": "Testing and Debugging",
                     "status": 3,
@@ -1896,8 +1902,8 @@
             "Tasks": [
                 {
                     "id": 1,
-                    "date_start": "2024-04-27",
-                    "date_end": "2024-04-28",
+                    "dateStart": "2024-04-27",
+                    "dateEnd": "2024-04-28",
                     "description": "Design homepage layout",
                     "title": "Design Homepage",
                     "status": 1,
@@ -2073,8 +2079,8 @@
                 },
                 {
                     "id": 2,
-                    "date_start": "2024-04-28",
-                    "date_end": "2024-04-29",
+                    "dateStart": "2024-04-28",
+                    "dateEnd": "2024-04-29",
                     "description": "Implement backend functionality",
                     "title": "Backend Implementation",
                     "status": 2,
@@ -2085,8 +2091,8 @@
                 },
                 {
                     "id": 3,
-                    "date_start": "2024-04-29",
-                    "date_end": "2024-04-30",
+                    "dateStart": "2024-04-29",
+                    "dateEnd": "2024-04-30",
                     "description": "Perform testing and debugging",
                     "title": "Testing and Debugging",
                     "status": 3,
@@ -2105,8 +2111,8 @@
         "name": "Activity 2",
         "type": 2,
         "deadline": "2024-04-30",
-        "date_start": "2024-04-01",
-        "date_end": "2024-04-15",
+        "dateStart": "2024-04-01",
+        "dateEnd": "2024-04-15",
         "location": "Da Nang",
         "country": 1,
         "organization_id": 1,
@@ -2491,5 +2497,1386 @@
                 "isDeleted": false
             }
         }
-    ]
+    ],
+    "Chat-Box" : [
+        {
+            "id": 1,
+            "account": "account1",
+            "password": "password1",
+            "name": "User 1",
+            "avatar": "https://didongviet.vn/dchannel/wp-content/uploads/2023/08/hinh-nen-3d-hinh-nen-iphone-dep-3d-didongviet@2x.jpg",
+            "status": true,
+            "role": 1,
+            "createdAt": "2024-04-10",
+            "updatedAt": "2024-04-10",
+            "isDeleted": false,
+            "backgroundNoAva": "#1abc9c",
+            "Chats": [
+                {
+                  "id": 1,
+                  "senderId": 1,
+                  "receiverId": 12,
+                  "content": "Xin chào, bạn đã ăn cơm chưa?",
+                  "createdAt": "2024-05-04"
+                },
+                {
+                  "id": 2,
+                  "senderId": 1,
+                  "receiverId": 12,
+                  "content": "Hôm nay trời đẹp quá, bạn có kế hoạch gì không?",
+                  "createdAt": "2024-05-04"
+                },
+                {
+                  "id": 3,
+                  "senderId": 12,
+                  "receiverId": 1,
+                  "content": "Chào bạn, mình có một kế hoạch đi dạo. Muốn tham gia không?",
+                  "createdAt": "2024-05-04"
+                },
+                {
+                  "id": 4,
+                  "senderId": 12,
+                  "receiverId": 1,
+                  "content": "Đi dạo ở công viên, bạn muốn gặp ở đâu?",
+                  "createdAt": "2024-05-04"
+                },
+                {
+                  "id": 5,
+                  "senderId": 1,
+                  "receiverId": 12,
+                  "content": "Dạo này bạn thế nào?",
+                  "createdAt": "2024-05-04"
+                },
+                {
+                  "id": 6,
+                  "senderId": 1,
+                  "receiverId": 12,
+                  "content": "Có tin tức gì mới không?",
+                  "createdAt": "2024-05-04"
+                },
+                {
+                  "id": 7,
+                  "senderId": 12,
+                  "receiverId": 1,
+                  "content": "Mình nghe nói bạn có một ý tưởng thú vị. Muốn chia sẻ không?",
+                  "createdAt": "2024-05-04"
+                },
+                {
+                  "id": 8,
+                  "senderId": 1,
+                  "receiverId": 12,
+                  "content": "Bạn muốn tham gia một dự án mới không?",
+                  "createdAt": "2024-05-04"
+                },
+                {
+                  "id": 9,
+                  "senderId":1,
+                  "receiverId": 12,
+                  "content": "Tôi đang xem một bộ phim thú vị. Bạn có muốn xem cùng không?",
+                  "createdAt": "2024-05-04"
+                },
+                {
+                  "id": 10,
+                  "senderId": 1,
+                  "receiverId": 12,
+                  "content": "Phim này có vẻ hấp dẫn, bạn nên tham gia cùng tôi.",
+                  "createdAt": "2024-05-04"
+                }
+            ]
+        },
+        {
+            "id": 2,
+            "account": "account2",
+            "password": "password2",
+            "name": "User 2",
+            "avatar": "https://didongviet.vn/dchannel/wp-content/uploads/2023/08/hinh-nen-3d-hinh-nen-iphone-dep-3d-didongviet-2.jpg",
+            "status": true,
+            "role": 3,
+            "createdAt": "2024-04-10",
+            "updatedAt": "2024-04-10",
+            "isDeleted": false,
+            "backgroundNoAva": "#e74c3c",
+            "Chats": [
+                {
+                  "id": 1,
+                  "senderId": 2,
+                  "receiverId": 12,
+                  "content": "Xin chào, bạn đã ăn cơm chưa?",
+                  "createdAt": "2024-05-04"
+                },
+                {
+                  "id": 2,
+                  "senderId": 12,
+                  "receiverId": 2,
+                  "content": "Hôm nay trời đẹp quá, bạn có kế hoạch gì không?",
+                  "createdAt": "2024-05-04"
+                },
+                {
+                  "id": 3,
+                  "senderId": 12,
+                  "receiverId": 2,
+                  "content": "Chào bạn, mình có một kế hoạch đi dạo. Muốn tham gia không?",
+                  "createdAt": "2024-05-04"
+                },
+                {
+                  "id": 4,
+                  "senderId": 12,
+                  "receiverId": 2,
+                  "content": "Đi dạo ở công viên, bạn muốn gặp ở đâu?",
+                  "createdAt": "2024-05-04"
+                },
+                {
+                  "id": 5,
+                  "senderId": 2,
+                  "receiverId": 12,
+                  "content": "Dạo này bạn thế nào?",
+                  "createdAt": "2024-05-04"
+                },
+                {
+                  "id": 6,
+                  "senderId": 2,
+                  "receiverId": 12,
+                  "content": "Có tin tức gì mới không?",
+                  "createdAt": "2024-05-04"
+                },
+                {
+                  "id": 7,
+                  "senderId": 12,
+                  "receiverId": 2,
+                  "content": "Mình nghe nói bạn có một ý tưởng thú vị. Muốn chia sẻ không?",
+                  "createdAt": "2024-05-04"
+                },
+                {
+                  "id": 8,
+                  "senderId": 2,
+                  "receiverId": 12,
+                  "content": "Bạn muốn tham gia một dự án mới không?",
+                  "createdAt": "2024-05-04"
+                },
+                {
+                  "id": 9,
+                  "senderId": 2,
+                  "receiverId": 12,
+                  "content": "Tôi đang xem một bộ phim thú vị. Bạn có muốn xem cùng không?",
+                  "createdAt": "2024-05-04"
+                },
+                {
+                  "id": 10,
+                  "senderId": 2,
+                  "receiverId": 12,
+                  "content": "Phim này có vẻ hấp dẫn, bạn nên tham gia cùng tôi.",
+                  "createdAt": "2024-05-04"
+                }
+            ]
+        },
+        {
+            "id": 3,
+            "account": "account3",
+            "password": "password3",
+            "name": "User 3",
+            "avatar": "https://didongviet.vn/dchannel/wp-content/uploads/2023/08/hinh-nen-3d-hinh-nen-iphone-dep-3d-didongviet-3@2x.jpg",
+            "status": true,
+            "role": 3,
+            "createdAt": "2024-04-10",
+            "updatedAt": "2024-04-10",
+            "isDeleted": false,
+            "backgroundNoAva": "#e74c3c",
+            "Chats": [
+                {
+                  "id": 1,
+                  "senderId": 3,
+                  "receiverId": 12,
+                  "content": "Xin chào, bạn đã ăn cơm chưa?",
+                  "createdAt": "2024-05-04"
+                },
+                {
+                  "id": 2,
+                  "senderId": 3,
+                  "receiverId": 12,
+                  "content": "Hôm nay trời đẹp quá, bạn có kế hoạch gì không?",
+                  "createdAt": "2024-05-04"
+                },
+                {
+                  "id": 3,
+                  "senderId": 12,
+                  "receiverId": 3,
+                  "content": "Chào bạn, mình có một kế hoạch đi dạo. Muốn tham gia không?",
+                  "createdAt": "2024-05-04"
+                },
+                {
+                  "id": 4,
+                  "senderId": 12,
+                  "receiverId": 3,
+                  "content": "Đi dạo ở công viên, bạn muốn gặp ở đâu?",
+                  "createdAt": "2024-05-04"
+                },
+                {
+                  "id": 5,
+                  "senderId": 3,
+                  "receiverId": 12,
+                  "content": "Dạo này bạn thế nào?",
+                  "createdAt": "2024-05-04"
+                },
+                {
+                  "id": 6,
+                  "senderId": 3,
+                  "receiverId": 12,
+                  "content": "Có tin tức gì mới không?",
+                  "createdAt": "2024-05-04"
+                },
+                {
+                  "id": 7,
+                  "senderId": 12,
+                  "receiverId": 3,
+                  "content": "Mình nghe nói bạn có một ý tưởng thú vị. Muốn chia sẻ không?",
+                  "createdAt": "2024-05-04"
+                },
+                {
+                  "id": 8,
+                  "senderId": 3,
+                  "receiverId": 12,
+                  "content": "Bạn muốn tham gia một dự án mới không?",
+                  "createdAt": "2024-05-04"
+                },
+                {
+                  "id": 9,
+                  "senderId": 3,
+                  "receiverId": 12,
+                  "content": "Tôi đang xem một bộ phim thú vị. Bạn có muốn xem cùng không?",
+                  "createdAt": "2024-05-04"
+                },
+                {
+                  "id": 10,
+                  "senderId": 3,
+                  "receiverId": 12,
+                  "content": "Phim này có vẻ hấp dẫn, bạn nên tham gia cùng tôi.",
+                  "createdAt": "2024-05-04"
+                }
+            ]
+        },
+        {
+            "id": 4,
+            "account": "account1",
+            "password": "password1",
+            "name": "User 1",
+            "avatar": "https://didongviet.vn/dchannel/wp-content/uploads/2023/08/hinh-nen-3d-hinh-nen-iphone-dep-3d-didongviet@2x.jpg",
+            "status": true,
+            "role": 1,
+            "createdAt": "2024-04-10",
+            "updatedAt": "2024-04-10",
+            "isDeleted": false,
+            "backgroundNoAva": "#1abc9c",
+            "Chats": [
+                {
+                  "id": 1,
+                  "senderId": 4,
+                  "receiverId": 12,
+                  "content": "Xin chào, bạn đã ăn cơm chưa?",
+                  "createdAt": "2024-05-04"
+                },
+                {
+                  "id": 2,
+                  "senderId": 4,
+                  "receiverId": 12,
+                  "content": "Hôm nay trời đẹp quá, bạn có kế hoạch gì không?",
+                  "createdAt": "2024-05-04"
+                },
+                {
+                  "id": 3,
+                  "senderId": 12,
+                  "receiverId": 4,
+                  "content": "Chào bạn, mình có một kế hoạch đi dạo. Muốn tham gia không?",
+                  "createdAt": "2024-05-04"
+                },
+                {
+                  "id": 4,
+                  "senderId": 12,
+                  "receiverId": 4,
+                  "content": "Đi dạo ở công viên, bạn muốn gặp ở đâu?",
+                  "createdAt": "2024-05-04"
+                },
+                {
+                  "id": 5,
+                  "senderId": 4,
+                  "receiverId": 12,
+                  "content": "Dạo này bạn thế nào?",
+                  "createdAt": "2024-05-04"
+                },
+                {
+                  "id": 6,
+                  "senderId": 4,
+                  "receiverId": 12,
+                  "content": "Có tin tức gì mới không?",
+                  "createdAt": "2024-05-04"
+                },
+                {
+                  "id": 7,
+                  "senderId": 12,
+                  "receiverId": 4,
+                  "content": "Mình nghe nói bạn có một ý tưởng thú vị. Muốn chia sẻ không?",
+                  "createdAt": "2024-05-04"
+                },
+                {
+                  "id": 8,
+                  "senderId": 4,
+                  "receiverId": 12,
+                  "content": "Bạn muốn tham gia một dự án mới không?",
+                  "createdAt": "2024-05-04"
+                },
+                {
+                  "id": 9,
+                  "senderId":4,
+                  "receiverId": 12,
+                  "content": "Tôi đang xem một bộ phim thú vị. Bạn có muốn xem cùng không?",
+                  "createdAt": "2024-05-04"
+                },
+                {
+                  "id": 10,
+                  "senderId": 4,
+                  "receiverId": 12,
+                  "content": "Phim này có vẻ hấp dẫn, bạn nên tham gia cùng tôi.",
+                  "createdAt": "2024-05-04"
+                }
+            ]
+        },
+        {
+            "id": 5,
+            "account": "account2",
+            "password": "password2",
+            "name": "User 2",
+            "avatar": "https://didongviet.vn/dchannel/wp-content/uploads/2023/08/hinh-nen-3d-hinh-nen-iphone-dep-3d-didongviet-2.jpg",
+            "status": true,
+            "role": 3,
+            "createdAt": "2024-04-10",
+            "updatedAt": "2024-04-10",
+            "isDeleted": false,
+            "backgroundNoAva": "#e74c3c",
+            "Chats": [
+                {
+                  "id": 1,
+                  "senderId": 5,
+                  "receiverId": 12,
+                  "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+                  "createdAt": "2024-05-04"
+                },
+                {
+                  "id": 2,
+                  "senderId": 12,
+                  "receiverId": 5,
+                  "content": "Hôm nay trời đẹp quá, bạn có kế hoạch gì không?",
+                  "createdAt": "2024-05-04"
+                },
+                {
+                  "id": 3,
+                  "senderId": 12,
+                  "receiverId": 5,
+                  "content": "Chào bạn, mình có một kế hoạch đi dạo. Muốn tham gia không?",
+                  "createdAt": "2024-05-04"
+                },
+                {
+                  "id": 4,
+                  "senderId": 12,
+                  "receiverId": 5,
+                  "content": "Đi dạo ở công viên, bạn muốn gặp ở đâu?",
+                  "createdAt": "2024-05-04"
+                },
+                {
+                  "id": 5,
+                  "senderId": 5,
+                  "receiverId": 12,
+                  "content": "Dạo này bạn thế nào?",
+                  "createdAt": "2024-05-04"
+                },
+                {
+                  "id": 6,
+                  "senderId": 5,
+                  "receiverId": 12,
+                  "content": "Có tin tức gì mới không?",
+                  "createdAt": "2024-05-04"
+                },
+                {
+                  "id": 7,
+                  "senderId": 12,
+                  "receiverId": 5,
+                  "content": "Mình nghe nói bạn có một ý tưởng thú vị. Muốn chia sẻ không?",
+                  "createdAt": "2024-05-04"
+                },
+                {
+                  "id": 8,
+                  "senderId": 5,
+                  "receiverId": 12,
+                  "content": "Bạn muốn tham gia một dự án mới không?",
+                  "createdAt": "2024-05-04"
+                },
+                {
+                  "id": 9,
+                  "senderId": 5,
+                  "receiverId": 12,
+                  "content": "Tôi đang xem một bộ phim thú vị. Bạn có muốn xem cùng không?",
+                  "createdAt": "2024-05-04"
+                },
+                {
+                  "id": 10,
+                  "senderId": 5,
+                  "receiverId": 12,
+                  "content": "Phim này có vẻ hấp dẫn, bạn nên tham gia cùng tôi.",
+                  "createdAt": "2024-05-04"
+                }
+            ]
+        },
+        {
+            "id": 6,
+            "account": "account3",
+            "password": "password3",
+            "name": "User 3",
+            "avatar": "https://didongviet.vn/dchannel/wp-content/uploads/2023/08/hinh-nen-3d-hinh-nen-iphone-dep-3d-didongviet-3@2x.jpg",
+            "status": true,
+            "role": 3,
+            "createdAt": "2024-04-10",
+            "updatedAt": "2024-04-10",
+            "isDeleted": false,
+            "backgroundNoAva": "#e74c3c",
+            "Chats": [
+                {
+                  "id": 1,
+                  "senderId": 6,
+                  "receiverId": 12,
+                  "content": "Xin chào, bạn đã ăn cơm chưa?",
+                  "createdAt": "2024-05-04"
+                },
+                {
+                  "id": 2,
+                  "senderId": 6,
+                  "receiverId": 12,
+                  "content": "Hôm nay trời đẹp quá, bạn có kế hoạch gì không?",
+                  "createdAt": "2024-05-04"
+                },
+                {
+                  "id": 3,
+                  "senderId": 12,
+                  "receiverId": 6,
+                  "content": "Chào bạn, mình có một kế hoạch đi dạo. Muốn tham gia không?",
+                  "createdAt": "2024-05-04"
+                },
+                {
+                  "id": 4,
+                  "senderId": 12,
+                  "receiverId": 6,
+                  "content": "Đi dạo ở công viên, bạn muốn gặp ở đâu?",
+                  "createdAt": "2024-05-04"
+                },
+                {
+                  "id": 5,
+                  "senderId": 6,
+                  "receiverId": 12,
+                  "content": "Dạo này bạn thế nào?",
+                  "createdAt": "2024-05-04"
+                },
+                {
+                  "id": 6,
+                  "senderId": 6,
+                  "receiverId": 12,
+                  "content": "Có tin tức gì mới không?",
+                  "createdAt": "2024-05-04"
+                },
+                {
+                  "id": 7,
+                  "senderId": 12,
+                  "receiverId": 6,
+                  "content": "Mình nghe nói bạn có một ý tưởng thú vị. Muốn chia sẻ không?",
+                  "createdAt": "2024-05-04"
+                },
+                {
+                  "id": 8,
+                  "senderId": 6,
+                  "receiverId": 12,
+                  "content": "Bạn muốn tham gia một dự án mới không?",
+                  "createdAt": "2024-05-04"
+                },
+                {
+                  "id": 9,
+                  "senderId": 6,
+                  "receiverId": 12,
+                  "content": "Tôi đang xem một bộ phim thú vị. Bạn có muốn xem cùng không?",
+                  "createdAt": "2024-05-04"
+                },
+                {
+                  "id": 10,
+                  "senderId": 6,
+                  "receiverId": 12,
+                  "content": "Phim này có vẻ hấp dẫn, bạn nên tham gia cùng tôi.",
+                  "createdAt": "2024-05-04"
+                }
+            ]
+        },
+        {
+            "id": 7,
+            "account": "account7",
+            "password": "password7",
+            "name": "User 7",
+            "avatar": "https://didongviet.vn/dchannel/wp-content/uploads/2023/08/hinh-nen-3d-hinh-nen-iphone-dep-3d-didongviet@2x.jpg",
+            "status": true,
+            "role": 7,
+            "createdAt": "2024-04-70",
+            "updatedAt": "2024-04-70",
+            "isDeleted": false,
+            "backgroundNoAva": "#7abc9c",
+            "Chats": [
+                {
+                  "id": 7,
+                  "senderId": 7,
+                  "receiverId": 12,
+                  "content": "Xin chào, bạn đã ăn cơm chưa?",
+                  "createdAt": "2024-05-04"
+                },
+                {
+                  "id": 2,
+                  "senderId": 7,
+                  "receiverId": 12,
+                  "content": "Hôm nay trời đẹp quá, bạn có kế hoạch gì không?",
+                  "createdAt": "2024-05-04"
+                },
+                {
+                  "id": 3,
+                  "senderId": 12,
+                  "receiverId": 7,
+                  "content": "Chào bạn, mình có một kế hoạch đi dạo. Muốn tham gia không?",
+                  "createdAt": "2024-05-04"
+                },
+                {
+                  "id": 4,
+                  "senderId": 12,
+                  "receiverId": 7,
+                  "content": "Đi dạo ở công viên, bạn muốn gặp ở đâu?",
+                  "createdAt": "2024-05-04"
+                },
+                {
+                  "id": 5,
+                  "senderId": 7,
+                  "receiverId": 12,
+                  "content": "Dạo này bạn thế nào?",
+                  "createdAt": "2024-05-04"
+                },
+                {
+                  "id": 6,
+                  "senderId": 7,
+                  "receiverId": 12,
+                  "content": "Có tin tức gì mới không?",
+                  "createdAt": "2024-05-04"
+                },
+                {
+                  "id": 7,
+                  "senderId": 12,
+                  "receiverId": 7,
+                  "content": "Mình nghe nói bạn có một ý tưởng thú vị. Muốn chia sẻ không?",
+                  "createdAt": "2024-05-04"
+                },
+                {
+                  "id": 8,
+                  "senderId": 7,
+                  "receiverId": 12,
+                  "content": "Bạn muốn tham gia một dự án mới không?",
+                  "createdAt": "2024-05-04"
+                },
+                {
+                  "id": 9,
+                  "senderId": 7,
+                  "receiverId": 12,
+                  "content": "Tôi đang xem một bộ phim thú vị. Bạn có muốn xem cùng không?",
+                  "createdAt": "2024-05-04"
+                },
+                {
+                  "id": 10,
+                  "senderId": 7,
+                  "receiverId": 12,
+                  "content": "Phim này có vẻ hấp dẫn, bạn nên tham gia cùng tôi.",
+                  "createdAt": "2024-05-04"
+                }
+            ]
+        },
+        {
+            "id": 8,
+            "account": "account2",
+            "password": "password2",
+            "name": "User 2",
+            "avatar": "https://didongviet.vn/dchannel/wp-content/uploads/2023/08/hinh-nen-3d-hinh-nen-iphone-dep-3d-didongviet-2.jpg",
+            "status": true,
+            "role": 3,
+            "createdAt": "2024-04-10",
+            "updatedAt": "2024-04-10",
+            "isDeleted": false,
+            "backgroundNoAva": "#e74c3c",
+            "Chats": [
+                {
+                  "id": 8,
+                  "senderId": 8,
+                  "receiverId": 12,
+                  "content": "Xin chào, bạn đã ăn cơm chưa?",
+                  "createdAt": "2024-05-04"
+                },
+                {
+                  "id": 8,
+                  "senderId": 12,
+                  "receiverId": 8,
+                  "content": "Hôm nay trời đẹp quá, bạn có kế hoạch gì không?",
+                  "createdAt": "2024-05-04"
+                },
+                {
+                  "id": 3,
+                  "senderId": 12,
+                  "receiverId": 8,
+                  "content": "Chào bạn, mình có một kế hoạch đi dạo. Muốn tham gia không?",
+                  "createdAt": "2024-05-04"
+                },
+                {
+                  "id": 4,
+                  "senderId": 12,
+                  "receiverId": 8,
+                  "content": "Đi dạo ở công viên, bạn muốn gặp ở đâu?",
+                  "createdAt": "2024-05-04"
+                },
+                {
+                  "id": 5,
+                  "senderId": 8,
+                  "receiverId": 12,
+                  "content": "Dạo này bạn thế nào?",
+                  "createdAt": "2024-05-04"
+                },
+                {
+                  "id": 6,
+                  "senderId": 8,
+                  "receiverId": 12,
+                  "content": "Có tin tức gì mới không?",
+                  "createdAt": "2024-05-04"
+                },
+                {
+                  "id": 7,
+                  "senderId": 12,
+                  "receiverId": 8,
+                  "content": "Mình nghe nói bạn có một ý tưởng thú vị. Muốn chia sẻ không?",
+                  "createdAt": "2024-05-04"
+                },
+                {
+                  "id": 8,
+                  "senderId": 8,
+                  "receiverId": 12,
+                  "content": "Bạn muốn tham gia một dự án mới không?",
+                  "createdAt": "2024-05-04"
+                },
+                {
+                  "id": 9,
+                  "senderId": 8,
+                  "receiverId": 12,
+                  "content": "Tôi đang xem một bộ phim thú vị. Bạn có muốn xem cùng không?",
+                  "createdAt": "2024-05-04"
+                },
+                {
+                  "id": 10,
+                  "senderId": 8,
+                  "receiverId": 12,
+                  "content": "Phim này có vẻ hấp dẫn, bạn nên tham gia cùng tôi.",
+                  "createdAt": "2024-05-04"
+                }
+            ]
+        },
+        {
+            "id": 9,
+            "account": "account3",
+            "password": "password3",
+            "name": "User 3",
+            "avatar": "https://didongviet.vn/dchannel/wp-content/uploads/2023/08/hinh-nen-3d-hinh-nen-iphone-dep-3d-didongviet-3@2x.jpg",
+            "status": true,
+            "role": 3,
+            "createdAt": "2024-04-10",
+            "updatedAt": "2024-04-10",
+            "isDeleted": false,
+            "backgroundNoAva": "#e74c3c",
+            "Chats": [
+                {
+                  "id": 1,
+                  "senderId": 9,
+                  "receiverId": 12,
+                  "content": "Xin chào, bạn đã ăn cơm chưa?",
+                  "createdAt": "2024-05-04"
+                },
+                {
+                  "id": 2,
+                  "senderId": 9,
+                  "receiverId": 12,
+                  "content": "Hôm nay trời đẹp quá, bạn có kế hoạch gì không?",
+                  "createdAt": "2024-05-04"
+                },
+                {
+                  "id": 3,
+                  "senderId": 12,
+                  "receiverId": 9,
+                  "content": "Chào bạn, mình có một kế hoạch đi dạo. Muốn tham gia không?",
+                  "createdAt": "2024-05-04"
+                },
+                {
+                  "id": 4,
+                  "senderId": 12,
+                  "receiverId": 9,
+                  "content": "Đi dạo ở công viên, bạn muốn gặp ở đâu?",
+                  "createdAt": "2024-05-04"
+                },
+                {
+                  "id": 5,
+                  "senderId": 9,
+                  "receiverId": 12,
+                  "content": "Dạo này bạn thế nào?",
+                  "createdAt": "2024-05-04"
+                },
+                {
+                  "id": 6,
+                  "senderId": 9,
+                  "receiverId": 12,
+                  "content": "Có tin tức gì mới không?",
+                  "createdAt": "2024-05-04"
+                },
+                {
+                  "id": 7,
+                  "senderId": 12,
+                  "receiverId": 9,
+                  "content": "Mình nghe nói bạn có một ý tưởng thú vị. Muốn chia sẻ không?",
+                  "createdAt": "2024-05-04"
+                },
+                {
+                  "id": 8,
+                  "senderId": 9,
+                  "receiverId": 12,
+                  "content": "Bạn muốn tham gia một dự án mới không?",
+                  "createdAt": "2024-05-04"
+                },
+                {
+                  "id": 9,
+                  "senderId": 9,
+                  "receiverId": 12,
+                  "content": "Tôi đang xem một bộ phim thú vị. Bạn có muốn xem cùng không?",
+                  "createdAt": "2024-05-04"
+                },
+                {
+                  "id": 10,
+                  "senderId": 9,
+                  "receiverId": 12,
+                  "content": "Phim này có vẻ hấp dẫn, bạn nên tham gia cùng tôi.",
+                  "createdAt": "2024-05-04"
+                }
+            ]
+        },
+        {
+            "id": 10,
+            "account": "account1",
+            "password": "password1",
+            "name": "User 1",
+            "avatar": "https://didongviet.vn/dchannel/wp-content/uploads/2023/08/hinh-nen-3d-hinh-nen-iphone-dep-3d-didongviet@2x.jpg",
+            "status": true,
+            "role": 1,
+            "createdAt": "2024-04-10",
+            "updatedAt": "2024-04-10",
+            "isDeleted": false,
+            "backgroundNoAva": "#1abc9c",
+            "Chats": [
+                {
+                  "id": 1,
+                  "senderId": 10,
+                  "receiverId": 12,
+                  "content": "Xin chào, bạn đã ăn cơm chưa?",
+                  "createdAt": "2024-05-04"
+                },
+                {
+                  "id": 2,
+                  "senderId": 10,
+                  "receiverId": 12,
+                  "content": "Hôm nay trời đẹp quá, bạn có kế hoạch gì không?",
+                  "createdAt": "2024-05-04"
+                },
+                {
+                  "id": 3,
+                  "senderId": 12,
+                  "receiverId": 10,
+                  "content": "Chào bạn, mình có một kế hoạch đi dạo. Muốn tham gia không?",
+                  "createdAt": "2024-05-04"
+                },
+                {
+                  "id": 4,
+                  "senderId": 12,
+                  "receiverId": 10,
+                  "content": "Đi dạo ở công viên, bạn muốn gặp ở đâu?",
+                  "createdAt": "2024-05-04"
+                },
+                {
+                  "id": 5,
+                  "senderId": 10,
+                  "receiverId": 12,
+                  "content": "Dạo này bạn thế nào?",
+                  "createdAt": "2024-05-04"
+                },
+                {
+                  "id": 6,
+                  "senderId": 10,
+                  "receiverId": 12,
+                  "content": "Có tin tức gì mới không?",
+                  "createdAt": "2024-05-04"
+                },
+                {
+                  "id": 7,
+                  "senderId": 12,
+                  "receiverId": 10,
+                  "content": "Mình nghe nói bạn có một ý tưởng thú vị. Muốn chia sẻ không?",
+                  "createdAt": "2024-05-04"
+                },
+                {
+                  "id": 8,
+                  "senderId": 10,
+                  "receiverId": 12,
+                  "content": "Bạn muốn tham gia một dự án mới không?",
+                  "createdAt": "2024-05-04"
+                },
+                {
+                  "id": 9,
+                  "senderId" : 10,
+                  "receiverId": 12,
+                  "content": "Tôi đang xem một bộ phim thú vị. Bạn có muốn xem cùng không?",
+                  "createdAt": "2024-05-04"
+                },
+                {
+                  "id": 10,
+                  "senderId": 10,
+                  "receiverId": 12,
+                  "content": "Phim này có vẻ hấp dẫn, bạn nên tham gia cùng tôi.",
+                  "createdAt": "2024-05-04"
+                }
+            ]
+        },
+        {
+            "id": 11,
+            "account": "account2",
+            "password": "password2",
+            "name": "User 2",
+            "avatar": "https://didongviet.vn/dchannel/wp-content/uploads/2023/08/hinh-nen-3d-hinh-nen-iphone-dep-3d-didongviet-2.jpg",
+            "status": true,
+            "role": 3,
+            "createdAt": "2024-04-10",
+            "updatedAt": "2024-04-10",
+            "isDeleted": false,
+            "backgroundNoAva": "#e74c3c",
+            "Chats": [
+                {
+                  "id": 1,
+                  "senderId": 11,
+                  "receiverId": 12,
+                  "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+                  "createdAt": "2024-05-04"
+                },
+                {
+                  "id": 2,
+                  "senderId": 12,
+                  "receiverId": 11,
+                  "content": "Hôm nay trời đẹp quá, bạn có kế hoạch gì không?",
+                  "createdAt": "2024-05-04"
+                },
+                {
+                  "id": 3,
+                  "senderId": 12,
+                  "receiverId": 11,
+                  "content": "Chào bạn, mình có một kế hoạch đi dạo. Muốn tham gia không?",
+                  "createdAt": "2024-05-04"
+                },
+                {
+                  "id": 4,
+                  "senderId": 12,
+                  "receiverId": 11,
+                  "content": "Đi dạo ở công viên, bạn muốn gặp ở đâu?",
+                  "createdAt": "2024-05-04"
+                },
+                {
+                  "id": 5,
+                  "senderId": 11,
+                  "receiverId": 12,
+                  "content": "Dạo này bạn thế nào?",
+                  "createdAt": "2024-05-04"
+                },
+                {
+                  "id": 6,
+                  "senderId": 11,
+                  "receiverId": 12,
+                  "content": "Có tin tức gì mới không?",
+                  "createdAt": "2024-05-04"
+                },
+                {
+                  "id": 7,
+                  "senderId": 12,
+                  "receiverId": 11,
+                  "content": "Mình nghe nói bạn có một ý tưởng thú vị. Muốn chia sẻ không?",
+                  "createdAt": "2024-05-04"
+                },
+                {
+                  "id": 8,
+                  "senderId": 11,
+                  "receiverId": 12,
+                  "content": "Bạn muốn tham gia một dự án mới không?",
+                  "createdAt": "2024-05-04"
+                },
+                {
+                  "id": 9,
+                  "senderId": 11,
+                  "receiverId": 12,
+                  "content": "Tôi đang xem một bộ phim thú vị. Bạn có muốn xem cùng không?",
+                  "createdAt": "2024-05-04"
+                },
+                {
+                  "id": 10,
+                  "senderId": 11,
+                  "receiverId": 12,
+                  "content": "Phim này có vẻ hấp dẫn, bạn nên tham gia cùng tôi.",
+                  "createdAt": "2024-05-04"
+                }
+            ]
+        }
+    ],
+    "CandidateContact" : {
+        "id": 1,
+        "account": "account1",
+        "password": "password1",
+        "name": "User 1",
+        "avatar": "https://didongviet.vn/dchannel/wp-content/uploads/2023/08/hinh-nen-3d-hinh-nen-iphone-dep-3d-didongviet@2x.jpg",
+        "status": true,
+        "role": 1,
+        "createdAt": "2024-04-10",
+        "updatedAt": "2024-04-10",
+        "isDeleted": false,
+        "backgroundNoAva": "#1abc9c",
+        "User" : {
+            "id": 1,
+            "account_id": 1,
+            "tel": "123456789",
+            "address": "Address 1",
+            "gender": "Male",
+            "birthday": "1990-01-01",
+            "createdAt": "2024-04-10",
+            "updatedAt": "2024-04-10",
+            "isDeleted": false
+        },
+        "activityNumber" : 9,
+        "Activities" : [
+            {
+                "id": 1,
+                "image": "https://capitalcampaignpro.com/wp-content/uploads/2023/02/capital-campaign-volunteers.jpg",
+                "email": "activity1@example.com",
+                "name": "Activity 1",
+                "type": 1,
+                "deadline": "2024-04-30",
+                "dateStart": "2024-04-01",
+                "dateEnd": "2024-04-15",
+                "country": 4,
+                "location": "Da Nang",
+                "organization_id": 1,
+                "createdAt": "2024-04-01",
+                "updatedAt": "2024-04-05",
+                "isDeleted": false,
+                "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+                "participants": 10
+            },
+            {
+                "id": 2,
+                "image": "https://capitalcampaignpro.com/wp-content/uploads/2023/02/capital-campaign-volunteers.jpg",
+                "email": "activity2@example.com",
+                "name": "Activity 2",
+                "type": 2,
+                "deadline": "2024-04-30",
+                "dateStart": "2024-04-01",
+                "dateEnd": "2024-04-15",
+                "country": 3,
+                "location": "Da Nang",
+                "organization_id": 1,
+                "createdAt": "2024-04-01",
+                "updatedAt": "2024-04-05",
+                "isDeleted": false,
+                "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+                "participants": 10
+            },
+            {
+                "id": 3,
+                "image": "https://capitalcampaignpro.com/wp-content/uploads/2023/02/capital-campaign-volunteers.jpg",
+                "email": "activity3@example.com",
+                "name": "Activity 3",
+                "type": 3,
+                "deadline": "2024-04-30",
+                "dateStart": "2024-04-01",
+                "dateEnd": "2024-04-15",
+                "country": 2,
+                "location": "Da Nang",
+                "organization_id": 1,
+                "createdAt": "2024-04-01",
+                "updatedAt": "2024-04-05",
+                "isDeleted": false,
+                "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+                "participants": 10
+            },
+            {
+                "id": 4,
+                "image": "https://capitalcampaignpro.com/wp-content/uploads/2023/02/capital-campaign-volunteers.jpg",
+                "email": "activity4@example.com",
+                "name": "Activity 4",
+                "type": 4,
+                "deadline": "2024-04-30",
+                "dateStart": "2024-04-01",
+                "dateEnd": "2024-04-15",
+                "country": 1,
+                "location": "Da Nang",
+                "organization_id": 1,
+                "createdAt": "2024-04-01",
+                "updatedAt": "2024-04-05",
+                "isDeleted": false,
+                "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+                "participants": 10
+            },
+            {
+                "id": 5,
+                "image": "https://capitalcampaignpro.com/wp-content/uploads/2023/02/capital-campaign-volunteers.jpg",
+                "email": "activity1@example.com",
+                "name": "Activity 1",
+                "type": 1,
+                "deadline": "2024-04-30",
+                "dateStart": "2024-04-01",
+                "dateEnd": "2024-04-15",
+                "country": 4,
+                "location": "Da Nang",
+                "organization_id": 1,
+                "createdAt": "2024-04-01",
+                "updatedAt": "2024-04-05",
+                "isDeleted": false,
+                "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+                "participants": 10
+            },
+            {
+                "id": 6,
+                "image": "https://capitalcampaignpro.com/wp-content/uploads/2023/02/capital-campaign-volunteers.jpg",
+                "email": "activity2@example.com",
+                "name": "Activity 2",
+                "type": 2,
+                "deadline": "2024-04-30",
+                "dateStart": "2024-04-01",
+                "dateEnd": "2024-04-15",
+                "country": 3,
+                "location": "Da Nang",
+                "organization_id": 1,
+                "createdAt": "2024-04-01",
+                "updatedAt": "2024-04-05",
+                "isDeleted": false,
+                "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+                "participants": 10
+            },
+            {
+                "id": 7,
+                "image": "https://capitalcampaignpro.com/wp-content/uploads/2023/02/capital-campaign-volunteers.jpg",
+                "email": "activity3@example.com",
+                "name": "Activity 3",
+                "type": 3,
+                "deadline": "2024-04-30",
+                "dateStart": "2024-04-01",
+                "dateEnd": "2024-04-15",
+                "country": 2,
+                "location": "Da Nang",
+                "organization_id": 1,
+                "createdAt": "2024-04-01",
+                "updatedAt": "2024-04-05",
+                "isDeleted": false,
+                "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+                "participants": 10
+            },
+            {
+                "id": 8,
+                "image": "https://capitalcampaignpro.com/wp-content/uploads/2023/02/capital-campaign-volunteers.jpg",
+                "email": "activity4@example.com",
+                "name": "Activity 4",
+                "type": 4,
+                "deadline": "2024-04-30",
+                "dateStart": "2024-04-01",
+                "dateEnd": "2024-04-15",
+                "country": 1,
+                "location": "Da Nang",
+                "organization_id": 1,
+                "createdAt": "2024-04-01",
+                "updatedAt": "2024-04-05",
+                "isDeleted": false,
+                "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+                "participants": 10
+            },
+    
+            {
+                "id": 9,
+                "image": "https://capitalcampaignpro.com/wp-content/uploads/2023/02/capital-campaign-volunteers.jpg",
+                "email": "activity4@example.com",
+                "name": "Activity 4",
+                "type": 4,
+                "deadline": "2024-04-30",
+                "dateStart": "2024-04-01",
+                "dateEnd": "2024-04-15",
+                "country": 1,
+                "location": "Da Nang",
+                "organization_id": 1,
+                "createdAt": "2024-04-01",
+                "updatedAt": "2024-04-05",
+                "isDeleted": false,
+                "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+                "participants": 10
+            },
+            {
+                "id": 10,
+                "image": "https://capitalcampaignpro.com/wp-content/uploads/2023/02/capital-campaign-volunteers.jpg",
+                "email": "activity4@example.com",
+                "name": "Activity 4",
+                "type": 4,
+                "deadline": "2024-04-30",
+                "dateStart": "2024-04-01",
+                "dateEnd": "2024-04-15",
+                "country": 1,
+                "location": "Da Nang",
+                "organization_id": 1,
+                "createdAt": "2024-04-01",
+                "updatedAt": "2024-04-05",
+                "isDeleted": false,
+                "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+                "participants": 10
+            },
+    
+            {
+                "id": 11,
+                "image": "https://capitalcampaignpro.com/wp-content/uploads/2023/02/capital-campaign-volunteers.jpg",
+                "email": "activity4@example.com",
+                "name": "Activity 4",
+                "type": 4,
+                "deadline": "2024-04-30",
+                "dateStart": "2024-04-01",
+                "dateEnd": "2024-04-15",
+                "country": 1,
+                "location": "Da Nang",
+                "organization_id": 1,
+                "createdAt": "2024-04-01",
+                "updatedAt": "2024-04-05",
+                "isDeleted": false,
+                "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+                "participants": 10
+            }
+        ], 
+        "EarnedCertificateNumber" : 9
+    },
+    "OrganizationContact" : {
+        "id": 1,
+        "account": "account1",
+        "password": "password1",
+        "name": "User 1",
+        "avatar": "https://didongviet.vn/dchannel/wp-content/uploads/2023/08/hinh-nen-3d-hinh-nen-iphone-dep-3d-didongviet@2x.jpg",
+        "status": true,
+        "role": 2,
+        "createdAt": "2024-04-10",
+        "updatedAt": "2024-04-10",
+        "isDeleted": false,
+        "backgroundNoAva": "#1abc9c",
+        "activityNumber" : 9,
+        "Activities" : [
+            {
+                "id": 1,
+                "image": "https://capitalcampaignpro.com/wp-content/uploads/2023/02/capital-campaign-volunteers.jpg",
+                "email": "activity1@example.com",
+                "name": "Activity 1",
+                "type": 1,
+                "deadline": "2024-04-30",
+                "dateStart": "2024-04-01",
+                "dateEnd": "2024-04-15",
+                "country": 4,
+                "location": "Da Nang",
+                "organization_id": 1,
+                "createdAt": "2024-04-01",
+                "updatedAt": "2024-04-05",
+                "isDeleted": false,
+                "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+                "participants": 10
+            },
+            {
+                "id": 2,
+                "image": "https://capitalcampaignpro.com/wp-content/uploads/2023/02/capital-campaign-volunteers.jpg",
+                "email": "activity2@example.com",
+                "name": "Activity 2",
+                "type": 2,
+                "deadline": "2024-04-30",
+                "dateStart": "2024-04-01",
+                "dateEnd": "2024-04-15",
+                "country": 3,
+                "location": "Da Nang",
+                "organization_id": 1,
+                "createdAt": "2024-04-01",
+                "updatedAt": "2024-04-05",
+                "isDeleted": false,
+                "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+                "participants": 10
+            },
+            {
+                "id": 3,
+                "image": "https://capitalcampaignpro.com/wp-content/uploads/2023/02/capital-campaign-volunteers.jpg",
+                "email": "activity3@example.com",
+                "name": "Activity 3",
+                "type": 3,
+                "deadline": "2024-04-30",
+                "dateStart": "2024-04-01",
+                "dateEnd": "2024-04-15",
+                "country": 2,
+                "location": "Da Nang",
+                "organization_id": 1,
+                "createdAt": "2024-04-01",
+                "updatedAt": "2024-04-05",
+                "isDeleted": false,
+                "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+                "participants": 10
+            },
+            {
+                "id": 4,
+                "image": "https://capitalcampaignpro.com/wp-content/uploads/2023/02/capital-campaign-volunteers.jpg",
+                "email": "activity4@example.com",
+                "name": "Activity 4",
+                "type": 4,
+                "deadline": "2024-04-30",
+                "dateStart": "2024-04-01",
+                "dateEnd": "2024-04-15",
+                "country": 1,
+                "location": "Da Nang",
+                "organization_id": 1,
+                "createdAt": "2024-04-01",
+                "updatedAt": "2024-04-05",
+                "isDeleted": false,
+                "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+                "participants": 10
+            },
+            {
+                "id": 5,
+                "image": "https://capitalcampaignpro.com/wp-content/uploads/2023/02/capital-campaign-volunteers.jpg",
+                "email": "activity1@example.com",
+                "name": "Activity 1",
+                "type": 1,
+                "deadline": "2024-04-30",
+                "dateStart": "2024-04-01",
+                "dateEnd": "2024-04-15",
+                "country": 4,
+                "location": "Da Nang",
+                "organization_id": 1,
+                "createdAt": "2024-04-01",
+                "updatedAt": "2024-04-05",
+                "isDeleted": false,
+                "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+                "participants": 10
+            },
+            {
+                "id": 6,
+                "image": "https://capitalcampaignpro.com/wp-content/uploads/2023/02/capital-campaign-volunteers.jpg",
+                "email": "activity2@example.com",
+                "name": "Activity 2",
+                "type": 2,
+                "deadline": "2024-04-30",
+                "dateStart": "2024-04-01",
+                "dateEnd": "2024-04-15",
+                "country": 3,
+                "location": "Da Nang",
+                "organization_id": 1,
+                "createdAt": "2024-04-01",
+                "updatedAt": "2024-04-05",
+                "isDeleted": false,
+                "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+                "participants": 10
+            },
+            {
+                "id": 7,
+                "image": "https://capitalcampaignpro.com/wp-content/uploads/2023/02/capital-campaign-volunteers.jpg",
+                "email": "activity3@example.com",
+                "name": "Activity 3",
+                "type": 3,
+                "deadline": "2024-04-30",
+                "dateStart": "2024-04-01",
+                "dateEnd": "2024-04-15",
+                "country": 2,
+                "location": "Da Nang",
+                "organization_id": 1,
+                "createdAt": "2024-04-01",
+                "updatedAt": "2024-04-05",
+                "isDeleted": false,
+                "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+                "participants": 10
+            },
+            {
+                "id": 8,
+                "image": "https://capitalcampaignpro.com/wp-content/uploads/2023/02/capital-campaign-volunteers.jpg",
+                "email": "activity4@example.com",
+                "name": "Activity 4",
+                "type": 4,
+                "deadline": "2024-04-30",
+                "dateStart": "2024-04-01",
+                "dateEnd": "2024-04-15",
+                "country": 1,
+                "location": "Da Nang",
+                "organization_id": 1,
+                "createdAt": "2024-04-01",
+                "updatedAt": "2024-04-05",
+                "isDeleted": false,
+                "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+                "participants": 10
+            },
+    
+            {
+                "id": 9,
+                "image": "https://capitalcampaignpro.com/wp-content/uploads/2023/02/capital-campaign-volunteers.jpg",
+                "email": "activity4@example.com",
+                "name": "Activity 4",
+                "type": 4,
+                "deadline": "2024-04-30",
+                "dateStart": "2024-04-01",
+                "dateEnd": "2024-04-15",
+                "country": 1,
+                "location": "Da Nang",
+                "organization_id": 1,
+                "createdAt": "2024-04-01",
+                "updatedAt": "2024-04-05",
+                "isDeleted": false,
+                "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+                "participants": 10
+            },
+            {
+                "id": 10,
+                "image": "https://capitalcampaignpro.com/wp-content/uploads/2023/02/capital-campaign-volunteers.jpg",
+                "email": "activity4@example.com",
+                "name": "Activity 4",
+                "type": 4,
+                "deadline": "2024-04-30",
+                "dateStart": "2024-04-01",
+                "dateEnd": "2024-04-15",
+                "country": 1,
+                "location": "Da Nang",
+                "organization_id": 1,
+                "createdAt": "2024-04-01",
+                "updatedAt": "2024-04-05",
+                "isDeleted": false,
+                "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+                "participants": 10
+            },
+    
+            {
+                "id": 11,
+                "image": "https://capitalcampaignpro.com/wp-content/uploads/2023/02/capital-campaign-volunteers.jpg",
+                "email": "activity4@example.com",
+                "name": "Activity 4",
+                "type": 4,
+                "deadline": "2024-04-30",
+                "dateStart": "2024-04-01",
+                "dateEnd": "2024-04-15",
+                "country": 1,
+                "location": "Da Nang",
+                "organization_id": 1,
+                "createdAt": "2024-04-01",
+                "updatedAt": "2024-04-05",
+                "isDeleted": false,
+                "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+                "participants": 10
+            }
+        ]
+    }
 }

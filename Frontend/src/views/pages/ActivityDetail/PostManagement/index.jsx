@@ -5,12 +5,15 @@ import { Button, Pagination } from "antd";
 import { FormOutlined } from "@ant-design/icons";
 import { ActivityDetailContext } from "..";
 import { useNavigate } from "react-router-dom";
+import useAuth from "../../../../hooks/useAuth";
 
 function PostManagement() {
     const { postList, actInfo, deletePost } = useContext(ActivityDetailContext);
 
     const limit = 12;
     const navigate = useNavigate();
+
+    const { account } = useAuth();
 
     const [startIndex, setStartIndex] = useState(0);
     const [showPostList, setShowPostList] = useState(
@@ -33,13 +36,15 @@ function PostManagement() {
     return (
         <div class="post-management-wrapper">
             <h1 class="post-management-title">Post management</h1>
-            <Button
-                className="post-create-button"
-                onClick={onCreatePost}
-                icon={<FormOutlined />}
-            >
-                Create post
-            </Button>
+            {parseInt(account.role) === 2 && (
+                <Button
+                    className="post-create-button"
+                    onClick={onCreatePost}
+                    icon={<FormOutlined />}
+                >
+                    Create post
+                </Button>
+            )}
             {!postList && (
                 <h3 class="error-no-post">There is no post in this activity</h3>
             )}

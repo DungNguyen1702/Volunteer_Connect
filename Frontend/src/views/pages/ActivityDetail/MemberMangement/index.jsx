@@ -15,11 +15,14 @@ import { UPLOADIMAGELINK } from "../../../../constants/uploadImageLink";
 import SupportFunction from "../../../../support/support_function";
 import CertificateModal from "./Component/CertificateModal";
 import ApplyFormModal from "./Component/ApplyFormModal";
+import useAuth from "../../../../hooks/useAuth";
 
 function MemberManagement() {
     const { listCandidate, updateCandidate, deleteCandidate } = useContext(
         ActivityDetailContext
     );
+
+    const { account } = useAuth();
 
     const [isOpenApplyForm, setIsOpenApplyForm] = useState(false);
     const [isOpenCertificate, setIsOpenCertificate] = useState(false);
@@ -126,6 +129,7 @@ function MemberManagement() {
                 name={value.user.account.name}
                 avatar={value.user.account.avatar}
                 backgroundNoAva={value.user.account.backgroundNoAva}
+                id={value.user.account.id}
             />
         ),
         email: value.user.account.account,
@@ -171,13 +175,15 @@ function MemberManagement() {
     return (
         <div class="memeber-management-wrapper">
             <h1 class="member-management-title">Member management</h1>
-            <Button
-                className="apply-form-button"
-                onClick={onClickApplyForm}
-                icon={<SnippetsOutlined />}
-            >
-                Apply form
-            </Button>
+            {parseInt(account.role) === 2 && (
+                <Button
+                    className="apply-form-button"
+                    onClick={onClickApplyForm}
+                    icon={<SnippetsOutlined />}
+                >
+                    Apply form
+                </Button>
+            )}
             {isOpenCertificate && (
                 <CertificateModal
                     isOpenCertificate={isOpenCertificate}

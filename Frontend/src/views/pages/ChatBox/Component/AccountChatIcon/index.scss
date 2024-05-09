@@ -1,0 +1,41 @@
+@import '../../../../../constants/colors.scss';
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    font-size: 15px;
+    background-color: $background;
+}
+
+.account-chat-icon-wrapper {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    padding : 10px;
+}
+
+.account-chat-icon-wrapper:hover {
+    opacity: 0.7;
+}
+
+.font-size-big {
+    font-size: 20px;
+}
+
+.account-chat-icon-content-wrapper{
+    margin: 0px 20px;
+    width: 80%;
+}
+
+.account-chat-icon-chat-content-date-wrapper {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.selected-chatbox {
+    background-color: $chat-box-title;
+}

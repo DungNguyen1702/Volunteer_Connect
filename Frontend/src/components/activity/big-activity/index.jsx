@@ -1,24 +1,20 @@
 import "./index.scss";
-import SupportFunction from "../../support/support_function";
-import { COLOR_STATUS, COLOR_FONT } from "../../constants/color_status";
+import SupportFunction from "../../../support/support_function";
+import { COLOR_STATUS, COLOR_FONT } from "../../../constants/color_status";
 import { useNavigate } from "react-router-dom";
 
 function ActivityComponent(props) {
     const data = props.data;
-    const status = SupportFunction.ActivityStatus(
-        data.date_start,
-        data.date_end
-    );
+    const status = SupportFunction.ActivityStatus(data.dateStart, data.dateEnd);
     const type = SupportFunction.ActivityType(data.type);
     const location = `${data.location}, ${SupportFunction.ActivityCountry(
         data.country
     )}`;
     const navigate = useNavigate();
 
-
     const onClickAct = () => {
         console.log("click act " + data.id);
-        navigate(`/activity-detail/${data.id}`)
+        navigate(`/activity-detail/${data.id}`);
     };
 
     return (
@@ -36,7 +32,7 @@ function ActivityComponent(props) {
                 </h3>
             </div>
             <p id="activity-component-date">
-                {data.date_start} - {data.date_end}
+                {data.dateStart} - {data.dateEnd}
             </p>
             <div id="activity-component-content-wrapper">
                 <img

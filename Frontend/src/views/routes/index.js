@@ -40,6 +40,12 @@ const SignUp = LoadableComponent(()=>
 const Profile = LoadableComponent(()=>
     import('../pages/Profile/index.jsx')
 );
+const ChatBox = LoadableComponent(()=>
+    import('../pages/ChatBox/index.jsx')
+);
+const AccountContact = LoadableComponent(()=>
+    import('../pages/ContactProfile/index.jsx')
+);
 
 const AllRoutes = () => {
     return (
@@ -116,7 +122,16 @@ const AllRoutes = () => {
                     path='/profile/:activepage'
                     element={<Profile />}
                 />
-                
+
+                <Route
+                    path='/chat-box/:accountId'
+                    element={<MainLayout component={ChatBox} isNoFooter={true}/>}
+                />
+
+                <Route
+                    path='/contact-user/:accountId'
+                    element={<MainLayout component={AccountContact}/>}
+                />
             </Route>
 
             {/* guest route */}

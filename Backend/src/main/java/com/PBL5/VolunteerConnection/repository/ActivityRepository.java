@@ -48,5 +48,15 @@ public interface ActivityRepository extends JpaRepository<Activity, Integer> {
             "where a.organizationId = :organizationId " +
             "GROUP BY a.id")
     List<Object[]> getListActivityDetail(@Param("organizationId") int organizationId);
+    @Query("SELECT distinct a, COUNT(s.id), COUNT(r.id), count(p.id), COUNT(cm.id)" +
+            "FROM Activity a " +
+            "LEFT join Candidate s on a.id = s.activityId " +
+            "LEFT join RegistrationForm r on a.id = r.activityId " +
+            "LEFT JOIN Post p on p.activityId = a.id " +
+            "LEFT JOIN PostComment cm on p.id = cm.postId " +
+            "where s.userId = :userId " +
+            "GROUP BY a.id")
+    List<Object[]> getListActivityDetailByCandidate(@Param("userId") int userId);
+
 
 }

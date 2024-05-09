@@ -2,16 +2,18 @@ import React from "react";
 import "./index.scss";
 import AvatarAccount from "../../../../../components/avatar/AvatarAccount";
 import { Button } from "antd";
+import { useNavigate } from "react-router-dom";
 
 function CandidateItem(props) {
     const {candidateInfo} = props;
+    const navigate = useNavigate();
 
     const onClickChat = (e) => {
         e.stopPropagation();
         console.log("chat with " + candidateInfo.id);
     };
     const onClickCandidate = ()=>{
-        console.log("click on candidate " + candidateInfo.id);    
+        navigate(`/contact-user/${candidateInfo.id}`);
     }
 
     return (

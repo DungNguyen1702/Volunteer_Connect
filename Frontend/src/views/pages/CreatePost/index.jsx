@@ -81,9 +81,7 @@ function CreatePost() {
         }
 
         toast.success("Create post successfull");
-        setTimeout (() => (
-            navigate(`/activity-detail/${activityId}`)
-        ), 2000)
+        setTimeout(() => navigate(`/activity-detail/${activityId}`), 2000);
     };
 
     return (
@@ -198,7 +196,7 @@ function CreatePost() {
                         </p>
                         <p class="create-post-preview-info-item">
                             <strong class="primary-color">Schedule : </strong>
-                            {activityData.date_start} - {activityData.date_end}
+                            {activityData.dateStart} - {activityData.dateEnd}
                         </p>
                         <p class="create-post-preview-info-item">
                             <strong class="primary-color">

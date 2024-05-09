@@ -32,8 +32,11 @@ function UserHomepage(props) {
     const [likedPosts, setLikedPosts] = useState(
         addIsLikedField(fake_data["Posts-Activities"])
     );
-    const [listPosts, setListPosts] = useState([]);
-    const [popularPosts, setPopularPost] = useState(fake_data["Posts-Activities"])
+    const [listPosts, setListPosts] = useState(fake_data["Posts-Activities"]);
+    const [filterListPosts, setFilterListPosts] = useState(listPosts);
+    const [popularPosts, setPopularPost] = useState(
+        fake_data["Posts-Activities"]
+    );
 
     const [listShowActs, setListShowActs] = useState(
         listPosts.slice(startIndex, startIndex + limit)
@@ -46,23 +49,54 @@ function UserHomepage(props) {
 
     // set useEffect
     useEffect(() => {
-        setListShowActs(listPosts.slice(startIndex, startIndex + limit));
-    }, [startIndex, listPosts]);
+        setListShowActs(filterListPosts.slice(startIndex, startIndex + limit));
+    }, [startIndex, filterListPosts]);
 
-    useEffect(()=>{
-        const getAllPostApi = async()=>{
-            await postAPI.getAllPost()
-                .then ((response)=> {
-                    console.log(response.data)
-                    setListPosts(response.data)
-                })
-                .catch((error) => {
-                                console.log(error)
-                })
-        }
+    // useEffect(() => {
+    //     const getAllPostApi = async () => {
+    //         await postAPI
+    //             .getAllPost()
+    //             .then((response) => {
+    //                 console.log(response.data);
+    //                 setListPosts(response.data);
+    //                 setFilterListPosts(
+    //                     SupportFunction.filterPost(
+    //                         response.data,
+    //                         parseInt(selectedCategory),
+    //                         parseInt(selectedCountry),
+    //                         parseInt(selectedStatus),
+    //                         sortBy,
+    //                         sortOrder
+    //                     )
+    //                 );
+    //             })
+    //             .catch((error) => {
+    //                 console.log(error);
+    //             });
+    //     };
 
-        getAllPostApi();
-    },[])
+    //     getAllPostApi();
+    // },[]);
+
+    useEffect(() => {
+        setFilterListPosts(
+            SupportFunction.filterPost(
+                listPosts,
+                selectedCategory,
+                selectedCountry,
+                selectedStatus,
+                sortBy,
+                sortOrder
+            )
+        );
+    }, [
+        selectedCategory,
+        selectedCountry,
+        selectedStatus,
+        sortBy,
+        sortOrder,
+        listPosts,
+    ]);
 
     // set event
     const onChangePage = (page, pageSize) => {
@@ -172,11 +206,10 @@ function UserHomepage(props) {
                     </div>
                 </div>
                 <div class="button-country-status-sort-wrapper">
-                    
                     {/* Country  */}
                     <div class="button-country-status-wrapper">
                         <h3 class="button-country-status-sort-title">
-                            Country :{" "}
+                            Country:
                         </h3>
                         {/* all  */}
                         <Button
@@ -229,31 +262,46 @@ function UserHomepage(props) {
                             }`}
                             onClick={() => onChangeStatus(0)}
                         >
-                            <p 
+                            <p
                                 class="button-item-text"
-                                style={{marginTop : '0px'}}
-                            >All</p>
+                                style={{ marginTop: "0px" }}
+                            >
+                                All
+                            </p>
                         </Button>
-                        
-                        {Object.entries(STATUS).map(([key, value]) =>(
+
+                        {Object.entries(STATUS).map(([key, value]) => (
                             <Button
-                                className={'button-item'}
+                                className={"button-item"}
                                 onClick={() => onChangeStatus(key)}
                                 style={{
-                                    backgroundColor : `${selectedStatus === key ? COLOR_STATUS[value] : 'rgba(255, 0, 0, 0)'}`,
-                                    color : `${selectedStatus === key ? COLOR_FONT[value] : '#257769'}`,
+                                    backgroundColor: `${
+                                        selectedStatus === key
+                                            ? COLOR_STATUS[value]
+                                            : "rgba(255, 0, 0, 0)"
+                                    }`,
+                                    color: `${
+                                        selectedStatus === key
+                                            ? COLOR_FONT[value]
+                                            : "#257769"
+                                    }`,
                                 }}
                             >
-                                <p class="button-item-text"
-                                    style={{marginTop : '0px'}}
-                                >{value}</p>
+                                <p
+                                    class="button-item-text"
+                                    style={{ marginTop: "0px" }}
+                                >
+                                    {value}
+                                </p>
                             </Button>
                         ))}
                     </div>
 
                     {/* Sort  */}
-                    <div class ='sort-wrapper'>
-                        <h3 class='button-country-status-sort-title'>Sort by : </h3>
+                    <div class="sort-wrapper">
+                        <h3 class="button-country-status-sort-title">
+                            Sort by :{" "}
+                        </h3>
                         <Select
                             defaultValue={sortBy}
                             onChange={onChangeSortBy}
@@ -264,13 +312,15 @@ function UserHomepage(props) {
                                 { value: 4, label: "Created date" },
                             ]}
                             style={{
-                                width : "30%",
-                                textAlign : "center"
+                                width: "30%",
+                                textAlign: "center",
                             }}
                             className="select-item"
                         />
 
-                        <h3 class='button-country-status-sort-title'>Sort order : </h3>
+                        <h3 class="button-country-status-sort-title">
+                            Sort order :{" "}
+                        </h3>
                         <Select
                             defaultValue={sortOrder}
                             onChange={onChangeSortOrder}
@@ -304,15 +354,23 @@ function UserHomepage(props) {
                 </div>
 
                 <div class="center-content-wrapper">
-                    {listShowActs.map((post) => (
-                        <BigPost data={post} key={"big-post" + post.id} />
-                    ))}
+                    {listShowActs.length !== 0 ? (
+                        listShowActs.map((post) => (
+                            <BigPost data={post} key={"big-post" + post.id} />
+                        ))
+                    ) : (
+                        <div class='height-100 justify-content'>
+                            <p class="color-gray">There is no posts in here</p>
+                        </div>
+                    )}
 
-                    <Pagination
-                        total={listPosts.length}
-                        pageSize={limit}
-                        onChange={onChangePage}
-                    />
+                    {filterListPosts.length !== 0 && (
+                        <Pagination
+                            total={filterListPosts.length}
+                            pageSize={limit}
+                            onChange={onChangePage}
+                        />
+                    )}
                 </div>
 
                 {user !== null ? (

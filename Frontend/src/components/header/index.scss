@@ -153,4 +153,12 @@ html, body {
 .ant-dropdown-menu {
     background-color: $background !important;
     box-shadow: 0px 0px 50px rgba(0, 0, 0, 0.5);
+    max-height: 400px;
+    overflow-y: auto;
+    max-width: 600px;
+}
+
+.menu-scrollable {
+    max-height: 200px; /* Đặt độ dài tối đa của menu */
+    overflow-y: auto; /* Kích hoạt thanh cuộn khi tràn qua độ dài */
 }

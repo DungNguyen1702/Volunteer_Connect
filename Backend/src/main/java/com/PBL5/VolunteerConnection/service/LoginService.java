@@ -27,7 +27,7 @@ public class LoginService {
     public LoginResponse authenticate(LoginRequest loginRequest) {
         authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(loginRequest.getAccount(), loginRequest.getPassword()));
         Account account = accountRepository.findByAccount(loginRequest.getAccount());
-        if (account.getIsDeleted()){
+        if (account.getIsDeleted()) {
             return LoginResponse.builder()
                     .isDeleted(true).
                     build();
@@ -36,6 +36,10 @@ public class LoginService {
         authorities.add(new SimpleGrantedAuthority(String.valueOf(account.getRole())));
         var jwtToken = jwtService.generateToken(account, authorities);
         var jwtRefreshToken = jwtService.generateRefreshToken(account, authorities);
+        String updatedAt = "";
+        if (account.getUpdatedAt() != null) {
+            updatedAt = account.getUpdatedAt().toString();
+        }
         return LoginResponse.builder()
                 .token(jwtToken)
                 .refreshToken(jwtRefreshToken)
@@ -45,7 +49,7 @@ public class LoginService {
                 .avatar(account.getAvatar())
                 .status(account.getStatus())
                 .createdAt(account.getCreatedAt().toString())
-                .updatedAt(account.getUpdatedAt().toString())
+                .updatedAt(updatedAt)
                 .build();
 
     }

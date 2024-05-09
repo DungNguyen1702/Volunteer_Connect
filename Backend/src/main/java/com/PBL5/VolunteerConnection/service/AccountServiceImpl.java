@@ -117,14 +117,14 @@ public class AccountServiceImpl implements  AccountService{
     }
 
     @Override
-    public AccountDetailResponse getInfoAccount(String token) {
+    public AccountResponse getInfoAccount(String token) {
         String username = jwtService.getUsername(token);
         Account account = accountRepository.findByAccount(username);
         String updatedAt = null;
         if(account.getUpdatedAt()!= null){
             updatedAt = account.getUpdatedAt().toString();
         }
-        return AccountDetailResponse.builder()
+        return AccountResponse.builder()
                 .id(account.getId())
                 .account(account.getAccount())
                 .name(account.getName())
@@ -135,20 +135,23 @@ public class AccountServiceImpl implements  AccountService{
                 .updatedAt(updatedAt)
                 .build();
     }
+
     @Override
-    public UserDetailResponse getInfoUser(String token) {
-        String username = jwtService.getUsername(token);
-//        getInfoAccount(token);
-        return UserDetailResponse.builder()
-//                .id(account.getId())
-//                .account(account.getAccount())
-//                .name(account.getName())
-//                .avatar(account.getAvatar())
-//                .status(account.getStatus())
-//                .createdAt(account.getCreatedAt())
-//                .updatedAt(account.getUpdatedAt())
+    public StatusResponse changePassword(String token, String oldPassword, String newPassword) {
+        Account account = accountRepository.findById(jwtService.getId(token));
+        if (passwordEncoder.matches(oldPassword, account.getPassword())){
+            account.setPassword(passwordEncoder.encode(newPassword));
+            accountRepository.save(account);
+            return  StatusResponse.builder()
+                    .success(ResponseEntity.status(HttpStatus.ACCEPTED).body("Password has been changed sucessfully!!"))
+                    .build();
+        }
+        return StatusResponse.builder()
+                .fail(ResponseEntity.status(HttpStatus.NOT_ACCEPTABLE).body("Password wasn't correctly!!"))
                 .build();
     }
+
+
 
 
 

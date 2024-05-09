@@ -2,11 +2,13 @@ import Footer from "../footer";
 import Header from "../header";
 
 function MainLayout (props) {
+    const {isNoFooter} = props
+
     return (
         <div>
             <Header stateButton={props.stateButton}/>
                 <props.component/>
-            <Footer/>
+            {!isNoFooter && <Footer/>}
         </div>
     )
 }

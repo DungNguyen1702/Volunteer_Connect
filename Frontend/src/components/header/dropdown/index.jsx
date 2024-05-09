@@ -8,7 +8,6 @@ const useDropdownNavigation = ()=>{
     const navigate = useNavigate();
     const {setToken, setAccount} = useAuth();
     
-
     const getItemDropDownAccount = (role)=>{
         console.log(role);
     
@@ -174,8 +173,25 @@ const useDropdownNavigation = ()=>{
             default:
                 return;
         }
+    };
+
+    const onClickPost = (id)=>{
+        navigate(`/post-detail/${id}`)
+    };
+
+    const getItemDropDownSearchPost = (filterPosts)=>{
+        return filterPosts.map(post => ({
+            key : post.id,
+            label : (
+                <div class='search-post-item' onClick={()=>onClickPost(post.id)}>
+                    <img alt={`post ${post.id} img`} src={post.image} class='search-post-image'/>
+                    <p class='search-post-item-title'>{post.title}</p>
+                </div>
+            )
+        }));
     }
-    return {getItemDropDownAccount}
+
+    return {getItemDropDownAccount, getItemDropDownSearchPost}
 }
 
 export default useDropdownNavigation;

@@ -2,16 +2,18 @@ import React from "react";
 import "./index.scss";
 import AvatarAccount from "../../../../../components/avatar/AvatarAccount";
 import { Button } from "antd";
+import { useNavigate } from "react-router-dom";
 
 function OrganizationItem(props) {
     const { organizationInfo } = props;
+    const navigate = useNavigate();
 
     const onClickChat = (e) => {
         e.stopPropagation();
         console.log("chat with " + organizationInfo.id);
     };
     const onClickOrganization = ()=>{
-        console.log("click on organization " + organizationInfo.id);    
+        navigate(`/contact-user/${organizationInfo.id}`);
     }
 
     return (
