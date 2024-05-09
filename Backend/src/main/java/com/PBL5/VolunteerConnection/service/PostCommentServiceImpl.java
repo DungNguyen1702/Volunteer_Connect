@@ -13,7 +13,7 @@ import com.PBL5.VolunteerConnection.model.PostComment;
 import com.PBL5.VolunteerConnection.repository.ActivityRepository;
 import com.PBL5.VolunteerConnection.repository.PostCommentRepository;
 import com.PBL5.VolunteerConnection.repository.PostRespository;
-import com.PBL5.VolunteerConnection.response.PostCommentRequest;
+import com.PBL5.VolunteerConnection.request.PostCommentRequest;
 import com.PBL5.VolunteerConnection.response.StatusResponse;
 
 @Service

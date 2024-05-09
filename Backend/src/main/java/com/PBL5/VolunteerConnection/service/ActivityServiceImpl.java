@@ -137,7 +137,7 @@ public class ActivityServiceImpl implements ActivityService {
         List<CandidateDetailResponse> candidates = candidateService.getCandidateDetail(token, id);
         int postNumber = postActivityDetailDTOS.size();
         return new ActivityDetailResponse(new ActivityResponse(activityDetail,registrationCount, totalComments,candidates.size() ,  postNumber), postActivityDetailDTOS,
-                new AccountDetailResponse(organization), candidates);
+                new AccountResponse(organization), candidates);
 //        return new ActivityDetailResponse(new ActivityResponse(activityDetail), null, 0, 0,
 //                null,null);
     }

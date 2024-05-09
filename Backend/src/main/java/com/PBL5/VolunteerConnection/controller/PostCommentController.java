@@ -13,8 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.PBL5.VolunteerConnection.model.PostComment;
-import com.PBL5.VolunteerConnection.request.PostRequest;
-import com.PBL5.VolunteerConnection.response.PostCommentRequest;
+import com.PBL5.VolunteerConnection.request.PostCommentRequest;
 import com.PBL5.VolunteerConnection.response.StatusResponse;
 import com.PBL5.VolunteerConnection.service.PostCommentService;
 

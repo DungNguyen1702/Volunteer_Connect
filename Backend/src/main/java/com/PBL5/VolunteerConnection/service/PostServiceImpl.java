@@ -1,9 +1,11 @@
 package com.PBL5.VolunteerConnection.service;
 
 import com.PBL5.VolunteerConnection.dto.PostActivitiesDTO;
+import com.PBL5.VolunteerConnection.dto.PostDetailDTO;
 import com.PBL5.VolunteerConnection.model.*;
 import com.PBL5.VolunteerConnection.repository.ActivityRepository;
 import com.PBL5.VolunteerConnection.repository.LikePostRepository;
+import com.PBL5.VolunteerConnection.repository.PostCommentRepository;
 import com.PBL5.VolunteerConnection.repository.PostRespository;
 import com.PBL5.VolunteerConnection.request.PostRequest;
 import com.PBL5.VolunteerConnection.response.*;
@@ -24,6 +26,8 @@ public class PostServiceImpl implements PostService {
     private PostRespository postRespository;
     @Autowired
     private LikePostRepository likePostRepository;
+    @Autowired
+    private PostCommentRepository postCommentRepository;
     @Autowired
     private ActivityRepository activityRepository;
     @Autowired
@@ -110,16 +114,7 @@ public class PostServiceImpl implements PostService {
 
     }
 
-    @Override
-    public List<Post> SelectAllPost(PostRequest postRequest) {
-        // TODO Auto-generated method stub
-        try {
-            return postRespository.findByActivityId(postRequest.getActivityId());
-        } catch (Exception e) {
-            // TODO: handle exception
-            return null;
-        }
-    }
+
 
     @Override
     public List<Post> SelectAll() {
@@ -236,4 +231,14 @@ public class PostServiceImpl implements PostService {
             return null;
         }
     }
+
+    @Override
+    public PostDetailResponse getPostDetail(int id) {
+        PostDetailDTO postDetailDTO = postRespository.findPostDetailById(id);
+        List<PostComment> postComments = postCommentRepository.findByPostId(id);
+        PostDetailResponse postDetailResponse = new PostDetailResponse(new ActivityResponse(postDetailDTO.getActivity(), postDetailDTO.getParticipants()),
+                new PostResponse(postDetailDTO.getPost()), new AccountResponse(postDetailDTO.getOrganization()), postComments);
+        return postDetailResponse;
+    }
+
 }

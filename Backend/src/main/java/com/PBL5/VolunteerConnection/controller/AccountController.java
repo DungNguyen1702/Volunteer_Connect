@@ -1,6 +1,6 @@
 package com.PBL5.VolunteerConnection.controller;
 
-import com.PBL5.VolunteerConnection.response.AccountDetailResponse;
+import com.PBL5.VolunteerConnection.response.AccountResponse;
 import com.PBL5.VolunteerConnection.request.AccountRequest;
 import com.PBL5.VolunteerConnection.response.StatusResponse;
 import com.PBL5.VolunteerConnection.service.AccountService;
@@ -31,7 +31,7 @@ public class AccountController {
     }
 
     @GetMapping("/detail")
-    public ResponseEntity<AccountDetailResponse> getInfoAccount(@RequestHeader("Authorization") String token) {
+    public ResponseEntity<AccountResponse> getInfoAccount(@RequestHeader("Authorization") String token) {
         token = token.substring("Bearer ".length());
         return ResponseEntity.ok(accountService.getInfoAccount(token));
     }
