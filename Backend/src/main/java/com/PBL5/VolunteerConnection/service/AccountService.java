@@ -8,5 +8,6 @@ public interface AccountService {
     StatusResponse updateAccount(String token, AccountRequest request);
     StatusResponse deleteAccount(String token);
     AccountResponse getInfoAccount(String token);
-    UserDetailResponse getInfoUser(String token);
+    StatusResponse changePassword(String token, String oldPassword, String newPassword);
+
 }
