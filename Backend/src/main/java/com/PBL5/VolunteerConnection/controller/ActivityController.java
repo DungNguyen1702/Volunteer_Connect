@@ -46,8 +46,8 @@ public class ActivityController {
         return ResponseEntity.ok(activityService.getActivityDetail(token, id));
     }
     @GetMapping("/candidate/selectAllActivity")
-    ResponseEntity<List<Activity>> selectAllActivity(@RequestHeader("Authorization") String token , @RequestBody CandidateRequest candidateRequest){
+    ResponseEntity<List<ActivityResponse>> selectAllActivity(@RequestHeader("Authorization") String token){
         token = token.substring("Bearer ".length());
-        return ResponseEntity.ok(activityService.selectAllActivitiesByCandidate(token,candidateRequest));
+        return ResponseEntity.ok(activityService.getAllActivityByCandidate(token));
     }
 }

@@ -15,6 +15,6 @@ public interface ActivityService {
     StatusResponse deleteActivity(String token, ActivityRequest activityRequest);
     List<ActivityResponse> getAllActivity(String token);
     ActivityDetailResponse getActivityDetail(String token, int id);
-    List<Activity> selectAllActivitiesByCandidate(String token, CandidateRequest activityRequest);
+    List<ActivityResponse> getAllActivityByCandidate(String token);
 
 }

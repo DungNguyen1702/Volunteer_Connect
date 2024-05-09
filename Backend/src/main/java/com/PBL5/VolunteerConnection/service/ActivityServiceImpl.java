@@ -141,17 +141,20 @@ public class ActivityServiceImpl implements ActivityService {
 //        return new ActivityDetailResponse(new ActivityResponse(activityDetail), null, 0, 0,
 //                null,null);
     }
-    @Override
-    public List<Activity> selectAllActivitiesByCandidate(String token, CandidateRequest activityRequest) {
 
-        int id = jwtService.getId(token);
-            List<Activity> activities = activityRepository.findActivitiesByAccountId(id);
-            List<Activity> filteredActivities = activities.stream()
-                    .filter(activity ->
-                            (activityRequest.getActivityLocation() == null || activity.getLocation().equals(activityRequest.getActivityLocation())) &&
-                                    (activityRequest.getActivityType() == 0 || activity.getType() == activityRequest.getActivityType())
-                    )
-                    .collect(Collectors.toList());
-            return  filteredActivities;
+    @Override
+    public List<ActivityResponse> getAllActivityByCandidate(String token) {
+        int accountId = jwtService.getId(token);
+        int userId = userRespository.findByAccountId(accountId).getId();
+        List<ActivityResponse> activityResponseList = new ArrayList<>();
+        List<Object[]> activityDTOS = activityRepository.getListActivityDetailByCandidate(userId);
+        for (Object[] result : activityDTOS) {
+            ActivityDTO activityDTO = new ActivityDTO((Activity) result[0], (Long) result[1], (Long) result[2], (Long) result[3], (Long) result[4]);
+            activityResponseList.add(new ActivityResponse(activityDTO.getActivity(), activityDTO.getApplyFormNumbers(), activityDTO.getComments(), activityDTO.getParticipants(), activityDTO.getPostNumbers()));
+
+        }
+        return activityResponseList;
     }
+
+
 }
