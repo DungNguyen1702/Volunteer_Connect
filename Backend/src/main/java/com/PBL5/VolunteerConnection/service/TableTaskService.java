@@ -15,5 +15,5 @@ public interface TableTaskService {
 
     List<TableTask> selectAll();
 
-    List<TableTask> selectAllOwner(String activityId);
+    List<TableTask> selectAllByActivityId(String token, int activityId);
 }
