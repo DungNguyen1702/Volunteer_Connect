@@ -1,4 +1,4 @@
-package com.PBL5.VolunteerConnection.response;
+package com.PBL5.VolunteerConnection.request;
 
 import java.sql.Date;
 

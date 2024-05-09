@@ -3,7 +3,7 @@ package com.PBL5.VolunteerConnection.service;
 import java.util.List;
 
 import com.PBL5.VolunteerConnection.model.PostComment;
-import com.PBL5.VolunteerConnection.response.PostCommentRequest;
+import com.PBL5.VolunteerConnection.request.PostCommentRequest;
 import com.PBL5.VolunteerConnection.response.StatusResponse;
 
 public interface PostCommentService {

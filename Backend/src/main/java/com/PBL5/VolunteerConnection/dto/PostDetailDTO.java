@@ -1,6 +1,8 @@
 package com.PBL5.VolunteerConnection.dto;
 
+import com.PBL5.VolunteerConnection.model.Account;
 import com.PBL5.VolunteerConnection.model.Activity;
+import com.PBL5.VolunteerConnection.model.Post;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -10,10 +12,9 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class ActivityDTO {
+public class PostDetailDTO {
     private Activity activity;
+    private Post post;
+    private Account organization;
     private long participants;
-    private long applyFormNumbers;
-    private long postNumbers;
-    private long comments;
 }

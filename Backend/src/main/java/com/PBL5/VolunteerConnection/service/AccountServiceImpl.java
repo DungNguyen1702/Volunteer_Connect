@@ -117,14 +117,14 @@ public class AccountServiceImpl implements  AccountService{
     }
 
     @Override
-    public AccountDetailResponse getInfoAccount(String token) {
+    public AccountResponse getInfoAccount(String token) {
         String username = jwtService.getUsername(token);
         Account account = accountRepository.findByAccount(username);
         String updatedAt = null;
         if(account.getUpdatedAt()!= null){
             updatedAt = account.getUpdatedAt().toString();
         }
-        return AccountDetailResponse.builder()
+        return AccountResponse.builder()
                 .id(account.getId())
                 .account(account.getAccount())
                 .name(account.getName())

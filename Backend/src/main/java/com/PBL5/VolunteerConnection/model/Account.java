@@ -4,7 +4,9 @@ import java.sql.Date;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -20,6 +22,7 @@ public class Account implements UserDetails {
     private int id;
     @Column(name = "account")
     private String account;
+    @JsonIgnore
     @Column(name = "password")
     private String password;
     @Column(name = "name")
@@ -40,6 +43,9 @@ public class Account implements UserDetails {
     private Boolean isValid;
     @Column(name = "backgroundNoAva")
     private String backgroundNoAva;
+    @JsonIgnore
+    @OneToMany(mappedBy = "account")
+    private List<PostComment> comments;
 
     public Account(String account, String password, String name, int role)  {
         this.account = account;

@@ -1,16 +1,9 @@
 package com.PBL5.VolunteerConnection.response;
 
-import com.PBL5.VolunteerConnection.dto.PostActivitiesDTO;
 import com.PBL5.VolunteerConnection.dto.PostActivityDetailDTO;
-import com.PBL5.VolunteerConnection.model.Account;
-import com.PBL5.VolunteerConnection.model.Activity;
-import com.PBL5.VolunteerConnection.model.Post;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.sql.Date;
 import java.util.List;
 @Data
 @NoArgsConstructor
@@ -34,10 +27,10 @@ public class ActivityDetailResponse{
     private List<PostActivityDetailDTO> postList;
     private long postNumber;
     private long applyForms;
-    private AccountDetailResponse organization;
+    private AccountResponse organization;
     private List<CandidateDetailResponse> candidates;
     private int participants;
-    public ActivityDetailResponse(ActivityResponse activity, List<PostActivityDetailDTO> postList,  AccountDetailResponse organization, List<CandidateDetailResponse> candidateDetailResponseList){
+    public ActivityDetailResponse(ActivityResponse activity, List<PostActivityDetailDTO> postList, AccountResponse organization, List<CandidateDetailResponse> candidateDetailResponseList){
         this.id = activity.getId();
         this.image = activity.getImage();
         this.email = activity.getEmail();
