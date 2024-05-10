@@ -57,7 +57,7 @@ function UserHomepage(props) {
             await postAPI
                 .getAllPost()
                 .then((response) => {
-                    console.log(response.data);
+                    // console.log(response.data);
                     setListPosts(response.data);
                     setFilterListPosts(
                         SupportFunction.filterPost(

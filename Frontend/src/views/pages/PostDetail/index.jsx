@@ -30,7 +30,6 @@ function PostDetail() {
             await postAPI
                 .getPostDetail(id)
                 .then((response) => {
-                    console.log(response.data);
                     setData(response.data);
                     setPost(response.data.post);
                     setAct(response.data.activity);

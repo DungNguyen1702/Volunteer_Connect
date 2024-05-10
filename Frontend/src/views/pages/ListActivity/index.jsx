@@ -1,14 +1,6 @@
 import { useEffect, useState } from "react";
 import "./index.scss";
-import {
-    Button,
-    Checkbox,
-    DatePicker,
-    Pagination,
-    Radio,
-    Select,
-    Space,
-} from "antd";
+import { Button, Checkbox, DatePicker, Pagination, Select, Space } from "antd";
 import { STATUS } from "../../../constants/activity_status";
 import { COUNTRY } from "../../../constants/activity_countries";
 import { TYPES } from "../../../constants/activity_types";
@@ -20,10 +12,15 @@ import CreateActModal from "./CreateActModal";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import SupportFunction from "../../../support/support_function";
+import activityAPI from "../../../api/activityAPI";
+import useAuth from "../../../hooks/useAuth";
 
 function ParticipatingActivities() {
     const limit = 6;
-    const [listAct, setListAct] = useState(fake_data.Activity_Detail_List);
+
+    const { account } = useAuth();
+
+    const [listAct, setListAct] = useState([]);
     const [filterListAct, setFilterListAct] = useState(listAct);
 
     const [type, setType] = useState(["1", "2", "3", "4", "5", "6", "7"]);
@@ -44,6 +41,35 @@ function ParticipatingActivities() {
         console.log(startIndex);
         setShowListAct(filterListAct.slice(startIndex, startIndex + limit));
     }, [startIndex, filterListAct]);
+
+    useEffect(() => {
+        const callApi = async () => {
+            if (parseInt(account.role) === 2) {
+                await activityAPI
+                    .getAllActivityByOrganization()
+                    .then((response) => {
+                        // console.log("Organization");
+                        setListAct(response.data);
+                        // console.log(response.data);
+                    })
+                    .catch((error) => {
+                        console.log(error);
+                    });
+            } else {
+                await activityAPI
+                    .getAllActivityByCandidate()
+                    .then((response) => {
+                        // console.log("Candidate");
+                        console.log(response.data);
+                        setListAct(response.data);
+                    })
+                    .catch((error) => {
+                        console.log(error);
+                    });
+            }
+        };
+        callApi();
+    }, []);
 
     useEffect(() => {
         const listAfterFilter = SupportFunction.filterAct(
@@ -139,8 +165,8 @@ function ParticipatingActivities() {
     };
 
     return (
-        <div class="participating-activity-wrapper">
-            <div class="participating-activity-tabbar">
+        <div class="list-activity-wrapper">
+            <div class="list-activity-tabbar">
                 <div class="tabbar-category">
                     <p class="tabbar-title">Category</p>
                     <Checkbox.Group onChange={onChangeType} value={type}>
@@ -211,7 +237,7 @@ function ParticipatingActivities() {
                     Filter
                 </Button>
             </div>
-            <div class="participating-activity-content">
+            <div class="list-activity-content">
                 <ToastContainer
                     position="top-right"
                     autoClose={2000}

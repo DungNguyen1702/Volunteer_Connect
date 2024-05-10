@@ -9,7 +9,7 @@ const useDropdownNavigation = ()=>{
     const {setToken, setAccount} = useAuth();
     
     const getItemDropDownAccount = (role)=>{
-        console.log(role);
+        // console.log(role);
     
         const handlerClickLogout = ()=>{
             const callFunction = async()=>{
