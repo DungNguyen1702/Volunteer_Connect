@@ -143,9 +143,10 @@ public class ActivityServiceImpl implements ActivityService {
         List<CandidateDetailResponse> candidates = candidateService.getCandidateDetail(token, id);
         int postNumber = postActivityDetailDTOS.size();
         boolean isCandidate = false;
-        if (jwtService.getRole(token)[0].equals("1")){
+        Account candidate = accountRepository.findById(jwtService.getId(token));
+        if (jwtService.getRole(token)[0].equals("1") && !candidates.isEmpty()){
             for (CandidateDetailResponse candidateDetailResponse : candidates){
-                if (candidateDetailResponse.getUser().getId() == accountRepository.findById(jwtService.getId(token)).getUser().getId()){
+                if (candidateDetailResponse.getUser().getId() == candidate.getUser().getId()){
                     isCandidate = true;
                 }
             }
