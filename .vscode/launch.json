@@ -15,8 +15,16 @@
             "name": "VolunteerConnectionApplication",
             "request": "launch",
             "mainClass": "com.PBL5.VolunteerConnection.VolunteerConnectionApplication",
+<<<<<<< HEAD
+            "projectName": "VolunteerConnection"
+            // "args": "--spring.profiles.active=tin"
+=======
             "projectName": "VolunteerConnection",
+<<<<<<< HEAD
             
+>>>>>>> 8248ca511bfbe54b9d613f3e86736662342ff1ea
+=======
+>>>>>>> 609eaa6dc6c4782c0498e0797fc31b982ecbc413
         }
     ]
 }

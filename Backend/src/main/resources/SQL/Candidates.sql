@@ -4,7 +4,7 @@ VALUES (1,1,'2023-06-02');
 INSERT INTO Candidates (user_id, activity_id, createdAt)
 VALUES (2,2,'2023-04-02');
 INSERT INTO Candidates (user_id, activity_id, createdAt)
-VALUES (3,3,'202g2-05-02');
+VALUES (3,3,'2022-05-02');
 INSERT INTO Candidates (user_id, activity_id, createdAt)
 VALUES (4,4,'2023-04-02');
 INSERT INTO Candidates (user_id, activity_id, createdAt)

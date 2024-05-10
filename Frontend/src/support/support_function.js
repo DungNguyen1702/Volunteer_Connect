@@ -372,6 +372,13 @@ function filterAct(
     return filteredList;
 }
 
+function isTokenExpired(token) {
+    if (!token) return true; // Nếu không có token, coi như đã hết hạn
+    const expiry = new Date(token.exp * 1000); // Chuyển đổi thời gian hết hạn từ giây sang mili-giây
+    const currentTime = new Date();
+    return currentTime > expiry; // So sánh thời gian hiện tại với thời gian hết hạn
+  }
+
 const Utils = {
     TruncateText,
     ActivityType,
@@ -392,6 +399,7 @@ const Utils = {
     getFirstCharacter,
     filterPost,
     filterAct,
+    isTokenExpired,
 };
 
 export default Utils;

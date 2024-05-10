@@ -12,9 +12,12 @@ const useDropdownNavigation = ()=>{
         console.log(role);
     
         const handlerClickLogout = ()=>{
-            navigate('/auth/login');
-            setAccount(null);
-            setToken(null);
+            const callFunction = async()=>{
+                setAccount(null);
+                setToken(null);
+                navigate('/user-homepage');
+            };
+            callFunction();
         }
         
         const itemsCandidate = [
