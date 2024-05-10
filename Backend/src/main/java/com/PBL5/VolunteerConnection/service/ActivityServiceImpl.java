@@ -127,8 +127,9 @@ public class ActivityServiceImpl implements ActivityService {
     @Override
     public ActivityDetailResponse getActivityDetail(String token, int id) {
         int organizationId = jwtService.getId(token);
-        List<Object[]> activityDTO = activityRepository.getActivityWithPostsAndCounts( id, organizationId);
+        List<Object[]> activityDTO = activityRepository.getActivityWithPostsAndCounts(id);
         Activity activityDetail = (Activity)activityDTO.get(0)[0];
+        Account organization = accountRepository.findById(activityDetail.getOrganizationId());
         List< PostActivityDetailDTO> postActivityDetailDTOS = new ArrayList<>();
         long registrationCount = (Long) activityDTO.get(0)[2];
         long totalComments = 0;
@@ -139,11 +140,21 @@ public class ActivityServiceImpl implements ActivityService {
             totalComments += commentCount;
             postActivityDetailDTOS.add(new PostActivityDetailDTO(post, commentCount));
         }
-        Account organization = accountRepository.findById(activityDetail.getOrganizationId());
         List<CandidateDetailResponse> candidates = candidateService.getCandidateDetail(token, id);
         int postNumber = postActivityDetailDTOS.size();
-        return new ActivityDetailResponse(new ActivityResponse(activityDetail,registrationCount, totalComments,candidates.size() ,  postNumber), postActivityDetailDTOS,
-                new AccountResponse(organization), candidates);
+        boolean isCandidate = false;
+        if (jwtService.getRole(token)[0].equals("1")){
+            for (CandidateDetailResponse candidateDetailResponse : candidates){
+                if (candidateDetailResponse.getUser().getId() == accountRepository.findById(jwtService.getId(token)).getUser().getId()){
+                    isCandidate = true;
+                }
+            }
+        }
+        if(organization.getId() == jwtService.getId(token) || isCandidate){
+            return new ActivityDetailResponse(new ActivityResponse(activityDetail,registrationCount, totalComments,candidates.size() ,  postNumber), postActivityDetailDTOS,
+                    new AccountResponse(organization), candidates);
+        }
+        return ActivityDetailResponse.builder().error_message("You are not owner").build();
 //        return new ActivityDetailResponse(new ActivityResponse(activityDetail), null, 0, 0,
 //                null,null);
     }

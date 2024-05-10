@@ -1,12 +1,16 @@
 package com.PBL5.VolunteerConnection.response;
 
 import com.PBL5.VolunteerConnection.dto.PostActivityDetailDTO;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.List;
 @Data
+@Builder
 @NoArgsConstructor
+@AllArgsConstructor
 public class ActivityDetailResponse{
     protected int id;
     protected String image;
@@ -30,6 +34,7 @@ public class ActivityDetailResponse{
     private AccountResponse organization;
     private List<CandidateDetailResponse> candidates;
     private int participants;
+    private String error_message;
     public ActivityDetailResponse(ActivityResponse activity, List<PostActivityDetailDTO> postList, AccountResponse organization, List<CandidateDetailResponse> candidateDetailResponseList){
         this.id = activity.getId();
         this.image = activity.getImage();

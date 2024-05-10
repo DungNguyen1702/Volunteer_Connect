@@ -47,7 +47,6 @@ public class Account implements UserDetails {
     @OneToMany(mappedBy = "account")
     private List<PostComment> comments;
 
-    @JsonIgnore
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id")
     private User user;
