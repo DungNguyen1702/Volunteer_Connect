@@ -17,7 +17,7 @@ public interface PostCommentRepository extends JpaRepository<PostComment, Intege
     // List<PostComment> findByComment_parentId(int comment_parentId);
     @SuppressWarnings("null")
     List<PostComment> findAll();
-    @Query( "SELECT new com.PBL5.VolunteerConnection.dto.PostDetailDTO (a, p, acc, COUNT(c.id)) " +
+    @Query( "SELECT new com.PBL5.VolunteerConnection.dto.PostDetailDTO (a, p, acc, COUNT(distinct c.id)) " +
             "from Post p " +
             "join Activity a on p.activityId = a.id " +
             "join Account acc on acc.id = a.organizationId " +

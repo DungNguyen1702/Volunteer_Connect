@@ -169,7 +169,7 @@ public class PostServiceImpl implements PostService {
             Activity activity = postDetailDTO.getActivity();
             long participants = postDetailDTO.getParticipants();
             if (likePost.contains(post)){
-                postsActivitiesResponseArrayList.add(new PostsActivitiesResponse(new ActivityResponse(activity, 0, 0, 0,  participants), post, true));
+                postsActivitiesResponseArrayList.add(new PostsActivitiesResponse(new ActivityResponse(activity, 0, 0, 0,  participants), post, true, participants));
             }
         }
         return postsActivitiesResponseArrayList;

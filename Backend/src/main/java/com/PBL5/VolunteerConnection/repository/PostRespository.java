@@ -30,7 +30,7 @@ public interface PostRespository extends JpaRepository<Post, Integer> {
             "JOIN Post p ON p.id = s.postId " +
             "where a.id = :accountId")
     List<Post> findAllPostByAccountId(@Param("accountId") int accountId);
-    @Query( "SELECT new com.PBL5.VolunteerConnection.dto.PostDetailDTO (a, p, acc, COUNT(c.id)) " +
+    @Query( "SELECT new com.PBL5.VolunteerConnection.dto.PostDetailDTO (a, p, acc, COUNT(distinct c.id)) " +
             "from Post p " +
             "join Activity a on p.activityId = a.id " +
             "join Account acc on acc.id = a.organizationId " +
