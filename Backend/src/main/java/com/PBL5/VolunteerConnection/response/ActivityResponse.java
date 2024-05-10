@@ -14,6 +14,7 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @NoArgsConstructor
 public class ActivityResponse {
+    protected String error_message;
     protected int id;
     protected String image;
     protected String email;
