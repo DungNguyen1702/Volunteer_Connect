@@ -11,7 +11,9 @@ import org.springframework.stereotype.Service;
 
 import com.PBL5.VolunteerConnection.model.TableTask;
 import com.PBL5.VolunteerConnection.repository.ActivityRepository;
+import com.PBL5.VolunteerConnection.repository.CandidateRepository;
 import com.PBL5.VolunteerConnection.repository.TableTaskRepository;
+import com.PBL5.VolunteerConnection.repository.UserRespository;
 import com.PBL5.VolunteerConnection.request.TableTaskRequest;
 import com.PBL5.VolunteerConnection.response.StatusResponse;
 
@@ -23,6 +25,10 @@ public class TableTaskServiceImpl implements TableTaskService {
     private ActivityRepository activityRepository;
     @Autowired
     private JwtService jwtService;
+    @Autowired
+    private CandidateRepository candidateRepository;
+    @Autowired
+    UserRespository userRespository;
 
     @Override
     public StatusResponse createTableTask(String token, TableTaskRequest tableTask) {
@@ -120,15 +126,10 @@ public class TableTaskServiceImpl implements TableTaskService {
     }
 
     @Override
-    public List<TableTask> selectAllOwner(String token) {
+    public List<TableTask> selectAllByActivityId(String token, int activityId) {
         // TODO Auto-generated method stub
-        // try {
-        // int organizationId =
-        // activityRepository.findById(tableTask.getActivityId()).getOrganizationId();
-        // } catch (Exception e) {
-        // // TODO: handle exception
-        // }
         return null;
+
     }
 
 }

@@ -1,13 +1,16 @@
 import React from "react";
 import AvatarAccount from "../avatar/AvatarAccount";
 import "./index.scss";
+import { useNavigate } from "react-router-dom";
 
 function UserIcon(props) {
     const { id, name, avatar, backgroundNoAva, size } = props;
 
+    const navigate = useNavigate();
+
     const onClickUser = ()=>{
-        console.log('click on Account' + id)
-    }
+        navigate(`/contact-user/${id}`)
+    };
 
     return (
         <div 

@@ -7,12 +7,14 @@ import { toast } from "react-toastify";
 import auth from "../../api/authAPI";
 import useAuth from "../../hooks/useAuth";
 import { useNavigate } from "react-router-dom";
+import axiosClient from "../../api/axiosClient";
+import SupportFunction from '../../support/support_function';
 
 const FrameComponent = () => {
     const [account, setAccount] = useState('');
     const [password, setPassword] = useState('');
 
-    const { setToken } = useAuth();
+    const { setToken, token } = useAuth();
 
     const onChangeAccount = (e) => {
         setAccount(e.target.value);
@@ -43,12 +45,21 @@ const FrameComponent = () => {
                 }
             }
             catch (e) {
+                delete axiosClient.application.defaults.headers.common['Authorization'];
                 toast.error('Login failed');
             }
             finally {
             }
         };
-        callAPI();
+        console.log(SupportFunction.isTokenExpired(token))
+        if(token && !SupportFunction.isTokenExpired(token))
+        {
+            navigate('/user-homepage')
+        }
+        else{
+            delete axiosClient.application.defaults.headers.common['Authorization'];
+            callAPI();
+        }
     }
 
     return (

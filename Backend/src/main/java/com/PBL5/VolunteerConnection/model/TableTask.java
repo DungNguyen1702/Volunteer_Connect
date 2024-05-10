@@ -3,12 +3,13 @@ package com.PBL5.VolunteerConnection.model;
 import lombok.Data;
 import java.sql.Date;
 import java.time.LocalDate;
+import java.util.List;
 
 import jakarta.persistence.*;
 
 @Entity
 @Data
-@Table(name = "tabletasks")
+@Table(name = "TableTasks")
 public class TableTask {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,6 +25,8 @@ public class TableTask {
     private Date createdAt;
     @Column(name = "updatedAt")
     private Date updatedAt;
+    @OneToMany(mappedBy = "tableTask", fetch = FetchType.LAZY)
+    private List<Task> Tasks;
 
     public TableTask() {
 

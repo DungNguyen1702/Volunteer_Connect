@@ -1,6 +1,4 @@
-package com.PBL5.VolunteerConnection.response;
-
-import java.sql.Date;
+package com.PBL5.VolunteerConnection.request;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -11,11 +9,10 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class PostCommentRequest {
-    private String token;
+public class TaskCommentRequest {
     private int id;
-    private Integer comment_parentId;
-    private int postId;
+    private Integer commentParentId;
+    private int taskId;
     private String content;
     private int accountId;
     private boolean isDeleted;

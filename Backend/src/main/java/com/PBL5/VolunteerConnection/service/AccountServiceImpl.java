@@ -16,6 +16,8 @@ import com.PBL5.VolunteerConnection.repository.AccountRepository;
 
 import java.sql.Date;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -117,14 +119,19 @@ public class AccountServiceImpl implements  AccountService{
     }
 
     @Override
-    public AccountDetailResponse getInfoAccount(String token) {
+    public AccountResponse getInfoAccount(String token) {
         String username = jwtService.getUsername(token);
         Account account = accountRepository.findByAccount(username);
+        User user = account.getUser();
         String updatedAt = null;
+        String birthday = null;
         if(account.getUpdatedAt()!= null){
             updatedAt = account.getUpdatedAt().toString();
         }
-        return AccountDetailResponse.builder()
+        if(user.getBirthday() != null){
+            birthday = user.getBirthday().toString();
+        }
+        return AccountResponse.builder()
                 .id(account.getId())
                 .account(account.getAccount())
                 .name(account.getName())
@@ -133,23 +140,62 @@ public class AccountServiceImpl implements  AccountService{
                 .status(account.getStatus())
                 .createdAt(account.getCreatedAt().toString())
                 .updatedAt(updatedAt)
-                .build();
-    }
-    @Override
-    public UserDetailResponse getInfoUser(String token) {
-        String username = jwtService.getUsername(token);
-//        getInfoAccount(token);
-        return UserDetailResponse.builder()
-//                .id(account.getId())
-//                .account(account.getAccount())
-//                .name(account.getName())
-//                .avatar(account.getAvatar())
-//                .status(account.getStatus())
-//                .createdAt(account.getCreatedAt())
-//                .updatedAt(account.getUpdatedAt())
+                .userId(user.getId())
+                .birthday(birthday)
+                .tel(user.getTel())
+                .address(user.getAddress())
+                .gender(user.getGender())
                 .build();
     }
 
+    @Override
+    public StatusResponse changePassword(String token, String oldPassword, String newPassword) {
+        Account account = accountRepository.findById(jwtService.getId(token));
+        if (passwordEncoder.matches(oldPassword, account.getPassword())){
+            account.setPassword(passwordEncoder.encode(newPassword));
+            accountRepository.save(account);
+            return  StatusResponse.builder()
+                    .success(ResponseEntity.status(HttpStatus.ACCEPTED).body("Password has been changed sucessfully!!"))
+                    .build();
+        }
+        return StatusResponse.builder()
+                .fail(ResponseEntity.status(HttpStatus.NOT_ACCEPTABLE).body("Password wasn't correctly!!"))
+                .build();
+    }
+
+    @Override
+    public List<AccountResponse> getAllCandidate() {
+        List<Account> accountList = accountRepository.findAll();
+        List<AccountResponse> accountResponses = new ArrayList<>();
+        for (Account account : accountList){
+            String updatedAt = null;
+            String birthday = null;
+            User user = account.getUser();
+            if(account.getUpdatedAt()!= null){
+                updatedAt = account.getUpdatedAt().toString();
+            }
+            if(user.getBirthday() != null){
+                birthday = user.getBirthday().toString();
+            }
+            accountResponses.add(AccountResponse.builder()
+                    .id(account.getId())
+                    .account(account.getAccount())
+                    .name(account.getName())
+                    .role(account.getRole())
+                    .avatar(account.getAvatar())
+                    .status(account.getStatus())
+                    .createdAt(account.getCreatedAt().toString())
+                    .updatedAt(updatedAt)
+                    .userId(user.getId())
+                    .birthday(birthday)
+                    .tel(user.getTel())
+                    .address(user.getAddress())
+                    .gender(user.getGender())
+                    .activityNumber(user.getCandidates().size())
+                    .build());
+        }
+        return accountResponses;
+    }
 
 
 }

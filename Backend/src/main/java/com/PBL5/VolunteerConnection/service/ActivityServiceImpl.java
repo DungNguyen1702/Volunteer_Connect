@@ -38,7 +38,7 @@ public class ActivityServiceImpl implements ActivityService {
     @Autowired
     private CandidateService candidateService;
     @Override
-    public StatusResponse createActivity(String token, ActivityRequest activity) {
+    public ActivityResponse createActivity(String token, ActivityRequest activity) {
         try {
 
             int organizationId = jwtService.getId(token);
@@ -47,12 +47,11 @@ public class ActivityServiceImpl implements ActivityService {
                                         activity.getLocation(), organizationId,
                                         activity.getContent());
             activityRepository.save(creActivity);
-            return StatusResponse.builder().success(ResponseEntity.status(HttpStatus.CREATED)
-                    .body("Activity " + creActivity.getName() + "has been created sucessfully!!")).build();
+            ActivityResponse activityResponse = new ActivityResponse(creActivity, 0, 0, 0, 0);
+            return activityResponse;
         } catch (Exception e) {
             // TODO: handle exception
-            return StatusResponse.builder()
-                    .fail(ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Exception from server!! " + e))
+            return ActivityResponse.builder().error_message("Exception from server")
                     .build();
         }
     }
@@ -62,21 +61,28 @@ public class ActivityServiceImpl implements ActivityService {
         // TODO Auto-generated method stub
         try {
 
-            Activity updateActivity = activityRepository.findById(jwtService.getId(token));
-            updateActivity.setImage(updateReq.getImage());
-            updateActivity.setEmail(updateReq.getEmail());
-            updateActivity.setDeadline(updateReq.getDeadline());
-            updateActivity.setDateStart(updateReq.getDateStart());
-            updateActivity.setDateEnd(updateReq.getDateEnd());
-            updateActivity.setCountry(updateReq.getCountry());
-            updateActivity.setLocation(updateReq.getLocation());
-            updateActivity.setContent(updateReq.getContent());
-            updateActivity.setUpdateAt(Date.valueOf(LocalDate.now()));
-            activityRepository.save(updateActivity);
+            Activity updateActivity = activityRepository.findById(updateReq.getId());
+            if (updateActivity.getOrganizationId() == jwtService.getId(token)){
+                updateActivity.setImage(updateReq.getImage());
+                updateActivity.setEmail(updateReq.getEmail());
+                updateActivity.setDeadline(updateReq.getDeadline());
+                updateActivity.setDateStart(updateReq.getDateStart());
+                updateActivity.setDateEnd(updateReq.getDateEnd());
+                updateActivity.setCountry(updateReq.getCountry());
+                updateActivity.setLocation(updateReq.getLocation());
+                updateActivity.setContent(updateReq.getContent());
+                updateActivity.setUpdateAt(Date.valueOf(LocalDate.now()));
+                activityRepository.save(updateActivity);
+                return StatusResponse.builder()
+                        .success(ResponseEntity.status(HttpStatus.ACCEPTED)
+                                .body("Activity " + updateActivity.getName() + "has been updated sucessfully!!"))
+                        .build();
+            }
             return StatusResponse.builder()
                     .success(ResponseEntity.status(HttpStatus.ACCEPTED)
-                            .body("Activity " + updateActivity.getName() + "has been updated sucessfully!!"))
+                            .body("You are not owner"))
                     .build();
+
         } catch (Exception e) {
             // TODO: handle exception
             return StatusResponse.builder()
@@ -121,37 +127,51 @@ public class ActivityServiceImpl implements ActivityService {
     @Override
     public ActivityDetailResponse getActivityDetail(String token, int id) {
         int organizationId = jwtService.getId(token);
-        List<Object[]> activityDTO = activityRepository.getActivityWithPostsAndCounts( id, organizationId);
+        List<Object[]> activityDTO = activityRepository.getActivityWithPostsAndCounts(id);
         Activity activityDetail = (Activity)activityDTO.get(0)[0];
+        Account organization = accountRepository.findById(activityDetail.getOrganizationId());
         List< PostActivityDetailDTO> postActivityDetailDTOS = new ArrayList<>();
         long registrationCount = (Long) activityDTO.get(0)[2];
         long totalComments = 0;
         for (Object[] result : activityDTO) {
-//            Activity activity = (Activity) result[0];
             Post post = (Post) result[1];
             Long commentCount = (Long) result[3];
             totalComments += commentCount;
             postActivityDetailDTOS.add(new PostActivityDetailDTO(post, commentCount));
         }
-        Account organization = accountRepository.findById(activityDetail.getOrganizationId());
         List<CandidateDetailResponse> candidates = candidateService.getCandidateDetail(token, id);
         int postNumber = postActivityDetailDTOS.size();
-        return new ActivityDetailResponse(new ActivityResponse(activityDetail,registrationCount, totalComments,candidates.size() ,  postNumber), postActivityDetailDTOS,
-                new AccountDetailResponse(organization), candidates);
+        boolean isCandidate = false;
+        Account candidate = accountRepository.findById(jwtService.getId(token));
+        if (jwtService.getRole(token)[0].equals("1") && !candidates.isEmpty()){
+            for (CandidateDetailResponse candidateDetailResponse : candidates){
+                if (candidateDetailResponse.getUser().getId() == candidate.getUser().getId()){
+                    isCandidate = true;
+                }
+            }
+        }
+        if(organization.getId() == jwtService.getId(token) || isCandidate){
+            return new ActivityDetailResponse(new ActivityResponse(activityDetail,registrationCount, totalComments,candidates.size() ,  postNumber), postActivityDetailDTOS,
+                    new AccountResponse(organization), candidates);
+        }
+        return ActivityDetailResponse.builder().error_message("You are not owner").build();
 //        return new ActivityDetailResponse(new ActivityResponse(activityDetail), null, 0, 0,
 //                null,null);
     }
-    @Override
-    public List<Activity> selectAllActivitiesByCandidate(String token, CandidateRequest activityRequest) {
 
-        int id = jwtService.getId(token);
-            List<Activity> activities = activityRepository.findActivitiesByAccountId(id);
-            List<Activity> filteredActivities = activities.stream()
-                    .filter(activity ->
-                            (activityRequest.getActivityLocation() == null || activity.getLocation().equals(activityRequest.getActivityLocation())) &&
-                                    (activityRequest.getActivityType() == 0 || activity.getType() == activityRequest.getActivityType())
-                    )
-                    .collect(Collectors.toList());
-            return  filteredActivities;
+    @Override
+    public List<ActivityResponse> getAllActivityByCandidate(String token) {
+        int accountId = jwtService.getId(token);
+        int userId = userRespository.findByAccountId(accountId).getId();
+        List<ActivityResponse> activityResponseList = new ArrayList<>();
+        List<Object[]> activityDTOS = activityRepository.getListActivityDetailByCandidate(userId);
+        for (Object[] result : activityDTOS) {
+            ActivityDTO activityDTO = new ActivityDTO((Activity) result[0], (Long) result[1], (Long) result[2], (Long) result[3], (Long) result[4]);
+            activityResponseList.add(new ActivityResponse(activityDTO.getActivity(), activityDTO.getApplyFormNumbers(), activityDTO.getComments(), activityDTO.getParticipants(), activityDTO.getPostNumbers()));
+
+        }
+        return activityResponseList;
     }
+
+
 }

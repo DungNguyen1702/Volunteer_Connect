@@ -1,9 +1,11 @@
 package com.PBL5.VolunteerConnection.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
 import java.sql.Date;
 import java.time.LocalDate;
+import java.util.List;
 
 import jakarta.persistence.*;
 
@@ -21,6 +23,9 @@ public class PostComment {
     private int postId;
     @Column(name = "content")
     private String content;
+    @ManyToOne
+    @JoinColumn(name = "account_id", insertable = false, updatable = false)
+    private Account account;
     @Column(name = "account_id")
     private int accountId;
     @Column(name = "createdAt")
@@ -29,7 +34,12 @@ public class PostComment {
     private Date updatedAt;
     @Column(name = "isDeleted")
     private boolean isDeleted;
-
+    @OneToMany(mappedBy = "parentComment", fetch = FetchType.LAZY)
+    private List<PostComment> replies;
+    @JsonIgnore
+    @ManyToOne
+    @JoinColumn(name = "comment_parent_id", insertable = false, updatable = false)
+    private PostComment parentComment;
     public PostComment() {
 
     }

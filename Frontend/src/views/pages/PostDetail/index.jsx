@@ -4,7 +4,6 @@ import fakeData from "../../../data/fake_data.json";
 import SmallPost from "../../../components/post/small-post";
 import SupportFunction from "../../../support/support_function";
 import { Button } from "antd";
-import { ICONS } from "../../../constants/icons";
 import Comment from "../../../components/comment/postComment/comment";
 import InputComment from "../../../components/comment/postComment/inputComment/inputComment";
 import OrganizationIcon from "../../../components/organization";
@@ -20,8 +19,6 @@ function PostDetail() {
     const act = data.Activity;
     const org = data.Organization;
     const comments = data.Comments;
-
-    const handlerClickOrg = () => {};
 
     const handlerClickRegister = () => {};
 

@@ -22,4 +22,5 @@ public class AccountRequest {
     private Date birthday;
     private String email;
     private String avatar;
+    private String newPassword;
 }

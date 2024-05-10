@@ -231,7 +231,7 @@
                     "id": 1,
                     "account": {
                         "id": 1,
-                        "account": "user1@example.com",
+                        "account": "user1@example.com", 
                         "password": "password123",
                         "name": "John Doe",
                         "avatar": null,
@@ -827,7 +827,8 @@
             "isDeleted": false,
             "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
             "participants": 10,
-            "comments": 10
+            "comments": 10,
+            "applyFormNumber": 10
         },
         {
             "id": 2,
@@ -1222,7 +1223,7 @@
             "image": "https://capitalcampaignpro.com/wp-content/uploads/2023/02/capital-campaign-volunteers.jpg",
             "email": "activity2@example.com",
             "name": "Activity 2",
-            "type": 2,
+            "type": 2,  
             "deadline": "2024-04-30",
             "dateStart": "2024-04-01",
             "dateEnd": "2024-04-15",
@@ -1232,7 +1233,7 @@
             "updatedAt": "2024-04-05",
             "isDeleted": false,
             "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-            "participants": 1
+            "participants": 1   
         },
         "Post": {
             "id": 1,
@@ -2134,7 +2135,7 @@
             "backgroundNoAva": "#4CAF50",
             "activity" : {
                 "name" : "Hiking Adventure in the Mountains"
-            }
+            } 
         },
         {
             "id": 2,
@@ -2273,7 +2274,7 @@
             "name": "Name 1",
             "avatar": "https://gcs.tripi.vn/public-tripi/tripi-feed/img/474088lqJ/avatar-bau-troi-hoang-hon-dep_085322299.jpg",
             "status": true,
-            "role": 2,
+            "role": 1,
             "createdAt": "2024-05-03",
             "updatedAt": "2024-05-03",
             "backgroundNoAva": "#4CAF50",
@@ -3621,6 +3622,43 @@
                 "isDeleted": false,
                 "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
                 "participants": 10
+            },
+            {
+                "id": 10,
+                "image": "https://capitalcampaignpro.com/wp-content/uploads/2023/02/capital-campaign-volunteers.jpg",
+                "email": "activity4@example.com",
+                "name": "Activity 4",
+                "type": 4,
+                "deadline": "2024-04-30",
+                "dateStart": "2024-04-01",
+                "dateEnd": "2024-04-15",
+                "country": 1,
+                "location": "Da Nang",
+                "organization_id": 1,
+                "createdAt": "2024-04-01",
+                "updatedAt": "2024-04-05",
+                "isDeleted": false,
+                "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+                "participants": 10
+            },
+    
+            {
+                "id": 11,
+                "image": "https://capitalcampaignpro.com/wp-content/uploads/2023/02/capital-campaign-volunteers.jpg",
+                "email": "activity4@example.com",
+                "name": "Activity 4",
+                "type": 4,
+                "deadline": "2024-04-30",
+                "dateStart": "2024-04-01",
+                "dateEnd": "2024-04-15",
+                "country": 1,
+                "location": "Da Nang",
+                "organization_id": 1,
+                "createdAt": "2024-04-01",
+                "updatedAt": "2024-04-05",
+                "isDeleted": false,
+                "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+                "participants": 10
             }
         ], 
         "EarnedCertificateNumber" : 9
@@ -3632,7 +3670,7 @@
         "name": "User 1",
         "avatar": "https://didongviet.vn/dchannel/wp-content/uploads/2023/08/hinh-nen-3d-hinh-nen-iphone-dep-3d-didongviet@2x.jpg",
         "status": true,
-        "role": 1,
+        "role": 2,
         "createdAt": "2024-04-10",
         "updatedAt": "2024-04-10",
         "isDeleted": false,
@@ -3786,6 +3824,43 @@
     
             {
                 "id": 9,
+                "image": "https://capitalcampaignpro.com/wp-content/uploads/2023/02/capital-campaign-volunteers.jpg",
+                "email": "activity4@example.com",
+                "name": "Activity 4",
+                "type": 4,
+                "deadline": "2024-04-30",
+                "dateStart": "2024-04-01",
+                "dateEnd": "2024-04-15",
+                "country": 1,
+                "location": "Da Nang",
+                "organization_id": 1,
+                "createdAt": "2024-04-01",
+                "updatedAt": "2024-04-05",
+                "isDeleted": false,
+                "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+                "participants": 10
+            },
+            {
+                "id": 10,
+                "image": "https://capitalcampaignpro.com/wp-content/uploads/2023/02/capital-campaign-volunteers.jpg",
+                "email": "activity4@example.com",
+                "name": "Activity 4",
+                "type": 4,
+                "deadline": "2024-04-30",
+                "dateStart": "2024-04-01",
+                "dateEnd": "2024-04-15",
+                "country": 1,
+                "location": "Da Nang",
+                "organization_id": 1,
+                "createdAt": "2024-04-01",
+                "updatedAt": "2024-04-05",
+                "isDeleted": false,
+                "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+                "participants": 10
+            },
+    
+            {
+                "id": 11,
                 "image": "https://capitalcampaignpro.com/wp-content/uploads/2023/02/capital-campaign-volunteers.jpg",
                 "email": "activity4@example.com",
                 "name": "Activity 4",

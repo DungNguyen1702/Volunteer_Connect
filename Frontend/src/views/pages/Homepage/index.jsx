@@ -13,6 +13,7 @@ import { COUNTRY } from "../../../constants/activity_countries";
 import { STATUS } from "../../../constants/activity_status";
 import { COLOR_FONT, COLOR_STATUS } from "../../../constants/color_status";
 import postAPI from "../../../api/postAPI.js";
+import useAuth from "../../../hooks/useAuth.js";
 
 function addIsLikedField(posts) {
     return posts.map((post) => ({
@@ -27,12 +28,11 @@ function UserHomepage(props) {
 
     // set UseState
     const [startIndex, setStartIndex] = useState(0);
-    const [user, setUser] = useState(fake_data.Accounts[1]);
-    // const [user, setUser] = useState(null);
+    const { account } = useAuth();
     const [likedPosts, setLikedPosts] = useState(
         addIsLikedField(fake_data["Posts-Activities"])
     );
-    const [listPosts, setListPosts] = useState(fake_data["Posts-Activities"]);
+    const [listPosts, setListPosts] = useState([]);
     const [filterListPosts, setFilterListPosts] = useState(listPosts);
     const [popularPosts, setPopularPost] = useState(
         fake_data["Posts-Activities"]
@@ -52,31 +52,31 @@ function UserHomepage(props) {
         setListShowActs(filterListPosts.slice(startIndex, startIndex + limit));
     }, [startIndex, filterListPosts]);
 
-    // useEffect(() => {
-    //     const getAllPostApi = async () => {
-    //         await postAPI
-    //             .getAllPost()
-    //             .then((response) => {
-    //                 console.log(response.data);
-    //                 setListPosts(response.data);
-    //                 setFilterListPosts(
-    //                     SupportFunction.filterPost(
-    //                         response.data,
-    //                         parseInt(selectedCategory),
-    //                         parseInt(selectedCountry),
-    //                         parseInt(selectedStatus),
-    //                         sortBy,
-    //                         sortOrder
-    //                     )
-    //                 );
-    //             })
-    //             .catch((error) => {
-    //                 console.log(error);
-    //             });
-    //     };
+    useEffect(() => {
+        const getAllPostApi = async () => {
+            await postAPI
+                .getAllPost()
+                .then((response) => {
+                    console.log(response.data);
+                    setListPosts(response.data);
+                    setFilterListPosts(
+                        SupportFunction.filterPost(
+                            response.data,
+                            parseInt(selectedCategory),
+                            parseInt(selectedCountry),
+                            parseInt(selectedStatus),
+                            sortBy,
+                            sortOrder
+                        )
+                    );
+                })
+                .catch((error) => {
+                    console.log(error);
+                });
+        };
 
-    //     getAllPostApi();
-    // },[]);
+        getAllPostApi();
+    },[]);
 
     useEffect(() => {
         setFilterListPosts(
@@ -337,7 +337,7 @@ function UserHomepage(props) {
             <div
                 class="content-wrapper"
                 style={
-                    user !== null
+                    account 
                         ? {
                               gridTemplateColumns: "20% 60% 20%",
                           }
@@ -373,7 +373,7 @@ function UserHomepage(props) {
                     )}
                 </div>
 
-                {user !== null ? (
+                {account ? (
                     <div class="right-content-wrapper">
                         <h2 class="two-side-header">Liked activities</h2>
                         {likedPosts.map((post) => (

@@ -17,6 +17,7 @@ import useDropdownNavigation from "./dropdown";
 import { useNavigate } from "react-router-dom";
 import AvatarAccount from "../avatar/AvatarAccount";
 import useAuth from "../../hooks/useAuth";
+import postAPI from "../../api/postAPI";
 
 const TruncateText = (text, maxLength) => {
     if (text.length <= maxLength) {
@@ -31,7 +32,7 @@ function Header(props) {
     const { getItemDropDownAccount, getItemDropDownSearchPost } =
         useDropdownNavigation();
     const [search, setSearch] = useState("");
-    const listPosts = fakeData["Posts-Activities"];
+    const [listPosts, setListPosts] = useState([]);
     const [filterPosts, setFilterPosts] = useState(listPosts);
 
     const { account } = useAuth();
@@ -48,6 +49,22 @@ function Header(props) {
         }
     }, [listPosts, search]);
 
+    useEffect(() => {
+        const getAllPostApi = async () => {
+            await postAPI
+                .getAllPost()
+                .then((response) => {
+                    console.log(response.data);
+                    setListPosts(response.data);
+                })
+                .catch((error) => {
+                    console.log(error);
+                });
+        };
+
+        getAllPostApi();
+    },[]);
+
     const numberOfNoti = 10;
     const numberOfChat = 10;
 
@@ -57,11 +74,17 @@ function Header(props) {
     };
 
     const clickEvent = () => {
-        navigate("/participating-activity");
+        if(parseInt(account.role) === 3)
+            navigate("/admin/manage-activity");    
+        else
+            navigate("/participating-activity");
     };
 
     const clickGroupPeople = () => {
-        navigate("/people-searching");
+        if(parseInt(account.role) === 3 )
+            navigate("/admin/manage-account");
+        else
+            navigate("/people-searching");
     };
 
     const clickSearch = () => {
@@ -78,11 +101,11 @@ function Header(props) {
     };
 
     const clickLogin = () => {
-        console.log("Login");
+        navigate('/auth/login')
     };
 
     const clickRegister = () => {
-        console.log("Register");
+        navigate('/auth/register')
     };
 
     return (
@@ -90,7 +113,7 @@ function Header(props) {
             <div class="header-wrapper">
                 <img src={ICONS.logo} alt="Logo" class="header-wrapper logo" />
                 <div class="header-wrapper button-group-left">
-                    {account !== null ? (
+                    {account ? (
                         <>
                             <Button
                                 className={`header-wrapper button-group-left button ${
@@ -181,7 +204,7 @@ function Header(props) {
                     </Dropdown>
                 </div>
                 <div class="header-wrapper button-group-right">
-                    {account !== null ? (
+                    {account ? (
                         <>
                             <Badge count={numberOfChat} overflowCount={9}>
                                 <Button
@@ -203,7 +226,7 @@ function Header(props) {
                 </div>
 
                 <div class="header-wrapper account-info">
-                    {account !== null ? (
+                    {account ? (
                         <Dropdown
                             menu={{
                                 items: getItemDropDownAccount(account.role),

@@ -3,9 +3,10 @@ package com.PBL5.VolunteerConnection.model;
 import jakarta.persistence.*;
 import lombok.Data;
 
-
 import java.sql.Date;
 import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Data
@@ -13,7 +14,7 @@ import java.util.List;
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name= "id")
+    @Column(name = "id")
     private int id;
     @Column(name = "account_id")
     private int accountId;
@@ -26,10 +27,17 @@ public class User {
     @Column(name = "birthday")
     private Date birthday;
 
-    public User(){
+    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private Account account;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
+    private List<Candidate> candidates;
+    public User() {
 
     }
-    public User(int accountId, String tel, String gender, String address,  Date birthday){
+
+    public User(int accountId, String tel, String gender, String address, Date birthday) {
         this.accountId = accountId;
         this.tel = tel;
         this.address = address;

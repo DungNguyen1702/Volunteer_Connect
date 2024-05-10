@@ -3,6 +3,7 @@ package com.PBL5.VolunteerConnection.service;
 import com.PBL5.VolunteerConnection.model.LikePost;
 import com.PBL5.VolunteerConnection.model.Post;
 import com.PBL5.VolunteerConnection.request.PostRequest;
+import com.PBL5.VolunteerConnection.response.PostDetailResponse;
 import com.PBL5.VolunteerConnection.response.PostsActivitiesResponse;
 import com.PBL5.VolunteerConnection.response.StatusResponse;
 
@@ -15,13 +16,11 @@ public interface PostService {
 
     StatusResponse deletePost(String token,PostRequest post);
 
-    List<Post> SelectAllPost(PostRequest post);
-
-    List<Post> SelectAll();
     List<PostsActivitiesResponse> selectAll();
     List<PostsActivitiesResponse> selectAllByAccountId(String token);
     StatusResponse createLikePost(String token, PostRequest post);
+    List<PostsActivitiesResponse> selectAllLikePostByAccountID(String token);
     StatusResponse deleteLikePost(String token, PostRequest post);
-    List<LikePost> getAllLikePost(String token);
+    PostDetailResponse getPostDetail(int id);
 
 }

@@ -1,11 +1,11 @@
 import React from 'react'
 import { useParams } from 'react-router-dom'
 import './index.scss'
-import UserSidebar from '../../../components/UserProfile/UserSidebar';
-import AccountSetting from '../../../components/UserProfile/AccountSetting';
+import UserSidebar from '../../../components/UserProfile/UserSidebar/UserSidebar';
+import AccountSetting from '../../../components/UserProfile/AccountSetting/AccountSetting';
 import Header from '../../../components/header';
-import Security from '../../../components/UserProfile/Security';
-import Certificate from '../../../components/UserProfile/Certificate';
+import Security from '../../../components/UserProfile/Security/Security';
+import Certificate from '../../../components/UserProfile/Certificate/Certificate';
 
 const Profile =() => {
   const { activepage } = useParams();

@@ -19,7 +19,7 @@ public class ActivityController {
     private ActivityService activityService;
 
     @PostMapping("/organization/create")
-    ResponseEntity<StatusResponse> createActivity(@RequestHeader("Authorization") String token , @RequestBody ActivityRequest activityRequest) {
+    ResponseEntity<ActivityResponse> createActivity(@RequestHeader("Authorization") String token , @RequestBody ActivityRequest activityRequest) {
         token = token.substring("Bearer ".length());
         return ResponseEntity.ok(activityService.createActivity(token, activityRequest));
     }
@@ -40,14 +40,14 @@ public class ActivityController {
         token = token.substring("Bearer ".length());
         return ResponseEntity.ok(activityService.getAllActivity(token));
     }
-    @GetMapping("/organization/getActivityDetail")
+    @GetMapping("/getActivityDetail")
     ResponseEntity<ActivityDetailResponse> getActivityDetail(@RequestHeader("Authorization") String token ,@RequestParam("activityId") int id){
         token = token.substring("Bearer ".length());
         return ResponseEntity.ok(activityService.getActivityDetail(token, id));
     }
     @GetMapping("/candidate/selectAllActivity")
-    ResponseEntity<List<Activity>> selectAllActivity(@RequestHeader("Authorization") String token , @RequestBody CandidateRequest candidateRequest){
+    ResponseEntity<List<ActivityResponse>> selectAllActivity(@RequestHeader("Authorization") String token){
         token = token.substring("Bearer ".length());
-        return ResponseEntity.ok(activityService.selectAllActivitiesByCandidate(token,candidateRequest));
+        return ResponseEntity.ok(activityService.getAllActivityByCandidate(token));
     }
 }

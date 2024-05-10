@@ -45,7 +45,13 @@ const ChatBox = LoadableComponent(()=>
 );
 const AccountContact = LoadableComponent(()=>
     import('../pages/ContactProfile/index.jsx')
-)
+);
+const ManageAccount = LoadableComponent(()=>
+    import('../pages/ManageAccount/index.jsx')
+);
+const ManageActivity = LoadableComponent(()=>
+    import('../pages/ManageActivity/index.jsx')
+);
 
 const AllRoutes = () => {
     return (
@@ -130,7 +136,17 @@ const AllRoutes = () => {
 
                 <Route
                     path='/contact-user/:accountId'
-                    element={<MainLayout component={AccountContact} isNoFooter={true}/>}
+                    element={<MainLayout component={AccountContact}/>}
+                />
+
+                <Route
+                    path='/admin/manage-account'
+                    element={<MainLayout component={ManageAccount} stateButton={3}/>}
+                />
+
+                <Route
+                    path='/admin/manage-activity'
+                    element={<MainLayout component={ManageActivity} stateButton={2}/>}
                 />
             </Route>
 

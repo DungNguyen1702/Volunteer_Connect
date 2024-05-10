@@ -1,6 +1,7 @@
 package com.PBL5.VolunteerConnection.repository;
 
 import com.PBL5.VolunteerConnection.dto.PostActivitiesDTO;
+import com.PBL5.VolunteerConnection.dto.PostDetailDTO;
 import com.PBL5.VolunteerConnection.model.Post;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -28,5 +29,12 @@ public interface PostRespository extends JpaRepository<Post, Integer> {
             "JOIN Post p ON p.id = s.postId " +
             "where a.id = :accountId")
     List<Post> findAllPostByAccountId(@Param("accountId") int accountId);
-
+    @Query( "SELECT new com.PBL5.VolunteerConnection.dto.PostDetailDTO (a, p, acc, COUNT(c.id)) " +
+            "from Post p " +
+            "join Activity a on p.activityId = a.id " +
+            "join Account acc on acc.id = a.organizationId " +
+            "left join Candidate c on a.id = c.activityId " +
+            "where p.id = :id " +
+            "GROUP BY (p.id)")
+    PostDetailDTO findPostDetailById(@Param("id") int id);
 }

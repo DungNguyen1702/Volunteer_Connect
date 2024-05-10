@@ -13,7 +13,7 @@ import lombok.NoArgsConstructor;
 public class ActivityDTO {
     private Activity activity;
     private long participants;
-    private long comments;
     private long applyFormNumbers;
     private long postNumbers;
+    private long comments;
 }

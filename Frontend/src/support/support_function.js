@@ -71,6 +71,22 @@ function getStringApplyForm(form) {
     }
 }
 
+function getStringCertificate(certificate) {
+    if (certificate === 0 || certificate === 1) {
+        return certificate + " certificate";
+    } else {
+        return certificate + " certificates";
+    }
+}
+
+function getStringActivity(activity) {
+    if (activity === 0 || activity === 1) {
+        return activity + " activity";
+    } else {
+        return activity + " activities";
+    }
+}
+
 function convertToHTML(htmlString) {
     return <div dangerouslySetInnerHTML={{ __html: htmlString }} />;
 }
@@ -356,6 +372,13 @@ function filterAct(
     return filteredList;
 }
 
+function isTokenExpired(token) {
+    if (!token) return true; // Nếu không có token, coi như đã hết hạn
+    const expiry = new Date(token.exp * 1000); // Chuyển đổi thời gian hết hạn từ giây sang mili-giây
+    const currentTime = new Date();
+    return currentTime > expiry; // So sánh thời gian hiện tại với thời gian hết hạn
+  }
+
 const Utils = {
     TruncateText,
     ActivityType,
@@ -367,6 +390,8 @@ const Utils = {
     getStringReply,
     getStringPost,
     getStringApplyForm,
+    getStringCertificate,
+    getStringActivity,
     convertToHTML,
     mainContentHTML,
     removeSpaceInString,
@@ -374,6 +399,7 @@ const Utils = {
     getFirstCharacter,
     filterPost,
     filterAct,
+    isTokenExpired,
 };
 
 export default Utils;
