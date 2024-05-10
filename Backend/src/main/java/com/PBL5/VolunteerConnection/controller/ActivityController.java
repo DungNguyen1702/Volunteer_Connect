@@ -40,7 +40,7 @@ public class ActivityController {
         token = token.substring("Bearer ".length());
         return ResponseEntity.ok(activityService.getAllActivity(token));
     }
-    @GetMapping("/organization/getActivityDetail")
+    @GetMapping("/getActivityDetail")
     ResponseEntity<ActivityDetailResponse> getActivityDetail(@RequestHeader("Authorization") String token ,@RequestParam("activityId") int id){
         token = token.substring("Bearer ".length());
         return ResponseEntity.ok(activityService.getActivityDetail(token, id));
