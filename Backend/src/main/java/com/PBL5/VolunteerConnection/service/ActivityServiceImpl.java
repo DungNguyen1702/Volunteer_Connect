@@ -38,7 +38,7 @@ public class ActivityServiceImpl implements ActivityService {
     @Autowired
     private CandidateService candidateService;
     @Override
-    public StatusResponse createActivity(String token, ActivityRequest activity) {
+    public ActivityResponse createActivity(String token, ActivityRequest activity) {
         try {
 
             int organizationId = jwtService.getId(token);
@@ -47,12 +47,11 @@ public class ActivityServiceImpl implements ActivityService {
                                         activity.getLocation(), organizationId,
                                         activity.getContent());
             activityRepository.save(creActivity);
-            return StatusResponse.builder().success(ResponseEntity.status(HttpStatus.CREATED)
-                    .body("Activity " + creActivity.getName() + "has been created sucessfully!!")).build();
+            ActivityResponse activityResponse = new ActivityResponse(creActivity, 0, 0, 0, 0);
+            return activityResponse;
         } catch (Exception e) {
             // TODO: handle exception
-            return StatusResponse.builder()
-                    .fail(ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Exception from server!! " + e))
+            return ActivityResponse.builder().error_message("Exception from server")
                     .build();
         }
     }

@@ -19,7 +19,7 @@ public class ActivityController {
     private ActivityService activityService;
 
     @PostMapping("/organization/create")
-    ResponseEntity<StatusResponse> createActivity(@RequestHeader("Authorization") String token , @RequestBody ActivityRequest activityRequest) {
+    ResponseEntity<ActivityResponse> createActivity(@RequestHeader("Authorization") String token , @RequestBody ActivityRequest activityRequest) {
         token = token.substring("Bearer ".length());
         return ResponseEntity.ok(activityService.createActivity(token, activityRequest));
     }
