@@ -120,9 +120,14 @@ public class AccountServiceImpl implements  AccountService{
     public AccountResponse getInfoAccount(String token) {
         String username = jwtService.getUsername(token);
         Account account = accountRepository.findByAccount(username);
+        User user = account.getUser();
         String updatedAt = null;
+        String birthday = null;
         if(account.getUpdatedAt()!= null){
             updatedAt = account.getUpdatedAt().toString();
+        }
+        if(user.getBirthday() != null){
+            birthday = user.getBirthday().toString();
         }
         return AccountResponse.builder()
                 .id(account.getId())
@@ -133,6 +138,10 @@ public class AccountServiceImpl implements  AccountService{
                 .status(account.getStatus())
                 .createdAt(account.getCreatedAt().toString())
                 .updatedAt(updatedAt)
+                .birthday(birthday)
+                .tel(user.getTel())
+                .address(user.getAddress())
+                .gender(user.getGender())
                 .build();
     }
 
