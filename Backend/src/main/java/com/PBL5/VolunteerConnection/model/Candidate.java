@@ -4,6 +4,9 @@ import jakarta.persistence.*;
 import lombok.Data;
 
 import java.time.LocalDate;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.sql.Date;
 
 @Entity
@@ -24,6 +27,14 @@ public class Candidate {
     private Date dateCertificate;
     @Column(name = "createdAt")
     private Date createdAt;
+
+    @OneToOne(mappedBy = "candidate", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private User user;
+
+    @JsonIgnore
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id")
+    private Task taskc;
 
     public Candidate() {
     }

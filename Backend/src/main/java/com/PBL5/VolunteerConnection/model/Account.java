@@ -18,7 +18,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 public class Account implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name= "id")
+    @Column(name = "id")
     private int id;
     @Column(name = "account")
     private String account;
@@ -47,7 +47,12 @@ public class Account implements UserDetails {
     @OneToMany(mappedBy = "account")
     private List<PostComment> comments;
 
-    public Account(String account, String password, String name, int role)  {
+    @JsonIgnore
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id")
+    private User user;
+
+    public Account(String account, String password, String name, int role) {
         this.account = account;
         this.password = password;
         this.name = name;
@@ -66,9 +71,8 @@ public class Account implements UserDetails {
 
     }
 
-
     @Override
-    public Collection<SimpleGrantedAuthority>getAuthorities() {
+    public Collection<SimpleGrantedAuthority> getAuthorities() {
         Collection<SimpleGrantedAuthority> authorities = new ArrayList<>();
         authorities.add(new SimpleGrantedAuthority(String.valueOf(role)));
         return authorities;
@@ -101,7 +105,7 @@ public class Account implements UserDetails {
 
     @Override
     public boolean isEnabled() {
-        if (this.isValid){
+        if (this.isValid) {
             return true;
         }
         return false;
