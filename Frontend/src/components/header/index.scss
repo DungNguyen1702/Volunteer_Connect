@@ -89,16 +89,12 @@ html, body {
             margin: 0 10px;
             opacity: 1;
             border : 0px;
-            background-color: #257769;
+            background-color: #257769 !important;
             border-radius: 10%;
 
             & .ant-btn-icon .anticon{
                 font-size: 25px;
-                color : #FFFFFF
-            }
-
-            &:hover .ant-btn-icon .anticon {
-                color : #257769;
+                color : #FFFFFF !important;
             }
         }
     }

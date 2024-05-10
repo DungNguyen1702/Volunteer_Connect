@@ -2,7 +2,7 @@ import axiosClient from './axiosClient'
 
 const postAPI = {
     getAllPost: () => {
-        const url = '/api/v1/post/select'
+        const url = '/api/v1/post/guest'
         return axiosClient.applicationNoAuth.get(url)
     },
 }

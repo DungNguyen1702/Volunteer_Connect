@@ -62,21 +62,28 @@ public class ActivityServiceImpl implements ActivityService {
         // TODO Auto-generated method stub
         try {
 
-            Activity updateActivity = activityRepository.findById(jwtService.getId(token));
-            updateActivity.setImage(updateReq.getImage());
-            updateActivity.setEmail(updateReq.getEmail());
-            updateActivity.setDeadline(updateReq.getDeadline());
-            updateActivity.setDateStart(updateReq.getDateStart());
-            updateActivity.setDateEnd(updateReq.getDateEnd());
-            updateActivity.setCountry(updateReq.getCountry());
-            updateActivity.setLocation(updateReq.getLocation());
-            updateActivity.setContent(updateReq.getContent());
-            updateActivity.setUpdateAt(Date.valueOf(LocalDate.now()));
-            activityRepository.save(updateActivity);
+            Activity updateActivity = activityRepository.findById(updateReq.getId());
+            if (updateActivity.getOrganizationId() == jwtService.getId(token)){
+                updateActivity.setImage(updateReq.getImage());
+                updateActivity.setEmail(updateReq.getEmail());
+                updateActivity.setDeadline(updateReq.getDeadline());
+                updateActivity.setDateStart(updateReq.getDateStart());
+                updateActivity.setDateEnd(updateReq.getDateEnd());
+                updateActivity.setCountry(updateReq.getCountry());
+                updateActivity.setLocation(updateReq.getLocation());
+                updateActivity.setContent(updateReq.getContent());
+                updateActivity.setUpdateAt(Date.valueOf(LocalDate.now()));
+                activityRepository.save(updateActivity);
+                return StatusResponse.builder()
+                        .success(ResponseEntity.status(HttpStatus.ACCEPTED)
+                                .body("Activity " + updateActivity.getName() + "has been updated sucessfully!!"))
+                        .build();
+            }
             return StatusResponse.builder()
                     .success(ResponseEntity.status(HttpStatus.ACCEPTED)
-                            .body("Activity " + updateActivity.getName() + "has been updated sucessfully!!"))
+                            .body("You are not owner"))
                     .build();
+
         } catch (Exception e) {
             // TODO: handle exception
             return StatusResponse.builder()

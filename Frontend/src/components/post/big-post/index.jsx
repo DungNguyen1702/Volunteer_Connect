@@ -5,6 +5,7 @@ import { useState } from "react";
 import { Button } from "antd";
 import { useNavigate } from "react-router-dom";
 import { COLOR_FONT, COLOR_STATUS } from "../../../constants/color_status";
+import useAuth from "../../../hooks/useAuth";
 
 function BigPost(props) {
     const data = props.data;
@@ -12,6 +13,8 @@ function BigPost(props) {
     const navigate = useNavigate();
 
     const [like, setLike] = useState(data.isLiked);
+
+    const { account } = useAuth();
 
     const clickLike = (e) => {
         e.stopPropagation();
@@ -32,25 +35,27 @@ function BigPost(props) {
         <div class="big-post-wrapper" onClick={clickAct}>
             {/* big post header  */}
             <div class="big-post-header">
-                <Button
-                    style={{
-                        border: "none",
-                        boxShadow: "none",
-                        background: "#F3E9E3",
-                    }}
-                    onClick={clickLike}
-                    icon={
-                        like ? (
-                            <HeartFilled
-                                style={{ fontSize: 30, color: "red" }}
-                            />
-                        ) : (
-                            <HeartOutlined
-                                style={{ fontSize: 30, color: "red" }}
-                            />
-                        )
-                    }
-                />
+                {account && (
+                    <Button
+                        style={{
+                            border: "none",
+                            boxShadow: "none",
+                            background: "#F3E9E3",
+                        }}
+                        onClick={clickLike}
+                        icon={
+                            like ? (
+                                <HeartFilled
+                                    style={{ fontSize: 30, color: "red" }}
+                                />
+                            ) : (
+                                <HeartOutlined
+                                    style={{ fontSize: 30, color: "red" }}
+                                />
+                            )
+                        }
+                    />
+                )}
                 <h2 class="post-title">{data.title}</h2>
                 <div
                     class="post-status"

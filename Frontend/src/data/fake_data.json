@@ -2135,7 +2135,7 @@
             "backgroundNoAva": "#4CAF50",
             "activity" : {
                 "name" : "Hiking Adventure in the Mountains"
-            }
+            } 
         },
         {
             "id": 2,
@@ -2274,7 +2274,7 @@
             "name": "Name 1",
             "avatar": "https://gcs.tripi.vn/public-tripi/tripi-feed/img/474088lqJ/avatar-bau-troi-hoang-hon-dep_085322299.jpg",
             "status": true,
-            "role": 2,
+            "role": 1,
             "createdAt": "2024-05-03",
             "updatedAt": "2024-05-03",
             "backgroundNoAva": "#4CAF50",

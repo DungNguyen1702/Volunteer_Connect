@@ -7,7 +7,7 @@ import java.sql.Date;
 
 @Entity
 @Data
-@Table(name = "Registrationforms")
+@Table(name = "RegistrationForms")
 public class RegistrationForm {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
