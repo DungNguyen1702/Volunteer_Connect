@@ -3,7 +3,7 @@ import './Security.scss'
 
 const Security = () => {
     return (
-        <div className='accountsettings'>
+        <div className='securityFormParent'>
             <div className='securityForm'>
                 <h1 className='mainhead1'>Change Password</h1>
                 <div className='form'>
@@ -14,6 +14,11 @@ const Security = () => {
                     </div>
                     <div className='form-group'>
                         <label htmlFor='newpass'>New Password <span>*</span></label>
+                        <input type="password"
+                        />
+                    </div>
+                    <div className='form-group'>
+                        <label htmlFor='newpass'>Comfirm Password <span>*</span></label>
                         <input type="password"
                         />
                     </div>

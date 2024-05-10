@@ -26,7 +26,6 @@ public class User {
     @Column(name = "birthday")
     private Date birthday;
 
-
     public User(){
 
     }
