@@ -20,7 +20,7 @@ import lombok.Data;
 
 @Entity
 @Data
-@Table(name = "taskcomments")
+@Table(name = "Taskcomments")
 public class TaskComment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
