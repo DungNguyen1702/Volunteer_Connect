@@ -8,7 +8,7 @@ import com.PBL5.VolunteerConnection.response.*;
 import java.util.List;
 
 public interface ActivityService {
-    StatusResponse createActivity(String token, ActivityRequest activityRequest);
+    ActivityResponse createActivity(String token, ActivityRequest activityRequest);
 
     StatusResponse updateActivity(String token, ActivityRequest activityRequest);
 
