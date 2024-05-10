@@ -31,10 +31,8 @@ public class User {
     private Account account;
 
     @JsonIgnore
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id")
-    private Candidate candidate;
-
+    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
+    private List<Candidate> candidates;
     public User() {
 
     }

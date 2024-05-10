@@ -10,6 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("api/v1/account")
 @RequiredArgsConstructor
@@ -40,5 +42,8 @@ public class AccountController {
         token = token.substring("Bearer ".length());
         return ResponseEntity.ok(accountService.changePassword(token, updateRequest.getPassword(), updateRequest.getNewPassword()));
     }
-
+    @GetMapping("/getAllCandidate")
+    public ResponseEntity<List<AccountResponse>> getAllCandidate() {
+        return ResponseEntity.ok(accountService.getAllCandidate());
+    }
 }

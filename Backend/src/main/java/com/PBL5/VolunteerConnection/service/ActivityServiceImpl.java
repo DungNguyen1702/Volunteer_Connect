@@ -134,7 +134,6 @@ public class ActivityServiceImpl implements ActivityService {
         long registrationCount = (Long) activityDTO.get(0)[2];
         long totalComments = 0;
         for (Object[] result : activityDTO) {
-//            Activity activity = (Activity) result[0];
             Post post = (Post) result[1];
             Long commentCount = (Long) result[3];
             totalComments += commentCount;

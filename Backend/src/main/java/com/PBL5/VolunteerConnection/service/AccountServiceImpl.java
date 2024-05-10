@@ -16,6 +16,8 @@ import com.PBL5.VolunteerConnection.repository.AccountRepository;
 
 import java.sql.Date;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -138,6 +140,7 @@ public class AccountServiceImpl implements  AccountService{
                 .status(account.getStatus())
                 .createdAt(account.getCreatedAt().toString())
                 .updatedAt(updatedAt)
+                .userId(user.getId())
                 .birthday(birthday)
                 .tel(user.getTel())
                 .address(user.getAddress())
@@ -160,8 +163,39 @@ public class AccountServiceImpl implements  AccountService{
                 .build();
     }
 
-
-
+    @Override
+    public List<AccountResponse> getAllCandidate() {
+        List<Account> accountList = accountRepository.findAll();
+        List<AccountResponse> accountResponses = new ArrayList<>();
+        for (Account account : accountList){
+            String updatedAt = null;
+            String birthday = null;
+            User user = account.getUser();
+            if(account.getUpdatedAt()!= null){
+                updatedAt = account.getUpdatedAt().toString();
+            }
+            if(user.getBirthday() != null){
+                birthday = user.getBirthday().toString();
+            }
+            accountResponses.add(AccountResponse.builder()
+                    .id(account.getId())
+                    .account(account.getAccount())
+                    .name(account.getName())
+                    .role(account.getRole())
+                    .avatar(account.getAvatar())
+                    .status(account.getStatus())
+                    .createdAt(account.getCreatedAt().toString())
+                    .updatedAt(updatedAt)
+                    .userId(user.getId())
+                    .birthday(birthday)
+                    .tel(user.getTel())
+                    .address(user.getAddress())
+                    .gender(user.getGender())
+                    .activityNumber(user.getCandidates().size())
+                    .build());
+        }
+        return accountResponses;
+    }
 
 
 }

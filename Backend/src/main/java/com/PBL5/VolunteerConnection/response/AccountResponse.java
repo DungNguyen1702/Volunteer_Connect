@@ -30,6 +30,7 @@ public class AccountResponse {
     private String address;
     private String gender;
     private String birthday;
+    private int activityNumber;
     public AccountResponse(Account account){
         this.id = account.getId();
         this.account = account.getAccount();

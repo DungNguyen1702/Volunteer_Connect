@@ -27,10 +27,9 @@ public class Candidate {
     private Date dateCertificate;
     @Column(name = "createdAt")
     private Date createdAt;
-
-    @OneToOne(mappedBy = "candidate", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id", insertable = false, updatable = false)
     private User user;
-
     @JsonIgnore
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id")
