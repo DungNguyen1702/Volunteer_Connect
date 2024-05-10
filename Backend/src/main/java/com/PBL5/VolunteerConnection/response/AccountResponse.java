@@ -1,10 +1,14 @@
 package com.PBL5.VolunteerConnection.response;
 
 import com.PBL5.VolunteerConnection.model.Account;
+import com.PBL5.VolunteerConnection.model.User;
+import jakarta.persistence.Column;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.sql.Date;
 
 @Data
 @Builder
@@ -21,6 +25,11 @@ public class AccountResponse {
     private String updatedAt;
     private Boolean isDeleted;
     private String backgroundNoAva;
+    private int userId;
+    private String tel;
+    private String address;
+    private String gender;
+    private String birthday;
     public AccountResponse(Account account){
         this.id = account.getId();
         this.account = account.getAccount();
