@@ -42,8 +42,4 @@ public class AccountController {
         token = token.substring("Bearer ".length());
         return ResponseEntity.ok(accountService.changePassword(token, updateRequest.getPassword(), updateRequest.getNewPassword()));
     }
-    @GetMapping("/guest/getAllCandidate")
-    public ResponseEntity<List<AccountResponse>> getAllCandidate() {
-        return ResponseEntity.ok(accountService.getAllCandidate());
-    }
 }

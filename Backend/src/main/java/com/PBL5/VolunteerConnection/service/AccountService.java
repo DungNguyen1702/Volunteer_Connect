@@ -12,4 +12,5 @@ public interface AccountService {
     AccountResponse getInfoAccount(String token);
     StatusResponse changePassword(String token, String oldPassword, String newPassword);
     List<AccountResponse> getAllCandidate();
+    List<OrganizationResponse>getAllOrganization();
 }

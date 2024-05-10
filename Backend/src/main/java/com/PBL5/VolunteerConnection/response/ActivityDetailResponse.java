@@ -21,7 +21,7 @@ public class ActivityDetailResponse{
     protected String dateStart;
     protected String dateEnd;
     protected String createdAt;
-    protected String updateAt;
+    protected String updatedAt;
     protected int type;
     protected int country;
     protected String location;
@@ -50,7 +50,7 @@ public class ActivityDetailResponse{
         this.isDeleted = activity.getIsDeleted();
         this.content = activity.getContent();
         this.createdAt = activity.getCreatedAt();
-        this.updateAt = activity.getUpdateAt();
+        this.updatedAt = activity.getUpdatedAt();
         this.postList = postList;
         this.postNumber = activity.getPostNumber();
         this.applyForms = activity.getApplyFormNumber();

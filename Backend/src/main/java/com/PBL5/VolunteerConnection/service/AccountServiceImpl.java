@@ -202,6 +202,17 @@ public class AccountServiceImpl implements  AccountService{
         return accountResponses;
     }
 
+    @Override
+    public List<OrganizationResponse> getAllOrganization() {
+        List<OrganizationResponse> organizationResponses = new ArrayList<>();
+        List<Account> accountList = accountRepository.findAllByRole(2);
+        System.out.print(accountList.get(0).getId());
+        for (Account account : accountList){
+            organizationResponses.add(new OrganizationResponse(account, account.getActivities()));
+        }
+        return organizationResponses;
+    }
+
 
 }
 

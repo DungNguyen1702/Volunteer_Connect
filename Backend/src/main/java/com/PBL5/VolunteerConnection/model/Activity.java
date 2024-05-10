@@ -4,6 +4,7 @@ import java.sql.Date;
 import java.time.LocalDate;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -43,6 +44,10 @@ public class Activity {
     protected Boolean isDeleted;
     @Column(name = "content")
     protected String content;
+    @JsonIgnore
+    @ManyToOne
+    @JoinColumn(name = "organization_id", insertable = false, updatable = false)
+    private Account account;
 
     public Activity(String image, String email, String name, int type, Date deadline, Date dateStart, Date dateEnd,
             int country, String location, int organizationId, String content) {
