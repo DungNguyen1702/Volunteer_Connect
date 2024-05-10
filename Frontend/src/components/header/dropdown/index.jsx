@@ -13,8 +13,10 @@ const useDropdownNavigation = ()=>{
     
         const handlerClickLogout = ()=>{
             const callFunction = async()=>{
-                setAccount(null);
-                setToken(null);
+                await setAccount(null);
+                await setToken(null);
+                localStorage.setItem("account", null);
+                localStorage.setItem("token", null);
                 navigate('/user-homepage');
             };
             callFunction();
