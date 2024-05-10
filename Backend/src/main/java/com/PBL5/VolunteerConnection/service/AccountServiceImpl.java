@@ -122,7 +122,11 @@ public class AccountServiceImpl implements  AccountService{
     public AccountResponse getInfoAccount(String token) {
         String username = jwtService.getUsername(token);
         Account account = accountRepository.findByAccount(username);
-        User user = account.getUser();
+        User user = new User();
+        if(account.getUser() != null){
+            user = account.getUser();
+
+        }
         String updatedAt = null;
         String birthday = null;
         if(account.getUpdatedAt()!= null){
@@ -165,7 +169,8 @@ public class AccountServiceImpl implements  AccountService{
 
     @Override
     public List<AccountResponse> getAllCandidate() {
-        List<Account> accountList = accountRepository.findAll();
+        List<Account> accountList = accountRepository.findAllByRole(1);
+
         List<AccountResponse> accountResponses = new ArrayList<>();
         for (Account account : accountList){
             String updatedAt = null;

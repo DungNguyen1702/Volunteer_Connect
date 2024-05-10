@@ -25,7 +25,7 @@ public class PostsActivitiesResponse {
     private long participants;
     private long comments;
     private Boolean isLike;
-    public PostsActivitiesResponse(ActivityResponse activity, Post post, Boolean isLike){
+    public PostsActivitiesResponse(ActivityResponse activity, Post post, Boolean isLike, long comments){
         this.id = post.getId();
         this.activity = activity;
         this.title = post.getTitle();
@@ -33,7 +33,7 @@ public class PostsActivitiesResponse {
         this.content = post.getContent();
         this.createdAt = post.getCreatedAt().toString();
         this.participants = activity.getParticipants();
-        this.comments = activity.getComments();
+        this.comments = comments;
         this.isLike = isLike;
 
     }

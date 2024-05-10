@@ -2,6 +2,7 @@ package com.PBL5.VolunteerConnection.controller;
 
 import com.PBL5.VolunteerConnection.model.Post;
 import com.PBL5.VolunteerConnection.request.PostRequest;
+import com.PBL5.VolunteerConnection.response.AccountResponse;
 import com.PBL5.VolunteerConnection.response.PostDetailResponse;
 import com.PBL5.VolunteerConnection.response.PostsActivitiesResponse;
 import com.PBL5.VolunteerConnection.response.StatusResponse;
@@ -37,10 +38,7 @@ public class PostController {
         return ResponseEntity.ok(postService.deletePost(token, postRequest));
     }
 
-    @GetMapping("/guest")
-    ResponseEntity<List<PostsActivitiesResponse>> selectAll() {
-        return ResponseEntity.ok(postService.selectAll());
-    }
+
     @GetMapping("/selectAll")
     ResponseEntity<List<PostsActivitiesResponse>> selectAll(@RequestHeader("Authorization") String token) {
         token = token.substring("Bearer ".length());
@@ -59,5 +57,10 @@ public class PostController {
     @GetMapping("/postDetail")
     ResponseEntity<PostDetailResponse> getPostDetail(@RequestParam("id") int id){
         return ResponseEntity.ok(postService.getPostDetail(id));
+    }
+
+    @GetMapping("/getAllPost")
+    ResponseEntity<List<PostsActivitiesResponse>> selectAll() {
+        return ResponseEntity.ok(postService.selectAll());
     }
 }
