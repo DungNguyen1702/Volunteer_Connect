@@ -17,9 +17,10 @@ public interface PostRespository extends JpaRepository<Post, Integer> {
     Post findById(int id);
 
 //    List<Post> findAll();
-    @Query( value = "SELECT new com.PBL5.VolunteerConnection.dto.PostActivitiesDTO(a, COUNT(DISTINCT c.id), s) " +
-            "FROM Activity a " +
+    @Query( value = "SELECT new com.PBL5.VolunteerConnection.dto.PostActivitiesDTO(a, COUNT(DISTINCT c.id), COUNT(DISTINCT cm.id), s) " +
+            "FROM Activity a  " +
             "JOIN Post s ON s.activityId = a.id " +
+            "LEFT JOIN PostComment cm on cm.postId = s.id " +
             "LEFT JOIN Candidate c ON a.id = c.activityId " +
             "GROUP BY a.id, s.id")
     List<PostActivitiesDTO> findAllPostsActivities();
@@ -29,7 +30,7 @@ public interface PostRespository extends JpaRepository<Post, Integer> {
             "JOIN Post p ON p.id = s.postId " +
             "where a.id = :accountId")
     List<Post> findAllPostByAccountId(@Param("accountId") int accountId);
-    @Query( "SELECT new com.PBL5.VolunteerConnection.dto.PostDetailDTO (a, p, acc, COUNT(c.id)) " +
+    @Query( "SELECT new com.PBL5.VolunteerConnection.dto.PostDetailDTO (a, p, acc, COUNT(distinct c.id)) " +
             "from Post p " +
             "join Activity a on p.activityId = a.id " +
             "join Account acc on acc.id = a.organizationId " +

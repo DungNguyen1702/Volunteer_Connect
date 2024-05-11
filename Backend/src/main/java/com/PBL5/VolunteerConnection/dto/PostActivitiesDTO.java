@@ -14,6 +14,7 @@ import lombok.NoArgsConstructor;
 public class PostActivitiesDTO {
     private Activity activity;
     private long participants;
+    private long comments;
     private Post post;
 
 }

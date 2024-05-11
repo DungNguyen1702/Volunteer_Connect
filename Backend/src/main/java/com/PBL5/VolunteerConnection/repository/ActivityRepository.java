@@ -27,7 +27,7 @@ public interface ActivityRepository extends JpaRepository<Activity, Integer> {
 
         List<Activity> findAllByOrganizationId(int organizationId);
 
-        @Query("SELECT a, p, COUNT(r.id), COUNT(cm.id) " +
+        @Query("SELECT a, p, COUNT(distinct r.id), COUNT(distinct cm.id) " +
                         "FROM Activity a " +
                         "LEFT JOIN RegistrationForm r ON r.activityId = a.id " +
                         "JOIN Post p ON p.activityId = a.id " +
@@ -36,7 +36,7 @@ public interface ActivityRepository extends JpaRepository<Activity, Integer> {
                         "GROUP BY p.id")
         List<Object[]> getActivityWithPostsAndCounts(@Param("activityId") int activityId);
 
-        @Query("SELECT distinct a, COUNT(s.id), COUNT(r.id), count(p.id), COUNT(cm.id)" +
+        @Query("SELECT distinct a, COUNT(distinct s.id), COUNT(distinct r.id), count(distinct p.id), COUNT(distinct cm.id)" +
                         "FROM Activity a " +
                         "LEFT join Candidate s on a.id = s.activityId " +
                         "LEFT join RegistrationForm r on a.id = r.activityId " +
@@ -46,7 +46,7 @@ public interface ActivityRepository extends JpaRepository<Activity, Integer> {
                         "GROUP BY a.id")
         List<Object[]> getListActivityDetail(@Param("organizationId") int organizationId);
 
-        @Query("SELECT distinct a, COUNT(s.id), COUNT(r.id), count(p.id), COUNT(cm.id)" +
+        @Query("SELECT distinct a, COUNT(distinct s.id), COUNT(distinct r.id), count(distinct p.id), COUNT(distinct cm.id)" +
                         "FROM Activity a " +
                         "LEFT join Candidate s on a.id = s.activityId " +
                         "LEFT join RegistrationForm r on a.id = r.activityId " +

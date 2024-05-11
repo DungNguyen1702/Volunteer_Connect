@@ -127,7 +127,8 @@ public class PostServiceImpl implements PostService {
                 Post post = postDetailDTO.getPost();
                 Activity activity = postDetailDTO.getActivity();
                 long participants = postDetailDTO.getParticipants();
-                postsActivitiesResponseArrayList.add(new PostsActivitiesResponse(new ActivityResponse(activity, 0, 0, 0,  participants), post, false));
+                long comments = postDetailDTO.getComments();
+                postsActivitiesResponseArrayList.add(new PostsActivitiesResponse(new ActivityResponse(activity, 0, comments, participants, 0), post, false, comments));
             }
             return postsActivitiesResponseArrayList;
 
@@ -145,10 +146,11 @@ public class PostServiceImpl implements PostService {
             Post post = postDetailDTO.getPost();
             Activity activity = postDetailDTO.getActivity();
             long participants = postDetailDTO.getParticipants();
+            long comments = postDetailDTO.getComments();
             if (likePost.contains(post)){
-                postsActivitiesResponseArrayList.add(new PostsActivitiesResponse(new ActivityResponse(activity, 0,0, 0, participants), post,true));
+                postsActivitiesResponseArrayList.add(new PostsActivitiesResponse(new ActivityResponse(activity, 0, comments, participants, 0), post, true, comments));
             }
-            postsActivitiesResponseArrayList.add(new PostsActivitiesResponse(new ActivityResponse(activity, 0, 0, 0,  participants), post, false));
+            postsActivitiesResponseArrayList.add(new PostsActivitiesResponse(new ActivityResponse(activity, 0, comments, participants, 0), post, false, comments));
         }
         return postsActivitiesResponseArrayList;
 
@@ -167,7 +169,7 @@ public class PostServiceImpl implements PostService {
             Activity activity = postDetailDTO.getActivity();
             long participants = postDetailDTO.getParticipants();
             if (likePost.contains(post)){
-                postsActivitiesResponseArrayList.add(new PostsActivitiesResponse(new ActivityResponse(activity, 0, 0, 0,  participants), post, true));
+                postsActivitiesResponseArrayList.add(new PostsActivitiesResponse(new ActivityResponse(activity, 0, 0, 0,  participants), post, true, participants));
             }
         }
         return postsActivitiesResponseArrayList;

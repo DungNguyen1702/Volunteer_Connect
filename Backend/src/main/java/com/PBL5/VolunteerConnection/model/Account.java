@@ -46,7 +46,9 @@ public class Account implements UserDetails {
     @JsonIgnore
     @OneToMany(mappedBy = "account")
     private List<PostComment> comments;
-
+    @JsonIgnore
+    @OneToMany(mappedBy = "account")
+    private List<Activity> activities;
     @JsonIgnore
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id")
