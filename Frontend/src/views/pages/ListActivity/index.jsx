@@ -48,9 +48,7 @@ function ParticipatingActivities() {
                 await activityAPI
                     .getAllActivityByOrganization()
                     .then((response) => {
-                        // console.log("Organization");
-                        setListAct(response.data);
-                        // console.log(response.data);
+                        setListAct(response.data.filter(act=> act.isDeleted !== true));
                     })
                     .catch((error) => {
                         console.log(error);
@@ -59,9 +57,7 @@ function ParticipatingActivities() {
                 await activityAPI
                     .getAllActivityByCandidate()
                     .then((response) => {
-                        // console.log("Candidate");
-                        console.log(response.data);
-                        setListAct(response.data);
+                        setListAct(response.data.filter(act=> act.isDeleted !== true));
                     })
                     .catch((error) => {
                         console.log(error);
@@ -161,7 +157,16 @@ function ParticipatingActivities() {
     };
 
     const createAct = (newAct) => {
-        setListAct([...listAct, newAct]);
+        const createAct = async () => {
+            await activityAPI.createActivity(newAct).then((response) => {
+                setListAct([...listAct, response.data])
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+            
+        };
+        createAct();
     };
 
     return (

@@ -13,6 +13,14 @@ const activityAPI = {
         const url = `/api/v1/activity/getActivityDetail?activityId=${id}`
         return axiosClient.application.get(url)
     },
+    createActivity : (newAct)=>{
+        const url = `/api/v1/activity/organization/create`
+        return axiosClient.application.post(url, newAct)
+    },
+    updateActivity : (updateAct)=>{
+        const url = `/api/v1/activity/organization/update`
+        return axiosClient.application.post(url, updateAct)
+    },
 }
 
 export default activityAPI;

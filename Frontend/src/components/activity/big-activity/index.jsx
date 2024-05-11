@@ -41,7 +41,7 @@ function ActivityComponent(props) {
                     id="activity-component-img"
                 />
                 <p id="activity-component-main-content">
-                    {SupportFunction.TruncateText(data.content, 300)}
+                    {SupportFunction.TruncateText(data.content, 150)}
                 </p>
             </div>
             <div id="activity-component-info-wrapper">

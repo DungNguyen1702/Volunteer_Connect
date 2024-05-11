@@ -26,6 +26,7 @@ const useDropdownNavigation = () => {
                 navigate("/user-homepage");
             };
             callFunction();
+            console.log('logout')
         };
 
         const itemsCandidate = [

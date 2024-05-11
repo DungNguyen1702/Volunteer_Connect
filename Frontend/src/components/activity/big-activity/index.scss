@@ -15,6 +15,7 @@ html, body {
     justify-content: center;
     background-color: $background_act_component;
     border-radius: 15px;
+    overflow: auto;
     flex-direction: column;
 }
 
@@ -68,6 +69,8 @@ html, body {
 
 #activity-component-main-content {
     margin-right: 20px;
+    overflow-wrap: break-word;
+    max-width: 220px;
 }
 
 #activity-component-info-category {

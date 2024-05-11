@@ -69,6 +69,14 @@ function UserHomepage(props) {
                             sortOrder
                         )
                     );
+
+                    // get List popuplar
+                    const uniqueActivityPosts = [...new Set(response.data.map(post => post.activity.id))];
+                    const filteredPosts = response.data.filter(post => uniqueActivityPosts.includes(post.activity));
+                    filteredPosts.sort((a, b) => b.participants - a.participants);
+                    const popularListResult = filteredPosts.slice(0, 6);
+                    console.log(popularListResult)
+
                 })
                 .catch((error) => {
                     console.log(error);

@@ -10,10 +10,11 @@ import SupportFunction from "../../../../support/support_function";
 import ImageTag from "../../../../components/imageTag";
 import { UPLOADIMAGELINK } from "../../../../constants/uploadImageLink";
 import { UploadOutlined } from "@ant-design/icons";
+import useAuth from "../../../../hooks/useAuth";
 
 function CreateActModal(props) {
     const { isCreateAct, setIsCreateAct, createAct } = props;
-    const organization_id = 1;
+    const {account} = useAuth();
 
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
@@ -59,8 +60,12 @@ function CreateActModal(props) {
             return;
         }
 
+        if (parseInt(account.role) !== 2) {
+            toast.error("You are not an organizer");
+            return;
+        }
+
         createAct({
-            id: 10,
             image: image,
             email: email,
             name: name,
@@ -70,11 +75,9 @@ function CreateActModal(props) {
             dateEnd: dateEnd.format("YYYY-MM-DD"),
             country: parseInt(country),
             location: location,
-            organization_id: organization_id,
+            organization_id: account.id,
             content: content,
             createdAt: SupportFunction.getCurrentlyDate(),
-            participants: 0,
-            comments: 0,
         });
 
         toast.success("Create new activity successfully");
