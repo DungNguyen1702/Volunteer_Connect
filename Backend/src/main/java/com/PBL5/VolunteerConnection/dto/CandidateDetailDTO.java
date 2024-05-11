@@ -14,7 +14,9 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class CandidateDetailDTO {
-    private Candidate candidate;
-    private User user;
     private Account account;
+    private User user;
+    private Candidate candidate;
+
+
 }

@@ -14,6 +14,7 @@ import com.PBL5.VolunteerConnection.model.Activity;
 @Repository
 public interface ActivityRepository extends JpaRepository<Activity, Integer> {
         Activity findById(int id);
+        Activity findByOrganizationId(int id);
 
         Activity findByIdAndOrganizationId(int id, int organizationId);
 
