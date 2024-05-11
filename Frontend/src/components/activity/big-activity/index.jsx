@@ -20,7 +20,7 @@ function ActivityComponent(props) {
     return (
         <div class="activity-component-wrapper" onClick={onClickAct}>
             <div class="activity-component-header">
-                <h2 id="activity-component-name">{data.name}</h2>
+                <h2 id="activity-component-name">{SupportFunction.TruncateText(data.name, 24)}</h2>
                 <h4
                     id="activity-component-status"
                     style={{

@@ -10,7 +10,7 @@ const activityAPI = {
         return axiosClient.application.get(url)
     },
     getActivityDetail: (id) => {
-        const url = `/api/v1/activity/organization/getActivityDetail?activityId=${id}`
+        const url = `/api/v1/activity/getActivityDetail?activityId=${id}`
         return axiosClient.application.get(url)
     },
 }

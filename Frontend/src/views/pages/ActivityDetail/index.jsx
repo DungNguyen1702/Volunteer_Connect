@@ -6,7 +6,7 @@ import { Button } from "antd";
 import { DeleteOutlined, EditOutlined } from "@ant-design/icons";
 import { COLOR_FONT, COLOR_STATUS } from "../../../constants/color_status";
 import OrganizationIcon from "../../../components/organization";
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import { ICONS } from "../../../constants/icons";
 import PostManagement from "./PostManagement";
 import TaskManagement from "./TaskManagement";
@@ -15,6 +15,7 @@ import { ToastContainer } from "react-toastify";
 import UpdateActModal from "./Component/UpdateModal";
 import DeleteActModal from "./Component/DeleteModal";
 import useAuth from "../../../hooks/useAuth";
+import activityAPI from "../../../api/activityAPI";
 
 export const ActivityDetailContext = createContext();
 
@@ -22,17 +23,36 @@ function ActivityDetail() {
     const { id } = useParams();
     const [data, setData] = useState(fakeData.Activity_Detail);
     const { account } = useAuth();
-    const activityStatus = SupportFunction.ActivityStatus(
+    const [activityStatus, setActivityStatus] = useState(SupportFunction.ActivityStatus(
         data.dateStart,
         data.dateEnd
-    );
-    const org = data.Organization;
+    ));
+    const [org, setOrg] = useState(null);
     const [tabButton, setTabButton] = useState(2);
     const [isDeleteAct, setIsDeleteAct] = useState(false);
     const [isUpdateAct, setIsUpdateAct] = useState(false);
     const [listCandidate, setListCandidate] = useState(data.candidates);
-    const [listApplyForm, setListApplyForm] = useState(data.applyForms);
-    const [listPost, setListPost] = useState(data.posts);
+    const [listApplyForm, setListApplyForm] = useState([]);
+    const [listPost, setListPost] = useState([]);
+
+    useEffect(()=>{
+        const callApi = async () => {
+            await activityAPI
+                .getActivityDetail(id)
+                .then((response) => {
+                    console.log(response.data);
+                    setData(response.data);
+                    setListCandidate(response.data.candidates);
+                    setOrg(response.data.organization);
+                    setListPost(response.data.postList);
+
+                })
+                .catch((error) => {
+                    console.log(error);
+                });
+        };
+        callApi();
+    },[])
 
     const onClickUpdate = () => {
         setIsUpdateAct(true);
@@ -180,11 +200,11 @@ function ActivityDetail() {
                                         Organization :{" "}
                                     </p>
                                     <div class="activity-header-info-item-content">
-                                        <OrganizationIcon
+                                        {org && <OrganizationIcon
                                             name={org.name}
                                             avatar={org.avatar}
                                             id={org.id}
-                                        />
+                                        />}
                                     </div>
                                 </div>
                                 <div class="activity-header-info-item">

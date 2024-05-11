@@ -1,42 +1,46 @@
 @import "../../../constants/colors.scss";
-.usersidebar{
+.usersidebar {
     width: 100%;
     display: flex;
     flex-direction: column;
     background-color: #fff;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    justify-content: flex-start; 
+    justify-content: flex-start;
     border-radius: 10px;
 }
 .s1,
-.s2{
+.s2 {
     display: flex;
     align-items: start;
     gap: 10px;
-    padding: 20px ;
+    padding: 20px;
 }
 
 .s1:hover {
     background-color: $active_profile_button;
-    color : $accent;
+    color: $accent;
 }
-svg{
-    width: 30px;
-    height: 30px;
-    /* color: black; */
+
+.s1 {
+    svg {
+        width: 30px;
+        height: 30px;
+        /* color: black; */
+    }
 }
-.s1:hover{
+
+.s1:hover {
     background-color: antiquewhite;
     border-radius: 5px;
     cursor: pointer;
     color: black;
 }
-.styleone{
+.styleone {
     text-decoration: none;
     color: inherit;
 }
 
 .active-page {
     background-color: $active_profile_button;
-    color : $accent;
+    color: $accent;
 }

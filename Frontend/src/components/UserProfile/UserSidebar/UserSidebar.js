@@ -11,8 +11,8 @@ const UserSidebar = ({ activepage }) => {
         const callFunction = async () => {
             await setAccount(null);
             await setToken(null);
-            localStorage.setItem("account", null);
-            localStorage.setItem("token", null);
+            localStorage.removeItem("account");
+            localStorage.removeItem("token");
             navigate("/user-homepage");
         };
         callFunction();
