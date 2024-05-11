@@ -33,6 +33,7 @@ public class SecurityConfig {
                         .requestMatchers("api/v1/post/guest/**").permitAll()
                         .requestMatchers("api/v1/guest/**").permitAll()
                         .requestMatchers("api/v1/activity/organization/**").hasAuthority("2")
+                        .requestMatchers("api/v1/activity/admin/**").hasAuthority("3")
                         .requestMatchers("api/v1/activity/candidate/**").hasAuthority("1")
                         .requestMatchers("api/v1/activity/getActivityDetail").authenticated()
                         .requestMatchers("api/v1/candidate/**").hasAuthority("1"))
