@@ -47,12 +47,12 @@ function SmallPost(props) {
                         }
                     />
                     <h4 class="small-post-title">
-                        {SupportFunction.TruncateText(data.title, 24)}
+                        {SupportFunction.TruncateText(data.title, 20)}
                     </h4>
                 </div>
             ) : (
                 <h4 class="small-post-title">
-                    {SupportFunction.TruncateText(data.title, 24)}
+                    {SupportFunction.TruncateText(data.title, 18)}
                 </h4>
             )}
             <img alt="post-img" src={data.image} class="post-image" />

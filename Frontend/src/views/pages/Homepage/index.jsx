@@ -71,12 +71,22 @@ function UserHomepage(props) {
                     );
 
                     // get List popuplar
-                    const uniqueActivityPosts = [...new Set(response.data.map(post => post.activity.id))];
-                    const filteredPosts = response.data.filter(post => uniqueActivityPosts.includes(post.activity));
-                    filteredPosts.sort((a, b) => b.participants - a.participants);
-                    const popularListResult = filteredPosts.slice(0, 6);
-                    console.log(popularListResult)
+                    var uniqueActivities = [];
+                    var filteredPosts = [];
 
+                    response.data.forEach(function(post) {
+                        if (!uniqueActivities.includes(post.activity.id) && uniqueActivities.length < 6) {
+                            uniqueActivities.push(post.activity.id);
+                            filteredPosts.push(post);
+                        }
+                    });
+
+                    // Sắp xếp các bài post theo số lượng participants giảm dần
+                    filteredPosts.sort(function(a, b) {
+                        return b.participants - a.participants;
+                    });
+
+                    setPopularPost(filteredPosts.filter(post => post.participants !== 0))
                 })
                 .catch((error) => {
                     console.log(error);

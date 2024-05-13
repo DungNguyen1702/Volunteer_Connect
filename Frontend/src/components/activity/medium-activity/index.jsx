@@ -62,11 +62,6 @@ function MediumActivityComponent(props) {
                     </p>
                 </div>
             </div>
-            <div id="activity-medium-component-comment-parti-wrapper">
-                <p class="activity-medium-component-comment-parti-item">
-                    {SupportFunction.getStringParticipant(data.participants)}
-                </p>
-            </div>
         </div>
     );
 }
