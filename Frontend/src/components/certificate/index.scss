@@ -24,12 +24,14 @@ html, body {
 
 .certificate-date-earn {
     color : $subText;
+    width: 90%;
+    text-align: end;
+    margin-top: 5px;
 }
 
 .certificate-name{
     width: 100%;
     text-align: center;
     font-weight: 400;
-    margin-top : 10px;
-    margin-bottom: 5px;
+    margin: 5px 0px;
 }
