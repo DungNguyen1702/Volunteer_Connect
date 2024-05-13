@@ -34,7 +34,6 @@ public class User {
     @Column(name = "birthday")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date birthday;
-    @JsonIgnore
     @OneToOne(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Account account;
 

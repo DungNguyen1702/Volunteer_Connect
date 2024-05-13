@@ -1,7 +1,6 @@
 package com.PBL5.VolunteerConnection.model;
 
 import lombok.Data;
-import java.sql.Date;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -24,10 +23,10 @@ public class TableTask {
     private String color;
     @Column(name = "createdAt")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private Date createdAt;
+    private LocalDate createdAt;
     @Column(name = "updatedAt")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private Date updatedAt;
+    private LocalDate updatedAt;
     @OneToMany(mappedBy = "tableTask", fetch = FetchType.LAZY)
     private List<Task> Tasks;
 
@@ -39,8 +38,8 @@ public class TableTask {
         this.activityId = activityId;
         this.name = name;
         this.color = color;
-        this.createdAt = Date.valueOf(LocalDate.now());
-        this.updatedAt = Date.valueOf(LocalDate.now());
+        this.createdAt = LocalDate.now();
+        this.updatedAt = LocalDate.now();
     }
 
 }
