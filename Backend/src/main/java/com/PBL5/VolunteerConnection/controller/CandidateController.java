@@ -2,7 +2,9 @@ package com.PBL5.VolunteerConnection.controller;
 
 import com.PBL5.VolunteerConnection.model.Candidate;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Role;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import com.PBL5.VolunteerConnection.request.CandidateRequest;
