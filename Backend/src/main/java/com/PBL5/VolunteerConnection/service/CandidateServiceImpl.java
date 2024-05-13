@@ -163,7 +163,7 @@ public class CandidateServiceImpl implements CandidateService {
         int accountId = jwtService.getId(token);
         Account account = accountRepository.findById(accountId);
         List<Candidate> candidateList = account.getUser().getCandidates();
-        candidateList.removeIf(candidate -> candidate.getCertificate() == null);
+        candidateList.removeIf(candidate -> candidate.getCertificate() == null || candidate.getCertificate().isEmpty());
         List<CandidateDetailResponse> candidateDetailResponseList = new ArrayList<>();
         for (Candidate candidate : candidateList){
             candidateDetailResponseList.add(new CandidateDetailResponse(candidate.getId(), null, candidate.getActivityId(), candidate.getCertificateName(), candidate.getCertificate(),
