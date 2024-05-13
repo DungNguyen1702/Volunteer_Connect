@@ -43,16 +43,19 @@ public class AccountServiceImpl implements AccountService {
                 passwordEncoder.encode(registerRequest.getPassword()),
                 registerRequest.getName(),
                 registerRequest.getRole());
+        // account.setUser(new User());
         if (accountRepository.findByAccount(registerRequest.getAccount()) == null) {
             try {
                 if (account.getRole() == 1) {
                     accountRepository.save(account);
-                    int account_id = accountRepository.findByAccount(account.getAccount()).getId();
-                    userRespository.save(new User(account_id,
-                            registerRequest.getTel(),
-                            registerRequest.getAddress(),
-                            registerRequest.getGender(),
-                            registerRequest.getBirthday()));
+                    Account creAccount = accountRepository.findByAccount(account.getAccount());
+                    int account_id = creAccount.getId();
+                    User user = new User(account_id, registerRequest.getTel(), registerRequest.getAddress(),
+                            registerRequest.getGender(), registerRequest.getBirthday());
+                    user.setAccount(creAccount);
+                    userRespository.save(user);
+                    creAccount.setUser(user);
+                    accountRepository.save(creAccount);
                 } else {
                     account.setIsValid(false);
                     accountRepository.save(account);
@@ -130,20 +133,19 @@ public class AccountServiceImpl implements AccountService {
 
     @Override
     public AccountResponse getInfoAccount(String token) {
-        String username = jwtService.getUsername(token);
-        Account account = accountRepository.findByAccount(username);
-        User user = new User();
-        if (account.getUser() != null) {
-            user = account.getUser();
-
-        }
+        int accountId = jwtService.getId(token);
+        Account account = accountRepository.findById(accountId);
+        User user = userRespository.findByAccountId(account.getId());
         String updatedAt = null;
         String birthday = null;
+        if (account.getUser() != null) {
+            account.setUser(user);
+            if (user.getBirthday() != null) {
+                birthday = user.getBirthday().toString();
+            }
+        }
         if (account.getUpdatedAt() != null) {
             updatedAt = account.getUpdatedAt().toString();
-        }
-        if (user.getBirthday() != null) {
-            birthday = user.getBirthday().toString();
         }
         return AccountResponse.builder()
                 .id(account.getId())
@@ -180,12 +182,23 @@ public class AccountServiceImpl implements AccountService {
     @Override
     public List<AccountResponse> getAllCandidate() {
         List<Account> accountList = accountRepository.findAllByRole(1);
+        List<User> userList = userRespository.findAll();
+        System.out.print(accountList.size());
 
+        for (int i = 0; i < accountList.size(); i++) {
+            if (accountList.get(i).getUser() == null) {
+                System.out.println("NULL LA: " + accountList.get(i).getId());
+                accountList.get(i).setUser(userList.get(i));
+            } else {
+                System.out.println("KHONG NULL LA: " + accountList.get(i).getId());
+            }
+        }
         List<AccountResponse> accountResponses = new ArrayList<>();
         for (Account account : accountList) {
             String updatedAt = null;
             String birthday = null;
             User user = account.getUser();
+            // System.out.print(user);
             if (account.getUpdatedAt() != null) {
                 updatedAt = account.getUpdatedAt().toString();
             }
@@ -224,8 +237,13 @@ public class AccountServiceImpl implements AccountService {
                 if (candidate.getCertificate() != null) {
                     earnedCertificateNumber++;
                 }
-                activityList.add(candidate.getActivity());
+
+                if (candidate.getActivity() != null) {
+                    activityList.add(candidate.getActivity());
+
+                }
             }
+
             return new ContactResponse(account, user, activityList, earnedCertificateNumber);
         } else {
             Account account = accountRepository.findById(id);

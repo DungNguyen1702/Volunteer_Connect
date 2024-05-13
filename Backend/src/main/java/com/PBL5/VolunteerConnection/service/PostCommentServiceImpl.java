@@ -32,7 +32,7 @@ public class PostCommentServiceImpl implements PostCommentService {
         // TODO Auto-generated method stub
         try {
             int userCommentId = jwtService.getId(token);
-            System.out.println(postComment.getComment_parentId());
+//            System.out.println(postComment.getComment_parentId());
             PostComment createPostComment = new PostComment(postComment.getPostId(),
                     postComment.getContent(), userCommentId);
             postCommentRepository.save(createPostComment);
