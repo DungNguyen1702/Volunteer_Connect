@@ -1,9 +1,8 @@
 package com.PBL5.VolunteerConnection.model;
 
-import java.sql.Date;
+// import java.sql.Date;
 import java.time.LocalDate;
 import java.util.List;
-
 import org.springframework.format.annotation.DateTimeFormat;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -20,7 +19,6 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.Data;
-import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 @Data
@@ -32,10 +30,10 @@ public class Task {
     private int id;
     @Column(name = "date_start")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private Date dateStart;
+    private LocalDate dateStart;
     @Column(name = "date_end")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private Date dateEnd;
+    private LocalDate dateEnd;
     @Column(name = "description")
     private String description;
     @Column(name = "title")
@@ -48,10 +46,10 @@ public class Task {
     private Integer candidateId;
     @Column(name = "createdAt")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private Date createdAt;
+    private LocalDate createdAt;
     @Column(name = "updatedAt")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private Date updatedAt;
+    private LocalDate updatedAt;
 
     @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "candidate_id", referencedColumnName = "id")
@@ -70,17 +68,18 @@ public class Task {
 
     }
 
-    public Task(Date dateStart, Date dateEnd, String description, String title, int status, int tableTaskId,
+    public Task(LocalDate dateStart, LocalDate dateEnd, String description, String title, int status, int tableTaskId,
             Integer candidateId) {
         this.dateStart = dateStart;
         this.dateEnd = dateEnd;
+
         this.description = description;
         this.title = title;
         this.status = status;
         this.tableTaskId = tableTaskId;
         this.candidateId = candidateId;
-        this.createdAt = Date.valueOf(LocalDate.now());
-        this.updatedAt = Date.valueOf(LocalDate.now());
+        this.createdAt = LocalDate.now();
+        this.updatedAt = LocalDate.now();
     }
 
 }

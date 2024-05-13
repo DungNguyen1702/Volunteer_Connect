@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.PBL5.VolunteerConnection.model.TableTask;
@@ -47,5 +48,12 @@ public class TableTaskController {
     @GetMapping("/selectAll")
     ResponseEntity<List<TableTask>> selectAll() {
         return ResponseEntity.ok(tableTaskService.selectAll());
+    }
+
+    @GetMapping("/selectTableTaskActivityId")
+    ResponseEntity<List<TableTask>> getTableTaskActivityId(@RequestHeader("Authorization") String token,
+            @RequestParam("id") int id) {
+        token = token.substring("Bearer ".length());
+        return ResponseEntity.ok(tableTaskService.selectAllByActivityId(token, id));
     }
 }
