@@ -23,6 +23,10 @@ public class RegistrationForm {
     @Column(name = "createdAt")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate createdAt;
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "user_id", insertable = false, updatable = false)
+    // @JsonIgnore
+    private User user;
 
     public RegistrationForm() {
 

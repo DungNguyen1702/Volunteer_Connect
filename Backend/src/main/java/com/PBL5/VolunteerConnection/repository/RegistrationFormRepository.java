@@ -11,4 +11,6 @@ public interface RegistrationFormRepository extends JpaRepository<RegistrationFo
     RegistrationForm findById(int id);
 
     List<RegistrationForm> findByActivityId(int activityId);
+
+    List<RegistrationForm> findByActivityIdAndIsConfirmed(int activityId, int isConfirmed);
 }
