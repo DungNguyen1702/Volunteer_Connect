@@ -45,8 +45,21 @@ function ListPeople() {
             contactAPI
                 .getAllOrganization()
                 .then((response) => {
+                    // set all organization
                     setListAllOrganization(response.data);
-                    console.log(response.data)
+
+                    // set popular organization
+                    let organizationsWithValidActivities = response.data.filter(org => {
+                        return org.activities.length > 0 ;
+                    });
+
+                    let popularOrganization = organizationsWithValidActivities.sort((a, b) => {
+
+                        return b.activities.length - a.activities.length;
+                    });
+                    
+                    setListPopularOrganization(popularOrganization.slice(0,6));
+
                 })
                 .catch((error) => {
                     console.log(error);
