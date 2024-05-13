@@ -13,12 +13,8 @@ function ListPeople() {
 
     const limit = 6;
 
-    const [listAllOrganization, setListAllOrganization] = useState(
-        []
-    );
-    const [listPopularOrganization, setListPopularOrganization] = useState(
-        []
-    );
+    const [listAllOrganization, setListAllOrganization] = useState([]);
+    const [listPopularOrganization, setListPopularOrganization] = useState([]);
     const [listAllCandidate, seListAllCandidate] = useState(
         FakeData.ListAccountCandidate
     );
@@ -49,17 +45,18 @@ function ListPeople() {
                     setListAllOrganization(response.data);
 
                     // set popular organization
-                    let organizationsWithValidActivities = response.data.filter(org => {
-                        return org.activities.length > 0 ;
-                    });
+                    let organizationsWithValidActivities = response.data.filter(
+                        (org) => {
+                            return org.activities.length > 0;
+                        }
+                    );
 
-                    let popularOrganization = organizationsWithValidActivities.sort((a, b) => {
+                    let popularOrganization =
+                        organizationsWithValidActivities.sort((a, b) => {
+                            return b.activities.length - a.activities.length;
+                        });
 
-                        return b.activities.length - a.activities.length;
-                    });
-                    
-                    setListPopularOrganization(popularOrganization.slice(0,6));
-
+                    setListPopularOrganization(popularOrganization.slice(0, 6));
                 })
                 .catch((error) => {
                     console.log(error);
@@ -167,16 +164,16 @@ function ListPeople() {
                     </Dropdown>
                 </div>
 
-                {listAllOrganization && listAllOrganization.length !== 0 && (
-                    <>
-                        {/* Popular organization  */}
-                        <div
-                            id="popularOrganization"
-                            class="list-people-content-big-holder"
-                        >
-                            <h3 class="list-people-content-title">
-                                Popular organization
-                            </h3>
+                {/* Popular organization  */}
+                <div
+                    id="popularOrganization"
+                    class="list-people-content-big-holder"
+                >
+                    <h3 class="list-people-content-title">
+                        Popular organization
+                    </h3>
+                    {listAllOrganization &&
+                        listAllOrganization.length !== 0 && (
                             <div class="list-people-content-grid-layout">
                                 {listPopularOrganization.map((organization) => (
                                     <OrganizationItem
@@ -184,58 +181,57 @@ function ListPeople() {
                                     />
                                 ))}
                             </div>
-                        </div>
+                        )}
+                </div>
 
-                        {/* All organization  */}
-                        <div
-                            id="allOrganization"
-                            class="list-people-content-big-holder"
-                        >
-                            <h3 class="list-people-content-title">
-                                All organization
-                            </h3>
-                            <div class="list-people-content-grid-layout">
-                                {showListOrg.map((organization) => (
-                                    <OrganizationItem
-                                        organizationInfo={organization}
-                                    />
-                                ))}
-                            </div>
-                            <Pagination
-                                total={listAllOrganization.length}
-                                pageSize={limit}
-                                onChange={onChangePageOrg}
-                                className="list-people-pagination"
-                            />
-                        </div>
-                    </>
-                )}
+                {/* All organization  */}
+                <div
+                    id="allOrganization"
+                    class="list-people-content-big-holder"
+                >
+                    <h3 class="list-people-content-title">All organization</h3>
+                    {listAllOrganization &&
+                        listAllOrganization.length !== 0 && (
+                            <>
+                                <div class="list-people-content-grid-layout">
+                                    {showListOrg.map((organization) => (
+                                        <OrganizationItem
+                                            organizationInfo={organization}
+                                        />
+                                    ))}
+                                </div>
+                                <Pagination
+                                    total={listAllOrganization.length}
+                                    pageSize={limit}
+                                    onChange={onChangePageOrg}
+                                    className="list-people-pagination"
+                                />
+                            </>
+                        )}
+                </div>
 
-                {listAllCandidate && listAllCandidate.length !== 0 && (
-                    <>
-                        {/* Enthusiastic candidate   */}
-                        <div
-                            id="enthusiasticCandidate"
-                            class="list-people-content-big-holder"
-                        >
-                            <h3 class="list-people-content-title">
-                                Enthusiastic candidate
-                            </h3>
-                            <div class="list-people-content-grid-layout">
-                                {listEnthusiasticCandidate.map((candidate) => (
-                                    <CandidateItem candidateInfo={candidate} />
-                                ))}
-                            </div>
+                {/* Enthusiastic candidate   */}
+                <div
+                    id="enthusiasticCandidate"
+                    class="list-people-content-big-holder"
+                >
+                    <h3 class="list-people-content-title">
+                        Enthusiastic candidate
+                    </h3>
+                    {listAllCandidate && listAllCandidate.length !== 0 && (
+                        <div class="list-people-content-grid-layout">
+                            {listEnthusiasticCandidate.map((candidate) => (
+                                <CandidateItem candidateInfo={candidate} />
+                            ))}
                         </div>
+                    )}
+                </div>
 
-                        {/* All candidate   */}
-                        <div
-                            id="allCandidate"
-                            class="list-people-content-big-holder"
-                        >
-                            <h3 class="list-people-content-title">
-                                All candidate
-                            </h3>
+                {/* All candidate   */}
+                <div id="allCandidate" class="list-people-content-big-holder">
+                    <h3 class="list-people-content-title">All candidate</h3>
+                    {listAllCandidate && listAllCandidate.length !== 0 && (
+                        <>
                             <div class="list-people-content-grid-layout">
                                 {showListCan.map((candidate) => (
                                     <CandidateItem candidateInfo={candidate} />
@@ -247,9 +243,9 @@ function ListPeople() {
                                 onChange={onChangePageCan}
                                 className="list-people-pagination"
                             />
-                        </div>
-                    </>
-                )}
+                        </>
+                    )}
+                </div>
             </div>
         </div>
     );

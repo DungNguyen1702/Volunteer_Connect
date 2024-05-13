@@ -1,0 +1,83 @@
+@import '../../../constants/colors.scss';
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    font-size: 16px;
+}
+
+.liked-post-component-wrapper {
+    width: 100%;
+    background-color: $background_big_post;
+    margin : 15px 0px;
+    border-radius: 15px;
+    transition: all 0.3s ease;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.liked-post-component-wrapper:hover {
+    transform: scale(1.05); /* Phóng to lên 1.05 lần */
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.5); /* Điều chỉnh giá trị rgba để tùy chỉnh màu sắc và độ đậm của bóng */
+}
+
+.liked-post-header {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.post-title {
+    color: $primary_green;
+    max-width: 65%;
+    text-align: center;
+}
+
+.post-status {
+    padding : 8px;
+    border-radius: 20px;
+    font-size: small;
+}
+
+.liked-post-info {
+    display: flex;
+    justify-content: space-between;
+    margin : 20px 60px;
+}
+.liked-post-type {
+    color: $secondary_green;
+}
+
+.liked-post-content {
+    display: flex;
+    padding : 0 30px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.liked-post-date, .liked-post-type {
+    font-size: 12px;
+}
+
+.liked-post-img {
+    height: 100px;
+    width: 70%;
+    margin-right: 20px;
+}
+
+.liked-post-footer {
+    display: flex;
+    margin : 20px 30px;
+    justify-content: end;
+}
+
+.liked-post-comment, .liked-post-participant {
+    color : $subText
+}
+
+.liked-post-comment {
+    margin-right: 20px;
+}

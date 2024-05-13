@@ -11,6 +11,7 @@ import moment from "moment";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMars, faVenus } from "@fortawesome/free-solid-svg-icons";
 import accountInfoAPI from "../../../api/accountAPI";
+import ValidateFunction from "../../../support/validator";
 
 const AccountSetting = () => {
     const { account, setAccount } = useAuth();
@@ -59,15 +60,21 @@ const AccountSetting = () => {
             };
             updateAPI();
         } else if (status === 2) {
-            if (address === "" || birthday || tel === "") {
+            if (address === "" || !birthday || tel === "") {
                 const errorString = `Please input ${
                     (name === "" && "name") ||
-                    (birthday && "birthday") ||
+                    (!birthday && "birthday") ||
                     (tel === "" && "tel")
                 }`;
                 toast.error(errorString);
                 return;
             }
+
+            if (!ValidateFunction.ValidateTelephone(tel)) {
+                toast.error("Please input again the telephone number");
+                return;
+            }
+
             const updateAPI = async () => {
                 await accountInfoAPI
                     .updateAccount({
