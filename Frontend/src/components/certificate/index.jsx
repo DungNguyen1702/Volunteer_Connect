@@ -15,7 +15,7 @@ function CertificateComponent(props) {
                 nameImage={"certificate name"}
             />
             <p class='certificate-date-earn'>{data.date_earn_certificate}</p>
-            <h3 class='certificate-name'>{SupportFunction.TruncateText(`Certificate of "${data.activity.name}" activity`, 50)}</h3>
+            <h3 class='certificate-name'>{data.certificateName && SupportFunction.TruncateText(data.certificateName, 50)}</h3>
         </div>
     );
 }

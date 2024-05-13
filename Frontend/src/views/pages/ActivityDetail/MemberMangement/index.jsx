@@ -18,7 +18,7 @@ import ApplyFormModal from "./Component/ApplyFormModal";
 import useAuth from "../../../../hooks/useAuth";
 
 function MemberManagement() {
-    const { listCandidate, updateCandidate, deleteCandidate } = useContext(
+    const { listCandidate, updateCandidate, deleteCandidate, actInfo } = useContext(
         ActivityDetailContext
     );
 
@@ -49,8 +49,9 @@ function MemberManagement() {
         if (info.file.status === "done") {
             toast.success(`${info.file.name} file uploaded successfully`);
             updateCandidate(candidateId, {
-                date_earn_certificate: SupportFunction.getCurrentlyDate(),
+                dateCertificate: SupportFunction.getCurrentlyDate(),
                 certificate: info.file.response.result.url,
+                certificateName : `Certificate of "${actInfo.name}" activity`
             });
         } else if (info.file.status === "error") {
             toast.error(`${info.file.name} file upload failed.`);
