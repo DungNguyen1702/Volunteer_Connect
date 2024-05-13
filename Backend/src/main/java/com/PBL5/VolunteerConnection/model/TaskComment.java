@@ -1,6 +1,5 @@
 package com.PBL5.VolunteerConnection.model;
 
-import java.sql.Date;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -38,10 +37,10 @@ public class TaskComment {
     private int accountId;
     @Column(name = "createdAt")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private Date createdAt;
+    private LocalDate createdAt;
     @Column(name = "updatedAt")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private Date updatedAt;
+    private LocalDate updatedAt;
     @Column(name = "isDeleted")
     private boolean isDeleted;
 
@@ -70,8 +69,8 @@ public class TaskComment {
         this.content = content;
         this.taskId = taskId;
         this.accountId = accountId;
-        this.createdAt = Date.valueOf(LocalDate.now());
-        this.updatedAt = Date.valueOf(LocalDate.now());
+        this.createdAt = LocalDate.now();
+        this.updatedAt = LocalDate.now();
         this.isDeleted = isDeleted;
     }
 

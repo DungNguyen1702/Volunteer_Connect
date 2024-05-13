@@ -1,6 +1,5 @@
 package com.PBL5.VolunteerConnection.service;
 
-import java.sql.Date;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -9,7 +8,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import com.PBL5.VolunteerConnection.model.Candidate;
 import com.PBL5.VolunteerConnection.model.TableTask;
+import com.PBL5.VolunteerConnection.model.User;
 import com.PBL5.VolunteerConnection.repository.ActivityRepository;
 import com.PBL5.VolunteerConnection.repository.CandidateRepository;
 import com.PBL5.VolunteerConnection.repository.TableTaskRepository;
@@ -66,7 +67,7 @@ public class TableTaskServiceImpl implements TableTaskService {
                 TableTask updateTableTask = tableTaskRepository.findById(tableTask.getId());
                 updateTableTask.setColor(tableTask.getColor());
                 updateTableTask.setName(tableTask.getName());
-                updateTableTask.setUpdatedAt(Date.valueOf(LocalDate.now()));
+                updateTableTask.setUpdatedAt(LocalDate.now());
                 // TODO: handle exception
                 tableTaskRepository.save(updateTableTask);
                 return StatusResponse.builder()
@@ -116,7 +117,7 @@ public class TableTaskServiceImpl implements TableTaskService {
     public List<TableTask> selectAll() {
         // TODO Auto-generated method stub
         try {
-            List<TableTask> listComments = tableTaskRepository.findAll();
+            List<TableTask> listComments = tableTaskRepository.findByActivityId(8);
             return listComments;
         } catch (Exception e) {
             // TODO: handle exception
@@ -128,7 +129,22 @@ public class TableTaskServiceImpl implements TableTaskService {
     @Override
     public List<TableTask> selectAllByActivityId(String token, int activityId) {
         // TODO Auto-generated method stub
-        return null;
+        int organizationId = activityRepository.findById(activityId).getOrganizationId();
+        int account_id = jwtService.getId(token);
+        List<Candidate> listcCandidates = candidateRepository.findByActivityId(activityId);
+        boolean check = false;
+        for (Candidate candidate : listcCandidates) {
+            if (candidate.getUser().getAccountId() == account_id) {
+                check = true;
+            }
+        }
+        if (check == true || account_id == organizationId) {
+            List<TableTask> tableTasks = tableTaskRepository.findByActivityId(activityId);
+            return tableTasks;
+        } else {
+            System.out.println("you not ower activity or candidate");
+            return null;
+        }
 
     }
 
