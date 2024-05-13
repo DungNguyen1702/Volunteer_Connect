@@ -6,6 +6,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 import jakarta.persistence.*;
+import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 @Data
@@ -22,8 +23,10 @@ public class TableTask {
     @Column(name = "color")
     private String color;
     @Column(name = "createdAt")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date createdAt;
     @Column(name = "updatedAt")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date updatedAt;
     @OneToMany(mappedBy = "tableTask", fetch = FetchType.LAZY)
     private List<Task> Tasks;

@@ -7,6 +7,7 @@ import java.sql.Date;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 @Data
@@ -16,7 +17,7 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private int id;
-    @Column(name = "account_id")
+    @Column(name = "account_id", insertable = false, updatable = false)
     private int accountId;
     @Column(name = "tel")
     private String tel;
@@ -25,14 +26,19 @@ public class User {
     @Column(name = "gender")
     private String gender;
     @Column(name = "birthday")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date birthday;
-
+    // @JsonIgnore
+    // @OneToOne(fetch = FetchType.LAZY)
+    // @JoinColumn(name = "account_id", referencedColumnName = "id")
+    // private Account account;
     @OneToOne(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Account account;
 
     @JsonIgnore
     @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
     private List<Candidate> candidates;
+
     public User() {
 
     }
