@@ -136,10 +136,13 @@ public class ActivityServiceImpl implements ActivityService {
         long registrationCount = (Long) activityDTO.get(0)[2];
         long totalComments = 0;
         for (Object[] result : activityDTO) {
-            Post post = (Post) result[1];
-            Long commentCount = (Long) result[3];
-            totalComments += commentCount;
-            postActivityDetailDTOS.add(new PostActivityDetailDTO(post, commentCount));
+            if ((Post) result[1] != null){
+                Post post = (Post) result[1];
+                Long commentCount = (Long) result[3];
+                totalComments += commentCount;
+                postActivityDetailDTOS.add(new PostActivityDetailDTO(post, commentCount));
+            }
+//            postActivityDetailDTOS.add(null);
         }
         List<CandidateDetailResponse> candidates = candidateService.getCandidateDetail(token, id);
         int postNumber = postActivityDetailDTOS.size();
