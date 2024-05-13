@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 import lombok.Data;
 import org.springframework.format.annotation.DateTimeFormat;
 
-import java.sql.Date;
+import java.time.LocalDate;
 
 @Entity
 @Data
@@ -19,8 +19,20 @@ public class RegistrationForm {
     @Column(name = "activity_id")
     private int activityId;
     @Column(name = "isConfirmed")
-    private Boolean isConfirmed;
+    private int isConfirmed;
     @Column(name = "createdAt")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private Date createdAt;
+    private LocalDate createdAt;
+
+    public RegistrationForm() {
+
+    }
+
+    public RegistrationForm(int userId, int activityId) {
+        this.userId = userId;
+        this.activityId = activityId;
+        this.isConfirmed = 0;
+        this.createdAt = LocalDate.now();
+    }
+
 }
