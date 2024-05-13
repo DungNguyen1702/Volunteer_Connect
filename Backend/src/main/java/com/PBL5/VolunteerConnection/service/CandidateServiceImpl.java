@@ -5,7 +5,9 @@ import java.util.List;
 
 import com.PBL5.VolunteerConnection.dto.CandidateDetailDTO;
 import com.PBL5.VolunteerConnection.model.Account;
+import com.PBL5.VolunteerConnection.model.Activity;
 import com.PBL5.VolunteerConnection.model.User;
+import com.PBL5.VolunteerConnection.repository.AccountRepository;
 import com.PBL5.VolunteerConnection.response.CandidateDetailResponse;
 import com.PBL5.VolunteerConnection.response.UserDetailResponse;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,7 +27,7 @@ public class CandidateServiceImpl implements CandidateService {
     @Autowired
     private CandidateRepository candidateRepository;
     @Autowired
-    private AccountService accountService;
+    private AccountRepository accountRepository;
     @Autowired
     private ActivityRepository activityRepository;
     @Autowired
@@ -64,14 +66,12 @@ public class CandidateServiceImpl implements CandidateService {
     public StatusResponse updateCandidate(String token, CandidateRequest candidate) {
         // TODO Auto-generated method stub
         try {
-
-            int organizationId = activityRepository.findById(candidate.getActivityId()).getOrganizationId();
-            if (organizationId == jwtService.getId(token)) {
-                Candidate updateCandidate = candidateRepository.findById(candidate.getId());
-                updateCandidate.setActivityId(candidate.getActivityId());
+            Candidate updateCandidate = candidateRepository.findById(candidate.getId());
+            Activity activity = activityRepository.findById(updateCandidate.getActivityId());
+            if (activity.getOrganizationId() == jwtService.getId(token)) {
                 updateCandidate.setCertificate(candidate.getCertificate());
                 updateCandidate.setDateCertificate(candidate.getDateCertificate());
-                updateCandidate.setUserId(candidate.getUserId());
+                updateCandidate.setCertificateName(candidate.getCertificateName());
                 candidateRepository.save(updateCandidate);
                 return StatusResponse.builder()
                         .success(ResponseEntity.status(HttpStatus.ACCEPTED)
@@ -152,8 +152,23 @@ public class CandidateServiceImpl implements CandidateService {
             Account account = candidateDetailDTO.getAccount();
             User user = candidateDetailDTO.getUser();
             candidateDetailResponseList.add(new CandidateDetailResponse(candidate.getId(),
-                    new UserDetailResponse(user, account), candidate.getActivityId(), candidate.getCertificate(),
+                    new UserDetailResponse(user, account), candidate.getActivityId(),candidate.getCertificateName(), candidate.getCertificate(),
                     certificateDate, candidate.getCreatedAt().toString()));
+        }
+        return candidateDetailResponseList;
+    }
+
+    @Override
+    public List<CandidateDetailResponse> getAllCertificateByAccountId(String token) {
+        int accountId = jwtService.getId(token);
+        Account account = accountRepository.findById(accountId);
+        List<Candidate> candidateList = account.getUser().getCandidates();
+        candidateList.removeIf(candidate -> candidate.getCertificate() == null);
+        List<CandidateDetailResponse> candidateDetailResponseList = new ArrayList<>();
+        for (Candidate candidate : candidateList){
+            candidateDetailResponseList.add(new CandidateDetailResponse(candidate.getId(), null, candidate.getActivityId(), candidate.getCertificateName(), candidate.getCertificate(),
+                    candidate.getDateCertificate() != null ? candidate.getDateCertificate().toString() : null,
+                    candidate.getCreatedAt() != null ? candidate.getCreatedAt().toString() : null));
         }
         return candidateDetailResponseList;
     }
