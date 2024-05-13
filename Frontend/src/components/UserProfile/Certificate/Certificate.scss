@@ -1,0 +1,43 @@
+@import "../../../constants/colors.scss";
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    font-size: 15px;
+    background-color: $background;
+}
+
+.certificate-wrapper{
+    width: 100%;
+    background-color: $white;
+    padding : 10px 10px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+#certificate-profile-title {
+    color: rgb(189, 105, 56);
+    font-size: 30px;
+    font-weight: 300;
+    padding: 5px 10px;
+    border: 10px;
+}
+
+.certificate-grid-layout{
+    display: grid;
+    grid-template-columns: 30% 30% 30%;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.certificate-profile-footer {
+    width: 100%;
+    display: flex;
+    justify-content: end;
+    margin-top : 15px;
+}

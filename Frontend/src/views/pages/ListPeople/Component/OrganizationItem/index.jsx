@@ -13,7 +13,7 @@ function OrganizationItem(props) {
         console.log("chat with " + organizationInfo.id);
     };
     const onClickOrganization = ()=>{
-        navigate(`/contact-user/${organizationInfo.id}`);
+        navigate(`/contact-user/${organizationInfo.id}/2`);
     }
 
     return (
@@ -36,9 +36,9 @@ function OrganizationItem(props) {
                 {organizationInfo.account}
             </p>
             <hr class="organization-item-hr" />
-            {organizationInfo.activity ? (
+            {organizationInfo.activities && organizationInfo.activities.length !== 0 ? (
                 <p class="organization-item-paragraph">
-                    Organization of "{organizationInfo.activity.name}"
+                    Organization of "{organizationInfo.activities[organizationInfo.activities.length - 1].name}"
                 </p>
             ) : (
                 <p class="organization-item-paragraph">

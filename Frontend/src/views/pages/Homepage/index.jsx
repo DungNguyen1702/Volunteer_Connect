@@ -29,14 +29,10 @@ function UserHomepage(props) {
     // set UseState
     const [startIndex, setStartIndex] = useState(0);
     const { account } = useAuth();
-    const [likedPosts, setLikedPosts] = useState(
-        addIsLikedField(fake_data["Posts-Activities"])
-    );
+    const [likedPosts, setLikedPosts] = useState([]);
     const [listPosts, setListPosts] = useState([]);
     const [filterListPosts, setFilterListPosts] = useState(listPosts);
-    const [popularPosts, setPopularPost] = useState(
-        fake_data["Posts-Activities"]
-    );
+    const [popularPosts, setPopularPost] = useState([]);
 
     const [listShowActs, setListShowActs] = useState(
         listPosts.slice(startIndex, startIndex + limit)
@@ -56,7 +52,7 @@ function UserHomepage(props) {
         const getAllPostApi = async () => {
             await postAPI
                 .getAllPost()
-                .then((response) => {
+                .then(async (response) => {
                     // console.log(response.data);
                     setListPosts(response.data);
                     setFilterListPosts(
@@ -71,12 +67,45 @@ function UserHomepage(props) {
                     );
 
                     // get List popuplar
-                    const uniqueActivityPosts = [...new Set(response.data.map(post => post.activity.id))];
-                    const filteredPosts = response.data.filter(post => uniqueActivityPosts.includes(post.activity));
-                    filteredPosts.sort((a, b) => b.participants - a.participants);
-                    const popularListResult = filteredPosts.slice(0, 6);
-                    console.log(popularListResult)
+                    var uniqueActivities = [];
+                    var filteredPosts = [];
 
+                    response.data.forEach(function (post) {
+                        if (
+                            !uniqueActivities.includes(post.activity.id) &&
+                            uniqueActivities.length < 6
+                        ) {
+                            uniqueActivities.push(post.activity.id);
+                            filteredPosts.push(post);
+                        }
+                    });
+
+                    // Sắp xếp các bài post theo số lượng participants giảm dần
+                    filteredPosts.sort(function (a, b) {
+                        return b.participants - a.participants;
+                    });
+
+                    setPopularPost(
+                        filteredPosts.filter((post) => post.participants !== 0)
+                    );
+
+                    // get Like post
+                    await postAPI
+                    .getLikedPost()
+                    .then((response1) => {
+                        setLikedPosts(addIsLikedField(response1.data).slice(0, 6));
+                        setListPosts(
+                            response.data.map((post) => {
+                                return {
+                                    ...post,
+                                    isLiked: response1.data.some(
+                                        (likedPost) => likedPost.id === post.id
+                                    ),
+                                };
+                            })
+                        );
+                    })
+                    .catch((error) => console.log(error));
                 })
                 .catch((error) => {
                     console.log(error);
@@ -84,7 +113,7 @@ function UserHomepage(props) {
         };
 
         getAllPostApi();
-    },[]);
+    }, []);
 
     useEffect(() => {
         setFilterListPosts(
@@ -345,7 +374,7 @@ function UserHomepage(props) {
             <div
                 class="content-wrapper"
                 style={
-                    account 
+                    account
                         ? {
                               gridTemplateColumns: "20% 60% 20%",
                           }
@@ -367,7 +396,7 @@ function UserHomepage(props) {
                             <BigPost data={post} key={"big-post" + post.id} />
                         ))
                     ) : (
-                        <div class='height-100 justify-content'>
+                        <div class="height-100 justify-content">
                             <p class="color-gray">There is no posts in here</p>
                         </div>
                     )}

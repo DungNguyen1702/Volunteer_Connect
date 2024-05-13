@@ -26,13 +26,12 @@ function BigPost(props) {
         data.activity.dateEnd
     );
 
-    const clickAct = () => {
-        console.log("big post " + data.id);
+    const clickPost = () => {
         navigate(`/post-detail/${data.id}`);
     };
 
     return (
-        <div class="big-post-wrapper" onClick={clickAct}>
+        <div class="big-post-wrapper" onClick={clickPost}>
             {/* big post header  */}
             <div class="big-post-header">
                 {account && (

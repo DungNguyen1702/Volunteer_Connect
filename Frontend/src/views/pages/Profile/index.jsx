@@ -6,6 +6,7 @@ import AccountSetting from '../../../components/UserProfile/AccountSetting/Accou
 import Header from '../../../components/header';
 import Security from '../../../components/UserProfile/Security/Security';
 import Certificate from '../../../components/UserProfile/Certificate/Certificate';
+import LikedPost from '../../../components/UserProfile/LikedPost/index'
 
 const Profile =() => {
   const { activepage } = useParams();
@@ -20,6 +21,7 @@ const Profile =() => {
         <div className='right'>
           {activepage === 'accountsetting' && <AccountSetting />}
           {activepage === 'security' && <Security />}
+          {activepage === 'likedPosts' && <LikedPost />}
           {activepage === 'certificate' && <Certificate />}
         </div>
       </div>

@@ -13,7 +13,7 @@ function CandidateItem(props) {
         console.log("chat with " + candidateInfo.id);
     };
     const onClickCandidate = ()=>{
-        navigate(`/contact-user/${candidateInfo.id}`);
+        navigate(`/contact-user/${candidateInfo.id}/1`);
     }
 
     return (
@@ -37,11 +37,11 @@ function CandidateItem(props) {
             </div>
             <div class="candidate-item-paragraph">
                 <strong class="color-primary-green width-30">Birthday : </strong>{" "}
-                {candidateInfo.user.birthday}
+                {candidateInfo.birthday}
             </div>
             <div class="candidate-item-paragraph">
                 <strong class="color-primary-green width-30">Address : </strong>{" "}
-                {candidateInfo.user.address}
+                {candidateInfo.address}
             </div>
             <Button
                 className="candidate-item-button-chat"

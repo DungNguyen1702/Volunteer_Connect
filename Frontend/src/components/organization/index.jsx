@@ -8,7 +8,7 @@ function OrganizationIcon(props) {
     const navigate = useNavigate();
 
     const handlerClickOrg = ()=>{
-        navigate(`/contact-user/${id}`)
+        navigate(`/contact-user/${id}/2`)
     };
 
     return (

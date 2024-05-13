@@ -31,6 +31,7 @@ function ChatBoxContent(props) {
                     backgroundNoAva={data.backgroundNoAva}
                     size={70}
                     id={data.id}
+                    role={data.role}
                 />
             </div>
             <div class="chat-box-main-chat-content">
