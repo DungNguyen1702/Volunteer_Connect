@@ -139,22 +139,23 @@ public class CandidateServiceImpl implements CandidateService {
 
     @Override
     public List<CandidateDetailResponse> getCandidateDetail(String token, int activityId) {
-//        List<Candidate> candidatelList = candidateRepository.findByActivityId(activityId);
+        // List<Candidate> candidatelList =
+        // candidateRepository.findByActivityId(activityId);
         List<CandidateDetailResponse> candidateDetailResponseList = new ArrayList<>();
         List<CandidateDetailDTO> candidateDetailDTOList = candidateRepository.findAllByActivityId(activityId);
-        for(CandidateDetailDTO candidateDetailDTO : candidateDetailDTOList){
+        for (CandidateDetailDTO candidateDetailDTO : candidateDetailDTOList) {
             Candidate candidate = candidateDetailDTO.getCandidate();
             String certificateDate = null;
-            if(candidate.getDateCertificate() != null){
+            if (candidate.getDateCertificate() != null) {
                 certificateDate = candidate.getDateCertificate().toString();
             }
             Account account = candidateDetailDTO.getAccount();
             User user = candidateDetailDTO.getUser();
             candidateDetailResponseList.add(new CandidateDetailResponse(candidate.getId(),
-                    new UserDetailResponse(user, account), candidate.getActivityId(), candidate.getCertificate(), certificateDate,candidate.getCreatedAt().toString()));
+                    new UserDetailResponse(user, account), candidate.getActivityId(), candidate.getCertificate(),
+                    certificateDate, candidate.getCreatedAt().toString()));
         }
         return candidateDetailResponseList;
     }
-
 
 }

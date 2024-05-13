@@ -10,7 +10,6 @@ import org.springframework.stereotype.Service;
 
 import com.PBL5.VolunteerConnection.model.Candidate;
 import com.PBL5.VolunteerConnection.model.TableTask;
-import com.PBL5.VolunteerConnection.model.User;
 import com.PBL5.VolunteerConnection.repository.ActivityRepository;
 import com.PBL5.VolunteerConnection.repository.CandidateRepository;
 import com.PBL5.VolunteerConnection.repository.TableTaskRepository;
@@ -46,7 +45,7 @@ public class TableTaskServiceImpl implements TableTaskService {
                         .build();
             } else {
                 return StatusResponse.builder()
-                        .success(ResponseEntity.status(HttpStatus.NOT_ACCEPTABLE)
+                        .fail(ResponseEntity.status(HttpStatus.NOT_ACCEPTABLE)
                                 .body("TableTask cant not be created because you are not owner!!"))
                         .build();
             }
@@ -76,7 +75,7 @@ public class TableTaskServiceImpl implements TableTaskService {
                         .build();
             } else {
                 return StatusResponse.builder()
-                        .success(ResponseEntity.status(HttpStatus.NOT_ACCEPTABLE)
+                        .fail(ResponseEntity.status(HttpStatus.NOT_ACCEPTABLE)
                                 .body("TableTask cant not be updated because you are not owner!!"))
                         .build();
             }
@@ -101,7 +100,7 @@ public class TableTaskServiceImpl implements TableTaskService {
                         .build();
             } else {
                 return StatusResponse.builder()
-                        .success(ResponseEntity.status(HttpStatus.NOT_ACCEPTABLE)
+                        .fail(ResponseEntity.status(HttpStatus.NOT_ACCEPTABLE)
                                 .body("TableTask cant not be deleted because you are not owner!!"))
                         .build();
             }
@@ -117,7 +116,7 @@ public class TableTaskServiceImpl implements TableTaskService {
     public List<TableTask> selectAll() {
         // TODO Auto-generated method stub
         try {
-            List<TableTask> listComments = tableTaskRepository.findByActivityId(8);
+            List<TableTask> listComments = tableTaskRepository.findAll();
             return listComments;
         } catch (Exception e) {
             // TODO: handle exception

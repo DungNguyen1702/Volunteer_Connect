@@ -20,7 +20,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 public class Account implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
+    @Column(name = "id", insertable = false, updatable = false)
     private int id;
     @Column(name = "account")
     private String account;
@@ -54,14 +54,18 @@ public class Account implements UserDetails {
     @JsonIgnore
     @OneToMany(mappedBy = "account")
     private List<Activity> activities;
-    @JsonIgnore
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id", referencedColumnName = "account_id")
-    private User user;
+    // @JsonIgnore
+    // @OneToOne(fetch = FetchType.EAGER)
+    // @JoinColumn(name = "id", referencedColumnName = "account_id")
+    // private User user;
     // @OneToOne(fetch = FetchType.LAZY)
     // @JsonIgnore
     // @JoinColumn(name = "id", referencedColumnName = "account_id")
     // private User user;
+
+    @JsonIgnore
+    @OneToOne(mappedBy = "account", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private User user;
 
     public Account(String account, String password, String name, int role) {
         this.account = account;

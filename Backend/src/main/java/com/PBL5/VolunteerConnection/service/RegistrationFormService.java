@@ -2,6 +2,7 @@ package com.PBL5.VolunteerConnection.service;
 
 import java.util.List;
 
+import com.PBL5.VolunteerConnection.model.Candidate;
 import com.PBL5.VolunteerConnection.model.RegistrationForm;
 import com.PBL5.VolunteerConnection.request.RegistrationFormRequest;
 import com.PBL5.VolunteerConnection.response.StatusResponse;
@@ -12,7 +13,7 @@ import com.PBL5.VolunteerConnection.response.StatusResponse;
 public interface RegistrationFormService {
     StatusResponse createRegistrationForm(String token, RegistrationFormRequest registrationForm);
 
-    StatusResponse updateRegistrationForm(String token, RegistrationFormRequest registrationForm);
+    Candidate updateRegistrationForm(String token, RegistrationFormRequest registrationForm);
 
     StatusResponse deleteRegistrationForm(String token, RegistrationFormRequest registrationForm);
 

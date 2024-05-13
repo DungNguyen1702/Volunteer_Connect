@@ -23,7 +23,7 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private int id;
-    @Column(name = "account_id")
+    @Column(name = "account_id", insertable = false, updatable = false)
     private int accountId;
     @Column(name = "tel")
     private String tel;
@@ -34,12 +34,20 @@ public class User {
     @Column(name = "birthday")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date birthday;
-    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    // @OneToOne(mappedBy = "user", cascade = CascadeType.ALL, fetch =
+    // FetchType.EAGER)
+    // private Account account;
+    @OneToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "account_id", referencedColumnName = "id")
     private Account account;
 
     @JsonIgnore
     @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
     private List<Candidate> candidates;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
+    private List<RegistrationForm> registrationForms;
 
     public User(int accountId, String tel, String gender, String address, Date birthday) {
         this.accountId = accountId;
