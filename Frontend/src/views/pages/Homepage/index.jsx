@@ -86,7 +86,7 @@ function UserHomepage(props) {
                     });
 
                     setPopularPost(
-                        filteredPosts.filter((post) => post.participants !== 0)
+                        filteredPosts.filter((post) => post.participants !== 0).slice(0,6)
                     );
 
                     // get Like post
@@ -102,7 +102,7 @@ function UserHomepage(props) {
                                         ...post,
                                         isLiked: response1.data.some(
                                             (likedPost) =>
-                                                likedPost.id === post.id
+                                                parseInt(likedPost.id) === parseInt(post.id)
                                         ),
                                     };
                                 })
@@ -148,11 +148,16 @@ function UserHomepage(props) {
                     );
                     setListPosts(
                         listPosts.map((post) => {
-                            if (post.id === postId)
+                            if (parseInt(post.id) === parseInt(postId))
                                 return { ...post, isLiked: false };
                             else return { ...post };
                         })
                     );
+                    console.log(listPosts.map((post) => {
+                        if (parseInt(post.id) === parseInt(postId))
+                            return { ...post, isLiked: false };
+                        else return { ...post };
+                    }))
                 })
                 .catch((error) => console.log(error));
         };
@@ -164,8 +169,9 @@ function UserHomepage(props) {
             await postAPI
                 .createADeleteLikedPost(postId)
                 .then((response) => {
-                    setLikedPosts([...likedPosts, {...post}]);
-                    setListPosts([...listPosts, {...post, isLiked : true}]);
+                    setLikedPosts([...likedPosts, {...post, isLiked : true}]);
+                        
+                    setListPosts([...listPosts, {...post}]);
                 })
                 .catch((error) => console.log(error));
         };
