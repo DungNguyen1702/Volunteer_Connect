@@ -5,7 +5,9 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.PBL5.VolunteerConnection.model.Candidate;
 import com.PBL5.VolunteerConnection.model.Task;
+import com.PBL5.VolunteerConnection.repository.CandidateRepository;
 import com.PBL5.VolunteerConnection.repository.TaskRepository;
 import com.PBL5.VolunteerConnection.request.TaskRequest;
 import com.PBL5.VolunteerConnection.response.StatusResponse;
@@ -15,6 +17,8 @@ public class TaskServiceImpl implements TaskService {
 
     @Autowired
     private TaskRepository taskRepository;
+    @Autowired
+    private CandidateRepository candidateRepository;
 
     @Override
     public StatusResponse createTask(String token, TaskRequest task) {
@@ -39,6 +43,17 @@ public class TaskServiceImpl implements TaskService {
         // TODO Auto-generated method stub
         try {
             List<Task> listTask = taskRepository.findAll();
+            for (Task task : listTask) {
+                int candidateId = task.getCandidateId();
+                if (candidateId != 0) {
+                    Candidate candidate = candidateRepository.findById(candidateId);
+                    System.out.println(candidate.getActivityId());
+                    System.out.println(task.getCandidate().getActivityId());
+                    System.out.println(task.getCandidate().getUser().getAccount().getId());
+                    System.out.println(task.getCandidate().getUser().getAccountId());
+                }
+            }
+            // return null;
             return listTask;
         } catch (Exception e) {
             // TODO: handle exceptionr

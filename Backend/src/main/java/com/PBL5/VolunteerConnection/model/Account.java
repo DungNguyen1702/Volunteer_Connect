@@ -51,8 +51,12 @@ public class Account implements UserDetails {
     private List<Activity> activities;
     @JsonIgnore
     @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id")
+    @JoinColumn(name = "id", referencedColumnName = "account_id")
     private User user;
+    // @OneToOne(fetch = FetchType.LAZY)
+    // @JsonIgnore
+    // @JoinColumn(name = "id", referencedColumnName = "account_id")
+    // private User user;
 
     public Account(String account, String password, String name, int role) {
         this.account = account;

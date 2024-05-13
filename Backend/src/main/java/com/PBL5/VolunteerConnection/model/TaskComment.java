@@ -15,6 +15,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.Data;
 
@@ -32,7 +33,7 @@ public class TaskComment {
     private String content;
     @Column(name = "task_id")
     private int taskId;
-    @Column(name = "account_id")
+    @Column(name = "account_id", insertable = false, updatable = false)
     private int accountId;
     @Column(name = "createdAt")
     private Date createdAt;
@@ -41,8 +42,9 @@ public class TaskComment {
     @Column(name = "isDeleted")
     private boolean isDeleted;
 
-    @ManyToOne
-    @JoinColumn(name = "account_id", insertable = false, updatable = false)
+    @OneToOne
+    // @JsonIgnore
+    @JoinColumn(name = "account_id", referencedColumnName = "id")
     private Account account;
 
     @OneToMany(mappedBy = "parentComment", fetch = FetchType.LAZY)
