@@ -26,7 +26,7 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
-public class AccountServiceImpl implements  AccountService{
+public class AccountServiceImpl implements AccountService {
     @Autowired
     PasswordEncoder passwordEncoder;
     @Autowired
@@ -37,14 +37,15 @@ public class AccountServiceImpl implements  AccountService{
     private JwtService jwtService;
     @Autowired
     private CandidateRepository candidateRepository;
-    public StatusResponse createAccount(AccountRequest registerRequest){
+
+    public StatusResponse createAccount(AccountRequest registerRequest) {
         Account account = new Account(registerRequest.getAccount(),
-                            passwordEncoder.encode(registerRequest.getPassword()),
-                            registerRequest.getName(),
-                            registerRequest.getRole());
-        if (accountRepository.findByAccount(registerRequest.getAccount()) == null){
-            try{
-                if(account.getRole() == 1){
+                passwordEncoder.encode(registerRequest.getPassword()),
+                registerRequest.getName(),
+                registerRequest.getRole());
+        if (accountRepository.findByAccount(registerRequest.getAccount()) == null) {
+            try {
+                if (account.getRole() == 1) {
                     accountRepository.save(account);
                     int account_id = accountRepository.findByAccount(account.getAccount()).getId();
                     userRespository.save(new User(account_id,
@@ -52,40 +53,41 @@ public class AccountServiceImpl implements  AccountService{
                             registerRequest.getAddress(),
                             registerRequest.getGender(),
                             registerRequest.getBirthday()));
-                }
-                else{
+                } else {
                     account.setIsValid(false);
                     accountRepository.save(account);
                 }
-                return  StatusResponse.builder()
-                        .success(ResponseEntity.status(HttpStatus.CREATED).body("Account " + account.getAccount()+"has been created sucessfully!!"))
-                        .build();
-            }catch(Exception e){
                 return StatusResponse.builder()
-                        .fail(ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Exception from server!! " + e ))
+                        .success(ResponseEntity.status(HttpStatus.CREATED)
+                                .body("Account " + account.getAccount() + "has been created sucessfully!!"))
+                        .build();
+            } catch (Exception e) {
+                return StatusResponse.builder()
+                        .fail(ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                                .body("Exception from server!! " + e))
                         .build();
             }
 
-        }
-        else{
+        } else {
             return StatusResponse.builder()
-                    .fail(ResponseEntity.status(HttpStatus.CONFLICT).body("Account " + account.getAccount()+"has been already created"))
+                    .fail(ResponseEntity.status(HttpStatus.CONFLICT)
+                            .body("Account " + account.getAccount() + "has been already created"))
                     .build();
         }
     }
 
     @Override
     public StatusResponse updateAccount(String token, AccountRequest request) {
-//        int id = jwtService.getId(token);
+        // int id = jwtService.getId(token);
         String username = jwtService.getUsername(token);
         String role = jwtService.getRole(token)[0];
-        try{
+        try {
             Account account = accountRepository.findByAccount(username);
             account.setName(request.getName());
             account.setAvatar(request.getAvatar());
             account.setUpdatedAt(Date.valueOf(LocalDate.now()));
             accountRepository.save(account);
-            if (role.equals("1")){
+            if (role.equals("1")) {
                 User user = userRespository.findByAccountId(account.getId());
                 user.setTel(request.getTel());
                 user.setGender(request.getGender());
@@ -94,34 +96,35 @@ public class AccountServiceImpl implements  AccountService{
                 userRespository.save(user);
             }
 
-        }catch (Exception e){
+        } catch (Exception e) {
             return StatusResponse.builder()
                     .fail(ResponseEntity.status(HttpStatus.CONFLICT).body("Updated Fail"))
                     .build();
         }
-        return  StatusResponse.builder()
-                .success(ResponseEntity.status(HttpStatus.ACCEPTED).body("Account " + username +"has been updated sucessfully!!"))
+        return StatusResponse.builder()
+                .success(ResponseEntity.status(HttpStatus.ACCEPTED)
+                        .body("Account " + username + "has been updated sucessfully!!"))
                 .build();
     }
 
     @Override
     public StatusResponse deleteAccount(String token) {
         String username = jwtService.getUsername(token);
-        try{
+        try {
             Account account = accountRepository.findByAccount(username);
             account.setIsDeleted(true);
             account.setIsValid(false);
             accountRepository.save(account);
 
-        }catch (Exception e){
+        } catch (Exception e) {
             return StatusResponse.builder()
                     .fail(ResponseEntity.status(HttpStatus.NOT_ACCEPTABLE).body("Delete Fail"))
                     .build();
         }
-        return  StatusResponse.builder()
-                .success(ResponseEntity.status(HttpStatus.ACCEPTED).body("Account " + username +"has been deleted sucessfully!!"))
+        return StatusResponse.builder()
+                .success(ResponseEntity.status(HttpStatus.ACCEPTED)
+                        .body("Account " + username + "has been deleted sucessfully!!"))
                 .build();
-
 
     }
 
@@ -130,16 +133,16 @@ public class AccountServiceImpl implements  AccountService{
         String username = jwtService.getUsername(token);
         Account account = accountRepository.findByAccount(username);
         User user = new User();
-        if(account.getUser() != null){
+        if (account.getUser() != null) {
             user = account.getUser();
 
         }
         String updatedAt = null;
         String birthday = null;
-        if(account.getUpdatedAt()!= null){
+        if (account.getUpdatedAt() != null) {
             updatedAt = account.getUpdatedAt().toString();
         }
-        if(user.getBirthday() != null){
+        if (user.getBirthday() != null) {
             birthday = user.getBirthday().toString();
         }
         return AccountResponse.builder()
@@ -162,10 +165,10 @@ public class AccountServiceImpl implements  AccountService{
     @Override
     public StatusResponse changePassword(String token, String oldPassword, String newPassword) {
         Account account = accountRepository.findById(jwtService.getId(token));
-        if (passwordEncoder.matches(oldPassword, account.getPassword())){
+        if (passwordEncoder.matches(oldPassword, account.getPassword())) {
             account.setPassword(passwordEncoder.encode(newPassword));
             accountRepository.save(account);
-            return  StatusResponse.builder()
+            return StatusResponse.builder()
                     .success(ResponseEntity.status(HttpStatus.ACCEPTED).body("Password has been changed sucessfully!!"))
                     .build();
         }
@@ -179,14 +182,14 @@ public class AccountServiceImpl implements  AccountService{
         List<Account> accountList = accountRepository.findAllByRole(1);
 
         List<AccountResponse> accountResponses = new ArrayList<>();
-        for (Account account : accountList){
+        for (Account account : accountList) {
             String updatedAt = null;
             String birthday = null;
             User user = account.getUser();
-            if(account.getUpdatedAt()!= null){
+            if (account.getUpdatedAt() != null) {
                 updatedAt = account.getUpdatedAt().toString();
             }
-            if(user.getBirthday() != null){
+            if (user.getBirthday() != null) {
                 birthday = user.getBirthday().toString();
             }
             accountResponses.add(AccountResponse.builder()
@@ -211,21 +214,20 @@ public class AccountServiceImpl implements  AccountService{
 
     @Override
     public ContactResponse getContact(int id, int role) {
-        if (role == 1){
+        if (role == 1) {
             List<CandidateContactDTO> candidateContactDTOs = candidateRepository.findByAccountId(id);
             Account account = candidateContactDTOs.get(0).getAccount();
             User user = candidateContactDTOs.get(0).getUser();
             List<Activity> activityList = new ArrayList<>();
             int earnedCertificateNumber = 0;
-            for (CandidateContactDTO candidate : candidateContactDTOs){
-                if(candidate.getCertificate() != null){
+            for (CandidateContactDTO candidate : candidateContactDTOs) {
+                if (candidate.getCertificate() != null) {
                     earnedCertificateNumber++;
                 }
                 activityList.add(candidate.getActivity());
             }
             return new ContactResponse(account, user, activityList, earnedCertificateNumber);
-        }
-        else {
+        } else {
             Account account = accountRepository.findById(id);
             List<Activity> activities = account.getActivities();
             return new ContactResponse(account, activities);
@@ -237,13 +239,10 @@ public class AccountServiceImpl implements  AccountService{
         List<OrganizationResponse> organizationResponses = new ArrayList<>();
         List<Account> accountList = accountRepository.findAllByRole(2);
         System.out.print(accountList.get(0).getId());
-        for (Account account : accountList){
+        for (Account account : accountList) {
             organizationResponses.add(new OrganizationResponse(account, account.getActivities()));
         }
         return organizationResponses;
     }
 
-
 }
-
-
