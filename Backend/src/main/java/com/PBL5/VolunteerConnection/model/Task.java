@@ -20,6 +20,7 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.Data;
+import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 @Data
@@ -33,6 +34,7 @@ public class Task {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date dateStart;
     @Column(name = "date_end")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date dateEnd;
     @Column(name = "description")
     private String description;
@@ -45,8 +47,10 @@ public class Task {
     @Column(name = "candidate_id", insertable = false, updatable = false)
     private Integer candidateId;
     @Column(name = "createdAt")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date createdAt;
     @Column(name = "updatedAt")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date updatedAt;
 
     @OneToOne(fetch = FetchType.EAGER)

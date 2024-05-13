@@ -18,6 +18,7 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.Data;
+import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 @Data
@@ -36,8 +37,10 @@ public class TaskComment {
     @Column(name = "account_id", insertable = false, updatable = false)
     private int accountId;
     @Column(name = "createdAt")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date createdAt;
     @Column(name = "updatedAt")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date updatedAt;
     @Column(name = "isDeleted")
     private boolean isDeleted;

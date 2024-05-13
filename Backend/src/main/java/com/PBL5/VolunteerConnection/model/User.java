@@ -7,6 +7,7 @@ import java.sql.Date;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 @Data
@@ -25,6 +26,7 @@ public class User {
     @Column(name = "gender")
     private String gender;
     @Column(name = "birthday")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date birthday;
     // @JsonIgnore
     // @OneToOne(fetch = FetchType.LAZY)

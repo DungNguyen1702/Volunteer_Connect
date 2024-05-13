@@ -7,6 +7,7 @@ import java.util.List;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
+import org.springframework.format.annotation.DateTimeFormat;
 
 @Data
 @Entity
@@ -25,10 +26,13 @@ public class Activity {
     @Column(name = "type")
     protected int type;
     @Column(name = "deadline")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     protected Date deadline;
     @Column(name = "date_start")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     protected Date dateStart;
     @Column(name = "date_end")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     protected Date dateEnd;
     @Column(name = "country")
     protected int country;
@@ -37,8 +41,10 @@ public class Activity {
     @Column(name = "organization_id")
     protected int organizationId;
     @Column(name = "createdAt")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     protected Date createdAt;
     @Column(name = "updateAt")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     protected Date updateAt;
     @Column(name = "isDeleted")
     protected Boolean isDeleted;

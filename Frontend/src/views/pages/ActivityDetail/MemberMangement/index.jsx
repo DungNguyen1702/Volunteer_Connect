@@ -108,7 +108,7 @@ function MemberManagement() {
         },
         {
             title: "joining date",
-            width: 60,
+            width: 70,
             dataIndex: "createdAt",
             fixed: "right",
             align: "center",
@@ -160,7 +160,7 @@ function MemberManagement() {
                 className="button-delete"
             />
         ),
-        createdAt: value.createdAt,
+        createdAt: value.createAt,
     }));
 
     const paginationConfig = {

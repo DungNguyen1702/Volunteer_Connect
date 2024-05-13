@@ -2,6 +2,7 @@ package com.PBL5.VolunteerConnection.model;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.sql.Date;
 
@@ -20,5 +21,6 @@ public class RegistrationForm {
     @Column(name = "isConfirmed")
     private Boolean isConfirmed;
     @Column(name = "createdAt")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date createdAt;
 }

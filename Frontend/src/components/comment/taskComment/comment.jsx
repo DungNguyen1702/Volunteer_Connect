@@ -2,6 +2,7 @@ import { useState } from "react";
 import "./comment.scss";
 import SupportFunction from "../../../support/support_function";
 import TaskInputComment from "./inputComment/inputComment";
+import AvatarAccount from "../../avatar/AvatarAccount";
 
 function TaskComment(props) {
     const {data} = props;
@@ -29,10 +30,11 @@ function TaskComment(props) {
 
     return (
         <div class="comment-wrapper">
-            <img
-                alt="commenter avatar"
-                src={data.account.avatar}
-                class="account-ava"
+            <AvatarAccount
+                name={data.account.name} 
+                avatar={data.account.avatar} 
+                backgroundNoAva={data.account.backgroundNoAva} 
+                size={'40px'}
             />
             <div class="comment-content">
                 <h3>{data.account.name}</h3>

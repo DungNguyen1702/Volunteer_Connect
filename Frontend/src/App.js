@@ -8,10 +8,10 @@ function App() {
         // Setup local storage
 
         if (!localStorage.getItem("token")) {
-            localStorage.setItem("token", null);
+            localStorage.removeItem("token");
         }
         if (!localStorage.getItem("account")) {
-            localStorage.setItem("account", null);
+            localStorage.removeItem("account");
         }
     }, []);
 

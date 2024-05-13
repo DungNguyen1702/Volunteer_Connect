@@ -3,6 +3,7 @@ package com.PBL5.VolunteerConnection.service;
 import com.PBL5.VolunteerConnection.dto.ActivityDTO;
 import com.PBL5.VolunteerConnection.dto.PostActivityDetailDTO;
 import com.PBL5.VolunteerConnection.model.Account;
+import com.PBL5.VolunteerConnection.model.Candidate;
 import com.PBL5.VolunteerConnection.model.Post;
 import com.PBL5.VolunteerConnection.repository.AccountRepository;
 import com.PBL5.VolunteerConnection.repository.UserRespository;
@@ -152,7 +153,7 @@ public class ActivityServiceImpl implements ActivityService {
             }
         }
         if(organization.getId() == jwtService.getId(token) || isCandidate){
-            return new ActivityDetailResponse(new ActivityResponse(activityDetail,registrationCount, totalComments,candidates.size() ,  postNumber), postActivityDetailDTOS,
+            return new ActivityDetailResponse(new ActivityResponse(activityDetail,registrationCount, totalComments,candidates.size() , postNumber), postActivityDetailDTOS,
                     new AccountResponse(organization), candidates);
         }
         return ActivityDetailResponse.builder().error_message("You are not owner").build();

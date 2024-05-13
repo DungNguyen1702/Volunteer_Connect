@@ -2,6 +2,7 @@ package com.PBL5.VolunteerConnection.model;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import org.springframework.format.annotation.DateTimeFormat;
 
 
 import java.sql.Date;
@@ -24,8 +25,10 @@ public class Post {
     @Column(name = "content")
     private String content;
     @Column(name = "createdAt")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private java.util.Date createdAt;
     @Column(name = "updatedAt")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date updateAt;
     public Post(int activityId, String title, String image, String content) {
         this.activityId = activityId;

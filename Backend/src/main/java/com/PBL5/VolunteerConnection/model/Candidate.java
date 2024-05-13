@@ -6,6 +6,7 @@ import lombok.Data;
 import java.time.LocalDate;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.sql.Date;
 
@@ -24,8 +25,10 @@ public class Candidate {
     @Column(name = "certificate")
     private String certificate;
     @Column(name = "date_earn_certificate")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date dateCertificate;
     @Column(name = "createdAt")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date createdAt;
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "user_id", insertable = false, updatable = false)

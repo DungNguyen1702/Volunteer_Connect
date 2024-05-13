@@ -33,7 +33,7 @@ function MediumPost(props) {
                         <DeleteOutlined/>
                     }
                 />
-                <h2 class="post-title">{data.title}</h2>
+                <h2 class="post-title">{SupportFunction.TruncateText(data.title, 25)}</h2>
             </div>
 
             {/* big-post-info */}
@@ -45,7 +45,7 @@ function MediumPost(props) {
             <div class='medium-post-content'>
                 <img alt='medium-post-img' src={data.image} class='medium-post-img'/>
                 <div>
-                {SupportFunction.mainContentHTML(data.content, 300)}
+                {SupportFunction.mainContentHTML(data.content, 150)}
                 </div>
             </div>
 
