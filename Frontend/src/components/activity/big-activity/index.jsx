@@ -58,7 +58,7 @@ function ActivityComponent(props) {
                         <strong>Category : </strong>
                     </p>
                     <p class="activity-component-info-content">
-                        {SupportFunction.TruncateText(type, 18)}
+                        {SupportFunction.TruncateText(type, 15)}
                     </p>
                 </div>
             </div>

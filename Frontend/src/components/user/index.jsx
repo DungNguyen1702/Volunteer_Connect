@@ -4,12 +4,12 @@ import "./index.scss";
 import { useNavigate } from "react-router-dom";
 
 function UserIcon(props) {
-    const { id, name, avatar, backgroundNoAva, size } = props;
+    const { id, name, avatar, backgroundNoAva, size, role } = props;
 
     const navigate = useNavigate();
 
     const onClickUser = ()=>{
-        navigate(`/contact-user/${id}`)
+        navigate(`/contact-user/${id}/${role}`)
     };
 
     return (

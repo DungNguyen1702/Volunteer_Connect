@@ -20,7 +20,7 @@ function MediumActivityComponent(props) {
     return (
         <div class="activity-medium-component-wrapper" onClick={onClickAct}>
             <div class="activity-medium-component-header">
-                <h1 id="activity-medium-component-name">{data.name}</h1>
+                <h1 id="activity-medium-component-name">{SupportFunction.TruncateText(data.name, 30)}</h1>
                 <p
                     id="activity-medium-component-status"
                     style={{
@@ -61,11 +61,6 @@ function MediumActivityComponent(props) {
                         {SupportFunction.TruncateText(type, 18)}
                     </p>
                 </div>
-            </div>
-            <div id="activity-medium-component-comment-parti-wrapper">
-                <p class="activity-medium-component-comment-parti-item">
-                    {SupportFunction.getStringParticipant(data.participants)}
-                </p>
             </div>
         </div>
     );
