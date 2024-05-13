@@ -28,11 +28,11 @@ public interface CandidateRepository extends JpaRepository<Candidate, Integer> {
     List<CandidateDetailDTO> findAllByActivityId(@Param("activityId") int activityId);
 
     @Query(value = "SELECT new com.PBL5.VolunteerConnection.dto.CandidateContactDTO(acc, u, a, c.certificate) " +
-            "FROM Activity a " +
-            "JOIN Candidate c ON a.id = c.activityId " +
-            "JOIN User u ON c.userId = u.id " +
-            "JOIN Account acc ON u.accountId = acc.id " +
-            "WHERE acc.id = :accountId AND a.isDeleted = false ")
+            "FROM Account acc " +
+            "LEFT JOIN User u ON u.accountId = acc.id " +
+            "LEFT JOIN Candidate c ON c.userId  = u.id " +
+            "LEFT JOIN Activity a ON a.id = c.activityId " +
+            "WHERE acc.id = :accountId AND acc.isDeleted = false ")
     List<CandidateContactDTO> findByAccountId(@Param("accountId") int id);
     Candidate findByUserId(int userId);
 }

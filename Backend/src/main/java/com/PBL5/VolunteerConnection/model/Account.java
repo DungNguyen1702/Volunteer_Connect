@@ -2,6 +2,7 @@ package com.PBL5.VolunteerConnection.model;
 
 import java.sql.Date;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -70,7 +71,6 @@ public class Account implements UserDetails {
         this.isDeleted = false;
         this.isValid = true;
         this.backgroundNoAva = "#9b59b6";
-
     }
 
     public Account() {
