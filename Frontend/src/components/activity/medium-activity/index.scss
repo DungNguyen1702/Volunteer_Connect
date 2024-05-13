@@ -45,12 +45,14 @@ html, body {
 
 #activity-medium-component-name {
     color: $accent;
+    width: 55%;
+    text-align: center;
 }
 
 #activity-medium-component-status {
     position: absolute;
     top: 0px;
-    right : 25px;
+    right : 15px;
     padding : 5px 10px;
     border-radius: 20px;
     color: $white;
@@ -76,6 +78,9 @@ html, body {
 
 #activity-medium-component-main-content {
     margin-right: 20px;
+    max-width: 190px;
+    max-height: 300px;
+    word-break: break-all;
 }
 
 #activity-medium-component-info-category {

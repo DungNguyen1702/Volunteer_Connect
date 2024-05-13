@@ -8,6 +8,10 @@ const contactAPI = {
     getAllOrganization: () => {
         const url = '/api/v1/guest/getAllOrganization'
         return axiosClient.applicationNoAuth.get(url);
+    },
+    getContactDetail: (id, role) => {
+        const url = `/api/v1/guest/getContact?id=${id}&role=${role}`
+        return axiosClient.applicationNoAuth.get(url);
     }
 }
 

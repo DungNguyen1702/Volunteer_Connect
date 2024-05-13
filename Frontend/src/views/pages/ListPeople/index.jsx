@@ -15,9 +15,7 @@ function ListPeople() {
 
     const [listAllOrganization, setListAllOrganization] = useState([]);
     const [listPopularOrganization, setListPopularOrganization] = useState([]);
-    const [listAllCandidate, seListAllCandidate] = useState(
-        FakeData.ListAccountCandidate
-    );
+    const [listAllCandidate, seListAllCandidate] = useState([]);
     const [listEnthusiasticCandidate, setListEnthusiasticCandidate] = useState(
         listAllCandidate.slice(0, 5)
     );
@@ -61,6 +59,17 @@ function ListPeople() {
                 .catch((error) => {
                     console.log(error);
                 });
+            contactAPI
+                .getAllCandidate()
+                .then((response) => {
+                    seListAllCandidate(response.data);
+                    console.log(response.data);
+
+                    const filterListCandidate = response.data.filter(candidate=> candidate.activityNumber>0)
+
+                    setListEnthusiasticCandidate(filterListCandidate.sort((a, b) => b.activityNumber - a.activityNumber).slice(0,6))
+                })
+                .catch((error) => console.log(error));
         };
         callAPI();
     }, []);

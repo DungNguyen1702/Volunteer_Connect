@@ -135,7 +135,7 @@ const AllRoutes = () => {
                 />
 
                 <Route
-                    path='/contact-user/:accountId'
+                    path='/contact-user/:accountId/:role'
                     element={<MainLayout component={AccountContact}/>}
                 />
 

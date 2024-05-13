@@ -13,7 +13,7 @@ function OrganizationItem(props) {
         console.log("chat with " + organizationInfo.id);
     };
     const onClickOrganization = ()=>{
-        navigate(`/contact-user/${organizationInfo.id}`);
+        navigate(`/contact-user/${organizationInfo.id}/2`);
     }
 
     return (
