@@ -67,8 +67,9 @@ function ActivityDetail() {
     };
 
     const updateAct = (newAct) => {
-        const updateAPI = activityAPI
-            .updateActivity(newAct)
+        const updateAPI = async()=>{
+            await activityAPI
+            .updateActivity({...newAct, id : id})
             .then((response) => {
                 const updatedAct = { ...data, ...newAct };
                 setData(updatedAct);
@@ -78,6 +79,7 @@ function ActivityDetail() {
                 console.log(error);
                 toast.error('Update activity failed');
             });
+        }
         updateAPI();
     };
 
@@ -312,7 +314,7 @@ function ActivityDetail() {
                                 </div>
                                 <hr id="horizontal-line"></hr>
                             </div>
-                            <p id="activity-content">`"${data.content}"`</p>
+                            <p id="activity-content">{`"${data.content}"`}</p>
                             <div id="tabbar-button-wrapper">
                                 <Button
                                     className={`tabbar-button ${

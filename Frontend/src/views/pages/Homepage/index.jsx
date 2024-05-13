@@ -91,21 +91,24 @@ function UserHomepage(props) {
 
                     // get Like post
                     await postAPI
-                    .getLikedPost()
-                    .then((response1) => {
-                        setLikedPosts(addIsLikedField(response1.data).slice(0, 6));
-                        setListPosts(
-                            response.data.map((post) => {
-                                return {
-                                    ...post,
-                                    isLiked: response1.data.some(
-                                        (likedPost) => likedPost.id === post.id
-                                    ),
-                                };
-                            })
-                        );
-                    })
-                    .catch((error) => console.log(error));
+                        .getLikedPost()
+                        .then((response1) => {
+                            setLikedPosts(
+                                addIsLikedField(response1.data).slice(0, 6)
+                            );
+                            setListPosts(
+                                response.data.map((post) => {
+                                    return {
+                                        ...post,
+                                        isLiked: response1.data.some(
+                                            (likedPost) =>
+                                                likedPost.id === post.id
+                                        ),
+                                    };
+                                })
+                            );
+                        })
+                        .catch((error) => console.log(error));
                 })
                 .catch((error) => {
                     console.log(error);
@@ -134,6 +137,40 @@ function UserHomepage(props) {
         sortOrder,
         listPosts,
     ]);
+
+    const onDeleteLikePost = (postId) => {
+        const callApi = async () => {
+            await postAPI
+                .createADeleteLikedPost(postId)
+                .then((response) => {
+                    setLikedPosts(
+                        likedPosts.filter((post) => post.id !== postId)
+                    );
+                    setListPosts(
+                        listPosts.map((post) => {
+                            if (post.id === postId)
+                                return { ...post, isLiked: false };
+                            else return { ...post };
+                        })
+                    );
+                })
+                .catch((error) => console.log(error));
+        };
+        callApi();
+    };
+
+    const addLikePost = (postId, post) => {
+        const callApi = async () => {
+            await postAPI
+                .createADeleteLikedPost(postId)
+                .then((response) => {
+                    setLikedPosts([...likedPosts, {...post}]);
+                    setListPosts([...listPosts, {...post, isLiked : true}]);
+                })
+                .catch((error) => console.log(error));
+        };
+        callApi();
+    };
 
     // set event
     const onChangePage = (page, pageSize) => {
@@ -393,7 +430,7 @@ function UserHomepage(props) {
                 <div class="center-content-wrapper">
                     {listShowActs.length !== 0 ? (
                         listShowActs.map((post) => (
-                            <BigPost data={post} key={"big-post" + post.id} />
+                            <BigPost data={post} key={"big-post" + post.id} onDeleteLikePost={onDeleteLikePost} addLikePost={addLikePost}/>
                         ))
                     ) : (
                         <div class="height-100 justify-content">
@@ -418,6 +455,8 @@ function UserHomepage(props) {
                                 data={post}
                                 key={post.id}
                                 needLike={true}
+                                onDeleteLikePost={onDeleteLikePost} 
+                                addLikePost={addLikePost}
                             />
                         ))}
                     </div>
