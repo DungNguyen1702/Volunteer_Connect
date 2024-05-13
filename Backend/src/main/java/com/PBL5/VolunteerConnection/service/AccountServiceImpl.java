@@ -1,6 +1,10 @@
 package com.PBL5.VolunteerConnection.service;
 
+import com.PBL5.VolunteerConnection.dto.CandidateContactDTO;
+import com.PBL5.VolunteerConnection.model.Activity;
+import com.PBL5.VolunteerConnection.model.Candidate;
 import com.PBL5.VolunteerConnection.model.User;
+import com.PBL5.VolunteerConnection.repository.CandidateRepository;
 import com.PBL5.VolunteerConnection.repository.UserRespository;
 import com.PBL5.VolunteerConnection.request.AccountRequest;
 import com.PBL5.VolunteerConnection.response.*;
@@ -8,6 +12,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.parameters.P;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -30,6 +35,8 @@ public class AccountServiceImpl implements  AccountService{
     private UserRespository userRespository;
     @Autowired
     private JwtService jwtService;
+    @Autowired
+    private CandidateRepository candidateRepository;
     public StatusResponse createAccount(AccountRequest registerRequest){
         Account account = new Account(registerRequest.getAccount(),
                             passwordEncoder.encode(registerRequest.getPassword()),
@@ -200,6 +207,29 @@ public class AccountServiceImpl implements  AccountService{
                     .build());
         }
         return accountResponses;
+    }
+
+    @Override
+    public ContactResponse getContact(int id, int role) {
+        if (role == 1){
+            List<CandidateContactDTO> candidateContactDTOs = candidateRepository.findByAccountId(id);
+            Account account = candidateContactDTOs.get(0).getAccount();
+            User user = candidateContactDTOs.get(0).getUser();
+            List<Activity> activityList = new ArrayList<>();
+            int earnedCertificateNumber = 0;
+            for (CandidateContactDTO candidate : candidateContactDTOs){
+                if(candidate.getCertificate() != null){
+                    earnedCertificateNumber++;
+                }
+                activityList.add(candidate.getActivity());
+            }
+            return new ContactResponse(account, user, activityList, earnedCertificateNumber);
+        }
+        else {
+            Account account = accountRepository.findById(id);
+            List<Activity> activities = account.getActivities();
+            return new ContactResponse(account, activities);
+        }
     }
 
     @Override

@@ -9,6 +9,7 @@ import java.util.List;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -33,9 +34,12 @@ public class Account implements UserDetails {
     private Boolean status;
     @Column(name = "role")
     private int role;
-    @Column(name = "createdat")
+
+    @Column(name = "createdAt")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date createdAt;
-    @Column(name = "updatedat")
+    @Column(name = "updatedAt")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date updatedAt;
     @Column(name = "isDeleted")
     private Boolean isDeleted;
@@ -51,7 +55,7 @@ public class Account implements UserDetails {
     private List<Activity> activities;
     @JsonIgnore
     @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id")
+    @JoinColumn(name = "id", referencedColumnName = "account_id")
     private User user;
 
     public Account(String account, String password, String name, int role) {

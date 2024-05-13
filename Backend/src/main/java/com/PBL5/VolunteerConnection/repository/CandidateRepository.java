@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 
+import com.PBL5.VolunteerConnection.dto.CandidateContactDTO;
 import com.PBL5.VolunteerConnection.dto.CandidateDetailDTO;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -26,5 +27,12 @@ public interface CandidateRepository extends JpaRepository<Candidate, Integer> {
             "WHERE a.id = :activityId AND a.isDeleted = false")
     List<CandidateDetailDTO> findAllByActivityId(@Param("activityId") int activityId);
 
+    @Query(value = "SELECT new com.PBL5.VolunteerConnection.dto.CandidateContactDTO(acc, u, a, c.certificate) " +
+            "FROM Activity a " +
+            "JOIN Candidate c ON a.id = c.activityId " +
+            "JOIN User u ON c.userId = u.id " +
+            "JOIN Account acc ON u.accountId = acc.id " +
+            "WHERE acc.id = :accountId AND a.isDeleted = false ")
+    List<CandidateContactDTO> findByAccountId(@Param("accountId") int id);
     Candidate findByUserId(int userId);
 }

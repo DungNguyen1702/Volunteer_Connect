@@ -8,6 +8,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 import jakarta.persistence.*;
+import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 @Data
@@ -29,8 +30,10 @@ public class PostComment {
     @Column(name = "account_id")
     private int accountId;
     @Column(name = "createdAt")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date createdAt;
     @Column(name = "updatedAt")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date updatedAt;
     @Column(name = "isDeleted")
     private boolean isDeleted;
