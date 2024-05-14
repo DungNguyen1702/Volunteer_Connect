@@ -35,7 +35,7 @@ public class Account implements UserDetails {
     private Boolean status;
     @Column(name = "role")
     private int role;
-
+    // account link
     @Column(name = "createdAt")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date createdAt;
