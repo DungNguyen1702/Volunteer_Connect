@@ -15,6 +15,7 @@ import SupportFunction from "../../../support/support_function";
 import "react-toastify/dist/ReactToastify.css";
 import "react-quill/dist/quill.snow.css";
 import ReactQuill from "react-quill";
+import postAPI from "../../../api/postAPI";
 
 function CreatePost() {
     const { activityId } = useParams();
@@ -80,8 +81,13 @@ function CreatePost() {
             return;
         }
 
-        toast.success("Create post successfull");
-        setTimeout(() => navigate(`/activity-detail/${activityId}`), 2000);
+        const callAPI = async()=>{
+            await postAPI.createPost({activityId : activityId, title : title, content : content, image : image}).then(response=>{
+                toast.success("Create post successfull");
+                setTimeout(() => navigate(`/activity-detail/${activityId}`), 2000);        
+            }).catch(error => console.log(error))
+        }
+        callAPI()
     };
 
     return (

@@ -13,6 +13,14 @@ const postAPI = {
         const url = `/api/v1/post/selectAllLikePost`
         return axiosClient.application.get(url)
     },
+    createPost: (newPost) => {
+        const url = `/api/v1/post/create`
+        return axiosClient.application.post(url, newPost)
+    },
+    createADeleteLikedPost: (postId) => {
+        const url = `/api/v1/post/likePost`
+        return axiosClient.application.post(url, {id : postId})
+    },
 }
 
 export default postAPI;

@@ -6,7 +6,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 function SmallPost(props) {
-    const data = props.data;
+    const {data, onDeleteLikePost} = props;
     const needLike = props.needLike;
 
     const navigate = useNavigate();
@@ -16,6 +16,7 @@ function SmallPost(props) {
     const clickLike = (e) => {
         e.stopPropagation();
         setLike(!like);
+        onDeleteLikePost(data.id);
     };
 
     const clickAct = () => {
