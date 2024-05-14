@@ -1,6 +1,5 @@
 import "./index.scss";
 import { useNavigate, useParams } from "react-router-dom";
-import fakeData from "../../../data/fake_data.json";
 import SmallPost from "../../../components/post/small-post";
 import SupportFunction from "../../../support/support_function";
 import { Button } from "antd";
@@ -18,7 +17,7 @@ function PostDetail() {
 
     const [data, setData] = useState(null);
 
-    const popularActs = fakeData["Posts-Activities"];
+    const [popularActs, setPopularActs] = useState([]);
 
     const [post, setPost] = useState(null);
     const [act, setAct] = useState(null);
@@ -39,6 +38,31 @@ function PostDetail() {
                 .catch((error) => {
                     console.log(error);
                 });
+
+            await postAPI.getAllPost().then(response=>{
+                // get List popuplar
+                var uniqueActivities = [];
+                var filteredPosts = [];
+
+                response.data.forEach(function (post) {
+                    if (
+                        !uniqueActivities.includes(post.activity.id) &&
+                        uniqueActivities.length < 6
+                    ) {
+                        uniqueActivities.push(post.activity.id);
+                        filteredPosts.push(post);
+                    }
+                });
+
+                // Sắp xếp các bài post theo số lượng participants giảm dần
+                filteredPosts.sort(function (a, b) {
+                    return b.participants - a.participants;
+                });
+
+                setPopularActs(
+                    filteredPosts.filter((post) => post.participants !== 0).slice(0,6)
+                );
+            }).catch(error =>console.log(error))
         };
         callApi();
     }, []);

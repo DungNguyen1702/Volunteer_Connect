@@ -16,6 +16,7 @@ import UpdateActModal from "./Component/UpdateModal";
 import DeleteActModal from "./Component/DeleteModal";
 import useAuth from "../../../hooks/useAuth";
 import activityAPI from "../../../api/activityAPI";
+import candidateAPI from "../../../api/candidateAPI";
 
 export const ActivityDetailContext = createContext();
 
@@ -67,27 +68,37 @@ function ActivityDetail() {
     };
 
     const updateAct = (newAct) => {
-        const updateAPI = activityAPI
-            .updateActivity(newAct)
-            .then((response) => {
-                const updatedAct = { ...data, ...newAct };
-                setData(updatedAct);
-                toast.success('Update activity successfully');
-            })
-            .catch((error) => {
-                console.log(error);
-                toast.error('Update activity failed');
-            });
+        const updateAPI = async () => {
+            await activityAPI
+                .updateActivity({ ...newAct, id: id })
+                .then((response) => {
+                    const updatedAct = { ...data, ...newAct };
+                    setData(updatedAct);
+                    toast.success("Update activity successfully");
+                })
+                .catch((error) => {
+                    console.log(error);
+                    toast.error("Update activity failed");
+                });
+        };
         updateAPI();
     };
 
     const updateCandidate = (candidateId, newCandidate) => {
-        const newListCandidate = listCandidate.map((candidate) => {
-            if (candidate.id === candidateId)
-                return { ...candidate, ...newCandidate };
-            else return candidate;
-        });
-        setListCandidate(newListCandidate);
+        const callApi = async () => {
+            await candidateAPI
+                .updateCandidate(candidateId, newCandidate)
+                .then((response) => {
+                    const newListCandidate = listCandidate.map((candidate) => {
+                        if (candidate.id === candidateId)
+                            return { ...candidate, ...newCandidate };
+                        else return candidate;
+                    });
+                    setListCandidate(newListCandidate);
+                })
+                .catch((error) => console.log(error));
+        };
+        callApi();
     };
 
     const deleteCandidate = (candidateId) => {
@@ -312,7 +323,7 @@ function ActivityDetail() {
                                 </div>
                                 <hr id="horizontal-line"></hr>
                             </div>
-                            <p id="activity-content">`"${data.content}"`</p>
+                            <p id="activity-content">{`"${data.content}"`}</p>
                             <div id="tabbar-button-wrapper">
                                 <Button
                                     className={`tabbar-button ${

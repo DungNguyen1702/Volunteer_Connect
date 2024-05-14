@@ -26,6 +26,8 @@ public class Candidate {
     private int activityId;
     @Column(name = "certificate")
     private String certificate;
+    @Column(name = "certificate_name")
+    private String certificateName;
     @Column(name = "date_earn_certificate")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate dateCertificate;
@@ -45,6 +47,7 @@ public class Candidate {
         this.activityId = activityId;
         this.certificate = certificate;
         this.dateCertificate = dateCertificate;
+        this.certificateName = null;
         this.createdAt = LocalDate.now();
     }
 
