@@ -18,7 +18,7 @@ import ApplyFormModal from "./Component/ApplyFormModal";
 import useAuth from "../../../../hooks/useAuth";
 
 function MemberManagement() {
-    const { listCandidate, updateCandidate, deleteCandidate } = useContext(
+    const { listCandidate, updateCandidate, deleteCandidate, actInfo } = useContext(
         ActivityDetailContext
     );
 
@@ -49,8 +49,9 @@ function MemberManagement() {
         if (info.file.status === "done") {
             toast.success(`${info.file.name} file uploaded successfully`);
             updateCandidate(candidateId, {
-                date_earn_certificate: SupportFunction.getCurrentlyDate(),
+                dateCertificate: SupportFunction.getCurrentlyDate(),
                 certificate: info.file.response.result.url,
+                certificateName : `Certificate of "${actInfo.name}" activity`
             });
         } else if (info.file.status === "error") {
             toast.error(`${info.file.name} file upload failed.`);
@@ -108,7 +109,7 @@ function MemberManagement() {
         },
         {
             title: "joining date",
-            width: 60,
+            width: 70,
             dataIndex: "createdAt",
             fixed: "right",
             align: "center",
@@ -130,6 +131,7 @@ function MemberManagement() {
                 avatar={value.user.account.avatar}
                 backgroundNoAva={value.user.account.backgroundNoAva}
                 id={value.user.account.id}
+                role={value.user.account.role}
             />
         ),
         email: value.user.account.account,
@@ -160,7 +162,7 @@ function MemberManagement() {
                 className="button-delete"
             />
         ),
-        createdAt: value.createdAt,
+        createdAt: value.createAt,
     }));
 
     const paginationConfig = {

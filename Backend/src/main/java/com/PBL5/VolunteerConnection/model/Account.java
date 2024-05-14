@@ -2,6 +2,7 @@ package com.PBL5.VolunteerConnection.model;
 
 import java.sql.Date;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -9,6 +10,7 @@ import java.util.List;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -18,7 +20,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 public class Account implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
+    @Column(name = "id", insertable = false, updatable = false)
     private int id;
     @Column(name = "account")
     private String account;
@@ -33,9 +35,12 @@ public class Account implements UserDetails {
     private Boolean status;
     @Column(name = "role")
     private int role;
-    @Column(name = "createdat")
+    // account link
+    @Column(name = "createdAt")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date createdAt;
-    @Column(name = "updatedat")
+    @Column(name = "updatedAt")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date updatedAt;
     @Column(name = "isDeleted")
     private Boolean isDeleted;
@@ -46,10 +51,20 @@ public class Account implements UserDetails {
     @JsonIgnore
     @OneToMany(mappedBy = "account")
     private List<PostComment> comments;
+    @JsonIgnore
+    @OneToMany(mappedBy = "account")
+    private List<Activity> activities;
+    // @JsonIgnore
+    // @OneToOne(fetch = FetchType.EAGER)
+    // @JoinColumn(name = "id", referencedColumnName = "account_id")
+    // private User user;
+    // @OneToOne(fetch = FetchType.LAZY)
+    // @JsonIgnore
+    // @JoinColumn(name = "id", referencedColumnName = "account_id")
+    // private User user;
 
     @JsonIgnore
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id")
+    @OneToOne(mappedBy = "account", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private User user;
 
     public Account(String account, String password, String name, int role) {
@@ -64,7 +79,6 @@ public class Account implements UserDetails {
         this.isDeleted = false;
         this.isValid = true;
         this.backgroundNoAva = "#9b59b6";
-
     }
 
     public Account() {

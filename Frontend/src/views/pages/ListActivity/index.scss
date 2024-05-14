@@ -10,7 +10,7 @@ html, body {
     background-color: $background;
 }
 
-.participating-activity-wrapper {
+.list-activity-wrapper {
     display: flex;
     width: 100%;
     flex-direction: row;
@@ -18,7 +18,7 @@ html, body {
     padding : 20px 0px;
 }
 
-.participating-activity-tabbar {
+.list-activity-tabbar {
     display: flex;
     flex-direction: column;
     flex : 18%;
@@ -82,7 +82,7 @@ html, body {
 }
 
 
-.participating-activity-content {
+.list-activity-content {
     display: flex;
     flex-direction: column;
     flex : 84%;

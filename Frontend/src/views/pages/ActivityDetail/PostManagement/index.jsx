@@ -56,7 +56,7 @@ function PostManagement() {
                         </div>
                     ))}
             </div>
-            {postList && (
+            {postList && postList.length > 0 && (
                 <Pagination
                     total={postList.length}
                     pageSize={limit}

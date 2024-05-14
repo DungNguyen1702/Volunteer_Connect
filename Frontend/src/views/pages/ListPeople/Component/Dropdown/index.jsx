@@ -5,15 +5,15 @@ import("./index.scss");
 const useDropDownListPeopleItem = ()=>{
     const navigate = useNavigate();
 
-    const onClickAccount = (id)=>{
-        navigate(`/contact-user/${id}`);
+    const onClickAccount = (id, role)=>{
+        navigate(`/contact-user/${id}/${role}`);
     };
 
     const getItemDropDownSearchAccount = (accountList)=>{
         return accountList.map(account => ({
             key : account.id,
             label : (
-                <div class='search-account-item-wrapper' onClick={()=>onClickAccount(account.id)}>
+                <div class='search-account-item-wrapper' onClick={()=>onClickAccount(account.id, account.role)}>
                     <AvatarAccount
                         name={account.name} 
                         avatar={account.avatar} 

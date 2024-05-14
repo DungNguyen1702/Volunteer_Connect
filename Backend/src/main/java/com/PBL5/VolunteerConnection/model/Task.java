@@ -1,12 +1,12 @@
 package com.PBL5.VolunteerConnection.model;
 
-import java.sql.Date;
+// import java.sql.Date;
 import java.time.LocalDate;
 import java.util.List;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -29,9 +29,11 @@ public class Task {
     @Column(name = "id")
     private int id;
     @Column(name = "date_start")
-    private Date dateStart;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private LocalDate dateStart;
     @Column(name = "date_end")
-    private Date dateEnd;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private LocalDate dateEnd;
     @Column(name = "description")
     private String description;
     @Column(name = "title")
@@ -40,14 +42,18 @@ public class Task {
     private int status;
     @Column(name = "table_task_id")
     private int tableTaskId;
-    @Column(name = "candidate_id")
-    private int candidateId;
+    @Column(name = "candidate_id", insertable = false, updatable = false)
+    private Integer candidateId;
     @Column(name = "createdAt")
-    private Date createdAt;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private LocalDate createdAt;
     @Column(name = "updatedAt")
-    private Date updatedAt;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private LocalDate updatedAt;
 
-    @OneToOne(mappedBy = "taskc", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "candidate_id", referencedColumnName = "id")
+    // @JsonIgnore
     private Candidate candidate;
 
     @OneToMany(mappedBy = "task", fetch = FetchType.LAZY)
@@ -62,17 +68,18 @@ public class Task {
 
     }
 
-    public Task(Date dateStart, Date dateEnd, String description, String title, int status, int tableTaskId,
-            int candidateId) {
+    public Task(LocalDate dateStart, LocalDate dateEnd, String description, String title, int status, int tableTaskId,
+            Integer candidateId) {
         this.dateStart = dateStart;
         this.dateEnd = dateEnd;
+
         this.description = description;
         this.title = title;
         this.status = status;
         this.tableTaskId = tableTaskId;
         this.candidateId = candidateId;
-        this.createdAt = Date.valueOf(LocalDate.now());
-        this.updatedAt = Date.valueOf(LocalDate.now());
+        this.createdAt = LocalDate.now();
+        this.updatedAt = LocalDate.now();
     }
 
 }

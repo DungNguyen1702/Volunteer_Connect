@@ -1,6 +1,5 @@
 package com.PBL5.VolunteerConnection.model;
 
-import java.sql.Date;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -15,8 +14,10 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.Data;
+import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 @Data
@@ -32,17 +33,20 @@ public class TaskComment {
     private String content;
     @Column(name = "task_id")
     private int taskId;
-    @Column(name = "account_id")
+    @Column(name = "account_id", insertable = false, updatable = false)
     private int accountId;
     @Column(name = "createdAt")
-    private Date createdAt;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private LocalDate createdAt;
     @Column(name = "updatedAt")
-    private Date updatedAt;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private LocalDate updatedAt;
     @Column(name = "isDeleted")
     private boolean isDeleted;
 
-    @ManyToOne
-    @JoinColumn(name = "account_id", insertable = false, updatable = false)
+    @OneToOne
+    // @JsonIgnore
+    @JoinColumn(name = "account_id", referencedColumnName = "id")
     private Account account;
 
     @OneToMany(mappedBy = "parentComment", fetch = FetchType.LAZY)
@@ -65,8 +69,8 @@ public class TaskComment {
         this.content = content;
         this.taskId = taskId;
         this.accountId = accountId;
-        this.createdAt = Date.valueOf(LocalDate.now());
-        this.updatedAt = Date.valueOf(LocalDate.now());
+        this.createdAt = LocalDate.now();
+        this.updatedAt = LocalDate.now();
         this.isDeleted = isDeleted;
     }
 

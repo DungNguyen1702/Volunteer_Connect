@@ -17,4 +17,5 @@ public interface CandidateService {
 
     List<Candidate> selectAllCandidate(String token, CandidateRequest candidate);
     List<CandidateDetailResponse> getCandidateDetail(String token, int id);
+    List<CandidateDetailResponse> getAllCertificateByAccountId(String token);
 }

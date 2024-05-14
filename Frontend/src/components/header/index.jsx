@@ -54,7 +54,6 @@ function Header(props) {
             await postAPI
                 .getAllPost()
                 .then((response) => {
-                    console.log(response.data);
                     setListPosts(response.data);
                 })
                 .catch((error) => {
@@ -77,7 +76,7 @@ function Header(props) {
         if(parseInt(account.role) === 3)
             navigate("/admin/manage-activity");    
         else
-            navigate("/participating-activity");
+            navigate("/list-activity");
     };
 
     const clickGroupPeople = () => {

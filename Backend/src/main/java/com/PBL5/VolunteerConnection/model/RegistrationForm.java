@@ -2,8 +2,9 @@ package com.PBL5.VolunteerConnection.model;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import org.springframework.format.annotation.DateTimeFormat;
 
-import java.sql.Date;
+import java.time.LocalDate;
 
 @Entity
 @Data
@@ -18,7 +19,24 @@ public class RegistrationForm {
     @Column(name = "activity_id")
     private int activityId;
     @Column(name = "isConfirmed")
-    private Boolean isConfirmed;
+    private int isConfirmed;
     @Column(name = "createdAt")
-    private Date createdAt;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private LocalDate createdAt;
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "user_id", insertable = false, updatable = false)
+    // @JsonIgnore
+    private User user;
+
+    public RegistrationForm() {
+
+    }
+
+    public RegistrationForm(int userId, int activityId) {
+        this.userId = userId;
+        this.activityId = activityId;
+        this.isConfirmed = 0;
+        this.createdAt = LocalDate.now();
+    }
+
 }

@@ -14,6 +14,7 @@ import com.PBL5.VolunteerConnection.model.Activity;
 @Repository
 public interface ActivityRepository extends JpaRepository<Activity, Integer> {
         Activity findById(int id);
+        Activity findByOrganizationId(int id);
 
         Activity findByIdAndOrganizationId(int id, int organizationId);
 
@@ -30,7 +31,7 @@ public interface ActivityRepository extends JpaRepository<Activity, Integer> {
         @Query("SELECT a, p, COUNT(distinct r.id), COUNT(distinct cm.id) " +
                         "FROM Activity a " +
                         "LEFT JOIN RegistrationForm r ON r.activityId = a.id " +
-                        "JOIN Post p ON p.activityId = a.id " +
+                        "LEFT JOIN Post p ON p.activityId = a.id " +
                         "LEFT join PostComment cm on p.id = cm.postId " +
                         "where a.id = :activityId " +
                         "GROUP BY p.id")

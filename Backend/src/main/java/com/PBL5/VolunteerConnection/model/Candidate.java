@@ -1,49 +1,54 @@
 package com.PBL5.VolunteerConnection.model;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 
 import java.time.LocalDate;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.sql.Date;
 
 @Entity
 @Data
 @Table(name = "Candidates")
+@AllArgsConstructor
 public class Candidate {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private int id;
-    @Column(name = "user_id")
+    @Column(name = "user_id", insertable = false, updatable = false)
     private int userId;
     @Column(name = "activity_id")
     private int activityId;
     @Column(name = "certificate")
     private String certificate;
+    @Column(name = "certificate_name")
+    private String certificateName;
     @Column(name = "date_earn_certificate")
-    private Date dateCertificate;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private LocalDate dateCertificate;
     @Column(name = "createdAt")
-    private Date createdAt;
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id", insertable = false, updatable = false)
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private LocalDate createdAt;
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "user_id")
+    // @JsonIgnore
     private User user;
-    @JsonIgnore
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id")
-    private Task taskc;
 
     public Candidate() {
     }
 
-    public Candidate(int userId, int activityId, String certificate, Date dateCertificate) {
+    public Candidate(int userId, int activityId, String certificate, LocalDate dateCertificate) {
         this.userId = userId;
         this.activityId = activityId;
         this.certificate = certificate;
         this.dateCertificate = dateCertificate;
-        this.createdAt = Date.valueOf(LocalDate.now());
+        this.certificateName = null;
+        this.createdAt = LocalDate.now();
     }
 
 }

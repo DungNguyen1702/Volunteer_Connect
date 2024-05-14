@@ -3,6 +3,7 @@ package com.PBL5.VolunteerConnection.service;
 import com.PBL5.VolunteerConnection.dto.ActivityDTO;
 import com.PBL5.VolunteerConnection.dto.PostActivityDetailDTO;
 import com.PBL5.VolunteerConnection.model.Account;
+import com.PBL5.VolunteerConnection.model.Candidate;
 import com.PBL5.VolunteerConnection.model.Post;
 import com.PBL5.VolunteerConnection.repository.AccountRepository;
 import com.PBL5.VolunteerConnection.repository.UserRespository;
@@ -46,6 +47,7 @@ public class ActivityServiceImpl implements ActivityService {
                                         activity.getType(), activity.getDeadline(), activity.getDateStart(), activity.getDateEnd(), activity.getCountry(),
                                         activity.getLocation(), organizationId,
                                         activity.getContent());
+            creActivity.setIsDeleted(false);
             activityRepository.save(creActivity);
             ActivityResponse activityResponse = new ActivityResponse(creActivity, 0, 0, 0, 0);
             return activityResponse;
@@ -95,9 +97,9 @@ public class ActivityServiceImpl implements ActivityService {
     public StatusResponse deleteActivity(String token, ActivityRequest deleteRequest) {
         // TODO Auto-generated method stub
         try {
-
-            Activity deleteActivity = activityRepository.findById(jwtService.getId(token));
+            Activity deleteActivity = activityRepository.findById(deleteRequest.getId());
                 deleteActivity.setIsDeleted(true);
+                System.out.print(1);
                 activityRepository.save(deleteActivity);
             return StatusResponse.builder()
                     .success(ResponseEntity.status(HttpStatus.ACCEPTED).body("Activity has been deleted sucessfully!!"))
@@ -134,10 +136,13 @@ public class ActivityServiceImpl implements ActivityService {
         long registrationCount = (Long) activityDTO.get(0)[2];
         long totalComments = 0;
         for (Object[] result : activityDTO) {
-            Post post = (Post) result[1];
-            Long commentCount = (Long) result[3];
-            totalComments += commentCount;
-            postActivityDetailDTOS.add(new PostActivityDetailDTO(post, commentCount));
+            if ((Post) result[1] != null){
+                Post post = (Post) result[1];
+                Long commentCount = (Long) result[3];
+                totalComments += commentCount;
+                postActivityDetailDTOS.add(new PostActivityDetailDTO(post, commentCount));
+            }
+//            postActivityDetailDTOS.add(null);
         }
         List<CandidateDetailResponse> candidates = candidateService.getCandidateDetail(token, id);
         int postNumber = postActivityDetailDTOS.size();
@@ -151,7 +156,7 @@ public class ActivityServiceImpl implements ActivityService {
             }
         }
         if(organization.getId() == jwtService.getId(token) || isCandidate){
-            return new ActivityDetailResponse(new ActivityResponse(activityDetail,registrationCount, totalComments,candidates.size() ,  postNumber), postActivityDetailDTOS,
+            return new ActivityDetailResponse(new ActivityResponse(activityDetail,registrationCount, totalComments,candidates.size() , postNumber), postActivityDetailDTOS,
                     new AccountResponse(organization), candidates);
         }
         return ActivityDetailResponse.builder().error_message("You are not owner").build();

@@ -23,7 +23,6 @@ public class JwtService {
                 .withExpiresAt(new Date(System.currentTimeMillis() + 50*60*1000))
                 .withClaim("roles", authorities.stream().map(GrantedAuthority::getAuthority).collect(Collectors.toList()))
                 .sign(algorithm);
-
     }
     public String generateRefreshToken(Account account, Collection<SimpleGrantedAuthority> authorities){
         Algorithm algorithm = Algorithm.HMAC256(SECRET_KEY.getBytes());
@@ -46,12 +45,10 @@ public class JwtService {
     public int getId(String token){
 
         Map<String, String[]> user= decodeToken(token);
-
         String id = "";
         for (String key : user.keySet()) {
             id = key;
         }
-
         return Integer.parseInt(id.split(",")[0]);
     }
     public String[] getRole(String token){

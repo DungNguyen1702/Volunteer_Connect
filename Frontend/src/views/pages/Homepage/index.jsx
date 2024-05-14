@@ -29,14 +29,10 @@ function UserHomepage(props) {
     // set UseState
     const [startIndex, setStartIndex] = useState(0);
     const { account } = useAuth();
-    const [likedPosts, setLikedPosts] = useState(
-        addIsLikedField(fake_data["Posts-Activities"])
-    );
+    const [likedPosts, setLikedPosts] = useState([]);
     const [listPosts, setListPosts] = useState([]);
     const [filterListPosts, setFilterListPosts] = useState(listPosts);
-    const [popularPosts, setPopularPost] = useState(
-        fake_data["Posts-Activities"]
-    );
+    const [popularPosts, setPopularPost] = useState([]);
 
     const [listShowActs, setListShowActs] = useState(
         listPosts.slice(startIndex, startIndex + limit)
@@ -56,8 +52,8 @@ function UserHomepage(props) {
         const getAllPostApi = async () => {
             await postAPI
                 .getAllPost()
-                .then((response) => {
-                    console.log(response.data);
+                .then(async (response) => {
+                    // console.log(response.data);
                     setListPosts(response.data);
                     setFilterListPosts(
                         SupportFunction.filterPost(
@@ -69,6 +65,50 @@ function UserHomepage(props) {
                             sortOrder
                         )
                     );
+
+                    // get List popuplar
+                    var uniqueActivities = [];
+                    var filteredPosts = [];
+
+                    response.data.forEach(function (post) {
+                        if (
+                            !uniqueActivities.includes(post.activity.id) &&
+                            uniqueActivities.length < 6
+                        ) {
+                            uniqueActivities.push(post.activity.id);
+                            filteredPosts.push(post);
+                        }
+                    });
+
+                    // Sắp xếp các bài post theo số lượng participants giảm dần
+                    filteredPosts.sort(function (a, b) {
+                        return b.participants - a.participants;
+                    });
+
+                    setPopularPost(
+                        filteredPosts.filter((post) => post.participants !== 0).slice(0,6)
+                    );
+
+                    // get Like post
+                    await postAPI
+                        .getLikedPost()
+                        .then((response1) => {
+                            setLikedPosts(
+                                addIsLikedField(response1.data).slice(0, 6)
+                            );
+                            setListPosts(
+                                response.data.map((post) => {
+                                    return {
+                                        ...post,
+                                        isLiked: response1.data.some(
+                                            (likedPost) =>
+                                                parseInt(likedPost.id) === parseInt(post.id)
+                                        ),
+                                    };
+                                })
+                            );
+                        })
+                        .catch((error) => console.log(error));
                 })
                 .catch((error) => {
                     console.log(error);
@@ -76,7 +116,7 @@ function UserHomepage(props) {
         };
 
         getAllPostApi();
-    },[]);
+    }, []);
 
     useEffect(() => {
         setFilterListPosts(
@@ -97,6 +137,46 @@ function UserHomepage(props) {
         sortOrder,
         listPosts,
     ]);
+
+    const onDeleteLikePost = (postId) => {
+        const callApi = async () => {
+            await postAPI
+                .createADeleteLikedPost(postId)
+                .then((response) => {
+                    setLikedPosts(
+                        likedPosts.filter((post) => post.id !== postId)
+                    );
+                    setListPosts(
+                        listPosts.map((post) => {
+                            if (parseInt(post.id) === parseInt(postId))
+                                return { ...post, isLiked: false };
+                            else return { ...post };
+                        })
+                    );
+                    console.log(listPosts.map((post) => {
+                        if (parseInt(post.id) === parseInt(postId))
+                            return { ...post, isLiked: false };
+                        else return { ...post };
+                    }))
+                })
+                .catch((error) => console.log(error));
+        };
+        callApi();
+    };
+
+    const addLikePost = (postId, post) => {
+        const callApi = async () => {
+            await postAPI
+                .createADeleteLikedPost(postId)
+                .then((response) => {
+                    setLikedPosts([...likedPosts, {...post, isLiked : true}]);
+                        
+                    setListPosts([...listPosts, {...post}]);
+                })
+                .catch((error) => console.log(error));
+        };
+        callApi();
+    };
 
     // set event
     const onChangePage = (page, pageSize) => {
@@ -337,7 +417,7 @@ function UserHomepage(props) {
             <div
                 class="content-wrapper"
                 style={
-                    account 
+                    account
                         ? {
                               gridTemplateColumns: "20% 60% 20%",
                           }
@@ -356,10 +436,10 @@ function UserHomepage(props) {
                 <div class="center-content-wrapper">
                     {listShowActs.length !== 0 ? (
                         listShowActs.map((post) => (
-                            <BigPost data={post} key={"big-post" + post.id} />
+                            <BigPost data={post} key={"big-post" + post.id} onDeleteLikePost={onDeleteLikePost} addLikePost={addLikePost}/>
                         ))
                     ) : (
-                        <div class='height-100 justify-content'>
+                        <div class="height-100 justify-content">
                             <p class="color-gray">There is no posts in here</p>
                         </div>
                     )}
@@ -381,6 +461,8 @@ function UserHomepage(props) {
                                 data={post}
                                 key={post.id}
                                 needLike={true}
+                                onDeleteLikePost={onDeleteLikePost} 
+                                addLikePost={addLikePost}
                             />
                         ))}
                     </div>

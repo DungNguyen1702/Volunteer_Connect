@@ -20,8 +20,8 @@ function ActivityComponent(props) {
     return (
         <div class="activity-component-wrapper" onClick={onClickAct}>
             <div class="activity-component-header">
-                <h1 id="activity-component-name">{data.name}</h1>
-                <h3
+                <h2 id="activity-component-name">{SupportFunction.TruncateText(data.name, 24)}</h2>
+                <h4
                     id="activity-component-status"
                     style={{
                         backgroundColor: COLOR_STATUS[status],
@@ -29,7 +29,7 @@ function ActivityComponent(props) {
                     }}
                 >
                     {status}
-                </h3>
+                </h4>
             </div>
             <p id="activity-component-date">
                 {data.dateStart} - {data.dateEnd}
@@ -41,7 +41,7 @@ function ActivityComponent(props) {
                     id="activity-component-img"
                 />
                 <p id="activity-component-main-content">
-                    {SupportFunction.TruncateText(data.content, 300)}
+                    {SupportFunction.TruncateText(data.content, 150)}
                 </p>
             </div>
             <div id="activity-component-info-wrapper">
@@ -50,7 +50,7 @@ function ActivityComponent(props) {
                         <strong>Location : </strong>
                     </p>
                     <p class="activity-component-info-content">
-                        {SupportFunction.TruncateText(location, 18)}
+                        {SupportFunction.TruncateText(location, 16)}
                     </p>
                 </div>
                 <div id="activity-component-info-category">
@@ -58,7 +58,7 @@ function ActivityComponent(props) {
                         <strong>Category : </strong>
                     </p>
                     <p class="activity-component-info-content">
-                        {SupportFunction.TruncateText(type, 18)}
+                        {SupportFunction.TruncateText(type, 15)}
                     </p>
                 </div>
             </div>

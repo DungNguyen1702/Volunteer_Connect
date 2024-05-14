@@ -6,7 +6,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 function SmallPost(props) {
-    const data = props.data;
+    const {data, onDeleteLikePost} = props;
     const needLike = props.needLike;
 
     const navigate = useNavigate();
@@ -16,6 +16,7 @@ function SmallPost(props) {
     const clickLike = (e) => {
         e.stopPropagation();
         setLike(!like);
+        onDeleteLikePost(data.id);
     };
 
     const clickAct = () => {
@@ -47,12 +48,12 @@ function SmallPost(props) {
                         }
                     />
                     <h4 class="small-post-title">
-                        {SupportFunction.TruncateText(data.title, 24)}
+                        {SupportFunction.TruncateText(data.title, 20)}
                     </h4>
                 </div>
             ) : (
                 <h4 class="small-post-title">
-                    {SupportFunction.TruncateText(data.title, 24)}
+                    {SupportFunction.TruncateText(data.title, 18)}
                 </h4>
             )}
             <img alt="post-img" src={data.image} class="post-image" />

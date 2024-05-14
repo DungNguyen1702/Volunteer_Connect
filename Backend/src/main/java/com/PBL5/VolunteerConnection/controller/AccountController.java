@@ -1,9 +1,12 @@
 package com.PBL5.VolunteerConnection.controller;
 
+import com.PBL5.VolunteerConnection.model.Candidate;
 import com.PBL5.VolunteerConnection.response.AccountResponse;
 import com.PBL5.VolunteerConnection.request.AccountRequest;
+import com.PBL5.VolunteerConnection.response.CandidateDetailResponse;
 import com.PBL5.VolunteerConnection.response.StatusResponse;
 import com.PBL5.VolunteerConnection.service.AccountService;
+import com.PBL5.VolunteerConnection.service.CandidateService;
 import lombok.RequiredArgsConstructor;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,8 +20,9 @@ import java.util.List;
 @RequiredArgsConstructor
 public class AccountController {
     @Autowired
-    AccountService accountService;
-
+    private AccountService accountService;
+    @Autowired
+    private CandidateService candidateService;
     @PostMapping("/update")
     public ResponseEntity<StatusResponse> updateAccount(@RequestHeader("Authorization") String token,
             @RequestBody AccountRequest updateRequest) {
@@ -42,8 +46,9 @@ public class AccountController {
         token = token.substring("Bearer ".length());
         return ResponseEntity.ok(accountService.changePassword(token, updateRequest.getPassword(), updateRequest.getNewPassword()));
     }
-    @GetMapping("/guest/getAllCandidate")
-    public ResponseEntity<List<AccountResponse>> getAllCandidate() {
-        return ResponseEntity.ok(accountService.getAllCandidate());
+    @GetMapping("/selectAllCertificate")
+    ResponseEntity<List<CandidateDetailResponse>> selectAllCandidateHasCertificate(@RequestHeader("Authorization") String token) {
+        token = token.substring("Bearer ".length());
+        return ResponseEntity.ok(candidateService.getAllCertificateByAccountId(token));
     }
 }

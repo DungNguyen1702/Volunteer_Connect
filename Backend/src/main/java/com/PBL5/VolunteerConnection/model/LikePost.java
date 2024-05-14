@@ -2,6 +2,7 @@ package com.PBL5.VolunteerConnection.model;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.sql.Date;
 
@@ -18,6 +19,7 @@ public class LikePost {
     @Column(name = "post_id")
     private int postId;
     @Column(name = "createdAt")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date createdAt;
     public LikePost(int accountId, int postId){
         this.accountId = accountId;

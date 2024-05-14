@@ -59,8 +59,5 @@ public class PostController {
         return ResponseEntity.ok(postService.getPostDetail(id));
     }
 
-    @GetMapping("/getAllPost")
-    ResponseEntity<List<PostsActivitiesResponse>> selectAll() {
-        return ResponseEntity.ok(postService.selectAll());
-    }
+
 }

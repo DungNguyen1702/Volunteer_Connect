@@ -1,6 +1,7 @@
 package com.PBL5.VolunteerConnection.request;
 
 import java.sql.Date;
+import java.time.LocalDate;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -18,7 +19,8 @@ public class CandidateRequest {
     private int activityId;
     private int organizationId;
     private String certificate;
-    private Date dateCertificate;
+    private String certificateName;
+    private LocalDate dateCertificate;
     private int activityType;
     private String activityLocation;
 }

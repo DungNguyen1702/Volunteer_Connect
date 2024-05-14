@@ -13,8 +13,8 @@ const UserHomePage = LoadableComponent(() =>
 const ListPeople = LoadableComponent(() =>
     import("../pages/ListPeople/index.jsx")
 );
-const ParticipatingActivities = LoadableComponent(() =>
-    import("../pages/ParticipatingActivities/index.jsx")
+const ListActivity = LoadableComponent(() =>
+    import("../pages/ListActivity/index.jsx")
 );
 const PostDetail = LoadableComponent(() =>
     import("../pages/PostDetail/index.jsx")
@@ -80,10 +80,10 @@ const AllRoutes = () => {
                 />
 
                 <Route
-                    path="/participating-activity"
+                    path="/list-activity"
                     element={
                         <MainLayout
-                            component={ParticipatingActivities}
+                            component={ListActivity}
                             stateButton={2}
                         />
                     }
@@ -135,7 +135,7 @@ const AllRoutes = () => {
                 />
 
                 <Route
-                    path='/contact-user/:accountId'
+                    path='/contact-user/:accountId/:role'
                     element={<MainLayout component={AccountContact}/>}
                 />
 

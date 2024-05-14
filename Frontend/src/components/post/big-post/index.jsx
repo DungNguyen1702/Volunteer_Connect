@@ -8,7 +8,7 @@ import { COLOR_FONT, COLOR_STATUS } from "../../../constants/color_status";
 import useAuth from "../../../hooks/useAuth";
 
 function BigPost(props) {
-    const data = props.data;
+    const { data, onDeleteLikePost, addLikePost } = props;
 
     const navigate = useNavigate();
 
@@ -18,7 +18,13 @@ function BigPost(props) {
 
     const clickLike = (e) => {
         e.stopPropagation();
-        setLike(!like);
+        if (like) {
+            onDeleteLikePost(data.id);
+            setLike(!like);
+        } else {
+            addLikePost(data.id, data);
+            setLike(!like);
+        }
     };
 
     const activity_status = SupportFunction.ActivityStatus(
@@ -26,13 +32,12 @@ function BigPost(props) {
         data.activity.dateEnd
     );
 
-    const clickAct = () => {
-        console.log("big post " + data.id);
+    const clickPost = () => {
         navigate(`/post-detail/${data.id}`);
     };
 
     return (
-        <div class="big-post-wrapper" onClick={clickAct}>
+        <div class="big-post-wrapper" onClick={clickPost}>
             {/* big post header  */}
             <div class="big-post-header">
                 {account && (

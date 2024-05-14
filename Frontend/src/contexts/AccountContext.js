@@ -40,8 +40,8 @@ export const AuthProvider = ({ children }) => {
             delete axiosClient.application.defaults.headers.common['Authorization'];
 
             setAccount('null');
-            localStorage.setItem('token', null)
-            localStorage.setItem('account', null)
+            localStorage.removeItem('token')
+            localStorage.removeItem('account')
         }
     }, [token, navigate])
 

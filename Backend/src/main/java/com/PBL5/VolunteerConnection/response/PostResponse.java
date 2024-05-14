@@ -18,6 +18,8 @@ public class PostResponse {
     private String content;
     private String createdAt;
     private String updateAt;
+    private int comments;
+    private String error_messasge;
     public PostResponse(Post post) {
         this.activityId = post.getActivityId();
         this.title = post.getTitle();
