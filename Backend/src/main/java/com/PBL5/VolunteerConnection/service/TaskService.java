@@ -7,7 +7,7 @@ import com.PBL5.VolunteerConnection.request.TaskRequest;
 import com.PBL5.VolunteerConnection.response.StatusResponse;
 
 public interface TaskService {
-    StatusResponse createTask(String token, TaskRequest task);
+    String createTask(String token, TaskRequest task);
 
     StatusResponse updateTask(String token, TaskRequest task);
 
