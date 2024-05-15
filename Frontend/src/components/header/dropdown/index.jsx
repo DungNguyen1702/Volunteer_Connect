@@ -103,9 +103,7 @@ const useDropdownNavigation = () => {
                 label: (
                     <div
                         class="item-wrapper"
-                        onClick={() => {
-                            navigate("/profile/accountsetting");
-                        }}
+                        onClick={()=>{navigate('/profile/personInfo')}}
                     >
                         <UserOutlined className="item-icon" />
                         <p class="item-title">Person info</p>
@@ -157,9 +155,7 @@ const useDropdownNavigation = () => {
                 label: (
                     <div
                         class="item-wrapper"
-                        onClick={() => {
-                            navigate("/profile/accountsetting");
-                        }}
+                        onClick={()=>{navigate('/profile/personInfo')}}
                     >
                         <UserOutlined className="item-icon" />
                         <p class="item-title">Person info</p>

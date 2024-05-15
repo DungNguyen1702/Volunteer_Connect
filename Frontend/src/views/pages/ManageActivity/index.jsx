@@ -1,9 +1,10 @@
 import React from 'react'
-
+import "./index.scss"
 function ManageActivity() {
   return (
-    <div>ManageActivity</div>
+    <aside id="sidebar" className='sidebar'>
+    </aside>
   )
 }
 
-export default ManageActivity
+export default ManageActivi

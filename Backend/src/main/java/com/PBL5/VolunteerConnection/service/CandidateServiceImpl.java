@@ -166,7 +166,8 @@ public class CandidateServiceImpl implements CandidateService {
         candidateList.removeIf(candidate -> candidate.getCertificate() == null || candidate.getCertificate().isEmpty());
         List<CandidateDetailResponse> candidateDetailResponseList = new ArrayList<>();
         for (Candidate candidate : candidateList){
-            candidateDetailResponseList.add(new CandidateDetailResponse(candidate.getId(), null, candidate.getActivityId(), candidate.getCertificateName(), candidate.getCertificate(),
+            candidateDetailResponseList.add(new CandidateDetailResponse(candidate.getId(),
+                    null, candidate.getActivityId(), candidate.getCertificateName(), candidate.getCertificate(),
                     candidate.getDateCertificate() != null ? candidate.getDateCertificate().toString() : null,
                     candidate.getCreatedAt() != null ? candidate.getCreatedAt().toString() : null));
         }
