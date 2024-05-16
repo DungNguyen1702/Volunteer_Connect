@@ -22,6 +22,7 @@ public interface PostRespository extends JpaRepository<Post, Integer> {
             "JOIN Post s ON s.activityId = a.id " +
             "LEFT JOIN PostComment cm on cm.postId = s.id " +
             "LEFT JOIN Candidate c ON a.id = c.activityId " +
+            "where a.isDeleted = false " +
             "GROUP BY a.id, s.id")
     List<PostActivitiesDTO> findAllPostsActivities();
     @Query( "SELECT p " +
