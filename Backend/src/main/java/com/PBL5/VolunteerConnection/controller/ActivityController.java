@@ -35,7 +35,7 @@ public class ActivityController {
         token = token.substring("Bearer ".length());
         return ResponseEntity.ok(activityService.deleteActivity(token ,activityRequest));
     }
-    @PostMapping("/organization/getAllActivity")
+    @GetMapping("/organization/getAllActivity")
     ResponseEntity<List<ActivityResponse>> getAllActivity (@RequestHeader("Authorization") String token){
         token = token.substring("Bearer ".length());
         return ResponseEntity.ok(activityService.getAllActivity(token));
