@@ -18,6 +18,7 @@ import useAuth from "../../../hooks/useAuth";
 import activityAPI from "../../../api/activityAPI";
 import candidateAPI from "../../../api/candidateAPI";
 import applyFormAPI from "../../../api/applyFormAPI";
+import postAPI from "../../../api/postAPI";
 
 export const ActivityDetailContext = createContext();
 
@@ -173,8 +174,14 @@ function ActivityDetail() {
     };
 
     const deletePost = (postId) => {
-        const newListPost = listPost.filter((post) => post.id !== postId);
-        setListPost(newListPost);
+        const callAPI =  async()=>{
+            await postAPI.deletePost(id, postId).then(response => {
+                const newListPost = listPost.filter((post) => post.id !== postId);
+                setListPost(newListPost);
+                toast.success("Delete post successfull")
+            }).catch(error=> console.log(error))
+        }
+        callAPI();
     };
 
     return (
