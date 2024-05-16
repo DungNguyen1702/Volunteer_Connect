@@ -15,4 +15,5 @@ public interface DeleteActivityFormService {
 
     List<DeleteActivityForm> selectAll();
 
+    List<DeleteActivityForm> selectAllAprove();
 }
