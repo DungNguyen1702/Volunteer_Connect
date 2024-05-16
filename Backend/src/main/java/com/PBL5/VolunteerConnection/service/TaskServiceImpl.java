@@ -124,8 +124,11 @@ public class TaskServiceImpl implements TaskService {
                 updateTask.setDescription(task.getDescription());
                 updateTask.setUpdatedAt(LocalDate.now());
                 updateTask.setTitle(task.getTitle());
+                // if (task.getCandidateId() != null) {
                 updateTask.setCandidate(candidateTemp);
-                System.out.println(updateTask.getCandidate().getId());
+                // }
+
+                // System.out.println(updateTask.getCandidate().getId());
                 taskRepository.save(updateTask);
                 return StatusResponse.builder()
                         .success(ResponseEntity.status(HttpStatus.ACCEPTED)
