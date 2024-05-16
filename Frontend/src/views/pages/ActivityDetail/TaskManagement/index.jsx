@@ -28,7 +28,7 @@ function TaskManagement() {
     );
 
     const [showListTask, setShowListTask] = useState(
-        data.find((task) => task.id === showingTaskTableID)?.Tasks || []
+        data.find((task) => task.id === showingTaskTableID)?.tasks || []
     );
     const [listTaskSearch, setListTaskSearch] = useState(showListTask);
 
@@ -50,7 +50,7 @@ function TaskManagement() {
 
     useEffect(() => {
         setShowListTask(
-            data.find((task) => task.id === showingTaskTableID)?.Tasks || []
+            data.find((task) => task.id === showingTaskTableID)?.tasks || []
         );
     }, [showingTaskTableID, data]);
 
@@ -76,7 +76,7 @@ function TaskManagement() {
             if (taskTable.id === taskTableId) {
                 return {
                     ...taskTable,
-                    Tasks: taskTable.Tasks.map((task) => {
+                    tasks: taskTable.tasks.map((task) => {
                         if (task.id === taskItemId)
                             return { ...task, ...newTask };
                         return task;
@@ -90,13 +90,19 @@ function TaskManagement() {
     const addTask = (taskTableId, newTask) => {
         const newData = data.map((taskTable) => {
             if (taskTable.id === taskTableId)
-                return { ...taskTable, Tasks: [...taskTable.Tasks, newTask] };
+                return { ...taskTable, tasks: [...taskTable.tasks, newTask] };
             return taskTable;
         });
         setData(newData);
     };
     const addTaskTable = (newTaskTable) => {
-        setData([...data, newTaskTable]);
+        const callAPI = async()=>{
+            await taskAPI.createTaskTable(newTaskTable, actInfo.id).then(response=>{
+                console.log(response.data);
+                setData([...data, {...newTaskTable, id : response.data.data}]);
+            }).catch(error=>console.log(error))
+        }   
+        callAPI();
     };
     const updateTaskTable = (newTaskTable, taskTableId) => {
         const updatedData = data.map((taskTable) => {

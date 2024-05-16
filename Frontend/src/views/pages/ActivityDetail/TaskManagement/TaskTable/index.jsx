@@ -21,7 +21,7 @@ function TaskTableItem(props) {
     };
     const onClickConfirm = () => {
         if (isCreate) {
-            addTaskTable({name : name, color : color, Tasks : []});
+            addTaskTable({name : name, color : color, tasks : []});
             setCreateTask(false)
         } else {
             setIsEdit(!isEdit);
