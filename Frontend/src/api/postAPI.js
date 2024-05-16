@@ -23,7 +23,7 @@ const postAPI = {
     },
     deletePost: (activityId, postId) => {
         const url = `/api/v1/post/delete`;
-        return axiosClient.application.delete(url, {
+        return axiosClient.application.post(url, {
             id: postId,
             activityId: activityId,
         });
