@@ -33,7 +33,7 @@ public class TaskServiceImpl implements TaskService {
     private UserRespository userRespository;
 
     @Override
-    public String createTask(String token, TaskRequest task) {
+    public StatusResponse createTask(String token, TaskRequest task) {
         // TODO Auto-generated method stub
         try {
             int organizationId = activityRepository.findById(task.getActivityId()).getOrganizationId();
@@ -46,13 +46,22 @@ public class TaskServiceImpl implements TaskService {
                     createdTask.setCandidate(candidate1);
                 }
                 taskRepository.save(createdTask);
-                return task.getDescription();
+                return StatusResponse.builder()
+                        .success(ResponseEntity.status(HttpStatus.CREATED)
+                                .body("Task has been created sucessfully!!"))
+                        .data(task.getId())
+                        .build();
             } else {
-                return "you are not onwer of this activity";
+                return StatusResponse.builder()
+                        .fail(ResponseEntity.status(HttpStatus.NOT_ACCEPTABLE)
+                                .body("Task cant not be created because you are not owner!!"))
+                        .build();
             }
         } catch (Exception e) {
             // TODO: handle exception
-            return e.getMessage();
+            return StatusResponse.builder()
+                    .fail(ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Exception from server!! " + e))
+                    .build();
         }
     }
 

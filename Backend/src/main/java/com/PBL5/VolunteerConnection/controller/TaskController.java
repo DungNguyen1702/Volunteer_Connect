@@ -24,7 +24,7 @@ public class TaskController {
     private TaskService taskService;
 
     @PostMapping("/create")
-    ResponseEntity<String> createTask(@RequestHeader("Authorization") String token,
+    ResponseEntity<StatusResponse> createTask(@RequestHeader("Authorization") String token,
             @RequestBody TaskRequest taskRequest) {
         token = token.substring("Bearer ".length());
         return ResponseEntity.ok(taskService.createTask(token, taskRequest));
