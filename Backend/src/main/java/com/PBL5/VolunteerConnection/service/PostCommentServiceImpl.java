@@ -4,6 +4,8 @@ import java.sql.Date;
 import java.time.LocalDate;
 import java.util.List;
 
+import com.PBL5.VolunteerConnection.model.Activity;
+import com.PBL5.VolunteerConnection.model.Post;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -32,7 +34,7 @@ public class PostCommentServiceImpl implements PostCommentService {
         // TODO Auto-generated method stub
         try {
             int userCommentId = jwtService.getId(token);
-//            System.out.println(postComment.getComment_parentId());
+            // System.out.println(postComment.getComment_parentId());
             PostComment createPostComment = new PostComment(postComment.getPostId(),
                     postComment.getContent(), userCommentId);
             postCommentRepository.save(createPostComment);
@@ -52,11 +54,11 @@ public class PostCommentServiceImpl implements PostCommentService {
     public StatusResponse updatePostComment(String token, PostCommentRequest postComment) {
         // TODO Auto-generated method stub
         try {
-            int userCommentId = jwtService.getId(token);
-            if (userCommentId == postComment.getAccountId()) {
+                int userCommentId = jwtService.getId(token);
                 PostComment updateComment = postCommentRepository.findById(postComment.getId());
+                if (updateComment.getAccountId() == userCommentId){
                 updateComment.setContent(postComment.getContent());
-                updateComment.setUpdatedAt(Date.valueOf(LocalDate.now()));
+                updateComment.setUpdatedAt(LocalDate.now());
                 postCommentRepository.save(updateComment);
                 return StatusResponse.builder()
                         .success(ResponseEntity.status(HttpStatus.ACCEPTED)
@@ -77,31 +79,39 @@ public class PostCommentServiceImpl implements PostCommentService {
     }
 
     @Override
-    public StatusResponse deletePostComment(String token, PostCommentRequest postComment) {
+    public StatusResponse deletePostComment(String token, PostCommentRequest commentReq) {
         // TODO Auto-generated method stub
         try {
-            int userCommentId = jwtService.getId(token);
-            int ownerPostId = 0;
-            if (postComment.getPostId() != 0) {
-                ownerPostId = activityRepository.findById(postRespository.findById(
-                        postComment.getPostId()).getActivityId()).getOrganizationId();
+            String role = jwtService.getRole(token)[0];
+            int accountId = jwtService.getId(token);
+            PostComment postComment = postCommentRepository.findById(commentReq.getId());
+            if (role.equals("1")){
+                if (postComment.getAccountId() == accountId){
+                    postComment.setDeleted(true);
+                    postCommentRepository.save(postComment);
+                    return StatusResponse.builder()
+                            .success(ResponseEntity.status(HttpStatus.ACCEPTED)
+                                    .body("Comment " + postComment.getId() + "has been deleted sucessfully!!"))
+                            .build();
+
+                }
             }
-            System.out.println(ownerPostId);
-            if (userCommentId == postComment.getAccountId() || ownerPostId == userCommentId) {
-                // postCommentRepository.deleteById(postComment.getId());
-                PostComment deleteComment = postCommentRepository.findById(postComment.getId());
-                deleteComment.setDeleted(true);
-                postCommentRepository.save(deleteComment);
-                return StatusResponse.builder()
-                        .success(ResponseEntity.status(HttpStatus.ACCEPTED)
-                                .body("Comment " + postComment.getId() + "has been deleted sucessfully!!"))
-                        .build();
-            } else {
-                return StatusResponse.builder()
-                        .success(ResponseEntity.status(HttpStatus.NOT_ACCEPTABLE)
-                                .body("comment cant not be deleted because you are not owner!!"))
-                        .build();
+            else if (role.equals("2")){
+                Activity activity= activityRepository.findById(postRespository.findById(
+                        postComment.getPostId()).getActivityId());
+                if (activity.getOrganizationId() == accountId){
+                    postComment.setDeleted(true);
+                    postCommentRepository.save(postComment);
+                    return StatusResponse.builder()
+                            .success(ResponseEntity.status(HttpStatus.ACCEPTED)
+                                    .body("Comment " + postComment.getId() + "has been deleted sucessfully!!"))
+                            .build();
+                }
             }
+            return StatusResponse.builder()
+                    .success(ResponseEntity.status(HttpStatus.NOT_ACCEPTABLE)
+                            .body("comment cant not be deleted because you are not owner!!"))
+                    .build();
         } catch (Exception e) {
             // TODO: handle exception
             return StatusResponse.builder()

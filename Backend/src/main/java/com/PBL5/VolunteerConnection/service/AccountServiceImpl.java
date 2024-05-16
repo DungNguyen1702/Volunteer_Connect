@@ -88,7 +88,7 @@ public class AccountServiceImpl implements AccountService {
             Account account = accountRepository.findByAccount(username);
             account.setName(request.getName());
             account.setAvatar(request.getAvatar());
-            account.setUpdatedAt(Date.valueOf(LocalDate.now()));
+            account.setUpdatedAt(LocalDate.now());
             accountRepository.save(account);
             if (role.equals("1")) {
                 User user = userRespository.findByAccountId(account.getId());
@@ -135,7 +135,7 @@ public class AccountServiceImpl implements AccountService {
     public AccountResponse getInfoAccount(String token) {
         int accountId = jwtService.getId(token);
         Account account = accountRepository.findById(accountId);
-        if (account.getRole() == 1){
+        if (account.getRole() == 1) {
             User user = userRespository.findByAccountId(account.getId());
             String birthday = null;
             if (account.getUser() != null) {

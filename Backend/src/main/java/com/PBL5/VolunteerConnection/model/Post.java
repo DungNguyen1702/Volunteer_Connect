@@ -4,7 +4,6 @@ import jakarta.persistence.*;
 import lombok.Data;
 import org.springframework.format.annotation.DateTimeFormat;
 
-
 import java.sql.Date;
 import java.time.LocalDate;
 
@@ -26,17 +25,18 @@ public class Post {
     private String content;
     @Column(name = "createdAt")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private java.util.Date createdAt;
+    private LocalDate createdAt;
     @Column(name = "updatedAt")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private Date updateAt;
+    private LocalDate updateAt;
+
     public Post(int activityId, String title, String image, String content) {
         this.activityId = activityId;
         this.title = title;
         this.image = image;
         this.content = content;
-        this.createdAt = Date.valueOf(LocalDate.now());
-        this.updateAt = Date.valueOf(LocalDate.now());
+        this.createdAt = LocalDate.now();
+        this.updateAt = LocalDate.now();
     }
 
     public Post() {
