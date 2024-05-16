@@ -49,7 +49,7 @@ public class TaskServiceImpl implements TaskService {
                 return StatusResponse.builder()
                         .success(ResponseEntity.status(HttpStatus.CREATED)
                                 .body("Task has been created sucessfully!!"))
-                        .data(task.getId())
+                        .data(createdTask.getId())
                         .build();
             } else {
                 return StatusResponse.builder()
