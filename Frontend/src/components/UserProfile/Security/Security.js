@@ -105,11 +105,6 @@ const Security = () => {
                             }
                         />
                     </div>
-                    <div className='form-group'>
-                        <label htmlFor='newpass'>Comfirm Password <span>*</span></label>
-                        <input type="password"
-                        />
-                    </div>
                 </div>
                 <Button className="mainbutton1" onClick={updatePassword}>
                     Save

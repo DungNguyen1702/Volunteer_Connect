@@ -3,7 +3,6 @@ package com.PBL5.VolunteerConnection.model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
-import java.sql.Date;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -31,10 +30,10 @@ public class PostComment {
     private int accountId;
     @Column(name = "createdAt")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private Date createdAt;
+    private LocalDate createdAt;
     @Column(name = "updatedAt")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private Date updatedAt;
+    private LocalDate updatedAt;
     @Column(name = "isDeleted")
     private boolean isDeleted;
     @OneToMany(mappedBy = "parentComment", fetch = FetchType.LAZY)
@@ -43,6 +42,7 @@ public class PostComment {
     @ManyToOne
     @JoinColumn(name = "comment_parent_id", insertable = false, updatable = false)
     private PostComment parentComment;
+
     public PostComment() {
 
     }
@@ -56,8 +56,8 @@ public class PostComment {
         this.content = content;
         this.accountId = accountId;
         this.isDeleted = isDeleted;
-        this.createdAt = Date.valueOf(LocalDate.now());
-        this.updatedAt = Date.valueOf(LocalDate.now());
+        this.createdAt = LocalDate.now();
+        this.updatedAt = LocalDate.now();
     }
 
     public PostComment(int postId, String content, int accountId) {
@@ -69,7 +69,7 @@ public class PostComment {
         this.content = content;
         this.accountId = accountId;
 
-        this.createdAt = Date.valueOf(LocalDate.now());
-        this.updatedAt = Date.valueOf(LocalDate.now());
+        this.createdAt = LocalDate.now();
+        this.updatedAt = LocalDate.now();
     }
 }

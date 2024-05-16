@@ -1,8 +1,6 @@
 package com.PBL5.VolunteerConnection.model;
 
-import java.sql.Date;
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -35,13 +33,12 @@ public class Account implements UserDetails {
     private Boolean status;
     @Column(name = "role")
     private int role;
-    // account link
     @Column(name = "createdAt")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private Date createdAt;
+    private LocalDate createdAt;
     @Column(name = "updatedAt")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private Date updatedAt;
+    private LocalDate updatedAt;
     @Column(name = "isDeleted")
     private Boolean isDeleted;
     @Column(name = "isValid")
@@ -74,8 +71,8 @@ public class Account implements UserDetails {
         this.avatar = null;
         this.status = null;
         this.role = role;
-        this.createdAt = Date.valueOf(LocalDate.now());
-        this.updatedAt = Date.valueOf(LocalDate.now());
+        this.createdAt = LocalDate.now();
+        this.updatedAt = LocalDate.now();
         this.isDeleted = false;
         this.isValid = true;
         this.backgroundNoAva = "#9b59b6";

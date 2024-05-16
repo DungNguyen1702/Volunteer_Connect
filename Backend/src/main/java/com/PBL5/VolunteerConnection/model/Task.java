@@ -52,7 +52,7 @@ public class Task {
     private LocalDate updatedAt;
 
     @OneToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "candidate_id", referencedColumnName = "id")
+    @JoinColumn(name = "candidate_id", referencedColumnName = "id", updatable = true)
     // @JsonIgnore
     private Candidate candidate;
 

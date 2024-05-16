@@ -17,6 +17,7 @@ import DeleteActModal from "./Component/DeleteModal";
 import useAuth from "../../../hooks/useAuth";
 import activityAPI from "../../../api/activityAPI";
 import candidateAPI from "../../../api/candidateAPI";
+import applyFormAPI from "../../../api/applyFormAPI";
 
 export const ActivityDetailContext = createContext();
 
@@ -38,7 +39,7 @@ function ActivityDetail() {
             await activityAPI
                 .getActivityDetail(id)
                 .then((response) => {
-                    console.log(response.data);
+                    // console.log(response.data);
                     setData(response.data);
                     setListCandidate(response.data.candidates);
                     setOrg(response.data.organization);
@@ -47,6 +48,12 @@ function ActivityDetail() {
                 .catch((error) => {
                     console.log(error);
                 });
+            await applyFormAPI
+                .getAllApplyFormByActivityID(id)
+                .then((response) => {setListApplyForm(response.data)
+                console.log(response.data);
+            })
+                .catch((error) => console.log(error));
         };
         callApi();
     }, []);

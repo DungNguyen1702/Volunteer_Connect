@@ -4,6 +4,7 @@ import "./index.scss";
 import { ActivityDetailContext } from "../../..";
 import { CheckSquareOutlined, CloseSquareOutlined } from "@ant-design/icons";
 import UserIcon from "../../../../../../components/user";
+import SupportFunction from '../../../../../../support/support_function'
 
 function ApplyFormModal(props) {
     const { confirmApplyForm, denyApplyForm, listApplyForm } = useContext(
@@ -119,7 +120,7 @@ function ApplyFormModal(props) {
                 className="button-deny-apply-form"
             />
         ),
-        createdAt: value.createdAt,
+        createdAt: SupportFunction.convertDateFromArrayToString(value.createdAt),
     }));
 
     const paginationConfig = {
