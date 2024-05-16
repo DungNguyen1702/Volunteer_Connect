@@ -17,6 +17,7 @@ const UserSidebar = ({ activepage }) => {
         };
         callFunction();
     };
+    console.log(activepage)
 
     return (
         <div className="usersidebar">
@@ -77,7 +78,7 @@ const UserSidebar = ({ activepage }) => {
                     </div>
                 </Link>
             }
-            { account && parseInt(account.role) !== 3 && (
+            {account && parseInt(account.role) !== 3 && (
                 <Link to="/Profile/likedPosts" className="styleone">
                     <div
                         className={`s1 ${
@@ -102,7 +103,7 @@ const UserSidebar = ({ activepage }) => {
                     </div>
                 </Link>
             )}
-            { account && parseInt(account.role) === 1 && (
+            {account && parseInt(account.role) === 1 && (
                 <Link to="/Profile/certificate" className="styleone">
                     <div
                         className={`s1 ${

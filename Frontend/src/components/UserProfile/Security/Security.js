@@ -55,15 +55,6 @@ const Security = () => {
     };
 
     return (
-<<<<<<< HEAD
-        <div className='securityFormParent'>
-            <div className='securityForm'>
-                <h1 className='mainhead1'>Change Password</h1>
-                <div className='form'>
-                    <div className='form-group'>
-                        <label htmlFor='oldpass'>Old Password <span>*</span></label>
-                        <input type="password"
-=======
         <div className="accountsettings">
             <ToastContainer
                 position="top-right"
@@ -88,7 +79,6 @@ const Security = () => {
                             onChange={(e) =>
                                 onChangePassword(setOldPassword, e)
                             }
->>>>>>> 5dfd36b91dcf2e9b90ff1bb04bc95e6024d16879
                         />
                     </div>
                     <div className="form-group">
@@ -113,11 +103,6 @@ const Security = () => {
                             onChange={(e) =>
                                 onChangePassword(setConfirmPassword, e)
                             }
-                        />
-                    </div>
-                    <div className='form-group'>
-                        <label htmlFor='newpass'>Comfirm Password <span>*</span></label>
-                        <input type="password"
                         />
                     </div>
                 </div>

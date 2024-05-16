@@ -95,7 +95,7 @@ public class CandidateServiceImpl implements CandidateService {
     public StatusResponse deleteCandidate(String token, CandidateRequest candidate) {
         // TODO Auto-generated method stub
         try {
-            token = token.substring("Bearer ".length());
+
             int organizationId = activityRepository.findById(candidate.getActivityId()).getOrganizationId();
             if (organizationId == jwtService.getId(token)) {
                 candidateRepository.deleteById(candidate.getId());
