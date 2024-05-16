@@ -12,6 +12,10 @@ function TaskTableItem(props) {
     const [isEdit, setIsEdit] = useState(isCreate ? true : false);
     const [name, setName] = useState(isCreate ? "" : data.name);
 
+    useEffect(()=>{
+        updateTaskTable({color : color, name : name}, data.id);
+    },[color, name, updateTaskTable, data])
+
     const onClickChange = () => {
         setIsEdit(!isEdit);
     };
@@ -20,13 +24,11 @@ function TaskTableItem(props) {
             addTaskTable({name : name, color : color, Tasks : []});
             setCreateTask(false)
         } else {
-            updateTaskTable({name : name}, data.id)
             setIsEdit(!isEdit);
         }
     };
     const onChangeColor = (color)=>{
         setColor(color);
-        updateTaskTable({color : color}, data.id);
     }
     const onChangeInputName = (e) => {
         setName(e.target.value);
