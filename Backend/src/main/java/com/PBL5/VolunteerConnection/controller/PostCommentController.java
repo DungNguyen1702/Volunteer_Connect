@@ -37,7 +37,7 @@ public class PostCommentController {
         return ResponseEntity.ok(postCommentService.updatePostComment(token, postCommentRequest));
     }
 
-    @DeleteMapping("/delete")
+    @PostMapping("/delete")
     ResponseEntity<StatusResponse> deletePostComment(@RequestHeader("Authorization") String token,
             @RequestBody PostCommentRequest postCommentRequest) {
         token = token.substring("Bearer ".length());

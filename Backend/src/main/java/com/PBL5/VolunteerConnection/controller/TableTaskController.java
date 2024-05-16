@@ -38,7 +38,7 @@ public class TableTaskController {
         return ResponseEntity.ok(tableTaskService.updateTableTask(token, tableTaskRequest));
     }
 
-    @DeleteMapping("/delete")
+    @PostMapping("/delete")
     ResponseEntity<StatusResponse> deletePostComment(@RequestHeader("Authorization") String token,
             @RequestBody TableTaskRequest tableTaskRequest) {
         token = token.substring("Bearer ".length());
