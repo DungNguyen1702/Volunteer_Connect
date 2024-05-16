@@ -40,7 +40,7 @@ function TaskDetail(props) {
             dateEnd: dateEnd.format("YYYY-MM-DD"),
             status: parseInt(status),
             candidate: assignee,
-            candidate_id: assignee ? assignee.id : null,
+            candidateId: assignee ? assignee.id : null,
             taskComments: taskComments,
             description: description,
         });

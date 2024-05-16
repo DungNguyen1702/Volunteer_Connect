@@ -23,6 +23,8 @@ html, body {
     flex-direction: column;
     align-items: center;
     padding : 20px 0px;
+    max-height: 700px;
+    overflow-y: auto;
 }
 
 .task-management-content-wrapper {

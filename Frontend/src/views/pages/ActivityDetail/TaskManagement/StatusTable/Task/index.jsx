@@ -48,7 +48,7 @@ function TaskItem(props) {
                 ></div>
                 <div className="task-item-content">
                     <h3 class="task-item-title">
-                        {SupportFunction.TruncateText(taskInfo.title, 25)}
+                    {taskInfo.title && SupportFunction.TruncateText(taskInfo.title, 10)}
                     </h3>
                     <div class="task-item-date-container">
                         <p>

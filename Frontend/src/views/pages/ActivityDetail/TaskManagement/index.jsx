@@ -12,6 +12,7 @@ import TextArea from "antd/es/input/TextArea";
 import TaskDetail from "./StatusTable/TaskDetail";
 import useAuth from "../../../../hooks/useAuth";
 import taskAPI from "../../../../api/task";
+import { toast } from "react-toastify";
 
 export const TaskDataContext = createContext();
 
@@ -39,9 +40,11 @@ function TaskManagement() {
             await taskAPI
                 .getAllTaskByActId(actInfo.id)
                 .then((response) => {
-                    console.log(response.data)
+                    console.log(response.data);
                     setData(response.data);
-                    setShowingTaskTableID(response.data.length !== 0 && response.data[0].id)
+                    setShowingTaskTableID(
+                        response.data.length !== 0 && response.data[0].id
+                    );
                 })
                 .catch((error) => console.log(error));
         };
@@ -72,49 +75,107 @@ function TaskManagement() {
         console.log(e.target.value);
     };
     const updateTask = (taskTableId, taskItemId, newTask) => {
-        const updatedData = data.map((taskTable) => {
-            if (taskTable.id === taskTableId) {
-                return {
-                    ...taskTable,
-                    tasks: taskTable.tasks.map((task) => {
-                        if (task.id === taskItemId)
-                            return { ...task, ...newTask };
-                        return task;
-                    }),
-                };
-            }
-            return taskTable;
-        });
-        setData(updatedData);
+        const callApi = async()=>{
+            await taskAPI.updateTask(newTask, taskItemId, actInfo.id)
+                .then(response=>{
+                    console.log(response.data)
+
+                    if(response.data.fail)
+                    {
+                        toast.error("Task can't be updated because you aren't the organization or the candidate of this activity");
+                        return;
+                    }
+                    
+                    const updatedData = data.map((taskTable) => {
+                        if (taskTable.id === taskTableId) {
+                            return {
+                                ...taskTable,
+                                tasks: taskTable.tasks.map((task) => {
+                                    if (task.id === taskItemId)
+                                        return { ...task, ...newTask };
+                                    return task;
+                                }),
+                            };
+                        }
+                        return taskTable;
+                    });
+                    setData(updatedData);
+                })  
+                .catch(error=> console.log(error))
+        }
+        callApi();
     };
     const addTask = (taskTableId, newTask) => {
-        const newData = data.map((taskTable) => {
-            if (taskTable.id === taskTableId)
-                return { ...taskTable, tasks: [...taskTable.tasks, newTask] };
-            return taskTable;
-        });
-        setData(newData);
+        const callApi = async () => {
+            await taskAPI
+                .createTask(newTask, taskTableId, actInfo.id)
+                .then((response) => {
+                    if(response.data.fail)
+                    {
+                        toast.error("Task can't be created because you aren't the organization or the candidate of this activity");
+                        return;
+                    }
+                    
+                    const newData = data.map((taskTable) => {
+                        if (taskTable.id === taskTableId)
+                            return {
+                                ...taskTable,
+                                tasks: [...taskTable.tasks, {...newTask, id : response.data.id}],
+                            };
+                        return taskTable;
+                    });
+                    setData(newData);
+                })
+                .catch((error) => console.log(error));
+        };
+        callApi();
     };
     const addTaskTable = (newTaskTable) => {
-        const callAPI = async()=>{
-            await taskAPI.createTaskTable(newTaskTable, actInfo.id).then(response=>{
-                console.log(response.data);
-                setData([...data, {...newTaskTable, id : response.data.data}]);
-            }).catch(error=>console.log(error))
-        }   
+        const callAPI = async () => {
+            await taskAPI
+                .createTaskTable(newTaskTable, actInfo.id)
+                .then((response) => {
+                    if(response.data.fail)
+                    {
+                        toast.error("Task table can't be created because you aren't the organization or the candidate of this activity");
+                        return;
+                    }
+                    
+                    console.log(response.data);
+                    setData([
+                        ...data,
+                        { ...newTaskTable, id: response.data.data },
+                    ]);
+                })
+                .catch((error) => console.log(error));
+        };
         callAPI();
     };
     const updateTaskTable = (newTaskTable, taskTableId) => {
-        const updatedData = data.map((taskTable) => {
-            if (taskTable.id === taskTableId) {
-                return {
-                    ...taskTable,
-                    ...newTaskTable
-                };
-            }
-            return taskTable;
-        });
-        setData(updatedData);
+        const callApi = async () => {
+            await taskAPI
+                .updateTaskTable(newTaskTable, taskTableId, actInfo.id)
+                .then((response) => {
+                    if(response.data.fail)
+                    {
+                        toast.error("Task table can't be updated because you aren't the organization or the candidate of this activity");
+                        return;
+                    }
+                    
+                    const updatedData = data.map((taskTable) => {
+                        if (taskTable.id === taskTableId) {
+                            return {
+                                ...taskTable,
+                                ...newTaskTable,
+                            };
+                        }
+                        return taskTable;
+                    });
+                    setData(updatedData);
+                })
+                .catch((error) => console.log(error));
+        };
+        callApi();
     };
 
     // Search support
@@ -134,6 +195,7 @@ function TaskManagement() {
             value={{
                 listCandidate,
                 showingTaskTableID,
+                actInfo,
                 updateTask,
                 addTask,
                 addTaskTable,

@@ -26,7 +26,30 @@ const taskAPI = {
             id : taskTableId,
             activityId: actId
         });
-    }
+    },
+    createTask : (newTask, tableTaskId, activityId)=>{
+        const url = `/api/v1/task/create`;
+        return axiosClient.application.post(url, {
+            ...newTask, 
+            tableTaskId : tableTaskId,
+            activityId : activityId,
+        });
+    },
+    updateTask : (newTask, taskID, activityId)=>{
+        const url = `/api/v1/task/update`;
+        return axiosClient.application.post(url, {
+            ...newTask,
+            id : taskID,
+            activityId : activityId
+        })
+    },
+    deleteTask : (taskId, activityId)=>{
+        const url = '/api/v1/task/delete';
+        return axiosClient.application.post(url, {
+            id: taskId,
+            activityId : activityId,
+        })
+    },
 };
 
 export default taskAPI;

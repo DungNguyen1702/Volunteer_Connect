@@ -33,8 +33,9 @@ public class DeleteActivityFormServiceImpl implements DeleteActivityFormService 
             if (organizationId == jwtService.getId(token)) {
                 DeleteActivityForm createForm = new DeleteActivityForm(deleteActivityForm.getActivityId(),
                         deleteActivityForm.getReason());
-                deleteActivityFormRepository.save(createForm);
                 createForm.setActivity(activity);
+                deleteActivityFormRepository.save(createForm);
+                System.out.println(createForm.getActivity().getId());
                 return StatusResponse.builder()
                         .success(ResponseEntity.status(HttpStatus.CREATED)
                                 .body("Delete form has been created sucessfully!!"))

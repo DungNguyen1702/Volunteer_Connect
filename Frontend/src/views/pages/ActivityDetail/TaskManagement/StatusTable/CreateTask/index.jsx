@@ -45,7 +45,7 @@ function CreateTask(props) {
             dateEnd: dateEnd && dateEnd.format("YYYY-MM-DD"),
             status: parseInt(status),
             candidate: assignee,
-            candidate_id: assignee ? assignee.id : null,
+            candidateId: assignee ? assignee.id : null,
             description: description,
             createdAt: SupportFunction.getCurrentlyDate(),
         });

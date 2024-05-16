@@ -23,7 +23,7 @@ public class DeleteActivityForm {
     private LocalDate createdAt;
 
     @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "activity_id", referencedColumnName = "id", updatable = true)
+    @JoinColumn(name = "activity_id", referencedColumnName = "id", updatable = false)
     private Activity activity;
 
     public DeleteActivityForm() {

@@ -40,7 +40,7 @@ function ActivityDetail() {
             await activityAPI
                 .getActivityDetail(id)
                 .then((response) => {
-                    // console.log(response.data);
+                    console.log(response.data);
                     setData(response.data);
                     setListCandidate(response.data.candidates);
                     setOrg(response.data.organization);
@@ -53,7 +53,7 @@ function ActivityDetail() {
                 .getAllApplyFormByActivityID(id)
                 .then((response) => {
                     setListApplyForm(response.data);
-                    console.log(response.data);
+                    // console.log(response.data);
                 })
                 .catch((error) => console.log(error));
         };
