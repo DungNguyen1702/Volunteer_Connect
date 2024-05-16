@@ -110,10 +110,16 @@ function ActivityDetail() {
     };
 
     const deleteCandidate = (candidateId) => {
-        const newListCandidate = listCandidate.filter(
-            (candidate) => candidate.id !== candidateId
-        );
-        setListCandidate(newListCandidate);
+        const callAPI = async()=>{
+            await candidateAPI.deleteCandidate(candidateId, id).then(response=>{
+                const newListCandidate = listCandidate.filter(
+                    (candidate) => candidate.id !== candidateId
+                );
+                setListCandidate(newListCandidate);
+                toast.success("Delete candidate successfull")
+            }).catch(error => console.log(error))
+        }
+        callAPI();
     };
 
     const confirmApplyForm = (applyFormId) => {
@@ -131,7 +137,7 @@ function ActivityDetail() {
                         activity_id: data.id,
                         certificate: null,
                         date_earn_certificate: null,
-                        createdAt: SupportFunction.convertStringToArray(SupportFunction.getCurrentlyDate()),
+                        createdAt: SupportFunction.convertStringToArray(response.data.createdAt),
                         user: findApplyForm.user,
                         user_id: findApplyForm.user_id,
                     };
