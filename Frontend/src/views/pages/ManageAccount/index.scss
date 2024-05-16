@@ -5,7 +5,64 @@
     padding: 0;
 }
 
-html, body {
-    font-size: 15px;
+html,
+body {
+    font-size: 10px;
     background-color: $background;
+}
+
+.data-table-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow: auto;
+}
+.custom-title {
+    font-family: 'Rubik', sans-serif;
+    color: #A45921;
+    text-align: center;
+    font-size: 24px;
+    font-weight: 500;
+}
+.center-content {
+    text-align: center;
+}
+.sub-header {
+    display: flex;
+    align-items: center;
+}
+
+.custom-search-input {
+    width: 300px;
+    height: 20px;
+    padding: 12px;
+    border: 1px solid;
+    border-radius: 5px;
+    font-family: 'Rubik', sans-serif;
+    font-size: 13px;
+    background-color: #f8f8f8;
+    color: #333;
+    outline: none;
+}
+
+.custom-search-input::placeholder {
+    font-family: 'Rubik', sans-serif;
+}
+
+.btn-Del {
+    background: none;
+    border: none;
+    color: #000;
+    cursor: pointer;
+    padding: 0;
+    margin: 0;
+}
+
+.btn-Del svg {
+    width: 18px;
+    height: 18px;
+}
+
+.btn-Del:hover {
+    color: #d9534f;
 }
