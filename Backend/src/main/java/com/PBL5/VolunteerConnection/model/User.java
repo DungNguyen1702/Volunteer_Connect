@@ -6,6 +6,7 @@ import lombok.Builder;
 import lombok.Data;
 
 import java.sql.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -33,7 +34,7 @@ public class User {
     private String gender;
     @Column(name = "birthday")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private Date birthday;
+    private LocalDate birthday;
     // @OneToOne(mappedBy = "user", cascade = CascadeType.ALL, fetch =
     // FetchType.EAGER)
     // private Account account;
@@ -49,7 +50,7 @@ public class User {
     @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
     private List<RegistrationForm> registrationForms;
 
-    public User(int accountId, String tel, String gender, String address, Date birthday) {
+    public User(int accountId, String tel, String gender, String address, LocalDate birthday) {
         this.accountId = accountId;
         this.tel = tel;
         this.address = address;

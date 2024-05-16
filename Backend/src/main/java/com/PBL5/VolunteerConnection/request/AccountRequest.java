@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.sql.Date;
+import java.time.LocalDate;
 
 @Data
 @Builder
@@ -19,7 +20,7 @@ public class AccountRequest {
     private String tel;
     private String gender;
     private String address;
-    private Date birthday;
+    private LocalDate birthday;
     private String email;
     private String avatar;
     private String newPassword;

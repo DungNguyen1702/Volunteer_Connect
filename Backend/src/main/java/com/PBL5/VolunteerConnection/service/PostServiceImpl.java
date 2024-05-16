@@ -70,7 +70,7 @@ public class PostServiceImpl implements PostService {
                 updatePost.setContent(postRequest.getContent());
                 updatePost.setTitle(postRequest.getTitle());
                 updatePost.setImage(postRequest.getImage());
-                updatePost.setUpdateAt(Date.valueOf(LocalDate.now()));
+                updatePost.setUpdateAt(LocalDate.now());
                 postRespository.save(updatePost);
                 return StatusResponse.builder()
                         .success(ResponseEntity.status(HttpStatus.ACCEPTED)
@@ -114,31 +114,29 @@ public class PostServiceImpl implements PostService {
 
     }
 
-
-
-
-
     @Override
     public List<PostsActivitiesResponse> selectAll() {
-//        if (token.isEmpty()){
-            List<PostsActivitiesResponse> postsActivitiesResponseArrayList = new ArrayList<>();
-            List<PostActivitiesDTO> postDetailDTOS = postRespository.findAllPostsActivities();
-            for (PostActivitiesDTO postDetailDTO : postDetailDTOS) {
-                Post post = postDetailDTO.getPost();
-                Activity activity = postDetailDTO.getActivity();
-                long participants = postDetailDTO.getParticipants();
-                long comments = postDetailDTO.getComments();
-                postsActivitiesResponseArrayList.add(new PostsActivitiesResponse(new ActivityResponse(activity, 0, comments, participants, 0), post, false, comments));
-            }
-            return postsActivitiesResponseArrayList;
+        // if (token.isEmpty()){
+        List<PostsActivitiesResponse> postsActivitiesResponseArrayList = new ArrayList<>();
+        List<PostActivitiesDTO> postDetailDTOS = postRespository.findAllPostsActivities();
+        for (PostActivitiesDTO postDetailDTO : postDetailDTOS) {
+            Post post = postDetailDTO.getPost();
+            Activity activity = postDetailDTO.getActivity();
+            long participants = postDetailDTO.getParticipants();
+            long comments = postDetailDTO.getComments();
+            postsActivitiesResponseArrayList.add(new PostsActivitiesResponse(
+                    new ActivityResponse(activity, 0, comments, participants, 0), post, false, comments));
+        }
+        return postsActivitiesResponseArrayList;
 
-//        }
+        // }
 
-//        return null;
+        // return null;
     }
+
     @Override
     public List<PostsActivitiesResponse> selectAllByAccountId(String token) {
-//        if (token.isEmpty()){
+        // if (token.isEmpty()){
         List<PostsActivitiesResponse> postsActivitiesResponseArrayList = new ArrayList<>();
         List<PostActivitiesDTO> postDetailDTOS = postRespository.findAllPostsActivities();
         List<Post> likePost = postRespository.findAllPostByAccountId(jwtService.getId(token));
@@ -147,20 +145,23 @@ public class PostServiceImpl implements PostService {
             Activity activity = postDetailDTO.getActivity();
             long participants = postDetailDTO.getParticipants();
             long comments = postDetailDTO.getComments();
-            if (likePost.contains(post)){
-                postsActivitiesResponseArrayList.add(new PostsActivitiesResponse(new ActivityResponse(activity, 0, comments, participants, 0), post, true, comments));
+            if (likePost.contains(post)) {
+                postsActivitiesResponseArrayList.add(new PostsActivitiesResponse(
+                        new ActivityResponse(activity, 0, comments, participants, 0), post, true, comments));
             }
-            postsActivitiesResponseArrayList.add(new PostsActivitiesResponse(new ActivityResponse(activity, 0, comments, participants, 0), post, false, comments));
+            postsActivitiesResponseArrayList.add(new PostsActivitiesResponse(
+                    new ActivityResponse(activity, 0, comments, participants, 0), post, false, comments));
         }
         return postsActivitiesResponseArrayList;
 
-//        }
+        // }
 
-//        return null;
+        // return null;
     }
+
     @Override
     public List<PostsActivitiesResponse> selectAllLikePostByAccountID(String token) {
-//        if (token.isEmpty()){
+        // if (token.isEmpty()){
         List<PostsActivitiesResponse> postsActivitiesResponseArrayList = new ArrayList<>();
         List<PostActivitiesDTO> postDetailDTOS = postRespository.findAllPostsActivities();
         List<Post> likePost = postRespository.findAllPostByAccountId(jwtService.getId(token));
@@ -168,8 +169,9 @@ public class PostServiceImpl implements PostService {
             Post post = postDetailDTO.getPost();
             Activity activity = postDetailDTO.getActivity();
             long participants = postDetailDTO.getParticipants();
-            if (likePost.contains(post)){
-                postsActivitiesResponseArrayList.add(new PostsActivitiesResponse(new ActivityResponse(activity, 0, 0, 0,  participants), post, true, participants));
+            if (likePost.contains(post)) {
+                postsActivitiesResponseArrayList.add(new PostsActivitiesResponse(
+                        new ActivityResponse(activity, 0, 0, 0, participants), post, true, participants));
             }
         }
         return postsActivitiesResponseArrayList;
@@ -178,26 +180,24 @@ public class PostServiceImpl implements PostService {
     @Override
     public StatusResponse createLikePost(String token, PostRequest post) {
         try {
-                LikePost checklikePost = likePostRepository.findByAccountIdAndPostId(jwtService.getId(token), post.getId());
-                if(checklikePost != null){
-                    System.out.print(1234);
-                    likePostRepository.deleteById(checklikePost.getId());
-                    return StatusResponse.builder()
-                            .success(ResponseEntity.status(HttpStatus.CREATED)
-                                    .body("Account " + checklikePost.getAccountId() + " unlike Post " + checklikePost.getPostId()))
-                            .build();
-                }
-                else{
-                    LikePost likePost = new LikePost(jwtService.getId(token), post.getId());
-                    likePost.setCreatedAt(Date.valueOf(LocalDate.now()));
-                    likePostRepository.save(likePost);
-                    return StatusResponse.builder()
-                            .success(ResponseEntity.status(HttpStatus.CREATED)
-                                    .body("Account " + likePost.getAccountId() + "liked Post" + likePost.getPostId()))
-                            .build();
-                }
-
-
+            LikePost checklikePost = likePostRepository.findByAccountIdAndPostId(jwtService.getId(token), post.getId());
+            if (checklikePost != null) {
+                System.out.print(1234);
+                likePostRepository.deleteById(checklikePost.getId());
+                return StatusResponse.builder()
+                        .success(ResponseEntity.status(HttpStatus.CREATED)
+                                .body("Account " + checklikePost.getAccountId() + " unlike Post "
+                                        + checklikePost.getPostId()))
+                        .build();
+            } else {
+                LikePost likePost = new LikePost(jwtService.getId(token), post.getId());
+                likePost.setCreatedAt(Date.valueOf(LocalDate.now()));
+                likePostRepository.save(likePost);
+                return StatusResponse.builder()
+                        .success(ResponseEntity.status(HttpStatus.CREATED)
+                                .body("Account " + likePost.getAccountId() + "liked Post" + likePost.getPostId()))
+                        .build();
+            }
 
         } catch (Exception e) {
             return StatusResponse.builder()
@@ -230,14 +230,14 @@ public class PostServiceImpl implements PostService {
         }
     }
 
-
-
     @Override
     public PostDetailResponse getPostDetail(int id) {
         PostDetailDTO postDetailDTO = postRespository.findPostDetailById(id);
         List<PostComment> postComments = postCommentRepository.findByPostId(id);
-        PostDetailResponse postDetailResponse = new PostDetailResponse(new ActivityResponse(postDetailDTO.getActivity(), postDetailDTO.getParticipants()),
-                new PostResponse(postDetailDTO.getPost()), new AccountResponse(postDetailDTO.getOrganization()), postComments);
+        PostDetailResponse postDetailResponse = new PostDetailResponse(
+                new ActivityResponse(postDetailDTO.getActivity(), postDetailDTO.getParticipants()),
+                new PostResponse(postDetailDTO.getPost()), new AccountResponse(postDetailDTO.getOrganization()),
+                postComments);
         return postDetailResponse;
     }
 

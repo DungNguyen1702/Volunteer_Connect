@@ -32,7 +32,7 @@ public class PostCommentServiceImpl implements PostCommentService {
         // TODO Auto-generated method stub
         try {
             int userCommentId = jwtService.getId(token);
-//            System.out.println(postComment.getComment_parentId());
+            // System.out.println(postComment.getComment_parentId());
             PostComment createPostComment = new PostComment(postComment.getPostId(),
                     postComment.getContent(), userCommentId);
             postCommentRepository.save(createPostComment);
@@ -56,7 +56,7 @@ public class PostCommentServiceImpl implements PostCommentService {
             if (userCommentId == postComment.getAccountId()) {
                 PostComment updateComment = postCommentRepository.findById(postComment.getId());
                 updateComment.setContent(postComment.getContent());
-                updateComment.setUpdatedAt(Date.valueOf(LocalDate.now()));
+                updateComment.setUpdatedAt(LocalDate.now());
                 postCommentRepository.save(updateComment);
                 return StatusResponse.builder()
                         .success(ResponseEntity.status(HttpStatus.ACCEPTED)
