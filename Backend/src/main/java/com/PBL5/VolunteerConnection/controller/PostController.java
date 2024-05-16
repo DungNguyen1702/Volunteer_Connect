@@ -32,7 +32,7 @@ public class PostController {
         return ResponseEntity.ok(postService.updatePost(token, postRequest));
     }
 
-    @DeleteMapping("/delete")
+    @PostMapping("/delete")
     ResponseEntity<StatusResponse> deletePost(@RequestHeader("Authorization") String token,@RequestBody PostRequest postRequest) {
         token = token.substring("Bearer ".length());
         return ResponseEntity.ok(postService.deletePost(token, postRequest));
