@@ -7,7 +7,7 @@
 
 html,
 body {
-    font-size: 15px;
+    font-size: 10px;
     background-color: $background;
 }
 
@@ -16,6 +16,7 @@ body {
     display: flex;
     flex-direction: column;
     overflow: auto;
+
 }
 
 .custom-title {
@@ -28,8 +29,8 @@ body {
 
 .custom-header {
     text-transform: capitalize;
+    border: 1px solid #000;
 }
-
 .center-content {
     text-align: center;
 }
@@ -82,8 +83,8 @@ body {
 }
 
 .btn-Del svg {
-    width: 20px;
-    height: 20px;
+    width: 18px;
+    height: 18px;
 }
 
 .btn-Del:hover {
