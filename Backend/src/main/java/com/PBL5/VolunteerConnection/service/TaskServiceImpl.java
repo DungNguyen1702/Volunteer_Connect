@@ -59,7 +59,27 @@ public class TaskServiceImpl implements TaskService {
     @Override
     public StatusResponse deleteTask(String token, TaskRequest task) {
         // TODO Auto-generated method stub
-        return null;
+        try {
+            int organizationId = activityRepository.findById(task.getActivityId()).getOrganizationId();
+            int account_id = jwtService.getId(token);
+            if (account_id == organizationId) {
+                taskRepository.deleteById(task.getId());
+                return StatusResponse.builder()
+                        .success(ResponseEntity.status(HttpStatus.ACCEPTED)
+                                .body("Task has been deleted sucessfully !!"))
+                        .build();
+            } else {
+                return StatusResponse.builder()
+                        .fail(ResponseEntity.status(HttpStatus.NOT_ACCEPTABLE)
+                                .body("Task cant not be deleted because you are not owner!!"))
+                        .build();
+            }
+        } catch (Exception e) {
+            // TODO: handle exception
+            return StatusResponse.builder()
+                    .fail(ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Exception from server!! " + e))
+                    .build();
+        }
     }
 
     @Override
