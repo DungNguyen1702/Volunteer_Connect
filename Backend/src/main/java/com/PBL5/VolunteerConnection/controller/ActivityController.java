@@ -30,7 +30,7 @@ public class ActivityController {
         return ResponseEntity.ok(activityService.updateActivity(token, activityRequest));
     }
 
-    @DeleteMapping("/admin/delete")
+    @PostMapping("/admin/delete")
     ResponseEntity<StatusResponse> deletePost(@RequestHeader("Authorization") String token ,@RequestBody ActivityRequest activityRequest) {
         token = token.substring("Bearer ".length());
         return ResponseEntity.ok(activityService.deleteActivity(token ,activityRequest));

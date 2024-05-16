@@ -1,5 +1,5 @@
 import { Button, Modal, Table } from "antd";
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import "./index.scss";
 import { ActivityDetailContext } from "../../..";
 import { CheckSquareOutlined, CloseSquareOutlined } from "@ant-design/icons";
@@ -87,41 +87,41 @@ function ApplyFormModal(props) {
     ];
 
     const listFilteredApplyForm = listApplyForm.filter(
-        (applyForm) => applyForm.isConfirmed === null
+        (applyForm) => applyForm.isConfirmed === 0
     );
 
     const data = listFilteredApplyForm.map((value, index) => ({
-        key: index,
-        num: index + 1,
-        name: (
-            <UserIcon
-                name={value.user.account.name}
-                avatar={value.user.account.avatar}
-                backgroundNoAva={value.user.account.backgroundNoAva}
-                id={value.user.account.id}
-                role={value.user.account.role}
-            />
-        ),
-        email: value.user.account.account,
-        birthday: value.user.birthday,
-        gender: value.user.gender,
-        address: value.user.address,
-        confirm: (
-            <Button
-                icon={<CheckSquareOutlined />}
-                onClick={() => onConfirmApplyForm(value.id)}
-                className="button-confirm-apply-form"
-            />
-        ),
-        deny: (
-            <Button
-                icon={<CloseSquareOutlined />}
-                onClick={() => onDenyApplyForm(value.id)}
-                className="button-deny-apply-form"
-            />
-        ),
-        createdAt: SupportFunction.convertDateFromArrayToString(value.createdAt),
-    }));
+            key: index,
+            num: index + 1,
+            name: (
+                <UserIcon
+                    name={value.user.account.name}
+                    avatar={value.user.account.avatar}
+                    backgroundNoAva={value.user.account.backgroundNoAva}
+                    id={value.user.account.id}
+                    role={value.user.account.role}
+                />
+            ),
+            email: value.user.account.account,
+            birthday: value.user.birthday,
+            gender: value.user.gender,
+            address: value.user.address,
+            confirm: (
+                <Button
+                    icon={<CheckSquareOutlined />}
+                    onClick={() => onConfirmApplyForm(value.id)}
+                    className="button-confirm-apply-form"
+                />
+            ),
+            deny: (
+                <Button
+                    icon={<CloseSquareOutlined />}
+                    onClick={() => onDenyApplyForm(value.id)}
+                    className="button-deny-apply-form"
+                />
+            ),
+            createdAt: SupportFunction.convertDateFromArrayToString(value.createdAt),
+        }));
 
     const paginationConfig = {
         pageSize: 6, // Số lượng mục trên mỗi trang

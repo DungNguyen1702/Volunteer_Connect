@@ -33,7 +33,7 @@ public class CandidateController {
         return ResponseEntity.ok(candidateService.updateCandidate(token, CandidateRequest));
     }
 
-    @DeleteMapping("/delete")
+    @PostMapping("/delete")
     ResponseEntity<StatusResponse> deleteCandidate(@RequestHeader("Authorization") String token ,@RequestBody CandidateRequest CandidateRequest) {
         token = token.substring("Bearer ".length());
         return ResponseEntity.ok(candidateService.deleteCandidate(token, CandidateRequest));

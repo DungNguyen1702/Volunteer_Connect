@@ -99,6 +99,12 @@ function convertDateFromArrayToString(dateArray)
     return `${year}-${month}-${day}`;
 }
 
+function convertStringToArray(dateString) {
+    // Phân tách chuỗi theo dấu gạch ngang và chuyển các phần tử thành số nguyên
+    let dateArray = dateString.split('-').map(Number);
+    return dateArray;
+}
+
 function truncateHTMLString(htmlString, maxLength) {
     // Chuyển đổi đoạn string HTML thành một đối tượng HTML
     const parser = new DOMParser();
@@ -409,6 +415,7 @@ const Utils = {
     filterAct,
     isTokenExpired,
     convertDateFromArrayToString,
+    convertStringToArray
 };
 
 export default Utils;

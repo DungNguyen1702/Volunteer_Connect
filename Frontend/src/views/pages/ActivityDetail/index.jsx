@@ -50,9 +50,10 @@ function ActivityDetail() {
                 });
             await applyFormAPI
                 .getAllApplyFormByActivityID(id)
-                .then((response) => {setListApplyForm(response.data)
-                console.log(response.data);
-            })
+                .then((response) => {
+                    setListApplyForm(response.data);
+                    console.log(response.data);
+                })
                 .catch((error) => console.log(error));
         };
         callApi();
@@ -109,43 +110,66 @@ function ActivityDetail() {
     };
 
     const deleteCandidate = (candidateId) => {
-        const newListCandidate = listCandidate.filter(
-            (candidate) => candidate.id !== candidateId
-        );
-        setListCandidate(newListCandidate);
+        const callAPI = async()=>{
+            await candidateAPI.deleteCandidate(candidateId, id).then(response=>{
+                const newListCandidate = listCandidate.filter(
+                    (candidate) => candidate.id !== candidateId
+                );
+                setListCandidate(newListCandidate);
+                toast.success("Delete candidate successfull")
+            }).catch(error => console.log(error))
+        }
+        callAPI();
     };
 
     const confirmApplyForm = (applyFormId) => {
-        const findApplyForm = listApplyForm.find(
-            (applyForm) => applyForm.id === applyFormId
-        );
+        const callAPI = async () => {
+            await applyFormAPI
+                .updateApproveStatusApplyForm(applyFormId, 1, id)
+                .then((response) => {
+                    const findApplyForm = listApplyForm.find(
+                        (applyForm) => applyForm.id === applyFormId
+                    );
 
-        // Gửi api lên và lấy về newCandidate rồi add vào
-        const newCandidate = {
-            id: listCandidate.length,
-            activity_id: data.id,
-            certificate: null,
-            date_earn_certificate: null,
-            createdAt: SupportFunction.getCurrentlyDate(),
-            user: findApplyForm.user,
-            user_id: findApplyForm.user_id,
+                    // Gửi api lên và lấy về newCandidate rồi add vào
+                    const newCandidate = {
+                        id: response.data.id,
+                        activity_id: data.id,
+                        certificate: null,
+                        date_earn_certificate: null,
+                        createdAt: SupportFunction.convertStringToArray(response.data.createdAt),
+                        user: findApplyForm.user,
+                        user_id: findApplyForm.user_id,
+                    };
+
+                    const newListApplyForm = listApplyForm.filter(
+                        (applyForm) => applyForm.id !== applyFormId
+                    );
+
+                    setListApplyForm(newListApplyForm);
+                    setListCandidate([...listCandidate, newCandidate]);
+                    toast.success("Successful application approval")
+                })
+                .catch((error) => console.log(error));
         };
-
-        const newListApplyForm = listApplyForm.filter(
-            (applyForm) => applyForm.id !== applyFormId
-        );
-
-        setListApplyForm(newListApplyForm);
-        setListCandidate([...listCandidate, newCandidate]);
+        callAPI();
     };
 
     const denyApplyForm = (applyFormId) => {
         // Gửi api về set thành false
-        const newListApplyForm = listApplyForm.filter(
-            (applyForm) => applyForm.id !== applyFormId
-        );
+        const callAPI = async () => {
+            await applyFormAPI
+                .updateApproveStatusApplyForm(applyFormId, 2, id)
+                .then((response) => {
+                    const newListApplyForm = listApplyForm.filter(
+                        (applyForm) => applyForm.id !== applyFormId
+                    );
 
-        setListApplyForm(newListApplyForm);
+                    setListApplyForm(newListApplyForm);
+                })
+                .catch((error) => console.log(error));
+        };
+        callAPI();
     };
 
     const deletePost = (postId) => {
@@ -314,7 +338,7 @@ function ActivityDetail() {
                                             </p>
                                             <p class="activity-header-info-item-content">
                                                 {SupportFunction.getStringApplyForm(
-                                                    data.applyFormNumber
+                                                    listApplyForm.length
                                                 )}
                                             </p>
                                         </div>

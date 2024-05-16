@@ -37,7 +37,7 @@ public class TaskController {
         return ResponseEntity.ok(taskService.updateTask(token, taskRequest));
     }
 
-    @DeleteMapping("/delete")
+    @PostMapping("/delete")
     ResponseEntity<StatusResponse> deleteTask(@RequestHeader("Authorization") String token,
             @RequestBody TaskRequest taskRequest) {
         token = token.substring("Bearer ".length());

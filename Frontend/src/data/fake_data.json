@@ -4121,5 +4121,81 @@
             "date_earn_certificate": "2024-04-21",
             "createdAt": "2024-04-28"
         }
-    ]
+    ],
+    "DeleteActivityForms" : [
+            {
+              "id": 1,
+              "activity_id": 101,
+              "reason": "Not satisfied with the event content",
+              "isAccept": false,
+              "createdAt": "2024-05-15",
+              "createdBy": 123
+            },
+            {
+              "id": 2,
+              "activity_id": 102,
+              "reason": "Unexpected schedule conflict",
+              "isAccept": true,
+              "createdAt": "2024-05-16",
+              "createdBy": 456
+            },
+            {
+              "id": 3,
+              "activity_id": 103,
+              "reason": "Personal reasons",
+              "isAccept": false,
+              "createdAt": "2024-05-14",
+              "createdBy": 789
+            }
+          
+    ],
+    "ManagementActicity" : 
+    [
+        {
+          "id": 1,
+          "image": "https://capitalcampaignpro.com/wp-content/uploads/2023/02/capital-campaign-volunteers.jpg",
+          "email": "activity1@example.com",
+          "name": "Activity 1",
+          "type": 1,
+          "dateStart": "2024-04-01",
+          "dateEnd": "2024-04-15",
+          "country": 4,
+          "organization_id": 1
+        },
+        {
+          "id": 2,
+          "image": "https://capitalcampaignpro.com/wp-content/uploads/2023/02/capital-campaign-volunteers.jpg",
+          "email": "activity2@example.com",
+          "name": "Activity 2",
+          "type": 2,
+          "dateStart": "2024-04-01",
+          "dateEnd": "2024-04-15",
+          "country": 3,
+          "organization_id": 1
+        },
+        {
+          "id": 3,
+          "image": "https://capitalcampaignpro.com/wp-content/uploads/2023/02/capital-campaign-volunteers.jpg",
+          "email": "activity3@example.com",
+          "name": "Activity 3",
+          "type": 3,
+          "dateStart": "2024-04-01",
+          "dateEnd": "2024-04-15",
+          "country": 2,
+          "organization_id": 1
+        },
+        {
+          "id": 4,
+          "image": "https://capitalcampaignpro.com/wp-content/uploads/2023/02/capital-campaign-volunteers.jpg",
+          "email": "activity4@example.com",
+          "name": "Activity 4",
+          "type": 4,
+          "dateStart": "2024-04-01",
+          "dateEnd": "2024-04-15",
+          "country": 1,
+          "organization_id": 1
+        }
+    
+      ]
+    
 }
