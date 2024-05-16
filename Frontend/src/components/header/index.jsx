@@ -68,7 +68,6 @@ function Header(props) {
     const numberOfChat = 10;
 
     const clickHomePage = () => {
-        console.log();
         navigate("/user-homepage");
     };
 
@@ -106,11 +105,15 @@ function Header(props) {
     const clickRegister = () => {
         navigate('/auth/register')
     };
+    
+    const onClickLogo = ()=>{
+        navigate("/user-homepage");
+    };
 
     return (
         <div class="header-container">
             <div class="header-wrapper">
-                <img src={ICONS.logo} alt="Logo" class="header-wrapper logo" />
+                <img src={ICONS.logo} alt="Logo" class="header-wrapper logo" onClick={onClickLogo}/>
                 <div class="header-wrapper button-group-left">
                     {account ? (
                         <>

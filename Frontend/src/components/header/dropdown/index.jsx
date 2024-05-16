@@ -78,7 +78,7 @@ const useDropdownNavigation = () => {
                     <div
                         class="item-wrapper"
                         onClick={() => {
-                            navigate("/profile/certificates");
+                            navigate("/profile/certificate");
                         }}
                     >
                         <BookOutlined className="item-icon" />

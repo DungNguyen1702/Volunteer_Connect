@@ -7,4 +7,4 @@ function ManageActivity() {
   )
 }
 
-export default ManageActivi
+export default ManageActivity

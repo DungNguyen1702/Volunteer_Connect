@@ -91,6 +91,14 @@ function convertToHTML(htmlString) {
     return <div dangerouslySetInnerHTML={{ __html: htmlString }} />;
 }
 
+function convertDateFromArrayToString(dateArray)
+{
+    let [year, month, day] = dateArray;
+    month = month.toString().padStart(2, '0');
+    day = day.toString().padStart(2, '0');
+    return `${year}-${month}-${day}`;
+}
+
 function truncateHTMLString(htmlString, maxLength) {
     // Chuyển đổi đoạn string HTML thành một đối tượng HTML
     const parser = new DOMParser();
@@ -400,6 +408,7 @@ const Utils = {
     filterPost,
     filterAct,
     isTokenExpired,
+    convertDateFromArrayToString,
 };
 
 export default Utils;
