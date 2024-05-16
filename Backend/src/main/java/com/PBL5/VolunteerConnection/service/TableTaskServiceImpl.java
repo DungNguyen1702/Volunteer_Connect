@@ -42,6 +42,7 @@ public class TableTaskServiceImpl implements TableTaskService {
                 return StatusResponse.builder()
                         .success(ResponseEntity.status(HttpStatus.CREATED)
                                 .body("TableTask " + createTableTask.getName() + "has been created sucessfully!!"))
+                        .data(tableTask.getId())
                         .build();
             } else {
                 return StatusResponse.builder()

@@ -13,7 +13,7 @@ public class DeleteActivityForm {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private int id;
-    @Column(name = "activity_id")
+    @Column(name = "activity_id", insertable = false, updatable = false)
     private int activity_id;
     @Column(name = "reason")
     private String reason;
@@ -21,6 +21,10 @@ public class DeleteActivityForm {
     private int isAccept;
     @Column(name = "createdAt")
     private LocalDate createdAt;
+
+    @OneToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "activity_id", referencedColumnName = "id", updatable = true)
+    private Activity activity;
 
     public DeleteActivityForm() {
 
