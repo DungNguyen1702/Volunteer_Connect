@@ -68,30 +68,35 @@ public class TaskServiceImpl implements TaskService {
         try {
             int organizationId = activityRepository.findById(task.getActivityId()).getOrganizationId();
             int account_id = jwtService.getId(token);
-            Candidate candidateTemp;
+            Candidate candidateTemp = null;
             boolean check = false;
             if (organizationId != account_id) {
+
                 User user = userRespository.findById(account_id);
                 List<Candidate> listCandidates = user.getCandidates();
                 for (Candidate candidate : listCandidates) {
                     if (candidate.getUserId() == user.getId()) {
                         check = true;
-                        candidateTemp = candidate;
+
                         break;
                     }
                 }
             }
-
+            if (task.getCandidateId() != null) {
+                candidateTemp = candidateRepository.findById((int) task.getCandidateId());
+            }
             if (check == true || account_id == organizationId) {
                 Task updateTask = taskRepository.findById(task.getId());
-                System.out.println("oke");
                 updateTask.setCandidateId(task.getCandidateId());
                 updateTask.setStatus(task.getStatus());
+                System.out.println("oke");
                 updateTask.setDateEnd(task.getDateEnd());
                 updateTask.setDateStart(task.getDateStart());
                 updateTask.setDescription(task.getDescription());
                 updateTask.setUpdatedAt(LocalDate.now());
                 updateTask.setTitle(task.getTitle());
+                updateTask.setCandidate(candidateTemp);
+                System.out.println(updateTask.getCandidate().getId());
                 taskRepository.save(updateTask);
                 return StatusResponse.builder()
                         .success(ResponseEntity.status(HttpStatus.ACCEPTED)
