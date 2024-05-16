@@ -49,7 +49,7 @@ function ApplyFormModal(props) {
         },
         {
             title: "Birthday",
-            width: 60,
+            width: 80,
             dataIndex: "birthday",
             align: "center",
         },
@@ -103,7 +103,7 @@ function ApplyFormModal(props) {
                 />
             ),
             email: value.user.account.account,
-            birthday: value.user.birthday,
+            birthday: SupportFunction.convertDateFromArrayToString(value.user.birthday),
             gender: value.user.gender,
             address: value.user.address,
             confirm: (

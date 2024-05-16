@@ -6,7 +6,7 @@ import { TaskDataContext } from "..";
 
 function TaskTableItem(props) {
     const { data, isCreate, setData, setCreateTask, listData, setShowingTaskTableID, showingTaskTableID } = props;
-    const { addTaskTable } = useContext(TaskDataContext);
+    const { addTaskTable, updateTaskTable } = useContext(TaskDataContext);
     
     const [color, setColor] = useState(isCreate ? "#257769" : data.color);
     const [isEdit, setIsEdit] = useState(isCreate ? true : false);
@@ -17,12 +17,17 @@ function TaskTableItem(props) {
     };
     const onClickConfirm = () => {
         if (isCreate) {
-            addTaskTable({name : name, color : color, id : listData.length+1, Tasks : []});
+            addTaskTable({name : name, color : color, Tasks : []});
             setCreateTask(false)
         } else {
+            updateTaskTable({name : name}, data.id)
             setIsEdit(!isEdit);
         }
     };
+    const onChangeColor = (color)=>{
+        setColor(color);
+        updateTaskTable({color : color}, data.id);
+    }
     const onChangeInputName = (e) => {
         setName(e.target.value);
     };
@@ -61,7 +66,7 @@ function TaskTableItem(props) {
                 <ColorPicker
                     value={color}
                     format="hex"
-                    onChange={(color) => setColor(color.toHexString())}
+                    onChange={(color) => onChangeColor(color.toHexString())}
                     className="task-table-item-color-picker"
                 />
                 {isEdit ? (

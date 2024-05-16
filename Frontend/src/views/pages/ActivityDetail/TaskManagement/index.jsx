@@ -11,18 +11,21 @@ import useDropDownListTaskItem from "./DropDown";
 import TextArea from "antd/es/input/TextArea";
 import TaskDetail from "./StatusTable/TaskDetail";
 import useAuth from "../../../../hooks/useAuth";
+import taskAPI from "../../../../api/task";
 
 export const TaskDataContext = createContext();
 
 function TaskManagement() {
     const { account } = useAuth();
 
-    const { listCandidate } = useContext(ActivityDetailContext);
+    const { listCandidate, actInfo } = useContext(ActivityDetailContext);
 
-    const [data, setData] = useState(FakeData.TableTasks);
+    const [data, setData] = useState([]);
     const [search, setSearch] = useState("");
     const [createTask, setCreateTask] = useState(false);
-    const [showingTaskTableID, setShowingTaskTableID] = useState(data[0].id);
+    const [showingTaskTableID, setShowingTaskTableID] = useState(
+        data.length !== 0 && data[0].id
+    );
 
     const [showListTask, setShowListTask] = useState(
         data.find((task) => task.id === showingTaskTableID)?.Tasks || []
@@ -30,6 +33,20 @@ function TaskManagement() {
     const [listTaskSearch, setListTaskSearch] = useState(showListTask);
 
     const { getItemDropDownSearchTask } = useDropDownListTaskItem();
+
+    useEffect(() => {
+        const callAPI = async () => {
+            await taskAPI
+                .getAllTaskByActId(actInfo.id)
+                .then((response) => {
+                    console.log(response.data)
+                    setData(response.data);
+                    setShowingTaskTableID(response.data.length !== 0 && response.data[0].id)
+                })
+                .catch((error) => console.log(error));
+        };
+        callAPI();
+    }, []);
 
     useEffect(() => {
         setShowListTask(
@@ -81,6 +98,18 @@ function TaskManagement() {
     const addTaskTable = (newTaskTable) => {
         setData([...data, newTaskTable]);
     };
+    const updateTaskTable = (newTaskTable, taskTableId) => {
+        const updatedData = data.map((taskTable) => {
+            if (taskTable.id === taskTableId) {
+                return {
+                    ...taskTable,
+                    ...newTaskTable
+                };
+            }
+            return taskTable;
+        });
+        setData(updatedData);
+    };
 
     // Search support
     const [visibleDetail, setVisibleDetail] = useState(false);
@@ -98,10 +127,11 @@ function TaskManagement() {
         <TaskDataContext.Provider
             value={{
                 listCandidate,
-                updateTask,
                 showingTaskTableID,
+                updateTask,
                 addTask,
                 addTaskTable,
+                updateTaskTable,
             }}
         >
             <div class="task-management-wrapper">
