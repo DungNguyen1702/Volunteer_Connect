@@ -167,7 +167,7 @@ function ActivityDetail() {
                     );
 
                     setListApplyForm(newListApplyForm);
-                    toast.error('Successful application deny')
+                    toast.success('Successful application deny')
                 })
                 .catch((error) => console.log(error));
         };

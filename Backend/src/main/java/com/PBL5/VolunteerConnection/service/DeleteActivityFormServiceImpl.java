@@ -69,7 +69,26 @@ public class DeleteActivityFormServiceImpl implements DeleteActivityFormService 
     @Override
     public StatusResponse updateDeleteActivityForm(String token, DeleteActivityRequest deleteActivityForm) {
         // TODO Auto-generated method stub
-        return null;
+        try {
+            DeleteActivityForm updateDeleteForm = deleteActivityFormRepository.findById(deleteActivityForm.getId());
+            updateDeleteForm.setIsAccept(deleteActivityForm.getIsAccept());
+            deleteActivityFormRepository.save(updateDeleteForm);
+            return StatusResponse.builder()
+                    .success(ResponseEntity.status(HttpStatus.ACCEPTED)
+                            .body("Delete form has been aproved sucessfully !!"))
+                    .build();
+        } catch (Exception e) {
+            // TODO: handle exception
+            return StatusResponse.builder()
+                    .fail(ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Exception from server!! " + e))
+                    .build();
+        }
+    }
+
+    @Override
+    public List<DeleteActivityForm> selectAllAprove() {
+        // TODO Auto-generated method stub
+        return deleteActivityFormRepository.findByIsAccept(0);
     }
 
 }

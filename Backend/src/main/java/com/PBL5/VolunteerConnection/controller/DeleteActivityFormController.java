@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.PBL5.VolunteerConnection.model.DeleteActivityForm;
 import com.PBL5.VolunteerConnection.request.DeleteActivityRequest;
-import com.PBL5.VolunteerConnection.request.TableTaskRequest;
 import com.PBL5.VolunteerConnection.response.StatusResponse;
 import com.PBL5.VolunteerConnection.service.DeleteActivityFormService;
 
@@ -30,8 +29,20 @@ public class DeleteActivityFormController {
         return ResponseEntity.ok(deleteActivityFormService.createDeleteActivityForm(token, deleteActivityRequest));
     }
 
+    @PostMapping("/update")
+    ResponseEntity<StatusResponse> updateDeleteForm(@RequestHeader("Authorization") String token,
+            @RequestBody DeleteActivityRequest deleteActivityRequest) {
+        token = token.substring("Bearer ".length());
+        return ResponseEntity.ok(deleteActivityFormService.updateDeleteActivityForm(token, deleteActivityRequest));
+    }
+
     @GetMapping("/selectAll")
     ResponseEntity<List<DeleteActivityForm>> selectAll() {
         return ResponseEntity.ok(deleteActivityFormService.selectAll());
+    }
+
+    @GetMapping("/selectAllAprove")
+    ResponseEntity<List<DeleteActivityForm>> selectAllAprove() {
+        return ResponseEntity.ok(deleteActivityFormService.selectAllAprove());
     }
 }

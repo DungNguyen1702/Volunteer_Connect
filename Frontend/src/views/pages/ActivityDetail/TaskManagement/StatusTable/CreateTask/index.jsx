@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "./index.scss";
 import { Avatar, Button, DatePicker, Modal, Select, Tooltip } from "antd";
 import moment from "moment";
@@ -41,8 +41,8 @@ function CreateTask(props) {
 
         addTask(showingTaskTableID, {
             title: title,
-            dateStart: dateStart && dateStart.format("YYYY-MM-DD"),
-            dateEnd: dateEnd && dateEnd.format("YYYY-MM-DD"),
+            dateStart: dateStart && SupportFunction.convertStringToArray(dateStart.format("YYYY-MM-DD")),
+            dateEnd: dateEnd && SupportFunction.convertStringToArray(dateEnd.format("YYYY-MM-DD")),
             status: parseInt(status),
             candidate: assignee,
             candidateId: assignee ? assignee.id : null,

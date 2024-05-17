@@ -120,10 +120,11 @@ function TaskManagement() {
                         if (taskTable.id === taskTableId)
                             return {
                                 ...taskTable,
-                                tasks: [...taskTable.tasks, {...newTask, id : response.data.id}],
+                                tasks: [...taskTable.tasks, {...newTask, id : response.data.data}],
                             };
                         return taskTable;
                     });
+                    console.log(newData)
                     setData(newData);
                 })
                 .catch((error) => console.log(error));

@@ -11,9 +11,12 @@ import postAPI from "../../../api/postAPI";
 import { ToastContainer, toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import useAuth from "../../../hooks/useAuth";
+import applyFormAPI from "../../../api/applyFormAPI";
 
 function PostDetail() {
     const { id } = useParams();
+
+    const {account} = useAuth();
 
     const [data, setData] = useState(null);
 
@@ -85,13 +88,32 @@ function PostDetail() {
                 navigate('/auth/login')
             ), 2000)
         }
+        else if (parseInt(account.role) === 2)
+        {   
+            toast.error("You can't register this activity because you're an organization");
+            return;
+        }
         else
         {
-            // ddax dang ky roi
-            toast.success('You have successfully registered');
-            setTimeout (() => (
-                navigate('/user-homepage')
-            ), 2000)
+            const callApi = async()=>{
+                await applyFormAPI.createApplyForm(act.id)
+                    .then(response=>{
+                        console.log(response)
+
+                        if(response.data.fail)
+                        {
+                            toast.error('You can apply this activity because you have already registered this activity before');
+                            return;
+                        }
+
+                        toast.success('You have successfully registered');
+                        setTimeout (() => (
+                            navigate('/user-homepage')
+                        ), 2000)
+                    })
+                    .catch(error => console.log(error))
+            }
+            callApi();
         }
     };
 

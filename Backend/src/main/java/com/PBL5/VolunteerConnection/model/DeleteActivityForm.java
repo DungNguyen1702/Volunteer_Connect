@@ -22,7 +22,7 @@ public class DeleteActivityForm {
     @Column(name = "createdAt")
     private LocalDate createdAt;
 
-    @OneToOne(fetch = FetchType.LAZY)
+    @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "activity_id", referencedColumnName = "id", updatable = false)
     private Activity activity;
 
