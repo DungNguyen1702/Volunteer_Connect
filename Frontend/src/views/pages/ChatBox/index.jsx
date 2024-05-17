@@ -9,11 +9,12 @@ import { over } from "stompjs";
 import SockJS from "sockjs-client";
 import useAuth from "../../../hooks/useAuth";
 import chatApi from "../../../api/chatAPI";
+import SupportFunction from '../../../support/support_function'
 
 function getValueByKeyId(map, searchId) {
     for (let [key, value] of map.entries()) {
-        if (parseInt(key.id) === parseInt(searchId)) {
-            return { ...key, chats: value };
+        if (parseInt(key) === parseInt(searchId)) {
+            return { ...value, id: parseInt(key) };
         }
     }
     return null;
@@ -34,28 +35,23 @@ function ChatBox() {
 
     const [selectedAccount, setSelectedAccount] = useState(null);
 
-    const [isConnected, setIsConnected] = useState(false);
-
     useEffect(() => {
         const callApi = async () => {
             await connect();
             await chatApi
-                .getListChatByToken(accountId === 'null' ? 0 : accountId )
+                .getListChatByToken(accountId === "null" ? 0 : accountId)
                 .then((response) => {
                     const newChatBox = new Map();
                     response.data.forEach((accountData) => {
-                        newChatBox.set(
-                            {
-                                id: accountData.id,
-                                account: accountData.account,
-                                name: accountData.name,
-                                avatar: accountData.avatar,
-                                backgroundNoAva: accountData.backgroundNoAva,
-                            },
-                            accountData.chats
-                        );
+                        newChatBox.set(parseInt(accountData.id), {
+                            account: accountData.account,
+                            name: accountData.name,
+                            avatar: accountData.avatar,
+                            backgroundNoAva: accountData.backgroundNoAva,
+                            chats: accountData.chats,
+                        });
                     });
-                    setChatBox(newChatBox);
+                    setChatBox(new Map(newChatBox));
                 })
                 .catch((error) => console.log(error));
         };
@@ -76,7 +72,7 @@ function ChatBox() {
         } else {
             const filteredChatBox = new Map();
             chatBox.forEach((value, key) => {
-                if (key.name.toLowerCase().includes(search.toLowerCase())) {
+                if (value.name.toLowerCase().includes(search.toLowerCase())) {
                     filteredChatBox.set(key, value);
                 }
             });
@@ -91,80 +87,84 @@ function ChatBox() {
     // Socket
     const connect = () => {
         return new Promise((resolve, reject) => {
-            let Sock = new SockJS('http://localhost:8888/ws');
+            let Sock = new SockJS("http://localhost:8888/ws");
             stompClient = over(Sock);
-            stompClient.connect({}, () => {
-                onConnected();
-                resolve();
-            }, (error) => {
-                console.log(error);
-                reject(error);
-            });
+            stompClient.connect(
+                {},
+                () => {
+                    onConnected();
+                    resolve();
+                },
+                (error) => {
+                    console.log(error);
+                    reject(error);
+                }
+            );
         });
     };
 
     const onConnected = () => {
-        stompClient.subscribe('/user/' + account.id + '/private', onPrivateMessage);
-        setIsConnected(true); // Cập nhật trạng thái kết nối
+        stompClient.subscribe(
+            "/user/" + account.id + "/private",
+            onPrivateMessage
+        );
     };
 
-    const onPrivateMessage = (payload)=>{
-        // console.log("payload", payload);
-        
-        var payloadData = JSON.parse(payload.body);
-        console.log(payloadData);
+    const onPrivateMessage = (payload) => {
 
-        var keyValue = {
-            id: payloadData.id,
+        var payloadData = JSON.parse(payload.body);
+        var keyValue = payloadData.id;
+        
+        var valueData = {
             account: payloadData.account,
             name: payloadData.name,
             avatar: payloadData.avatar,
             backgroundNoAva: payloadData.backgroundNoAva,
-        }
-
-        if (chatBox.get(keyValue)) {
-            console.log(1);
-            chatBox.get(keyValue).push(payloadData.chat);
-        } else {
-            console.log(2);
-            let list =[];
-            list.push(payloadData.chat);
-            chatBox.set(keyValue, list);
-        }
-
-        console.log(chatBox)
-        
-        setChatBox(chatBox);
-    }
-
-    const sendPrivateValue=(receiverId, message)=>{
-        if (!isConnected) {
-            console.log("Connection has not been established yet.");
-            return;
-        }
-
-        var chatMessage = {
-          senderId: account.id,
-          receiverId: receiverId,
-          content: message,
-          senderInfo : {
-              id: account.id,
-              account: account.account,
-              name: account.name,
-              avatar: account.avatar,
-              status: account.status,
-              role: account.role,
-              createdAt: account.createdAt,
-              updatedAt: account.updatedAt,
-              isDeleted: account.isDeleted,
-              backgroundNoAva: account.backgroundNoAva,
-          }
+            chats : payloadData.chats ? payloadData.chats : []
         };
 
-        stompClient.send("/app/private-message", {}, JSON.stringify(chatMessage));
+        const newChatBox = new Map(chatBox);
+        newChatBox.set(keyValue, valueData);
+        
+        setChatBox(newChatBox)
+    };
 
+    const sendPrivateValue = (receiverId, message) => {
 
-      }
+        var chatMessage = {
+            senderId: account.id,
+            receiverId: receiverId,
+            content: message,
+            senderInfo: {
+                id: account.id,
+                account: account.account,
+                name: account.name,
+                avatar: account.avatar,
+                status: account.status,
+                role: account.role,
+                createdAt: account.createdAt,
+                updatedAt: account.updatedAt,
+                isDeleted: account.isDeleted,
+                backgroundNoAva: account.backgroundNoAva,
+            },
+        };
+
+        const newChatBox = new Map(chatBox);
+        const valueData = chatBox.get(receiverId);
+        newChatBox.set(receiverId, {...valueData, chats : [...valueData.chats, {
+            senderId: account.id,
+            receiverId: receiverId,
+            content: message,
+            createdAt : SupportFunction.getCurrentlyDate()
+        }]});
+        
+
+        stompClient.send(
+            "/app/private-message",
+            {},
+            JSON.stringify(chatMessage)
+        );
+    };
 
     return (
         <div class="chat-box-wrapper">
@@ -179,8 +179,9 @@ function ChatBox() {
                 <div class="chat-box-account-list">
                     {[...listAccountChat.entries()].map(([key, value]) => (
                         <AccountChatIcon
-                            chat={value}
-                            key={key.id}
+                            chat={value.chats}
+                            data={value}
+                            key={key}
                             keyValue={key}
                             selectedAccountId={accountId}
                         />
@@ -189,7 +190,10 @@ function ChatBox() {
             </div>
             <div class="chat-box-main-content-wrapper">
                 {selectedAccount !== null && (
-                    <ChatBoxContent data={selectedAccount} sendPrivateValue={sendPrivateValue} />
+                    <ChatBoxContent
+                        data={selectedAccount}
+                        sendPrivateValue={sendPrivateValue}
+                    />
                 )}
             </div>
         </div>

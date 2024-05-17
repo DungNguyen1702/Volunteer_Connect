@@ -5,29 +5,30 @@ import "./index.scss";
 import { useNavigate } from "react-router-dom";
 
 function AccountChatIcon(props) {
-    const { chat, keyValue, selectedAccountId } = props;
+    const { chat, data, keyValue, selectedAccountId } = props;
+    
     const navigate = useNavigate();
 
     const lastestChat = chat[chat.length - 1];
     const onClickAccountChat = () => {
-        navigate(`/chat-box/${keyValue.id}`);
+        navigate(`/chat-box/${keyValue}`);
     };
 
     return (
         <div
             class={`account-chat-icon-wrapper ${
-                selectedAccountId === keyValue.id + "" && "selected-chatbox"
+                parseInt(selectedAccountId) == parseInt(keyValue) + "" && "selected-chatbox"
             }`}
             onClick={onClickAccountChat}
         >
             <AvatarAccount
-                name={keyValue.name}
-                avatar={keyValue.avatar}
-                backgroundNoAva={keyValue.backgroundNoAva}
+                name={data.name}
+                avatar={data.avatar}
+                backgroundNoAva={data.backgroundNoAva}
                 size={50}
             />
             <div class="account-chat-icon-content-wrapper">
-                <p class="font-size-big">{keyValue.name}</p>
+                <p class="font-size-big">{data.name}</p>
                 <div class="account-chat-icon-chat-content-date-wrapper">
                     <p>
                         {lastestChat && SupportFunction.TruncateText(lastestChat.content, 17)}

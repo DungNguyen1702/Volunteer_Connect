@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import AvatarAccount from "../../../../../components/avatar/AvatarAccount";
 import useAuth from "../../../../../hooks/useAuth";
 import ChatBar from "../ChatBar";
@@ -12,6 +12,7 @@ function ChatBoxContent(props) {
     const { data, sendPrivateValue } = props;
     const { account } = useAuth();
 
+
     const [chat, setChat] = useState('');
 
     const onClickSend = ()=>{
@@ -22,6 +23,13 @@ function ChatBoxContent(props) {
     const onChangeChat = (e)=>{
         setChat(e.target.value)
     };
+
+    const chatContentRef = useRef(null);
+
+    useEffect(() => {
+        // Cuộn thanh scroll xuống dưới cùng khi có sự thay đổi trong nội dung
+        chatContentRef.current.scrollTop = chatContentRef.current.scrollHeight;
+    }, [data.chats]);
 
     return (
         <div class="chat-box-content-wrapper">
@@ -35,8 +43,8 @@ function ChatBoxContent(props) {
                     role={data.role}
                 />
             </div>
-            <div class="chat-box-main-chat-content">
-                {data.chats.map(chat => <ChatBar 
+            <div class="chat-box-main-chat-content" ref={chatContentRef}>
+                {data && data.chats.map(chat => <ChatBar 
                     data={chat}
                     isAccount={chat.senderId === account.id ? true : false}
                     chattingAccount={data}
