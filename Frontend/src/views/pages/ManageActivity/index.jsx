@@ -2,18 +2,41 @@ import React, { useEffect, useState } from 'react';
 import "./index.scss";
 import DataTable from 'react-data-table-component';
 import fakeData from "../../../data/fake_data.json";
-import ModalForm from './ModalForm.jsx'
+import ModalForm from "./ModalForm.jsx"
 import FormListModal from './FormListModal.jsx';
+import activityAPI from '../../../api/activityAPI.js';
+import deletionForm from '../../../api/deletionForn.js';
 
 function ManageActivity() {
 
-  const data = fakeData.ManagementActicity;
-  const forms = fakeData.DeleteActivityForms;
-  const [records, setRecords] = useState(data);
+  //const data = fakeData.ManagementActicity;
+  const [originalRecords, setOriginalRecords] = useState([]);
+  const [records, setRecords] = useState();
+  const [forms, setForms] = useState();
   const [showFormListModal, setShowFormListModal] = useState(false);
   const [showModalForm, setShowModalForm] = useState(false);
   const [selectedFormData, setSelectedFormData] = useState(null);
 
+  useEffect(() => {
+    const callApi = async () => {
+      await activityAPI
+        .getAllActivityByAdmin()
+        .then((response) => {
+          console.log(response.data);
+          setOriginalRecords(response.data);
+          setRecords(response.data);
+        })
+        .catch((error) => console.log(error));
+      await deletionForm
+        .getAllDeletionForm()
+        .then((response) => {
+          console.log(response.data);
+          setForms(response.data);
+        })
+    };
+
+    callApi();
+  }, []);
   const onClickDelete = () => {
   }
   const onClickForm = () => {
@@ -36,7 +59,7 @@ function ManageActivity() {
   const columns = [
     {
       name: "ID",
-      selector: row => row.activity_id,
+      selector: row => row.id,
       sortable: true
     },
     {
@@ -87,8 +110,8 @@ function ManageActivity() {
     },
     {
       name: "Organization ID",
-      selector: row => row.organization_id,
-      cell: row => <div className='center-content'>{row.organization_id}</div>,
+      selector: row => row.organizationId,
+      cell: row => <div className='center-content'>{row.organizationId}</div>,
       headerClassName: 'custom-header'
     },
     {
@@ -106,8 +129,10 @@ function ManageActivity() {
   ];
 
   function handleFilter(event) {
-    const newData = data.filter(row => {
-      return row.name.toLowerCase().includes(event.target.value.toLowerCase());
+    const value = event.target.value.toLowerCase();
+    const newData = originalRecords.filter(row => {
+      return row.id.toString().toLowerCase().includes(value);
+      //return row.name.toLowerCase().includes(event.target.value.toLowerCase());
     });
     setRecords(newData);
   }

@@ -175,11 +175,6 @@ public class AccountServiceImpl implements AccountService {
                 .status(account.getStatus())
                 .createdAt(account.getCreatedAt().toString())
                 .updatedAt(updatedAt)
-                .userId(0)
-                .birthday(null)
-                .tel(null)
-                .address(null)
-                .gender(null)
                 .build();
     }
 

@@ -113,6 +113,8 @@ function ChatBox() {
     const onPrivateMessage = (payload) => {
 
         var payloadData = JSON.parse(payload.body);
+
+        console.log(payloadData)
         var keyValue = payloadData.id;
         
         var valueData = {
@@ -157,8 +159,9 @@ function ChatBox() {
             content: message,
             createdAt : SupportFunction.getCurrentlyDate()
         }]});
-        
 
+        setChatBox(newChatBox);
+        
         stompClient.send(
             "/app/private-message",
             {},

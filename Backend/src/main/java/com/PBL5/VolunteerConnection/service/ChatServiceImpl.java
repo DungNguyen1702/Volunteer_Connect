@@ -76,9 +76,9 @@ public class ChatServiceImpl implements ChatService{
     }
 
     @Override
-    public List<ChatBoxResponse> getAllPrivateChatBox(String token, int id) {
-        int accountId = jwtService.getId(token);
-        List<ChatBoxResponse> chatBoxResponses = new ArrayList<>();
+    public ChatBoxResponse getAllPrivateChatBox(int accountId, int id) {
+//        int accountId = jwtService.getId(token);
+//        List<ChatBoxResponse> chatBoxResponses = new ArrayList<>();
         List<ChatBoxDTO> chatBoxDTOS = chatRepository.findAllBySenderIdAndReceiverId(accountId, id);
         List<Account> accountList = new ArrayList<>();
         Map<Integer, List<Chat>> chatList = new HashMap<>();
@@ -109,11 +109,11 @@ public class ChatServiceImpl implements ChatService{
                 }
             }
         }
-
-        for (Account account : accountList) {
-            chatBoxResponses.add(new ChatBoxResponse(account, chatList.get(account.getId())));
-        }
-        return chatBoxResponses;
+        ChatBoxResponse chatBoxResponse = new ChatBoxResponse(accountList.get(0), chatList.get(accountList.get(0).getId()));
+//        for (Account account : accountList) {
+//            chatBoxResponses.add(new ChatBoxResponse(account, chatList.get(account.getId())));
+//        }
+        return chatBoxResponse;
     }
 
 

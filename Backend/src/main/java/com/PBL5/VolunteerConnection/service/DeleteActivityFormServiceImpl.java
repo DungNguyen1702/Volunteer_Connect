@@ -1,5 +1,6 @@
 package com.PBL5.VolunteerConnection.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +13,7 @@ import com.PBL5.VolunteerConnection.model.DeleteActivityForm;
 import com.PBL5.VolunteerConnection.repository.ActivityRepository;
 import com.PBL5.VolunteerConnection.repository.DeleteActivityFormRepository;
 import com.PBL5.VolunteerConnection.request.DeleteActivityRequest;
+import com.PBL5.VolunteerConnection.response.DeleteFormResponse;
 import com.PBL5.VolunteerConnection.response.StatusResponse;
 
 @Service
@@ -61,9 +63,16 @@ public class DeleteActivityFormServiceImpl implements DeleteActivityFormService 
     }
 
     @Override
-    public List<DeleteActivityForm> selectAll() {
+    public List<DeleteFormResponse> selectAll() {
         // TODO Auto-generated method stub
-        return deleteActivityFormRepository.findAll();
+        List<DeleteActivityForm> listDeleteForm = deleteActivityFormRepository.findAll();
+        List<DeleteFormResponse> listFormResponse = new ArrayList<>();
+        for (DeleteActivityForm deleteActivityForm : listDeleteForm) {
+            DeleteFormResponse formResponse = new DeleteFormResponse(deleteActivityForm,
+                    deleteActivityForm.getActivity());
+            listFormResponse.add(formResponse);
+        }
+        return listFormResponse;
     }
 
     @Override

@@ -27,17 +27,18 @@ public class ChatController {
         token = token.substring("Bearer ".length());
         return ResponseEntity.ok(chatService.getAllChatBoxByAccountId(token, id));
     }
-    @GetMapping("/selectPrivateChat")
-    ResponseEntity<List<ChatBoxResponse>> selectAllPrivateChatBox(@RequestHeader("Authorization") String token, @RequestParam("id") int id) {
-        token = token.substring("Bearer ".length());
-        return ResponseEntity.ok(chatService.getAllPrivateChatBox(token, id));
-    }
+//    @GetMapping("/selectPrivateChat")
+//    ResponseEntity<List<ChatBoxResponse>> selectAllPrivateChatBox(@RequestHeader("Authorization") String token, @RequestParam("id") int id) {
+//        token = token.substring("Bearer ".length());
+//        return ResponseEntity.ok(chatService.getAllPrivateChatBox(token, id));
+//    }
 
     @MessageMapping("/private-message")
-    MessageResponse receivePrivateMessage(@Payload MessageRequest message){
+    ChatBoxResponse receivePrivateMessage(@Payload MessageRequest message){
         MessageResponse messageResponse = chatService.saveAndSend(message);
+        ChatBoxResponse chatBoxResponse = chatService.getAllPrivateChatBox(message.getReceiverId(), message.getSenderId());
         System.out.print(messageResponse.getChat().getContent());
-        messagingTemplate.convertAndSendToUser(String.valueOf(message.getReceiverId()), "/private", messageResponse);  //user/userName/private
-        return messageResponse;
+        messagingTemplate.convertAndSendToUser(String.valueOf(message.getReceiverId()), "/private", chatBoxResponse);  //user/userName/private
+        return chatBoxResponse;
     }
 }
