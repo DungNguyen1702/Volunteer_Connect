@@ -1,5 +1,6 @@
 package com.PBL5.VolunteerConnection.controller;
 
+import com.PBL5.VolunteerConnection.model.Account;
 import com.PBL5.VolunteerConnection.model.Candidate;
 import com.PBL5.VolunteerConnection.response.AccountResponse;
 import com.PBL5.VolunteerConnection.request.AccountRequest;
@@ -23,6 +24,7 @@ public class AccountController {
     private AccountService accountService;
     @Autowired
     private CandidateService candidateService;
+
     @PostMapping("/update")
     public ResponseEntity<StatusResponse> updateAccount(@RequestHeader("Authorization") String token,
             @RequestBody AccountRequest updateRequest) {
@@ -41,14 +43,24 @@ public class AccountController {
         token = token.substring("Bearer ".length());
         return ResponseEntity.ok(accountService.getInfoAccount(token));
     }
+
     @PostMapping("/changePassword")
-    public ResponseEntity<StatusResponse> changePassword(@RequestHeader("Authorization") String token, @RequestBody AccountRequest updateRequest) {
+    public ResponseEntity<StatusResponse> changePassword(@RequestHeader("Authorization") String token,
+            @RequestBody AccountRequest updateRequest) {
         token = token.substring("Bearer ".length());
-        return ResponseEntity.ok(accountService.changePassword(token, updateRequest.getPassword(), updateRequest.getNewPassword()));
+        return ResponseEntity
+                .ok(accountService.changePassword(token, updateRequest.getPassword(), updateRequest.getNewPassword()));
     }
+
     @GetMapping("/selectAllCertificate")
-    ResponseEntity<List<CandidateDetailResponse>> selectAllCandidateHasCertificate(@RequestHeader("Authorization") String token) {
+    ResponseEntity<List<CandidateDetailResponse>> selectAllCandidateHasCertificate(
+            @RequestHeader("Authorization") String token) {
         token = token.substring("Bearer ".length());
         return ResponseEntity.ok(candidateService.getAllCertificateByAccountId(token));
+    }
+
+    @GetMapping("/admin/getAll")
+    ResponseEntity<List<Account>> selecteAllAccount() {
+        return ResponseEntity.ok(accountService.getAllByAdmin());
     }
 }

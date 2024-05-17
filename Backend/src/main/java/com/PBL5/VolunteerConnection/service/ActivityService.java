@@ -13,8 +13,12 @@ public interface ActivityService {
     StatusResponse updateActivity(String token, ActivityRequest activityRequest);
 
     StatusResponse deleteActivity(String token, ActivityRequest activityRequest);
+
     List<ActivityResponse> getAllActivity(String token);
+
     ActivityDetailResponse getActivityDetail(String token, int id);
+
     List<ActivityResponse> getAllActivityByCandidate(String token);
 
+    List<Activity> getAllByAdmin();
 }
