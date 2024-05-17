@@ -7,5 +7,6 @@ import java.util.List;
 
 
 public interface ChatService {
-    List<ChatBoxResponse> getAllChatBox(String token);
+    List<ChatBoxResponse> getAllChatBoxByAccountId(String token);
+    List<ChatBoxResponse> getAllPrivateChatBox(String token , int id);
 }

@@ -18,6 +18,11 @@ public class ChatController {
     @GetMapping("/selectAll")
     ResponseEntity<List<ChatBoxResponse>> selectAllChatBox(@RequestHeader("Authorization") String token) {
         token = token.substring("Bearer ".length());
-        return ResponseEntity.ok(chatService.getAllChatBox(token));
+        return ResponseEntity.ok(chatService.getAllChatBoxByAccountId(token));
+    }
+    @GetMapping("/selectPrivateChat")
+    ResponseEntity<List<ChatBoxResponse>> selectAllPrivateChatBox(@RequestHeader("Authorization") String token, @RequestParam("id") int id) {
+        token = token.substring("Bearer ".length());
+        return ResponseEntity.ok(chatService.getAllPrivateChatBox(token, id));
     }
 }
