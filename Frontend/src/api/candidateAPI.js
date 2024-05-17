@@ -11,7 +11,7 @@ const candidateAPI = {
     },
     deleteCandidate: (candidateId, actId) => {
         const url = `/api/v1/candidate/delete`;
-        return axiosClient.application.delete(url, {
+        return axiosClient.application.post(url, {
             id: candidateId,
             activityId: actId,
         });

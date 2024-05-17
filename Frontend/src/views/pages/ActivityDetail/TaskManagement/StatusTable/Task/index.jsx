@@ -48,25 +48,26 @@ function TaskItem(props) {
                 ></div>
                 <div className="task-item-content">
                     <h3 class="task-item-title">
-                        {SupportFunction.TruncateText(taskInfo.title, 25)}
+                    {taskInfo.title && SupportFunction.TruncateText(taskInfo.title, 10)}
                     </h3>
                     <div class="task-item-date-container">
                         <p>
                             <strong class="primary-green-color-style">
                                 Created at :{" "}
                             </strong>
-                            {taskInfo.createdAt}
+                            {SupportFunction.convertDateFromArrayToString(taskInfo.createdAt)}
                         </p>
                         <p class="task-date-end">
                             <strong class="primary-green-color-style">
                                 Deadline :{" "}
                             </strong>
-                            {taskInfo.dateEnd}
+                            {SupportFunction.convertDateFromArrayToString(taskInfo.dateEnd)}
+                            
                         </p>
                     </div>
                     <div class="task-item-description">
                         <p>
-                            {SupportFunction.TruncateText(
+                            {taskInfo.description && SupportFunction.TruncateText(
                                 taskInfo.description,
                                 35
                             )}

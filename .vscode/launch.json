@@ -4,6 +4,9 @@
     // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [
+        
+        
+
         {
             "type": "java",
             "name": "Current File",
@@ -16,8 +19,13 @@
             "request": "launch",
             "mainClass": "com.PBL5.VolunteerConnection.VolunteerConnectionApplication",
             "projectName": "VolunteerConnection",
+<<<<<<< HEAD
+            // "args": "--spring.profiles.active=tin"
+            "args": "--spring.profiles.active=dung"
+=======
             //"args": "--spring.profiles.active=tin"
             // "args": "--spring.profiles.active=dung"
+>>>>>>> 5b7f3b709cc38764b4d3f4211b9c57329998bc73
         }
     ]
 }

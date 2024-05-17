@@ -10,7 +10,7 @@ function CandidateItem(props) {
 
     const onClickChat = (e) => {
         e.stopPropagation();
-        console.log("chat with " + candidateInfo.id);
+        navigate(`/chat-box/${candidateInfo.id}`);
     };
     const onClickCandidate = ()=>{
         navigate(`/contact-user/${candidateInfo.id}/1`);

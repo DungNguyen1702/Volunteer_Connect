@@ -2629,7 +2629,7 @@
             "updatedAt": "2024-04-10",
             "isDeleted": false,
             "backgroundNoAva": "#1abc9c",
-            "Chats": [
+            "chats": [
                 {
                   "id": 1,
                   "senderId": 1,
@@ -2714,7 +2714,7 @@
             "updatedAt": "2024-04-10",
             "isDeleted": false,
             "backgroundNoAva": "#e74c3c",
-            "Chats": [
+            "chats": [
                 {
                   "id": 1,
                   "senderId": 2,
@@ -2799,7 +2799,7 @@
             "updatedAt": "2024-04-10",
             "isDeleted": false,
             "backgroundNoAva": "#e74c3c",
-            "Chats": [
+            "chats": [
                 {
                   "id": 1,
                   "senderId": 3,
@@ -2884,7 +2884,7 @@
             "updatedAt": "2024-04-10",
             "isDeleted": false,
             "backgroundNoAva": "#1abc9c",
-            "Chats": [
+            "chats": [
                 {
                   "id": 1,
                   "senderId": 4,
@@ -2969,7 +2969,7 @@
             "updatedAt": "2024-04-10",
             "isDeleted": false,
             "backgroundNoAva": "#e74c3c",
-            "Chats": [
+            "chats": [
                 {
                   "id": 1,
                   "senderId": 5,
@@ -3054,7 +3054,7 @@
             "updatedAt": "2024-04-10",
             "isDeleted": false,
             "backgroundNoAva": "#e74c3c",
-            "Chats": [
+            "chats": [
                 {
                   "id": 1,
                   "senderId": 6,
@@ -3139,7 +3139,7 @@
             "updatedAt": "2024-04-70",
             "isDeleted": false,
             "backgroundNoAva": "#7abc9c",
-            "Chats": [
+            "chats": [
                 {
                   "id": 7,
                   "senderId": 7,
@@ -3224,7 +3224,7 @@
             "updatedAt": "2024-04-10",
             "isDeleted": false,
             "backgroundNoAva": "#e74c3c",
-            "Chats": [
+            "chats": [
                 {
                   "id": 8,
                   "senderId": 8,
@@ -3309,7 +3309,7 @@
             "updatedAt": "2024-04-10",
             "isDeleted": false,
             "backgroundNoAva": "#e74c3c",
-            "Chats": [
+            "chats": [
                 {
                   "id": 1,
                   "senderId": 9,
@@ -3394,7 +3394,7 @@
             "updatedAt": "2024-04-10",
             "isDeleted": false,
             "backgroundNoAva": "#1abc9c",
-            "Chats": [
+            "chats": [
                 {
                   "id": 1,
                   "senderId": 10,
@@ -3479,7 +3479,7 @@
             "updatedAt": "2024-04-10",
             "isDeleted": false,
             "backgroundNoAva": "#e74c3c",
-            "Chats": [
+            "chats": [
                 {
                   "id": 1,
                   "senderId": 11,
