@@ -143,27 +143,26 @@ public class AccountServiceImpl implements AccountService {
         if (account.getRole() == 1) {
             User user = userRespository.findByAccountId(account.getId());
             String birthday = null;
-            if (account.getUser() != null) {
-                account.setUser(user);
-                if (user.getBirthday() != null) {
-                    birthday = user.getBirthday().toString();
-                }
-                return AccountResponse.builder()
-                        .id(account.getId())
-                        .account(account.getAccount())
-                        .name(account.getName())
-                        .role(account.getRole())
-                        .avatar(account.getAvatar())
-                        .status(account.getStatus())
-                        .createdAt(account.getCreatedAt().toString())
-                        .updatedAt(updatedAt)
-                        .userId(user.getId())
-                        .birthday(birthday)
-                        .tel(user.getTel())
-                        .address(user.getAddress())
-                        .gender(user.getGender())
-                        .build();
+            if (user.getBirthday() != null) {
+                birthday = user.getBirthday().toString();
             }
+            return AccountResponse.builder()
+                    .id(account.getId())
+                    .account(account.getAccount())
+                    .name(account.getName())
+                    .role(account.getRole())
+                    .avatar(account.getAvatar())
+                    .status(account.getStatus())
+                    .createdAt(account.getCreatedAt().toString())
+                    .updatedAt(updatedAt)
+                    .backgroundNoAva(account.getBackgroundNoAva())
+                    .userId(user.getId())
+                    .birthday(birthday)
+                    .tel(user.getTel())
+                    .address(user.getAddress())
+                    .gender(user.getGender())
+                    .build();
+
         }
 
 
