@@ -94,7 +94,7 @@ function ChatBox() {
 
     // Socket
     const connect =()=>{
-        let Sock = new SockJS('http://localhost:8080/ws');
+        let Sock = new SockJS('http://localhost:8888/ws');
         stompClient = over(Sock);
         stompClient.connect({},onConnected, (error)=>console.log(error));
     }
@@ -107,23 +107,23 @@ function ChatBox() {
         console.log("payload", payload);
         
         var payloadData = JSON.parse(payload.body);
-        console.log(payloadData);
+        // console.log(payloadData);
 
-        // var keyValue = {
-        //     id: payloadData.id,
-        //     account: payloadData.account,
-        //     name: payloadData.name,
-        //     avatar: payloadData.avatar,
-        //     backgroundNoAva: payloadData.backgroundNoAva,
-        // }
+        var keyValue = {
+            id: payloadData.id,
+            account: payloadData.account,
+            name: payloadData.name,
+            avatar: payloadData.avatar,
+            backgroundNoAva: payloadData.backgroundNoAva,
+        }
 
-        // if(chatBox.has(keyValue)){
-        //     chatBox.get(keyValue).push(payloadData.chat);
-        //     setChatBox(chatBox);
-        // }else{
-        //     chatBox.set(keyValue,[payloadData.chat]);
-        //     setChatBox(chatBox);
-        // }
+        if(chatBox.has(keyValue)){
+            chatBox.get(keyValue).push(payloadData.chat);
+            setChatBox(chatBox);
+        }else{
+            chatBox.set(keyValue,[payloadData.chat]);
+            setChatBox(chatBox);
+        }
     }
 
     const sendPrivateValue=(receiverId, message)=>{
