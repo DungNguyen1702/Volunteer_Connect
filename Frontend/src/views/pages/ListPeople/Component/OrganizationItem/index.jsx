@@ -10,7 +10,7 @@ function OrganizationItem(props) {
 
     const onClickChat = (e) => {
         e.stopPropagation();
-        console.log("chat with " + organizationInfo.id);
+        navigate(`/chat-box/${organizationInfo.id}`);
     };
     const onClickOrganization = ()=>{
         navigate(`/contact-user/${organizationInfo.id}/2`);

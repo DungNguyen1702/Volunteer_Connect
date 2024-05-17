@@ -34,6 +34,8 @@ function ChatBox() {
 
     const [selectedAccount, setSelectedAccount] = useState(null);
 
+    const [isConnected, setIsConnected] = useState(false);
+
     useEffect(() => {
         const callApi = async () => {
             await connect();
@@ -58,7 +60,7 @@ function ChatBox() {
                 .catch((error) => console.log(error));
         };
         callApi();
-    }, []);
+    }, [accountId]);
 
     useEffect(() => {
         setSelectedAccount(getValueByKeyId(chatBox, accountId));
@@ -87,15 +89,24 @@ function ChatBox() {
     };
 
     // Socket
-    const connect = async ()=>{
-        let Sock = new SockJS('http://localhost:8888/ws');
-        stompClient = over(Sock);
-        await stompClient.connect({},onConnected, (error)=>console.log(error));
-    }
+    const connect = () => {
+        return new Promise((resolve, reject) => {
+            let Sock = new SockJS('http://localhost:8888/ws');
+            stompClient = over(Sock);
+            stompClient.connect({}, () => {
+                onConnected();
+                resolve();
+            }, (error) => {
+                console.log(error);
+                reject(error);
+            });
+        });
+    };
 
     const onConnected = () => {
-        stompClient.subscribe('/user/'+account.id+'/private', onPrivateMessage);
-    }
+        stompClient.subscribe('/user/' + account.id + '/private', onPrivateMessage);
+        setIsConnected(true); // Cập nhật trạng thái kết nối
+    };
 
     const onPrivateMessage = (payload)=>{
         // console.log("payload", payload);
@@ -120,11 +131,18 @@ function ChatBox() {
             list.push(payloadData.chat);
             chatBox.set(keyValue, list);
         }
+
+        console.log(chatBox)
         
         setChatBox(chatBox);
     }
 
     const sendPrivateValue=(receiverId, message)=>{
+        if (!isConnected) {
+            console.log("Connection has not been established yet.");
+            return;
+        }
+
         var chatMessage = {
           senderId: account.id,
           receiverId: receiverId,
