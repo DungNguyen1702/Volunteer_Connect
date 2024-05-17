@@ -12,6 +12,7 @@ import jakarta.persistence.Column;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.*;
 
 @Service
@@ -108,7 +109,14 @@ public class ChatServiceImpl implements ChatService{
 
     @Override
     public MessageResponse saveAndSend(MessageRequest messageRequest) {
-
         return null;
     }
+
+//    @Override
+//    public MessageResponse saveAndSend(MessageRequest messageRequest) {
+//        chatRepository.save(Chat.builder().senderId(messageRequest.getSenderId()).receiverId(messageRequest.getReceiverId()).content(messageRequest.getContent()).createdAt(LocalDate.now()).build());
+//        MessageResponse messageResponse = new MessageResponse(messageRequest.getSenderInfo().getId(),
+//                messageRequest.getSenderInfo().get);
+//        return null;
+//    }
 }
