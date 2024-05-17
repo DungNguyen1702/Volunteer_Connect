@@ -23,9 +23,9 @@ public class ChatController {
     @Autowired
     private SimpMessagingTemplate messagingTemplate;
     @GetMapping("/selectAll")
-    ResponseEntity<List<ChatBoxResponse>> selectAllChatBox(@RequestHeader("Authorization") String token) {
+    ResponseEntity<List<ChatBoxResponse>> selectAllChatBox(@RequestHeader("Authorization") String token, @RequestParam("id") int id) {
         token = token.substring("Bearer ".length());
-        return ResponseEntity.ok(chatService.getAllChatBoxByAccountId(token));
+        return ResponseEntity.ok(chatService.getAllChatBoxByAccountId(token, id));
     }
     @GetMapping("/selectPrivateChat")
     ResponseEntity<List<ChatBoxResponse>> selectAllPrivateChatBox(@RequestHeader("Authorization") String token, @RequestParam("id") int id) {

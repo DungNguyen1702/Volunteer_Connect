@@ -3,6 +3,7 @@ package com.PBL5.VolunteerConnection.service;
 import com.PBL5.VolunteerConnection.dto.ChatBoxDTO;
 import com.PBL5.VolunteerConnection.model.Account;
 import com.PBL5.VolunteerConnection.model.Chat;
+import com.PBL5.VolunteerConnection.repository.AccountRepository;
 import com.PBL5.VolunteerConnection.repository.ChatRepository;
 import com.PBL5.VolunteerConnection.request.MessageRequest;
 import com.PBL5.VolunteerConnection.response.ChatBoxResponse;
@@ -21,8 +22,10 @@ public class ChatServiceImpl implements ChatService{
     private ChatRepository chatRepository;
     @Autowired
     private JwtService jwtService;
+    @Autowired
+    private AccountRepository accountRepository;
     @Override
-    public List<ChatBoxResponse> getAllChatBoxByAccountId(String token) {
+    public List<ChatBoxResponse> getAllChatBoxByAccountId(String token, int id) {
         int accountId = jwtService.getId(token);
         List<ChatBoxResponse> chatBoxResponses = new ArrayList<>();
         List<ChatBoxDTO> chatBoxDTOS = chatRepository.findAllByAccountId(accountId);
@@ -58,7 +61,9 @@ public class ChatServiceImpl implements ChatService{
             }
 
         }
-
+        if (id != 0){
+            chatBoxResponses.add(new ChatBoxResponse(accountRepository.findById(id), null));
+        }
         for (Account account : accountList) {
             chatBoxResponses.add(new ChatBoxResponse(account, chatList.get(account.getId())));
         }

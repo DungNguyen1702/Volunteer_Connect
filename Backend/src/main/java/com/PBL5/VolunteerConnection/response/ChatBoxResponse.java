@@ -38,9 +38,12 @@ public class ChatBoxResponse {
         this.createdAt = account.getCreatedAt() != null ? account.getCreatedAt().toString() : null;
         this.updatedAt = account.getUpdatedAt() != null ? account.getUpdatedAt().toString() : null;
         this.backgroundNoAva = account.getBackgroundNoAva();
-        for (Chat chat : chatList){
-            this.chats.add(new ChatResponse(chat));
+        if (chatList != null){
+            for (Chat chat : chatList){
+                this.chats.add(new ChatResponse(chat));
+            }
         }
+
 
     }
 }
