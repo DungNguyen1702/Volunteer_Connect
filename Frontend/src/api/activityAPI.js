@@ -9,6 +9,10 @@ const activityAPI = {
         const url = '/api/v1/activity/organization/getAllActivity'
         return axiosClient.application.get(url)
     },
+    getAllActivityByAdmin: () => {
+        const url = '/api/v1/activity/admin/getAllActivity'
+        return axiosClient.application.get(url)
+    },
     getActivityDetail: (id) => {
         const url = `/api/v1/activity/getActivityDetail?activityId=${id}`
         return axiosClient.application.get(url)

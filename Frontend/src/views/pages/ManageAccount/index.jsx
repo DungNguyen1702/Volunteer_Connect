@@ -1,9 +1,25 @@
-import React, { useState } from 'react';
+import React, { useEffect,useState } from 'react';
 import './index.scss'
-import fakeData from "../../../data/fake_data.json"
 import DataTable, { createTheme } from "react-data-table-component";
+import accountAPI from '../../../api/accountAPI';
 
 function ManageAccount() {
+
+    const [originalRecords, setOriginalRecords] = useState([]);
+    const [records, setRecords] = useState();
+    useEffect(() => {
+        const callApi = async () => {
+          await accountAPI
+            .getAllAccountByAdmin()
+            .then((response) => {
+              console.log(response.data);
+              setOriginalRecords(response.data);
+              setRecords(response.data);
+            })
+            .catch((error) => console.log(error));
+        };
+        callApi();
+      }, []);
     const onClickDelete = () => {
     }
     const onClickChange = () => {
@@ -65,15 +81,15 @@ function ManageAccount() {
         },
 
     ]
-    const data = fakeData.Accounts
-
-    const [records, setRecords] = useState(data);
     function handleFilter(event) {
-        const newData = data.filter(row => {
-            return row.name.toLowerCase().includes(event.target.value.toLowerCase());
-        });
-        setRecords(newData);
-    }
+    const value = event.target.value.toLowerCase();
+    const newData = originalRecords.filter(row => {
+      return row.id.toString().toLowerCase().includes(value);
+      //return row.name.toLowerCase().includes(event.target.value.toLowerCase());
+    });
+    setRecords(newData);
+  }
+
     return (
         <div className='container'>
             <div className='data-table-container'>

@@ -38,7 +38,7 @@ const ModalForm = ({ show, onClose, data }) => {
             </div>
             <div className="form-group">
               <label>Created By:</label>
-              <input type="text" value={data.createdBy} readOnly />
+              <input type="text" value={data.name} readOnly />
             </div>
           </form>
         </div>
