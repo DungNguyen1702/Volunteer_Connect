@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.PBL5.VolunteerConnection.model.DeleteActivityForm;
 import com.PBL5.VolunteerConnection.request.DeleteActivityRequest;
+import com.PBL5.VolunteerConnection.response.DeleteFormResponse;
 import com.PBL5.VolunteerConnection.response.StatusResponse;
 
 public interface DeleteActivityFormService {
@@ -13,7 +14,7 @@ public interface DeleteActivityFormService {
 
     StatusResponse deleteDeleteActivityForm(String token, DeleteActivityRequest deleteActivityForm);
 
-    List<DeleteActivityForm> selectAll();
+    List<DeleteFormResponse> selectAll();
 
     List<DeleteActivityForm> selectAllAprove();
 }

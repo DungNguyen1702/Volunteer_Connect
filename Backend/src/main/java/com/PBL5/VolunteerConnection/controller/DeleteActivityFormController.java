@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.PBL5.VolunteerConnection.model.DeleteActivityForm;
 import com.PBL5.VolunteerConnection.request.DeleteActivityRequest;
+import com.PBL5.VolunteerConnection.response.DeleteFormResponse;
 import com.PBL5.VolunteerConnection.response.StatusResponse;
 import com.PBL5.VolunteerConnection.service.DeleteActivityFormService;
 
@@ -37,7 +38,7 @@ public class DeleteActivityFormController {
     }
 
     @GetMapping("/selectAll")
-    ResponseEntity<List<DeleteActivityForm>> selectAll() {
+    ResponseEntity<List<DeleteFormResponse>> selectAll() {
         return ResponseEntity.ok(deleteActivityFormService.selectAll());
     }
 
