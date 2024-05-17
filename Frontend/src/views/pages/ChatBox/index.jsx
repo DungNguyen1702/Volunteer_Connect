@@ -59,7 +59,7 @@ function ChatBox() {
             await chatApi
                 .getPrivateChat(accountId)
                 .then((response) => {
-                    console.log(response);
+                    // console.log(response);
                 })
                 .catch((error) => console.log(error));
         };
@@ -107,7 +107,7 @@ function ChatBox() {
         // console.log("payload", payload);
         
         var payloadData = JSON.parse(payload.body);
-        // console.log(payloadData);
+        console.log(payloadData);
 
         var keyValue = {
             id: payloadData.id,
@@ -117,17 +117,17 @@ function ChatBox() {
             backgroundNoAva: payloadData.backgroundNoAva,
         }
 
-        const newChatBox = new Map(chatBox);
-
-        if (newChatBox.has(keyValue)) {
-            const existingData = newChatBox.get(keyValue);
-            existingData.push(payloadData.chats);
-            newChatBox.set(keyValue, existingData);
+        if (chatBox.get(keyValue)) {
+            console.log(1);
+            chatBox.get(keyValue).push(payloadData.chat);
         } else {
-            newChatBox.set(keyValue, [payloadData.chats]);
+            console.log(2);
+            let list =[];
+            list.push(payloadData.chat);
+            chatBox.set(keyValue, list);
         }
-    
-        setChatBox(newChatBox);
+        
+        setChatBox(chatBox);
     }
 
     const sendPrivateValue=(receiverId, message)=>{
@@ -150,6 +150,8 @@ function ChatBox() {
         };
 
         stompClient.send("/app/private-message", {}, JSON.stringify(chatMessage));
+
+        
       }
 
     return (

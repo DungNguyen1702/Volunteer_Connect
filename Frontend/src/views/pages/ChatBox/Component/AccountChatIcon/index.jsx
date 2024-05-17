@@ -10,7 +10,6 @@ function AccountChatIcon(props) {
 
     const lastestChat = chat[chat.length - 1];
     const onClickAccountChat = () => {
-        // setSelectedAccount(data);
         navigate(`/chat-box/${keyValue.id}`);
     };
 
@@ -31,9 +30,9 @@ function AccountChatIcon(props) {
                 <p class="font-size-big">{keyValue.name}</p>
                 <div class="account-chat-icon-chat-content-date-wrapper">
                     <p>
-                        {SupportFunction.TruncateText(lastestChat.content, 17)}
+                        {lastestChat && SupportFunction.TruncateText(lastestChat.content, 17)}
                     </p>
-                    <p>{lastestChat.createdAt}</p>
+                    <p>{lastestChat && lastestChat.createdAt}</p>
                 </div>
             </div>
         </div>
