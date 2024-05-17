@@ -75,7 +75,7 @@ public class ActivityServiceImpl implements ActivityService {
                 updateActivity.setCountry(updateReq.getCountry());
                 updateActivity.setLocation(updateReq.getLocation());
                 updateActivity.setContent(updateReq.getContent());
-                updateActivity.setUpdateAt(Date.valueOf(LocalDate.now()));
+                updateActivity.setUpdateAt(LocalDate.now());
                 activityRepository.save(updateActivity);
                 return StatusResponse.builder()
                         .success(ResponseEntity.status(HttpStatus.ACCEPTED)

@@ -1,7 +1,6 @@
 package com.PBL5.VolunteerConnection.controller;
 
 import com.PBL5.VolunteerConnection.model.Account;
-import com.PBL5.VolunteerConnection.model.Candidate;
 import com.PBL5.VolunteerConnection.response.AccountResponse;
 import com.PBL5.VolunteerConnection.request.AccountRequest;
 import com.PBL5.VolunteerConnection.response.CandidateDetailResponse;
