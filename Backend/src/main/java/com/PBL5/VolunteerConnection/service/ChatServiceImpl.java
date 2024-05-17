@@ -62,7 +62,11 @@ public class ChatServiceImpl implements ChatService{
 
         }
         if (id != 0){
-            chatBoxResponses.add(new ChatBoxResponse(accountRepository.findById(id), null));
+            Account account = accountRepository.findById(id);
+            if (!accountList.contains(account)){
+                chatBoxResponses.add(new ChatBoxResponse(account, null));
+            }
+
         }
         for (Account account : accountList) {
             chatBoxResponses.add(new ChatBoxResponse(account, chatList.get(account.getId())));
