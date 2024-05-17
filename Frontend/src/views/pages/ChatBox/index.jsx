@@ -117,13 +117,17 @@ function ChatBox() {
             backgroundNoAva: payloadData.backgroundNoAva,
         }
 
-        if(chatBox.has(keyValue)){
-            chatBox.get(keyValue).push(payloadData.chat);
-            setChatBox(chatBox);
-        }else{
-            chatBox.set(keyValue,[payloadData.chat]);
-            setChatBox(chatBox);
+        const newChatBox = new Map(chatBox);
+
+        if (newChatBox.has(keyValue)) {
+            const existingData = newChatBox.get(keyValue);
+            existingData.push(payloadData.chats);
+            newChatBox.set(keyValue, existingData);
+        } else {
+            newChatBox.set(keyValue, [payloadData.chats]);
         }
+    
+        setChatBox(newChatBox);
     }
 
     const sendPrivateValue=(receiverId, message)=>{
