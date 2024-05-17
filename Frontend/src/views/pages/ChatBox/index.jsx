@@ -56,6 +56,12 @@ function ChatBox() {
                     setChatBox(newChatBox);
                 })
                 .catch((error) => console.log(error));
+            await chatApi
+                .getPrivateChat(accountId)
+                .then((response) => {
+                    console.log(response);
+                })
+                .catch((error) => console.log(error));
         };
         callApi();
     }, []);
