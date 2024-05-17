@@ -23,6 +23,6 @@ public interface ChatRepository extends JpaRepository<Chat, Integer> {
             "FROM Chat c " +
             "JOIN Account sa ON sa.id = c.senderId " +
             "JOIN Account ra ON ra.id = c.receiverId " +
-            "WHERE sa.id = :senderId OR ra.id = :senderId and sa.id = :receiverId or ra.id = :receiverId")
+            "WHERE sa.id = :senderId AND ra.id = :receiverId OR sa.id = :receiverId AND ra.id = :senderId")
     List<ChatBoxDTO> findAllBySenderIdAndReceiverId(@Param("senderId") int senderId, @Param("receiverId") int receiverId);
 }
