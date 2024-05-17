@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import "./index.scss";
 import DataTable from 'react-data-table-component';
-import fakeData from "../../../data/fake_data.json";
 import ModalForm from "./ModalForm.jsx"
 import FormListModal from './FormListModal.jsx';
 import activityAPI from '../../../api/activityAPI.js';
-import deletionForm from '../../../api/deletionForn.js';
+import deletionFormAPI from '../../../api/deletionForn.js';
 
 function ManageActivity() {
 
@@ -27,7 +26,7 @@ function ManageActivity() {
           setRecords(response.data);
         })
         .catch((error) => console.log(error));
-      await deletionForm
+      await deletionFormAPI
         .getAllDeletionForm()
         .then((response) => {
           console.log(response.data);

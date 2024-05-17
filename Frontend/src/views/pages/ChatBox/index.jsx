@@ -35,6 +35,8 @@ function ChatBox() {
 
     const [selectedAccount, setSelectedAccount] = useState(null);
 
+    const [isConnected, setIsConnected] = useState(false);
+
     useEffect(() => {
         const callApi = async () => {
             await connect();
@@ -86,28 +88,22 @@ function ChatBox() {
 
     // Socket
     const connect = () => {
-        return new Promise((resolve, reject) => {
-            let Sock = new SockJS("http://localhost:8888/ws");
-            stompClient = over(Sock);
-            stompClient.connect(
-                {},
-                () => {
-                    onConnected();
-                    resolve();
-                },
-                (error) => {
-                    console.log(error);
-                    reject(error);
-                }
-            );
-        });
+        let Sock = new SockJS('http://localhost:8888/ws');
+        stompClient = over(Sock);
+        stompClient.connect({},onConnected, (error)=>console.log(error));
     };
 
     const onConnected = () => {
+        if (!isConnected) {
+            console.log("Connection has not been established yet.");
+            return;
+        }
+
         stompClient.subscribe(
             "/user/" + account.id + "/private",
             onPrivateMessage
         );
+        setIsConnected(true); 
     };
 
     const onPrivateMessage = (payload) => {
@@ -132,6 +128,11 @@ function ChatBox() {
     };
 
     const sendPrivateValue = (receiverId, message) => {
+
+        if (!isConnected) {
+            console.log("Connection has not been established yet.");
+            return;
+        }
 
         var chatMessage = {
             senderId: account.id,
