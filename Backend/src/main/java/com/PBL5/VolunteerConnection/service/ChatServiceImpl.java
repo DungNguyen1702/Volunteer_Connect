@@ -4,8 +4,11 @@ import com.PBL5.VolunteerConnection.dto.ChatBoxDTO;
 import com.PBL5.VolunteerConnection.model.Account;
 import com.PBL5.VolunteerConnection.model.Chat;
 import com.PBL5.VolunteerConnection.repository.ChatRepository;
+import com.PBL5.VolunteerConnection.request.MessageRequest;
 import com.PBL5.VolunteerConnection.response.ChatBoxResponse;
 import com.PBL5.VolunteerConnection.response.ChatResponse;
+import com.PBL5.VolunteerConnection.response.MessageResponse;
+import jakarta.persistence.Column;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,7 +21,7 @@ public class ChatServiceImpl implements ChatService{
     @Autowired
     private JwtService jwtService;
     @Override
-    public List<ChatBoxResponse> getAllChatBox(String token) {
+    public List<ChatBoxResponse> getAllChatBoxByAccountId(String token) {
         int accountId = jwtService.getId(token);
         List<ChatBoxResponse> chatBoxResponses = new ArrayList<>();
         List<ChatBoxDTO> chatBoxDTOS = chatRepository.findAllByAccountId(accountId);
@@ -55,10 +58,57 @@ public class ChatServiceImpl implements ChatService{
 
         }
 
-        for(int i = 0; i < accountList.size(); i ++){
-            chatBoxResponses.add(new ChatBoxResponse(accountList.get(i), chatList.get(accountList.get(i).getId())));
+        for (Account account : accountList) {
+            chatBoxResponses.add(new ChatBoxResponse(account, chatList.get(account.getId())));
         }
         return chatBoxResponses;
 
+    }
+
+    @Override
+    public List<ChatBoxResponse> getAllPrivateChatBox(String token, int id) {
+        int accountId = jwtService.getId(token);
+        List<ChatBoxResponse> chatBoxResponses = new ArrayList<>();
+        List<ChatBoxDTO> chatBoxDTOS = chatRepository.findAllBySenderIdAndReceiverId(accountId, id);
+        List<Account> accountList = new ArrayList<>();
+        Map<Integer, List<Chat>> chatList = new HashMap<>();
+        for(ChatBoxDTO chatBoxDTO: chatBoxDTOS){
+            if(chatBoxDTO.getChat().getReceiverId() == accountId){
+                int senderId = chatBoxDTO.getSender().getId();
+                if(chatList.containsKey(senderId)){
+                    chatList.get(senderId).add(chatBoxDTO.getChat());
+                }
+                else{
+                    accountList.add(chatBoxDTO.getSender());
+                    List<Chat> chats = new ArrayList<>();
+                    chats.add(chatBoxDTO.getChat());
+                    chatList.put(senderId, chats);
+                }
+//                System.out.println(chatList.get(chatBoxDTO.getSender().getId()));
+            }
+            else if (chatBoxDTO.getChat().getSenderId() == accountId){
+                int receiverId = chatBoxDTO.getReceiver().getId();
+                if(chatList.containsKey(receiverId)){
+                    chatList.get(receiverId).add(chatBoxDTO.getChat());
+                }
+                else{
+                    accountList.add(chatBoxDTO.getReceiver());
+                    List<Chat> chats = new ArrayList<>();
+                    chats.add(chatBoxDTO.getChat());
+                    chatList.put(receiverId, chats);
+                }
+            }
+        }
+
+        for (Account account : accountList) {
+            chatBoxResponses.add(new ChatBoxResponse(account, chatList.get(account.getId())));
+        }
+        return chatBoxResponses;
+    }
+
+    @Override
+    public MessageResponse saveAndSend(MessageRequest messageRequest) {
+
+        return null;
     }
 }

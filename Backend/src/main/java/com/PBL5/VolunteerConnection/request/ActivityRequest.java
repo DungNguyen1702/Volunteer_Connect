@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.sql.Date;
+import java.time.LocalDate;
 
 @Data
 @Builder
@@ -18,9 +19,9 @@ public class ActivityRequest {
     private String email;
     private String name;
     private int type;
-    private Date deadline;
-    private Date dateStart;
-    private Date dateEnd;
+    private LocalDate deadline;
+    private LocalDate dateStart;
+    private LocalDate dateEnd;
     private int country;
     private String location;
     private String content;
