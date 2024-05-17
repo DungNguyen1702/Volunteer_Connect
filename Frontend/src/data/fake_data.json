@@ -4309,7 +4309,7 @@
     "ManagementActicity" : 
     [
         {
-          "id": 1,
+          "activity_id": 1,
           "image": "https://capitalcampaignpro.com/wp-content/uploads/2023/02/capital-campaign-volunteers.jpg",
           "email": "activity1@example.com",
           "name": "Activity 1",
@@ -4320,7 +4320,7 @@
           "organization_id": 1
         },
         {
-          "id": 2,
+          "activity_id": 2,
           "image": "https://capitalcampaignpro.com/wp-content/uploads/2023/02/capital-campaign-volunteers.jpg",
           "email": "activity2@example.com",
           "name": "Activity 2",
@@ -4331,7 +4331,7 @@
           "organization_id": 1
         },
         {
-          "id": 3,
+          "activity_id": 3,
           "image": "https://capitalcampaignpro.com/wp-content/uploads/2023/02/capital-campaign-volunteers.jpg",
           "email": "activity3@example.com",
           "name": "Activity 3",
@@ -4342,7 +4342,7 @@
           "organization_id": 1
         },
         {
-          "id": 4,
+          "activity_id": 4,
           "image": "https://capitalcampaignpro.com/wp-content/uploads/2023/02/capital-campaign-volunteers.jpg",
           "email": "activity4@example.com",
           "name": "Activity 4",

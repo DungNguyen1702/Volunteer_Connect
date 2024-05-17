@@ -35,6 +35,11 @@ function ManageActivity() {
   };
   const columns = [
     {
+      name: "ID",
+      selector: row => row.activity_id,
+      sortable: true
+    },
+    {
       name: 'Image',
       selector: row => <div className='center-content'>
         <img src={row.image} alt={row.name} style={{ width: '50px', height: '50px', objectFit: 'cover' }} />
