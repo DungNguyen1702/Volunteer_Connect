@@ -228,6 +228,7 @@ public class AccountServiceImpl implements AccountService {
                     .status(account.getStatus())
                     .createdAt(account.getCreatedAt().toString())
                     .updatedAt(updatedAt)
+                    .backgroundNoAva(account.getBackgroundNoAva())
                     .userId(user.getId())
                     .birthday(birthday)
                     .tel(user.getTel())
