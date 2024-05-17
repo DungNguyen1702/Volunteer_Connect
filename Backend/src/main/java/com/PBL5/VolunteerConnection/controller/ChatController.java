@@ -36,6 +36,7 @@ public class ChatController {
     @MessageMapping("/private-message")
     MessageResponse receivePrivateMessage(@Payload MessageRequest message){
         MessageResponse messageResponse = chatService.saveAndSend(message);
+        System.out.print(messageResponse.getChat().getContent());
         messagingTemplate.convertAndSendToUser(String.valueOf(message.getReceiverId()), "/private", messageResponse);  //user/userName/private
         return messageResponse;
     }
