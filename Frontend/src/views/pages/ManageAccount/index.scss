@@ -17,6 +17,7 @@ body {
     flex-direction: column;
     overflow: auto;
 }
+
 .custom-title {
     font-family: 'Rubik', sans-serif;
     color: #A45921;
@@ -24,16 +25,18 @@ body {
     font-size: 24px;
     font-weight: 500;
 }
+
 .center-content {
     text-align: center;
 }
+
 .sub-header {
     display: flex;
     align-items: center;
 }
 
 .custom-search-input {
-    width: 300px;
+    width: 400px;
     height: 20px;
     padding: 12px;
     border: 1px solid;
@@ -41,7 +44,7 @@ body {
     font-family: 'Rubik', sans-serif;
     font-size: 13px;
     background-color: #f8f8f8;
-    color: #333;
+    color: #c8c8c8;
     outline: none;
 }
 
@@ -49,18 +52,24 @@ body {
     font-family: 'Rubik', sans-serif;
 }
 
-.btn-Del {
+.btn-Del,
+.btn-Edit {
     background: none;
     border: none;
     color: #000;
     cursor: pointer;
     padding: 0;
-    margin: 0;
+    margin: 0 5px;
 }
 
-.btn-Del svg {
+.btn-Del,
+.btn-Edit svg {
     width: 18px;
     height: 18px;
+}
+
+.btn-Edit:hover {
+    color: $button;
 }
 
 .btn-Del:hover {

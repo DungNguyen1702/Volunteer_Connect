@@ -4263,13 +4263,53 @@
               "isAccept": false,
               "createdAt": "2024-05-14",
               "createdBy": 789
+            },
+            {
+                "id": 4,
+                "activity_id": 104,
+                "reason": "Not satisfied with the event content",
+                "isAccept": false,
+                "createdAt": "2024-05-15",
+                "createdBy": 123
+            },
+            {
+                "id": 5,
+                "activity_id": 105,
+                "reason": "Not satisfied with the event content",
+                "isAccept": false,
+                "createdAt": "2024-05-15",
+                "createdBy": 123
+            },
+            {
+                "id": 6,
+                "activity_id": 106,
+                "reason": "Not satisfied with the event content",
+                "isAccept": false,
+                "createdAt": "2024-05-15",
+                "createdBy": 123
+            },
+            {
+                "id": 7,
+                "activity_id": 107,
+                "reason": "Not satisfied with the event content",
+                "isAccept": false,
+                "createdAt": "2024-05-15",
+                "createdBy": 123
+            },
+            {
+                "id": 8,
+                "activity_id": 108,
+                "reason": "Not satisfied with the event content",
+                "isAccept": false,
+                "createdAt": "2024-05-15",
+                "createdBy": 123
             }
           
     ],
     "ManagementActicity" : 
     [
         {
-          "id": 1,
+          "activity_id": 1,
           "image": "https://capitalcampaignpro.com/wp-content/uploads/2023/02/capital-campaign-volunteers.jpg",
           "email": "activity1@example.com",
           "name": "Activity 1",
@@ -4280,7 +4320,7 @@
           "organization_id": 1
         },
         {
-          "id": 2,
+          "activity_id": 2,
           "image": "https://capitalcampaignpro.com/wp-content/uploads/2023/02/capital-campaign-volunteers.jpg",
           "email": "activity2@example.com",
           "name": "Activity 2",
@@ -4291,7 +4331,7 @@
           "organization_id": 1
         },
         {
-          "id": 3,
+          "activity_id": 3,
           "image": "https://capitalcampaignpro.com/wp-content/uploads/2023/02/capital-campaign-volunteers.jpg",
           "email": "activity3@example.com",
           "name": "Activity 3",
@@ -4302,7 +4342,7 @@
           "organization_id": 1
         },
         {
-          "id": 4,
+          "activity_id": 4,
           "image": "https://capitalcampaignpro.com/wp-content/uploads/2023/02/capital-campaign-volunteers.jpg",
           "email": "activity4@example.com",
           "name": "Activity 4",
