@@ -32,10 +32,10 @@ public class ChatController {
         return ResponseEntity.ok(chatService.getAllPrivateChatBox(token, id));
     }
 
-    @MessageMapping("/private-message")
-    ResponseEntity<StatusResponse> receivePrivateMessage(@Payload MessageRequest message){
-
-        messagingTemplate.convertAndSendToUser(String.valueOf(message.getReceiverId()), "/private", message);  //user/userName/private
-        return null;
-    }
+//    @MessageMapping("/private-message")
+//    ResponseEntity<StatusResponse> receivePrivateMessage(@Payload MessageRequest message){
+//
+//        messagingTemplate.convertAndSendToUser(String.valueOf(message.getReceiverId()), "/private", message);  //user/userName/private
+//        return null;
+//    }
 }
