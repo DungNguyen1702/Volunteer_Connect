@@ -8,7 +8,8 @@ import activityAPI from '../../../api/activityAPI.js';
 import deletionForm from '../../../api/deletionForn.js';
 
 function ManageActivity() {
-
+  const [isDeleteAct, setIsDeleteAct] = useState(false);
+  const [listActivity, setListActivity] = useState([]);
   //const data = fakeData.ManagementActicity;
   const [originalRecords, setOriginalRecords] = useState([]);
   const [records, setRecords] = useState();
@@ -16,7 +17,18 @@ function ManageActivity() {
   const [showFormListModal, setShowFormListModal] = useState(false);
   const [showModalForm, setShowModalForm] = useState(false);
   const [selectedFormData, setSelectedFormData] = useState(null);
-
+  const deleteActivity = (actId) => {
+    const callAPI = async()=>{
+        await activityAPI.deleteActivity(actid).then(response=>{
+            const newListActivity = listActivity.filter(
+                (activity) => activity.id !== actId
+            );
+            setListActivity(newListActivity);
+            toast.success("Delete activity successfull")
+        }).catch(error => console.log(error))
+    }
+    callAPI();
+};
   useEffect(() => {
     const callApi = async () => {
       await activityAPI
@@ -37,7 +49,9 @@ function ManageActivity() {
 
     callApi();
   }, []);
+  
   const onClickDelete = () => {
+    setIsDeleteAct(true);
   }
   const onClickForm = () => {
     setShowFormListModal(true);

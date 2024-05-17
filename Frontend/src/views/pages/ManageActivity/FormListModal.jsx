@@ -5,7 +5,7 @@ const FormListModal = ({ show, onClose, forms, onSelectForm }) => {
   if (!show) {
     return null;
   }
-
+  
   return (
     <div className="modal-overlay">
       <div className="modal">
