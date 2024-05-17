@@ -9,13 +9,14 @@ import { Button } from "antd";
 import { SendOutlined } from "@ant-design/icons";
 
 function ChatBoxContent(props) {
-    const { data } = props;
+    const { data, sendPrivateValue } = props;
     const { account } = useAuth();
 
     const [chat, setChat] = useState('');
 
     const onClickSend = ()=>{
-        setChat('')
+        sendPrivateValue(data.id, chat);
+        setChat('');
     }
 
     const onChangeChat = (e)=>{

@@ -48,7 +48,6 @@ function ChatBox() {
                                 name: accountData.name,
                                 avatar: accountData.avatar,
                                 backgroundNoAva: accountData.backgroundNoAva,
-                                createdAt: accountData.createdAt,
                             },
                             accountData.chats
                         );
@@ -62,6 +61,7 @@ function ChatBox() {
                     console.log(response);
                 })
                 .catch((error) => console.log(error));
+            connect();
         };
         callApi();
     }, []);
@@ -93,37 +93,60 @@ function ChatBox() {
     };
 
     // Socket
-    // const [chatUser, setChatUser] = useState({
-    //     senderId : account.id,
-    //     receiver_id : selectedAccount ? selectedAccount.id : null,
-    //     content: "",
-    //     connected : false,
-    // });
+    const connect =()=>{
+        let Sock = new SockJS('http://localhost:8080/ws');
+        stompClient = over(Sock);
+        stompClient.connect({},onConnected, (error)=>console.log(error));
+    }
 
-    // const connect =()=>{
-    //     let Sock = new SockJS('http://localhost:8080/ws');
-    //     stompClient = over(Sock);
-    //     stompClient.connect({},onConnected, (error)=>console.log(error));
-    // }
+    const onConnected = () => {
+        stompClient.subscribe('/user/'+account.id+'/private', onPrivateMessage);
+    }
 
-    // const onConnected = () => {
-    //     setChatUser({...chatUser,"connected": true});
-    //     stompClient.subscribe('/user/'+chatUser.senderId+'/private', onPrivateMessage);
-    // }
+    const onPrivateMessage = (payload)=>{
+        console.log("payload", payload);
+        
+        var payloadData = JSON.parse(payload.body);
+        console.log(payloadData);
 
-    // const onPrivateMessage = (payload)=>{
-    //     console.log("payload", payload);
-    //     var payloadData = JSON.parse(payload.body);
-    //     if(privateChats.get(payloadData.senderName)){
-    //         privateChats.get(payloadData.senderName).push(payloadData);
-    //         setPrivateChats(new Map(privateChats));
-    //     }else{
-    //         let list =[];
-    //         list.push(payloadData);
-    //         privateChats.set(payloadData.senderName,list);
-    //         setPrivateChats(new Map(privateChats));
-    //     }
-    // }
+        // var keyValue = {
+        //     id: payloadData.id,
+        //     account: payloadData.account,
+        //     name: payloadData.name,
+        //     avatar: payloadData.avatar,
+        //     backgroundNoAva: payloadData.backgroundNoAva,
+        // }
+
+        // if(chatBox.has(keyValue)){
+        //     chatBox.get(keyValue).push(payloadData.chat);
+        //     setChatBox(chatBox);
+        // }else{
+        //     chatBox.set(keyValue,[payloadData.chat]);
+        //     setChatBox(chatBox);
+        // }
+    }
+
+    const sendPrivateValue=(receiverId, message)=>{
+        var chatMessage = {
+          senderId: account.id,
+          receiverId: receiverId,
+          content: message,
+          senderInfo : {
+              id: account.id,
+              account: account.account,
+              name: account.name,
+              avatar: account.avatar,
+              status: account.status,
+              role: account.role,
+              createdAt: account.createdAt,
+              updatedAt: account.updatedAt,
+              isDeleted: account.isDeleted,
+              backgroundNoAva: account.backgroundNoAva,
+          }
+        };
+
+        stompClient.send("/app/private-message", {}, JSON.stringify(chatMessage));
+      }
 
     return (
         <div class="chat-box-wrapper">
@@ -148,7 +171,7 @@ function ChatBox() {
             </div>
             <div class="chat-box-main-content-wrapper">
                 {selectedAccount !== null && (
-                    <ChatBoxContent data={selectedAccount} />
+                    <ChatBoxContent data={selectedAccount} sendPrivateValue={sendPrivateValue} />
                 )}
             </div>
         </div>
