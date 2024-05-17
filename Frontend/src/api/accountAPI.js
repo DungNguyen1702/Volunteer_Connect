@@ -13,6 +13,10 @@ const accountInfoAPI = {
         const url = '/api/v1/account/changePassword'
         return axiosClient.application.post(url, newPassword)    
     },
+    getAllAccountByAdmin: ()=>{
+        const url = 'api/v1/account/admin/getAll'
+        return axiosClient.application.get(url)
+    }
 }
 
 export default accountInfoAPI;
