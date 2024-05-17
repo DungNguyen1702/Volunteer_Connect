@@ -36,9 +36,9 @@ function ChatBox() {
 
     useEffect(() => {
         const callApi = async () => {
-            connect();
+            await connect();
             await chatApi
-                .getListChatByToken()
+                .getListChatByToken(accountId === 'null' ? 0 : accountId )
                 .then((response) => {
                     const newChatBox = new Map();
                     response.data.forEach((accountData) => {
@@ -54,12 +54,6 @@ function ChatBox() {
                         );
                     });
                     setChatBox(newChatBox);
-                })
-                .catch((error) => console.log(error));
-            await chatApi
-                .getPrivateChat(accountId)
-                .then((response) => {
-                    // console.log(response);
                 })
                 .catch((error) => console.log(error));
         };
@@ -93,10 +87,10 @@ function ChatBox() {
     };
 
     // Socket
-    const connect =()=>{
+    const connect = async ()=>{
         let Sock = new SockJS('http://localhost:8888/ws');
         stompClient = over(Sock);
-        stompClient.connect({},onConnected, (error)=>console.log(error));
+        await stompClient.connect({},onConnected, (error)=>console.log(error));
     }
 
     const onConnected = () => {
@@ -151,7 +145,7 @@ function ChatBox() {
 
         stompClient.send("/app/private-message", {}, JSON.stringify(chatMessage));
 
-        
+
       }
 
     return (
