@@ -35,6 +35,7 @@ public class ChatBoxResponse {
         this.name = account.getName();
         this.status = account.getStatus();
         this.role  = account.getRole();
+        this.avatar = account.getAvatar();
         this.createdAt = account.getCreatedAt() != null ? account.getCreatedAt().toString() : null;
         this.updatedAt = account.getUpdatedAt() != null ? account.getUpdatedAt().toString() : null;
         this.backgroundNoAva = account.getBackgroundNoAva();
