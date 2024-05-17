@@ -36,6 +36,7 @@ function ChatBox() {
 
     useEffect(() => {
         const callApi = async () => {
+            connect();
             await chatApi
                 .getListChatByToken()
                 .then((response) => {
@@ -61,7 +62,6 @@ function ChatBox() {
                     console.log(response);
                 })
                 .catch((error) => console.log(error));
-            connect();
         };
         callApi();
     }, []);
@@ -104,7 +104,7 @@ function ChatBox() {
     }
 
     const onPrivateMessage = (payload)=>{
-        console.log("payload", payload);
+        // console.log("payload", payload);
         
         var payloadData = JSON.parse(payload.body);
         // console.log(payloadData);
