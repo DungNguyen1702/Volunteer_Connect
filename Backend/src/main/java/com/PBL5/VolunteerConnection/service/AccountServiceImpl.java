@@ -135,6 +135,11 @@ public class AccountServiceImpl implements AccountService {
     public AccountResponse getInfoAccount(String token) {
         int accountId = jwtService.getId(token);
         Account account = accountRepository.findById(accountId);
+        String updatedAt = null;
+
+        if (account.getUpdatedAt() != null) {
+            updatedAt = account.getUpdatedAt().toString();
+        }
         if (account.getRole() == 1) {
             User user = userRespository.findByAccountId(account.getId());
             String birthday = null;
@@ -143,14 +148,25 @@ public class AccountServiceImpl implements AccountService {
                 if (user.getBirthday() != null) {
                     birthday = user.getBirthday().toString();
                 }
+                return AccountResponse.builder()
+                        .id(account.getId())
+                        .account(account.getAccount())
+                        .name(account.getName())
+                        .role(account.getRole())
+                        .avatar(account.getAvatar())
+                        .status(account.getStatus())
+                        .createdAt(account.getCreatedAt().toString())
+                        .updatedAt(updatedAt)
+                        .userId(user.getId())
+                        .birthday(birthday)
+                        .tel(user.getTel())
+                        .address(user.getAddress())
+                        .gender(user.getGender())
+                        .build();
             }
         }
 
-        String updatedAt = null;
 
-        if (account.getUpdatedAt() != null) {
-            updatedAt = account.getUpdatedAt().toString();
-        }
         return AccountResponse.builder()
                 .id(account.getId())
                 .account(account.getAccount())
