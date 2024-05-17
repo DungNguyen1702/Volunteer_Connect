@@ -35,7 +35,7 @@ function ChatBoxContent(props) {
                 />
             </div>
             <div class="chat-box-main-chat-content">
-                {data.Chats.map(chat => <ChatBar 
+                {data.chats.map(chat => <ChatBar 
                     data={chat}
                     isAccount={chat.senderId === account.id ? true : false}
                     chattingAccount={data}

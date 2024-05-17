@@ -5,33 +5,119 @@ import FakeData from "../../../data/fake_data.json";
 import Search from "antd/es/transfer/search";
 import ChatBoxContent from "./Component/ChatBoxContent";
 import AccountChatIcon from "./Component/AccountChatIcon";
+import { over } from "stompjs";
+import SockJS from "sockjs-client";
+import useAuth from "../../../hooks/useAuth";
+import chatApi from "../../../api/chatAPI";
+
+function getValueByKeyId(map, searchId) {
+    for (let [key, value] of map.entries()) {
+        if (parseInt(key.id) === parseInt(searchId)) {
+            return { ...key, chats: value };
+        }
+    }
+    return null;
+}
+
+var stompClient = null;
 
 function ChatBox() {
     const { accountId } = useParams();
 
-    const [chatBox, setChatBox] = useState(FakeData["Chat-Box"]);
+    const { account } = useAuth();
+
+    const [chatBox, setChatBox] = useState(new Map());
+
+    // Search
     const [listAccountChat, setListAccountChat] = useState(chatBox);
     const [search, setSearch] = useState("");
-    const selectedAccount =
-        accountId !== "null" &&
-        chatBox.find((chat) => chat.id + "" === accountId);
 
-    console.log(selectedAccount);
+    const [selectedAccount, setSelectedAccount] = useState(null);
+
+    useEffect(() => {
+        const callApi = async () => {
+            await chatApi
+                .getListChatByToken()
+                .then((response) => {
+                    const newChatBox = new Map();
+                    response.data.forEach((accountData) => {
+                        newChatBox.set(
+                            {
+                                id: accountData.id,
+                                account: accountData.account,
+                                name: accountData.name,
+                                avatar: accountData.avatar,
+                                backgroundNoAva: accountData.backgroundNoAva,
+                                createdAt: accountData.createdAt,
+                            },
+                            accountData.chats
+                        );
+                    });
+                    setChatBox(newChatBox);
+                })
+                .catch((error) => console.log(error));
+        };
+        callApi();
+    }, []);
+
+    useEffect(() => {
+        setSelectedAccount(getValueByKeyId(chatBox, accountId));
+    }, [accountId, chatBox]);
+
+    useEffect(() => {
+        setListAccountChat(new Map(chatBox));
+    }, [chatBox]);
+
+    useEffect(() => {
+        if (search === "") {
+            setListAccountChat(new Map(chatBox));
+        } else {
+            const filteredChatBox = new Map();
+            chatBox.forEach((value, key) => {
+                if (key.name.toLowerCase().includes(search.toLowerCase())) {
+                    filteredChatBox.set(key, value);
+                }
+            });
+            setListAccountChat(filteredChatBox);
+        }
+    }, [search, chatBox]);
 
     const onChangeSearch = (e) => {
         setSearch(e.target.value);
     };
 
-    useEffect(() => {
-        
-        if (search === "") {
-            setListAccountChat(chatBox);
-        }
-        else {
-            setListAccountChat(chatBox.filter(accountChat => accountChat.name.toLowerCase().includes(search.toLowerCase())))
-        }
+    // Socket
+    // const [chatUser, setChatUser] = useState({
+    //     senderId : account.id,
+    //     receiver_id : selectedAccount ? selectedAccount.id : null,
+    //     content: "",
+    //     connected : false,
+    // });
 
-    }, [search, chatBox]);
+    // const connect =()=>{
+    //     let Sock = new SockJS('http://localhost:8080/ws');
+    //     stompClient = over(Sock);
+    //     stompClient.connect({},onConnected, (error)=>console.log(error));
+    // }
+
+    // const onConnected = () => {
+    //     setChatUser({...chatUser,"connected": true});
+    //     stompClient.subscribe('/user/'+chatUser.senderId+'/private', onPrivateMessage);
+    // }
+
+    // const onPrivateMessage = (payload)=>{
+    //     console.log("payload", payload);
+    //     var payloadData = JSON.parse(payload.body);
+    //     if(privateChats.get(payloadData.senderName)){
+    //         privateChats.get(payloadData.senderName).push(payloadData);
+    //         setPrivateChats(new Map(privateChats));
+    //     }else{
+    //         let list =[];
+    //         list.push(payloadData);
+    //         privateChats.set(payloadData.senderName,list);
+    //         setPrivateChats(new Map(privateChats));
+    //     }
+    // }
 
     return (
         <div class="chat-box-wrapper">
@@ -44,16 +130,18 @@ function ChatBox() {
                     placeholder="Input a account name"
                 />
                 <div class="chat-box-account-list">
-                    {listAccountChat.map((chat) => (
+                    {[...listAccountChat.entries()].map(([key, value]) => (
                         <AccountChatIcon
-                            data={chat}
+                            chat={value}
+                            key={key.id}
+                            keyValue={key}
                             selectedAccountId={accountId}
                         />
                     ))}
                 </div>
             </div>
             <div class="chat-box-main-content-wrapper">
-                {accountId !== "null" && (
+                {selectedAccount !== null && (
                     <ChatBoxContent data={selectedAccount} />
                 )}
             </div>

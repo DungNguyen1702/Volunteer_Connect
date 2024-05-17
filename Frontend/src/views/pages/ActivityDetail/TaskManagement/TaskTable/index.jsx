@@ -3,7 +3,7 @@ import "./index.scss";
 import { Button, ColorPicker } from "antd";
 import { CheckOutlined, DeleteOutlined, EditOutlined } from "@ant-design/icons";
 import { TaskDataContext } from "..";
-import taskAPI from "../../../../../api/task";
+import taskAPI from "../../../../../api/taskAPI";
 
 function TaskTableItem(props) {
     const {
