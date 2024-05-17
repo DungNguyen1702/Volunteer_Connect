@@ -9,7 +9,7 @@ import java.util.List;
 
 
 public interface ChatService {
-    List<ChatBoxResponse> getAllChatBoxByAccountId(String token);
+    List<ChatBoxResponse> getAllChatBoxByAccountId(String token, int id);
     List<ChatBoxResponse> getAllPrivateChatBox(String token , int id);
     MessageResponse saveAndSend(MessageRequest messageRequest);
 }
