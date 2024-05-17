@@ -112,7 +112,7 @@ public class ChatServiceImpl implements ChatService{
     public MessageResponse saveAndSend(MessageRequest messageRequest) {
         Chat chat = new Chat(messageRequest.getSenderId(), messageRequest.getReceiverId(), messageRequest.getContent(), LocalDate.now());
         chatRepository.save(chat);
-        MessageResponse messageResponse = new MessageResponse(messageRequest, chatRepository.findByCreatedAt(chat.getCreatedAt()));
+        MessageResponse messageResponse = new MessageResponse(messageRequest, chat);
         return messageResponse;
     }
 }
