@@ -26,13 +26,13 @@ public class ChatServiceImpl implements ChatService{
         Map<Integer, List<Chat>> chatList = new HashMap<>();
         for(ChatBoxDTO chatBoxDTO: chatBoxDTOS){
             if(chatBoxDTO.getChat().getReceiverId() == accountId){
-                accountList.add(chatBoxDTO.getSender());
+
                 int senderId = chatBoxDTO.getSender().getId();
                 if(chatList.containsKey(senderId)){
-                    System.out.println("Lan 1");
                     chatList.get(senderId).add(chatBoxDTO.getChat());
                 }
                 else{
+                    accountList.add(chatBoxDTO.getSender());
                     List<Chat> chats = new ArrayList<>();
                     chats.add(chatBoxDTO.getChat());
                     chatList.put(senderId, chats);
@@ -40,12 +40,13 @@ public class ChatServiceImpl implements ChatService{
                 System.out.println(chatList.get(chatBoxDTO.getSender().getId()));
             }
             else if (chatBoxDTO.getChat().getSenderId() == accountId){
-                accountList.add(chatBoxDTO.getReceiver());
+
                 int receiverId = chatBoxDTO.getReceiver().getId();
                 if(chatList.containsKey(receiverId)){
                     chatList.get(receiverId).add(chatBoxDTO.getChat());
                 }
                 else{
+                    accountList.add(chatBoxDTO.getReceiver());
                     List<Chat> chats = new ArrayList<>();
                     chats.add(chatBoxDTO.getChat());
                     chatList.put(receiverId, chats);
