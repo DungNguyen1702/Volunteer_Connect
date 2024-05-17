@@ -13,6 +13,8 @@ import java.util.Optional;
 @Repository
 public interface AccountRepository extends JpaRepository<Account, Integer> {
     Account findByAccount(String account);
+
     Account findById(int id);
+
     List<Account> findAllByRole(int role);
 }

@@ -38,15 +38,17 @@ public class ActivityServiceImpl implements ActivityService {
     private UserRespository userRespository;
     @Autowired
     private CandidateService candidateService;
+
     @Override
     public ActivityResponse createActivity(String token, ActivityRequest activity) {
         try {
 
             int organizationId = jwtService.getId(token);
             Activity creActivity = new Activity(activity.getImage(), activity.getEmail(), activity.getName(),
-                                        activity.getType(), activity.getDeadline(), activity.getDateStart(), activity.getDateEnd(), activity.getCountry(),
-                                        activity.getLocation(), organizationId,
-                                        activity.getContent());
+                    activity.getType(), activity.getDeadline(), activity.getDateStart(), activity.getDateEnd(),
+                    activity.getCountry(),
+                    activity.getLocation(), organizationId,
+                    activity.getContent());
             creActivity.setIsDeleted(false);
             activityRepository.save(creActivity);
             ActivityResponse activityResponse = new ActivityResponse(creActivity, 0, 0, 0, 0);
@@ -64,7 +66,7 @@ public class ActivityServiceImpl implements ActivityService {
         try {
 
             Activity updateActivity = activityRepository.findById(updateReq.getId());
-            if (updateActivity.getOrganizationId() == jwtService.getId(token)){
+            if (updateActivity.getOrganizationId() == jwtService.getId(token)) {
                 updateActivity.setImage(updateReq.getImage());
                 updateActivity.setEmail(updateReq.getEmail());
                 updateActivity.setDeadline(updateReq.getDeadline());
@@ -73,7 +75,7 @@ public class ActivityServiceImpl implements ActivityService {
                 updateActivity.setCountry(updateReq.getCountry());
                 updateActivity.setLocation(updateReq.getLocation());
                 updateActivity.setContent(updateReq.getContent());
-                updateActivity.setUpdateAt(Date.valueOf(LocalDate.now()));
+                updateActivity.setUpdateAt(LocalDate.now());
                 activityRepository.save(updateActivity);
                 return StatusResponse.builder()
                         .success(ResponseEntity.status(HttpStatus.ACCEPTED)
@@ -98,11 +100,12 @@ public class ActivityServiceImpl implements ActivityService {
         // TODO Auto-generated method stub
         try {
             Activity deleteActivity = activityRepository.findById(deleteRequest.getId());
-            if (deleteActivity.getOrganizationId() == jwtService.getId(token)){
+            if (deleteActivity.getOrganizationId() == jwtService.getId(token)) {
                 deleteActivity.setIsDeleted(true);
                 activityRepository.save(deleteActivity);
                 return StatusResponse.builder()
-                        .success(ResponseEntity.status(HttpStatus.ACCEPTED).body("Activity has been deleted sucessfully!!"))
+                        .success(ResponseEntity.status(HttpStatus.ACCEPTED)
+                                .body("Activity has been deleted sucessfully!!"))
                         .build();
             }
             return StatusResponse.builder()
@@ -115,19 +118,19 @@ public class ActivityServiceImpl implements ActivityService {
         }
     }
 
-
-
     @Override
     public List<ActivityResponse> getAllActivity(String token) {
         int organizationId = jwtService.getId(token);
         List<ActivityResponse> activityResponseList = new ArrayList<>();
         List<Object[]> activityDTOS = activityRepository.getListActivityDetail(organizationId);
         for (Object[] result : activityDTOS) {
-            ActivityDTO activityDTO = new ActivityDTO((Activity) result[0], (Long) result[1], (Long) result[2], (Long) result[3], (Long) result[4]);
-            if (activityDTO.getActivity().getIsDeleted()){
+            ActivityDTO activityDTO = new ActivityDTO((Activity) result[0], (Long) result[1], (Long) result[2],
+                    (Long) result[3], (Long) result[4]);
+            if (activityDTO.getActivity().getIsDeleted()) {
                 continue;
             }
-            activityResponseList.add(new ActivityResponse(activityDTO.getActivity(), activityDTO.getApplyFormNumbers(), activityDTO.getComments(), activityDTO.getParticipants(), activityDTO.getPostNumbers()));
+            activityResponseList.add(new ActivityResponse(activityDTO.getActivity(), activityDTO.getApplyFormNumbers(),
+                    activityDTO.getComments(), activityDTO.getParticipants(), activityDTO.getPostNumbers()));
 
         }
         return activityResponseList;
@@ -137,41 +140,45 @@ public class ActivityServiceImpl implements ActivityService {
     public ActivityDetailResponse getActivityDetail(String token, int id) {
         int organizationId = jwtService.getId(token);
         List<Object[]> activityDTO = activityRepository.getActivityWithPostsAndCounts(id);
-        Activity activityDetail = (Activity)activityDTO.get(0)[0];
-        if (!activityDetail.getIsDeleted()){
+        Activity activityDetail = (Activity) activityDTO.get(0)[0];
+        if (!activityDetail.getIsDeleted()) {
             Account organization = accountRepository.findById(activityDetail.getOrganizationId());
-            List< PostActivityDetailDTO> postActivityDetailDTOS = new ArrayList<>();
+            List<PostActivityDetailDTO> postActivityDetailDTOS = new ArrayList<>();
             long registrationCount = (Long) activityDTO.get(0)[2];
             long totalComments = 0;
             for (Object[] result : activityDTO) {
-                if ((Post) result[1] != null){
+                if ((Post) result[1] != null) {
                     Post post = (Post) result[1];
                     Long commentCount = (Long) result[3];
                     totalComments += commentCount;
                     postActivityDetailDTOS.add(new PostActivityDetailDTO(post, commentCount));
                 }
-//            postActivityDetailDTOS.add(null);
+                // postActivityDetailDTOS.add(null);
             }
             List<CandidateDetailResponse> candidates = candidateService.getCandidateDetail(token, id);
             int postNumber = postActivityDetailDTOS.size();
             boolean isCandidate = false;
             Account candidate = accountRepository.findById(jwtService.getId(token));
-            if (jwtService.getRole(token)[0].equals("1") && !candidates.isEmpty()){
-                for (CandidateDetailResponse candidateDetailResponse : candidates){
-                    if (candidateDetailResponse.getUser().getId() == candidate.getUser().getId()){
+            if (jwtService.getRole(token)[0].equals("1") && !candidates.isEmpty()) {
+                for (CandidateDetailResponse candidateDetailResponse : candidates) {
+                    if (candidateDetailResponse.getUser().getId() == candidate.getUser().getId()) {
                         isCandidate = true;
                     }
                 }
             }
-            if(organization.getId() == jwtService.getId(token) || isCandidate){
-                return new ActivityDetailResponse(new ActivityResponse(activityDetail,registrationCount, totalComments,candidates.size() , postNumber), postActivityDetailDTOS,
+            if (organization.getId() == jwtService.getId(token) || isCandidate) {
+                return new ActivityDetailResponse(
+                        new ActivityResponse(activityDetail, registrationCount, totalComments, candidates.size(),
+                                postNumber),
+                        postActivityDetailDTOS,
                         new AccountResponse(organization), candidates);
             }
             return ActivityDetailResponse.builder().error_message("You are not owner").build();
         }
         return ActivityDetailResponse.builder().error_message("Activity was deleted").build();
-//        return new ActivityDetailResponse(new ActivityResponse(activityDetail), null, 0, 0,
-//                null,null);
+        // return new ActivityDetailResponse(new ActivityResponse(activityDetail), null,
+        // 0, 0,
+        // null,null);
     }
 
     @Override
@@ -181,15 +188,22 @@ public class ActivityServiceImpl implements ActivityService {
         List<ActivityResponse> activityResponseList = new ArrayList<>();
         List<Object[]> activityDTOS = activityRepository.getListActivityDetailByCandidate(userId);
         for (Object[] result : activityDTOS) {
-            ActivityDTO activityDTO = new ActivityDTO((Activity) result[0], (Long) result[1], (Long) result[2], (Long) result[3], (Long) result[4]);
-            if (activityDTO.getActivity().getIsDeleted()){
+            ActivityDTO activityDTO = new ActivityDTO((Activity) result[0], (Long) result[1], (Long) result[2],
+                    (Long) result[3], (Long) result[4]);
+            if (activityDTO.getActivity().getIsDeleted()) {
                 continue;
             }
-            activityResponseList.add(new ActivityResponse(activityDTO.getActivity(), activityDTO.getApplyFormNumbers(), activityDTO.getComments(), activityDTO.getParticipants(), activityDTO.getPostNumbers()));
+            activityResponseList.add(new ActivityResponse(activityDTO.getActivity(), activityDTO.getApplyFormNumbers(),
+                    activityDTO.getComments(), activityDTO.getParticipants(), activityDTO.getPostNumbers()));
 
         }
         return activityResponseList;
     }
 
+    @Override
+    public List<Activity> getAllByAdmin() {
+        // TODO Auto-generated method stub
+        return activityRepository.findAll();
+    }
 
 }

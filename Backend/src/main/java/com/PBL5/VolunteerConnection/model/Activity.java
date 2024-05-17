@@ -1,8 +1,6 @@
 package com.PBL5.VolunteerConnection.model;
 
-import java.sql.Date;
 import java.time.LocalDate;
-import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
@@ -27,13 +25,13 @@ public class Activity {
     protected int type;
     @Column(name = "deadline")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    protected Date deadline;
+    protected LocalDate deadline;
     @Column(name = "date_start")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    protected Date dateStart;
+    protected LocalDate dateStart;
     @Column(name = "date_end")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    protected Date dateEnd;
+    protected LocalDate dateEnd;
     @Column(name = "country")
     protected int country;
     @Column(name = "location")
@@ -42,10 +40,10 @@ public class Activity {
     protected int organizationId;
     @Column(name = "createdAt")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    protected Date createdAt;
+    protected LocalDate createdAt;
     @Column(name = "updateAt")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    protected Date updateAt;
+    protected LocalDate updateAt;
     @Column(name = "isDeleted")
     protected Boolean isDeleted;
     @Column(name = "content")
@@ -55,7 +53,9 @@ public class Activity {
     @JoinColumn(name = "organization_id", insertable = false, updatable = false)
     private Account account;
 
-    public Activity(String image, String email, String name, int type, Date deadline, Date dateStart, Date dateEnd,
+    public Activity(String image, String email, String name, int type, LocalDate deadline,
+            LocalDate dateStart,
+            LocalDate dateEnd,
             int country, String location, int organizationId, String content) {
         this.image = image;
         this.email = email;
@@ -69,8 +69,8 @@ public class Activity {
         this.organizationId = organizationId;
         this.isDeleted = false;
         this.content = content;
-        this.createdAt = Date.valueOf(LocalDate.now());
-        this.updateAt = Date.valueOf(LocalDate.now());
+        this.createdAt = LocalDate.now();
+        this.updateAt = LocalDate.now();
     }
 
     public Activity() {

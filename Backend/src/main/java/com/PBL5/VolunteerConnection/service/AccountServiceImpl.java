@@ -267,4 +267,10 @@ public class AccountServiceImpl implements AccountService {
         return organizationResponses;
     }
 
+    @Override
+    public List<Account> getAllByAdmin() {
+        // TODO Auto-generated method stub
+        return accountRepository.findAll();
+    }
+
 }

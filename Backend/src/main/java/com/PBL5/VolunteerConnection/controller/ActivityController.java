@@ -2,7 +2,6 @@ package com.PBL5.VolunteerConnection.controller;
 
 import com.PBL5.VolunteerConnection.model.Activity;
 import com.PBL5.VolunteerConnection.request.ActivityRequest;
-import com.PBL5.VolunteerConnection.request.CandidateRequest;
 import com.PBL5.VolunteerConnection.response.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -19,35 +18,47 @@ public class ActivityController {
     private ActivityService activityService;
 
     @PostMapping("/organization/create")
-    ResponseEntity<ActivityResponse> createActivity(@RequestHeader("Authorization") String token , @RequestBody ActivityRequest activityRequest) {
+    ResponseEntity<ActivityResponse> createActivity(@RequestHeader("Authorization") String token,
+            @RequestBody ActivityRequest activityRequest) {
         token = token.substring("Bearer ".length());
         return ResponseEntity.ok(activityService.createActivity(token, activityRequest));
     }
 
     @PostMapping("/organization/update")
-    ResponseEntity<StatusResponse> updatePost(@RequestHeader("Authorization") String token ,@RequestBody ActivityRequest activityRequest) {
+    ResponseEntity<StatusResponse> updatePost(@RequestHeader("Authorization") String token,
+            @RequestBody ActivityRequest activityRequest) {
         token = token.substring("Bearer ".length());
         return ResponseEntity.ok(activityService.updateActivity(token, activityRequest));
     }
 
     @PostMapping("/admin/delete")
-    ResponseEntity<StatusResponse> deletePost(@RequestHeader("Authorization") String token ,@RequestBody ActivityRequest activityRequest) {
+    ResponseEntity<StatusResponse> deletePost(@RequestHeader("Authorization") String token,
+            @RequestBody ActivityRequest activityRequest) {
         token = token.substring("Bearer ".length());
-        return ResponseEntity.ok(activityService.deleteActivity(token ,activityRequest));
+        return ResponseEntity.ok(activityService.deleteActivity(token, activityRequest));
     }
+
     @GetMapping("/organization/getAllActivity")
-    ResponseEntity<List<ActivityResponse>> getAllActivity (@RequestHeader("Authorization") String token){
+    ResponseEntity<List<ActivityResponse>> getAllActivity(@RequestHeader("Authorization") String token) {
         token = token.substring("Bearer ".length());
         return ResponseEntity.ok(activityService.getAllActivity(token));
     }
+
     @GetMapping("/getActivityDetail")
-    ResponseEntity<ActivityDetailResponse> getActivityDetail(@RequestHeader("Authorization") String token ,@RequestParam("activityId") int id){
+    ResponseEntity<ActivityDetailResponse> getActivityDetail(@RequestHeader("Authorization") String token,
+            @RequestParam("activityId") int id) {
         token = token.substring("Bearer ".length());
         return ResponseEntity.ok(activityService.getActivityDetail(token, id));
     }
+
     @GetMapping("/candidate/selectAllActivity")
-    ResponseEntity<List<ActivityResponse>> selectAllActivity(@RequestHeader("Authorization") String token){
+    ResponseEntity<List<ActivityResponse>> selectAllActivity(@RequestHeader("Authorization") String token) {
         token = token.substring("Bearer ".length());
         return ResponseEntity.ok(activityService.getAllActivityByCandidate(token));
+    }
+
+    @GetMapping("/admin/getAllActivity")
+    ResponseEntity<List<Activity>> selectAllActivityByAdmin() {
+        return ResponseEntity.ok(activityService.getAllByAdmin());
     }
 }
