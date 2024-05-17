@@ -1,6 +1,7 @@
 package com.PBL5.VolunteerConnection.model;
 
 import jakarta.persistence.*;
+import lombok.Builder;
 import lombok.Data;
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -8,6 +9,7 @@ import java.sql.Date;
 
 @Data
 @Entity
+@Builder
 @Table(name = "Chats")
 public class Chat {
     @Id

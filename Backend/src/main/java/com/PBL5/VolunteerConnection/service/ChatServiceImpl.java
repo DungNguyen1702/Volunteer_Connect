@@ -4,8 +4,11 @@ import com.PBL5.VolunteerConnection.dto.ChatBoxDTO;
 import com.PBL5.VolunteerConnection.model.Account;
 import com.PBL5.VolunteerConnection.model.Chat;
 import com.PBL5.VolunteerConnection.repository.ChatRepository;
+import com.PBL5.VolunteerConnection.request.MessageRequest;
 import com.PBL5.VolunteerConnection.response.ChatBoxResponse;
 import com.PBL5.VolunteerConnection.response.ChatResponse;
+import com.PBL5.VolunteerConnection.response.MessageResponse;
+import jakarta.persistence.Column;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -101,5 +104,11 @@ public class ChatServiceImpl implements ChatService{
             chatBoxResponses.add(new ChatBoxResponse(account, chatList.get(account.getId())));
         }
         return chatBoxResponses;
+    }
+
+    @Override
+    public MessageResponse saveAndSend(MessageRequest messageRequest) {
+
+        return null;
     }
 }
