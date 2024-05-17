@@ -7,6 +7,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Repository
@@ -18,7 +19,7 @@ public interface ChatRepository extends JpaRepository<Chat, Integer> {
             "WHERE sa.id = :accountId OR ra.id = :accountId")
     List<ChatBoxDTO> findAllByAccountId(@Param("accountId") int accountId);
 
-
+    Chat findByCreatedAt(LocalDate localDate);
     @Query(value = "SELECT new com.PBL5.VolunteerConnection.dto.ChatBoxDTO(sa, ra, c) " +
             "FROM Chat c " +
             "JOIN Account sa ON sa.id = c.senderId " +

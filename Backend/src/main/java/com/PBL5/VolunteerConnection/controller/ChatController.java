@@ -2,6 +2,7 @@ package com.PBL5.VolunteerConnection.controller;
 
 import com.PBL5.VolunteerConnection.request.MessageRequest;
 import com.PBL5.VolunteerConnection.response.ChatBoxResponse;
+import com.PBL5.VolunteerConnection.response.MessageResponse;
 import com.PBL5.VolunteerConnection.response.StatusResponse;
 import com.PBL5.VolunteerConnection.service.ChatService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,10 +33,10 @@ public class ChatController {
         return ResponseEntity.ok(chatService.getAllPrivateChatBox(token, id));
     }
 
-//    @MessageMapping("/private-message")
-//    ResponseEntity<StatusResponse> receivePrivateMessage(@Payload MessageRequest message){
-//
-//        messagingTemplate.convertAndSendToUser(String.valueOf(message.getReceiverId()), "/private", message);  //user/userName/private
-//        return null;
-//    }
+    @MessageMapping("/private-message")
+    MessageResponse receivePrivateMessage(@Payload MessageRequest message){
+        MessageResponse messageResponse = chatService.saveAndSend(message);
+        messagingTemplate.convertAndSendToUser(String.valueOf(message.getReceiverId()), "/private", messageResponse);  //user/userName/private
+        return messageResponse;
+    }
 }
