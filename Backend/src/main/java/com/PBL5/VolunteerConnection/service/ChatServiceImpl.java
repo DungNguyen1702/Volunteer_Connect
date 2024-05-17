@@ -110,23 +110,9 @@ public class ChatServiceImpl implements ChatService{
 
     @Override
     public MessageResponse saveAndSend(MessageRequest messageRequest) {
-//        chatRepository.save(Chat.builder().senderId(messageRequest.getSenderId()).receiverId(messageRequest.getReceiverId()).content(messageRequest.getContent()).createdAt(LocalDate.now()).build());
-//        MessageResponse messageResponse = new MessageResponse(messageRequest.getSenderInfo().getId(),
-//                messageRequest.getSenderInfo().getAccount(), messageRequest.getSenderInfo().getName(),
-//                messageRequest.getSenderInfo().getAvatar(), messageRequest.getSenderInfo().getStatus(),
-//                messageRequest.getSenderInfo()
-//                );
-//        private int id;
-//        private String account;
-//        private String name;
-//        private String avatar;
-//        private Boolean status;
-//        private int role;
-//        private String createdAt;
-//        private String updatedAt;
-//        private Boolean isDeleted;
-//        private String backgroundNoAva;
-//        private ChatResponse chat;
-        return null;
+        Chat chat = new Chat(messageRequest.getSenderId(), messageRequest.getReceiverId(), messageRequest.getContent(), LocalDate.now());
+        chatRepository.save(chat);
+        MessageResponse messageResponse = new MessageResponse(messageRequest, chatRepository.findByCreatedAt(chat.getCreatedAt()));
+        return messageResponse;
     }
 }

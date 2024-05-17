@@ -30,5 +30,10 @@ public class Chat {
     @Column(name = "createdAt")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate createdAt;
-
+    public Chat (int senderId, int receiverId, String content, LocalDate createdAt){
+        this.senderId = senderId;
+        this.receiverId = receiverId;
+        this.content = content;
+        this.createdAt = createdAt;
+    }
 }
