@@ -20,5 +20,5 @@ public interface ActivityService {
 
     List<ActivityResponse> getAllActivityByCandidate(String token);
 
-    List<Activity> getAllByAdmin();
+    List<ActivityDetailResponse> getAllByAdmin();
 }

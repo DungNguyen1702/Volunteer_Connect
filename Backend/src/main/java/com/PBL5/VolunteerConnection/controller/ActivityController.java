@@ -31,13 +31,6 @@ public class ActivityController {
         return ResponseEntity.ok(activityService.updateActivity(token, activityRequest));
     }
 
-    @PostMapping("/admin/delete")
-    ResponseEntity<StatusResponse> deletePost(@RequestHeader("Authorization") String token,
-            @RequestBody ActivityRequest activityRequest) {
-        token = token.substring("Bearer ".length());
-        return ResponseEntity.ok(activityService.deleteActivity(token, activityRequest));
-    }
-
     @GetMapping("/organization/getAllActivity")
     ResponseEntity<List<ActivityResponse>> getAllActivity(@RequestHeader("Authorization") String token) {
         token = token.substring("Bearer ".length());
@@ -57,8 +50,5 @@ public class ActivityController {
         return ResponseEntity.ok(activityService.getAllActivityByCandidate(token));
     }
 
-    @GetMapping("/admin/getAllActivity")
-    ResponseEntity<List<Activity>> selectAllActivityByAdmin() {
-        return ResponseEntity.ok(activityService.getAllByAdmin());
-    }
+
 }
