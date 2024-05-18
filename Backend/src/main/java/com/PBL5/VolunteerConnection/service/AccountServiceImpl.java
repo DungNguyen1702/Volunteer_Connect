@@ -283,5 +283,40 @@ public class AccountServiceImpl implements AccountService {
         // TODO Auto-generated method stub
         return accountRepository.findAll();
     }
+    public StatusResponse backUpAccount(int id) {
+        try {
+            Account account = accountRepository.findById(id);
+            account.setIsDeleted(false);
+            account.setIsValid(true);
+            accountRepository.save(account);
+            return StatusResponse.builder()
+                    .success(ResponseEntity.status(HttpStatus.ACCEPTED).body("Sucessfully!!"))
+                    .build();
+
+        } catch (Exception e) {
+            return StatusResponse.builder()
+                    .fail(ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("you dont have permission"))
+                    .build();
+        }
+
+    }
+    @Override
+    public StatusResponse deleteAccountByAdnmin(int id) {
+        try {
+            Account account = accountRepository.findById(id);
+            account.setIsDeleted(true);
+            account.setIsValid(false);
+            accountRepository.save(account);
+            return StatusResponse.builder()
+                    .success(ResponseEntity.status(HttpStatus.ACCEPTED)
+                            .body("Account " + account.getAccount() + "has been deleted sucessfully!!"))
+                    .build();
+        } catch (Exception e) {
+            return StatusResponse.builder()
+                    .fail(ResponseEntity.status(HttpStatus.NOT_ACCEPTABLE).body("Delete Fail"))
+                    .build();
+        }
+
+    }
 
 }

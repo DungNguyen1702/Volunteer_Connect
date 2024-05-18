@@ -57,4 +57,12 @@ public class AdminController {
     ResponseEntity<List<DeleteActivityForm>> selectAllAprove() {
         return ResponseEntity.ok(deleteActivityFormService.selectAllAprove());
     }
+    @PostMapping("/deleteAccount")
+    ResponseEntity<StatusResponse> deleteAccount(@RequestParam("id") int id ){
+        return ResponseEntity.ok(accountService.deleteAccountByAdnmin(id));
+    }
+    @PostMapping("/backupAccount")
+    ResponseEntity<StatusResponse> backupAccount(@RequestParam("id") int id ){
+        return ResponseEntity.ok(accountService.backUpAccount(id));
+    }
 }
