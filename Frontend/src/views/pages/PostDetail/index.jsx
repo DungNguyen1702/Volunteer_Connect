@@ -74,16 +74,22 @@ function PostDetail() {
     const navigate = useNavigate();
 
     const handlerClickRegister = () => {
+        if(parseInt(account.role) === 3)
+        {
+            toast.error("You can't register this activity because you're an admin")
+            return;
+        }
+
         if(!token)
         {
-            toast.error('You need to login to register')
+            toast.error('You need to login to register this activity')
             setTimeout (() => (
                 navigate('/auth/login')
             ), 2000)
         }
         else if(SupportFunction.isTokenExpired(token))
         {
-            toast.error('You need to login again to register')
+            toast.error('You need to login again to register this activity')
             setTimeout (() => (
                 navigate('/auth/login')
             ), 2000)
