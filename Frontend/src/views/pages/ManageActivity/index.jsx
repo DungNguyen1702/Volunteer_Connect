@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import "./index.scss";
 import DataTable from 'react-data-table-component';
+import { toast } from "react-toastify";
 import ModalForm from "./ModalForm.jsx"
 import FormListModal from './FormListModal.jsx';
 import activityAPI from '../../../api/activityAPI.js';
@@ -17,17 +18,17 @@ function ManageActivity() {
   const [showModalForm, setShowModalForm] = useState(false);
   const [selectedFormData, setSelectedFormData] = useState(null);
   const deleteActivity = (actId) => {
-    const callAPI = async()=>{
-        await activityAPI.deleteActivity(actid).then(response=>{
-            const newListActivity = listActivity.filter(
-                (activity) => activity.id !== actId
-            );
-            setListActivity(newListActivity);
-            toast.success("Delete activity successfull")
-        }).catch(error => console.log(error))
+    const callAPI = async () => {
+      await activityAPI.deleteActivity(actId).then(response => {
+        const newListActivity = listActivity.filter(
+          (activity) => activity.id !== actId
+        );
+        setListActivity(newListActivity);
+        toast.success("Delete activity successfull")
+      }).catch(error => console.log(error))
     }
     callAPI();
-};
+  };
   useEffect(() => {
     const callApi = async () => {
       await activityAPI
@@ -48,7 +49,7 @@ function ManageActivity() {
 
     callApi();
   }, []);
-  
+
   const onClickDelete = () => {
     setIsDeleteAct(true);
   }
