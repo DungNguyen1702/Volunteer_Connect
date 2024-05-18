@@ -58,8 +58,5 @@ public class AccountController {
         return ResponseEntity.ok(candidateService.getAllCertificateByAccountId(token));
     }
 
-    @GetMapping("/admin/getAll")
-    ResponseEntity<List<Account>> selecteAllAccount() {
-        return ResponseEntity.ok(accountService.getAllByAdmin());
-    }
+
 }

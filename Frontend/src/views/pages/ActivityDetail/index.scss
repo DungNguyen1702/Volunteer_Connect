@@ -125,7 +125,8 @@ html, body {
     margin-bottom: 20px;
 }
 #activity-content {
-    width: 80%;
+    max-width: 1180px;
+    word-break: break-all;
 }
 
 .activity-header-info-hr-wrapper {

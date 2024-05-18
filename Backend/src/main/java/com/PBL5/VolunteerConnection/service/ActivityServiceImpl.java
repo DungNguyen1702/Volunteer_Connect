@@ -201,9 +201,14 @@ public class ActivityServiceImpl implements ActivityService {
     }
 
     @Override
-    public List<Activity> getAllByAdmin() {
+    public List<ActivityDetailResponse> getAllByAdmin() {
         // TODO Auto-generated method stub
-        return activityRepository.findAll();
+        List<Activity> activityList = activityRepository.findAll();
+        List<ActivityDetailResponse> activityDetailResponseList = new ArrayList<>();
+        for (Activity activity : activityList){
+            activityDetailResponseList.add(new ActivityDetailResponse(new ActivityResponse(activity), new AccountResponse(activity.getAccount())));
+        }
+        return activityDetailResponseList;
     }
 
 }

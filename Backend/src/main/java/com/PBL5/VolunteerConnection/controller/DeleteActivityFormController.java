@@ -30,20 +30,4 @@ public class DeleteActivityFormController {
         return ResponseEntity.ok(deleteActivityFormService.createDeleteActivityForm(token, deleteActivityRequest));
     }
 
-    @PostMapping("/update")
-    ResponseEntity<StatusResponse> updateDeleteForm(@RequestHeader("Authorization") String token,
-            @RequestBody DeleteActivityRequest deleteActivityRequest) {
-        token = token.substring("Bearer ".length());
-        return ResponseEntity.ok(deleteActivityFormService.updateDeleteActivityForm(token, deleteActivityRequest));
-    }
-
-    @GetMapping("/selectAll")
-    ResponseEntity<List<DeleteFormResponse>> selectAll() {
-        return ResponseEntity.ok(deleteActivityFormService.selectAll());
-    }
-
-    @GetMapping("/selectAllAprove")
-    ResponseEntity<List<DeleteActivityForm>> selectAllAprove() {
-        return ResponseEntity.ok(deleteActivityFormService.selectAllAprove());
-    }
 }

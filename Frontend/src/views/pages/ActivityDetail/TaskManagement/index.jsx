@@ -108,6 +108,14 @@ function TaskManagement() {
         callApi();
     };
     const addTask = (taskTableId, newTask) => {
+        if(!showingTaskTableID)
+        {
+            toast.error("You can't create a task if you don't select any task table");
+            return;
+        }
+
+        console.log(newTask);
+
         const callApi = async () => {
             await taskAPI
                 .createTask(newTask, taskTableId, actInfo.id)

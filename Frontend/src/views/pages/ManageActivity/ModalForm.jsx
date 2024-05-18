@@ -1,6 +1,7 @@
 
 import React from 'react';
 import './ModalForm.scss';
+import SupportFunction from '../../../support/support_function'
 
 const ModalForm = ({ show, onClose, data }) => {
   if (!show) {
@@ -34,7 +35,7 @@ const ModalForm = ({ show, onClose, data }) => {
             </div>
             <div className="form-group">
               <label>Created At:</label>
-              <input type="text" value={data.createdAt} readOnly />
+              <input type="text" value={SupportFunction.convertDateFromArrayToString(data.createdAt)} readOnly />
             </div>
             <div className="form-group">
               <label>Created By:</label>

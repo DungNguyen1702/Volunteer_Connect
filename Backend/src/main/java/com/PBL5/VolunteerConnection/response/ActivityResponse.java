@@ -73,7 +73,23 @@ public class ActivityResponse {
         this.createdAt = activity.getCreatedAt() != null ? activity.getCreatedAt().toString() : null;
         this.updatedAt = activity.getUpdateAt() != null ? activity.getUpdateAt().toString() : null;
         this.participants = participants;
-
+    }
+    public ActivityResponse(Activity activity) {
+        this.id = activity.getId();
+        this.image = activity.getImage();
+        this.email = activity.getEmail();
+        this.name = activity.getName();
+        this.type = activity.getType();
+        this.deadline = activity.getDeadline() != null ? activity.getDeadline().toString() : null;
+        this.dateStart = activity.getDeadline() != null ? activity.getDateStart().toString() : null;
+        this.dateEnd = activity.getDeadline() != null ? activity.getDateEnd().toString() : null;
+        this.country = activity.getCountry();
+        this.location = activity.getLocation();
+        this.organizationId = activity.getOrganizationId();
+        this.isDeleted = activity.getIsDeleted();
+        this.content = activity.getContent();
+        this.createdAt = activity.getCreatedAt() != null ? activity.getCreatedAt().toString() : null;
+        this.updatedAt = activity.getUpdateAt() != null ? activity.getUpdateAt().toString() : null;
     }
 
 

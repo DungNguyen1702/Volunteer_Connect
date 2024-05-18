@@ -34,8 +34,7 @@ function ChatBox() {
     const [search, setSearch] = useState("");
 
     const [selectedAccount, setSelectedAccount] = useState(null);
-
-    const [isConnected, setIsConnected] = useState(false);
+    // const [isConnected, setIsConnected] = useState(false);
 
     useEffect(() => {
         const callApi = async () => {
@@ -88,23 +87,36 @@ function ChatBox() {
 
     // Socket
     const connect = () => {
-        let Sock = new SockJS('http://localhost:8888/ws');
-        stompClient = over(Sock);
-        stompClient.connect({},onConnected, (error)=>console.log(error));
+        return new Promise((resolve, reject) => {
+            const serverUrl = "http://localhost:8888/ws"; // Update with your actual server URL
+            const Sock = new SockJS(serverUrl);
+            stompClient = over(Sock);
+    
+            stompClient.connect(
+                {},
+                () => {
+                    onConnected();
+                    resolve();
+                },
+                (error) => {
+                    console.error("WebSocket connection error:", error);
+                    reject(error);
+                }
+            );
+        });
     };
-
+    
     const onConnected = () => {
-        if (!isConnected) {
-            console.log("Connection has not been established yet.");
-            return;
+        try{
+            stompClient.subscribe(
+                "/user/" + account.id + "/private",
+                onPrivateMessage
+            );
+        }catch(error){
+            console.log(error)
         }
-
-        stompClient.subscribe(
-            "/user/" + account.id + "/private",
-            onPrivateMessage
-        );
-        setIsConnected(true); 
     };
+        
 
     const onPrivateMessage = (payload) => {
 
@@ -128,11 +140,6 @@ function ChatBox() {
     };
 
     const sendPrivateValue = (receiverId, message) => {
-
-        if (!isConnected) {
-            console.log("Connection has not been established yet.");
-            return;
-        }
 
         var chatMessage = {
             senderId: account.id,

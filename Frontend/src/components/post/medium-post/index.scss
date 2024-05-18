@@ -71,6 +71,10 @@ html, body {
     padding : 0 30px;
     justify-content: space-between;
     align-items: center;
+    div {
+        word-break: break-all;
+        max-width: 210px;
+    }
 }
 
 .medium-post-img {
