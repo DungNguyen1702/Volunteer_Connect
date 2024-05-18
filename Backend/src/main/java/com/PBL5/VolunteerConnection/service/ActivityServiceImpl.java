@@ -206,7 +206,7 @@ public class ActivityServiceImpl implements ActivityService {
         List<Activity> activityList = activityRepository.findAll();
         List<ActivityDetailResponse> activityDetailResponseList = new ArrayList<>();
         for (Activity activity : activityList){
-            activityDetailResponseList.add(new ActivityDetailResponse(new ActivityResponse(activity), null, new AccountResponse(activity.getAccount()), null));
+            activityDetailResponseList.add(new ActivityDetailResponse(new ActivityResponse(activity), new AccountResponse(activity.getAccount())));
         }
         return activityDetailResponseList;
     }
