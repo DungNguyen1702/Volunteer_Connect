@@ -32,6 +32,7 @@ function ManageActivity() {
     }
     callAPI();
   };
+  
   useEffect(() => {
     const callApi = async () => {
       await activityAPI

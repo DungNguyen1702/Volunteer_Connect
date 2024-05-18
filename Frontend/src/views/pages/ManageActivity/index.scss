@@ -28,14 +28,16 @@ body {
 
 .custom-header {
     text-transform: capitalize;
-    border: 1px solid #000;
+    //border: 1px solid #000;
 }
 .center-content {
     text-align: center;
+    font-size: 13px;
 }
 
 .btn-Form {
     background-color: $button_orange;
+    font-size: 1.5rem;
     color: white;
     border: none;
     padding: 5px 10px;
@@ -57,7 +59,7 @@ body {
 
 .custom-search-input {
     width: 400px;
-    height: 25px;
+    height: 27px;
     padding: 12px;
     border: 1px solid;
     border-radius: 5px;
@@ -87,5 +89,6 @@ body {
 }
 
 .btn-Del:hover {
+    background-color: $background;
     color: #d9534f;
 }
