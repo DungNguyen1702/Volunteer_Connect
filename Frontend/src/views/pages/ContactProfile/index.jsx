@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./index.scss";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import FakeData from "../../../data/fake_data.json";
 import "./index.scss";
 import AvatarAccount from "../../../components/avatar/AvatarAccount";
@@ -24,6 +24,8 @@ function AccountContact() {
     const [listShowAct, setListShowAct] = useState(
         listActivity ? listActivity.slice(startIndex, startIndex + limit) : []
     );
+
+    const navigate = useNavigate();
 
     useEffect(() => {
         const callAPI = async () => {
@@ -51,7 +53,9 @@ function AccountContact() {
         setStartIndex((page - 1) * limit);
     };
 
-    const onClickChat = () => {};
+    const onClickChat = () => {
+        navigate(`/chat-box/${accountId}`)
+    };
 
     return (
         <div class="contact-profile-wrapper">

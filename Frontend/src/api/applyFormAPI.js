@@ -1,3 +1,4 @@
+import activityAPI from './activityAPI'
 import axiosClient from './axiosClient'
 
 const applyFormAPI = {
@@ -6,7 +7,6 @@ const applyFormAPI = {
         return axiosClient.application.get(url)
     },
     updateApproveStatusApplyForm: (applyFormId, isConfirmed, actId) => {
-        console.log(applyFormId, isConfirmed, actId)
         const url = `/api/v1/registrationform/aprove`
         return axiosClient.application.post(url, {
             id : applyFormId,
@@ -14,6 +14,12 @@ const applyFormAPI = {
             activityId : actId
         })
     },
+    createApplyForm : (activityId)=>{
+        const url = `/api/v1/registrationform/create`
+        return axiosClient.application.post(url, {
+            activityId : activityId
+        })
+    }
 }
 
 export default applyFormAPI;

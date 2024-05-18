@@ -48,6 +48,7 @@ function ParticipatingActivities() {
                 await activityAPI
                     .getAllActivityByOrganization()
                     .then((response) => {
+                        console.log(response.data)
                         setListAct(response.data.filter(act=> act.isDeleted !== true));
                     })
                     .catch((error) => {

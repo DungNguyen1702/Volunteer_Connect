@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "./index.scss";
 import { Avatar, Button, DatePicker, Modal, Select, Tooltip } from "antd";
 import moment from "moment";
@@ -13,16 +13,17 @@ import TaskInputComment from "../../../../../../components/comment/taskComment/i
 import TaskComment from "../../../../../../components/comment/taskComment/comment";
 import SupportFunction from "../../../../../../support/support_function";
 import { TaskDataContext } from "../..";
+import { toast } from "react-toastify";
 const { Option } = Select;
 
 function TaskDetail(props) {
     const { visibleDetail, onCloseModal, taskInfo } = props;
     const { updateTask, showingTaskTableID, listCandidate } = useContext(TaskDataContext);
 
-    const [dateStart, setDateStart] = useState(
+    const [dateStart, setDateStart] = useState( taskInfo.dateStart &&
         moment(taskInfo.dateStart, "YYYY-MM-DD")
     );
-    const [dateEnd, setDateEnd] = useState(
+    const [dateEnd, setDateEnd] = useState( taskInfo.dateEnd &&
         moment(taskInfo.dateEnd, "YYYY-MM-DD")
     );
     const [status, setStatus] = useState(taskInfo.status);
@@ -34,13 +35,24 @@ function TaskDetail(props) {
     );
     const [description, setDescription] = useState(taskInfo.description);
 
+    useEffect(()=>{
+        console.log(dateStart, dateEnd)
+    },[dateStart, dateEnd])
+
     const onClickOk = () => {
+
+        if(description === '')
+        {
+            toast.error("Please input desciption");
+            return;
+        }
+
         updateTask(showingTaskTableID, taskInfo.id, {
-            dateStart: dateStart.format("YYYY-MM-DD"),
-            dateEnd: dateEnd.format("YYYY-MM-DD"),
+            dateStart: dateStart && dateStart.format("YYYY-MM-DD"),
+            dateEnd: dateEnd && dateEnd.format("YYYY-MM-DD"),
             status: parseInt(status),
             candidate: assignee,
-            candidate_id: assignee ? assignee.id : null,
+            candidateId: assignee ? assignee.id : null,
             taskComments: taskComments,
             description: description,
         });

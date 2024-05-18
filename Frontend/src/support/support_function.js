@@ -91,17 +91,23 @@ function convertToHTML(htmlString) {
     return <div dangerouslySetInnerHTML={{ __html: htmlString }} />;
 }
 
-function convertDateFromArrayToString(dateArray)
-{
+function convertDateFromArrayToString(dateArray) {
+    if (!Array.isArray(dateArray)) {
+        return dateArray;
+    }
     let [year, month, day] = dateArray;
-    month = month.toString().padStart(2, '0');
-    day = day.toString().padStart(2, '0');
+    month = month.toString().padStart(2, "0");
+    day = day.toString().padStart(2, "0");
     return `${year}-${month}-${day}`;
 }
 
 function convertStringToArray(dateString) {
+    if(typeof(dateString) !== 'string')
+        {
+            return dateString;
+        }
     // Phân tách chuỗi theo dấu gạch ngang và chuyển các phần tử thành số nguyên
-    let dateArray = dateString.split('-').map(Number);
+    let dateArray = dateString.split("-").map(Number);
     return dateArray;
 }
 
@@ -365,23 +371,21 @@ function filterAct(
             break;
     }
 
-    if(dateStart)
-        {
-            filteredList = [
-                ...filteredList.filter((act) =>
-                    new Date(act.dateStart) >= new Date(dateStart)
-                )
-            ]
-        }
+    if (dateStart) {
+        filteredList = [
+            ...filteredList.filter(
+                (act) => new Date(act.dateStart) >= new Date(dateStart)
+            ),
+        ];
+    }
 
-    if(dateEnd)
-        {
-            filteredList = [
-                ...filteredList.filter((act) =>
-                    new Date(act.dateEnd) <= new Date(dateEnd)
-                )
-            ]
-        }
+    if (dateEnd) {
+        filteredList = [
+            ...filteredList.filter(
+                (act) => new Date(act.dateEnd) <= new Date(dateEnd)
+            ),
+        ];
+    }
 
     return filteredList;
 }
@@ -391,7 +395,7 @@ function isTokenExpired(token) {
     const expiry = new Date(token.exp * 1000); // Chuyển đổi thời gian hết hạn từ giây sang mili-giây
     const currentTime = new Date();
     return currentTime > expiry; // So sánh thời gian hiện tại với thời gian hết hạn
-  }
+}
 
 const Utils = {
     TruncateText,
@@ -415,7 +419,7 @@ const Utils = {
     filterAct,
     isTokenExpired,
     convertDateFromArrayToString,
-    convertStringToArray
+    convertStringToArray,
 };
 
 export default Utils;
