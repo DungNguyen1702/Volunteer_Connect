@@ -11,11 +11,14 @@
     background-color: $white;
     margin : 10px 0px;
     border-radius: 10px;
-    min-height: fit-content;
 }
 
 .task-item-description {
     width: 100%;
+    p {
+        max-width: 290px;
+        word-break: break-all;
+    }
 }
 
 .task-item-container{

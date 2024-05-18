@@ -2,7 +2,7 @@ import axiosClient from "./axiosClient";
 
 const deletionForm = {
     getAllDeletionForm: () => {
-        const url = '/api/v1/admin/selectAllDeleteForm'
+        const url = '/api/v1/deleteActivityForm/selectAll'
         return axiosClient.application.get(url)
     }
 }

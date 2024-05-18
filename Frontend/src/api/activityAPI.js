@@ -14,7 +14,7 @@ const activityAPI = {
         return axiosClient.application.get(url)
     },
     getAllActivityByAdmin: () => {
-        const url = `/api/v1/admin/getAllActivity`
+        const url = `/api/v1/activity/admin/getAllActivity`
         return axiosClient.application.get(url)
     },
     createActivity : (newAct)=>{
