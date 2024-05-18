@@ -11,7 +11,6 @@ import SupportFunction from '../../../support/support_function.js'
 
 function ManageActivity() {
 
-  //const data = fakeData.ManagementActicity;
   const [originalRecords, setOriginalRecords] = useState([]);
   const [records, setRecords] = useState();
   const [forms, setForms] = useState();
@@ -64,13 +63,7 @@ function ManageActivity() {
       name: "ID",
       selector: row => row.id,
       sortable: true,
-      width : '70px',
-      style: {
-        textAlign: 'center',
-      },
-      headerStyle: {
-        textAlign: 'center',
-      },
+      width : '60px',
     },
     {
       name: 'Image',
