@@ -1,13 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import "./index.scss";
 import DataTable from 'react-data-table-component';
+import { toast } from "react-toastify";
 import ModalForm from "./ModalForm.jsx"
 import FormListModal from './FormListModal.jsx';
 import activityAPI from '../../../api/activityAPI.js';
 import deletionFormAPI from '../../../api/deletionForn.js';
+import {TYPES} from '../../../constants/activity_types.js';
+import {COUNTRY} from '../../../constants/activity_countries.js';
+import SupportFunction from '../../../support/support_function.js'
 
 function ManageActivity() {
-
+  const [isDeleteAct, setIsDeleteAct] = useState(false);
+  const [listActivity, setListActivity] = useState([]);
   //const data = fakeData.ManagementActicity;
   const [originalRecords, setOriginalRecords] = useState([]);
   const [records, setRecords] = useState();
@@ -15,7 +20,19 @@ function ManageActivity() {
   const [showFormListModal, setShowFormListModal] = useState(false);
   const [showModalForm, setShowModalForm] = useState(false);
   const [selectedFormData, setSelectedFormData] = useState(null);
-
+  const deleteActivity = (actId) => {
+    const callAPI = async () => {
+      await activityAPI.deleteActivity(actId).then(response => {
+        const newListActivity = listActivity.filter(
+          (activity) => activity.id !== actId
+        );
+        setListActivity(newListActivity);
+        toast.success("Delete activity successfull")
+      }).catch(error => console.log(error))
+    }
+    callAPI();
+  };
+  
   useEffect(() => {
     const callApi = async () => {
       await activityAPI
@@ -32,11 +49,14 @@ function ManageActivity() {
           console.log(response.data);
           setForms(response.data);
         })
+        .catch(error=>console.log(error))
     };
 
     callApi();
   }, []);
+
   const onClickDelete = () => {
+    setIsDeleteAct(true);
   }
   const onClickForm = () => {
     setShowFormListModal(true);
@@ -59,7 +79,8 @@ function ManageActivity() {
     {
       name: "ID",
       selector: row => row.id,
-      sortable: true
+      sortable: true,
+      width : '60px',
     },
     {
       name: 'Image',
@@ -83,28 +104,28 @@ function ManageActivity() {
     },
     {
       name: "Type",
-      selector: row => <div className='center-content'>{row.type}</div>,
+      selector: row => <div className='center-content'>{TYPES[row.type]}</div>,
       headerClassName: 'custom-header',
     },
     {
       name: "Date Start",
       selector: row => row.dateStart,
       headerClassName: 'custom-header',
-      cell: row => <div className='center-content'>{row.dateStart}</div>,
+      cell: row => <div className='center-content'>{SupportFunction.convertDateFromArrayToString(row.dateStart)}</div>,
       sortable: true
     },
     {
       name: "Date End",
       selector: row => row.dateEnd,
       headerClassName: 'custom-header',
-      cell: row => <div className='center-content'>{row.dateEnd}</div>,
+      cell: row => <div className='center-content'>{SupportFunction.convertDateFromArrayToString(row.dateEnd)}</div>,
       sortable: true
     },
     {
       name: "Country",
       selector: row => row.country,
       headerClassName: 'custom-header',
-      cell: row => <div className='center-content'>{row.country}</div>,
+      cell: row => <div className='center-content'>{COUNTRY[row.country]}</div>,
       sortable: true
     },
     {

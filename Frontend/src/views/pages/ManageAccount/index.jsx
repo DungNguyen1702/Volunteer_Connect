@@ -2,6 +2,8 @@ import React, { useEffect,useState } from 'react';
 import './index.scss'
 import DataTable, { createTheme } from "react-data-table-component";
 import accountAPI from '../../../api/accountAPI';
+import {ROLE} from '../../../constants/account_role';
+import SupportFunction from '../../../support/support_function'
 
 function ManageAccount() {
 
@@ -21,6 +23,7 @@ function ManageAccount() {
         callApi();
       }, []);
     const onClickDelete = () => {
+        deleteAccount(records.id)
     }
     const onClickChange = () => {
     }
@@ -48,18 +51,18 @@ function ManageAccount() {
         },
         {
             name: 'Role',
-            selector: row => row.role,
+            selector: row => ROLE[row.role],
 
         },
         {
             name: 'Create at',
-            selector: row => row.createdAt,
+            selector: row => SupportFunction.convertDateFromArrayToString(row.createdAt),
             sortable: true,
 
         },
         {
             name: 'Update at',
-            selector: row => row.updatedAt,
+            selector: row => SupportFunction.convertDateFromArrayToString(row.updatedAt),
             sortable: true,
         },
         {
