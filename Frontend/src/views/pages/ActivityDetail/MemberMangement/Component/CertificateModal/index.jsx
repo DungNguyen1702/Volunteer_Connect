@@ -8,9 +8,12 @@ import { UPLOADIMAGELINK } from "../../../../../../constants/uploadImageLink";
 import { toast } from "react-toastify";
 import { DeleteOutlined, UploadOutlined } from "@ant-design/icons";
 import SupportFunction from "../../../../../../support/support_function";
+import useAuth from "../../../../../../hooks/useAuth";
 
 function CertificateModal(props) {
     const { updateCandidate } = useContext(ActivityDetailContext);
+
+    const { account } = useAuth();
 
     const {
         isOpenCertificate,
@@ -71,30 +74,32 @@ function CertificateModal(props) {
             open={isOpenCertificate}
             width={"800px"}
         >
-            <div class="display-flex margin-10">
-                <Upload
-                    name="image"
-                    action={UPLOADIMAGELINK} // Đường dẫn của API để tải lên hình ảnh
-                    onChange={(info) =>
-                        onChangeUploadCertificate(candidateId, info)
-                    }
-                    showUploadList={false} // Ẩn danh sách tải lên để chỉ hiển thị hình ảnh đã tải lên
-                >
-                    <Button
-                        className="button-confirm"
-                        icon={<UploadOutlined />}
+            {account.role === 2 && (
+                <div class="display-flex margin-10">
+                    <Upload
+                        name="image"
+                        action={UPLOADIMAGELINK} // Đường dẫn của API để tải lên hình ảnh
+                        onChange={(info) =>
+                            onChangeUploadCertificate(candidateId, info)
+                        }
+                        showUploadList={false} // Ẩn danh sách tải lên để chỉ hiển thị hình ảnh đã tải lên
                     >
-                        Upload new certificate
+                        <Button
+                            className="button-confirm"
+                            icon={<UploadOutlined />}
+                        >
+                            Upload new certificate
+                        </Button>
+                    </Upload>
+                    <Button
+                        className="button-delete"
+                        onClick={onDeleteCertificate}
+                        icon={<DeleteOutlined />}
+                    >
+                        Delete this certificate
                     </Button>
-                </Upload>
-                <Button
-                    className="button-delete"
-                    onClick={onDeleteCertificate}
-                    icon={<DeleteOutlined />}
-                >
-                    Delete this certificate
-                </Button>
-            </div>
+                </div>
+            )}
             <ImageTag
                 src={url}
                 noPhoto={IMAGES.noCertificate}

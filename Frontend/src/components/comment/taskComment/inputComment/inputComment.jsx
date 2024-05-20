@@ -1,12 +1,13 @@
 import "./inputComment.scss";
-import fakeData from "../../../../data/fake_data.json";
 import { useState } from "react";
 import { Button } from "antd";
 import TextArea from "antd/es/input/TextArea";
+import AvatarAccount from "../../../avatar/AvatarAccount";
+import useAuth from "../../../../hooks/useAuth";
 
 function TaskInputComment(props) {
-    const data = props.data;
-    const user = fakeData.Accounts[0];
+    const { account } = useAuth();
+
     const [inputValue, setInputValue] = useState("");
 
     const handlerChangeInput = (e) => {
@@ -18,7 +19,12 @@ function TaskInputComment(props) {
 
     return (
         <div class="input-comment-wrapper">
-            <img alt="replier-ava" src={user.avatar} class="replier-ava" />
+            <AvatarAccount
+                name={account.name}
+                avatar={account.avatar}
+                backgroundNoAva={account.backgroundNoAva}
+                size={"40px"}
+            />
             <TextArea
                 className="reply-input"
                 placeholder="Comment"

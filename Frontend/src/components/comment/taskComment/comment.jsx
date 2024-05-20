@@ -3,16 +3,23 @@ import "./comment.scss";
 import SupportFunction from "../../../support/support_function";
 import TaskInputComment from "./inputComment/inputComment";
 import AvatarAccount from "../../avatar/AvatarAccount";
+import TextArea from "antd/es/input/TextArea";
 
 function TaskComment(props) {
-    const {data} = props;
+    const { data } = props;
     const replies = data.replies;
 
     const [showReplies, setShowReplies] = useState(false);
     const [showReplyBox, setShowReplyBox] = useState(false);
+    const [content, setContent] = useState(data.content);
+    const [isEdit, setIsEdit] = useState(false);
 
     const handlerClickShowMore = () => {
         setShowReplies(!showReplies);
+    };
+
+    const handlerChangeContent = (e) => {
+        setContent(e.target.value);
     };
 
     const handlerClickReply = () => {
@@ -25,20 +32,29 @@ function TaskComment(props) {
     };
 
     const handlerClickEdit = () => {
-        console.log("Edit comment " + data.id);
+        setIsEdit(!isEdit);
     };
 
     return (
         <div class="comment-wrapper">
             <AvatarAccount
-                name={data.account.name} 
-                avatar={data.account.avatar} 
-                backgroundNoAva={data.account.backgroundNoAva} 
-                size={'40px'}
+                name={data.account.name}
+                avatar={data.account.avatar}
+                backgroundNoAva={data.account.backgroundNoAva}
+                size={"40px"}
             />
             <div class="comment-content">
                 <h3>{data.account.name}</h3>
-                <p>{data.content}</p>
+                {isEdit ? (
+                    <TextArea
+                        className="reply-input"
+                        value={content}
+                        onChange={handlerChangeContent}
+                        autoSize
+                    />
+                ) : (
+                    <p>{content}</p>
+                )}
                 <div class="comment-button-group">
                     <div
                         class="comment-button-item"
@@ -47,7 +63,7 @@ function TaskComment(props) {
                         Delete
                     </div>
                     <div class="comment-button-item" onClick={handlerClickEdit}>
-                        Edit
+                        {isEdit ? "Confirm" : "Edit"}
                     </div>
                     <div
                         class="comment-button-item"

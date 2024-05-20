@@ -45,6 +45,7 @@ function ActivityDetail() {
                     setListCandidate(response.data.candidates);
                     setOrg(response.data.organization);
                     setListPost(response.data.postList);
+                    setActivityStatus(SupportFunction.ActivityStatus(response.data.dateStart, response.data.dateEnd));
                 })
                 .catch((error) => {
                     console.log(error);
@@ -105,7 +106,10 @@ function ActivityDetail() {
                     });
                     setListCandidate(newListCandidate);
                 })
-                .catch((error) => console.log(error));
+                .catch((error) => {
+                    console.log(error);
+                    toast.error("You can't update this candidate because you aren't the organization of this activity");
+                });
         };
         callApi();
     };
@@ -177,9 +181,16 @@ function ActivityDetail() {
     const deletePost = (postId) => {
         const callAPI =  async()=>{
             await postAPI.deletePost(id, postId).then(response => {
-                const newListPost = listPost.filter((post) => post.id !== postId);
-                setListPost(newListPost);
-                toast.success("Delete post successfull")
+                if(response.data.success.body)
+                {
+                    toast.error(response.data.success.body)
+                }
+                else
+                {
+                    const newListPost = listPost.filter((post) => post.id !== postId);
+                    setListPost(newListPost);
+                    toast.success("Delete post successfull")
+                }
             }).catch(error=> console.log(error))
         }
         callAPI();

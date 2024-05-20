@@ -6,7 +6,6 @@ import {
     SnippetsOutlined,
     UploadOutlined,
 } from "@ant-design/icons";
-import AvatarAccount from "../../../../components/avatar/AvatarAccount";
 import UserIcon from "../../../../components/user";
 import { useContext, useState } from "react";
 import { ActivityDetailContext } from "..";
@@ -18,9 +17,8 @@ import ApplyFormModal from "./Component/ApplyFormModal";
 import useAuth from "../../../../hooks/useAuth";
 
 function MemberManagement() {
-    const { listCandidate, updateCandidate, deleteCandidate, actInfo } = useContext(
-        ActivityDetailContext
-    );
+    const { listCandidate, updateCandidate, deleteCandidate, actInfo } =
+        useContext(ActivityDetailContext);
 
     const { account } = useAuth();
 
@@ -51,7 +49,7 @@ function MemberManagement() {
             updateCandidate(candidateId, {
                 dateCertificate: SupportFunction.getCurrentlyDate(),
                 certificate: info.file.response.result.url,
-                certificateName : `Certificate of "${actInfo.name}" activity`
+                certificateName: `Certificate of "${actInfo.name}" activity`,
             });
         } else if (info.file.status === "error") {
             toast.error(`${info.file.name} file upload failed.`);
@@ -74,12 +72,12 @@ function MemberManagement() {
         },
         {
             title: "email",
-            width: 100,
+            width: 80,
             dataIndex: "email",
         },
         {
             title: "birthday",
-            width: 60,
+            width: 70,
             dataIndex: "birthday",
             align: "center",
         },
@@ -114,14 +112,18 @@ function MemberManagement() {
             fixed: "right",
             align: "center",
         },
-        {
+    ];
+
+    if (account.id === actInfo.organizationId) {
+        columns.push({
             title: " ",
             width: 40,
             dataIndex: "delete",
             fixed: "right",
             align: "center",
-        },
-    ];
+        });
+    }
+
     const data = listCandidate.map((value, index) => ({
         num: index + 1,
         key: index,

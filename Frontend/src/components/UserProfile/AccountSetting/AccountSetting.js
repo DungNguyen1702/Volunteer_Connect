@@ -16,21 +16,21 @@ import ValidateFunction from "../../../support/validator";
 const AccountSetting = () => {
     const { account, setAccount } = useAuth();
 
-    const [avatar, setAvatar] = useState(account.avatar);
-    const [name, setName] = useState(account.name);
-    const [email, setEmail] = useState(account.account);
-    const [address, setAddress] = useState(
+    const [avatar, setAvatar] = useState(account && account.avatar);
+    const [name, setName] = useState(account && account.name);
+    const [email, setEmail] = useState(account && account.account);
+    const [address, setAddress] = useState( account &&
         account.address ? account.address : ""
     );
     const [birthday, setBirthday] = useState(
-        account.birthday
+        account && account.birthday
             ? moment(account.birthday, "YYYY-MM-DD")
             : moment("2024-05-13", "YYYY-MM-DD")
     );
     const [gender, setGender] = useState(
-        account.gender ? account.gender : "male"
+        account && account.gender ? account.gender : "male"
     );
-    const [tel, setTel] = useState(account.tel ? account.tel : "");
+    const [tel, setTel] = useState(account && account.tel ? account.tel : "");
 
     const updateInfo = (status) => {
         if (name === "") {
@@ -166,7 +166,6 @@ const AccountSetting = () => {
                 </div>
                 <ImageTag
                     width={"90%"}
-                    height={500}
                     src={avatar}
                     nameImage={`Image_new_activity`}
                 />
