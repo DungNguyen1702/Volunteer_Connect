@@ -41,6 +41,7 @@ public class PostCommentServiceImpl implements PostCommentService {
             return StatusResponse.builder()
                     .success(ResponseEntity.status(HttpStatus.CREATED)
                             .body("PostComment " + createPostComment.getContent() + "has been created sucessfully!!"))
+                    .data(createPostComment.getId())
                     .build();
         } catch (Exception e) {
             // TODO: handle exception

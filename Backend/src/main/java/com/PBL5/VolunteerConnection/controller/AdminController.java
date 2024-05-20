@@ -3,6 +3,7 @@ package com.PBL5.VolunteerConnection.controller;
 import com.PBL5.VolunteerConnection.model.Account;
 import com.PBL5.VolunteerConnection.model.Activity;
 import com.PBL5.VolunteerConnection.model.DeleteActivityForm;
+import com.PBL5.VolunteerConnection.request.AccountRequest;
 import com.PBL5.VolunteerConnection.request.ActivityRequest;
 import com.PBL5.VolunteerConnection.request.DeleteActivityRequest;
 import com.PBL5.VolunteerConnection.response.ActivityDetailResponse;
@@ -56,5 +57,17 @@ public class AdminController {
     @GetMapping("/selectAllAprove")
     ResponseEntity<List<DeleteActivityForm>> selectAllAprove() {
         return ResponseEntity.ok(deleteActivityFormService.selectAllAprove());
+    }
+    @PostMapping("/deleteAccount")
+    ResponseEntity<StatusResponse> deleteAccount(@RequestParam("id") int id ){
+        return ResponseEntity.ok(accountService.deleteAccountByAdnmin(id));
+    }
+    @PostMapping("/backupAccount")
+    ResponseEntity<StatusResponse> backupAccount(@RequestParam("id") int id ){
+        return ResponseEntity.ok(accountService.backUpAccount(id));
+    }
+    @PostMapping("/updateAccount")
+    ResponseEntity<StatusResponse> backupAccount(@RequestBody AccountRequest accountRequest){
+        return ResponseEntity.ok(accountService.updateAccountByAdmin(accountRequest));
     }
 }

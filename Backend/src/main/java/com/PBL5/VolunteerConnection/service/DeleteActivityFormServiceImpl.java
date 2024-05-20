@@ -82,6 +82,11 @@ public class DeleteActivityFormServiceImpl implements DeleteActivityFormService 
             DeleteActivityForm updateDeleteForm = deleteActivityFormRepository.findById(deleteActivityForm.getId());
             updateDeleteForm.setIsAccept(deleteActivityForm.getIsAccept());
             deleteActivityFormRepository.save(updateDeleteForm);
+            if (deleteActivityForm.getIsAccept() == 2) {
+                Activity activity = activityRepository.findById(updateDeleteForm.getActivity_id());
+                activity.setIsDeleted(true);
+                activityRepository.save(activity);
+            }
             return StatusResponse.builder()
                     .success(ResponseEntity.status(HttpStatus.ACCEPTED)
                             .body("Delete form has been aproved sucessfully !!"))

@@ -22,7 +22,7 @@ public class ChatResponse {
         this.senderId = chat.getSenderId();
         this.receiverId = chat.getReceiverId();
         this.content = chat.getContent();
-        this.createdAt = chat.getCreatedAt() != null ? chat.getCreatedAt().toString() : null;
+        this.createdAt = chat.getCreatedAt() != null ? chat.getCreatedAt().toString().replace("T", " ") : null;
 
     }
 

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import "./index.scss";
 import DataTable from 'react-data-table-component';
+import { toast } from "react-toastify";
 import ModalForm from "./ModalForm.jsx"
 import FormListModal from './FormListModal.jsx';
 import activityAPI from '../../../api/activityAPI.js';
@@ -10,14 +11,28 @@ import {COUNTRY} from '../../../constants/activity_countries.js';
 import SupportFunction from '../../../support/support_function.js'
 
 function ManageActivity() {
-
+  const [isDeleteAct, setIsDeleteAct] = useState(false);
+  const [listActivity, setListActivity] = useState([]);
+  //const data = fakeData.ManagementActicity;
   const [originalRecords, setOriginalRecords] = useState([]);
   const [records, setRecords] = useState();
   const [forms, setForms] = useState();
   const [showFormListModal, setShowFormListModal] = useState(false);
   const [showModalForm, setShowModalForm] = useState(false);
   const [selectedFormData, setSelectedFormData] = useState(null);
-
+  const deleteActivity = (actId) => {
+    const callAPI = async () => {
+      await activityAPI.deleteActivity(actId).then(response => {
+        const newListActivity = listActivity.filter(
+          (activity) => activity.id !== actId
+        );
+        setListActivity(newListActivity);
+        toast.success("Delete activity successfull")
+      }).catch(error => console.log(error))
+    }
+    callAPI();
+  };
+  
   useEffect(() => {
     const callApi = async () => {
       await activityAPI
@@ -39,7 +54,9 @@ function ManageActivity() {
 
     callApi();
   }, []);
+
   const onClickDelete = () => {
+    setIsDeleteAct(true);
   }
   const onClickForm = () => {
     setShowFormListModal(true);

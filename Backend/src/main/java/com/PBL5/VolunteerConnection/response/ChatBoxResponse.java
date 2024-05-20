@@ -2,6 +2,7 @@ package com.PBL5.VolunteerConnection.response;
 
 import com.PBL5.VolunteerConnection.model.Account;
 import com.PBL5.VolunteerConnection.model.Chat;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.Column;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -24,7 +25,9 @@ public class ChatBoxResponse {
     private String avatar;
     private Boolean status;
     private int role;
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm")
     private String createdAt;
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm")
     private String updatedAt;
     private Boolean isDeleted;
     private String backgroundNoAva;

@@ -23,6 +23,7 @@ function ManageAccount() {
         callApi();
       }, []);
     const onClickDelete = () => {
+        deleteAccount(records.id)
     }
     const onClickChange = () => {
     }
