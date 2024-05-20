@@ -319,4 +319,35 @@ public class AccountServiceImpl implements AccountService {
 
     }
 
+    @Override
+    public StatusResponse updateAccountByAdmin(AccountRequest request) {
+        try {
+            Account account = accountRepository.findById(request.getId());
+            account.setName(request.getName());
+            account.setAvatar(request.getAvatar());
+            account.setUpdatedAt(LocalDate.now());
+            account.setIsValid(request.getIsValid());
+            account.setIsDeleted(request.getIsDeleted());
+            accountRepository.save(account);
+            if (account.getRole() == 1) {
+                User user = userRespository.findByAccountId(account.getId());
+                user.setTel(request.getTel());
+                user.setGender(request.getGender());
+                user.setAddress(request.getAddress());
+                user.setBirthday(request.getBirthday());
+                userRespository.save(user);
+            }
+
+        } catch (Exception e) {
+            return StatusResponse.builder()
+                    .fail(ResponseEntity.status(HttpStatus.CONFLICT).body("Updated Fail"))
+                    .build();
+        }
+        return StatusResponse.builder()
+                .success(ResponseEntity.status(HttpStatus.ACCEPTED)
+                        .body("Account has been updated sucessfully!!"))
+                .build();
+    }
+
+
 }

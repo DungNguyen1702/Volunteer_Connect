@@ -24,4 +24,5 @@ public class LoginResponse {
     private String updatedAt;
     private Boolean isDeleted;
     private String backgroundNoAva;
+    private String error_message;
 }

@@ -40,7 +40,6 @@ public class SecurityConfig {
                         .requestMatchers("api/v1/admin/**").hasAuthority("3")
                         .requestMatchers("api/v1/chat/**").authenticated()
                         .requestMatchers("api/v1/candidate/**").hasAuthority("2")
-
                 )
 
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
