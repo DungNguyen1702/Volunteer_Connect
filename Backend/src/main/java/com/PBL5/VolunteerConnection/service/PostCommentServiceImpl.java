@@ -40,7 +40,8 @@ public class PostCommentServiceImpl implements PostCommentService {
             postCommentRepository.save(createPostComment);
             return StatusResponse.builder()
                     .success(ResponseEntity.status(HttpStatus.CREATED)
-                            .body("" +createPostComment.getId()))
+                            .body("PostComment " + createPostComment.getContent() + "has been created sucessfully!!"))
+                    .data(createPostComment.getId())
                     .build();
         } catch (Exception e) {
             // TODO: handle exception
