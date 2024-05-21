@@ -37,6 +37,11 @@ public class PostCommentServiceImpl implements PostCommentService {
             // System.out.println(postComment.getComment_parentId());
             PostComment createPostComment = new PostComment(postComment.getPostId(),
                     postComment.getContent(), userCommentId);
+            if (postComment.getComment_parentId() != null) {
+                createPostComment.setComment_parentId(postComment.getComment_parentId());
+                createPostComment
+                        .setParentComment(postCommentRepository.findById((int) postComment.getComment_parentId()));
+            }
             postCommentRepository.save(createPostComment);
             return StatusResponse.builder()
                     .success(ResponseEntity.status(HttpStatus.CREATED)
@@ -55,9 +60,9 @@ public class PostCommentServiceImpl implements PostCommentService {
     public StatusResponse updatePostComment(String token, PostCommentRequest postComment) {
         // TODO Auto-generated method stub
         try {
-                int userCommentId = jwtService.getId(token);
-                PostComment updateComment = postCommentRepository.findById(postComment.getId());
-                if (updateComment.getAccountId() == userCommentId){
+            int userCommentId = jwtService.getId(token);
+            PostComment updateComment = postCommentRepository.findById(postComment.getId());
+            if (updateComment.getAccountId() == userCommentId) {
                 updateComment.setContent(postComment.getContent());
                 updateComment.setUpdatedAt(LocalDate.now());
                 postCommentRepository.save(updateComment);
@@ -67,7 +72,7 @@ public class PostCommentServiceImpl implements PostCommentService {
                         .build();
             } else {
                 return StatusResponse.builder()
-                        .success(ResponseEntity.status(HttpStatus.NOT_ACCEPTABLE)
+                        .fail(ResponseEntity.status(HttpStatus.NOT_ACCEPTABLE)
                                 .body("Comment cant not be updated because you are not owner!!"))
                         .build();
             }
@@ -86,8 +91,8 @@ public class PostCommentServiceImpl implements PostCommentService {
             String role = jwtService.getRole(token)[0];
             int accountId = jwtService.getId(token);
             PostComment postComment = postCommentRepository.findById(commentReq.getId());
-            if (role.equals("1")){
-                if (postComment.getAccountId() == accountId){
+            if (role.equals("1")) {
+                if (postComment.getAccountId() == accountId) {
                     postComment.setDeleted(true);
                     postCommentRepository.save(postComment);
                     return StatusResponse.builder()
@@ -96,11 +101,10 @@ public class PostCommentServiceImpl implements PostCommentService {
                             .build();
 
                 }
-            }
-            else if (role.equals("2")){
-                Activity activity= activityRepository.findById(postRespository.findById(
+            } else if (role.equals("2")) {
+                Activity activity = activityRepository.findById(postRespository.findById(
                         postComment.getPostId()).getActivityId());
-                if (activity.getOrganizationId() == accountId){
+                if (activity.getOrganizationId() == accountId) {
                     postComment.setDeleted(true);
                     postCommentRepository.save(postComment);
                     return StatusResponse.builder()
@@ -110,7 +114,7 @@ public class PostCommentServiceImpl implements PostCommentService {
                 }
             }
             return StatusResponse.builder()
-                    .success(ResponseEntity.status(HttpStatus.NOT_ACCEPTABLE)
+                    .fail(ResponseEntity.status(HttpStatus.NOT_ACCEPTABLE)
                             .body("comment cant not be deleted because you are not owner!!"))
                     .build();
         } catch (Exception e) {
