@@ -70,7 +70,7 @@ public class TaskComment {
         this.taskId = taskId;
         this.accountId = accountId;
         this.createdAt = LocalDate.now();
-        this.updatedAt = LocalDate.now();
+        this.updatedAt = null;
         this.isDeleted = isDeleted;
     }
 
