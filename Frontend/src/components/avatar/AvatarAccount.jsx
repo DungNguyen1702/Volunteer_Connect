@@ -7,22 +7,22 @@ function AvatarAccount(props) {
 
     return (
         <>
-            <Tooltip title={name} placement="top">
+            <Tooltip title={name && name} placement="top">
                 {avatar ? (
                     <Avatar
-                        src={avatar}
+                        src={avatar && avatar}
                         shape={shape ? shape : "circle"}
                         size={size ? size : "large"}
                     />
                 ) : (
                     <Avatar
                         style={{
-                            backgroundColor: backgroundNoAva,
+                            backgroundColor: backgroundNoAva && backgroundNoAva,
                         }}
                         shape={shape ? shape : "circle"}
                         size={size ? size : "large"}
                     >
-                        {SupportFunction.getFirstCharacter(name)}
+                        {name && SupportFunction.getFirstCharacter(name)}
                     </Avatar>
                 )}
             </Tooltip>
