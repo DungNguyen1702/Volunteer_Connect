@@ -196,7 +196,7 @@ const AccountSetting = () => {
                     Save
                 </Button>
             </div>
-            {parseInt(account.role) === 1 && (
+            {account && parseInt(account.role) === 1 && (
                 <div className="contact-address">
                     <h1 className="mainhead1">Information</h1>
                     <div className="form">

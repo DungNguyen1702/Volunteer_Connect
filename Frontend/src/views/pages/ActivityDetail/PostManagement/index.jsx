@@ -36,7 +36,7 @@ function PostManagement() {
     return (
         <div class="post-management-wrapper">
             <h1 class="post-management-title">Post management</h1>
-            {parseInt(account.role) === 2 && (
+            {account &&parseInt(account.role) === 2 && (
                 <Button
                     className="post-create-button"
                     onClick={onCreatePost}

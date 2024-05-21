@@ -30,7 +30,6 @@ function Comment(props) {
     };
 
     const handlerClickReply = () => {
-        console.log("Reply comment " + data.id);
         setShowReplyBox(!showReplyBox);
     };
 
@@ -38,7 +37,7 @@ function Comment(props) {
         setComments(deletePostComment(listComment, data.id));
     };
 
-    const handlerClickEdit = () => {
+    const handlerClickEdit = async () => {
         if (isEdit) {
             setComments(
                 updatePostComment(
@@ -48,6 +47,7 @@ function Comment(props) {
                         updatedAt: SupportFunction.convertStringToArray(
                             SupportFunction.getCurrentlyDate()
                         ),
+                        id: data.id,
                     },
                     data.id
                 )
@@ -64,6 +64,7 @@ function Comment(props) {
                 backgroundNoAva={data.account.backgroundNoAva}
                 size={"40px"}
             />
+
             <div class="comment-content">
                 <div class="comment-top-wrapper">
                     <h3>{data.account.name}</h3>
@@ -71,7 +72,7 @@ function Comment(props) {
                         {data.updatedAt
                             ? SupportFunction.convertDateFromArrayToString(
                                   data.updatedAt
-                              ) + "(updated)"
+                              ) + " ( updated )"
                             : SupportFunction.convertDateFromArrayToString(
                                   data.createdAt
                               )}
@@ -85,10 +86,10 @@ function Comment(props) {
                         autoSize
                     />
                 ) : (
-                    <p>{content}</p>
+                    <p class="post-comment-content">{content}</p>
                 )}
                 <div class="comment-button-group">
-                    {account.id === data.accountId && (
+                    {account && account.id === data.accountId && (
                         <div class="comment-button-group">
                             <div
                                 class="comment-button-item"
@@ -104,12 +105,14 @@ function Comment(props) {
                             </div>
                         </div>
                     )}
-                    <div
-                        class="comment-button-item"
-                        onClick={handlerClickReply}
-                    >
-                        Reply
-                    </div>
+                    {account && (
+                        <div
+                            class="comment-button-item"
+                            onClick={handlerClickReply}
+                        >
+                            Reply
+                        </div>
+                    )}
                 </div>
 
                 {/* reply box */}

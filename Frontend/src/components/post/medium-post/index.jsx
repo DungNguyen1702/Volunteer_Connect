@@ -26,7 +26,7 @@ function MediumPost(props) {
         <div class="medium-post-wrapper" onClick={clickAct}>
             {/* big post header  */}
             <div class="medium-post-header">
-                {account.role === 2 && (
+                {account && account.role === 2 && (
                     <Button
                         className="medium-post-delete-button"
                         onClick={onClickDelete}

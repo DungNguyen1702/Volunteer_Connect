@@ -114,7 +114,7 @@ function MemberManagement() {
         },
     ];
 
-    if (account.id === actInfo.organizationId) {
+    if (account && account.id === actInfo.organizationId) {
         columns.push({
             title: " ",
             width: 40,
@@ -179,7 +179,7 @@ function MemberManagement() {
     return (
         <div class="memeber-management-wrapper">
             <h1 class="member-management-title">Member management</h1>
-            {parseInt(account.role) === 2 && (
+            {account && parseInt(account.role) === 2 && (
                 <Button
                     className="apply-form-button"
                     onClick={onClickApplyForm}

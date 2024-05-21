@@ -34,6 +34,7 @@ function ActivityDetail() {
     const [listCandidate, setListCandidate] = useState([]);
     const [listApplyForm, setListApplyForm] = useState([]);
     const [listPost, setListPost] = useState([]);
+    const [isError, setIsError] = useState(false);
 
     useEffect(() => {
         const callApi = async () => {
@@ -41,11 +42,18 @@ function ActivityDetail() {
                 .getActivityDetail(id)
                 .then((response) => {
                     console.log(response.data);
-                    setData(response.data);
-                    setListCandidate(response.data.candidates);
-                    setOrg(response.data.organization);
-                    setListPost(response.data.postList);
-                    setActivityStatus(SupportFunction.ActivityStatus(response.data.dateStart, response.data.dateEnd));
+                    if(response.data.error_message)
+                    {
+                        setIsError(true);
+                        toast.error("You can't view this activity detail because you aren't the organization or candidate of this activity");
+                    }
+                    else{
+                        setData(response.data);
+                        setListCandidate(response.data.candidates);
+                        setOrg(response.data.organization);
+                        setListPost(response.data.postList);
+                        setActivityStatus(SupportFunction.ActivityStatus(response.data.dateStart, response.data.dateEnd));
+                    }
                 })
                 .catch((error) => {
                     console.log(error);
@@ -208,7 +216,7 @@ function ActivityDetail() {
                 progress={undefined}
                 theme="colored"
             />
-            {data && (
+            {data && !isError && (
                 <div>
                     <div class="activity-detail-header">
                         <img
@@ -218,7 +226,7 @@ function ActivityDetail() {
                         />
                         <div id="activity-img-blur"></div>
                         <div id="activity-header-content-wrapper">
-                            {parseInt(account.role) === 2 && (
+                            {account && parseInt(account.role) === 2 && (
                                 <div id="activity-manager-button-wrapper">
                                     <Button
                                         className="activity-manager-button-item"

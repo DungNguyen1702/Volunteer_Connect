@@ -2,11 +2,11 @@ import "./index.scss";
 import SupportFunction from "../../../../../../support/support_function";
 import { Avatar, Tooltip } from "antd";
 import { UserOutlined } from "@ant-design/icons";
-import { TaskDataContext } from "../..";
 import { createContext, useContext, useState } from "react";
 import { useDrag } from "react-dnd";
 import TaskDetail from "../TaskDetail";
 import AvatarAccount from "../../../../../../components/avatar/AvatarAccount";
+import { TaskDataContext } from "../../index";
 
 export const TaskDetailContext = createContext();
 
@@ -41,35 +41,67 @@ function TaskItem(props) {
     };
     const addTaskComment = (comments, newComment) => {
         if (newComment.comment_parentId === null) {
-            setTaskComments([...comments, newComment]);
+            return [...comments, newComment];
         } else {
-            setTaskComments(
-                comments.map((comment) => {
-                    if (comment.id === newComment.comment_parentId) {
-                        return {
-                            ...comment,
-                            replies: [...comment.replies, newComment],
-                        };
-                    } else if (comment.replies.length > 0) {
-                        return {
-                            ...comment,
-                            replies: addTaskComment(
-                                comment.replies,
-                                newComment
-                            ),
-                        };
-                    } else {
-                        return comment;
-                    }
-                })
-            );
+            return comments.map((comment) => {
+                if (comment.id === newComment.comment_parentId) {
+                    return {
+                        ...comment,
+                        replies: [...comment.replies, newComment],
+                    };
+                } else if (comment.replies.length > 0) {
+                    return {
+                        ...comment,
+                        replies: addTaskComment(comment.replies, newComment),
+                    };
+                } else {
+                    return comment;
+                }
+            });
         }
     };
 
+    const updateTaskComment = (comments, newComment, commentId) => {
+        return comments.map((comment) => {
+            if (comment.id === commentId) {
+                return {
+                    ...comment,
+                    ...newComment,
+                };
+            } else if (comment.replies.length > 0) {
+                return {
+                    ...comment,
+                    replies: updateTaskComment(
+                        comment.replies,
+                        newComment,
+                        commentId
+                    ),
+                };
+            } else {
+                return comment;
+            }
+        });
+    };
+
+    const deleteTaskComment = (comments, commentId) => {
+        return comments
+            .filter((comment) => comment.id !== commentId)
+            .map((comment) => ({
+                ...comment,
+                replies: deleteTaskComment(comment.replies, commentId),
+            }));
+    };
+
     return (
-        <TaskDataContext.Provider value={{
-            addTaskComment : addTaskComment,
-        }}>
+        <TaskDetailContext.Provider
+            value={{
+                addTaskComment: addTaskComment,
+                updateTaskComment : updateTaskComment,
+                deleteTaskComment : deleteTaskComment,
+                setTaskComments : setTaskComments,
+                taskComments : taskComments,
+            }}
+        >
             <div
                 class="task-item-wrapper"
                 ref={drag}
@@ -149,7 +181,7 @@ function TaskItem(props) {
                     />
                 )}
             </div>
-        </TaskDataContext.Provider>
+        </TaskDetailContext.Provider>
     );
 }
 

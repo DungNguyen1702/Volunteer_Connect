@@ -12,6 +12,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import useAuth from "../../../hooks/useAuth";
 import applyFormAPI from "../../../api/applyFormAPI";
+import commentAPI from "../../../api/commentAPI";
 
 export const PostDetailContext = createContext();
 
@@ -39,7 +40,6 @@ function PostDetail() {
                     setAct(response.data.activity);
                     setOrg(response.data.organization);
                     setComments(response.data.comments);
-                    console.log(response.data.comments);
                 })
                 .catch((error) => {
                     console.log(error);
@@ -82,7 +82,7 @@ function PostDetail() {
     const navigate = useNavigate();
 
     const handlerClickRegister = () => {
-        if (parseInt(account.role) === 3) {
+        if (account && parseInt(account.role) === 3) {
             toast.error(
                 "You can't register this activity because you're an admin"
             );
@@ -92,10 +92,7 @@ function PostDetail() {
         if (!token) {
             toast.error("You need to login to register this activity");
             setTimeout(() => navigate("/auth/login"), 2000);
-        } else if (SupportFunction.isTokenExpired(token)) {
-            toast.error("You need to login again to register this activity");
-            setTimeout(() => navigate("/auth/login"), 2000);
-        } else if (parseInt(account.role) === 2) {
+        }  else if (account && parseInt(account.role) === 2) {
             toast.error(
                 "You can't register this activity because you're an organization"
             );
@@ -123,29 +120,51 @@ function PostDetail() {
         }
     };
 
-    const addPostComment = (comments, newComment) => {
-        if (newComment.comment_parentId === null) {
-            return [...comments, newComment];
-        } else {
-            return comments.map((comment) => {
-                if (comment.id === newComment.comment_parentId) {
-                    return {
-                        ...comment,
-                        replies: [...comment.replies, newComment],
-                    };
-                } else if (comment.replies.length > 0) {
-                    return {
-                        ...comment,
-                        replies: addPostComment(comment.replies, newComment),
-                    };
-                } else {
-                    return comment;
-                }
-            });
+    const addPostComment = async (comments, newComment) => {
+        try {
+            const response = await commentAPI.createPostComment(newComment);
+            newComment = { ...newComment, id: response.data.data };
+
+            toast.success("commit successfull");
+
+            if (newComment.comment_parentId === null) {
+                return [...comments, newComment];
+            } else {
+                return comments.map((comment) => {
+                    if (comment.id === newComment.comment_parentId) {
+                        return {
+                            ...comment,
+                            replies: [...comment.replies, newComment],
+                        };
+                    } else if (comment.replies.length > 0) {
+                        return {
+                            ...comment,
+                            replies: addPostComment(
+                                comment.replies,
+                                newComment
+                            ),
+                        };
+                    } else {
+                        return comment;
+                    }
+                });
+            }
+        } catch (error) {
+            console.log(error);
+            toast.error("commit failed");
         }
     };
 
     const updatePostComment = (comments, newComment, commentId) => {
+        const callAPI = async () => {
+            await commentAPI
+                .updatePostComment(newComment)
+                .then((response) => console.log(response.data))
+                .catch((error) => console.log(error));
+        };
+
+        callAPI();
+
         return comments.map((comment) => {
             if (comment.id === commentId) {
                 return {
@@ -168,6 +187,15 @@ function PostDetail() {
     };
 
     const deletePostComment = (comments, commentId) => {
+        const callAPI = async () => {
+            await commentAPI
+                .deletePostComment(commentId)
+                .then((response) => console.log(response.data))
+                .catch((error) => console.log(error));
+        };
+
+        callAPI();
+
         return comments
             .filter((comment) => comment.id !== commentId)
             .map((comment) => ({
@@ -274,16 +302,18 @@ function PostDetail() {
                         <PostDetailContext.Provider
                             value={{
                                 addPostComment: addPostComment,
-                                updatePostComment : updatePostComment,
-                                deletePostComment : deletePostComment,
-                                setComments : setComments,
+                                updatePostComment: updatePostComment,
+                                deletePostComment: deletePostComment,
+                                setComments: setComments,
                                 listComment: comments,
                                 postId: id,
                             }}
                         >
-                            <div class="post-comment-reply">
-                                <InputComment />
-                            </div>
+                            {account && (
+                                <div class="post-comment-reply">
+                                    <InputComment />
+                                </div>
+                            )}
                             {comments.map((comment) => (
                                 <Comment data={comment} key={comment.id} />
                             ))}

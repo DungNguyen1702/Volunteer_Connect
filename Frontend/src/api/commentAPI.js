@@ -1,18 +1,21 @@
-import axiosClient from './axiosClient'
+import axiosClient from "./axiosClient";
 
-const contactAPI = {
-    getAllCandidate: () => {
-        const url = '/api/v1/guest/getAllCandidate'
-        return axiosClient.applicationNoAuth.get(url);
+const commentAPI = {
+    createPostComment: (newPostComment) => {
+        const url = "/api/v1/postcomment/create";
+        return axiosClient.application.post(url, newPostComment);
     },
-    getAllOrganization: () => {
-        const url = '/api/v1/guest/getAllOrganization'
-        return axiosClient.applicationNoAuth.get(url);
+    updatePostComment: (updatePostComment) => {
+        const url = "/api/v1/postcomment/update";
+        return axiosClient.application.post(url, updatePostComment);
     },
-    getContactDetail: (id, role) => {
-        const url = `/api/v1/guest/getContact?id=${id}&role=${role}`
-        return axiosClient.applicationNoAuth.get(url);
-    }
-}
+    deletePostComment: (id, postId) => {
+        const url = `/api/v1/postcomment/delete`;
+        return axiosClient.application.post(url, {
+            id: id,
+            postId: postId,
+        });
+    },
+};
 
-export default contactAPI;
+export default commentAPI;

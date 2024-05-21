@@ -74,7 +74,7 @@ function CertificateModal(props) {
             open={isOpenCertificate}
             width={"800px"}
         >
-            {account.role === 2 && (
+            {account && account.role === 2 && (
                 <div class="display-flex margin-10">
                     <Upload
                         name="image"

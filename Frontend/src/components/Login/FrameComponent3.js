@@ -51,8 +51,7 @@ const FrameComponent = () => {
             finally {
             }
         };
-        console.log(SupportFunction.isTokenExpired(token))
-        if(token && !SupportFunction.isTokenExpired(token))
+        if(token)
         {
             navigate('/user-homepage')
         }
