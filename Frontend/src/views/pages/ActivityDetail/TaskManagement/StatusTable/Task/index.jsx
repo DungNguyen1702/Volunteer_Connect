@@ -39,7 +39,7 @@ function TaskItem(props) {
     const onCloseModal = () => {
         setVisibleDetail(false);
     };
-    const addTaskComment = (comments, newComment) => {
+    const addTaskComment = async (comments, newComment) => {
         if (newComment.comment_parentId === null) {
             return [...comments, newComment];
         } else {
@@ -58,6 +58,38 @@ function TaskItem(props) {
                     return comment;
                 }
             });
+        }
+        try {
+            const response = await commentAPI.createPostComment(newComment);
+            newComment = { ...newComment, id: response.data.data };
+
+            toast.success("commit successfull");
+
+            if (newComment.comment_parentId === null) {
+                return [...comments, newComment];
+            } else {
+                return comments.map((comment) => {
+                    if (comment.id === newComment.comment_parentId) {
+                        return {
+                            ...comment,
+                            replies: [...comment.replies, newComment],
+                        };
+                    } else if (comment.replies.length > 0) {
+                        return {
+                            ...comment,
+                            replies: addPostComment(
+                                comment.replies,
+                                newComment
+                            ),
+                        };
+                    } else {
+                        return comment;
+                    }
+                });
+            }
+        } catch (error) {
+            console.log(error);
+            toast.error("commit failed");
         }
     };
 

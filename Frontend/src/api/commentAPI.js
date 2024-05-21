@@ -16,6 +16,21 @@ const commentAPI = {
             postId: postId,
         });
     },
+    createTaskComment: (newPostComment) => {
+        const url = "/api/v1/taskcomment/create";
+        return axiosClient.application.post(url, newPostComment);
+    },
+    updateTaskComment: (updatePostComment) => {
+        const url = "/api/v1/taskcomment/update";
+        return axiosClient.application.post(url, updatePostComment);
+    },
+    deleteTaskComment: (id) => {
+        const url = `/api/v1/taskcomment/delete`;
+        return axiosClient.application.post(url, {
+            id: id,
+            postId: postId,
+        });
+    },
 };
 
 export default commentAPI;
