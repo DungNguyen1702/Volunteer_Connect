@@ -28,16 +28,17 @@ public class TaskCommentServiceImpl implements TaskCommentService {
     public StatusResponse createTaskComment(String token, TaskCommentRequest taskComment) {
         // TODO Auto-generated method stub
         try {
+            int accountId = jwtService.getId(token);
             TaskComment createTaskComment = new TaskComment(taskComment.getCommentParentId(), taskComment.getContent(),
-                    taskComment.getTaskId(), taskComment.getAccountId(), false);
+                    taskComment.getTaskId(), accountId, false);
             if (taskComment.getCommentParentId() != null) {
                 System.out.println("ok");
                 TaskComment taskComment2 = taskCommentRepository.findById((int) taskComment.getCommentParentId());
                 createTaskComment.setParentComment(taskComment2);
             }
-            if (taskComment.getAccountId() != 0) {
+            if (accountId != 0) {
                 System.out.println("ok");
-                Account account = accountRepository.findById(taskComment.getAccountId());
+                Account account = accountRepository.findById(accountId);
                 // System.out.println(account.getId());
                 // account.getTaskcomments().add(createTaskComment);
                 createTaskComment.setAccount(account);
