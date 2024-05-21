@@ -57,7 +57,7 @@ public class PostComment {
         this.accountId = accountId;
         this.isDeleted = isDeleted;
         this.createdAt = LocalDate.now();
-        this.updatedAt = LocalDate.now();
+        this.updatedAt = null;
     }
 
     public PostComment(int postId, String content, int accountId) {
@@ -70,6 +70,6 @@ public class PostComment {
         this.accountId = accountId;
 
         this.createdAt = LocalDate.now();
-        this.updatedAt = LocalDate.now();
+        this.updatedAt = null;
     }
 }
