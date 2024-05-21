@@ -48,10 +48,11 @@ function TaskComment(props) {
                 updateTaskComment(
                     taskComments,
                     {
-                        content,
+                        content : content,
                         updatedAt: SupportFunction.convertStringToArray(
                             SupportFunction.getCurrentlyDate()
                         ),
+                        id: data.id,
                     },
                     data.id
                 )

@@ -43,7 +43,7 @@ function Comment(props) {
                 updatePostComment(
                     listComment,
                     {
-                        content,
+                        content : content,
                         updatedAt: SupportFunction.convertStringToArray(
                             SupportFunction.getCurrentlyDate()
                         ),

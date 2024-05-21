@@ -20,10 +20,10 @@ function TaskInputComment(props) {
         setInputValue(e.target.value);
     };
 
-    const handlerClickReply = () => {
+    const handlerClickReply = async () => {
         if (data) {
             setTaskComments(
-                addTaskComment(taskComments, {
+                await addTaskComment(taskComments, {
                     id: -1,
                     comment_parentId: data.id,
                     content: inputValue,
@@ -40,7 +40,7 @@ function TaskInputComment(props) {
             setShowReplyBox(false);
         } else {
             setTaskComments(
-                addTaskComment(taskComments, {
+                await addTaskComment(taskComments, {
                     id: -1,
                     comment_parentId: null,
                     content: inputValue,

@@ -28,7 +28,6 @@ const commentAPI = {
         const url = `/api/v1/taskcomment/delete`;
         return axiosClient.application.post(url, {
             id: id,
-            postId: postId,
         });
     },
 };

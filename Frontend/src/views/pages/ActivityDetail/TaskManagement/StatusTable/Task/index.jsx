@@ -7,6 +7,8 @@ import { useDrag } from "react-dnd";
 import TaskDetail from "../TaskDetail";
 import AvatarAccount from "../../../../../../components/avatar/AvatarAccount";
 import { TaskDataContext } from "../../index";
+import commentAPI from "../../../../../../api/commentAPI";
+import { toast } from "react-toastify";
 
 export const TaskDetailContext = createContext();
 
@@ -40,27 +42,8 @@ function TaskItem(props) {
         setVisibleDetail(false);
     };
     const addTaskComment = async (comments, newComment) => {
-        if (newComment.comment_parentId === null) {
-            return [...comments, newComment];
-        } else {
-            return comments.map((comment) => {
-                if (comment.id === newComment.comment_parentId) {
-                    return {
-                        ...comment,
-                        replies: [...comment.replies, newComment],
-                    };
-                } else if (comment.replies.length > 0) {
-                    return {
-                        ...comment,
-                        replies: addTaskComment(comment.replies, newComment),
-                    };
-                } else {
-                    return comment;
-                }
-            });
-        }
         try {
-            const response = await commentAPI.createPostComment(newComment);
+            const response = await commentAPI.createTaskComment(newComment);
             newComment = { ...newComment, id: response.data.data };
 
             toast.success("commit successfull");
@@ -77,7 +60,7 @@ function TaskItem(props) {
                     } else if (comment.replies.length > 0) {
                         return {
                             ...comment,
-                            replies: addPostComment(
+                            replies: addTaskComment(
                                 comment.replies,
                                 newComment
                             ),
@@ -94,6 +77,15 @@ function TaskItem(props) {
     };
 
     const updateTaskComment = (comments, newComment, commentId) => {
+        const callAPI = async () => {
+            await commentAPI
+                .updateTaskComment(newComment)
+                .then((response) => console.log(response.data))
+                .catch((error) => console.log(error));
+        };
+
+        callAPI();
+        
         return comments.map((comment) => {
             if (comment.id === commentId) {
                 return {
@@ -116,6 +108,15 @@ function TaskItem(props) {
     };
 
     const deleteTaskComment = (comments, commentId) => {
+        const callAPI = async () => {
+            await commentAPI
+                .deletePostComment(commentId)
+                .then((response) => console.log(response.data))
+                .catch((error) => console.log(error));
+        };
+
+        callAPI();
+
         return comments
             .filter((comment) => comment.id !== commentId)
             .map((comment) => ({
