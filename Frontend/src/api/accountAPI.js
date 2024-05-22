@@ -14,7 +14,7 @@ const accountInfoAPI = {
         return axiosClient.application.post(url, newPassword)    
     },
     getAllAccountByAdmin: ()=>{
-        const url = 'api/v1/account/admin/getAllAccount'
+        const url = 'api/v1/admin/getAllAccount'
         return axiosClient.application.get(url)
     },
     deleteAccount: (accountId)=>{
@@ -23,7 +23,6 @@ const accountInfoAPI = {
             id: accountId
         });
     }
-
 }
 
 export default accountInfoAPI;

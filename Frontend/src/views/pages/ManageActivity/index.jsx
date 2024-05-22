@@ -55,8 +55,8 @@ function ManageActivity() {
     callApi();
   }, []);
 
-  const onClickDelete = () => {
-    setIsDeleteAct(true);
+  const onClickDelete = (actId) => {
+    deleteActivity();
   }
   const onClickForm = () => {
     setShowFormListModal(true);

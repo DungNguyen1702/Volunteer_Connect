@@ -1,32 +1,52 @@
-import React, { useEffect,useState } from 'react';
-import './index.scss'
-import DataTable, { createTheme } from "react-data-table-component";
+import React, { useEffect, useState } from 'react';
+import './index.scss';
+import DataTable from 'react-data-table-component';
 import accountAPI from '../../../api/accountAPI';
-import {ROLE} from '../../../constants/account_role';
-import SupportFunction from '../../../support/support_function'
+import { ROLE } from '../../../constants/account_role';
+import SupportFunction from '../../../support/support_function';
+import { toast } from 'react-toastify'; 
 
 function ManageAccount() {
-
+    const [listAccount, setListAccount] = useState([]);
     const [originalRecords, setOriginalRecords] = useState([]);
-    const [records, setRecords] = useState();
+    const [records, setRecords] = useState([]);
+
+    const deleteAccount = async (accId) => {
+        try {
+            await accountAPI.deleteAccount(accId);
+            const newListAccount = listAccount.filter(account => account.id !== accId);
+            setListAccount(newListAccount);
+            setRecords(newListAccount); 
+            setOriginalRecords(newListAccount); 
+            toast.success("Delete account successfully");
+        } catch (error) {
+            console.log(error);
+            toast.error("Failed to delete account");
+        }
+    };
+
     useEffect(() => {
-        const callApi = async () => {
-          await accountAPI
-            .getAllAccountByAdmin()
-            .then((response) => {
-              console.log(response.data);
-              setOriginalRecords(response.data);
-              setRecords(response.data);
-            })
-            .catch((error) => console.log(error));
+        const fetchAccounts = async () => {
+            try {
+                const response = await accountAPI.getAllAccountByAdmin();
+                setOriginalRecords(response.data);
+                setRecords(response.data);
+                setListAccount(response.data);
+            } catch (error) {
+                console.log(error);
+            }
         };
-        callApi();
-      }, []);
-    const onClickDelete = () => {
-        deleteAccount(records.id)
+        fetchAccounts();
+    }, []);
+
+    const onClickDelete = (accId) => {
+        deleteAccount();
     }
+
     const onClickChange = () => {
+        // Handle change action
     }
+
     const columns = [
         {
             name: 'ID',
@@ -36,29 +56,24 @@ function ManageAccount() {
         {
             name: 'Account',
             selector: row => row.account,
-
         },
         {
             name: 'Password',
             selector: row => row.password,
-
         },
         {
             name: 'Name',
             selector: row => row.name,
             sortable: true,
-
         },
         {
             name: 'Role',
             selector: row => ROLE[row.role],
-
         },
         {
             name: 'Create at',
             selector: row => SupportFunction.convertDateFromArrayToString(row.createdAt),
             sortable: true,
-
         },
         {
             name: 'Update at',
@@ -82,8 +97,7 @@ function ManageAccount() {
                 </div>
             )
         },
-
-    ]
+    ];
     function handleFilter(event) {
     const value = event.target.value.toLowerCase();
     const newData = originalRecords.filter(row => {
