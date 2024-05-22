@@ -1,7 +1,9 @@
 import styles from "./SignUp.module.css";
 import { useState } from "react";
-import { Button, Input, Radio } from "antd";
+import { Button, DatePicker, Input, Radio } from "antd";
 import { useNavigate } from "react-router-dom";
+import moment from "moment";
+import SupportFunction from "../../../support/support_function";
 
 const SignUp = () => {
     const [account, setAccount] = useState("");
@@ -32,7 +34,7 @@ const SignUp = () => {
         setGender(e.target.value);
     };
     const onChangeBirthday = (date, dateString) => {
-        setBirthday(date)
+        setBirthday(date);
     };
     const onChangePassword = (e) => {
         setPassword(e.target.value);
@@ -43,6 +45,9 @@ const SignUp = () => {
     const onClickLogin = () => {};
     const onClickLoginPage = () => {
         navigate("/auth/login");
+    };
+    const disabledDate = (current) => {
+        return current && current > moment().endOf("day");
     };
     return (
         <div className={styles.signUp}>
@@ -96,62 +101,102 @@ const SignUp = () => {
                                             </div>
                                         </div>
                                         <div class={styles.buttonGroupRole}>
-                                            <Button>Student</Button>
-                                            <Button>Organization</Button>
+                                            <Button 
+                                                onClick={() => setRole(1)}
+                                                className={role === 1 ? styles.activeButtonRole : styles.buttonRole}
+                                            >
+                                                Student
+                                            </Button>
+                                            <Button 
+                                                onClick={() => setRole(2)}
+                                                className={role === 2 ? styles.activeButtonRole : styles.buttonRole}
+                                            >
+                                                Organization
+                                            </Button>
                                         </div>
                                     </div>
-                                    <div className={styles.frameGroup}>
-                                        <div className={styles.nameContainer}>
-                                            <div className={styles.name2}>
-                                                Telephone
+                                    {role === 1 && (
+                                        <>
+                                            <div className={styles.frameGroup}>
+                                                <div
+                                                    className={
+                                                        styles.nameContainer
+                                                    }
+                                                >
+                                                    <div
+                                                        className={styles.name2}
+                                                    >
+                                                        Telephone
+                                                    </div>
+                                                </div>
+                                                <Input
+                                                    placeholder="Enter your telephone"
+                                                    value={tel}
+                                                    onChange={onChangeTel}
+                                                />
                                             </div>
-                                        </div>
-                                        <Input
-                                            placeholder="Enter your telephone"
-                                            value={tel}
-                                            onChange={onChangeTel}
-                                        />
-                                    </div>
-                                    <div className={styles.frameGroup}>
-                                        <div className={styles.nameContainer}>
-                                            <div className={styles.name2}>
-                                                Address
+                                            <div className={styles.frameGroup}>
+                                                <div
+                                                    className={
+                                                        styles.nameContainer
+                                                    }
+                                                >
+                                                    <div
+                                                        className={styles.name2}
+                                                    >
+                                                        Address
+                                                    </div>
+                                                </div>
+                                                <Input
+                                                    placeholder="Enter your address"
+                                                    value={address}
+                                                    onChange={onChangeAddress}
+                                                />
                                             </div>
-                                        </div>
-                                        <Input
-                                            placeholder="Enter your address"
-                                            value={address}
-                                            onChange={onChangeAddress}
-                                        />
-                                    </div>
-                                    <div className={styles.frameGroup}>
-                                        <div className={styles.nameContainer}>
-                                            <div className={styles.name2}>
-                                                Gender
+                                            <div className={styles.frameGroup}>
+                                                <div
+                                                    className={
+                                                        styles.nameContainer
+                                                    }
+                                                >
+                                                    <div
+                                                        className={styles.name2}
+                                                    >
+                                                        Gender
+                                                    </div>
+                                                </div>
+                                                <Radio.Group
+                                                    onChange={onChangeGender}
+                                                    value={gender}
+                                                >
+                                                    <Radio value={"Male"}>
+                                                        Male
+                                                    </Radio>
+                                                    <Radio value={"Female"}>
+                                                        Female
+                                                    </Radio>
+                                                </Radio.Group>
                                             </div>
-                                        </div>
-                                        <Radio.Group
-                                            onChange={onChangeGender}
-                                            value={gender}
-                                        >
-                                            <Radio value={"Male"}>Male</Radio>
-                                            <Radio value={"Female"}>Female</Radio>
-                                        </Radio.Group>
-                                    </div>
-                                    <div className={styles.frameGroup}>
-                                        <div className={styles.nameContainer}>
-                                            <div className={styles.name2}>
-                                                Birthday
+                                            <div className={styles.frameGroup}>
+                                                <div
+                                                    className={
+                                                        styles.nameContainer
+                                                    }
+                                                >
+                                                    <div
+                                                        className={styles.name2}
+                                                    >
+                                                        Birthday
+                                                    </div>
+                                                </div>
+                                                <DatePicker
+                                                    onChange={onChangeBirthday}
+                                                    disabledDate={disabledDate}
+                                                    value={birthday}
+                                                />
                                             </div>
-                                        </div>
-                                        <Radio.Group
-                                            onChange={onChangeBirthday}
-                                            value={birthday}
-                                        >
-                                            <Radio value={"Male"}>Male</Radio>
-                                            <Radio value={"Female"}>Female</Radio>
-                                        </Radio.Group>
-                                    </div>
+                                        </>
+                                    )}
                                     <div className={styles.frameGroup}>
                                         <div className={styles.nameContainer}>
                                             <div className={styles.name2}>
