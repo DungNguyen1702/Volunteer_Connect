@@ -165,7 +165,7 @@ function ChatBox() {
                     senderId: account.id,
                     receiverId: receiverId,
                     content: message,
-                    createdAt: SupportFunction.getCurrentlyDate(),
+                    createdAt: SupportFunction.getCurrentDateTime(),
                 },
             ],
         });

@@ -25,6 +25,11 @@ const FrameComponent = () => {
     };
     const navigate = useNavigate();
 
+    const onRegister = ()=>
+    {
+        navigate('/auth/register')
+    }
+
     const onClickLogin = () => {
         const callAPI = async () => {
             try {
@@ -178,7 +183,10 @@ const FrameComponent = () => {
                         <span
                             className={styles.dontHaveAn}
                         >{`Don’t have an account?  `}</span>
-                        <span className={styles.signUp}>Sign Up</span>
+                        <span 
+                            className={styles.signUp}
+                            onClick={onRegister}
+                        >Sign Up</span>
                     </h3>
                 </div>
             </div>

@@ -46,6 +46,9 @@ function TaskItem(props) {
             const response = await commentAPI.createTaskComment(newComment);
             newComment = { ...newComment, id: response.data.data };
 
+            console.log(newComment)
+
+            console.log(response)
             toast.success("commit successfull");
 
             if (newComment.comment_parentId === null) {
@@ -110,7 +113,7 @@ function TaskItem(props) {
     const deleteTaskComment = (comments, commentId) => {
         const callAPI = async () => {
             await commentAPI
-                .deletePostComment(commentId)
+                .deleteTaskComment(commentId)
                 .then((response) => console.log(response.data))
                 .catch((error) => console.log(error));
         };
@@ -133,6 +136,7 @@ function TaskItem(props) {
                 deleteTaskComment : deleteTaskComment,
                 setTaskComments : setTaskComments,
                 taskComments : taskComments,
+                taskId : taskInfo.id
             }}
         >
             <div

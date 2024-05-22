@@ -648,7 +648,6 @@
   width: 686px;
   position: relative;
   border-radius: 30px;
-  max-height: 100%;
   object-fit: cover;
   max-width: 100%;
 }
@@ -671,6 +670,12 @@
   font-size: 35px;
   color: #000;
   font-family: Poppins;
+}
+
+.buttonGroupRole {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
 }
 
 @media screen and (max-width: 1350px) {
