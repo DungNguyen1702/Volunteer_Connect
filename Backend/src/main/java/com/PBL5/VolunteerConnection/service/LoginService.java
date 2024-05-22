@@ -66,6 +66,8 @@ public class LoginService {
                 return LoginResponse.builder().error_message("Account is disabled").build();
             }
 
+        }catch (Exception e){
+            return LoginResponse.builder().error_message("Exception from server").build();
         }
         return LoginResponse.builder().error_message("Exception from server").build();
 

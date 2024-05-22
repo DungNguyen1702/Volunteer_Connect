@@ -25,6 +25,13 @@ public class JwtService {
                 .withClaim("roles", authorities.stream().map(GrantedAuthority::getAuthority).collect(Collectors.toList()))
                 .sign(algorithm);
     }
+    public String generateTokenResetPassword(String email){
+        Algorithm algorithm = Algorithm.HMAC256(SECRET_KEY.getBytes());
+        return JWT.create()
+                .withSubject(email)
+                .withExpiresAt(new Date(System.currentTimeMillis() + 2*60*1000))
+                .sign(algorithm);
+    }
     public String generateRefreshToken(Account account, Collection<SimpleGrantedAuthority> authorities){
         Algorithm algorithm = Algorithm.HMAC256(SECRET_KEY.getBytes());
         return JWT.create()
