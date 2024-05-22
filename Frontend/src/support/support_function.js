@@ -390,11 +390,16 @@ function filterAct(
     return filteredList;
 }
 
-function isTokenExpired(token) {
-    if (!token) return true; // Nếu không có token, coi như đã hết hạn
-    const expiry = new Date(token.exp * 1000); // Chuyển đổi thời gian hết hạn từ giây sang mili-giây
-    const currentTime = new Date();
-    return currentTime > expiry; // So sánh thời gian hiện tại với thời gian hết hạn
+function getCurrentDateTime() {
+    var now = new Date();
+    
+    var year = now.getFullYear();
+    var month = String(now.getMonth() + 1).padStart(2, '0'); // Tháng bắt đầu từ 0 nên cần cộng thêm 1 và đảm bảo có 2 chữ số
+    var day = String(now.getDate()).padStart(2, '0'); // Đảm bảo có 2 chữ số
+    var hours = String(now.getHours()).padStart(2, '0'); // Đảm bảo có 2 chữ số
+    var minutes = String(now.getMinutes()).padStart(2, '0'); // Đảm bảo có 2 chữ số
+    
+    return `${year}-${month}-${day} ${hours}:${minutes}`;
 }
 
 const Utils = {
@@ -417,9 +422,9 @@ const Utils = {
     getFirstCharacter,
     filterPost,
     filterAct,
-    isTokenExpired,
     convertDateFromArrayToString,
     convertStringToArray,
+    getCurrentDateTime,
 };
 
 export default Utils;

@@ -230,7 +230,7 @@ function TaskManagement() {
                             showingTaskTableID={showingTaskTableID}
                         />
                     ))}
-                    {parseInt(account.role) === 2 &&
+                    {account && parseInt(account.role) === 2 &&
                         (createTask ? (
                             <div class="task-management-create-area">
                                 <TaskTableItem

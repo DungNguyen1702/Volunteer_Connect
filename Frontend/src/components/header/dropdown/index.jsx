@@ -21,9 +21,9 @@ const useDropdownNavigation = () => {
             const callFunction = async () => {
                 await setAccount(null);
                 await setToken(null);
+                navigate("/user-homepage");
                 localStorage.removeItem("account");
                 localStorage.removeItem("token");
-                navigate("/user-homepage");
             };
             callFunction();
             console.log('logout')

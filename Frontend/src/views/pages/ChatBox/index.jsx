@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import "./index.scss";
-import FakeData from "../../../data/fake_data.json";
 import Search from "antd/es/transfer/search";
 import ChatBoxContent from "./Component/ChatBoxContent";
 import AccountChatIcon from "./Component/AccountChatIcon";
@@ -9,7 +8,7 @@ import { over } from "stompjs";
 import SockJS from "sockjs-client";
 import useAuth from "../../../hooks/useAuth";
 import chatApi from "../../../api/chatAPI";
-import SupportFunction from '../../../support/support_function'
+import SupportFunction from "../../../support/support_function";
 
 function getValueByKeyId(map, searchId) {
     for (let [key, value] of map.entries()) {
@@ -91,7 +90,7 @@ function ChatBox() {
             const serverUrl = "http://localhost:8888/ws"; // Update with your actual server URL
             const Sock = new SockJS(serverUrl);
             stompClient = over(Sock);
-    
+
             stompClient.connect(
                 {},
                 () => {
@@ -105,42 +104,39 @@ function ChatBox() {
             );
         });
     };
-    
+
     const onConnected = () => {
-        try{
+        try {
             stompClient.subscribe(
                 "/user/" + account.id + "/private",
                 onPrivateMessage
             );
-        }catch(error){
-            console.log(error)
+        } catch (error) {
+            console.log(error);
         }
     };
-        
 
     const onPrivateMessage = (payload) => {
-
         var payloadData = JSON.parse(payload.body);
 
-        console.log(payloadData)
+        console.log(payloadData);
         var keyValue = payloadData.id;
-        
+
         var valueData = {
             account: payloadData.account,
             name: payloadData.name,
             avatar: payloadData.avatar,
             backgroundNoAva: payloadData.backgroundNoAva,
-            chats : payloadData.chats ? payloadData.chats : []
+            chats: payloadData.chats ? payloadData.chats : [],
         };
 
         const newChatBox = new Map(chatBox);
         newChatBox.set(keyValue, valueData);
-        
-        setChatBox(newChatBox)
+
+        setChatBox(newChatBox);
     };
 
     const sendPrivateValue = (receiverId, message) => {
-
         var chatMessage = {
             senderId: account.id,
             receiverId: receiverId,
@@ -161,15 +157,21 @@ function ChatBox() {
 
         const newChatBox = new Map(chatBox);
         const valueData = chatBox.get(receiverId);
-        newChatBox.set(receiverId, {...valueData, chats : [...valueData.chats, {
-            senderId: account.id,
-            receiverId: receiverId,
-            content: message,
-            createdAt : SupportFunction.getCurrentlyDate()
-        }]});
+        newChatBox.set(receiverId, {
+            ...valueData,
+            chats: [
+                ...valueData.chats,
+                {
+                    senderId: account.id,
+                    receiverId: receiverId,
+                    content: message,
+                    createdAt: SupportFunction.getCurrentDateTime(),
+                },
+            ],
+        });
 
         setChatBox(newChatBox);
-        
+
         stompClient.send(
             "/app/private-message",
             {},

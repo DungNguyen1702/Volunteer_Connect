@@ -50,6 +50,9 @@ public class Account implements UserDetails {
     private List<PostComment> comments;
     @JsonIgnore
     @OneToMany(mappedBy = "account")
+    private List<TaskComment> taskcomments;
+    @JsonIgnore
+    @OneToMany(mappedBy = "account")
     private List<Activity> activities;
     // @JsonIgnore
     // @OneToOne(fetch = FetchType.EAGER)

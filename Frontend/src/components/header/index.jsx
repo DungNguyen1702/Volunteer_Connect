@@ -12,12 +12,14 @@ import {
 } from "@ant-design/icons";
 import { useEffect, useState } from "react";
 import Search from "antd/es/input/Search";
-import fakeData from "../../data/fake_data.json";
 import useDropdownNavigation from "./dropdown";
 import { useNavigate } from "react-router-dom";
 import AvatarAccount from "../avatar/AvatarAccount";
 import useAuth from "../../hooks/useAuth";
 import postAPI from "../../api/postAPI";
+import checkTokenAPI from "../../api/checkToken"
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const TruncateText = (text, maxLength) => {
     if (text.length <= maxLength) {
@@ -35,7 +37,7 @@ function Header(props) {
     const [listPosts, setListPosts] = useState([]);
     const [filterPosts, setFilterPosts] = useState(listPosts);
 
-    const { account } = useAuth();
+    const { account, setAccount, setToken } = useAuth();
 
     useEffect(() => {
         if (search.length !== 0) {
@@ -59,6 +61,17 @@ function Header(props) {
                 .catch((error) => {
                     console.log(error);
                 });
+            if(account)
+            {
+                await checkTokenAPI.checkToken().catch(error =>{
+                    toast.error("Your token has expired, please log in again");
+                    setAccount(null);
+                    setToken(null);
+                    localStorage.removeItem("account");
+                    localStorage.removeItem("token");
+                    setTimeout(()=>navigate("/auth/login"), 2000);
+                })
+            }
         };
 
         getAllPostApi();
@@ -72,14 +85,14 @@ function Header(props) {
     };
 
     const clickEvent = () => {
-        if(parseInt(account.role) === 3)
+        if(account && parseInt(account.role) === 3)
             navigate("/admin/manage-activity");    
         else
             navigate("/list-activity");
     };
 
     const clickGroupPeople = () => {
-        if(parseInt(account.role) === 3 )
+        if(account && parseInt(account.role) === 3 )
             navigate("/admin/manage-account");
         else
             navigate("/people-searching");
@@ -112,10 +125,20 @@ function Header(props) {
 
     return (
         <div class="header-container">
+            <ToastContainer
+                position="top-right"
+                autoClose={2000}
+                hideProgressBar={false}
+                closeOnClick={true}
+                pauseOnHover={true}
+                draggable={true}
+                progress={undefined}
+                theme="colored"
+            />
             <div class="header-wrapper">
                 <img src={ICONS.logo} alt="Logo" class="header-wrapper logo" onClick={onClickLogo}/>
                 <div class="header-wrapper button-group-left">
-                    {account ? (
+                    {account && (
                         <>
                             <Button
                                 className={`header-wrapper button-group-left button ${
@@ -168,7 +191,7 @@ function Header(props) {
                                 }
                             />
                         </>
-                    ) : null}
+                    ) }
                 </div>
                 <div class="header-wrapper search">
                     <Dropdown
@@ -206,7 +229,7 @@ function Header(props) {
                     </Dropdown>
                 </div>
                 <div class="header-wrapper button-group-right">
-                    {account ? (
+                    {account && (
                         <>
                             <Badge count={numberOfChat} overflowCount={9}>
                                 <Button
@@ -224,7 +247,7 @@ function Header(props) {
                                 />
                             </Badge>
                         </>
-                    ) : null}
+                    )}
                 </div>
 
                 <div class="header-wrapper account-info">

@@ -1,11 +1,12 @@
-@import '../../../constants/colors.scss';
+@import "../../../constants/colors.scss";
 
 * {
     margin: 0;
     padding: 0;
 }
 
-html, body {
+html,
+body {
     font-size: 15px;
     background-color: $background;
 }
@@ -13,13 +14,13 @@ html, body {
 .comment-wrapper {
     display: flex;
     margin: 10px 0px;
-    padding : 0px 0px;
+    padding: 0px 0px;
 }
 
 .comment-content {
     display: flex;
     flex-direction: column;
-    margin-left : 20px;
+    margin-left: 20px;
     width: 100%;
 }
 
@@ -31,7 +32,7 @@ html, body {
 
 .comment-button-item {
     color: $subText;
-    margin : 0px 10px;
+    margin: 0px 10px;
     text-decoration: underline;
 }
 
@@ -53,3 +54,12 @@ html, body {
     object-fit: cover;
 }
 
+.comment-top-wrapper {
+    display: flex;
+    align-items: center;
+}
+
+.comment-created-at {
+    color: $subText;
+    margin-left: 10px;
+}

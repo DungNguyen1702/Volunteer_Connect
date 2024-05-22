@@ -14,11 +14,15 @@ import TaskComment from "../../../../../../components/comment/taskComment/commen
 import SupportFunction from "../../../../../../support/support_function";
 import { TaskDataContext } from "../..";
 import { toast } from "react-toastify";
+import { TaskDetailContext } from "../Task";
 const { Option } = Select;
 
 function TaskDetail(props) {
     const { visibleDetail, onCloseModal, taskInfo } = props;
+    
     const { updateTask, showingTaskTableID, listCandidate } = useContext(TaskDataContext);
+
+    const {taskComments} = useContext(TaskDetailContext);
 
     const [dateStart, setDateStart] = useState( taskInfo.dateStart &&
         moment(taskInfo.dateStart, "YYYY-MM-DD")
@@ -26,18 +30,17 @@ function TaskDetail(props) {
     const [dateEnd, setDateEnd] = useState( taskInfo.dateEnd &&
         moment(taskInfo.dateEnd, "YYYY-MM-DD")
     );
+
+    useEffect(()=>{
+        console.log(taskComments)
+    },[taskComments])
+
     const [status, setStatus] = useState(taskInfo.status);
     const [assignee, setAssignee] = useState(
         taskInfo.candidate ? taskInfo.candidate : null
     );
-    const [taskComments, setTaskComments] = useState(
-        taskInfo.TaskComments ? taskInfo.TaskComments : []
-    );
+    
     const [description, setDescription] = useState(taskInfo.description);
-
-    useEffect(()=>{
-        console.log(dateStart, dateEnd)
-    },[dateStart, dateEnd])
 
     const onClickOk = () => {
 
@@ -184,7 +187,7 @@ function TaskDetail(props) {
                                             <p class="assignee-name">No user</p>
                                         </Tooltip>
                                     </Option>
-                                    {listCandidate.map((candidate) => (
+                                    {listCandidate && listCandidate.map((candidate) => (
                                         <Option
                                             value={candidate.id}
                                             className="task-detail-assinee-item"
@@ -230,7 +233,7 @@ function TaskDetail(props) {
                         <div class="task-detail-comment-reply">
                             <TaskInputComment />
                         </div>
-                        {taskComments.map((comment) => (
+                        {taskComments && taskComments.map((comment) => (
                             <TaskComment data={comment} key={comment.id} />
                         ))}
                     </div>
