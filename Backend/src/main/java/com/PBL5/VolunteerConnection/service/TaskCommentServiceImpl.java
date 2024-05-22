@@ -64,8 +64,9 @@ public class TaskCommentServiceImpl implements TaskCommentService {
             int userCommentId = jwtService.getId(token);
             TaskComment deleteComment = taskCommentRepository.findById(taskComment.getId());
             if (deleteComment.getAccountId() == userCommentId) {
-                deleteComment.setDeleted(true);
-                taskCommentRepository.save(deleteComment);
+                // deleteComment.setDeleted(true);
+                // taskCommentRepository.save(deleteComment);
+                taskCommentRepository.deleteById(taskComment.getId());
                 return StatusResponse.builder()
                         .success(ResponseEntity.status(HttpStatus.ACCEPTED)
                                 .body("Comment " + deleteComment.getId() + "has been deleted sucessfully!!"))
