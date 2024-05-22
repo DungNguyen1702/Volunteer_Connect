@@ -61,7 +61,6 @@ function Header(props) {
                 console.error("Error fetching notifications:", error);
             }
         };
-        getAllPostApi();
         fetchNotifications();
     }, []);
 
@@ -130,7 +129,7 @@ function Header(props) {
     const clickChat = () => {
         navigate("/chat-box/null");
     };
-    const clickNoti = () => {
+    const clickNoti = (e) => {
         e.preventDefault();
     };
 
