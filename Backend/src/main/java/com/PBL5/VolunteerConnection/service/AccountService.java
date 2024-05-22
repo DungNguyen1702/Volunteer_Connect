@@ -26,4 +26,5 @@ public interface AccountService {
     List<Account> getAllByAdmin();
     StatusResponse backUpAccount(int id);
     StatusResponse deleteAccountByAdnmin(int id);
+    StatusResponse updateAccountByAdmin(AccountRequest accountRequest);
 }

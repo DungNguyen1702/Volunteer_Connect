@@ -10,6 +10,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -24,6 +25,13 @@ public class JwtService {
                 .withClaim("roles", authorities.stream().map(GrantedAuthority::getAuthority).collect(Collectors.toList()))
                 .sign(algorithm);
     }
+    public String generateTokenResetPassword(String email){
+        Algorithm algorithm = Algorithm.HMAC256(SECRET_KEY.getBytes());
+        return JWT.create()
+                .withSubject(email)
+                .withExpiresAt(new Date(System.currentTimeMillis() + 2*60*1000))
+                .sign(algorithm);
+    }
     public String generateRefreshToken(Account account, Collection<SimpleGrantedAuthority> authorities){
         Algorithm algorithm = Algorithm.HMAC256(SECRET_KEY.getBytes());
         return JWT.create()
@@ -32,7 +40,7 @@ public class JwtService {
                 .sign(algorithm);
 
     }
-    public Map<String, String[]> decodeToken(String token){
+    public Map<String,String[]> decodeToken(String token){
         Map<String, String[]> user = new HashMap<>();
         Algorithm algorithm = Algorithm.HMAC256(SECRET_KEY.getBytes());
         JWTVerifier jwtVerifier = JWT.require(algorithm).build();
@@ -69,5 +77,11 @@ public class JwtService {
         }
         return username.split(",")[1];
     }
-
+    public Boolean checkExpired(String token){
+        Algorithm algorithm = Algorithm.HMAC256(SECRET_KEY.getBytes());
+        JWTVerifier jwtVerifier = JWT.require(algorithm).build();
+        DecodedJWT decodedJWT = jwtVerifier.verify(token);
+        Date localDate = decodedJWT.getExpiresAt();
+        return localDate.getTime() > 0;
+    };
 }

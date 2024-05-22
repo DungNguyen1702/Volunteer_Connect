@@ -44,9 +44,9 @@ public class TaskComment {
     @Column(name = "isDeleted")
     private boolean isDeleted;
 
-    @OneToOne
+    @OneToOne(fetch = FetchType.EAGER)
     // @JsonIgnore
-    @JoinColumn(name = "account_id", referencedColumnName = "id")
+    @JoinColumn(name = "account_id", referencedColumnName = "id", updatable = false)
     private Account account;
 
     @OneToMany(mappedBy = "parentComment", fetch = FetchType.LAZY)
@@ -70,7 +70,7 @@ public class TaskComment {
         this.taskId = taskId;
         this.accountId = accountId;
         this.createdAt = LocalDate.now();
-        this.updatedAt = LocalDate.now();
+        this.updatedAt = null;
         this.isDeleted = isDeleted;
     }
 

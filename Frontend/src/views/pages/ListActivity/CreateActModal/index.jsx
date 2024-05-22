@@ -60,7 +60,7 @@ function CreateActModal(props) {
             return;
         }
 
-        if (parseInt(account.role) !== 2) {
+        if (account && parseInt(account.role) !== 2) {
             toast.error("You are not an organizer");
             return;
         }

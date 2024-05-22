@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.*;
 
 @Service
@@ -119,7 +120,7 @@ public class ChatServiceImpl implements ChatService{
 
     @Override
     public MessageResponse saveAndSend(MessageRequest messageRequest) {
-        Chat chat = new Chat(messageRequest.getSenderId(), messageRequest.getReceiverId(), messageRequest.getContent(), LocalDate.now());
+        Chat chat = new Chat(messageRequest.getSenderId(), messageRequest.getReceiverId(), messageRequest.getContent(), LocalDateTime.now());
         chatRepository.save(chat);
         MessageResponse messageResponse = new MessageResponse(messageRequest, chat);
         return messageResponse;

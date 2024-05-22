@@ -39,3 +39,17 @@ html, body {
     color: $primary_green;
     font-weight: bold;
 }
+
+.comment-top-wrapper {
+    display: flex;
+    align-items: center;
+}
+
+.comment-created-at {
+    color : $subText;
+    margin-left: 10px;
+}
+
+.post-comment-content {
+    margin-top: 5px;
+}

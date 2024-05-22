@@ -44,7 +44,7 @@ function ParticipatingActivities() {
 
     useEffect(() => {
         const callApi = async () => {
-            if (parseInt(account.role) === 2) {
+            if (account && parseInt(account.role) === 2) {
                 await activityAPI
                     .getAllActivityByOrganization()
                     .then((response) => {

@@ -13,6 +13,7 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @NoArgsConstructor
 public class AccountRequest {
+    private int id;
     private String account;
     private String password;
     private String name;
@@ -24,4 +25,6 @@ public class AccountRequest {
     private String email;
     private String avatar;
     private String newPassword;
+    private Boolean isDeleted;
+    private Boolean isValid;
 }

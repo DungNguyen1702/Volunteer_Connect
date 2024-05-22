@@ -1,18 +1,19 @@
 import { useState } from "react";
 import styles from "./FrameComponent3.module.scss";
-import './FrameComponent3.module.scss'
+import "./FrameComponent3.module.scss";
 import { Button, Input } from "antd";
-import 'react-toastify/dist/ReactToastify.css';
+import "react-toastify/dist/ReactToastify.css";
 import { toast } from "react-toastify";
 import auth from "../../api/authAPI";
 import useAuth from "../../hooks/useAuth";
 import { useNavigate } from "react-router-dom";
 import axiosClient from "../../api/axiosClient";
-import SupportFunction from '../../support/support_function';
+import SupportFunction from "../../support/support_function";
+import checkTokenAPI from "../../api/checkToken";
 
 const FrameComponent = () => {
-    const [account, setAccount] = useState('');
-    const [password, setPassword] = useState('');
+    const [account, setAccount] = useState("");
+    const [password, setPassword] = useState("");
 
     const { setToken, token } = useAuth();
 
@@ -24,43 +25,59 @@ const FrameComponent = () => {
     };
     const navigate = useNavigate();
 
-    const onClickLogin = ()=>{
+    const onRegister = ()=>
+    {
+        navigate('/auth/register')
+    }
+
+    const onClickLogin = () => {
         const callAPI = async () => {
             try {
                 const values = {
                     account: account,
                     password: password,
-                }
-                console.log(values)
+                };
 
                 const response = await auth.login(values);
 
-                if (response.status === 200) {
-                    setToken(response.data.token)
-                    localStorage.setItem('token',response.data.token)
-                    toast.success('Login success');
-                    setTimeout (() => (
-                        navigate('/user-homepage')
-                    ), 2000)
+                if (response.data.error_message) {
+                    toast.error(response.data.error_message);
+                    return;
                 }
-            }
-            catch (e) {
-                delete axiosClient.application.defaults.headers.common['Authorization'];
-                toast.error('Login failed');
-            }
-            finally {
+
+                if (response.status === 200) {
+                    setToken(response.data.token);
+                    localStorage.setItem("token", response.data.token);
+                    toast.success("Login success");
+                    setTimeout(() => navigate("/user-homepage"), 2000);
+                }
+            } catch (e) {
+                delete axiosClient.application.defaults.headers.common[
+                    "Authorization"
+                ];
+                toast.error("Login failed");
+            } finally {
             }
         };
-        console.log(SupportFunction.isTokenExpired(token))
-        if(token && !SupportFunction.isTokenExpired(token))
-        {
-            navigate('/user-homepage')
-        }
-        else{
-            delete axiosClient.application.defaults.headers.common['Authorization'];
+        if (token) {
+            checkTokenAPI
+                .checkToken(token)
+                .then((response) => {
+                    navigate("/user-homepage");
+                })
+                .catch((error) => {
+                    delete axiosClient.application.defaults.headers.common[
+                        "Authorization"
+                    ];
+                    callAPI();
+                });
+        } else {
+            delete axiosClient.application.defaults.headers.common[
+                "Authorization"
+            ];
             callAPI();
         }
-    }
+    };
 
     return (
         <div className={styles.frameParent}>
@@ -106,7 +123,10 @@ const FrameComponent = () => {
                     </div>
                     <div className={styles.rememberMeSettings}>
                         <label className={styles.checkboxWrapper}>
-                            <input type="checkbox" className={styles.checkbox} />
+                            <input
+                                type="checkbox"
+                                className={styles.checkbox}
+                            />
                             <span className={styles.checkmark}></span>
                         </label>
                         <div className={styles.rememberFor30}>
@@ -163,7 +183,10 @@ const FrameComponent = () => {
                         <span
                             className={styles.dontHaveAn}
                         >{`Don’t have an account?  `}</span>
-                        <span className={styles.signUp}>Sign Up</span>
+                        <span 
+                            className={styles.signUp}
+                            onClick={onRegister}
+                        >Sign Up</span>
                     </h3>
                 </div>
             </div>

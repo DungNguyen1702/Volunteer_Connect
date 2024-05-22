@@ -1,13 +1,16 @@
 import Footer from "../footer";
 import Header from "../header";
+import './MainLayout.scss'
 
 function MainLayout (props) {
     const {isNoFooter} = props
 
     return (
-        <div>
+        <div class='frame-wrapper'>
             <Header stateButton={props.stateButton}/>
-                <props.component/>
+                <div class='frame-body'>
+                    <props.component/>
+                </div>
             {!isNoFooter && <Footer/>}
         </div>
     )
