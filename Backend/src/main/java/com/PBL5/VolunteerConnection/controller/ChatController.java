@@ -34,6 +34,8 @@ public class ChatController {
 //        return ResponseEntity.ok(chatService.getAllPrivateChatBox(token, id));
 //    }
 
+
+//    send all messages
     @MessageMapping("/private-message")
     ChatBoxResponse receivePrivateMessage(@Payload MessageRequest message){
         MessageResponse messageResponse = chatService.saveAndSend(message);
@@ -42,4 +44,14 @@ public class ChatController {
         messagingTemplate.convertAndSendToUser(String.valueOf(message.getReceiverId()), "/private", chatBoxResponse);  //user/userName/private
         return chatBoxResponse;
     }
+
+
+//    send one message
+//    @MessageMapping("/private-message")
+//    MessageResponse receivePrivateMessage(@Payload MessageRequest message){
+//        MessageResponse messageResponse = chatService.saveAndSend(message);
+//        ChatBoxResponse chatBoxResponse = chatService.getAllPrivateChatBox(message.getReceiverId(), message.getSenderId());
+//        messagingTemplate.convertAndSendToUser(String.valueOf(message.getReceiverId()), "/private", messageResponse);  //user/userName/private
+//        return messageResponse;
+//    }
 }
