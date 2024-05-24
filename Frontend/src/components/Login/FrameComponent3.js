@@ -79,6 +79,10 @@ const FrameComponent = () => {
         }
     };
 
+    const onClickForgotPassword = ()=>{
+        navigate('/auth/forgot-password');
+    }
+
     return (
         <div className={styles.frameParent}>
             <div className={styles.welcomeBackParent}>
@@ -116,7 +120,10 @@ const FrameComponent = () => {
                             />
                         </div>
                         <div className={styles.forgotPasswordOption}>
-                            <div className={styles.forgotPassword1}>
+                            <div 
+                                className={styles.forgotPassword1}
+                                onClick={onClickForgotPassword}
+                            >
                                 Forgot password
                             </div>
                         </div>

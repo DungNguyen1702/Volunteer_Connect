@@ -5,5 +5,5 @@ export const IMAGES = {
     slide_4 : require('../assets/imgs/slide-4.jpg'),
     noPhoto : require('../assets/imgs/no-photo.jpg'),
     noCertificate : require('../assets/imgs/NoCertificate.png'),
-    
+    authImage : require('../assets/imgs/authImage.png'),
 };

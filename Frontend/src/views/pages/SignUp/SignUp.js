@@ -12,7 +12,7 @@ const SignUp = () => {
     const [confirmPassword, setConfirmPassword] = useState("");
     const [tel, setTel] = useState("");
     const [address, setAddress] = useState("");
-    const [gender, setGender] = useState("Nam");
+    const [gender, setGender] = useState("Male");
     const [birthday, setBirthday] = useState(null);
     const [role, setRole] = useState(1);
 
@@ -101,15 +101,23 @@ const SignUp = () => {
                                             </div>
                                         </div>
                                         <div class={styles.buttonGroupRole}>
-                                            <Button 
+                                            <Button
                                                 onClick={() => setRole(1)}
-                                                className={role === 1 ? styles.activeButtonRole : styles.buttonRole}
+                                                className={
+                                                    role === 1
+                                                        ? styles.activeButtonRole
+                                                        : styles.buttonRole
+                                                }
                                             >
                                                 Student
                                             </Button>
-                                            <Button 
+                                            <Button
                                                 onClick={() => setRole(2)}
-                                                className={role === 2 ? styles.activeButtonRole : styles.buttonRole}
+                                                className={
+                                                    role === 2
+                                                        ? styles.activeButtonRole
+                                                        : styles.buttonRole
+                                                }
                                             >
                                                 Organization
                                             </Button>

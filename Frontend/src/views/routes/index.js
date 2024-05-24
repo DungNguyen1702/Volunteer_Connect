@@ -26,42 +26,39 @@ const CreatePost = LoadableComponent(() =>
     import("../pages/CreatePost/index.jsx")
 );
 const Introduce = LoadableComponent(() =>
-    import('../pages/Introduce/Introduce.js')
+    import("../pages/Introduce/Introduce.js")
 );
-const About = LoadableComponent(() =>
-    import('../pages/About/About.js')
+const About = LoadableComponent(() => import("../pages/About/About.js"));
+const Login = LoadableComponent(() => import("../pages/login/LogIn.js"));
+const SignUp = LoadableComponent(() => import("../pages/SignUp/SignUp.js"));
+const Profile = LoadableComponent(() => import("../pages/Profile/index.jsx"));
+const ChatBox = LoadableComponent(() => import("../pages/ChatBox/index.jsx"));
+const AccountContact = LoadableComponent(() =>
+    import("../pages/ContactProfile/index.jsx")
 );
-const Login = LoadableComponent(() =>
-    import('../pages/login/LogIn.js')
+const ManageAccount = LoadableComponent(() =>
+    import("../pages/ManageAccount/index.jsx")
 );
-const SignUp = LoadableComponent(()=>
-    import('../pages/SignUp/SignUp.js')
+const ManageActivity = LoadableComponent(() =>
+    import("../pages/ManageActivity/index.jsx")
 );
-const Profile = LoadableComponent(()=>
-    import('../pages/Profile/index.jsx')
+const ForgotPassword = LoadableComponent(() =>
+    import("../pages/ForgotPassword/index.jsx")
 );
-const ChatBox = LoadableComponent(()=>
-    import('../pages/ChatBox/index.jsx')
+const AuthAnnounce = LoadableComponent(()=>
+    import("../pages/AuthAnnouncement/index.jsx")
 );
-const AccountContact = LoadableComponent(()=>
-    import('../pages/ContactProfile/index.jsx')
-);
-const ManageAccount = LoadableComponent(()=>
-    import('../pages/ManageAccount/index.jsx')
-);
-const ManageActivity = LoadableComponent(()=>
-    import('../pages/ManageActivity/index.jsx')
+const ResetPassword = LoadableComponent(()=>
+    import("../pages/ResetPassword/index.jsx")
 );
 
 const AllRoutes = () => {
     return (
-
         <Routes>
             <Route path="/" element={<Navigate to={"/introduce"} />} />
 
             {/* // public route  */}
             <Route element={<PublicRoute />}>
-
                 <Route
                     path="/user-homepage"
                     element={
@@ -82,20 +79,14 @@ const AllRoutes = () => {
                 <Route
                     path="/list-activity"
                     element={
-                        <MainLayout
-                            component={ListActivity}
-                            stateButton={2}
-                        />
+                        <MainLayout component={ListActivity} stateButton={2} />
                     }
                 />
 
                 <Route
                     path="/people-searching"
                     element={
-                        <MainLayout
-                            component={ListPeople}
-                            stateButton={3}
-                        />
+                        <MainLayout component={ListPeople} stateButton={3} />
                     }
                 />
 
@@ -104,49 +95,58 @@ const AllRoutes = () => {
                     element={<MainLayout component={ActivityDetail} />}
                 />
 
+                <Route path="/introduce" element={<Introduce />} />
+
+                <Route path="/about" element={<About />} />
+
+                <Route path="/auth/login" element={<Login />} />
+
+                <Route path="/auth/register" element={<SignUp />} />
+
+                <Route path="/profile/:activepage" element={<Profile />} />
+
                 <Route
-                    path="/introduce"
-                    element={<Introduce />}
+                    path="/chat-box/:accountId"
+                    element={
+                        <MainLayout component={ChatBox} isNoFooter={true} />
+                    }
                 />
 
                 <Route
-                    path="/about"
-                    element={<About />}
+                    path="/contact-user/:accountId/:role"
+                    element={<MainLayout component={AccountContact} />}
                 />
 
                 <Route
-                    path='/auth/login'
-                    element={<Login/>}
+                    path="/admin/manage-account"
+                    element={
+                        <MainLayout component={ManageAccount} stateButton={3} />
+                    }
                 />
 
                 <Route
-                    path='/auth/register'
-                    element={<SignUp/>}
+                    path="/admin/manage-activity"
+                    element={
+                        <MainLayout
+                            component={ManageActivity}
+                            stateButton={2}
+                        />
+                    }
                 />
 
                 <Route
-                    path='/profile/:activepage'
-                    element={<Profile />}
+                    path="/auth/forgot-password"
+                    element={<ForgotPassword />}
                 />
 
                 <Route
-                    path='/chat-box/:accountId'
-                    element={<MainLayout component={ChatBox} isNoFooter={true}/>}
+                    path="/auth/auth-announcement/:status"
+                    element={<AuthAnnounce />}
                 />
 
                 <Route
-                    path='/contact-user/:accountId/:role'
-                    element={<MainLayout component={AccountContact}/>}
-                />
-
-                <Route
-                    path='/admin/manage-account'
-                    element={<MainLayout component={ManageAccount} stateButton={3}/>}
-                />
-
-                <Route
-                    path='/admin/manage-activity'
-                    element={<MainLayout component={ManageActivity} stateButton={2}/>}
+                    path="/auth/reset-password/:token"
+                    element={<ResetPassword />}
                 />
             </Route>
 

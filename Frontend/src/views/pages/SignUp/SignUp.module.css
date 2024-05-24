@@ -19,7 +19,7 @@
 }
 
 .getStartedNow {
-  margin: 0;
+  margin: 20px 0px;
   position: relative;
   font-size: inherit;
   line-height: 42.67px;
@@ -601,6 +601,7 @@
   flex-shrink: 0;
   debug_commit: 1de1738;
   max-width: 119%;
+  align-items: center;
 }
 
 .mainContainerInner {
@@ -678,6 +679,12 @@
   width: 100%;
   display: flex;
   justify-content: space-around;
+}
+
+.imageContainer {
+  height: max-content;
+  display: flex;
+  justify-items: center;
 }
 
 

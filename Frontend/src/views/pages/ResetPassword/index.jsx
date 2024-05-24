@@ -3,10 +3,14 @@ import { IMAGES } from "../../../constants/images";
 import { ICONS } from "../../../constants/icons";
 import "./index.scss";
 import { Button, Input } from "antd";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
-function ForgotPassword() {
-    const [account, setAccount] = useState("");
+function ResetPassword() {
+
+    const {token} = useParams();
+
+    const [password, setPassword] = useState("");
+    const [confirmPassword, setConfirmPassword] = useState("");
 
     const navigate = useNavigate();
 
@@ -31,14 +35,20 @@ function ForgotPassword() {
                         Join to the Volunteer community
                     </h1>
                     <h1 class="website-title margin-top-10">
-                        Forgot password
+                        Reset password
                     </h1>
                 </div>
                 <div class='forgot-password-content'>
-                    <p class='forgot-password-title'>Email</p>
-                    <Input
-                        value={account}
-                        onChange={(e) => setAccount(e.target.value)}
+                    <p class='forgot-password-title'>Password</p>
+                    <Input.Password
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                        className="input-email"
+                    />
+                    <p class='forgot-password-title'>Confirm password</p>
+                    <Input.Password
+                        value={confirmPassword}
+                        onChange={(e) => setConfirmPassword(e.target.value)}
                         className="input-email"
                     />
                     <Button
@@ -72,4 +82,4 @@ function ForgotPassword() {
     );
 }
 
-export default ForgotPassword;
+export default ResetPassword;

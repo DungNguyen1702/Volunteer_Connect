@@ -4,11 +4,13 @@ import DataTable, { createTheme } from "react-data-table-component";
 import accountAPI from "../../../api/accountAPI";
 import { ROLE } from "../../../constants/account_role";
 import SupportFunction from "../../../support/support_function";
+import { toast } from "react-toastify";
 
 function ManageAccount() {
 
     const [originalRecords, setOriginalRecords] = useState([]);
     const [records, setRecords] = useState([]);
+    const [listAccount, setListAccount] = useState([]);
 
     const deleteAccount = async (accId) => {
         try {
