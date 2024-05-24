@@ -67,7 +67,7 @@ public class Account implements UserDetails {
     @OneToOne(mappedBy = "account", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private User user;
 
-    public Account(String account, String password, String name, int role) {
+    public Account(String account, String password, String name, int role, String backgroundNoAva) {
         this.account = account;
         this.password = password;
         this.name = name;
@@ -78,7 +78,7 @@ public class Account implements UserDetails {
         this.updatedAt = LocalDate.now();
         this.isDeleted = false;
         this.isValid = false;
-        this.backgroundNoAva = "#9b59b6";
+        this.backgroundNoAva = backgroundNoAva;
     }
 
     public Account() {

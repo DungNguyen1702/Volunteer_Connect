@@ -44,7 +44,7 @@ public class AccountServiceImpl implements AccountService {
         Account account = new Account(registerRequest.getAccount(),
                 passwordEncoder.encode(registerRequest.getPassword()),
                 registerRequest.getName(),
-                registerRequest.getRole());
+                registerRequest.getRole(), registerRequest.getBackgroundNoAva());
         // account.setUser(new User());
         if (accountRepository.findByAccount(registerRequest.getAccount()) == null) {
             try {
