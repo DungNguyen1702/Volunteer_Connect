@@ -39,4 +39,22 @@ public class MailService {
         javaMailSender.send(mimeMessage);
         return StatusResponse.builder().success(ResponseEntity.status(HttpStatus.ACCEPTED).body("Send email successfully")).build();
     }
+    public StatusResponse sendEmailVerifyEmail(String mail) throws MessagingException {
+        MimeMessage mimeMessage = javaMailSender.createMimeMessage();
+        MimeMessageHelper message = new MimeMessageHelper(mimeMessage, true);
+
+        String token = jwtService.generateTokenVerifyEmail(mail);
+
+        message.setFrom("khoile712003@gmail.com");
+        message.setSubject("Request verify Email");
+        message.setText(String.format("""
+                <div>
+                    <a href="http://localhost:3000/auth/register/valid/%s" target="_blank">click link to verify</a>
+                </div>
+               """.formatted(token)), true);
+        message.setTo(mail);
+        System.out.println(token);
+        javaMailSender.send(mimeMessage);
+        return StatusResponse.builder().success(ResponseEntity.status(HttpStatus.ACCEPTED).body("Send email successfully")).build();
+    }
 }

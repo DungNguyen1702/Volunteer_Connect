@@ -4,7 +4,11 @@ import com.PBL5.VolunteerConnection.model.Account;
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.JWTVerifier;
 import com.auth0.jwt.algorithms.Algorithm;
+import com.auth0.jwt.exceptions.JWTDecodeException;
+import com.auth0.jwt.exceptions.JWTVerificationException;
+import com.auth0.jwt.exceptions.TokenExpiredException;
 import com.auth0.jwt.interfaces.DecodedJWT;
+import com.fasterxml.jackson.databind.deser.std.DateDeserializers;
 import org.springframework.data.util.Pair;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -26,10 +30,19 @@ public class JwtService {
                 .sign(algorithm);
     }
     public String generateTokenResetPassword(String email){
+        Collection<SimpleGrantedAuthority> authorities = new ArrayList<>();
         Algorithm algorithm = Algorithm.HMAC256(SECRET_KEY.getBytes());
         return JWT.create()
                 .withSubject(email)
-                .withExpiresAt(new Date(System.currentTimeMillis() + 2*60*1000))
+                .withExpiresAt(new Date(System.currentTimeMillis() + 50*60*1000))
+                .sign(algorithm);
+    }
+    public String generateTokenVerifyEmail(String email){
+        Collection<SimpleGrantedAuthority> authorities = new ArrayList<>();
+
+        Algorithm algorithm = Algorithm.HMAC256(SECRET_KEY.getBytes());
+        return JWT.create()
+                .withSubject(email)
                 .sign(algorithm);
     }
     public String generateRefreshToken(Account account, Collection<SimpleGrantedAuthority> authorities){
@@ -49,6 +62,14 @@ public class JwtService {
         String[] roles = decodedJWT.getClaim("roles").asArray(String.class);
         user.put(account, roles);
         return user;
+    }
+    public String decodeTokenVerify(String token){
+        Algorithm algorithm = Algorithm.HMAC256(SECRET_KEY.getBytes());
+        JWTVerifier jwtVerifier = JWT.require(algorithm).build();
+        DecodedJWT decodedJWT = jwtVerifier.verify(token);
+        String account = decodedJWT.getSubject();
+
+        return account;
     }
     public int getId(String token){
 
@@ -77,11 +98,15 @@ public class JwtService {
         }
         return username.split(",")[1];
     }
-    public Boolean checkExpired(String token){
-        Algorithm algorithm = Algorithm.HMAC256(SECRET_KEY.getBytes());
-        JWTVerifier jwtVerifier = JWT.require(algorithm).build();
-        DecodedJWT decodedJWT = jwtVerifier.verify(token);
-        Date localDate = decodedJWT.getExpiresAt();
-        return localDate.getTime() > 0;
+    public boolean checkExpired(String token){
+        try{
+            Algorithm algorithm = Algorithm.HMAC256(SECRET_KEY.getBytes());
+            JWTVerifier jwtVerifier = JWT.require(algorithm).build();
+            DecodedJWT decodedJWT = jwtVerifier.verify(token);
+            Date localDate = decodedJWT.getExpiresAt();
+        }catch (TokenExpiredException e){
+            return false;
+        }
+        return true;
     };
 }
