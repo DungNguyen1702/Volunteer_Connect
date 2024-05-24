@@ -71,7 +71,7 @@ function MemberManagement() {
             fixed: "left",
         },
         {
-            title: "email",
+            title: "Email",
             width: 80,
             dataIndex: "email",
         },
