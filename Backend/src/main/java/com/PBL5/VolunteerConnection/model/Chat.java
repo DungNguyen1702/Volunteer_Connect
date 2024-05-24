@@ -29,8 +29,9 @@ public class Chat {
     private int receiverId;
     @Column(name = "content")
     private String content;
+//        @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm")
     @Column(name = "createdAt")
-//    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm")
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm")
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm")
     private LocalDateTime createdAt;
     public Chat (int senderId, int receiverId, String content, LocalDateTime createdAt){

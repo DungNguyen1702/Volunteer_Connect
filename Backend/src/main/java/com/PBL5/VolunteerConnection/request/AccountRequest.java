@@ -27,4 +27,5 @@ public class AccountRequest {
     private String newPassword;
     private Boolean isDeleted;
     private Boolean isValid;
+    private String backgroundNoAva;
 }
