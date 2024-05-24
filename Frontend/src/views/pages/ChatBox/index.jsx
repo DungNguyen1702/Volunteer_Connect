@@ -119,7 +119,7 @@ function ChatBox() {
     const onPrivateMessage = (payload) => {
         var payloadData = JSON.parse(payload.body);
 
-        var keyValue = payloadData.id;
+        var id = payloadData.id;
 
         var valueData = {
             account: payloadData.account,
