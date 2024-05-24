@@ -6,25 +6,42 @@ import { ROLE } from "../../../constants/account_role";
 import SupportFunction from "../../../support/support_function";
 
 function ManageAccount() {
+
     const [originalRecords, setOriginalRecords] = useState([]);
-    const [records, setRecords] = useState();
+    const [records, setRecords] = useState([]);
+
+    const deleteAccount = async (accId) => {
+        try {
+            await accountAPI.deleteAccount(accId);
+            const newListAccount = listAccount.filter(account => account.id !== accId);
+            setListAccount(newListAccount);
+            setRecords(newListAccount); 
+            setOriginalRecords(newListAccount); 
+            toast.success("Delete account successfully");
+        } catch (error) {
+            console.log(error);
+            toast.error("Failed to delete account");
+        }
+    };
+
     useEffect(() => {
         const callApi = async () => {
-            await accountAPI
-                .getAllAccountByAdmin()
-                .then((response) => {
-                    console.log(response.data);
-                    setOriginalRecords(response.data);
-                    setRecords(response.data);
-                })
-                .catch((error) => console.log(error));
+          await accountAPI
+            .getAllAccountByAdmin()
+            .then((response) => {
+              console.log(response.data);
+              setOriginalRecords(response.data);
+              setRecords(response.data);
+            })
+            .catch((error) => console.log(error));
         };
         callApi();
-    }, []);
+      }, []);
     const onClickDelete = () => {
-        // deleteAccount(records.id)
-    };
-    const onClickChange = () => {};
+        deleteAccount(records.id)
+    }
+    const onClickChange = () => {
+    }
     const columns = [
         {
             name: "ID",
@@ -32,12 +49,14 @@ function ManageAccount() {
             sortable: true,
         },
         {
-            name: "Account",
-            selector: (row) => row.account,
+            name: 'Account',
+            selector: row => row.account,
+
         },
         {
-            name: "Password",
-            selector: (row) => row.password,
+            name: 'Password',
+            selector: row => row.password,
+
         },
         {
             name: "Name",
@@ -45,8 +64,9 @@ function ManageAccount() {
             sortable: true,
         },
         {
-            name: "Role",
-            selector: (row) => ROLE[row.role],
+            name: 'Role',
+            selector: row => ROLE[row.role],
+
         },
         {
             name: "Create at",
