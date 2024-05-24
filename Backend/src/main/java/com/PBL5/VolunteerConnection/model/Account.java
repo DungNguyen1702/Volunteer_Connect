@@ -77,7 +77,7 @@ public class Account implements UserDetails {
         this.createdAt = LocalDate.now();
         this.updatedAt = LocalDate.now();
         this.isDeleted = false;
-        this.isValid = true;
+        this.isValid = false;
         this.backgroundNoAva = "#9b59b6";
     }
 

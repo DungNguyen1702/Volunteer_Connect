@@ -37,6 +37,8 @@ public class AccountServiceImpl implements AccountService {
     private JwtService jwtService;
     @Autowired
     private CandidateRepository candidateRepository;
+    @Autowired
+    private MailService mailService;
 
     public StatusResponse createAccount(AccountRequest registerRequest) {
         Account account = new Account(registerRequest.getAccount(),
@@ -56,8 +58,8 @@ public class AccountServiceImpl implements AccountService {
                     userRespository.save(user);
                     creAccount.setUser(user);
                     accountRepository.save(creAccount);
+                    mailService.sendEmailVerifyEmail(account.getAccount());
                 } else {
-                    account.setIsValid(false);
                     accountRepository.save(account);
                 }
                 return StatusResponse.builder()
@@ -347,6 +349,38 @@ public class AccountServiceImpl implements AccountService {
                 .success(ResponseEntity.status(HttpStatus.ACCEPTED)
                         .body("Account has been updated sucessfully!!"))
                 .build();
+    }
+
+    @Override
+    public StatusResponse resetPassword(String token, String newPassword) {
+        if (jwtService.checkExpired(token)){
+            String username = jwtService.decodeTokenVerify(token);
+            Account account = accountRepository.findByAccount(username);
+            account.setPassword(passwordEncoder.encode(newPassword));
+            accountRepository.save(account);
+            return StatusResponse.builder()
+                    .fail(ResponseEntity.status(HttpStatus.OK).body("Reset password successfully!"))
+                    .build();
+        }
+        else{
+            return StatusResponse.builder()
+                    .fail(ResponseEntity.status(HttpStatus.NOT_ACCEPTABLE).body("Token was expired"))
+                    .build();
+        }
+
+    }
+
+    @Override
+    public StatusResponse activeAccount(String token) {
+            String username = jwtService.decodeTokenVerify(token);
+            Account account = accountRepository.findByAccount(username);
+            account.setIsValid(true);
+            accountRepository.save(account);
+            return StatusResponse.builder()
+                    .fail(ResponseEntity.status(HttpStatus.OK).body("Reset password successfully!"))
+                    .build();
+
+
     }
 
 

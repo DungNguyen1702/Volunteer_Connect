@@ -1,6 +1,7 @@
 package com.PBL5.VolunteerConnection.controller;
 
 import com.PBL5.VolunteerConnection.request.LoginRequest;
+import com.PBL5.VolunteerConnection.request.TokenRequest;
 import com.PBL5.VolunteerConnection.response.LoginResponse;
 import com.PBL5.VolunteerConnection.request.AccountRequest;
 import com.PBL5.VolunteerConnection.response.StatusResponse;
@@ -30,8 +31,21 @@ public class AuthenticationController {
         return ResponseEntity.ok(loginService.authenticate(authenticationRequest));
     }
     @GetMapping("/checkToken")
-    public ResponseEntity<Boolean> checkToken(@RequestHeader("Authorization") String token){
-        token = token.substring("Bearer ".length());
-        return ResponseEntity.ok(jwtService.checkExpired(token));
+    public ResponseEntity<Boolean> checkToken(@RequestBody TokenRequest token){
+//        token = token.substring("Bearer ".length());
+        return ResponseEntity.ok(jwtService.checkExpired(token.getToken()));
     }
+    @PostMapping("/resetPassword")
+    public ResponseEntity<StatusResponse> resetPassword(@RequestBody TokenRequest tokenReq){
+
+
+        return ResponseEntity.ok(accountService.resetPassword(tokenReq.getToken(), tokenReq.getNewPassword()));
+    };
+    @PostMapping("/activeAccount")
+    public ResponseEntity<StatusResponse> activeAccount(@RequestBody TokenRequest token){
+        System.out.println(token.getToken());
+//        token = token.substring("Bearer ".length());
+        return ResponseEntity.ok(accountService.activeAccount(token.getToken()));
+    }
+
 }

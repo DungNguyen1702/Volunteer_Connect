@@ -20,4 +20,8 @@ public class MailController {
         return ResponseEntity.ok(mailService.sendEmailResetPassword(mail));
 
     }
+    @PostMapping("/sendVerifyEmail/{mail}")
+    public ResponseEntity<StatusResponse> verifyEmail(@PathVariable String mail) throws MessagingException {
+        return ResponseEntity.ok(mailService.sendEmailVerifyEmail(mail));
+    }
 }
