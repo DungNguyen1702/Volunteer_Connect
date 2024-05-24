@@ -23,7 +23,6 @@ const accountInfoAPI = {
             id: accountId
         });
     }
-
 }
 
 export default accountInfoAPI;

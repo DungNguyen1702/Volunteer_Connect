@@ -20,6 +20,7 @@ import postAPI from "../../api/postAPI";
 import checkTokenAPI from "../../api/checkToken"
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { Menu } from 'antd';
 
 const TruncateText = (text, maxLength) => {
     if (text.length <= maxLength) {
@@ -27,7 +28,19 @@ const TruncateText = (text, maxLength) => {
     }
     return <span>{`${text.slice(0, maxLength)}...`}</span>;
 };
-
+const getNotificationsAPI = async () => {
+    return new Promise((resolve) => {
+        setTimeout(() => {
+            resolve({
+                data: [
+                    { content: "Notification 1" },
+                    { content: "Notification 2" },
+                    { content: "Notification 3" },
+                ],
+            });
+        }, 1000);
+    });
+};
 function Header(props) {
     const activeButton = props.stateButton;
     const navigate = useNavigate();
@@ -36,8 +49,20 @@ function Header(props) {
     const [search, setSearch] = useState("");
     const [listPosts, setListPosts] = useState([]);
     const [filterPosts, setFilterPosts] = useState(listPosts);
-
+    const [notifications, setNotifications] = useState([]);
     const { account, setAccount, setToken } = useAuth();
+
+    useEffect(() => {
+        const fetchNotifications = async () => {
+            try {
+                const response = await getNotificationsAPI();
+                setNotifications(response.data);
+            } catch (error) {
+                console.error("Error fetching notifications:", error);
+            }
+        };
+        fetchNotifications();
+    }, []);
 
     useEffect(() => {
         if (search.length !== 0) {
@@ -61,21 +86,20 @@ function Header(props) {
                 .catch((error) => {
                     console.log(error);
                 });
-            if(account)
-            {
-                await checkTokenAPI.checkToken().catch(error =>{
+            if (account) {
+                await checkTokenAPI.checkToken().catch(error => {
                     toast.error("Your token has expired, please log in again");
                     setAccount(null);
                     setToken(null);
                     localStorage.removeItem("account");
                     localStorage.removeItem("token");
-                    setTimeout(()=>navigate("/auth/login"), 2000);
+                    setTimeout(() => navigate("/auth/login"), 2000);
                 })
             }
         };
 
         getAllPostApi();
-    },[]);
+    }, []);
 
     const numberOfNoti = 10;
     const numberOfChat = 10;
@@ -85,14 +109,14 @@ function Header(props) {
     };
 
     const clickEvent = () => {
-        if(account && parseInt(account.role) === 3)
-            navigate("/admin/manage-activity");    
+        if (account && parseInt(account.role) === 3)
+            navigate("/admin/manage-activity");
         else
             navigate("/list-activity");
     };
 
     const clickGroupPeople = () => {
-        if(account && parseInt(account.role) === 3 )
+        if (account && parseInt(account.role) === 3)
             navigate("/admin/manage-account");
         else
             navigate("/people-searching");
@@ -105,7 +129,9 @@ function Header(props) {
     const clickChat = () => {
         navigate("/chat-box/null");
     };
-    const clickNoti = () => {};
+    const clickNoti = (e) => {
+        e.preventDefault();
+    };
 
     const handleChangeSearch = (e) => {
         setSearch(e.target.value);
@@ -118,10 +144,16 @@ function Header(props) {
     const clickRegister = () => {
         navigate('/auth/register')
     };
-    
-    const onClickLogo = ()=>{
+
+    const onClickLogo = () => {
         navigate("/user-homepage");
     };
+    const notificationMenuItems = notifications.length
+        ? notifications.map((noti, index) => ({
+            key: index,
+            label: noti.content,
+        }))
+        : [{ key: 'no-notifications', label: 'No notifications' }];
 
     return (
         <div class="header-container">
@@ -136,14 +168,13 @@ function Header(props) {
                 theme="colored"
             />
             <div class="header-wrapper">
-                <img src={ICONS.logo} alt="Logo" class="header-wrapper logo" onClick={onClickLogo}/>
+                <img src={ICONS.logo} alt="Logo" class="header-wrapper logo" onClick={onClickLogo} />
                 <div class="header-wrapper button-group-left">
                     {account && (
                         <>
                             <Button
-                                className={`header-wrapper button-group-left button ${
-                                    activeButton === 1 ? "active" : "unactive"
-                                }`}
+                                className={`header-wrapper button-group-left button ${activeButton === 1 ? "active" : "unactive"
+                                    }`}
                                 onClick={clickHomePage}
                                 icon={
                                     <HomeOutlined
@@ -158,9 +189,8 @@ function Header(props) {
                             />
 
                             <Button
-                                className={`header-wrapper button-group-left button ${
-                                    activeButton === 2 ? "active" : "unactive"
-                                }`}
+                                className={`header-wrapper button-group-left button ${activeButton === 2 ? "active" : "unactive"
+                                    }`}
                                 onClick={clickEvent}
                                 icon={
                                     <CalendarOutlined
@@ -175,9 +205,8 @@ function Header(props) {
                             />
 
                             <Button
-                                className={`header-wrapper button-group-left button ${
-                                    activeButton === 3 ? "active" : "unactive"
-                                }`}
+                                className={`header-wrapper button-group-left button ${activeButton === 3 ? "active" : "unactive"
+                                    }`}
                                 onClick={clickGroupPeople}
                                 icon={
                                     <TeamOutlined
@@ -191,7 +220,7 @@ function Header(props) {
                                 }
                             />
                         </>
-                    ) }
+                    )}
                 </div>
                 <div class="header-wrapper search">
                     <Dropdown
@@ -238,14 +267,22 @@ function Header(props) {
                                     icon={<MessageOutlined />}
                                 />
                             </Badge>
+                            <Dropdown
+                                menu={{
+                                    items: notificationMenuItems,
+                                }}
+                                trigger={["click"]}
+                                placement="bottomRight"
+                            >
+                                <Badge count={numberOfNoti} overflowCount={9}>
+                                    <Button
+                                        className={`header-wrapper button-group-right button`}
+                                        onClick={clickNoti}
+                                        icon={<BellOutlined />}
+                                    />
+                                </Badge>
+                            </Dropdown>
 
-                            <Badge count={numberOfNoti} overflowCount={9}>
-                                <Button
-                                    className={`header-wrapper button-group-right button`}
-                                    onClick={clickNoti}
-                                    icon={<BellOutlined />}
-                                />
-                            </Badge>
                         </>
                     )}
                 </div>
@@ -258,7 +295,7 @@ function Header(props) {
                             }}
                             placement="bottom"
                             arrow={{ pointAtCenter: true }}
-                            // trigger={["hover"]}
+                        // trigger={["hover"]}
                         >
                             <div class="header-wrapper account-info have-user">
                                 <AvatarAccount
