@@ -1,751 +1,754 @@
 .input_Sign {
-  width: 400px;
-  height: 40px;
-  background-color: #d9d9d9 !important;
-  padding: 10px;
+    width: 400px;
+    height: 40px;
+    background-color: #d9d9d9 !important;
+    padding: 10px;
 }
 
 .buttonSignUp {
-  background-color: #277869;
-  color: #ffffff;
-  width: 400px;
-  height: 35px;
+    background-color: #277869;
+    color: #ffffff;
+    width: 400px;
+    height: 35px;
 }
 
 .buttonLogin:hover {
-  background-color: #fff !important;
-  color: #257769 !important;
-  border: 1px solid #257769 !important;
+    background-color: #fff !important;
+    color: #257769 !important;
+    border: 1px solid #257769 !important;
 }
 
 .getStartedNow {
-  margin: 20px 0px;
-  position: relative;
-  font-size: inherit;
-  line-height: 42.67px;
-  font-weight: 800;
-  font-family: inherit;
+    margin: 20px 0px;
+    position: relative;
+    font-size: inherit;
+    line-height: 42.67px;
+    font-weight: 800;
+    font-family: inherit;
 }
 
 .inputArea {
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-  justify-content: flex-start;
-  padding: 0 0 10.5px;
-  color: #257769;
-  font-family: Inter;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: 0 0 10.5px;
+    color: #257769;
+    font-family: Inter;
 }
 
 .enterYourCredentials,
 .name {
-  position: relative;
-  font-weight: 500;
+    position: relative;
+    font-weight: 500;
 }
 
 .enterYourCredentials {
-  width: 372px;
-  height: 0;
-  font-size: 16px;
-  display: none;
-  max-width: 100%;
+    width: 372px;
+    height: 0;
+    font-size: 16px;
+    display: none;
+    max-width: 100%;
 }
 
 .name {
-  font-size: 14px;
-  font-family: Poppins;
-  color: #000;
-  text-align: left;
-  display: inline-block;
-  min-width: 43px;
+    font-size: 14px;
+    font-family: Poppins;
+    color: #000;
+    text-align: left;
+    display: inline-block;
+    min-width: 43px;
 }
 
 .inputNameField,
 .nameInputField {
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-  justify-content: flex-start;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
 }
 
 .inputNameField {
-  width: 84px;
-  border: 0;
-  outline: 0;
-  background-color: transparent;
-  height: 15px;
-  justify-content: center;
-  font-family: Poppins;
-  font-weight: 500;
-  font-size: 10px;
-  color: #d9d9d9;
+    width: 84px;
+    border: 0;
+    outline: 0;
+    background-color: transparent;
+    height: 15px;
+    justify-content: center;
+    font-family: Poppins;
+    font-weight: 500;
+    font-size: 10px;
+    color: #d9d9d9;
 }
 
 .inputNameFieldWrapper,
 .nameInputFieldParent {
-  align-self: stretch;
-  display: flex;
-  align-items: flex-start;
-  justify-content: flex-start;
+    align-self: stretch;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
 }
 
 .inputNameFieldWrapper {
-  border-radius: 10px;
-  border: 1px solid #d9d9d9;
-  overflow: hidden;
-  flex-direction: row;
-  padding: 8px 10px 5px;
+    border-radius: 10px;
+    border: 1px solid #d9d9d9;
+    overflow: hidden;
+    flex-direction: row;
+    padding: 8px 10px 5px;
 }
 
 .nameInputFieldParent {
-  flex-direction: column;
-  padding: 0 0 5px;
+    flex-direction: column;
+    padding: 0 0 5px;
 }
 
 .name1 {
-  position: relative;
-  font-size: 14px;
-  font-weight: 500;
-  font-family: Poppins;
-  color: #000;
-  text-align: left;
-  display: inline-block;
-  min-width: 100px;
+    position: relative;
+    font-size: 14px;
+    font-weight: 500;
+    font-family: Poppins;
+    color: #000;
+    text-align: left;
+    display: inline-block;
+    min-width: 100px;
 }
 
 .frameChild,
 .nameWrapper {
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-  justify-content: flex-start;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
 }
 
 .frameChild {
-  width: 82px;
-  border: 0;
-  outline: 0;
-  background-color: transparent;
-  height: 15px;
-  justify-content: center;
-  font-family: Poppins;
-  font-weight: 500;
-  font-size: 10px;
-  color: #d9d9d9;
+    width: 82px;
+    border: 0;
+    outline: 0;
+    background-color: transparent;
+    height: 15px;
+    justify-content: center;
+    font-family: Poppins;
+    font-weight: 500;
+    font-size: 10px;
+    color: #d9d9d9;
 }
 
 .frameParent,
 .frameWrapper {
-  align-self: stretch;
-  display: flex;
-  justify-content: flex-start;
+    align-self: stretch;
+    display: flex;
+    justify-content: flex-start;
 }
 
 .frameWrapper {
-  border-radius: 10px;
-  border: 1px solid #d9d9d9;
-  overflow: hidden;
-  flex-direction: row;
-  align-items: center;
-  padding: 7px 10px;
+    border-radius: 10px;
+    border: 1px solid #d9d9d9;
+    overflow: hidden;
+    flex-direction: row;
+    align-items: center;
+    padding: 7px 10px;
 }
 
 .frameParent {
-  flex-direction: column;
-  align-items: flex-start;
-  padding: 0 0 5px;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0 0 5px;
 }
 
 .name2 {
-  position: relative;
-  font-size: 14px;
-  font-weight: 500;
-  font-family: Poppins;
-  color: #000;
-  text-align: left;
-  display: inline-block;
-  min-width: 69px;
+    position: relative;
+    font-size: 14px;
+    font-weight: 500;
+    font-family: Poppins;
+    color: #000;
+    text-align: left;
+    display: inline-block;
+    min-width: 69px;
 }
 
 .frameItem,
 .nameContainer {
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-  justify-content: flex-start;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
 }
 
 .frameItem {
-  width: 31px;
-  border: 0;
-  outline: 0;
-  background-color: transparent;
-  height: 15px;
-  justify-content: center;
-  font-family: Poppins;
-  font-weight: 500;
-  font-size: 10px;
-  color: #d9d9d9;
+    width: 31px;
+    border: 0;
+    outline: 0;
+    background-color: transparent;
+    height: 15px;
+    justify-content: center;
+    font-family: Poppins;
+    font-weight: 500;
+    font-size: 10px;
+    color: #d9d9d9;
 }
 
 .frameContainer,
 .frameGroup {
-  align-self: stretch;
-  display: flex;
-  justify-content: flex-start;
+    align-self: stretch;
+    display: flex;
+    justify-content: flex-start;
 }
 
 .frameContainer {
-  border-radius: 10px;
-  border: 1px solid #d9d9d9;
-  overflow: hidden;
-  flex-direction: row;
-  align-items: center;
-  padding: 7px 10px;
+    border-radius: 10px;
+    border: 1px solid #d9d9d9;
+    overflow: hidden;
+    flex-direction: row;
+    align-items: center;
+    padding: 7px 10px;
 }
 
 .frameGroup {
-  flex-direction: column;
-  align-items: flex-start;
-  padding: 0 0 5px;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0 0 5px;
 }
 
 .checkbox {
-  width: 9px;
-  height: 9.8px;
-  position: relative;
-  border-radius: 2px;
-  border: 1px solid #000;
-  box-sizing: border-box;
+    width: 9px;
+    height: 9.8px;
+    position: relative;
+    border-radius: 2px;
+    border: 1px solid #000;
+    box-sizing: border-box;
 }
 
 .checkboxWrapper {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: flex-start;
-  padding: 2.2px 0 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: 2.2px 0 0;
 }
 
 .termsPolicy {
-  text-decoration: underline;
+    text-decoration: underline;
 }
 
 .iAgreeToContainer {
-  position: relative;
-  font-size: 9px;
-  font-weight: 500;
-  font-family: Poppins;
-  color: #000;
-  text-align: left;
-  display: inline-block;
-  min-width: 128px;
+    position: relative;
+    font-size: 9px;
+    font-weight: 500;
+    font-family: Poppins;
+    color: #000;
+    text-align: left;
+    display: inline-block;
+    min-width: 128px;
 }
 
 .groupDiv,
 .nameInputArea {
-  display: flex;
-  align-items: flex-start;
-  justify-content: flex-start;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
 }
 
 .groupDiv {
-  flex-direction: row;
-  gap: var(--gap-7xs);
+    flex-direction: row;
+    gap: var(--gap-7xs);
 }
 
 .nameInputArea {
-  align-self: stretch;
-  flex-direction: column;
-  gap: 19.7px;
+    align-self: stretch;
+    flex-direction: column;
+    gap: 19.7px;
 }
 
 .name3,
 .nameFrame {
-  width: 43px;
-  display: none;
+    width: 43px;
+    display: none;
 }
 
 .name3 {
-  align-self: stretch;
-  position: relative;
-  font-size: 14px;
-  font-weight: 500;
-  font-family: Poppins;
-  color: #000;
-  text-align: left;
+    align-self: stretch;
+    position: relative;
+    font-size: 14px;
+    font-weight: 500;
+    font-family: Poppins;
+    color: #000;
+    text-align: left;
 }
 
 .nameFrame {
-  height: 21px;
-  flex-direction: row;
-  align-items: flex-start;
-  justify-content: flex-start;
+    height: 21px;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
 }
 
 .name4,
 .nameWrapper1 {
-  width: 31px;
-  display: none;
+    width: 31px;
+    display: none;
 }
 
 .name4 {
-  align-self: stretch;
-  position: relative;
-  font-size: 10px;
-  font-weight: 500;
-  font-family: Poppins;
-  color: #d9d9d9;
-  text-align: left;
+    align-self: stretch;
+    position: relative;
+    font-size: 10px;
+    font-weight: 500;
+    font-family: Poppins;
+    color: #d9d9d9;
+    text-align: left;
 }
 
 .nameWrapper1 {
-  height: 15px;
-  flex-direction: row;
-  align-items: flex-start;
-  justify-content: center;
+    height: 15px;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
 }
 
 .frameDiv,
 .frameWrapper1 {
-  align-self: stretch;
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  max-width: 100%;
+    align-self: stretch;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    max-width: 100%;
 }
 
 .frameWrapper1 {
-  flex: 1;
-  border-radius: 10px;
-  background-color: #257769;
-  border: 1px solid #257769;
-  box-sizing: border-box;
-  overflow: hidden;
-  align-items: center;
-  padding: 10px 0 10px 10px;
+    flex: 1;
+    border-radius: 10px;
+    background-color: #257769;
+    border: 1px solid #257769;
+    box-sizing: border-box;
+    overflow: hidden;
+    align-items: center;
+    padding: 10px 0 10px 10px;
 }
 
 .frameDiv {
-  width: 404px;
-  align-items: flex-start;
+    width: 404px;
+    align-items: flex-start;
 }
 
 .login {
-  position: relative;
-  font-size: 13px;
-  display: inline-block;
-  font-family: Poppins;
-  color: #fff;
-  text-align: left;
-  min-width: 48px;
-  z-index: 1;
+    position: relative;
+    font-size: 13px;
+    display: inline-block;
+    font-family: Poppins;
+    color: #fff;
+    text-align: left;
+    min-width: 48px;
+    z-index: 1;
 }
 
 .instanceParent,
 .loginArea,
 .loginButton {
-  display: flex;
-  align-items: flex-start;
-  justify-content: flex-start;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
 }
 
 .loginButton {
-  flex-direction: column;
-  padding: 6px 0 0;
-  margin-left: -219px;
+    flex-direction: column;
+    padding: 6px 0 0;
+    margin-left: -219px;
 }
 
 .instanceParent,
 .loginArea {
-  max-width: 100%;
+    max-width: 100%;
 }
 
 .instanceParent {
-  cursor: pointer;
-  border: 0;
-  padding: 0 0 3px;
-  background-color: #edf2f7;
-  align-self: stretch;
-  height: 35px;
-  flex-direction: row;
-  box-sizing: border-box;
+    cursor: pointer;
+    border: 0;
+    padding: 0 0 3px;
+    background-color: #edf2f7;
+    align-self: stretch;
+    height: 35px;
+    flex-direction: row;
+    box-sizing: border-box;
 }
 
 .loginArea {
-  margin: 0;
-  width: 404px;
-  flex-direction: column;
-  gap: 29.6px;
+    margin: 0;
+    width: 404px;
+    flex-direction: column;
+    gap: 29.6px;
 }
 
 .divider {
-  position: absolute;
-  top: 9px;
-  left: 0;
-  border-top: 2px solid #f5f5f5;
-  box-sizing: border-box;
-  width: 402px;
-  height: 2px;
+    position: absolute;
+    top: 9px;
+    left: 0;
+    border-top: 2px solid #f5f5f5;
+    box-sizing: border-box;
+    width: 402px;
+    height: 2px;
 }
 
 .or {
-  position: relative;
-  font-weight: 500;
-  display: inline-block;
-  min-width: 11px;
+    position: relative;
+    font-weight: 500;
+    display: inline-block;
+    min-width: 11px;
 }
 
 .orWrapper {
-  position: absolute;
-  top: 0;
-  left: 190px;
-  background-color: #fff;
-  overflow: hidden;
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-  justify-content: flex-start;
-  padding: 0 4.5px;
-  z-index: 1;
+    position: absolute;
+    top: 0;
+    left: 190px;
+    background-color: #fff;
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: 0 4.5px;
+    z-index: 1;
 }
 
 .dividerParent {
-  height: 15.3px;
-  flex: 1;
-  position: relative;
-  max-width: 100%;
+    height: 15.3px;
+    flex: 1;
+    position: relative;
+    max-width: 100%;
 }
 
 .dividerArea {
-  width: 406px;
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-  justify-content: flex-start;
-  padding: 0 3px;
-  box-sizing: border-box;
-  max-width: 100%;
-  font-size: 9px;
+    width: 406px;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: 0 3px;
+    box-sizing: border-box;
+    max-width: 100%;
+    font-size: 9px;
 }
 
 .icons8Google1 {
-  height: 24px;
-  width: 24px;
-  position: relative;
-  overflow: hidden;
-  flex-shrink: 0;
-  min-height: 24px;
+    height: 24px;
+    width: 24px;
+    position: relative;
+    overflow: hidden;
+    flex-shrink: 0;
+    min-height: 24px;
 }
 
 .signInWith {
-  position: relative;
-  font-size: 12px;
-  font-weight: 500;
-  font-family: Poppins;
-  color: #000;
-  text-align: left;
-  display: inline-block;
-  min-width: 116px;
+    position: relative;
+    font-size: 12px;
+    font-weight: 500;
+    font-family: Poppins;
+    color: #000;
+    text-align: left;
+    display: inline-block;
+    min-width: 116px;
 }
 
 .signInWithGoogleWrapper {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: flex-start;
-  padding: 3px 0 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: 3px 0 0;
 }
 
 .icons8Google1Parent {
-  flex-direction: row;
-  gap: var(--gap-3xs);
+    flex-direction: row;
+    gap: var(--gap-3xs);
 }
 
 .googleButtonContent,
 .googleButtonContentWrapper,
 .icons8Google1Parent {
-  display: flex;
-  align-items: flex-start;
-  justify-content: flex-start;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
 }
 
 .googleButtonContent {
-  cursor: pointer;
-  border: 1px solid #d9d9d9;
-  padding: 2px 19px;
-  background-color: transparent;
-  border-radius: 10px;
-  overflow: hidden;
-  flex-direction: row;
+    cursor: pointer;
+    border: 1px solid #d9d9d9;
+    padding: 2px 19px;
+    background-color: transparent;
+    border-radius: 10px;
+    overflow: hidden;
+    flex-direction: row;
 }
 
 .googleButtonContentWrapper {
-  flex-direction: column;
-  padding: 2px 0 0;
+    flex-direction: column;
+    padding: 2px 0 0;
 }
 
 .icons8AppleLogo1 {
-  height: 24px;
-  width: 24px;
-  position: relative;
-  overflow: hidden;
-  flex-shrink: 0;
-  min-height: 24px;
+    height: 24px;
+    width: 24px;
+    position: relative;
+    overflow: hidden;
+    flex-shrink: 0;
+    min-height: 24px;
 }
 
 .signInWith1 {
-  position: relative;
-  font-size: 12px;
-  font-weight: 500;
-  font-family: Poppins;
-  color: #000;
-  text-align: left;
-  display: inline-block;
-  min-width: 108px;
+    position: relative;
+    font-size: 12px;
+    font-weight: 500;
+    font-family: Poppins;
+    color: #000;
+    text-align: left;
+    display: inline-block;
+    min-width: 108px;
 }
 
 .appleIcon {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: flex-start;
-  padding: 3px 0 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: 3px 0 0;
 }
 
 .icons8AppleLogo1Parent {
-  gap: var(--gap-3xs);
+    gap: var(--gap-3xs);
 }
 
 .appleLoginArea,
 .googleLoginArea,
 .icons8AppleLogo1Parent {
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-  justify-content: flex-start;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
 }
 
 .appleLoginArea {
-  cursor: pointer;
-  border: 1px solid #d9d9d9;
-  padding: 2px 23px;
-  background-color: transparent;
-  border-radius: 10px;
-  overflow: hidden;
+    cursor: pointer;
+    border: 1px solid #d9d9d9;
+    padding: 2px 23px;
+    background-color: transparent;
+    border-radius: 10px;
+    overflow: hidden;
 }
 
 .googleLoginArea {
-  gap: var(--gap-4xl);
+    gap: var(--gap-4xl);
 }
 
 .haveAnAccount {
-  white-space: pre-wrap;
+    white-space: pre-wrap;
 }
 
 .signIn {
-  color: #257769;
+    color: #257769;
+    cursor: pointer;
 }
 
 .haveAnAccountContainer {
-  position: relative;
-  font-weight: 500;
-  flex-shrink: 0;
-  debug_commit: 1de1738;
+    position: relative;
+    font-weight: 500;
+    flex-shrink: 0;
+    debug_commit: 1de1738;
 }
 
 .haveAnAccountSignInWrapper,
 .signInPromptArea,
 .signInPromptAreaWrapper {
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-  justify-content: flex-start;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
 }
 
 .haveAnAccountSignInWrapper {
-  padding: 0;
+    padding: 0;
 }
 
 .signInPromptArea,
 .signInPromptAreaWrapper {
-  padding: 0 0 2px;
+    padding: 0 0 2px;
 }
 
 .signInPromptAreaWrapper {
-  align-self: stretch;
-  justify-content: center;
-  padding: 0 20px 0 26px;
+    align-self: stretch;
+    justify-content: center;
+    padding: 0 20px 0 26px;
 }
 
 .socialLoginArea {
-  width: 403px;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  justify-content: flex-start;
-  gap: var(--gap-4xl);
-  max-width: 100%;
-  font-size: 14px;
+    width: 403px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: flex-start;
+    gap: var(--gap-4xl);
+    max-width: 100%;
+    font-size: 14px;
 }
 
 .inputAreaParent,
 .mainContainerInner {
-  display: flex;
-  align-items: flex-start;
-  justify-content: flex-start;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
 }
 
 .inputAreaParent {
-  flex-direction: column;
-  flex-shrink: 0;
-  debug_commit: 1de1738;
-  max-width: 119%;
-  align-items: center;
+    flex-direction: column;
+    flex-shrink: 0;
+    debug_commit: 1de1738;
+    max-width: 119%;
+    align-items: center;
 }
 
 .mainContainerInner {
-  position: absolute;
-  top: 169px;
-  left: 0;
-  width: 100%;
-  flex-direction: row;
-  padding: 0 0 64px 0;
-  box-sizing: border-box;
-  max-width: 100%;
+    position: absolute;
+    top: 169px;
+    left: 0;
+    width: 100%;
+    flex-direction: row;
+    padding: 0 0 64px 0;
+    box-sizing: border-box;
+    max-width: 100%;
 }
 
 .backgroundIcon {
-  position: absolute;
-  top: 0;
-  left: 195px;
-  width: 204px;
-  height: 179px;
-  object-fit: contain;
-  z-index: 1;
+    position: absolute;
+    top: 0;
+    left: 195px;
+    width: 204px;
+    height: 179px;
+    object-fit: contain;
+    z-index: 1;
 }
 
 .mainContainer {
-  align-self: stretch;
-  height: 871px;
-  position: relative;
-  max-width: 100%;
+    align-self: stretch;
+    height: 871px;
+    position: relative;
+    max-width: 100%;
 }
 
 .mainContainerWrapper {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: flex-start;
-  padding: 9px 0 0;
-  box-sizing: border-box;
-  min-width: 477px;
-  max-width: 100%;
-  gap: 20px;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: 9px 0 0;
+    box-sizing: border-box;
+    min-width: 477px;
+    max-width: 100%;
+    gap: 20px;
 }
 
 .foregroundIcon {
-  width: 686px;
-  position: relative;
-  border-radius: 30px;
-  object-fit: cover;
-  max-width: 100%;
+    width: 686px;
+    position: relative;
+    border-radius: 30px;
+    object-fit: cover;
+    max-width: 100%;
 }
 
 .signUp {
-  width: 100%;
-  height: 100vh;
-  position: relative;
-  background-color: #faf6f4;
-  overflow: auto;
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-  justify-content: space-between;
-  padding: 29px 29px 24px 138px;
-  box-sizing: border-box;
-  line-height: normal;
-  letter-spacing: normal;
-  gap: var(--gap-xl);
-  text-align: left;
-  font-size: 35px;
-  color: #000;
-  font-family: Poppins;
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    background-color: #faf6f4;
+    overflow: auto;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding: 29px 29px 24px 138px;
+    box-sizing: border-box;
+    line-height: normal;
+    letter-spacing: normal;
+    gap: var(--gap-xl);
+    text-align: left;
+    font-size: 35px;
+    color: #000;
+    font-family: Poppins;
 }
 
 .buttonGroupRole {
-  width: 100%;
-  display: flex;
-  justify-content: space-around;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
 }
 
 .imageContainer {
-  height: max-content;
-  display: flex;
-  justify-items: center;
+    height: max-content;
+    display: flex;
+    justify-items: center;
 }
 
+.toastRegister {
+    font-size: 12px !important; /* Adjust this value to your desired font size */
+}
 
 @media screen and (max-width: 1350px) {
+    .foregroundIcon,
+    .mainContainerWrapper {
+        flex: 1;
+    }
 
-  .foregroundIcon,
-  .mainContainerWrapper {
-    flex: 1;
-  }
-
-  .signUp {
-    flex-wrap: wrap;
-  }
+    .signUp {
+        flex-wrap: wrap;
+    }
 }
 
 @media screen and (max-width: 800px) {
-  .getStartedNow {
-    font-size: 28px;
-  }
+    .getStartedNow {
+        font-size: 28px;
+    }
 
-  .inputAreaParent {
-    gap: 10px;
-  }
+    .inputAreaParent {
+        gap: 10px;
+    }
 
-  .mainContainerWrapper {
-    min-width: 100%;
-  }
+    .mainContainerWrapper {
+        min-width: 100%;
+    }
 
-  .signUp {
-    padding-left: 69px;
-    box-sizing: border-box;
-  }
+    .signUp {
+        padding-left: 69px;
+        box-sizing: border-box;
+    }
 }
 
 @media screen and (max-width: 450px) {
-  .getStartedNow {
-    font-size: 21px;
-  }
+    .getStartedNow {
+        font-size: 21px;
+    }
 
-  .googleLoginArea {
-    flex-wrap: wrap;
-  }
+    .googleLoginArea {
+        flex-wrap: wrap;
+    }
 
-  .mainContainer {
-    height: auto;
-    min-height: 871;
-  }
+    .mainContainer {
+        height: auto;
+        min-height: 871;
+    }
 
-  .signUp {
-    padding-left: 20px;
-    box-sizing: border-box;
-  }
+    .signUp {
+        padding-left: 20px;
+        box-sizing: border-box;
+    }
 }
 
 .activeButtonRole {
-  background-color: #257769 !important;
-  color : white !important;
+    background-color: #257769 !important;
+    color: white !important;
 }
 
 .buttonRole {
-  background-color: #ffffff !important;
-  color: #257769 !important;
-  border: 1px solid #257769 !important;
+    background-color: #ffffff !important;
+    color: #257769 !important;
+    border: 1px solid #257769 !important;
 }

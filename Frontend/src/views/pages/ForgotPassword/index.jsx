@@ -4,6 +4,10 @@ import { ICONS } from "../../../constants/icons";
 import "./index.scss";
 import { Button, Input } from "antd";
 import { useNavigate } from "react-router-dom";
+import authAPI from "../../../api/authAPI";
+import validation from "../../../support/validator";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function ForgotPassword() {
     const [account, setAccount] = useState("");
@@ -18,33 +22,60 @@ function ForgotPassword() {
         navigate("/auth/register");
     };
 
-    const onClickConfirm = ()=>{
+    const onClickConfirm = () => {
+        if (!validation.ValidateEmail(account)) {
+            toast.error(
+                "Your email address you entered is in an incorrect format. Please re-enter your email"
+            );
+            return;
+        }
 
-    }
+        const callAPI = async () => {
+            await authAPI
+                .sendForgotPassword(account)
+                .then((response) => {
+                    toast.success(
+                        "Reset password form has been created successfull"
+                    );
+                    setTimeout(() => {
+                        navigate("/auth/announcement/reset-password");
+                    }, 2000);
+                })
+                .catch((error) => console.log(error));
+        };
+        callAPI();
+    };
 
     return (
         <div class="forgot-password-wrapper">
-            <div class='forgot-password-container'>
-                <div class='website-header'>
+            <ToastContainer
+                position="top-right"
+                autoClose={2000}
+                hideProgressBar={false}
+                closeOnClick={true}
+                pauseOnHover={true}
+                draggable={true}
+                progress={undefined}
+                theme="colored"
+            />
+            <div class="forgot-password-container">
+                <div class="website-header">
                     <img alt="logo-web" class="logo-website" src={ICONS.logo} />
                     <h1 class="website-title">
                         Join to the Volunteer community
                     </h1>
-                    <h1 class="website-title margin-top-10">
-                        Forgot password
-                    </h1>
+                    <h1 class="website-title margin-top-10">Forgot password</h1>
                 </div>
-                <div class='forgot-password-content'>
-                    <p class='forgot-password-title'>Email</p>
+                <div class="forgot-password-content">
+                    <p class="forgot-password-title">Email</p>
                     <Input
                         value={account}
                         onChange={(e) => setAccount(e.target.value)}
                         className="input-email"
                     />
-                    <Button
-                        onClick={onClickConfirm}
-                        className="button-auth"
-                    >Confirm</Button>
+                    <Button onClick={onClickConfirm} className="button-auth">
+                        Confirm
+                    </Button>
                     <div class="forgot-password-footer">
                         <p class="forgot-password-footer-item">
                             Remembered account{" "}

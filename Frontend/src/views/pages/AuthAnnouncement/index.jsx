@@ -56,7 +56,7 @@ function ForgotPassword() {
         }
 
         // create form
-        else if (status === "reset-password-failed") {
+        else if (status === "reset-password") {
             setMessage(
                 "A password reset request has been created for your account. Please check your registered email for further instructions to reset your password."
             );

@@ -140,7 +140,7 @@ const AllRoutes = () => {
                 />
 
                 <Route
-                    path="/auth/auth-announcement/:status"
+                    path="/auth/announcement/:status"
                     element={<AuthAnnounce />}
                 />
 
