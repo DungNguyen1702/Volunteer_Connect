@@ -30,7 +30,7 @@ public class AuthenticationController {
     public ResponseEntity<LoginResponse> loginAccount(@RequestBody LoginRequest authenticationRequest){
         return ResponseEntity.ok(loginService.authenticate(authenticationRequest));
     }
-    @GetMapping("/checkToken")
+    @PostMapping("/checkToken")
     public ResponseEntity<Boolean> checkToken(@RequestBody TokenRequest token){
 //        token = token.substring("Bearer ".length());
         return ResponseEntity.ok(jwtService.checkExpired(token.getToken()));

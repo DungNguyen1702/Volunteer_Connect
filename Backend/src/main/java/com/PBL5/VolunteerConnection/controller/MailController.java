@@ -15,12 +15,12 @@ public class MailController {
     @Autowired
     private MailService mailService;
 
-    @PostMapping("/sendResetPassword/{mail}")
+    @GetMapping("/sendResetPassword/{mail}")
     public ResponseEntity<StatusResponse> sendMail(@PathVariable String mail) throws MessagingException {
         return ResponseEntity.ok(mailService.sendEmailResetPassword(mail));
 
     }
-    @PostMapping("/sendVerifyEmail/{mail}")
+    @GetMapping("/sendVerifyEmail/{mail}")
     public ResponseEntity<StatusResponse> verifyEmail(@PathVariable String mail) throws MessagingException {
         return ResponseEntity.ok(mailService.sendEmailVerifyEmail(mail));
     }
