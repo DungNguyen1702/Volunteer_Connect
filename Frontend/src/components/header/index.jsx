@@ -17,10 +17,10 @@ import { useNavigate } from "react-router-dom";
 import AvatarAccount from "../avatar/AvatarAccount";
 import useAuth from "../../hooks/useAuth";
 import postAPI from "../../api/postAPI";
-import checkTokenAPI from "../../api/checkToken"
+import checkTokenAPI from "../../api/checkToken";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { Menu } from 'antd';
+import { Menu } from "antd";
 
 const TruncateText = (text, maxLength) => {
     if (text.length <= maxLength) {
@@ -50,7 +50,7 @@ function Header(props) {
     const [listPosts, setListPosts] = useState([]);
     const [filterPosts, setFilterPosts] = useState(listPosts);
     const [notifications, setNotifications] = useState([]);
-    const { account, setAccount, setToken } = useAuth();
+    const { account, setAccount, setToken, token } = useAuth();
 
     useEffect(() => {
         const fetchNotifications = async () => {
@@ -87,14 +87,31 @@ function Header(props) {
                     console.log(error);
                 });
             if (account) {
-                await checkTokenAPI.checkToken().catch(error => {
-                    toast.error("Your token has expired, please log in again");
-                    setAccount(null);
-                    setToken(null);
-                    localStorage.removeItem("account");
-                    localStorage.removeItem("token");
-                    setTimeout(() => navigate("/auth/login"), 2000);
-                })
+                await checkTokenAPI
+                    .checkToken(token)
+                    .then((response) => {
+                        if(response.data === 'false')
+                        {
+                            toast.error(
+                                "Your token has expired, please log in again"
+                            );
+                            setAccount(null);
+                            setToken(null);
+                            localStorage.removeItem("account");
+                            localStorage.removeItem("token");
+                            setTimeout(() => navigate("/auth/login"), 2000);
+                        }
+                    })
+                    .catch((error) => {
+                        toast.error(
+                            "Your token has expired, please log in again"
+                        );
+                        setAccount(null);
+                        setToken(null);
+                        localStorage.removeItem("account");
+                        localStorage.removeItem("token");
+                        setTimeout(() => navigate("/auth/login"), 2000);
+                    });
             }
         };
 
@@ -111,15 +128,13 @@ function Header(props) {
     const clickEvent = () => {
         if (account && parseInt(account.role) === 3)
             navigate("/admin/manage-activity");
-        else
-            navigate("/list-activity");
+        else navigate("/list-activity");
     };
 
     const clickGroupPeople = () => {
         if (account && parseInt(account.role) === 3)
             navigate("/admin/manage-account");
-        else
-            navigate("/people-searching");
+        else navigate("/people-searching");
     };
 
     const clickSearch = () => {
@@ -138,11 +153,11 @@ function Header(props) {
     };
 
     const clickLogin = () => {
-        navigate('/auth/login')
+        navigate("/auth/login");
     };
 
     const clickRegister = () => {
-        navigate('/auth/register')
+        navigate("/auth/register");
     };
 
     const onClickLogo = () => {
@@ -150,10 +165,10 @@ function Header(props) {
     };
     const notificationMenuItems = notifications.length
         ? notifications.map((noti, index) => ({
-            key: index,
-            label: noti.content,
-        }))
-        : [{ key: 'no-notifications', label: 'No notifications' }];
+              key: index,
+              label: noti.content,
+          }))
+        : [{ key: "no-notifications", label: "No notifications" }];
 
     return (
         <div class="header-container">
@@ -168,13 +183,19 @@ function Header(props) {
                 theme="colored"
             />
             <div class="header-wrapper">
-                <img src={ICONS.logo} alt="Logo" class="header-wrapper logo" onClick={onClickLogo} />
+                <img
+                    src={ICONS.logo}
+                    alt="Logo"
+                    class="header-wrapper logo"
+                    onClick={onClickLogo}
+                />
                 <div class="header-wrapper button-group-left">
                     {account && (
                         <>
                             <Button
-                                className={`header-wrapper button-group-left button ${activeButton === 1 ? "active" : "unactive"
-                                    }`}
+                                className={`header-wrapper button-group-left button ${
+                                    activeButton === 1 ? "active" : "unactive"
+                                }`}
                                 onClick={clickHomePage}
                                 icon={
                                     <HomeOutlined
@@ -189,8 +210,9 @@ function Header(props) {
                             />
 
                             <Button
-                                className={`header-wrapper button-group-left button ${activeButton === 2 ? "active" : "unactive"
-                                    }`}
+                                className={`header-wrapper button-group-left button ${
+                                    activeButton === 2 ? "active" : "unactive"
+                                }`}
                                 onClick={clickEvent}
                                 icon={
                                     <CalendarOutlined
@@ -205,8 +227,9 @@ function Header(props) {
                             />
 
                             <Button
-                                className={`header-wrapper button-group-left button ${activeButton === 3 ? "active" : "unactive"
-                                    }`}
+                                className={`header-wrapper button-group-left button ${
+                                    activeButton === 3 ? "active" : "unactive"
+                                }`}
                                 onClick={clickGroupPeople}
                                 icon={
                                     <TeamOutlined
@@ -282,7 +305,6 @@ function Header(props) {
                                     />
                                 </Badge>
                             </Dropdown>
-
                         </>
                     )}
                 </div>
@@ -295,7 +317,7 @@ function Header(props) {
                             }}
                             placement="bottom"
                             arrow={{ pointAtCenter: true }}
-                        // trigger={["hover"]}
+                            // trigger={["hover"]}
                         >
                             <div class="header-wrapper account-info have-user">
                                 <AvatarAccount

@@ -47,7 +47,7 @@ function AccountContact() {
                 ? listActivity.slice(startIndex, startIndex + limit)
                 : []
         );
-    }, [startIndex, listShowAct, listActivity]);
+    }, [startIndex, listActivity]);
 
     const changePage = (page, pageSize) => {
         setStartIndex((page - 1) * limit);

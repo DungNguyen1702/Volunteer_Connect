@@ -20,6 +20,12 @@ const authAPI = {
             newPassword: newPassword,
         });
     },
+    validAccount: async (token) => {
+        const url = "/api/v1/auth/activeAccount";
+        return await axiosClient.applicationNoAuth.post(url, {
+            token: token,
+        });
+    },
 };
 
 export default authAPI;

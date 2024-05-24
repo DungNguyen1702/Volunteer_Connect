@@ -20,7 +20,11 @@ function ResetPassword() {
         const callAPI = async () => {
             await checkTokenAPI
                 .checkToken(token)
-                .then((response) => {})
+                .then((response) => {
+                    if (response.data === "false") {
+                        navigate("/auth/announcement/expired-token");
+                    }
+                })
                 .catch((error) => {
                     navigate("/auth/announcement/expired-token");
                 });
@@ -49,15 +53,23 @@ function ResetPassword() {
             );
             return;
         }
+        if (password !== confirmPassword) {
+            toast.error(
+                "password and confirm password is different. Please re-enter password and confirm password"
+            );
+            return;
+        }
 
         const callAPI = async () => {
             await authAPI
                 .resetPassword(token, password)
                 .then((reponse) => {
-                    toast.success('Changed password successfully');
-                    setTimeout(()=>{
-                        navigate('/auth/announcement/reset-password-sucessfull')
-                    },2000);
+                    toast.success("Changed password successfully");
+                    setTimeout(() => {
+                        navigate(
+                            "/auth/announcement/reset-password-sucessfull"
+                        );
+                    }, 2000);
                 })
                 .catch((error) => console.log(error));
         };

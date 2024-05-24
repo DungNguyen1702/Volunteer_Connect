@@ -51,6 +51,9 @@ const AuthAnnounce = LoadableComponent(()=>
 const ResetPassword = LoadableComponent(()=>
     import("../pages/ResetPassword/index.jsx")
 );
+const ConfirmSignUp = LoadableComponent(()=>
+    import("../pages/SignUp/ConfirmSignUp/index.jsx")
+)
 
 const AllRoutes = () => {
     return (
@@ -147,6 +150,11 @@ const AllRoutes = () => {
                 <Route
                     path="/auth/reset-password/:token"
                     element={<ResetPassword />}
+                />
+
+                <Route
+                    path="/auth/register/valid/:token"
+                    element={<ConfirmSignUp />}
                 />
             </Route>
 

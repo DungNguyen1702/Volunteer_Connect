@@ -7,6 +7,7 @@ import Validation from "../../../support/validator";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import authAPI from "../../../api/authAPI";
+import SupportFunction from "../../../support/support_function"
 
 const SignUp = () => {
     const [account, setAccount] = useState("");
@@ -111,6 +112,7 @@ const SignUp = () => {
             name: name,
             password: password,
             role: role,
+            backgroundNoAva : SupportFunction.randomHexColor()
         };
         if (role === 1) {
             userAccount = {

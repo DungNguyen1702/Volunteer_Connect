@@ -26,7 +26,7 @@ function ChatBox() {
 
     const { account } = useAuth();
 
-    const [chatBox, setChatBox] = useState(new Map());
+    const [chatBox, setChatBox] = useState([]);
 
     // Search
     const [listAccountChat, setListAccountChat] = useState(chatBox);
@@ -41,17 +41,19 @@ function ChatBox() {
             await chatApi
                 .getListChatByToken(accountId === "null" ? 0 : accountId)
                 .then((response) => {
-                    const newChatBox = new Map();
                     response.data.forEach((accountData) => {
-                        newChatBox.set(parseInt(accountData.id), {
-                            account: accountData.account,
-                            name: accountData.name,
-                            avatar: accountData.avatar,
-                            backgroundNoAva: accountData.backgroundNoAva,
-                            chats: accountData.chats,
-                        });
+                        setChatBox([
+                            ...chatBox,
+                            {
+                                id: parseInt(accountData.id),
+                                account: accountData.account,
+                                name: accountData.name,
+                                avatar: accountData.avatar,
+                                backgroundNoAva: accountData.backgroundNoAva,
+                                chats: accountData.chats,
+                            },
+                        ]);
                     });
-                    setChatBox(new Map(newChatBox));
                 })
                 .catch((error) => console.log(error));
         };
@@ -59,24 +61,22 @@ function ChatBox() {
     }, [accountId]);
 
     useEffect(() => {
-        setSelectedAccount(getValueByKeyId(chatBox, accountId));
+        setSelectedAccount(accountId);
     }, [accountId, chatBox]);
 
     useEffect(() => {
-        setListAccountChat(new Map(chatBox));
+        setListAccountChat(chatBox);
     }, [chatBox]);
 
     useEffect(() => {
         if (search === "") {
-            setListAccountChat(new Map(chatBox));
+            setListAccountChat(chatBox);
         } else {
-            const filteredChatBox = new Map();
-            chatBox.forEach((value, key) => {
-                if (value.name.toLowerCase().includes(search.toLowerCase())) {
-                    filteredChatBox.set(key, value);
-                }
-            });
-            setListAccountChat(filteredChatBox);
+            setListAccountChat(
+                chatBox.filter((chatItem) =>
+                    chatItem.name.toLowerCase().includes(search.toLowerCase())
+                )
+            );
         }
     }, [search, chatBox]);
 
@@ -119,7 +119,6 @@ function ChatBox() {
     const onPrivateMessage = (payload) => {
         var payloadData = JSON.parse(payload.body);
 
-        console.log(payloadData);
         var keyValue = payloadData.id;
 
         var valueData = {
