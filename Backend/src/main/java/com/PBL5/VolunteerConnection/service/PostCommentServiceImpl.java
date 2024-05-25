@@ -9,7 +9,7 @@ import com.PBL5.VolunteerConnection.model.Notification;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.messaging.simp.SimpMessagingTemplate;
+// import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.stereotype.Service;
 
 import com.PBL5.VolunteerConnection.model.PostComment;
@@ -32,8 +32,8 @@ public class PostCommentServiceImpl implements PostCommentService {
     private PostRespository postRespository;
     @Autowired
     private NotificationRepository notificationRepository;
-    @Autowired
-    private SimpMessagingTemplate messagingTemplate;
+    // @Autowired
+    // private SimpMessagingTemplate messagingTemplate;
 
     @Override
     public StatusResponse createPostComment(String token, PostCommentRequest postComment) {
@@ -50,28 +50,33 @@ public class PostCommentServiceImpl implements PostCommentService {
             }
             postCommentRepository.save(createPostComment);
             PostDetailDTO post = postRespository.findPostDetailById(postComment.getPostId());
-            String title = "New Comment on Your Post";
-            String content = "Someone commented on your post. Check it out!";
-            String image = "http://res.cloudinary.com/deei5izfg/image/upload/v1716544017/Mobile/dmjhvknxwy6wqtpz2g0n.png";
             int id = post.getOrganization().getId();
-            Notification notification = new Notification(title, id, content, image);
-            notification.setType(1);
-            notification.setIdTO(postComment.getPostId());
-            notificationRepository.save(notification);
-//            messagingTemplate.convertAndSendToUser(String.valueOf(id), "/notification", notification);  //user/userId/private
+            if (userCommentId != id) {
+                String title = "New Comment on Your Post";
+                String content = "Someone commented on your post. Check it out!";
+                String image = "http://res.cloudinary.com/deei5izfg/image/upload/v1716544017/Mobile/dmjhvknxwy6wqtpz2g0n.png";
+                Notification notification = new Notification(title, id, content, image);
+                notification.setType(1);
+                notification.setIdTO(postComment.getPostId());
+                notificationRepository.save(notification);
+            }
 
-            if (postComment.getComment_parentId() != null) {
+            // messagingTemplate.convertAndSendToUser(String.valueOf(id), "/notification",
+            // notification); //user/userId/private
+
+            int id2 = postCommentRepository.findById((int) postComment.getComment_parentId()).getAccountId();
+            if (postComment.getComment_parentId() != null && id2 != userCommentId) {
                 String title2 = "Reply to Your Comment";
                 String content2 = "Someone replied to your comment on the post. Check it out!";
                 String image2 = "http://res.cloudinary.com/deei5izfg/image/upload/v1716544119/Mobile/hnwdserkqadpdzqmuek6.png";
-                int id2 = postCommentRepository.findById((int) postComment.getComment_parentId()).getAccountId();
                 Notification notification2 = new Notification(title2, id2, content2, image2);
                 notification2.setType(2);
                 notification2.setIdTO(postComment.getPostId());
                 notificationRepository.save(notification2);
-//                if(id2 != id){
-//                    messagingTemplate.convertAndSendToUser(String.valueOf(id2), "/notification", notification2);  //user/userId/private
-//                }
+                // if(id2 != id){
+                // messagingTemplate.convertAndSendToUser(String.valueOf(id2), "/notification",
+                // notification2); //user/userId/private
+                // }
             }
             return StatusResponse.builder()
                     .success(ResponseEntity.status(HttpStatus.CREATED)
