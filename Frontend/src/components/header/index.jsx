@@ -153,6 +153,7 @@ function Header(props) {
     };
     const clickNoti = (e) => {
         e.preventDefault();
+        console.log(123);
     };
 
     const handleChangeSearch = (e) => {
