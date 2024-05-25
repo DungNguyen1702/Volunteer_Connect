@@ -3,7 +3,6 @@ export const ICONS = {
     event : require("../assets/icons/event.png"),
     homepage : require("../assets/icons/home.png"),
     messenger : require("../assets/icons/messenger.png"),
-    notification : require("../assets/icons/notification.png"),
     people : require("../assets/icons/people.png"),
     facebook : require('../assets/icons/facebook.png'),
     ins : require('../assets/icons/instagram.png'),
@@ -39,4 +38,8 @@ export const ICONS = {
     PostInActive : require('../assets/icons/PostIconInActive.png'),
     failIcon : require("../assets/icons/failIcon.png"),
     successIcon : require("../assets/icons/successIcon.png"),
+    candidateIcon : require("../assets/icons/candidateIcon.png"),
+    orgIcon : require("../assets/icons/orgIcon.png"),
+    adminIcon : require("../assets/icons/adminIcon.png"),
+    iconNoNoti : require("../assets/icons/IconNoNoti.png"),
 };

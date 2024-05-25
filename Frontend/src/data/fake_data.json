@@ -51,8 +51,8 @@
             "updatedAt": "2024-04-13",
             "isDeleted": false,
             "backgroundNoAva": "#e74c3c"
-          },
-          {
+        },
+        {
             "id": 5,
             "account": "account5",
             "password": "password5",
@@ -64,8 +64,8 @@
             "updatedAt": "2024-04-14",
             "isDeleted": false,
             "backgroundNoAva": "#9b59b6"
-          },
-          {
+        },
+        {
             "id": 6,
             "account": "account6",
             "password": "password6",
@@ -77,8 +77,8 @@
             "updatedAt": "2024-04-15",
             "isDeleted": false,
             "backgroundNoAva": "#34495e"
-          },
-          {
+        },
+        {
             "id": 7,
             "account": "account7",
             "password": "password7",
@@ -90,8 +90,8 @@
             "updatedAt": "2024-04-16",
             "isDeleted": false,
             "backgroundNoAva": "#f1c40f"
-          },
-          {
+        },
+        {
             "id": 8,
             "account": "account8",
             "password": "password8",
@@ -103,8 +103,8 @@
             "updatedAt": "2024-04-17",
             "isDeleted": false,
             "backgroundNoAva": "#16a085"
-          },
-          {
+        },
+        {
             "id": 9,
             "account": "account9",
             "password": "password9",
@@ -116,8 +116,8 @@
             "updatedAt": "2024-04-18",
             "isDeleted": false,
             "backgroundNoAva": "#e67e22"
-          },
-          {
+        },
+        {
             "id": 10,
             "account": "account10",
             "password": "password10",
@@ -129,8 +129,8 @@
             "updatedAt": "2024-04-19",
             "isDeleted": false,
             "backgroundNoAva": "#2c3e50"
-          },
-          {
+        },
+        {
             "id": 11,
             "account": "account11",
             "password": "password11",
@@ -142,8 +142,8 @@
             "updatedAt": "2024-04-20",
             "isDeleted": false,
             "backgroundNoAva": "#d35400"
-          },
-          {
+        },
+        {
             "id": 12,
             "account": "account12",
             "password": "password12",
@@ -155,7 +155,7 @@
             "updatedAt": "2024-04-21",
             "isDeleted": false,
             "backgroundNoAva": "#2980b9"
-          }
+        }
     ],
     "Users": [
         {
@@ -191,12 +191,9 @@
             "updatedAt": "2024-04-10",
             "isDeleted": false
         },
-        {
-        },
-        {
-        },
-        {
-        }
+        {},
+        {},
+        {}
     ],
     "Activities": [
         {
@@ -354,7 +351,7 @@
                     "id": 1,
                     "account": {
                         "id": 1,
-                        "account": "user1@example.com", 
+                        "account": "user1@example.com",
                         "password": "password123",
                         "name": "John Doe",
                         "avatar": null,
@@ -1217,11 +1214,11 @@
                 "email": "activity1@example.com",
                 "name": "Activity 1",
                 "type": 1,
-                "deadline": "2024-04-30",   
+                "deadline": "2024-04-30",
                 "dateStart": "2024-04-15",
                 "dateEnd": "2024-04-15",
                 "location": "Da Nang",
-                "country" : 1,
+                "country": 1,
                 "organization_id": 1,
                 "createdAt": "2024-04-01",
                 "updatedAt": "2024-04-05",
@@ -1246,7 +1243,7 @@
                 "deadline": "2024-04-30",
                 "dateStart": "2024-04-01",
                 "dateEnd": "2024-04-15",
-                "country" : 1,
+                "country": 1,
                 "location": "Da Nang",
                 "organization_id": 1,
                 "createdAt": "2024-04-01",
@@ -1273,7 +1270,7 @@
                 "dateStart": "2024-04-01",
                 "dateEnd": "2024-04-15",
                 "location": "Da Nang",
-                "country" : 1,
+                "country": 1,
                 "organization_id": 1,
                 "createdAt": "2024-04-01",
                 "updatedAt": "2024-04-05",
@@ -1299,7 +1296,7 @@
                 "dateStart": "2024-04-01",
                 "dateEnd": "2024-04-15",
                 "location": "Da Nang",
-                "country" : 1,
+                "country": 1,
                 "organization_id": 1,
                 "createdAt": "2024-04-01",
                 "updatedAt": "2024-04-05",
@@ -1325,7 +1322,7 @@
                 "dateStart": "2024-04-01",
                 "dateEnd": "2024-04-15",
                 "location": "Da Nang",
-                "country" : 1,
+                "country": 1,
                 "organization_id": 1,
                 "createdAt": "2024-04-01",
                 "updatedAt": "2024-04-05",
@@ -1346,7 +1343,7 @@
             "image": "https://capitalcampaignpro.com/wp-content/uploads/2023/02/capital-campaign-volunteers.jpg",
             "email": "activity2@example.com",
             "name": "Activity 2",
-            "type": 2,  
+            "type": 2,
             "deadline": "2024-04-30",
             "dateStart": "2024-04-01",
             "dateEnd": "2024-04-15",
@@ -1356,7 +1353,7 @@
             "updatedAt": "2024-04-05",
             "isDeleted": false,
             "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-            "participants": 1   
+            "participants": 1
         },
         "Post": {
             "id": 1,
@@ -1545,7 +1542,7 @@
             "activity_id": 1,
             "name": "Development",
             "color": "#C98755",
-            "createdAt": [2222,17,2],
+            "createdAt": [2222, 17, 2],
             "updatedAt": "2024-04-27",
             "Tasks": [
                 {
@@ -2256,9 +2253,9 @@
             "createdAt": "2024-05-03",
             "updatedAt": "2024-05-03",
             "backgroundNoAva": "#4CAF50",
-            "activity" : {
-                "name" : "Hiking Adventure in the Mountains"
-            } 
+            "activity": {
+                "name": "Hiking Adventure in the Mountains"
+            }
         },
         {
             "id": 2,
@@ -2271,8 +2268,8 @@
             "createdAt": "2024-05-03",
             "updatedAt": "2024-05-03",
             "backgroundNoAva": "#9C27B0",
-            "activity" : {
-                "name" : "Cooking Class: Learn to Make Sushi"
+            "activity": {
+                "name": "Cooking Class: Learn to Make Sushi"
             }
         },
         {
@@ -2286,10 +2283,9 @@
             "createdAt": "2024-05-03",
             "updatedAt": "2024-05-03",
             "backgroundNoAva": "#FF9800",
-            "activity" : {
-                "name" : "Art Workshop: Painting with Watercolors"
+            "activity": {
+                "name": "Art Workshop: Painting with Watercolors"
             }
-            
         },
         {
             "id": 4,
@@ -2302,8 +2298,8 @@
             "createdAt": "2024-05-03",
             "updatedAt": "2024-05-03",
             "backgroundNoAva": "#2196F3",
-            "activity" : {
-                "name" : "Yoga Retreat for Inner Peace"
+            "activity": {
+                "name": "Yoga Retreat for Inner Peace"
             }
         },
         {
@@ -2317,8 +2313,8 @@
             "createdAt": "2024-05-03",
             "updatedAt": "2024-05-03",
             "backgroundNoAva": "#FFEB3B",
-            "activity" : {
-                "name" : "Scuba Diving Expedition to Coral Reefs"
+            "activity": {
+                "name": "Scuba Diving Expedition to Coral Reefs"
             }
         },
         {
@@ -2332,7 +2328,7 @@
             "createdAt": "2024-05-03",
             "updatedAt": "2024-05-03",
             "backgroundNoAva": "#E91E63",
-            "activity" : null
+            "activity": null
         },
         {
             "id": 7,
@@ -2345,8 +2341,8 @@
             "createdAt": "2024-05-03",
             "updatedAt": "2024-05-03",
             "backgroundNoAva": "#795548",
-            "activity" : {
-                "name" : "Cultural Tour: Exploring Ancient Temples"
+            "activity": {
+                "name": "Cultural Tour: Exploring Ancient Temples"
             }
         },
         {
@@ -2360,7 +2356,7 @@
             "createdAt": "2024-05-03",
             "updatedAt": "2024-05-03",
             "backgroundNoAva": "#FFC107",
-            "activity" : null
+            "activity": null
         },
         {
             "id": 9,
@@ -2373,7 +2369,7 @@
             "createdAt": "2024-05-03",
             "updatedAt": "2024-05-03",
             "backgroundNoAva": "#607D8B",
-            "activity" : null
+            "activity": null
         },
         {
             "id": 10,
@@ -2386,7 +2382,7 @@
             "createdAt": "2024-05-03",
             "updatedAt": "2024-05-03",
             "backgroundNoAva": "#FF5722",
-            "activity" : null
+            "activity": null
         }
     ],
     "ListAccountCandidate": [
@@ -2412,7 +2408,6 @@
                 "updatedAt": "2024-05-03",
                 "isDeleted": false
             }
-            
         },
         {
             "id": 2,
@@ -2622,7 +2617,7 @@
             }
         }
     ],
-    "Chat-Box" : [
+    "Chat-Box": [
         {
             "id": 1,
             "account": "account1",
@@ -2637,74 +2632,74 @@
             "backgroundNoAva": "#1abc9c",
             "chats": [
                 {
-                  "id": 1,
-                  "senderId": 1,
-                  "receiverId": 12,
-                  "content": "Xin chào, bạn đã ăn cơm chưa?",
-                  "createdAt": "2024-05-04"
+                    "id": 1,
+                    "senderId": 1,
+                    "receiverId": 12,
+                    "content": "Xin chào, bạn đã ăn cơm chưa?",
+                    "createdAt": "2024-05-04"
                 },
                 {
-                  "id": 2,
-                  "senderId": 1,
-                  "receiverId": 12,
-                  "content": "Hôm nay trời đẹp quá, bạn có kế hoạch gì không?",
-                  "createdAt": "2024-05-04"
+                    "id": 2,
+                    "senderId": 1,
+                    "receiverId": 12,
+                    "content": "Hôm nay trời đẹp quá, bạn có kế hoạch gì không?",
+                    "createdAt": "2024-05-04"
                 },
                 {
-                  "id": 3,
-                  "senderId": 12,
-                  "receiverId": 1,
-                  "content": "Chào bạn, mình có một kế hoạch đi dạo. Muốn tham gia không?",
-                  "createdAt": "2024-05-04"
+                    "id": 3,
+                    "senderId": 12,
+                    "receiverId": 1,
+                    "content": "Chào bạn, mình có một kế hoạch đi dạo. Muốn tham gia không?",
+                    "createdAt": "2024-05-04"
                 },
                 {
-                  "id": 4,
-                  "senderId": 12,
-                  "receiverId": 1,
-                  "content": "Đi dạo ở công viên, bạn muốn gặp ở đâu?",
-                  "createdAt": "2024-05-04"
+                    "id": 4,
+                    "senderId": 12,
+                    "receiverId": 1,
+                    "content": "Đi dạo ở công viên, bạn muốn gặp ở đâu?",
+                    "createdAt": "2024-05-04"
                 },
                 {
-                  "id": 5,
-                  "senderId": 1,
-                  "receiverId": 12,
-                  "content": "Dạo này bạn thế nào?",
-                  "createdAt": "2024-05-04"
+                    "id": 5,
+                    "senderId": 1,
+                    "receiverId": 12,
+                    "content": "Dạo này bạn thế nào?",
+                    "createdAt": "2024-05-04"
                 },
                 {
-                  "id": 6,
-                  "senderId": 1,
-                  "receiverId": 12,
-                  "content": "Có tin tức gì mới không?",
-                  "createdAt": "2024-05-04"
+                    "id": 6,
+                    "senderId": 1,
+                    "receiverId": 12,
+                    "content": "Có tin tức gì mới không?",
+                    "createdAt": "2024-05-04"
                 },
                 {
-                  "id": 7,
-                  "senderId": 12,
-                  "receiverId": 1,
-                  "content": "Mình nghe nói bạn có một ý tưởng thú vị. Muốn chia sẻ không?",
-                  "createdAt": "2024-05-04"
+                    "id": 7,
+                    "senderId": 12,
+                    "receiverId": 1,
+                    "content": "Mình nghe nói bạn có một ý tưởng thú vị. Muốn chia sẻ không?",
+                    "createdAt": "2024-05-04"
                 },
                 {
-                  "id": 8,
-                  "senderId": 1,
-                  "receiverId": 12,
-                  "content": "Bạn muốn tham gia một dự án mới không?",
-                  "createdAt": "2024-05-04"
+                    "id": 8,
+                    "senderId": 1,
+                    "receiverId": 12,
+                    "content": "Bạn muốn tham gia một dự án mới không?",
+                    "createdAt": "2024-05-04"
                 },
                 {
-                  "id": 9,
-                  "senderId":1,
-                  "receiverId": 12,
-                  "content": "Tôi đang xem một bộ phim thú vị. Bạn có muốn xem cùng không?",
-                  "createdAt": "2024-05-04"
+                    "id": 9,
+                    "senderId": 1,
+                    "receiverId": 12,
+                    "content": "Tôi đang xem một bộ phim thú vị. Bạn có muốn xem cùng không?",
+                    "createdAt": "2024-05-04"
                 },
                 {
-                  "id": 10,
-                  "senderId": 1,
-                  "receiverId": 12,
-                  "content": "Phim này có vẻ hấp dẫn, bạn nên tham gia cùng tôi.",
-                  "createdAt": "2024-05-04"
+                    "id": 10,
+                    "senderId": 1,
+                    "receiverId": 12,
+                    "content": "Phim này có vẻ hấp dẫn, bạn nên tham gia cùng tôi.",
+                    "createdAt": "2024-05-04"
                 }
             ]
         },
@@ -2722,74 +2717,74 @@
             "backgroundNoAva": "#e74c3c",
             "chats": [
                 {
-                  "id": 1,
-                  "senderId": 2,
-                  "receiverId": 12,
-                  "content": "Xin chào, bạn đã ăn cơm chưa?",
-                  "createdAt": "2024-05-04"
+                    "id": 1,
+                    "senderId": 2,
+                    "receiverId": 12,
+                    "content": "Xin chào, bạn đã ăn cơm chưa?",
+                    "createdAt": "2024-05-04"
                 },
                 {
-                  "id": 2,
-                  "senderId": 12,
-                  "receiverId": 2,
-                  "content": "Hôm nay trời đẹp quá, bạn có kế hoạch gì không?",
-                  "createdAt": "2024-05-04"
+                    "id": 2,
+                    "senderId": 12,
+                    "receiverId": 2,
+                    "content": "Hôm nay trời đẹp quá, bạn có kế hoạch gì không?",
+                    "createdAt": "2024-05-04"
                 },
                 {
-                  "id": 3,
-                  "senderId": 12,
-                  "receiverId": 2,
-                  "content": "Chào bạn, mình có một kế hoạch đi dạo. Muốn tham gia không?",
-                  "createdAt": "2024-05-04"
+                    "id": 3,
+                    "senderId": 12,
+                    "receiverId": 2,
+                    "content": "Chào bạn, mình có một kế hoạch đi dạo. Muốn tham gia không?",
+                    "createdAt": "2024-05-04"
                 },
                 {
-                  "id": 4,
-                  "senderId": 12,
-                  "receiverId": 2,
-                  "content": "Đi dạo ở công viên, bạn muốn gặp ở đâu?",
-                  "createdAt": "2024-05-04"
+                    "id": 4,
+                    "senderId": 12,
+                    "receiverId": 2,
+                    "content": "Đi dạo ở công viên, bạn muốn gặp ở đâu?",
+                    "createdAt": "2024-05-04"
                 },
                 {
-                  "id": 5,
-                  "senderId": 2,
-                  "receiverId": 12,
-                  "content": "Dạo này bạn thế nào?",
-                  "createdAt": "2024-05-04"
+                    "id": 5,
+                    "senderId": 2,
+                    "receiverId": 12,
+                    "content": "Dạo này bạn thế nào?",
+                    "createdAt": "2024-05-04"
                 },
                 {
-                  "id": 6,
-                  "senderId": 2,
-                  "receiverId": 12,
-                  "content": "Có tin tức gì mới không?",
-                  "createdAt": "2024-05-04"
+                    "id": 6,
+                    "senderId": 2,
+                    "receiverId": 12,
+                    "content": "Có tin tức gì mới không?",
+                    "createdAt": "2024-05-04"
                 },
                 {
-                  "id": 7,
-                  "senderId": 12,
-                  "receiverId": 2,
-                  "content": "Mình nghe nói bạn có một ý tưởng thú vị. Muốn chia sẻ không?",
-                  "createdAt": "2024-05-04"
+                    "id": 7,
+                    "senderId": 12,
+                    "receiverId": 2,
+                    "content": "Mình nghe nói bạn có một ý tưởng thú vị. Muốn chia sẻ không?",
+                    "createdAt": "2024-05-04"
                 },
                 {
-                  "id": 8,
-                  "senderId": 2,
-                  "receiverId": 12,
-                  "content": "Bạn muốn tham gia một dự án mới không?",
-                  "createdAt": "2024-05-04"
+                    "id": 8,
+                    "senderId": 2,
+                    "receiverId": 12,
+                    "content": "Bạn muốn tham gia một dự án mới không?",
+                    "createdAt": "2024-05-04"
                 },
                 {
-                  "id": 9,
-                  "senderId": 2,
-                  "receiverId": 12,
-                  "content": "Tôi đang xem một bộ phim thú vị. Bạn có muốn xem cùng không?",
-                  "createdAt": "2024-05-04"
+                    "id": 9,
+                    "senderId": 2,
+                    "receiverId": 12,
+                    "content": "Tôi đang xem một bộ phim thú vị. Bạn có muốn xem cùng không?",
+                    "createdAt": "2024-05-04"
                 },
                 {
-                  "id": 10,
-                  "senderId": 2,
-                  "receiverId": 12,
-                  "content": "Phim này có vẻ hấp dẫn, bạn nên tham gia cùng tôi.",
-                  "createdAt": "2024-05-04"
+                    "id": 10,
+                    "senderId": 2,
+                    "receiverId": 12,
+                    "content": "Phim này có vẻ hấp dẫn, bạn nên tham gia cùng tôi.",
+                    "createdAt": "2024-05-04"
                 }
             ]
         },
@@ -2807,74 +2802,74 @@
             "backgroundNoAva": "#e74c3c",
             "chats": [
                 {
-                  "id": 1,
-                  "senderId": 3,
-                  "receiverId": 12,
-                  "content": "Xin chào, bạn đã ăn cơm chưa?",
-                  "createdAt": "2024-05-04"
+                    "id": 1,
+                    "senderId": 3,
+                    "receiverId": 12,
+                    "content": "Xin chào, bạn đã ăn cơm chưa?",
+                    "createdAt": "2024-05-04"
                 },
                 {
-                  "id": 2,
-                  "senderId": 3,
-                  "receiverId": 12,
-                  "content": "Hôm nay trời đẹp quá, bạn có kế hoạch gì không?",
-                  "createdAt": "2024-05-04"
+                    "id": 2,
+                    "senderId": 3,
+                    "receiverId": 12,
+                    "content": "Hôm nay trời đẹp quá, bạn có kế hoạch gì không?",
+                    "createdAt": "2024-05-04"
                 },
                 {
-                  "id": 3,
-                  "senderId": 12,
-                  "receiverId": 3,
-                  "content": "Chào bạn, mình có một kế hoạch đi dạo. Muốn tham gia không?",
-                  "createdAt": "2024-05-04"
+                    "id": 3,
+                    "senderId": 12,
+                    "receiverId": 3,
+                    "content": "Chào bạn, mình có một kế hoạch đi dạo. Muốn tham gia không?",
+                    "createdAt": "2024-05-04"
                 },
                 {
-                  "id": 4,
-                  "senderId": 12,
-                  "receiverId": 3,
-                  "content": "Đi dạo ở công viên, bạn muốn gặp ở đâu?",
-                  "createdAt": "2024-05-04"
+                    "id": 4,
+                    "senderId": 12,
+                    "receiverId": 3,
+                    "content": "Đi dạo ở công viên, bạn muốn gặp ở đâu?",
+                    "createdAt": "2024-05-04"
                 },
                 {
-                  "id": 5,
-                  "senderId": 3,
-                  "receiverId": 12,
-                  "content": "Dạo này bạn thế nào?",
-                  "createdAt": "2024-05-04"
+                    "id": 5,
+                    "senderId": 3,
+                    "receiverId": 12,
+                    "content": "Dạo này bạn thế nào?",
+                    "createdAt": "2024-05-04"
                 },
                 {
-                  "id": 6,
-                  "senderId": 3,
-                  "receiverId": 12,
-                  "content": "Có tin tức gì mới không?",
-                  "createdAt": "2024-05-04"
+                    "id": 6,
+                    "senderId": 3,
+                    "receiverId": 12,
+                    "content": "Có tin tức gì mới không?",
+                    "createdAt": "2024-05-04"
                 },
                 {
-                  "id": 7,
-                  "senderId": 12,
-                  "receiverId": 3,
-                  "content": "Mình nghe nói bạn có một ý tưởng thú vị. Muốn chia sẻ không?",
-                  "createdAt": "2024-05-04"
+                    "id": 7,
+                    "senderId": 12,
+                    "receiverId": 3,
+                    "content": "Mình nghe nói bạn có một ý tưởng thú vị. Muốn chia sẻ không?",
+                    "createdAt": "2024-05-04"
                 },
                 {
-                  "id": 8,
-                  "senderId": 3,
-                  "receiverId": 12,
-                  "content": "Bạn muốn tham gia một dự án mới không?",
-                  "createdAt": "2024-05-04"
+                    "id": 8,
+                    "senderId": 3,
+                    "receiverId": 12,
+                    "content": "Bạn muốn tham gia một dự án mới không?",
+                    "createdAt": "2024-05-04"
                 },
                 {
-                  "id": 9,
-                  "senderId": 3,
-                  "receiverId": 12,
-                  "content": "Tôi đang xem một bộ phim thú vị. Bạn có muốn xem cùng không?",
-                  "createdAt": "2024-05-04"
+                    "id": 9,
+                    "senderId": 3,
+                    "receiverId": 12,
+                    "content": "Tôi đang xem một bộ phim thú vị. Bạn có muốn xem cùng không?",
+                    "createdAt": "2024-05-04"
                 },
                 {
-                  "id": 10,
-                  "senderId": 3,
-                  "receiverId": 12,
-                  "content": "Phim này có vẻ hấp dẫn, bạn nên tham gia cùng tôi.",
-                  "createdAt": "2024-05-04"
+                    "id": 10,
+                    "senderId": 3,
+                    "receiverId": 12,
+                    "content": "Phim này có vẻ hấp dẫn, bạn nên tham gia cùng tôi.",
+                    "createdAt": "2024-05-04"
                 }
             ]
         },
@@ -2892,74 +2887,74 @@
             "backgroundNoAva": "#1abc9c",
             "chats": [
                 {
-                  "id": 1,
-                  "senderId": 4,
-                  "receiverId": 12,
-                  "content": "Xin chào, bạn đã ăn cơm chưa?",
-                  "createdAt": "2024-05-04"
+                    "id": 1,
+                    "senderId": 4,
+                    "receiverId": 12,
+                    "content": "Xin chào, bạn đã ăn cơm chưa?",
+                    "createdAt": "2024-05-04"
                 },
                 {
-                  "id": 2,
-                  "senderId": 4,
-                  "receiverId": 12,
-                  "content": "Hôm nay trời đẹp quá, bạn có kế hoạch gì không?",
-                  "createdAt": "2024-05-04"
+                    "id": 2,
+                    "senderId": 4,
+                    "receiverId": 12,
+                    "content": "Hôm nay trời đẹp quá, bạn có kế hoạch gì không?",
+                    "createdAt": "2024-05-04"
                 },
                 {
-                  "id": 3,
-                  "senderId": 12,
-                  "receiverId": 4,
-                  "content": "Chào bạn, mình có một kế hoạch đi dạo. Muốn tham gia không?",
-                  "createdAt": "2024-05-04"
+                    "id": 3,
+                    "senderId": 12,
+                    "receiverId": 4,
+                    "content": "Chào bạn, mình có một kế hoạch đi dạo. Muốn tham gia không?",
+                    "createdAt": "2024-05-04"
                 },
                 {
-                  "id": 4,
-                  "senderId": 12,
-                  "receiverId": 4,
-                  "content": "Đi dạo ở công viên, bạn muốn gặp ở đâu?",
-                  "createdAt": "2024-05-04"
+                    "id": 4,
+                    "senderId": 12,
+                    "receiverId": 4,
+                    "content": "Đi dạo ở công viên, bạn muốn gặp ở đâu?",
+                    "createdAt": "2024-05-04"
                 },
                 {
-                  "id": 5,
-                  "senderId": 4,
-                  "receiverId": 12,
-                  "content": "Dạo này bạn thế nào?",
-                  "createdAt": "2024-05-04"
+                    "id": 5,
+                    "senderId": 4,
+                    "receiverId": 12,
+                    "content": "Dạo này bạn thế nào?",
+                    "createdAt": "2024-05-04"
                 },
                 {
-                  "id": 6,
-                  "senderId": 4,
-                  "receiverId": 12,
-                  "content": "Có tin tức gì mới không?",
-                  "createdAt": "2024-05-04"
+                    "id": 6,
+                    "senderId": 4,
+                    "receiverId": 12,
+                    "content": "Có tin tức gì mới không?",
+                    "createdAt": "2024-05-04"
                 },
                 {
-                  "id": 7,
-                  "senderId": 12,
-                  "receiverId": 4,
-                  "content": "Mình nghe nói bạn có một ý tưởng thú vị. Muốn chia sẻ không?",
-                  "createdAt": "2024-05-04"
+                    "id": 7,
+                    "senderId": 12,
+                    "receiverId": 4,
+                    "content": "Mình nghe nói bạn có một ý tưởng thú vị. Muốn chia sẻ không?",
+                    "createdAt": "2024-05-04"
                 },
                 {
-                  "id": 8,
-                  "senderId": 4,
-                  "receiverId": 12,
-                  "content": "Bạn muốn tham gia một dự án mới không?",
-                  "createdAt": "2024-05-04"
+                    "id": 8,
+                    "senderId": 4,
+                    "receiverId": 12,
+                    "content": "Bạn muốn tham gia một dự án mới không?",
+                    "createdAt": "2024-05-04"
                 },
                 {
-                  "id": 9,
-                  "senderId":4,
-                  "receiverId": 12,
-                  "content": "Tôi đang xem một bộ phim thú vị. Bạn có muốn xem cùng không?",
-                  "createdAt": "2024-05-04"
+                    "id": 9,
+                    "senderId": 4,
+                    "receiverId": 12,
+                    "content": "Tôi đang xem một bộ phim thú vị. Bạn có muốn xem cùng không?",
+                    "createdAt": "2024-05-04"
                 },
                 {
-                  "id": 10,
-                  "senderId": 4,
-                  "receiverId": 12,
-                  "content": "Phim này có vẻ hấp dẫn, bạn nên tham gia cùng tôi.",
-                  "createdAt": "2024-05-04"
+                    "id": 10,
+                    "senderId": 4,
+                    "receiverId": 12,
+                    "content": "Phim này có vẻ hấp dẫn, bạn nên tham gia cùng tôi.",
+                    "createdAt": "2024-05-04"
                 }
             ]
         },
@@ -2977,74 +2972,74 @@
             "backgroundNoAva": "#e74c3c",
             "chats": [
                 {
-                  "id": 1,
-                  "senderId": 5,
-                  "receiverId": 12,
-                  "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-                  "createdAt": "2024-05-04"
+                    "id": 1,
+                    "senderId": 5,
+                    "receiverId": 12,
+                    "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+                    "createdAt": "2024-05-04"
                 },
                 {
-                  "id": 2,
-                  "senderId": 12,
-                  "receiverId": 5,
-                  "content": "Hôm nay trời đẹp quá, bạn có kế hoạch gì không?",
-                  "createdAt": "2024-05-04"
+                    "id": 2,
+                    "senderId": 12,
+                    "receiverId": 5,
+                    "content": "Hôm nay trời đẹp quá, bạn có kế hoạch gì không?",
+                    "createdAt": "2024-05-04"
                 },
                 {
-                  "id": 3,
-                  "senderId": 12,
-                  "receiverId": 5,
-                  "content": "Chào bạn, mình có một kế hoạch đi dạo. Muốn tham gia không?",
-                  "createdAt": "2024-05-04"
+                    "id": 3,
+                    "senderId": 12,
+                    "receiverId": 5,
+                    "content": "Chào bạn, mình có một kế hoạch đi dạo. Muốn tham gia không?",
+                    "createdAt": "2024-05-04"
                 },
                 {
-                  "id": 4,
-                  "senderId": 12,
-                  "receiverId": 5,
-                  "content": "Đi dạo ở công viên, bạn muốn gặp ở đâu?",
-                  "createdAt": "2024-05-04"
+                    "id": 4,
+                    "senderId": 12,
+                    "receiverId": 5,
+                    "content": "Đi dạo ở công viên, bạn muốn gặp ở đâu?",
+                    "createdAt": "2024-05-04"
                 },
                 {
-                  "id": 5,
-                  "senderId": 5,
-                  "receiverId": 12,
-                  "content": "Dạo này bạn thế nào?",
-                  "createdAt": "2024-05-04"
+                    "id": 5,
+                    "senderId": 5,
+                    "receiverId": 12,
+                    "content": "Dạo này bạn thế nào?",
+                    "createdAt": "2024-05-04"
                 },
                 {
-                  "id": 6,
-                  "senderId": 5,
-                  "receiverId": 12,
-                  "content": "Có tin tức gì mới không?",
-                  "createdAt": "2024-05-04"
+                    "id": 6,
+                    "senderId": 5,
+                    "receiverId": 12,
+                    "content": "Có tin tức gì mới không?",
+                    "createdAt": "2024-05-04"
                 },
                 {
-                  "id": 7,
-                  "senderId": 12,
-                  "receiverId": 5,
-                  "content": "Mình nghe nói bạn có một ý tưởng thú vị. Muốn chia sẻ không?",
-                  "createdAt": "2024-05-04"
+                    "id": 7,
+                    "senderId": 12,
+                    "receiverId": 5,
+                    "content": "Mình nghe nói bạn có một ý tưởng thú vị. Muốn chia sẻ không?",
+                    "createdAt": "2024-05-04"
                 },
                 {
-                  "id": 8,
-                  "senderId": 5,
-                  "receiverId": 12,
-                  "content": "Bạn muốn tham gia một dự án mới không?",
-                  "createdAt": "2024-05-04"
+                    "id": 8,
+                    "senderId": 5,
+                    "receiverId": 12,
+                    "content": "Bạn muốn tham gia một dự án mới không?",
+                    "createdAt": "2024-05-04"
                 },
                 {
-                  "id": 9,
-                  "senderId": 5,
-                  "receiverId": 12,
-                  "content": "Tôi đang xem một bộ phim thú vị. Bạn có muốn xem cùng không?",
-                  "createdAt": "2024-05-04"
+                    "id": 9,
+                    "senderId": 5,
+                    "receiverId": 12,
+                    "content": "Tôi đang xem một bộ phim thú vị. Bạn có muốn xem cùng không?",
+                    "createdAt": "2024-05-04"
                 },
                 {
-                  "id": 10,
-                  "senderId": 5,
-                  "receiverId": 12,
-                  "content": "Phim này có vẻ hấp dẫn, bạn nên tham gia cùng tôi.",
-                  "createdAt": "2024-05-04"
+                    "id": 10,
+                    "senderId": 5,
+                    "receiverId": 12,
+                    "content": "Phim này có vẻ hấp dẫn, bạn nên tham gia cùng tôi.",
+                    "createdAt": "2024-05-04"
                 }
             ]
         },
@@ -3062,74 +3057,74 @@
             "backgroundNoAva": "#e74c3c",
             "chats": [
                 {
-                  "id": 1,
-                  "senderId": 6,
-                  "receiverId": 12,
-                  "content": "Xin chào, bạn đã ăn cơm chưa?",
-                  "createdAt": "2024-05-04"
+                    "id": 1,
+                    "senderId": 6,
+                    "receiverId": 12,
+                    "content": "Xin chào, bạn đã ăn cơm chưa?",
+                    "createdAt": "2024-05-04"
                 },
                 {
-                  "id": 2,
-                  "senderId": 6,
-                  "receiverId": 12,
-                  "content": "Hôm nay trời đẹp quá, bạn có kế hoạch gì không?",
-                  "createdAt": "2024-05-04"
+                    "id": 2,
+                    "senderId": 6,
+                    "receiverId": 12,
+                    "content": "Hôm nay trời đẹp quá, bạn có kế hoạch gì không?",
+                    "createdAt": "2024-05-04"
                 },
                 {
-                  "id": 3,
-                  "senderId": 12,
-                  "receiverId": 6,
-                  "content": "Chào bạn, mình có một kế hoạch đi dạo. Muốn tham gia không?",
-                  "createdAt": "2024-05-04"
+                    "id": 3,
+                    "senderId": 12,
+                    "receiverId": 6,
+                    "content": "Chào bạn, mình có một kế hoạch đi dạo. Muốn tham gia không?",
+                    "createdAt": "2024-05-04"
                 },
                 {
-                  "id": 4,
-                  "senderId": 12,
-                  "receiverId": 6,
-                  "content": "Đi dạo ở công viên, bạn muốn gặp ở đâu?",
-                  "createdAt": "2024-05-04"
+                    "id": 4,
+                    "senderId": 12,
+                    "receiverId": 6,
+                    "content": "Đi dạo ở công viên, bạn muốn gặp ở đâu?",
+                    "createdAt": "2024-05-04"
                 },
                 {
-                  "id": 5,
-                  "senderId": 6,
-                  "receiverId": 12,
-                  "content": "Dạo này bạn thế nào?",
-                  "createdAt": "2024-05-04"
+                    "id": 5,
+                    "senderId": 6,
+                    "receiverId": 12,
+                    "content": "Dạo này bạn thế nào?",
+                    "createdAt": "2024-05-04"
                 },
                 {
-                  "id": 6,
-                  "senderId": 6,
-                  "receiverId": 12,
-                  "content": "Có tin tức gì mới không?",
-                  "createdAt": "2024-05-04"
+                    "id": 6,
+                    "senderId": 6,
+                    "receiverId": 12,
+                    "content": "Có tin tức gì mới không?",
+                    "createdAt": "2024-05-04"
                 },
                 {
-                  "id": 7,
-                  "senderId": 12,
-                  "receiverId": 6,
-                  "content": "Mình nghe nói bạn có một ý tưởng thú vị. Muốn chia sẻ không?",
-                  "createdAt": "2024-05-04"
+                    "id": 7,
+                    "senderId": 12,
+                    "receiverId": 6,
+                    "content": "Mình nghe nói bạn có một ý tưởng thú vị. Muốn chia sẻ không?",
+                    "createdAt": "2024-05-04"
                 },
                 {
-                  "id": 8,
-                  "senderId": 6,
-                  "receiverId": 12,
-                  "content": "Bạn muốn tham gia một dự án mới không?",
-                  "createdAt": "2024-05-04"
+                    "id": 8,
+                    "senderId": 6,
+                    "receiverId": 12,
+                    "content": "Bạn muốn tham gia một dự án mới không?",
+                    "createdAt": "2024-05-04"
                 },
                 {
-                  "id": 9,
-                  "senderId": 6,
-                  "receiverId": 12,
-                  "content": "Tôi đang xem một bộ phim thú vị. Bạn có muốn xem cùng không?",
-                  "createdAt": "2024-05-04"
+                    "id": 9,
+                    "senderId": 6,
+                    "receiverId": 12,
+                    "content": "Tôi đang xem một bộ phim thú vị. Bạn có muốn xem cùng không?",
+                    "createdAt": "2024-05-04"
                 },
                 {
-                  "id": 10,
-                  "senderId": 6,
-                  "receiverId": 12,
-                  "content": "Phim này có vẻ hấp dẫn, bạn nên tham gia cùng tôi.",
-                  "createdAt": "2024-05-04"
+                    "id": 10,
+                    "senderId": 6,
+                    "receiverId": 12,
+                    "content": "Phim này có vẻ hấp dẫn, bạn nên tham gia cùng tôi.",
+                    "createdAt": "2024-05-04"
                 }
             ]
         },
@@ -3147,74 +3142,74 @@
             "backgroundNoAva": "#7abc9c",
             "chats": [
                 {
-                  "id": 7,
-                  "senderId": 7,
-                  "receiverId": 12,
-                  "content": "Xin chào, bạn đã ăn cơm chưa?",
-                  "createdAt": "2024-05-04"
+                    "id": 7,
+                    "senderId": 7,
+                    "receiverId": 12,
+                    "content": "Xin chào, bạn đã ăn cơm chưa?",
+                    "createdAt": "2024-05-04"
                 },
                 {
-                  "id": 2,
-                  "senderId": 7,
-                  "receiverId": 12,
-                  "content": "Hôm nay trời đẹp quá, bạn có kế hoạch gì không?",
-                  "createdAt": "2024-05-04"
+                    "id": 2,
+                    "senderId": 7,
+                    "receiverId": 12,
+                    "content": "Hôm nay trời đẹp quá, bạn có kế hoạch gì không?",
+                    "createdAt": "2024-05-04"
                 },
                 {
-                  "id": 3,
-                  "senderId": 12,
-                  "receiverId": 7,
-                  "content": "Chào bạn, mình có một kế hoạch đi dạo. Muốn tham gia không?",
-                  "createdAt": "2024-05-04"
+                    "id": 3,
+                    "senderId": 12,
+                    "receiverId": 7,
+                    "content": "Chào bạn, mình có một kế hoạch đi dạo. Muốn tham gia không?",
+                    "createdAt": "2024-05-04"
                 },
                 {
-                  "id": 4,
-                  "senderId": 12,
-                  "receiverId": 7,
-                  "content": "Đi dạo ở công viên, bạn muốn gặp ở đâu?",
-                  "createdAt": "2024-05-04"
+                    "id": 4,
+                    "senderId": 12,
+                    "receiverId": 7,
+                    "content": "Đi dạo ở công viên, bạn muốn gặp ở đâu?",
+                    "createdAt": "2024-05-04"
                 },
                 {
-                  "id": 5,
-                  "senderId": 7,
-                  "receiverId": 12,
-                  "content": "Dạo này bạn thế nào?",
-                  "createdAt": "2024-05-04"
+                    "id": 5,
+                    "senderId": 7,
+                    "receiverId": 12,
+                    "content": "Dạo này bạn thế nào?",
+                    "createdAt": "2024-05-04"
                 },
                 {
-                  "id": 6,
-                  "senderId": 7,
-                  "receiverId": 12,
-                  "content": "Có tin tức gì mới không?",
-                  "createdAt": "2024-05-04"
+                    "id": 6,
+                    "senderId": 7,
+                    "receiverId": 12,
+                    "content": "Có tin tức gì mới không?",
+                    "createdAt": "2024-05-04"
                 },
                 {
-                  "id": 7,
-                  "senderId": 12,
-                  "receiverId": 7,
-                  "content": "Mình nghe nói bạn có một ý tưởng thú vị. Muốn chia sẻ không?",
-                  "createdAt": "2024-05-04"
+                    "id": 7,
+                    "senderId": 12,
+                    "receiverId": 7,
+                    "content": "Mình nghe nói bạn có một ý tưởng thú vị. Muốn chia sẻ không?",
+                    "createdAt": "2024-05-04"
                 },
                 {
-                  "id": 8,
-                  "senderId": 7,
-                  "receiverId": 12,
-                  "content": "Bạn muốn tham gia một dự án mới không?",
-                  "createdAt": "2024-05-04"
+                    "id": 8,
+                    "senderId": 7,
+                    "receiverId": 12,
+                    "content": "Bạn muốn tham gia một dự án mới không?",
+                    "createdAt": "2024-05-04"
                 },
                 {
-                  "id": 9,
-                  "senderId": 7,
-                  "receiverId": 12,
-                  "content": "Tôi đang xem một bộ phim thú vị. Bạn có muốn xem cùng không?",
-                  "createdAt": "2024-05-04"
+                    "id": 9,
+                    "senderId": 7,
+                    "receiverId": 12,
+                    "content": "Tôi đang xem một bộ phim thú vị. Bạn có muốn xem cùng không?",
+                    "createdAt": "2024-05-04"
                 },
                 {
-                  "id": 10,
-                  "senderId": 7,
-                  "receiverId": 12,
-                  "content": "Phim này có vẻ hấp dẫn, bạn nên tham gia cùng tôi.",
-                  "createdAt": "2024-05-04"
+                    "id": 10,
+                    "senderId": 7,
+                    "receiverId": 12,
+                    "content": "Phim này có vẻ hấp dẫn, bạn nên tham gia cùng tôi.",
+                    "createdAt": "2024-05-04"
                 }
             ]
         },
@@ -3232,74 +3227,74 @@
             "backgroundNoAva": "#e74c3c",
             "chats": [
                 {
-                  "id": 8,
-                  "senderId": 8,
-                  "receiverId": 12,
-                  "content": "Xin chào, bạn đã ăn cơm chưa?",
-                  "createdAt": "2024-05-04"
+                    "id": 8,
+                    "senderId": 8,
+                    "receiverId": 12,
+                    "content": "Xin chào, bạn đã ăn cơm chưa?",
+                    "createdAt": "2024-05-04"
                 },
                 {
-                  "id": 8,
-                  "senderId": 12,
-                  "receiverId": 8,
-                  "content": "Hôm nay trời đẹp quá, bạn có kế hoạch gì không?",
-                  "createdAt": "2024-05-04"
+                    "id": 8,
+                    "senderId": 12,
+                    "receiverId": 8,
+                    "content": "Hôm nay trời đẹp quá, bạn có kế hoạch gì không?",
+                    "createdAt": "2024-05-04"
                 },
                 {
-                  "id": 3,
-                  "senderId": 12,
-                  "receiverId": 8,
-                  "content": "Chào bạn, mình có một kế hoạch đi dạo. Muốn tham gia không?",
-                  "createdAt": "2024-05-04"
+                    "id": 3,
+                    "senderId": 12,
+                    "receiverId": 8,
+                    "content": "Chào bạn, mình có một kế hoạch đi dạo. Muốn tham gia không?",
+                    "createdAt": "2024-05-04"
                 },
                 {
-                  "id": 4,
-                  "senderId": 12,
-                  "receiverId": 8,
-                  "content": "Đi dạo ở công viên, bạn muốn gặp ở đâu?",
-                  "createdAt": "2024-05-04"
+                    "id": 4,
+                    "senderId": 12,
+                    "receiverId": 8,
+                    "content": "Đi dạo ở công viên, bạn muốn gặp ở đâu?",
+                    "createdAt": "2024-05-04"
                 },
                 {
-                  "id": 5,
-                  "senderId": 8,
-                  "receiverId": 12,
-                  "content": "Dạo này bạn thế nào?",
-                  "createdAt": "2024-05-04"
+                    "id": 5,
+                    "senderId": 8,
+                    "receiverId": 12,
+                    "content": "Dạo này bạn thế nào?",
+                    "createdAt": "2024-05-04"
                 },
                 {
-                  "id": 6,
-                  "senderId": 8,
-                  "receiverId": 12,
-                  "content": "Có tin tức gì mới không?",
-                  "createdAt": "2024-05-04"
+                    "id": 6,
+                    "senderId": 8,
+                    "receiverId": 12,
+                    "content": "Có tin tức gì mới không?",
+                    "createdAt": "2024-05-04"
                 },
                 {
-                  "id": 7,
-                  "senderId": 12,
-                  "receiverId": 8,
-                  "content": "Mình nghe nói bạn có một ý tưởng thú vị. Muốn chia sẻ không?",
-                  "createdAt": "2024-05-04"
+                    "id": 7,
+                    "senderId": 12,
+                    "receiverId": 8,
+                    "content": "Mình nghe nói bạn có một ý tưởng thú vị. Muốn chia sẻ không?",
+                    "createdAt": "2024-05-04"
                 },
                 {
-                  "id": 8,
-                  "senderId": 8,
-                  "receiverId": 12,
-                  "content": "Bạn muốn tham gia một dự án mới không?",
-                  "createdAt": "2024-05-04"
+                    "id": 8,
+                    "senderId": 8,
+                    "receiverId": 12,
+                    "content": "Bạn muốn tham gia một dự án mới không?",
+                    "createdAt": "2024-05-04"
                 },
                 {
-                  "id": 9,
-                  "senderId": 8,
-                  "receiverId": 12,
-                  "content": "Tôi đang xem một bộ phim thú vị. Bạn có muốn xem cùng không?",
-                  "createdAt": "2024-05-04"
+                    "id": 9,
+                    "senderId": 8,
+                    "receiverId": 12,
+                    "content": "Tôi đang xem một bộ phim thú vị. Bạn có muốn xem cùng không?",
+                    "createdAt": "2024-05-04"
                 },
                 {
-                  "id": 10,
-                  "senderId": 8,
-                  "receiverId": 12,
-                  "content": "Phim này có vẻ hấp dẫn, bạn nên tham gia cùng tôi.",
-                  "createdAt": "2024-05-04"
+                    "id": 10,
+                    "senderId": 8,
+                    "receiverId": 12,
+                    "content": "Phim này có vẻ hấp dẫn, bạn nên tham gia cùng tôi.",
+                    "createdAt": "2024-05-04"
                 }
             ]
         },
@@ -3317,74 +3312,74 @@
             "backgroundNoAva": "#e74c3c",
             "chats": [
                 {
-                  "id": 1,
-                  "senderId": 9,
-                  "receiverId": 12,
-                  "content": "Xin chào, bạn đã ăn cơm chưa?",
-                  "createdAt": "2024-05-04"
+                    "id": 1,
+                    "senderId": 9,
+                    "receiverId": 12,
+                    "content": "Xin chào, bạn đã ăn cơm chưa?",
+                    "createdAt": "2024-05-04"
                 },
                 {
-                  "id": 2,
-                  "senderId": 9,
-                  "receiverId": 12,
-                  "content": "Hôm nay trời đẹp quá, bạn có kế hoạch gì không?",
-                  "createdAt": "2024-05-04"
+                    "id": 2,
+                    "senderId": 9,
+                    "receiverId": 12,
+                    "content": "Hôm nay trời đẹp quá, bạn có kế hoạch gì không?",
+                    "createdAt": "2024-05-04"
                 },
                 {
-                  "id": 3,
-                  "senderId": 12,
-                  "receiverId": 9,
-                  "content": "Chào bạn, mình có một kế hoạch đi dạo. Muốn tham gia không?",
-                  "createdAt": "2024-05-04"
+                    "id": 3,
+                    "senderId": 12,
+                    "receiverId": 9,
+                    "content": "Chào bạn, mình có một kế hoạch đi dạo. Muốn tham gia không?",
+                    "createdAt": "2024-05-04"
                 },
                 {
-                  "id": 4,
-                  "senderId": 12,
-                  "receiverId": 9,
-                  "content": "Đi dạo ở công viên, bạn muốn gặp ở đâu?",
-                  "createdAt": "2024-05-04"
+                    "id": 4,
+                    "senderId": 12,
+                    "receiverId": 9,
+                    "content": "Đi dạo ở công viên, bạn muốn gặp ở đâu?",
+                    "createdAt": "2024-05-04"
                 },
                 {
-                  "id": 5,
-                  "senderId": 9,
-                  "receiverId": 12,
-                  "content": "Dạo này bạn thế nào?",
-                  "createdAt": "2024-05-04"
+                    "id": 5,
+                    "senderId": 9,
+                    "receiverId": 12,
+                    "content": "Dạo này bạn thế nào?",
+                    "createdAt": "2024-05-04"
                 },
                 {
-                  "id": 6,
-                  "senderId": 9,
-                  "receiverId": 12,
-                  "content": "Có tin tức gì mới không?",
-                  "createdAt": "2024-05-04"
+                    "id": 6,
+                    "senderId": 9,
+                    "receiverId": 12,
+                    "content": "Có tin tức gì mới không?",
+                    "createdAt": "2024-05-04"
                 },
                 {
-                  "id": 7,
-                  "senderId": 12,
-                  "receiverId": 9,
-                  "content": "Mình nghe nói bạn có một ý tưởng thú vị. Muốn chia sẻ không?",
-                  "createdAt": "2024-05-04"
+                    "id": 7,
+                    "senderId": 12,
+                    "receiverId": 9,
+                    "content": "Mình nghe nói bạn có một ý tưởng thú vị. Muốn chia sẻ không?",
+                    "createdAt": "2024-05-04"
                 },
                 {
-                  "id": 8,
-                  "senderId": 9,
-                  "receiverId": 12,
-                  "content": "Bạn muốn tham gia một dự án mới không?",
-                  "createdAt": "2024-05-04"
+                    "id": 8,
+                    "senderId": 9,
+                    "receiverId": 12,
+                    "content": "Bạn muốn tham gia một dự án mới không?",
+                    "createdAt": "2024-05-04"
                 },
                 {
-                  "id": 9,
-                  "senderId": 9,
-                  "receiverId": 12,
-                  "content": "Tôi đang xem một bộ phim thú vị. Bạn có muốn xem cùng không?",
-                  "createdAt": "2024-05-04"
+                    "id": 9,
+                    "senderId": 9,
+                    "receiverId": 12,
+                    "content": "Tôi đang xem một bộ phim thú vị. Bạn có muốn xem cùng không?",
+                    "createdAt": "2024-05-04"
                 },
                 {
-                  "id": 10,
-                  "senderId": 9,
-                  "receiverId": 12,
-                  "content": "Phim này có vẻ hấp dẫn, bạn nên tham gia cùng tôi.",
-                  "createdAt": "2024-05-04"
+                    "id": 10,
+                    "senderId": 9,
+                    "receiverId": 12,
+                    "content": "Phim này có vẻ hấp dẫn, bạn nên tham gia cùng tôi.",
+                    "createdAt": "2024-05-04"
                 }
             ]
         },
@@ -3402,74 +3397,74 @@
             "backgroundNoAva": "#1abc9c",
             "chats": [
                 {
-                  "id": 1,
-                  "senderId": 10,
-                  "receiverId": 12,
-                  "content": "Xin chào, bạn đã ăn cơm chưa?",
-                  "createdAt": "2024-05-04"
+                    "id": 1,
+                    "senderId": 10,
+                    "receiverId": 12,
+                    "content": "Xin chào, bạn đã ăn cơm chưa?",
+                    "createdAt": "2024-05-04"
                 },
                 {
-                  "id": 2,
-                  "senderId": 10,
-                  "receiverId": 12,
-                  "content": "Hôm nay trời đẹp quá, bạn có kế hoạch gì không?",
-                  "createdAt": "2024-05-04"
+                    "id": 2,
+                    "senderId": 10,
+                    "receiverId": 12,
+                    "content": "Hôm nay trời đẹp quá, bạn có kế hoạch gì không?",
+                    "createdAt": "2024-05-04"
                 },
                 {
-                  "id": 3,
-                  "senderId": 12,
-                  "receiverId": 10,
-                  "content": "Chào bạn, mình có một kế hoạch đi dạo. Muốn tham gia không?",
-                  "createdAt": "2024-05-04"
+                    "id": 3,
+                    "senderId": 12,
+                    "receiverId": 10,
+                    "content": "Chào bạn, mình có một kế hoạch đi dạo. Muốn tham gia không?",
+                    "createdAt": "2024-05-04"
                 },
                 {
-                  "id": 4,
-                  "senderId": 12,
-                  "receiverId": 10,
-                  "content": "Đi dạo ở công viên, bạn muốn gặp ở đâu?",
-                  "createdAt": "2024-05-04"
+                    "id": 4,
+                    "senderId": 12,
+                    "receiverId": 10,
+                    "content": "Đi dạo ở công viên, bạn muốn gặp ở đâu?",
+                    "createdAt": "2024-05-04"
                 },
                 {
-                  "id": 5,
-                  "senderId": 10,
-                  "receiverId": 12,
-                  "content": "Dạo này bạn thế nào?",
-                  "createdAt": "2024-05-04"
+                    "id": 5,
+                    "senderId": 10,
+                    "receiverId": 12,
+                    "content": "Dạo này bạn thế nào?",
+                    "createdAt": "2024-05-04"
                 },
                 {
-                  "id": 6,
-                  "senderId": 10,
-                  "receiverId": 12,
-                  "content": "Có tin tức gì mới không?",
-                  "createdAt": "2024-05-04"
+                    "id": 6,
+                    "senderId": 10,
+                    "receiverId": 12,
+                    "content": "Có tin tức gì mới không?",
+                    "createdAt": "2024-05-04"
                 },
                 {
-                  "id": 7,
-                  "senderId": 12,
-                  "receiverId": 10,
-                  "content": "Mình nghe nói bạn có một ý tưởng thú vị. Muốn chia sẻ không?",
-                  "createdAt": "2024-05-04"
+                    "id": 7,
+                    "senderId": 12,
+                    "receiverId": 10,
+                    "content": "Mình nghe nói bạn có một ý tưởng thú vị. Muốn chia sẻ không?",
+                    "createdAt": "2024-05-04"
                 },
                 {
-                  "id": 8,
-                  "senderId": 10,
-                  "receiverId": 12,
-                  "content": "Bạn muốn tham gia một dự án mới không?",
-                  "createdAt": "2024-05-04"
+                    "id": 8,
+                    "senderId": 10,
+                    "receiverId": 12,
+                    "content": "Bạn muốn tham gia một dự án mới không?",
+                    "createdAt": "2024-05-04"
                 },
                 {
-                  "id": 9,
-                  "senderId" : 10,
-                  "receiverId": 12,
-                  "content": "Tôi đang xem một bộ phim thú vị. Bạn có muốn xem cùng không?",
-                  "createdAt": "2024-05-04"
+                    "id": 9,
+                    "senderId": 10,
+                    "receiverId": 12,
+                    "content": "Tôi đang xem một bộ phim thú vị. Bạn có muốn xem cùng không?",
+                    "createdAt": "2024-05-04"
                 },
                 {
-                  "id": 10,
-                  "senderId": 10,
-                  "receiverId": 12,
-                  "content": "Phim này có vẻ hấp dẫn, bạn nên tham gia cùng tôi.",
-                  "createdAt": "2024-05-04"
+                    "id": 10,
+                    "senderId": 10,
+                    "receiverId": 12,
+                    "content": "Phim này có vẻ hấp dẫn, bạn nên tham gia cùng tôi.",
+                    "createdAt": "2024-05-04"
                 }
             ]
         },
@@ -3487,79 +3482,79 @@
             "backgroundNoAva": "#e74c3c",
             "chats": [
                 {
-                  "id": 1,
-                  "senderId": 11,
-                  "receiverId": 12,
-                  "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-                  "createdAt": "2024-05-04"
+                    "id": 1,
+                    "senderId": 11,
+                    "receiverId": 12,
+                    "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+                    "createdAt": "2024-05-04"
                 },
                 {
-                  "id": 2,
-                  "senderId": 12,
-                  "receiverId": 11,
-                  "content": "Hôm nay trời đẹp quá, bạn có kế hoạch gì không?",
-                  "createdAt": "2024-05-04"
+                    "id": 2,
+                    "senderId": 12,
+                    "receiverId": 11,
+                    "content": "Hôm nay trời đẹp quá, bạn có kế hoạch gì không?",
+                    "createdAt": "2024-05-04"
                 },
                 {
-                  "id": 3,
-                  "senderId": 12,
-                  "receiverId": 11,
-                  "content": "Chào bạn, mình có một kế hoạch đi dạo. Muốn tham gia không?",
-                  "createdAt": "2024-05-04"
+                    "id": 3,
+                    "senderId": 12,
+                    "receiverId": 11,
+                    "content": "Chào bạn, mình có một kế hoạch đi dạo. Muốn tham gia không?",
+                    "createdAt": "2024-05-04"
                 },
                 {
-                  "id": 4,
-                  "senderId": 12,
-                  "receiverId": 11,
-                  "content": "Đi dạo ở công viên, bạn muốn gặp ở đâu?",
-                  "createdAt": "2024-05-04"
+                    "id": 4,
+                    "senderId": 12,
+                    "receiverId": 11,
+                    "content": "Đi dạo ở công viên, bạn muốn gặp ở đâu?",
+                    "createdAt": "2024-05-04"
                 },
                 {
-                  "id": 5,
-                  "senderId": 11,
-                  "receiverId": 12,
-                  "content": "Dạo này bạn thế nào?",
-                  "createdAt": "2024-05-04"
+                    "id": 5,
+                    "senderId": 11,
+                    "receiverId": 12,
+                    "content": "Dạo này bạn thế nào?",
+                    "createdAt": "2024-05-04"
                 },
                 {
-                  "id": 6,
-                  "senderId": 11,
-                  "receiverId": 12,
-                  "content": "Có tin tức gì mới không?",
-                  "createdAt": "2024-05-04"
+                    "id": 6,
+                    "senderId": 11,
+                    "receiverId": 12,
+                    "content": "Có tin tức gì mới không?",
+                    "createdAt": "2024-05-04"
                 },
                 {
-                  "id": 7,
-                  "senderId": 12,
-                  "receiverId": 11,
-                  "content": "Mình nghe nói bạn có một ý tưởng thú vị. Muốn chia sẻ không?",
-                  "createdAt": "2024-05-04"
+                    "id": 7,
+                    "senderId": 12,
+                    "receiverId": 11,
+                    "content": "Mình nghe nói bạn có một ý tưởng thú vị. Muốn chia sẻ không?",
+                    "createdAt": "2024-05-04"
                 },
                 {
-                  "id": 8,
-                  "senderId": 11,
-                  "receiverId": 12,
-                  "content": "Bạn muốn tham gia một dự án mới không?",
-                  "createdAt": "2024-05-04"
+                    "id": 8,
+                    "senderId": 11,
+                    "receiverId": 12,
+                    "content": "Bạn muốn tham gia một dự án mới không?",
+                    "createdAt": "2024-05-04"
                 },
                 {
-                  "id": 9,
-                  "senderId": 11,
-                  "receiverId": 12,
-                  "content": "Tôi đang xem một bộ phim thú vị. Bạn có muốn xem cùng không?",
-                  "createdAt": "2024-05-04"
+                    "id": 9,
+                    "senderId": 11,
+                    "receiverId": 12,
+                    "content": "Tôi đang xem một bộ phim thú vị. Bạn có muốn xem cùng không?",
+                    "createdAt": "2024-05-04"
                 },
                 {
-                  "id": 10,
-                  "senderId": 11,
-                  "receiverId": 12,
-                  "content": "Phim này có vẻ hấp dẫn, bạn nên tham gia cùng tôi.",
-                  "createdAt": "2024-05-04"
+                    "id": 10,
+                    "senderId": 11,
+                    "receiverId": 12,
+                    "content": "Phim này có vẻ hấp dẫn, bạn nên tham gia cùng tôi.",
+                    "createdAt": "2024-05-04"
                 }
             ]
         }
     ],
-    "CandidateContact" : {
+    "CandidateContact": {
         "id": 1,
         "account": "account1",
         "password": "password1",
@@ -3571,7 +3566,7 @@
         "updatedAt": "2024-04-10",
         "isDeleted": false,
         "backgroundNoAva": "#1abc9c",
-        "User" : {
+        "User": {
             "id": 1,
             "account_id": 1,
             "tel": "123456789",
@@ -3582,8 +3577,8 @@
             "updatedAt": "2024-04-10",
             "isDeleted": false
         },
-        "activityNumber" : 9,
-        "Activities" : [
+        "activityNumber": 9,
+        "Activities": [
             {
                 "id": 1,
                 "image": "https://capitalcampaignpro.com/wp-content/uploads/2023/02/capital-campaign-volunteers.jpg",
@@ -3728,7 +3723,7 @@
                 "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
                 "participants": 10
             },
-    
+
             {
                 "id": 9,
                 "image": "https://capitalcampaignpro.com/wp-content/uploads/2023/02/capital-campaign-volunteers.jpg",
@@ -3765,7 +3760,7 @@
                 "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
                 "participants": 10
             },
-    
+
             {
                 "id": 11,
                 "image": "https://capitalcampaignpro.com/wp-content/uploads/2023/02/capital-campaign-volunteers.jpg",
@@ -3784,13 +3779,13 @@
                 "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
                 "participants": 10
             }
-        ], 
-        "EarnedCertificateNumber" : 9
+        ],
+        "EarnedCertificateNumber": 9
     },
-    "OrganizationContact" : {
+    "OrganizationContact": {
         "id": 1,
         "account": "account1",
-        "password": "password1",    
+        "password": "password1",
         "name": "User 1",
         "avatar": "https://didongviet.vn/dchannel/wp-content/uploads/2023/08/hinh-nen-3d-hinh-nen-iphone-dep-3d-didongviet@2x.jpg",
         "status": true,
@@ -3799,8 +3794,8 @@
         "updatedAt": "2024-04-10",
         "isDeleted": false,
         "backgroundNoAva": "#1abc9c",
-        "activityNumber" : 9,
-        "Activities" : [
+        "activityNumber": 9,
+        "Activities": [
             {
                 "id": 1,
                 "image": "https://capitalcampaignpro.com/wp-content/uploads/2023/02/capital-campaign-volunteers.jpg",
@@ -3945,7 +3940,7 @@
                 "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
                 "participants": 10
             },
-    
+
             {
                 "id": 9,
                 "image": "https://capitalcampaignpro.com/wp-content/uploads/2023/02/capital-campaign-volunteers.jpg",
@@ -3982,7 +3977,7 @@
                 "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
                 "participants": 10
             },
-    
+
             {
                 "id": 11,
                 "image": "https://capitalcampaignpro.com/wp-content/uploads/2023/02/capital-campaign-volunteers.jpg",
@@ -4003,13 +3998,13 @@
             }
         ]
     },
-    "Certificates" : [
+    "Certificates": [
         {
             "id": 1,
             "activity_id": 1,
             "certificate": "https://capitalcampaignpro.com/wp-content/uploads/2023/02/capital-campaign-volunteers.jpg",
             "date_earn_certificate": "2025-02-14",
-            "activity" : {
+            "activity": {
                 "id": 1,
                 "image": "https://capitalcampaignpro.com/wp-content/uploads/2023/02/capital-campaign-volunteers.jpg",
                 "email": "activity1@example.com",
@@ -4032,7 +4027,7 @@
             "id": 2,
             "activity_id": 2,
             "certificate": "https://www.vietnamworks.com/hrinsider/wp-content/uploads/2023/12/anh-den-ngau.jpeg",
-            "activity" : {
+            "activity": {
                 "id": 1,
                 "image": "https://capitalcampaignpro.com/wp-content/uploads/2023/02/capital-campaign-volunteers.jpg",
                 "email": "activity1@example.com",
@@ -4054,7 +4049,7 @@
         },
         {
             "id": 3,
-            "activity" : {
+            "activity": {
                 "id": 1,
                 "image": "https://capitalcampaignpro.com/wp-content/uploads/2023/02/capital-campaign-volunteers.jpg",
                 "email": "activity1@example.com",
@@ -4078,7 +4073,7 @@
         },
         {
             "id": 4,
-            "activity" : {
+            "activity": {
                 "id": 1,
                 "image": "https://capitalcampaignpro.com/wp-content/uploads/2023/02/capital-campaign-volunteers.jpg",
                 "email": "activity1@example.com",
@@ -4102,7 +4097,7 @@
         },
         {
             "id": 5,
-            "activity" : {
+            "activity": {
                 "id": 1,
                 "image": "https://capitalcampaignpro.com/wp-content/uploads/2023/02/capital-campaign-volunteers.jpg",
                 "email": "activity1@example.com",
@@ -4126,7 +4121,7 @@
         },
         {
             "id": 6,
-            "activity" : {
+            "activity": {
                 "id": 1,
                 "image": "https://capitalcampaignpro.com/wp-content/uploads/2023/02/capital-campaign-volunteers.jpg",
                 "email": "activity1@example.com",
@@ -4150,7 +4145,7 @@
         },
         {
             "id": 7,
-            "activity" : {
+            "activity": {
                 "id": 1,
                 "image": "https://capitalcampaignpro.com/wp-content/uploads/2023/02/capital-campaign-volunteers.jpg",
                 "email": "activity1@example.com",
@@ -4174,7 +4169,7 @@
         },
         {
             "id": 8,
-            "activity" : {
+            "activity": {
                 "id": 1,
                 "image": "https://capitalcampaignpro.com/wp-content/uploads/2023/02/capital-campaign-volunteers.jpg",
                 "email": "activity1@example.com",
@@ -4198,7 +4193,7 @@
         },
         {
             "id": 9,
-            "activity" : {
+            "activity": {
                 "id": 1,
                 "image": "https://capitalcampaignpro.com/wp-content/uploads/2023/02/capital-campaign-volunteers.jpg",
                 "email": "activity1@example.com",
@@ -4222,7 +4217,7 @@
         },
         {
             "id": 10,
-            "activity" : {
+            "activity": {
                 "id": 1,
                 "image": "https://capitalcampaignpro.com/wp-content/uploads/2023/02/capital-campaign-volunteers.jpg",
                 "email": "activity1@example.com",
@@ -4245,120 +4240,228 @@
             "createdAt": "2024-04-28"
         }
     ],
-    "DeleteActivityForms" : [
-            {
-              "id": 1,
-              "activity_id": 101,
-              "reason": "Not satisfied with the event content",
-              "isAccept": false,
-              "createdAt": "2024-05-15",
-              "createdBy": 123
-            },
-            {
-              "id": 2,
-              "activity_id": 102,
-              "reason": "Unexpected schedule conflict",
-              "isAccept": true,
-              "createdAt": "2024-05-16",
-              "createdBy": 456
-            },
-            {
-              "id": 3,
-              "activity_id": 103,
-              "reason": "Personal reasons",
-              "isAccept": false,
-              "createdAt": "2024-05-14",
-              "createdBy": 789
-            },
-            {
-                "id": 4,
-                "activity_id": 104,
-                "reason": "Not satisfied with the event content",
-                "isAccept": false,
-                "createdAt": "2024-05-15",
-                "createdBy": 123
-            },
-            {
-                "id": 5,
-                "activity_id": 105,
-                "reason": "Not satisfied with the event content",
-                "isAccept": false,
-                "createdAt": "2024-05-15",
-                "createdBy": 123
-            },
-            {
-                "id": 6,
-                "activity_id": 106,
-                "reason": "Not satisfied with the event content",
-                "isAccept": false,
-                "createdAt": "2024-05-15",
-                "createdBy": 123
-            },
-            {
-                "id": 7,
-                "activity_id": 107,
-                "reason": "Not satisfied with the event content",
-                "isAccept": false,
-                "createdAt": "2024-05-15",
-                "createdBy": 123
-            },
-            {
-                "id": 8,
-                "activity_id": 108,
-                "reason": "Not satisfied with the event content",
-                "isAccept": false,
-                "createdAt": "2024-05-15",
-                "createdBy": 123
-            }
-          
-    ],
-    "ManagementActicity" : 
-    [
+    "DeleteActivityForms": [
         {
-          "activity_id": 1,
-          "image": "https://capitalcampaignpro.com/wp-content/uploads/2023/02/capital-campaign-volunteers.jpg",
-          "email": "activity1@example.com",
-          "name": "Activity 1",
-          "type": 1,
-          "dateStart": "2024-04-01",
-          "dateEnd": "2024-04-15",
-          "country": 4,
-          "organization_id": 1
+            "id": 1,
+            "activity_id": 101,
+            "reason": "Not satisfied with the event content",
+            "isAccept": false,
+            "createdAt": "2024-05-15",
+            "createdBy": 123
         },
         {
-          "activity_id": 2,
-          "image": "https://capitalcampaignpro.com/wp-content/uploads/2023/02/capital-campaign-volunteers.jpg",
-          "email": "activity2@example.com",
-          "name": "Activity 2",
-          "type": 2,
-          "dateStart": "2024-04-01",
-          "dateEnd": "2024-04-15",
-          "country": 3,
-          "organization_id": 1
+            "id": 2,
+            "activity_id": 102,
+            "reason": "Unexpected schedule conflict",
+            "isAccept": true,
+            "createdAt": "2024-05-16",
+            "createdBy": 456
         },
         {
-          "activity_id": 3,
-          "image": "https://capitalcampaignpro.com/wp-content/uploads/2023/02/capital-campaign-volunteers.jpg",
-          "email": "activity3@example.com",
-          "name": "Activity 3",
-          "type": 3,
-          "dateStart": "2024-04-01",
-          "dateEnd": "2024-04-15",
-          "country": 2,
-          "organization_id": 1
+            "id": 3,
+            "activity_id": 103,
+            "reason": "Personal reasons",
+            "isAccept": false,
+            "createdAt": "2024-05-14",
+            "createdBy": 789
         },
         {
-          "activity_id": 4,
-          "image": "https://capitalcampaignpro.com/wp-content/uploads/2023/02/capital-campaign-volunteers.jpg",
-          "email": "activity4@example.com",
-          "name": "Activity 4",
-          "type": 4,
-          "dateStart": "2024-04-01",
-          "dateEnd": "2024-04-15",
-          "country": 1,
-          "organization_id": 1
+            "id": 4,
+            "activity_id": 104,
+            "reason": "Not satisfied with the event content",
+            "isAccept": false,
+            "createdAt": "2024-05-15",
+            "createdBy": 123
+        },
+        {
+            "id": 5,
+            "activity_id": 105,
+            "reason": "Not satisfied with the event content",
+            "isAccept": false,
+            "createdAt": "2024-05-15",
+            "createdBy": 123
+        },
+        {
+            "id": 6,
+            "activity_id": 106,
+            "reason": "Not satisfied with the event content",
+            "isAccept": false,
+            "createdAt": "2024-05-15",
+            "createdBy": 123
+        },
+        {
+            "id": 7,
+            "activity_id": 107,
+            "reason": "Not satisfied with the event content",
+            "isAccept": false,
+            "createdAt": "2024-05-15",
+            "createdBy": 123
+        },
+        {
+            "id": 8,
+            "activity_id": 108,
+            "reason": "Not satisfied with the event content",
+            "isAccept": false,
+            "createdAt": "2024-05-15",
+            "createdBy": 123
         }
-    
-      ]
-    
+    ],
+    "ManagementActicity": [
+        {
+            "activity_id": 1,
+            "image": "https://capitalcampaignpro.com/wp-content/uploads/2023/02/capital-campaign-volunteers.jpg",
+            "email": "activity1@example.com",
+            "name": "Activity 1",
+            "type": 1,
+            "dateStart": "2024-04-01",
+            "dateEnd": "2024-04-15",
+            "country": 4,
+            "organization_id": 1
+        },
+        {
+            "activity_id": 2,
+            "image": "https://capitalcampaignpro.com/wp-content/uploads/2023/02/capital-campaign-volunteers.jpg",
+            "email": "activity2@example.com",
+            "name": "Activity 2",
+            "type": 2,
+            "dateStart": "2024-04-01",
+            "dateEnd": "2024-04-15",
+            "country": 3,
+            "organization_id": 1
+        },
+        {
+            "activity_id": 3,
+            "image": "https://capitalcampaignpro.com/wp-content/uploads/2023/02/capital-campaign-volunteers.jpg",
+            "email": "activity3@example.com",
+            "name": "Activity 3",
+            "type": 3,
+            "dateStart": "2024-04-01",
+            "dateEnd": "2024-04-15",
+            "country": 2,
+            "organization_id": 1
+        },
+        {
+            "activity_id": 4,
+            "image": "https://capitalcampaignpro.com/wp-content/uploads/2023/02/capital-campaign-volunteers.jpg",
+            "email": "activity4@example.com",
+            "name": "Activity 4",
+            "type": 4,
+            "dateStart": "2024-04-01",
+            "dateEnd": "2024-04-15",
+            "country": 1,
+            "organization_id": 1
+        }
+    ],
+    "notiList": [
+        {
+            "id": 1,
+            "title": "Thông báo quan trọng",
+            "status": 0,
+            "image": "https://capitalcampaignpro.com/wp-content/uploads/2023/02/capital-campaign-volunteers.jpg",
+            "account_id": 123,
+            "content": "Đã có cập nhật mới, vui lòng kiểm tra.",
+            "createdAt": "2024-05-25",
+            "type" : 1,
+            "idTO" : 1 
+        },
+        {
+            "id": 2,
+            "title": "Thông báo hệ thống",
+            "status": 1,
+            "image": "https://capitalcampaignpro.com/wp-content/uploads/2023/02/capital-campaign-volunteers.jpg",
+            "account_id": 456,
+            "content": "Hệ thống sẽ được bảo trì vào ngày mai.",
+            "createdAt": "2024-05-24",
+            "type" : null,
+            "idTO" : null 
+        },
+        {
+            "id": 3,
+            "title": "Thông báo sự kiện",
+            "status": 0,
+            "image": "https://capitalcampaignpro.com/wp-content/uploads/2023/02/capital-campaign-volunteers.jpg",
+            "account_id": 789,
+            "content": "Sự kiện mới sẽ diễn ra vào tuần sau.",
+            "createdAt": "2024-05-23",
+            "type" : 2,
+            "idTO" : 1 
+        },
+        {
+            "id": 4,
+            "title": "Thông báo quan trọng",
+            "status": 0,
+            "image": "https://capitalcampaignpro.com/wp-content/uploads/2023/02/capital-campaign-volunteers.jpg",
+            "account_id": 123,
+            "content": "Hãy cập nhật thông tin cá nhân của bạn.",
+            "createdAt": "2024-05-22",
+            "type" : 4,
+            "idTO" : 1 
+        },
+        {
+            "id": 5,
+            "title": "Thông báo hệ thống",
+            "status": 1,
+            "image": null,
+            "account_id": 456,
+            "content": "Dịch vụ sẽ tạm thời ngừng hoạt động vào cuối tuần này.",
+            "createdAt": "2024-05-21",
+            "type" : 3,
+            "idTO" : 2
+        },
+        {
+            "id": 6,
+            "title": "Thông báo khuyến mãi",
+            "status": 0,
+            "image": "https://capitalcampaignpro.com/wp-content/uploads/2023/02/capital-campaign-volunteers.jpg",
+            "account_id": 789,
+            "content": "Chương trình khuyến mãi kéo dài đến hết tháng này.",
+            "createdAt": "2024-05-20",
+            "type" : 4,
+            "idTO" : 1 
+        },
+        {
+            "id": 7,
+            "title": "Thông báo sự cố",
+            "status": 0,
+            "image": "https://capitalcampaignpro.com/wp-content/uploads/2023/02/capital-campaign-volunteers.jpg",
+            "account_id": 123,
+            "content": "Hiện có sự cố kỹ thuật, chúng tôi đang tiến hành khắc phục.",
+            "createdAt": "2024-05-19",
+            "type" : null,
+            "idTO" : null 
+        },
+        {
+            "id": 8,
+            "title": "Thông báo quan trọng",
+            "status": 1,
+            "image": "https://capitalcampaignpro.com/wp-content/uploads/2023/02/capital-campaign-volunteers.jpg",
+            "account_id": 456,
+            "content": "Vui lòng thay đổi mật khẩu định kỳ.",
+            "createdAt": "2024-05-18",
+            "type" : 3,
+            "idTO" : 2
+        },
+        {
+            "id": 9,
+            "title": "Thông báo sự kiện",
+            "status": 0,
+            "image": "https://capitalcampaignpro.com/wp-content/uploads/2023/02/capital-campaign-volunteers.jpg",
+            "account_id": 789,
+            "content": "Đăng ký tham gia sự kiện trong ngày hôm nay.",
+            "createdAt": "2024-05-17",
+            "type" : 2,
+            "idTO" : 1 
+        },
+        {
+            "id": 10,
+            "title": "Thông báo hệ thống",
+            "status": 0,
+            "image": "https://capitalcampaignpro.com/wp-content/uploads/2023/02/capital-campaign-volunteers.jpg",
+            "account_id": 123,
+            "content": "Dịch vụ sẽ được nâng cấp vào tháng sau.",
+            "createdAt": "2024-05-16",
+            "type" : 3,
+            "idTO" : 1 
+        }
+    ]
 }

@@ -7,6 +7,7 @@ import {
 } from "@ant-design/icons";
 import { useNavigate } from "react-router-dom";
 import useAuth from "../../../hooks/useAuth";
+import { ICONS } from "../../../constants/icons";
 
 import("./index.scss");
 
@@ -26,7 +27,7 @@ const useDropdownNavigation = () => {
                 localStorage.removeItem("token");
             };
             callFunction();
-            console.log('logout')
+            console.log("logout");
         };
 
         const itemsCandidate = [
@@ -103,7 +104,9 @@ const useDropdownNavigation = () => {
                 label: (
                     <div
                         class="item-wrapper"
-                        onClick={()=>{navigate('/profile/personInfo')}}
+                        onClick={() => {
+                            navigate("/profile/personInfo");
+                        }}
                     >
                         <UserOutlined className="item-icon" />
                         <p class="item-title">Person info</p>
@@ -155,7 +158,9 @@ const useDropdownNavigation = () => {
                 label: (
                     <div
                         class="item-wrapper"
-                        onClick={()=>{navigate('/profile/personInfo')}}
+                        onClick={() => {
+                            navigate("/profile/personInfo");
+                        }}
                     >
                         <UserOutlined className="item-icon" />
                         <p class="item-title">Person info</p>
@@ -222,7 +227,82 @@ const useDropdownNavigation = () => {
         }));
     };
 
-    return { getItemDropDownAccount, getItemDropDownSearchPost };
+    const getItemDropDownNoti = (notifications, updateStatusNoti) => {
+        const onClickNoti = (type, idTO, status, idNoti) => {
+
+            if(status===1)
+            {
+                updateStatusNoti(0, idNoti)
+            }
+
+            if (type === 1) {
+                navigate("/post-detail/" + idTO);
+            } else if (type === 2) {
+                navigate("/post-detail/" + idTO);
+            } else if (type === 3) {
+                navigate("/activity-detail/" + idTO);
+            } else if (type === 4) {
+                navigate("/activity-detail/" + idTO);
+            }
+        };
+
+        return notifications.length !== 0
+            ? notifications.map((noti) => ({
+                  key: noti.id,
+                  label: (
+                      <div
+                          class={`noti-item-wrapper ${
+                              noti.status === 1 && "noRead-noti-item"
+                          }`}
+                          onClick={() => onClickNoti(noti.type, noti.idTO, noti.status, noti.id)}
+                      >
+                          <img
+                              alt="noti-icon"
+                              src={noti.image ? noti.image : ICONS.iconNoNoti}
+                              class="noti-item-icon"
+                          />
+                          <div class="noti-item-content-wrapper">
+                              <p
+                                  class={`noti-item-content ${
+                                      noti.status === 1 &&
+                                      "noRead-noti-item-content"
+                                  }`}
+                              >
+                                  {noti.content}
+                              </p>
+                              <p class="noti-item-create-date">
+                                  {noti.createdAt}
+                              </p>
+                          </div>
+                      </div>
+                  ),
+              }))
+            : [
+                  {
+                      key: "no-notifications",
+                      label: (
+                          <div class={`noti-item-wrapper`}>
+                              <img
+                                  alt="noti-icon"
+                                  src={ICONS.iconNoNoti}
+                                  class="noti-item-icon"
+                              />
+                              <div class="noti-item-content-wrapper">
+                                  <p class="noti-item-content">
+                                      You don't have any notification
+                                  </p>
+                              </div>
+                          </div>
+                      ),
+                  },
+              ];
+    };
+
+    return {
+        getItemDropDownAccount,
+        getItemDropDownSearchPost,
+        getItemDropDownNoti,
+    };
 };
 
 export default useDropdownNavigation;

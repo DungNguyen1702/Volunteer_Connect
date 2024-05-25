@@ -30,6 +30,7 @@ html, body {
         margin-left: 20px;
         height: 80px;
         width: 80px;
+        cursor: pointer;
     }
 
     & .button-group-left {
@@ -120,6 +121,11 @@ html, body {
             }
         }
     }
+}
+
+.header-role-icon {
+    height: 30px;
+    width: 30px;
 }
 
 .account-name {

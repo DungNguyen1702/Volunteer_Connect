@@ -20,7 +20,7 @@ import postAPI from "../../api/postAPI";
 import checkTokenAPI from "../../api/checkToken";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { Menu } from "antd";
+import fakeData from "../../data/fake_data.json";
 
 const TruncateText = (text, maxLength) => {
     if (text.length <= maxLength) {
@@ -41,22 +41,29 @@ const getNotificationsAPI = async () => {
         }, 1000);
     });
 };
+
 function Header(props) {
     const activeButton = props.stateButton;
     const navigate = useNavigate();
-    const { getItemDropDownAccount, getItemDropDownSearchPost } =
-        useDropdownNavigation();
+    const {
+        getItemDropDownAccount,
+        getItemDropDownSearchPost,
+        getItemDropDownNoti,
+    } = useDropdownNavigation();
     const [search, setSearch] = useState("");
     const [listPosts, setListPosts] = useState([]);
     const [filterPosts, setFilterPosts] = useState(listPosts);
-    const [notifications, setNotifications] = useState([]);
+    const [notifications, setNotifications] = useState(fakeData.notiList);
+    const [numberOfNoti, setNumberOfNoti] = useState(0);
+    
     const { account, setAccount, setToken, token } = useAuth();
+
 
     useEffect(() => {
         const fetchNotifications = async () => {
             try {
-                const response = await getNotificationsAPI();
-                setNotifications(response.data);
+                // const response = await getNotificationsAPI();
+                // setNotifications(response.data);
             } catch (error) {
                 console.error("Error fetching notifications:", error);
             }
@@ -117,8 +124,9 @@ function Header(props) {
         getAllPostApi();
     }, []);
 
-    const numberOfNoti = 10;
-    const numberOfChat = 10;
+    useEffect(()=>{
+        setNumberOfNoti(notifications.filter(noti=> noti.status === 1).length)
+    },[notifications])
 
     const clickHomePage = () => {
         navigate("/user-homepage");
@@ -162,12 +170,20 @@ function Header(props) {
     const onClickLogo = () => {
         navigate("/user-homepage");
     };
-    const notificationMenuItems = notifications.length
-        ? notifications.map((noti, index) => ({
-              key: index,
-              label: noti.content,
-          }))
-        : [{ key: "no-notifications", label: "No notifications" }];
+
+    const updateStatusNoti = (status, idNoti)=>{
+        setNotifications(notifications.map((noti)=>{
+            if(noti.id === idNoti)
+            {
+                return {...noti, status : 0}
+            }
+                return noti
+        }))
+    }
+
+    const addNoti = (noti)=>{
+        setNotifications([...notifications, noti])
+    }
 
     return (
         <div class="header-container">
@@ -282,7 +298,7 @@ function Header(props) {
                 <div class="header-wrapper button-group-right">
                     {account && (
                         <>
-                            <Badge count={numberOfChat} overflowCount={9}>
+                            <Badge overflowCount={9}>
                                 <Button
                                     className={`header-wrapper button-group-right button`}
                                     onClick={clickChat}
@@ -291,10 +307,10 @@ function Header(props) {
                             </Badge>
                             <Dropdown
                                 menu={{
-                                    items: notificationMenuItems,
+                                    items: getItemDropDownNoti(notifications, updateStatusNoti),
                                 }}
                                 trigger={["click"]}
-                                placement="bottomRight"
+                                placement="bottomLeft"
                             >
                                 <Badge count={numberOfNoti} overflowCount={9}>
                                     <Button
@@ -307,6 +323,27 @@ function Header(props) {
                         </>
                     )}
                 </div>
+
+                {account &&
+                    (account.role === 1 ? (
+                        <img
+                            alt="role-icon"
+                            src={ICONS.candidateIcon}
+                            class="header-role-icon"
+                        />
+                    ) : account.role === 2 ? (
+                        <img
+                            alt="role-icon"
+                            src={ICONS.orgIcon}
+                            class="header-role-icon"
+                        />
+                    ) : (
+                        <img
+                            alt="role-icon"
+                            src={ICONS.adminIcon}
+                            class="header-role-icon"
+                        />
+                    ))}
 
                 <div class="header-wrapper account-info">
                     {account ? (
