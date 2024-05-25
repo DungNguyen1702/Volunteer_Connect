@@ -9,10 +9,12 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import com.PBL5.VolunteerConnection.model.Candidate;
+import com.PBL5.VolunteerConnection.model.Notification;
 import com.PBL5.VolunteerConnection.model.Task;
 import com.PBL5.VolunteerConnection.model.User;
 import com.PBL5.VolunteerConnection.repository.ActivityRepository;
 import com.PBL5.VolunteerConnection.repository.CandidateRepository;
+import com.PBL5.VolunteerConnection.repository.NotificationRepository;
 import com.PBL5.VolunteerConnection.repository.TaskRepository;
 import com.PBL5.VolunteerConnection.repository.UserRespository;
 import com.PBL5.VolunteerConnection.request.TaskRequest;
@@ -31,6 +33,8 @@ public class TaskServiceImpl implements TaskService {
     private JwtService jwtService;
     @Autowired
     private UserRespository userRespository;
+    @Autowired
+    private NotificationRepository notificationRepository;
 
     @Override
     public StatusResponse createTask(String token, TaskRequest task) {
@@ -41,11 +45,24 @@ public class TaskServiceImpl implements TaskService {
             if (account_id == organizationId) {
                 Task createdTask = new Task(task.getDateStart(), task.getDateEnd(), task.getDescription(),
                         task.getTitle(), task.getStatus(), task.getTableTaskId(), task.getCandidateId());
+
+                // find id to send notification
+
                 if (task.getCandidateId() != null) {
                     Candidate candidate1 = candidateRepository.findById((int) task.getCandidateId());
                     createdTask.setCandidate(candidate1);
+                    int idNo = candidate1.getUser().getAccountId();
+                    String title = "New Task Assigned";
+                    String content = "You have been assigned a new task. Please check your tasks list for details.";
+                    String image = "http://res.cloudinary.com/deei5izfg/image/upload/v1716544153/Mobile/lokf1wpzdlx7hhfyldiq.png";
+                    Notification notification = new Notification(title, idNo, content, image);
+                    notification.setType(3);
+                    notification.setIdTO(task.getActivityId());
+                    notificationRepository.save(notification);
                 }
+
                 taskRepository.save(createdTask);
+
                 return StatusResponse.builder()
                         .success(ResponseEntity.status(HttpStatus.CREATED)
                                 .body("Task has been created sucessfully!!"))
@@ -127,7 +144,17 @@ public class TaskServiceImpl implements TaskService {
                 // if (task.getCandidateId() != null) {
                 updateTask.setCandidate(candidateTemp);
                 // }
-
+                if (task.getCandidateId() != null) {
+                    Candidate candidate1 = candidateRepository.findById((int) task.getCandidateId());
+                    int idNo = candidate1.getUser().getAccountId();
+                    String title = "New Task Assigned";
+                    String content = "You have been assigned a new task. Please check your tasks list for details.";
+                    String image = "http://res.cloudinary.com/deei5izfg/image/upload/v1716544153/Mobile/lokf1wpzdlx7hhfyldiq.png";
+                    Notification notification = new Notification(title, idNo, content, image);
+                    notification.setType(3);
+                    notification.setIdTO(task.getActivityId());
+                    notificationRepository.save(notification);
+                }
                 // System.out.println(updateTask.getCandidate().getId());
                 taskRepository.save(updateTask);
                 return StatusResponse.builder()
