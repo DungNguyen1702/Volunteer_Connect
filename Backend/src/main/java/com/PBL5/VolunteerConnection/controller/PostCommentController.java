@@ -23,7 +23,7 @@ public class PostCommentController {
     @Autowired
     private PostCommentService postCommentService;
 
-    @MessageMapping("/create")
+    @PostMapping("/create")
     ResponseEntity<StatusResponse> createPostComment(@RequestHeader("Authorization") String token,
             @RequestBody PostCommentRequest postCommentRequest) {
         token = token.substring("Bearer ".length());
