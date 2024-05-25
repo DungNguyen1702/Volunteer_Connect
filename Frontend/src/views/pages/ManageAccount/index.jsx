@@ -1,22 +1,23 @@
 import React, { useEffect, useState } from "react";
 import "./index.scss";
-import DataTable, { createTheme } from "react-data-table-component";
+import DataTable from "react-data-table-component";
 import accountAPI from "../../../api/accountAPI";
 import { ROLE } from "../../../constants/account_role";
 import SupportFunction from "../../../support/support_function";
+import { toast } from "react-toastify";
+import sendMailAPI from "../../../api/sendMail";
 
 function ManageAccount() {
-
     const [originalRecords, setOriginalRecords] = useState([]);
     const [records, setRecords] = useState([]);
+    const [listAccount, setListAccount] = useState([]);
 
     const deleteAccount = async (accId) => {
         try {
             await accountAPI.deleteAccount(accId);
-            const newListAccount = listAccount.filter(account => account.id !== accId);
-            setListAccount(newListAccount);
-            setRecords(newListAccount); 
-            setOriginalRecords(newListAccount); 
+            const newRecords = records.filter((record) => record.id !== accId);
+            setOriginalRecords(newRecords);
+            setRecords(newRecords);
             toast.success("Delete account successfully");
         } catch (error) {
             console.log(error);
@@ -26,22 +27,34 @@ function ManageAccount() {
 
     useEffect(() => {
         const callApi = async () => {
-          await accountAPI
-            .getAllAccountByAdmin()
-            .then((response) => {
-              console.log(response.data);
-              setOriginalRecords(response.data);
-              setRecords(response.data);
-            })
-            .catch((error) => console.log(error));
+            try {
+                const response = await accountAPI.getAllAccountByAdmin();
+                setOriginalRecords(response.data);
+                setRecords(response.data);
+            } catch (error) {
+                console.log(error);
+            }
         };
         callApi();
-      }, []);
-    const onClickDelete = () => {
-        deleteAccount(records.id)
-    }
-    const onClickChange = () => {
-    }
+    }, []);
+
+    const onClickDelete = (id) => {
+        deleteAccount(id);
+    };
+
+    const onClickChange = (id) => {
+        //Mở khóa tai khoan
+        console.log("Change account with ID:", id);
+    };
+    const onClickMail = async (email) => {
+        try {
+            await sendMailAPI.sendVerifyEmail(email);
+            toast.success("Verification email sent successfully");
+        } catch (error) {
+            toast.error("Failed to send verification email");
+        }
+    };
+
     const columns = [
         {
             name: "ID",
@@ -49,14 +62,12 @@ function ManageAccount() {
             sortable: true,
         },
         {
-            name: 'Account',
-            selector: row => row.account,
-
+            name: "Account",
+            selector: (row) => row.account,
         },
         {
-            name: 'Password',
-            selector: row => row.password,
-
+            name: "Locked",
+            selector: (row) => (row.isDeleted ? "Locked" : ""),
         },
         {
             name: "Name",
@@ -64,9 +75,8 @@ function ManageAccount() {
             sortable: true,
         },
         {
-            name: 'Role',
-            selector: row => ROLE[row.role],
-
+            name: "Role",
+            selector: (row) => ROLE[row.role],
         },
         {
             name: "Create at",
@@ -84,23 +94,52 @@ function ManageAccount() {
             name: "Action",
             cell: (row) => (
                 <div className="center-content">
-                    <button className="btn-Edit" onClick={onClickChange}>
-                        <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke-width="1.5"
-                            stroke="currentColor"
-                            class="w-6 h-6"
+                    {row.isDeleted && (
+                        <button
+                            className="btn-Edit"
+                            onClick={() => onClickChange(row.id)}
                         >
-                            <path
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                                d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L10.582 16.07a4.5 4.5 0 0 1-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 0 1 1.13-1.897l8.932-8.931Zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0 1 15.75 21H5.25A2.25 2.25 0 0 1 3 18.75V8.25A2.25 2.25 0 0 1 5.25 6H10"
-                            />
-                        </svg>
-                    </button>
-                    <button className="btn-Del" onClick={onClickDelete}>
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                strokeWidth="1.5"
+                                stroke="currentColor"
+                                className="w-6 h-6"
+                            >
+                                <path
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                    d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L10.582 16.07a4.5 4.5 0 0 1-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 0 1 1.13-1.897l8.932-8.931Zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0 1 15.75 21H5.25A2.25 2.25 0 0 1 3 18.75V8.25A2.25 2.25 0 0 1 5.25 6H10"
+                                />
+                            </svg>
+                        </button>
+                    )}
+                    {row.role === 2 && (
+                        <button
+                            className="btn-mail"
+                            onClick={() => onClickMail(row.account)}
+                        >
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                strokeWidth={1.5}
+                                stroke="currentColor"
+                                className="size-6"
+                            >
+                                <path
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                    d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75"
+                                />
+                            </svg>
+                        </button>
+                    )}
+                    <button
+                        className="btn-Del"
+                        onClick={() => onClickDelete(row.id)}
+                    >
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
                             fill="none"
@@ -120,11 +159,11 @@ function ManageAccount() {
             ),
         },
     ];
+
     function handleFilter(event) {
         const value = event.target.value.toLowerCase();
         const newData = originalRecords.filter((row) => {
-            return row.id.toString().toLowerCase().includes(value);
-            //return row.name.toLowerCase().includes(event.target.value.toLowerCase());
+            return row.name.toString().toLowerCase().includes(value);
         });
         setRecords(newData);
     }

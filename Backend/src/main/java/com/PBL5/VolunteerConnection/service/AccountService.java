@@ -27,4 +27,6 @@ public interface AccountService {
     StatusResponse backUpAccount(int id);
     StatusResponse deleteAccountByAdnmin(int id);
     StatusResponse updateAccountByAdmin(AccountRequest accountRequest);
+    StatusResponse resetPassword(String token, String newPassword);
+    StatusResponse activeAccount(String token);
 }

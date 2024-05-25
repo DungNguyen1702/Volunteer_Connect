@@ -6,6 +6,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.format.DateTimeFormatter;
+
 @Data
 @Builder
 @AllArgsConstructor
@@ -22,8 +24,9 @@ public class ChatResponse {
         this.senderId = chat.getSenderId();
         this.receiverId = chat.getReceiverId();
         this.content = chat.getContent();
-        this.createdAt = chat.getCreatedAt() != null ? chat.getCreatedAt().toString().replace("T", " ") : null;
+        this.createdAt = chat.getCreatedAt() != null ? chat.getCreatedAt().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")) : null;
 
     }
+
 
 }

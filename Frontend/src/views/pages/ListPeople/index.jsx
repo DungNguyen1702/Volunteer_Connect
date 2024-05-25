@@ -247,7 +247,7 @@ function ListPeople() {
                                 ))}
                             </div>
                             <Pagination
-                                total={listAllOrganization.length}
+                                total={listAllCandidate.length}
                                 pageSize={limit}
                                 onChange={onChangePageCan}
                                 className="list-people-pagination"

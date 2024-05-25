@@ -26,7 +26,7 @@ public class MessageResponse {
     private Boolean isDeleted;
     private String backgroundNoAva;
     private ChatResponse chat;
-    public MessageResponse(MessageRequest messageRequest, Chat chat){
+    public MessageResponse(MessageRequest messageRequest, ChatResponse chat){
         this.id = messageRequest.getSenderInfo().getId();
         this.account = messageRequest.getSenderInfo().getAccount();
         this.name = messageRequest.getSenderInfo().getName();
@@ -36,7 +36,7 @@ public class MessageResponse {
         this.createdAt = messageRequest.getSenderInfo().getCreatedAt();
         this.updatedAt = messageRequest.getSenderInfo().getUpdatedAt();
         this.backgroundNoAva = messageRequest.getSenderInfo().getBackgroundNoAva();
-        this.chat = new ChatResponse(chat);
+        this.chat = chat;
 //        this.id = messageRequest.getSenderInfo().getId();
     }
 }

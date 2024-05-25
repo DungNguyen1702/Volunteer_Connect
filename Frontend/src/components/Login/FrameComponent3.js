@@ -4,7 +4,7 @@ import "./FrameComponent3.module.scss";
 import { Button, Input } from "antd";
 import "react-toastify/dist/ReactToastify.css";
 import { toast } from "react-toastify";
-import auth from "../../api/authAPI";
+import authAPI from "../../api/authAPI";
 import useAuth from "../../hooks/useAuth";
 import { useNavigate } from "react-router-dom";
 import axiosClient from "../../api/axiosClient";
@@ -25,10 +25,9 @@ const FrameComponent = () => {
     };
     const navigate = useNavigate();
 
-    const onRegister = ()=>
-    {
-        navigate('/auth/register')
-    }
+    const onRegister = () => {
+        navigate("/auth/register");
+    };
 
     const onClickLogin = () => {
         const callAPI = async () => {
@@ -38,7 +37,7 @@ const FrameComponent = () => {
                     password: password,
                 };
 
-                const response = await auth.login(values);
+                const response = await authAPI.login(values);
 
                 if (response.data.error_message) {
                     toast.error(response.data.error_message);
@@ -63,6 +62,13 @@ const FrameComponent = () => {
             checkTokenAPI
                 .checkToken(token)
                 .then((response) => {
+                    if(response.data === false)
+                    {
+                        delete axiosClient.application.defaults.headers.common[
+                            "Authorization"
+                        ];
+                        callAPI();
+                    }
                     navigate("/user-homepage");
                 })
                 .catch((error) => {
@@ -77,6 +83,10 @@ const FrameComponent = () => {
             ];
             callAPI();
         }
+    };
+
+    const onClickForgotPassword = () => {
+        navigate("/auth/forgot-password");
     };
 
     return (
@@ -116,7 +126,10 @@ const FrameComponent = () => {
                             />
                         </div>
                         <div className={styles.forgotPasswordOption}>
-                            <div className={styles.forgotPassword1}>
+                            <div
+                                className={styles.forgotPassword1}
+                                onClick={onClickForgotPassword}
+                            >
                                 Forgot password
                             </div>
                         </div>
@@ -183,10 +196,9 @@ const FrameComponent = () => {
                         <span
                             className={styles.dontHaveAn}
                         >{`Don’t have an account?  `}</span>
-                        <span 
-                            className={styles.signUp}
-                            onClick={onRegister}
-                        >Sign Up</span>
+                        <span className={styles.signUp} onClick={onRegister}>
+                            Sign Up
+                        </span>
                     </h3>
                 </div>
             </div>

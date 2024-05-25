@@ -1,0 +1,123 @@
+@import '../../../constants/colors.scss';
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    font-size: 15px;
+    background-color: $background;
+}
+
+.auth-announcement-wrapper {
+    display: flex;
+    justify-content: space-around;
+    align-items: center; 
+    width: 100%;
+    height: 100vh;
+}
+
+.image-auth {
+    height: 650px;
+    width: 500px;
+}
+
+.logo-website {
+    height: 200px;
+    width: 200px;
+}
+
+.button-auth {
+    background-color: $button !important;
+    color : $white !important;
+}
+
+.button-auth:hover {
+    background-color: $white !important;
+    color : $button !important;
+    border: 1px solid !important;
+}
+
+.website-title {
+    color : $button;
+}
+
+.website-header {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.auth-announcement-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 50%;
+}
+
+.auth-announcement-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 40px 0px;
+
+}
+
+.auth-announcement-title {
+    width: 100%;
+    margin-bottom: 3px;
+    color : $accent;
+    font-weight: 500;
+}
+
+.input-email {
+    width: 600px !important;
+    border: 0.2px solid $button;
+    margin-bottom: 20px;
+}
+
+.auth-announcement-footer {
+    display: flex;
+    width: 80%;
+    justify-content: space-around;
+    margin-top: 20px;
+
+}
+
+.auth-announcement-footer-item {
+    color : black;
+}
+
+.auth-announcement-click {
+    font-weight: 700;
+    color : $accent;
+    cursor: pointer;
+}
+
+.margin-top-10 {
+    margin-top: 10px;
+    color : $button_orange;
+}
+
+.success-message {
+    color : $success;
+}
+
+.fail-message {
+    color : $danger
+}
+
+.auth-icon {
+    height: 100px;
+    width: 100px;
+    margin : 10px 0px;
+}
+
+.message-style {
+    max-width: 600px;
+    margin-top: 10px;
+    text-align: center;
+    font-weight: 500;
+}

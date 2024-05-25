@@ -37,5 +37,6 @@ export const ICONS = {
     TaskInActive : require('../assets/icons/TaskIconInActive.png'),
     PostActive : require('../assets/icons/PostIconActive.png'),
     PostInActive : require('../assets/icons/PostIconInActive.png'),
-    
+    failIcon : require("../assets/icons/failIcon.png"),
+    successIcon : require("../assets/icons/successIcon.png"),
 };

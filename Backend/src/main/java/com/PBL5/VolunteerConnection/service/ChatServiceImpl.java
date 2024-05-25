@@ -15,6 +15,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.*;
 
 @Service
@@ -122,7 +123,9 @@ public class ChatServiceImpl implements ChatService{
     public MessageResponse saveAndSend(MessageRequest messageRequest) {
         Chat chat = new Chat(messageRequest.getSenderId(), messageRequest.getReceiverId(), messageRequest.getContent(), LocalDateTime.now());
         chatRepository.save(chat);
-        MessageResponse messageResponse = new MessageResponse(messageRequest, chat);
+        ChatResponse chatResponse = new ChatResponse(chat.getId(), chat.getSenderId(), chat.getReceiverId(), chat.getContent(), LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")));
+
+        MessageResponse messageResponse = new MessageResponse(messageRequest, chatResponse);
         return messageResponse;
     }
 }
