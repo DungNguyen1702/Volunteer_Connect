@@ -123,6 +123,8 @@ function PostDetail() {
     const addPostComment = async (comments, newComment) => {
         try {
             const response = await commentAPI.createPostComment(newComment);
+            
+            
             newComment = { ...newComment, id: response.data.data };
 
             toast.success("commit successfull");

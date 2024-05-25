@@ -228,11 +228,13 @@ const useDropdownNavigation = () => {
     };
 
     const getItemDropDownNoti = (notifications, updateStatusNoti) => {
-        const onClickNoti = (type, idTO, status, idNoti) => {
+        const onClickNoti = (e, type, idTO, status, idNoti) => {
+            // e.domEvent.stopPropagation();
+            console.log(e)
 
-            if(status===1)
+            if(status===0)
             {
-                updateStatusNoti(0, idNoti)
+                updateStatusNoti(1, idNoti)
             }
 
             if (type === 1) {
@@ -252,9 +254,9 @@ const useDropdownNavigation = () => {
                   label: (
                       <div
                           class={`noti-item-wrapper ${
-                              noti.status === 1 && "noRead-noti-item"
+                              noti.status === 0 && "noRead-noti-item"
                           }`}
-                          onClick={() => onClickNoti(noti.type, noti.idTO, noti.status, noti.id)}
+                          onClick={(e) => onClickNoti(e, noti.type, noti.idTO, noti.status, noti.id)}
                       >
                           <img
                               alt="noti-icon"
@@ -264,7 +266,7 @@ const useDropdownNavigation = () => {
                           <div class="noti-item-content-wrapper">
                               <p
                                   class={`noti-item-content ${
-                                      noti.status === 1 &&
+                                      noti.status === 0 &&
                                       "noRead-noti-item-content"
                                   }`}
                               >
