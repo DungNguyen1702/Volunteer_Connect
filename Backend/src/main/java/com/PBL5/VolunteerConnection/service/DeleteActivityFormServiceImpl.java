@@ -10,8 +10,10 @@ import org.springframework.stereotype.Service;
 
 import com.PBL5.VolunteerConnection.model.Activity;
 import com.PBL5.VolunteerConnection.model.DeleteActivityForm;
+import com.PBL5.VolunteerConnection.model.Notification;
 import com.PBL5.VolunteerConnection.repository.ActivityRepository;
 import com.PBL5.VolunteerConnection.repository.DeleteActivityFormRepository;
+import com.PBL5.VolunteerConnection.repository.NotificationRepository;
 import com.PBL5.VolunteerConnection.request.DeleteActivityRequest;
 import com.PBL5.VolunteerConnection.response.DeleteFormResponse;
 import com.PBL5.VolunteerConnection.response.StatusResponse;
@@ -25,6 +27,8 @@ public class DeleteActivityFormServiceImpl implements DeleteActivityFormService 
     private ActivityRepository activityRepository;
     @Autowired
     private JwtService jwtService;
+    @Autowired
+    private NotificationRepository notificationRepository;
 
     @Override
     public StatusResponse createDeleteActivityForm(String token, DeleteActivityRequest deleteActivityForm) {
@@ -82,10 +86,23 @@ public class DeleteActivityFormServiceImpl implements DeleteActivityFormService 
             DeleteActivityForm updateDeleteForm = deleteActivityFormRepository.findById(deleteActivityForm.getId());
             updateDeleteForm.setIsAccept(deleteActivityForm.getIsAccept());
             deleteActivityFormRepository.save(updateDeleteForm);
-            if (deleteActivityForm.getIsAccept() == 2) {
-                Activity activity = activityRepository.findById(updateDeleteForm.getActivity_id());
+            Activity activity = activityRepository.findById(updateDeleteForm.getActivity_id());
+            if (deleteActivityForm.getIsAccept() == 1) {
                 activity.setIsDeleted(true);
                 activityRepository.save(activity);
+                String title = "Post Deletion Approved";
+                String content = "Your request to delete the post titled has been approved.";
+                String image = "http://res.cloudinary.com/deei5izfg/image/upload/v1716543944/Mobile/wfbktxyl8lfdkurcfhkd.png";
+                int id = activity.getOrganizationId();
+                Notification notification = new Notification(title, id, content, image);
+                notificationRepository.save(notification);
+            } else if (deleteActivityForm.getIsAccept() == 2) {
+                String title = "Post Deletion Request Denied";
+                String content = "Your request to delete the post titled 'Sample Post' has been denied. Please review our guidelines or contact support for more details.";
+                String image = "http://res.cloudinary.com/deei5izfg/image/upload/v1716543944/Mobile/wfbktxyl8lfdkurcfhkd.png";
+                int id = activity.getOrganizationId();
+                Notification notification = new Notification(title, id, content, image);
+                notificationRepository.save(notification);
             }
             return StatusResponse.builder()
                     .success(ResponseEntity.status(HttpStatus.ACCEPTED)

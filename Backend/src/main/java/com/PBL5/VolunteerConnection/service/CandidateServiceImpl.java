@@ -16,9 +16,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import com.PBL5.VolunteerConnection.model.Candidate;
-
+import com.PBL5.VolunteerConnection.model.Notification;
 import com.PBL5.VolunteerConnection.repository.ActivityRepository;
 import com.PBL5.VolunteerConnection.repository.CandidateRepository;
+import com.PBL5.VolunteerConnection.repository.NotificationRepository;
 import com.PBL5.VolunteerConnection.request.CandidateRequest;
 import com.PBL5.VolunteerConnection.response.StatusResponse;
 
@@ -32,6 +33,8 @@ public class CandidateServiceImpl implements CandidateService {
     private ActivityRepository activityRepository;
     @Autowired
     private JwtService jwtService;
+    @Autowired
+    private NotificationRepository notificationRepository;
 
     @Override
     public StatusResponse createCandidate(String token, CandidateRequest candidate) {
@@ -72,6 +75,14 @@ public class CandidateServiceImpl implements CandidateService {
                 updateCandidate.setDateCertificate(candidate.getDateCertificate());
                 updateCandidate.setCertificateName(candidate.getCertificateName());
                 candidateRepository.save(updateCandidate);
+                if (candidate.getCertificate() != null) {
+                    String title = "Certificate Awarded";
+                    String content = "Congratulations! You have been awarded a certificate for joining our activity.";
+                    String image = candidate.getCertificate();
+                    int id = updateCandidate.getUser().getAccountId();
+                    Notification notification = new Notification(title, id, content, image);
+                    notificationRepository.save(notification);
+                }
                 return StatusResponse.builder()
                         .success(ResponseEntity.status(HttpStatus.ACCEPTED)
                                 .body("Candidate " + updateCandidate.getUserId() + "has been updated sucessfully!!"))
@@ -150,7 +161,8 @@ public class CandidateServiceImpl implements CandidateService {
             Account account = candidateDetailDTO.getAccount();
             User user = candidateDetailDTO.getUser();
             candidateDetailResponseList.add(new CandidateDetailResponse(candidate.getId(),
-                    new UserDetailResponse(user, account), candidate.getActivityId(),candidate.getCertificateName(), candidate.getCertificate(),
+                    new UserDetailResponse(user, account), candidate.getActivityId(), candidate.getCertificateName(),
+                    candidate.getCertificate(),
                     certificateDate, candidate.getCreatedAt().toString()));
         }
         return candidateDetailResponseList;
@@ -163,7 +175,7 @@ public class CandidateServiceImpl implements CandidateService {
         List<Candidate> candidateList = account.getUser().getCandidates();
         candidateList.removeIf(candidate -> candidate.getCertificate() == null || candidate.getCertificate().isEmpty());
         List<CandidateDetailResponse> candidateDetailResponseList = new ArrayList<>();
-        for (Candidate candidate : candidateList){
+        for (Candidate candidate : candidateList) {
             candidateDetailResponseList.add(new CandidateDetailResponse(candidate.getId(),
                     null, candidate.getActivityId(), candidate.getCertificateName(), candidate.getCertificate(),
                     candidate.getDateCertificate() != null ? candidate.getDateCertificate().toString() : null,

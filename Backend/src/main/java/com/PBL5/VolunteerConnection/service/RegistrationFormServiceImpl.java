@@ -8,10 +8,12 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import com.PBL5.VolunteerConnection.model.Candidate;
+import com.PBL5.VolunteerConnection.model.Notification;
 import com.PBL5.VolunteerConnection.model.RegistrationForm;
 import com.PBL5.VolunteerConnection.model.User;
 import com.PBL5.VolunteerConnection.repository.ActivityRepository;
 import com.PBL5.VolunteerConnection.repository.CandidateRepository;
+import com.PBL5.VolunteerConnection.repository.NotificationRepository;
 import com.PBL5.VolunteerConnection.repository.RegistrationFormRepository;
 import com.PBL5.VolunteerConnection.repository.UserRespository;
 import com.PBL5.VolunteerConnection.request.RegistrationFormRequest;
@@ -29,6 +31,8 @@ public class RegistrationFormServiceImpl implements RegistrationFormService {
     private UserRespository userRespository;
     @Autowired
     private CandidateRepository candidateRepository;
+    @Autowired
+    private NotificationRepository notificationRepository;
 
     @Override
     public StatusResponse createRegistrationForm(String token, RegistrationFormRequest registrationForm) {
@@ -115,17 +119,39 @@ public class RegistrationFormServiceImpl implements RegistrationFormService {
                 RegistrationForm createdForm = registrationFormRepository.findById(registrationForm.getId());
                 createdForm.setIsConfirmed(registrationForm.getIsConfirmed());
                 registrationFormRepository.save(createdForm);
-                Candidate createdCandidate = new Candidate(createdForm.getUserId(), registrationForm.getActivityId(),
-                        "", null);
-                // candidateRepository.save(createdCandidate);
-                User findUser = userRespository.findById(createdForm.getUserId());
-                findUser.getCandidates().add(createdCandidate);
-                createdCandidate.setUser(findUser);
-                // System.out.println(findUser);
-                createdCandidate.setUserId(findUser.getId());
-                candidateRepository.save(createdCandidate);
-                userRespository.save(findUser);
-                return createdCandidate;
+                if (registrationForm.getIsConfirmed() == 1) {
+                    // create candidate
+                    Candidate createdCandidate = new Candidate(createdForm.getUserId(),
+                            registrationForm.getActivityId(),
+                            "", null);
+                    // candidateRepository.save(createdCandidate);
+                    User findUser = userRespository.findById(createdForm.getUserId());
+                    findUser.getCandidates().add(createdCandidate);
+                    createdCandidate.setUser(findUser);
+                    // System.out.println(findUser);
+                    createdCandidate.setUserId(findUser.getId());
+                    candidateRepository.save(createdCandidate);
+                    userRespository.save(findUser);
+
+                    // create notification
+                    String title = "Activity Registration Approved";
+                    String content = "Your registration for the activity has been approved. We look forward to your participation!";
+                    String image = "http://res.cloudinary.com/deei5izfg/image/upload/v1716544095/Mobile/u5k6w45hxt8jxkln62ko.png    ";
+                    int id = userRespository.findById(registrationForm.getUserId()).getAccountId();
+                    Notification notification = new Notification(title, id, content, image);
+                    notification.setType(4);
+                    notification.setIdTO(registrationForm.getActivityId());
+                    notificationRepository.save(notification);
+                    return createdCandidate;
+                } else if (registrationForm.getIsConfirmed() == 2) {
+                    String title = "Activity Registration Denied";
+                    String content = "We regret to inform you that your registration for the activity has been denied. Please contact support for more information.";
+                    String image = "http://res.cloudinary.com/deei5izfg/image/upload/v1716544095/Mobile/u5k6w45hxt8jxkln62ko.png    ";
+                    int id = userRespository.findById(registrationForm.getUserId()).getAccountId();
+                    Notification notification = new Notification(title, id, content, image);
+                    notificationRepository.save(notification);
+                }
+                return null;
             } else {
                 System.out.println("you are not owner");
                 return null;

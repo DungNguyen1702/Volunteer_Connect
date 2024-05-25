@@ -10,7 +10,6 @@ import sendMailAPI from "../../../api/sendMail";
 function ManageAccount() {
     const [originalRecords, setOriginalRecords] = useState([]);
     const [records, setRecords] = useState([]);
-    const [listAccount, setListAccount] = useState([]);
 
     const deleteAccount = async (accId) => {
         try {
