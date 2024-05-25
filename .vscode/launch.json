@@ -19,5 +19,4 @@
             // "args": "--spring.profiles.active=tin"
             // "args": "--spring.profiles.active=dung"
         }
-    ]
-}
+    ]}

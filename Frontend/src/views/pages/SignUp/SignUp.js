@@ -3,7 +3,11 @@ import { useState } from "react";
 import { Button, DatePicker, Input, Radio } from "antd";
 import { useNavigate } from "react-router-dom";
 import moment from "moment";
-import SupportFunction from "../../../support/support_function";
+import Validation from "../../../support/validator";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import authAPI from "../../../api/authAPI";
+import SupportFunction from "../../../support/support_function"
 
 const SignUp = () => {
     const [account, setAccount] = useState("");
@@ -12,7 +16,7 @@ const SignUp = () => {
     const [confirmPassword, setConfirmPassword] = useState("");
     const [tel, setTel] = useState("");
     const [address, setAddress] = useState("");
-    const [gender, setGender] = useState("Nam");
+    const [gender, setGender] = useState("male");
     const [birthday, setBirthday] = useState(null);
     const [role, setRole] = useState(1);
 
@@ -42,7 +46,112 @@ const SignUp = () => {
     const onChangeConfirmPassword = (e) => {
         setConfirmPassword(e.target.value);
     };
-    const onClickLogin = () => {};
+    const onClickRegister = () => {
+        if (
+            account === "" ||
+            name === "" ||
+            password === "" ||
+            confirmPassword === ""
+        ) {
+            toast.error(
+                `${
+                    (account === "" && "Email") ||
+                    (name === "" && "Name") ||
+                    (password === "" && "Password") ||
+                    (confirmPassword === "" && "Confirm password")
+                } can be empty. Please input ${
+                    (account === "" && "email") ||
+                    (name === "" && "name") ||
+                    (password === "" && "password") ||
+                    (confirmPassword === "" && "confirm password")
+                }`
+            );
+            return;
+        }
+        if (role === 1 && (tel === "" || address === "" || birthday === null)) {
+            toast.error(
+                `${
+                    (tel === "" && "Telephone number") ||
+                    (address === "" && "Address") ||
+                    (birthday === null && "Birthday")
+                } can be empty. Please input ${
+                    (tel === "" && "telephone number") ||
+                    (address === "" && "address") ||
+                    (birthday === null && "birthday")
+                }`
+            );
+            return;
+        }
+
+        // valid
+        if (!Validation.ValidateEmail(account)) {
+            toast.error(
+                "Your email address you entered is in an incorrect format. Please re-enter your email"
+            );
+            return;
+        }
+
+        if (role === 1 && !Validation.ValidateTelephone(tel)) {
+            toast.error(
+                "Your telephone number you entered is in an incorrect format. Please re-enter your telephone number"
+            );
+            return;
+        }
+
+        // Password
+        if (password !== confirmPassword) {
+            toast.error(
+                "Your password and confirm password is different. Please re-enter your password and confirm password"
+            );
+            return;
+        }
+
+        // callAPI
+        var userAccount = {
+            account: account,
+            name: name,
+            password: password,
+            role: role,
+            backgroundNoAva : SupportFunction.randomHexColor()
+        };
+        if (role === 1) {
+            userAccount = {
+                ...userAccount,
+                tel: tel,
+                gender: gender,
+                address: address,
+                birthday: birthday.format("YYYY-MM-DD"),
+            };
+        }
+        const callAPI = async()=>{
+            await authAPI
+            .register(userAccount)
+            .then((response) => {
+                if(response.data.fail){
+                    toast.error("This email has been registered please choose another email to register");
+                }
+                else
+                {
+                    toast.success('This email has been successfully registered')
+                    if(role === 1)
+                    {
+                        setTimeout(()=>{
+                            navigate('/auth/announcement/send-email');
+                        },2000)
+                    }else
+                    {
+                        setTimeout(()=>{
+                            navigate('/auth/announcement/wait-auth-valid');
+                        },2000)
+                    }
+                }   
+            })
+            .catch((error) => console.log(error))
+        };
+
+        callAPI();
+    };
+
     const onClickLoginPage = () => {
         navigate("/auth/login");
     };
@@ -51,6 +160,17 @@ const SignUp = () => {
     };
     return (
         <div className={styles.signUp}>
+            <ToastContainer
+                position="top-right"
+                autoClose={2000}
+                hideProgressBar={false}
+                closeOnClick={true}
+                pauseOnHover={true}
+                draggable={true}
+                progress={undefined}
+                theme="colored"
+                className={styles.toastRegister}
+            />
             <div className={styles.mainContainerWrapper}>
                 <div className={styles.mainContainer}>
                     <div className={styles.mainContainerInner}>
@@ -101,15 +221,23 @@ const SignUp = () => {
                                             </div>
                                         </div>
                                         <div class={styles.buttonGroupRole}>
-                                            <Button 
+                                            <Button
                                                 onClick={() => setRole(1)}
-                                                className={role === 1 ? styles.activeButtonRole : styles.buttonRole}
+                                                className={
+                                                    role === 1
+                                                        ? styles.activeButtonRole
+                                                        : styles.buttonRole
+                                                }
                                             >
                                                 Student
                                             </Button>
-                                            <Button 
+                                            <Button
                                                 onClick={() => setRole(2)}
-                                                className={role === 2 ? styles.activeButtonRole : styles.buttonRole}
+                                                className={
+                                                    role === 2
+                                                        ? styles.activeButtonRole
+                                                        : styles.buttonRole
+                                                }
                                             >
                                                 Organization
                                             </Button>
@@ -169,10 +297,10 @@ const SignUp = () => {
                                                     onChange={onChangeGender}
                                                     value={gender}
                                                 >
-                                                    <Radio value={"Male"}>
+                                                    <Radio value={"male"}>
                                                         Male
                                                     </Radio>
-                                                    <Radio value={"Female"}>
+                                                    <Radio value={"female"}>
                                                         Female
                                                     </Radio>
                                                 </Radio.Group>
@@ -247,7 +375,7 @@ const SignUp = () => {
                                 </div>
                                 <Button
                                     className={styles.buttonSignUp}
-                                    onClick={onClickLogin}
+                                    onClick={onClickRegister}
                                 >
                                     Sign Up
                                 </Button>

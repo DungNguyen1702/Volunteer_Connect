@@ -10,11 +10,12 @@ import sendMailAPI from "../../../api/sendMail";
 function ManageAccount() {
     const [originalRecords, setOriginalRecords] = useState([]);
     const [records, setRecords] = useState([]);
+    const [listAccount, setListAccount] = useState([]);
 
     const deleteAccount = async (accId) => {
         try {
             await accountAPI.deleteAccount(accId);
-            const newRecords = records.filter(record => record.id !== accId);
+            const newRecords = records.filter((record) => record.id !== accId);
             setOriginalRecords(newRecords);
             setRecords(newRecords);
             toast.success("Delete account successfully");
@@ -52,7 +53,7 @@ function ManageAccount() {
         } catch (error) {
             toast.error("Failed to send verification email");
         }
-    };    
+    };
 
     const columns = [
         {
@@ -61,12 +62,12 @@ function ManageAccount() {
             sortable: true,
         },
         {
-            name: 'Account',
-            selector: row => row.account,
+            name: "Account",
+            selector: (row) => row.account,
         },
         {
-            name: 'Locked',
-            selector: (row) => (row.isDeleted ? 'Locked' : ''),
+            name: "Locked",
+            selector: (row) => (row.isDeleted ? "Locked" : ""),
         },
         {
             name: "Name",
@@ -74,17 +75,19 @@ function ManageAccount() {
             sortable: true,
         },
         {
-            name: 'Role',
-            selector: row => ROLE[row.role],
+            name: "Role",
+            selector: (row) => ROLE[row.role],
         },
         {
             name: "Create at",
-            selector: (row) => SupportFunction.convertDateFromArrayToString(row.createdAt),
+            selector: (row) =>
+                SupportFunction.convertDateFromArrayToString(row.createdAt),
             sortable: true,
         },
         {
             name: "Update at",
-            selector: (row) => SupportFunction.convertDateFromArrayToString(row.updatedAt),
+            selector: (row) =>
+                SupportFunction.convertDateFromArrayToString(row.updatedAt),
             sortable: true,
         },
         {
@@ -92,7 +95,10 @@ function ManageAccount() {
             cell: (row) => (
                 <div className="center-content">
                     {row.isDeleted && (
-                        <button className="btn-Edit" onClick={() => onClickChange(row.id)}>
+                        <button
+                            className="btn-Edit"
+                            onClick={() => onClickChange(row.id)}
+                        >
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
                                 fill="none"
@@ -109,8 +115,11 @@ function ManageAccount() {
                             </svg>
                         </button>
                     )}
-                                        {row.role === 2 && (
-                        <button className="btn-mail" onClick={() => onClickMail(row.account)}>
+                    {row.role === 2 && (
+                        <button
+                            className="btn-mail"
+                            onClick={() => onClickMail(row.account)}
+                        >
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
                                 fill="none"
@@ -127,7 +136,10 @@ function ManageAccount() {
                             </svg>
                         </button>
                     )}
-                    <button className="btn-Del" onClick={() => onClickDelete(row.id)}>
+                    <button
+                        className="btn-Del"
+                        onClick={() => onClickDelete(row.id)}
+                    >
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
                             fill="none"

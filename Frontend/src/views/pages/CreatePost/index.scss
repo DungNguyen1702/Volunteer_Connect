@@ -1,11 +1,12 @@
-@import '../../../constants/colors.scss';
+@import "../../../constants/colors.scss";
 
 * {
     margin: 0;
     padding: 0;
 }
 
-html, body {
+html,
+body {
     font-size: 15px;
     background-color: $background;
 }
@@ -14,11 +15,11 @@ html, body {
     display: flex;
     flex-direction: column;
     width: 100%;
-    margin : 20px 0px;
+    margin: 20px 0px;
 }
 
 .create-post-title {
-    color : $accent;
+    color: $accent;
     width: 100%;
     text-align: center;
 }
@@ -35,9 +36,9 @@ html, body {
     flex-direction: column;
     background-color: $background_create_post;
     width: 48%;
-    margin-right : 10px;
+    margin-right: 10px;
     margin-left: 20px;
-    padding : 20px 20px;
+    padding: 20px 20px;
     border-radius: 20px;
     align-items: center;
     height: fit-content;
@@ -45,38 +46,37 @@ html, body {
 
 .create-post-info-item {
     width: 100%;
-    margin : 10px 0px;
+    margin: 10px 0px;
     display: flex;
     align-items: center;
     flex-direction: column;
 }
 
 .create-post-info-item-title {
-    color : $primary_green;
+    color: $primary_green;
     width: 100%;
     text-align: start;
 }
 
 .create-post-button {
     background-color: $button !important;
-    color : $white !important;
-    width: fit-content;
+    color: $white !important;
 }
 
 .margin-top-50 {
-    margin-top : 50px;
+    margin-top: 50px;
 }
 
 .create-post-info-title-input {
     background-color: $white !important;
     width: 100%;
-    margin : 0px !important;
+    margin: 0px !important;
 }
 
 .create-post-button:hover {
     background-color: $white !important;
-    color : $button !important;
-    border : 1px solid $button !important;
+    color: $button !important;
+    border: 1px solid $button !important;
 }
 
 .display-flex {
@@ -87,7 +87,7 @@ html, body {
 }
 
 .margin-bottom-10 {
-    margin-bottom : 10px ;
+    margin-bottom: 10px;
 }
 
 .create-post-content-input {
@@ -104,16 +104,16 @@ html, body {
     display: flex;
     width: 48%;
     flex-direction: column;
-    margin-left : 10px;
+    margin-left: 10px;
     margin-right: 20px;
     background-color: $background_preview;
-    padding : 20px 10px;
+    padding: 20px 10px;
     border-radius: 20px;
     align-items: center;
 }
 
 .create-post-preview-title {
-    margin : 10px;
+    margin: 10px;
     word-break: break-all;
 }
 
@@ -123,18 +123,18 @@ html, body {
     margin-bottom: 10px;
 }
 
-.create-post-preivew-info-wrapper{
+.create-post-preivew-info-wrapper {
     width: 85%;
 }
 
 .create-post-preview-hr {
-    border : 1px solid black;
-    margin : 10px;
+    border: 1px solid black;
+    margin: 10px;
     width: 90%;
 }
 
 .create-post-preview-info-item {
-    margin : 5px 0px;
+    margin: 5px 0px;
     width: 100%;
     display: flex;
 }
@@ -149,7 +149,7 @@ html, body {
 }
 
 .primary-color {
-    color : $primary_green;
+    color: $primary_green;
     width: 30%;
 }
 

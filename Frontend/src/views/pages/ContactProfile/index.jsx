@@ -33,7 +33,7 @@ function AccountContact() {
                 .getContactDetail(accountId, role)
                 .then((response) => {
                     setData(response.data);
-                    setListActivity(response.data.activities)
+                    setListActivity(response.data.activities);
                 })
                 .catch((error) => console.log(error));
         };
@@ -47,14 +47,14 @@ function AccountContact() {
                 ? listActivity.slice(startIndex, startIndex + limit)
                 : []
         );
-    }, [startIndex, listShowAct, listActivity]);
+    }, [startIndex, listActivity]);
 
     const changePage = (page, pageSize) => {
         setStartIndex((page - 1) * limit);
     };
 
     const onClickChat = () => {
-        navigate(`/chat-box/${accountId}`)
+        navigate(`/chat-box/${accountId}`);
     };
 
     return (
@@ -62,7 +62,7 @@ function AccountContact() {
             {data && (
                 <>
                     <div class="contact-profile-information-wrapper">
-                        {parseInt(data.role) === 1 && data.User && (
+                        {parseInt(data.role) === 1 && data.user && (
                             <div class="contact-profile-candidate-info-wrapper">
                                 <div class="contact-profile-candidate-avatar">
                                     <AvatarAccount
@@ -105,7 +105,7 @@ function AccountContact() {
                                                     <strong>Tel :</strong>
                                                 </p>
                                                 <p class="contact-profile-item-content">
-                                                    {data.User.tel}
+                                                    {data.user.tel}
                                                 </p>
                                             </div>
                                             <div class="contact-profile-item">
@@ -113,7 +113,7 @@ function AccountContact() {
                                                     <strong>Address : </strong>
                                                 </p>
                                                 <p class="contact-profile-item-content">
-                                                    {data.User.address}
+                                                    {data.user.address}
                                                 </p>
                                             </div>
                                         </div>
@@ -122,7 +122,7 @@ function AccountContact() {
                                                 <p class="contact-profile-item-title">
                                                     <strong>Gender : </strong>
                                                 </p>
-                                                {data.User.gender.toLowerCase() ===
+                                                {data.user.gender.toLowerCase() ===
                                                 "male" ? (
                                                     <FontAwesomeIcon
                                                         icon={faMars}
@@ -140,7 +140,7 @@ function AccountContact() {
                                                     <strong>Birthday : </strong>
                                                 </p>
                                                 <p class="contact-profile-item-content">
-                                                    {data.User.birthday}
+                                                    {data.user.birthday}
                                                 </p>
                                             </div>
                                             <div class="contact-profile-item">
