@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -22,7 +23,7 @@ public class PostCommentController {
     @Autowired
     private PostCommentService postCommentService;
 
-    @PostMapping("/create")
+    @MessageMapping("/create")
     ResponseEntity<StatusResponse> createPostComment(@RequestHeader("Authorization") String token,
             @RequestBody PostCommentRequest postCommentRequest) {
         token = token.substring("Bearer ".length());
