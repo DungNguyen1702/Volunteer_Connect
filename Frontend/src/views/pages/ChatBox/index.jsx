@@ -28,8 +28,6 @@ function ChatBox() {
 
     const [chatBox, setChatBox] = useState(new Map());
 
-    const [checkLoop, setCheckLoop] = useState(1);
-
     // Search
     const [listAccountChat, setListAccountChat] = useState(chatBox);
     const [search, setSearch] = useState("");
@@ -44,16 +42,26 @@ function ChatBox() {
                 .getListChatByToken(accountId === "null" ? 0 : accountId)
                 .then((response) => {
                     const newChatBox = new Map();
-                    response.data.forEach((accountData) => {
-                        newChatBox.set(parseInt(accountData.id), {
-                            account: accountData.account,
-                            name: accountData.name,
-                            avatar: accountData.avatar,
-                            backgroundNoAva: accountData.backgroundNoAva,
-                            chats: accountData.chats,
+
+                    response.data
+                        .sort(
+                            (a, b) =>
+                                new Date(
+                                    b.chats[b.chats.length - 1].createdAt
+                                ) -
+                                new Date(a.chats[a.chats.length - 1].createdAt)
+                        )
+                        .forEach((accountData) => {
+                            newChatBox.set(parseInt(accountData.id), {
+                                account: accountData.account,
+                                name: accountData.name,
+                                avatar: accountData.avatar,
+                                backgroundNoAva: accountData.backgroundNoAva,
+                                chats: accountData.chats.sort(
+                                    (a, b) => a.id - b.id
+                                ),
+                            });
                         });
-                    });
-                    console.log(response.data);
                     setChatBox(new Map(newChatBox));
                 })
                 .catch((error) => console.log(error));
@@ -138,16 +146,7 @@ function ChatBox() {
 
         console.log(chatBox);
 
-        setCheckLoop(1);
-
         setChatBox((prevChatBox) => {
-            if (checkLoop !== 1) {
-                return prevChatBox;
-            }
-            setCheckLoop(0);
-            
-            console.log(checkLoop);
-
             console.log("send inside");
 
             const newChatBox = new Map();
@@ -155,25 +154,30 @@ function ChatBox() {
             const item = prevChatBox.get(keyValue);
 
             if (item) {
-                newChatBox.set(keyValue, {
-                    ...item,
-                    chats: [...item.chats, payloadData.chat],
-                });
+                const hasId = prevChatBox
+                    .get(keyValue)
+                    .chats.some((chat) => chat.id === payloadData.chat.id);
+                if (!hasId) {
+                    newChatBox.set(keyValue, {
+                        ...item,
+                        chats: [...item.chats, payloadData.chat],
+                    });
+                } else {
+                    newChatBox.set(keyValue, item);
+                }
             } else {
-                console.log(2);
                 newChatBox.set(keyValue, {
                     ...valueData,
                     chats: [payloadData.chat],
                 });
             }
-            
 
             prevChatBox.forEach((value, key) => {
                 if (key !== keyValue) {
                     newChatBox.set(key, value);
                 }
             });
-            
+
             return newChatBox;
         });
     };
