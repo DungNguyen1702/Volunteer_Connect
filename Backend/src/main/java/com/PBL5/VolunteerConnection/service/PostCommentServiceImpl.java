@@ -45,8 +45,7 @@ public class PostCommentServiceImpl implements PostCommentService {
                     postComment.getContent(), userCommentId);
             if (postComment.getComment_parentId() != null) {
                 createPostComment.setComment_parentId(postComment.getComment_parentId());
-                createPostComment
-                        .setParentComment(postCommentRepository.findById((int) postComment.getComment_parentId()));
+                createPostComment.setParentComment(postCommentRepository.findById((int) postComment.getComment_parentId()));
             }
             postCommentRepository.save(createPostComment);
             PostDetailDTO post = postRespository.findPostDetailById(postComment.getPostId());
