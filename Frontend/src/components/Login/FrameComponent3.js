@@ -62,7 +62,7 @@ const FrameComponent = () => {
             checkTokenAPI
                 .checkToken(token)
                 .then((response) => {
-                    if(response.data === 'false')
+                    if(response.data === false)
                     {
                         delete axiosClient.application.defaults.headers.common[
                             "Authorization"

@@ -90,8 +90,7 @@ function Header(props) {
                 await checkTokenAPI
                     .checkToken(token)
                     .then((response) => {
-                        if(response.data === 'false')
-                        {
+                        if (response.data === false) {
                             toast.error(
                                 "Your token has expired, please log in again"
                             );
@@ -323,11 +322,7 @@ function Header(props) {
                                 <AvatarAccount
                                     name={account.name}
                                     avatar={account.avatar}
-                                    backgroundNoAva={
-                                        account.backgroundNoAva
-                                            ? account.backgroundNoAva
-                                            : "#257769"
-                                    }
+                                    backgroundNoAva={account.backgroundNoAva}
                                     size={55}
                                 />
                                 <h3 class="account-name">

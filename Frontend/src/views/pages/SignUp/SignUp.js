@@ -16,7 +16,7 @@ const SignUp = () => {
     const [confirmPassword, setConfirmPassword] = useState("");
     const [tel, setTel] = useState("");
     const [address, setAddress] = useState("");
-    const [gender, setGender] = useState("Male");
+    const [gender, setGender] = useState("male");
     const [birthday, setBirthday] = useState(null);
     const [role, setRole] = useState(1);
 
@@ -297,10 +297,10 @@ const SignUp = () => {
                                                     onChange={onChangeGender}
                                                     value={gender}
                                                 >
-                                                    <Radio value={"Male"}>
+                                                    <Radio value={"male"}>
                                                         Male
                                                     </Radio>
-                                                    <Radio value={"Female"}>
+                                                    <Radio value={"female"}>
                                                         Female
                                                     </Radio>
                                                 </Radio.Group>

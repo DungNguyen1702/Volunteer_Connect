@@ -26,7 +26,9 @@ function ChatBox() {
 
     const { account } = useAuth();
 
-    const [chatBox, setChatBox] = useState([]);
+    const [chatBox, setChatBox] = useState(new Map());
+
+    const [checkLoop, setCheckLoop] = useState(1);
 
     // Search
     const [listAccountChat, setListAccountChat] = useState(chatBox);
@@ -41,19 +43,18 @@ function ChatBox() {
             await chatApi
                 .getListChatByToken(accountId === "null" ? 0 : accountId)
                 .then((response) => {
+                    const newChatBox = new Map();
                     response.data.forEach((accountData) => {
-                        setChatBox([
-                            ...chatBox,
-                            {
-                                id: parseInt(accountData.id),
-                                account: accountData.account,
-                                name: accountData.name,
-                                avatar: accountData.avatar,
-                                backgroundNoAva: accountData.backgroundNoAva,
-                                chats: accountData.chats,
-                            },
-                        ]);
+                        newChatBox.set(parseInt(accountData.id), {
+                            account: accountData.account,
+                            name: accountData.name,
+                            avatar: accountData.avatar,
+                            backgroundNoAva: accountData.backgroundNoAva,
+                            chats: accountData.chats,
+                        });
                     });
+                    console.log(response.data);
+                    setChatBox(new Map(newChatBox));
                 })
                 .catch((error) => console.log(error));
         };
@@ -61,22 +62,28 @@ function ChatBox() {
     }, [accountId]);
 
     useEffect(() => {
-        setSelectedAccount(accountId);
+        console.log("callBack");
+    }, []);
+
+    useEffect(() => {
+        setSelectedAccount(getValueByKeyId(chatBox, accountId));
     }, [accountId, chatBox]);
 
     useEffect(() => {
-        setListAccountChat(chatBox);
+        setListAccountChat(new Map(chatBox));
     }, [chatBox]);
 
     useEffect(() => {
         if (search === "") {
-            setListAccountChat(chatBox);
+            setListAccountChat(new Map(chatBox));
         } else {
-            setListAccountChat(
-                chatBox.filter((chatItem) =>
-                    chatItem.name.toLowerCase().includes(search.toLowerCase())
-                )
-            );
+            const filteredChatBox = new Map();
+            chatBox.forEach((value, key) => {
+                if (value.name.toLowerCase().includes(search.toLowerCase())) {
+                    filteredChatBox.set(key, value);
+                }
+            });
+            setListAccountChat(filteredChatBox);
         }
     }, [search, chatBox]);
 
@@ -119,20 +126,56 @@ function ChatBox() {
     const onPrivateMessage = (payload) => {
         var payloadData = JSON.parse(payload.body);
 
-        var id = payloadData.id;
+        console.log(payloadData);
+        var keyValue = payloadData.id;
 
         var valueData = {
             account: payloadData.account,
             name: payloadData.name,
             avatar: payloadData.avatar,
             backgroundNoAva: payloadData.backgroundNoAva,
-            chats: payloadData.chats ? payloadData.chats : [],
         };
 
-        const newChatBox = new Map(chatBox);
-        newChatBox.set(keyValue, valueData);
+        console.log(chatBox);
 
-        setChatBox(newChatBox);
+        setCheckLoop(1);
+
+        setChatBox((prevChatBox) => {
+            if (checkLoop !== 1) {
+                return prevChatBox;
+            }
+            setCheckLoop(0);
+            
+            console.log(checkLoop);
+
+            console.log("send inside");
+
+            const newChatBox = new Map();
+
+            const item = prevChatBox.get(keyValue);
+
+            if (item) {
+                newChatBox.set(keyValue, {
+                    ...item,
+                    chats: [...item.chats, payloadData.chat],
+                });
+            } else {
+                console.log(2);
+                newChatBox.set(keyValue, {
+                    ...valueData,
+                    chats: [payloadData.chat],
+                });
+            }
+            
+
+            prevChatBox.forEach((value, key) => {
+                if (key !== keyValue) {
+                    newChatBox.set(key, value);
+                }
+            });
+            
+            return newChatBox;
+        });
     };
 
     const sendPrivateValue = (receiverId, message) => {
@@ -153,6 +196,8 @@ function ChatBox() {
                 backgroundNoAva: account.backgroundNoAva,
             },
         };
+
+        console.log("send", chatBox);
 
         const newChatBox = new Map(chatBox);
         const valueData = chatBox.get(receiverId);

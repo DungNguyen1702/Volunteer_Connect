@@ -21,7 +21,7 @@ function ResetPassword() {
             await checkTokenAPI
                 .checkToken(token)
                 .then((response) => {
-                    if (response.data === "false") {
+                    if (response.data === false) {
                         navigate("/auth/announcement/expired-token");
                     }
                 })
