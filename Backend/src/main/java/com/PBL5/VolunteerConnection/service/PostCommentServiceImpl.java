@@ -58,7 +58,7 @@ public class PostCommentServiceImpl implements PostCommentService {
             notification.setType(1);
             notification.setIdTO(postComment.getPostId());
             notificationRepository.save(notification);
-            messagingTemplate.convertAndSendToUser(String.valueOf(id), "/notification", notification);  //user/userId/private
+//            messagingTemplate.convertAndSendToUser(String.valueOf(id), "/notification", notification);  //user/userId/private
 
             if (postComment.getComment_parentId() != null) {
                 String title2 = "Reply to Your Comment";
@@ -69,9 +69,9 @@ public class PostCommentServiceImpl implements PostCommentService {
                 notification2.setType(2);
                 notification2.setIdTO(postComment.getPostId());
                 notificationRepository.save(notification2);
-                if(id2 != id){
-                    messagingTemplate.convertAndSendToUser(String.valueOf(id2), "/notification", notification2);  //user/userId/private
-                }
+//                if(id2 != id){
+//                    messagingTemplate.convertAndSendToUser(String.valueOf(id2), "/notification", notification2);  //user/userId/private
+//                }
             }
             return StatusResponse.builder()
                     .success(ResponseEntity.status(HttpStatus.CREATED)
