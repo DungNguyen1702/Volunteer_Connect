@@ -39,6 +39,7 @@ public class PostComment {
     @OneToMany(mappedBy = "parentComment", fetch = FetchType.LAZY)
     private List<PostComment> replies;
     @ManyToOne
+    @JsonIgnore
     @JoinColumn(name = "comment_parent_id", insertable = false, updatable = false)
     private PostComment parentComment;
 
