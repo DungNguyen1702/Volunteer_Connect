@@ -9,6 +9,7 @@ import com.PBL5.VolunteerConnection.model.Notification;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.stereotype.Service;
 
 import com.PBL5.VolunteerConnection.model.PostComment;
@@ -31,6 +32,8 @@ public class PostCommentServiceImpl implements PostCommentService {
     private PostRespository postRespository;
     @Autowired
     private NotificationRepository notificationRepository;
+    @Autowired
+    private SimpMessagingTemplate messagingTemplate;
 
     @Override
     public StatusResponse createPostComment(String token, PostCommentRequest postComment) {
@@ -44,10 +47,9 @@ public class PostCommentServiceImpl implements PostCommentService {
                 createPostComment.setComment_parentId(postComment.getComment_parentId());
                 createPostComment
                         .setParentComment(postCommentRepository.findById((int) postComment.getComment_parentId()));
-
             }
             postCommentRepository.save(createPostComment);
-            PostDetailDTO post = postRespository.findPostDetailById(postComment.getId());
+            PostDetailDTO post = postRespository.findPostDetailById(postComment.getPostId());
             String title = "New Comment on Your Post";
             String content = "Someone commented on your post. Check it out!";
             String image = "http://res.cloudinary.com/deei5izfg/image/upload/v1716544017/Mobile/dmjhvknxwy6wqtpz2g0n.png";
@@ -56,15 +58,20 @@ public class PostCommentServiceImpl implements PostCommentService {
             notification.setType(1);
             notification.setIdTO(postComment.getPostId());
             notificationRepository.save(notification);
+            messagingTemplate.convertAndSendToUser(String.valueOf(id), "/notification", notification);  //user/userId/private
+
             if (postComment.getComment_parentId() != null) {
                 String title2 = "Reply to Your Comment";
                 String content2 = "Someone replied to your comment on the post. Check it out!";
                 String image2 = "http://res.cloudinary.com/deei5izfg/image/upload/v1716544119/Mobile/hnwdserkqadpdzqmuek6.png";
                 int id2 = postCommentRepository.findById((int) postComment.getComment_parentId()).getAccountId();
                 Notification notification2 = new Notification(title2, id2, content2, image2);
-                notification.setType(2);
-                notification.setIdTO(postComment.getPostId());
+                notification2.setType(2);
+                notification2.setIdTO(postComment.getPostId());
                 notificationRepository.save(notification2);
+                if(id2 != id){
+                    messagingTemplate.convertAndSendToUser(String.valueOf(id2), "/notification", notification2);  //user/userId/private
+                }
             }
             return StatusResponse.builder()
                     .success(ResponseEntity.status(HttpStatus.CREATED)

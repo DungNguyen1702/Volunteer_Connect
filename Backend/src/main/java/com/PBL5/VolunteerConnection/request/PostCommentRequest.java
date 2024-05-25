@@ -17,6 +17,5 @@ public class PostCommentRequest {
     private Integer comment_parentId;
     private int postId;
     private String content;
-    private int accountId;
     private boolean isDeleted;
 }

@@ -52,8 +52,8 @@ public class AccountServiceImpl implements AccountService {
                     accountRepository.save(account);
                     Account creAccount = accountRepository.findByAccount(account.getAccount());
                     int account_id = creAccount.getId();
-                    User user = new User(account_id, registerRequest.getTel(), registerRequest.getAddress(),
-                            registerRequest.getGender(), registerRequest.getBirthday());
+                    User user = new User(account_id, registerRequest.getTel(),
+                            registerRequest.getGender(),registerRequest.getAddress(), registerRequest.getBirthday());
                     user.setAccount(creAccount);
                     userRespository.save(user);
                     creAccount.setUser(user);
