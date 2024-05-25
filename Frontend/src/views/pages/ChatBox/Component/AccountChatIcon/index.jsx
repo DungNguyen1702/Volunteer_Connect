@@ -3,10 +3,13 @@ import AvatarAccount from "../../../../../components/avatar/AvatarAccount";
 import SupportFunction from "../../../../../support/support_function";
 import "./index.scss";
 import { useNavigate } from "react-router-dom";
+import useAuth from "../../../../../hooks/useAuth";
 
 function AccountChatIcon(props) {
     const { chat, data, keyValue, selectedAccountId } = props;
     
+    const {account} = useAuth();
+
     const navigate = useNavigate();
 
     const lastestChat = chat[chat.length - 1];
@@ -31,7 +34,7 @@ function AccountChatIcon(props) {
                 <p class="font-size-big">{data.name}</p>
                 <div class="account-chat-icon-chat-content-date-wrapper">
                     <p>
-                        {lastestChat && SupportFunction.TruncateText(lastestChat.content, 17)}
+                        {lastestChat && SupportFunction.TruncateText((account && lastestChat.senderId === account.id ? "You : " : "") +  lastestChat.content, 12)}
                     </p>
                     <p>{lastestChat && lastestChat.createdAt}</p>
                 </div>

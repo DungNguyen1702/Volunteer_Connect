@@ -17,11 +17,9 @@ const accountInfoAPI = {
         const url = 'api/v1/admin/getAllAccount'
         return axiosClient.application.get(url)
     },
-    deleteAccount: (accountId)=>{
-        const url ='api/v1/account/delete'
-        return axiosClient.application.post(url, {
-            id: accountId
-        });
+    deleteAccount: (accountId) => {
+        const url = `/api/v1/admin/deleteAccount?id=${accountId}`
+        return axiosClient.application.get(url);
     }
 }
 

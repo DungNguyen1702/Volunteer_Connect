@@ -42,21 +42,36 @@ function ChatBox() {
                 .getListChatByToken(accountId === "null" ? 0 : accountId)
                 .then((response) => {
                     const newChatBox = new Map();
-                    response.data.forEach((accountData) => {
-                        newChatBox.set(parseInt(accountData.id), {
-                            account: accountData.account,
-                            name: accountData.name,
-                            avatar: accountData.avatar,
-                            backgroundNoAva: accountData.backgroundNoAva,
-                            chats: accountData.chats,
+
+                    response.data
+                        .sort(
+                            (a, b) =>
+                                new Date(
+                                    b.chats[b.chats.length - 1].createdAt
+                                ) -
+                                new Date(a.chats[a.chats.length - 1].createdAt)
+                        )
+                        .forEach((accountData) => {
+                            newChatBox.set(parseInt(accountData.id), {
+                                account: accountData.account,
+                                name: accountData.name,
+                                avatar: accountData.avatar,
+                                backgroundNoAva: accountData.backgroundNoAva,
+                                chats: accountData.chats.sort(
+                                    (a, b) => a.id - b.id
+                                ),
+                            });
                         });
-                    });
                     setChatBox(new Map(newChatBox));
                 })
                 .catch((error) => console.log(error));
         };
         callApi();
     }, [accountId]);
+
+    useEffect(() => {
+        console.log("callBack");
+    }, []);
 
     useEffect(() => {
         setSelectedAccount(getValueByKeyId(chatBox, accountId));
@@ -127,13 +142,44 @@ function ChatBox() {
             name: payloadData.name,
             avatar: payloadData.avatar,
             backgroundNoAva: payloadData.backgroundNoAva,
-            chats: payloadData.chats ? payloadData.chats : [],
         };
 
-        const newChatBox = new Map(chatBox);
-        newChatBox.set(keyValue, valueData);
+        console.log(chatBox);
 
-        setChatBox(newChatBox);
+        setChatBox((prevChatBox) => {
+            console.log("send inside");
+
+            const newChatBox = new Map();
+
+            const item = prevChatBox.get(keyValue);
+
+            if (item) {
+                const hasId = prevChatBox
+                    .get(keyValue)
+                    .chats.some((chat) => chat.id === payloadData.chat.id);
+                if (!hasId) {
+                    newChatBox.set(keyValue, {
+                        ...item,
+                        chats: [...item.chats, payloadData.chat],
+                    });
+                } else {
+                    newChatBox.set(keyValue, item);
+                }
+            } else {
+                newChatBox.set(keyValue, {
+                    ...valueData,
+                    chats: [payloadData.chat],
+                });
+            }
+
+            prevChatBox.forEach((value, key) => {
+                if (key !== keyValue) {
+                    newChatBox.set(key, value);
+                }
+            });
+
+            return newChatBox;
+        });
     };
 
     const sendPrivateValue = (receiverId, message) => {
@@ -154,6 +200,8 @@ function ChatBox() {
                 backgroundNoAva: account.backgroundNoAva,
             },
         };
+
+        console.log("send", chatBox);
 
         const newChatBox = new Map(chatBox);
         const valueData = chatBox.get(receiverId);

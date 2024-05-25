@@ -36,22 +36,22 @@ public class ChatController {
 
 
 //    send all messages
-    @MessageMapping("/private-message")
-    ChatBoxResponse receivePrivateMessage(@Payload MessageRequest message){
-        MessageResponse messageResponse = chatService.saveAndSend(message);
-        ChatBoxResponse chatBoxResponse = chatService.getAllPrivateChatBox(message.getReceiverId(), message.getSenderId());
-        System.out.print(messageResponse.getChat().getContent());
-        messagingTemplate.convertAndSendToUser(String.valueOf(message.getReceiverId()), "/private", chatBoxResponse);  //user/userName/private
-        return chatBoxResponse;
-    }
+    // @MessageMapping("/private-message")
+    // ChatBoxResponse receivePrivateMessage(@Payload MessageRequest message){
+    //     MessageResponse messageResponse = chatService.saveAndSend(message);
+    //     ChatBoxResponse chatBoxResponse = chatService.getAllPrivateChatBox(message.getReceiverId(), message.getSenderId());
+    //     System.out.print(messageResponse.getChat().getContent());
+    //     messagingTemplate.convertAndSendToUser(String.valueOf(message.getReceiverId()), "/private", chatBoxResponse);  //user/userName/private
+    //     return chatBoxResponse;
+    // }
 
 
 //    send one message
-//    @MessageMapping("/private-message")
-//    MessageResponse receivePrivateMessage(@Payload MessageRequest message){
-//        MessageResponse messageResponse = chatService.saveAndSend(message);
-//        ChatBoxResponse chatBoxResponse = chatService.getAllPrivateChatBox(message.getReceiverId(), message.getSenderId());
-//        messagingTemplate.convertAndSendToUser(String.valueOf(message.getReceiverId()), "/private", messageResponse);  //user/userName/private
-//        return messageResponse;
-//    }
+   @MessageMapping("/private-message")
+   MessageResponse receivePrivateMessage(@Payload MessageRequest message){
+       MessageResponse messageResponse = chatService.saveAndSend(message);
+       ChatBoxResponse chatBoxResponse = chatService.getAllPrivateChatBox(message.getReceiverId(), message.getSenderId());
+       messagingTemplate.convertAndSendToUser(String.valueOf(message.getReceiverId()), "/private", messageResponse);  //user/userName/private
+       return messageResponse;
+   }
 }

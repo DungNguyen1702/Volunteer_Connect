@@ -1,9 +1,9 @@
 import axiosClient from "./axiosClient";
 
 const checkTokenAPI = {
-    checkToken: () => {
+    checkToken: (token) => {
         const url = "/api/v1/auth/checkToken";
-        return axiosClient.application.get(url);
+        return axiosClient.applicationNoAuth.post(url, { token: token });
     },
 };
 
