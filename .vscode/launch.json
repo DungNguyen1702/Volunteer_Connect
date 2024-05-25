@@ -16,8 +16,8 @@
             "request": "launch",
             "mainClass": "com.PBL5.VolunteerConnection.VolunteerConnectionApplication",
             "projectName": "VolunteerConnection",
-            // "args": "--spring.profiles.active=tin"
-            "args": "--spring.profiles.active=dung"
+            "args": "--spring.profiles.active=tin"
+            // "args": "--spring.profiles.active=dung"
         }
     ]
 }

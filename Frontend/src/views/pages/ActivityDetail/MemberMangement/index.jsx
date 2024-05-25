@@ -148,14 +148,14 @@ function MemberManagement() {
                 className="button-have-certificate"
             />
         ) : (
-            <Upload
+            account && account.role === 2 ? <Upload
                 name="image"
                 action={UPLOADIMAGELINK} // Đường dẫn của API để tải lên hình ảnh
                 onChange={(info) => onChangeUploadCertificate(value.id, info)}
                 showUploadList={false} // Ẩn danh sách tải lên để chỉ hiển thị hình ảnh đã tải lên
             >
                 <Button className="button-confirm" icon={<UploadOutlined />} />
-            </Upload>
+            </Upload> : <p>Not yet</p>
         ),
         delete: (
             <Button

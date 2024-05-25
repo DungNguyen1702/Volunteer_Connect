@@ -20,26 +20,13 @@ import postAPI from "../../api/postAPI";
 import checkTokenAPI from "../../api/checkToken";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import fakeData from "../../data/fake_data.json";
+import notiAPI from "../../api/notiAPI"
 
 const TruncateText = (text, maxLength) => {
     if (text.length <= maxLength) {
         return <span>{text}</span>;
     }
     return <span>{`${text.slice(0, maxLength)}...`}</span>;
-};
-const getNotificationsAPI = async () => {
-    return new Promise((resolve) => {
-        setTimeout(() => {
-            resolve({
-                data: [
-                    { content: "Notification 1" },
-                    { content: "Notification 2" },
-                    { content: "Notification 3" },
-                ],
-            });
-        }, 1000);
-    });
 };
 
 function Header(props) {
@@ -53,8 +40,7 @@ function Header(props) {
     const [search, setSearch] = useState("");
     const [listPosts, setListPosts] = useState([]);
     const [filterPosts, setFilterPosts] = useState(listPosts);
-    const [notifications, setNotifications] = useState(fakeData.notiList);
-    const [numberOfNoti, setNumberOfNoti] = useState(0);
+    const [notifications, setNotifications] = useState([]);
     
     const { account, setAccount, setToken, token } = useAuth();
 
@@ -124,9 +110,6 @@ function Header(props) {
         getAllPostApi();
     }, []);
 
-    useEffect(()=>{
-        setNumberOfNoti(notifications.filter(noti=> noti.status === 1).length)
-    },[notifications])
 
     const clickHomePage = () => {
         navigate("/user-homepage");
@@ -153,6 +136,12 @@ function Header(props) {
     };
     const clickNoti = (e) => {
         e.preventDefault();
+        const callAPI = async()=>{
+            notiAPI.getAllNotiByIdAccount(account.id).then(response=>{
+                setNotifications(response.data)
+            }).catch(error=>console.log(error))
+        };
+        callAPI();
     };
 
     const handleChangeSearch = (e) => {
@@ -175,7 +164,7 @@ function Header(props) {
         setNotifications(notifications.map((noti)=>{
             if(noti.id === idNoti)
             {
-                return {...noti, status : 0}
+                return {...noti, status : status}
             }
                 return noti
         }))
@@ -312,7 +301,7 @@ function Header(props) {
                                 trigger={["click"]}
                                 placement="bottomLeft"
                             >
-                                <Badge count={numberOfNoti} overflowCount={9}>
+                                <Badge overflowCount={9}>
                                     <Button
                                         className={`header-wrapper button-group-right button`}
                                         onClick={clickNoti}
