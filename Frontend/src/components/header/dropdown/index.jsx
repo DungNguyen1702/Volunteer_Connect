@@ -8,6 +8,7 @@ import {
 import { useNavigate } from "react-router-dom";
 import useAuth from "../../../hooks/useAuth";
 import { ICONS } from "../../../constants/icons";
+import SupportFunction from '../../../support/support_function'
 
 import("./index.scss");
 
@@ -273,7 +274,7 @@ const useDropdownNavigation = () => {
                                   {noti.content}
                               </p>
                               <p class="noti-item-create-date">
-                                  {noti.createdAt}
+                                  {SupportFunction.convertDateFromArrayToString(noti.createdAt)}
                               </p>
                           </div>
                       </div>

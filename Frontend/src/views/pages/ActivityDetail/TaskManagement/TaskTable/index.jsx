@@ -4,6 +4,7 @@ import { Button, ColorPicker } from "antd";
 import { CheckOutlined, DeleteOutlined, EditOutlined } from "@ant-design/icons";
 import { TaskDataContext } from "..";
 import taskAPI from "../../../../../api/taskAPI";
+import useAuth from "../../../../../hooks/useAuth";
 
 function TaskTableItem(props) {
     const {
@@ -21,6 +22,8 @@ function TaskTableItem(props) {
     const [color, setColor] = useState(isCreate ? "#257769" : data.color);
     const [isEdit, setIsEdit] = useState(isCreate ? true : false);
     const [name, setName] = useState(isCreate ? "" : data.name);
+
+    const { account } = useAuth();
 
     useEffect(() => {
         if (!isCreate) {
@@ -89,63 +92,69 @@ function TaskTableItem(props) {
                 </h3>
             )}
             <div id="task-table-button-container">
-                <ColorPicker
-                    value={color}
-                    format="hex"
-                    onChange={(color) => onChangeColor(color.toHexString())}
-                    className="task-table-item-color-picker"
-                />
-                {isEdit ? (
-                    <Button
-                        className="task-table-item-button"
-                        onClick={onClickConfirm}
-                        icon={
-                            <CheckOutlined
-                                style={{
-                                    color:
-                                        color !== "#ffffff"
-                                            ? "#ffffff"
-                                            : "#000000",
-                                    fontSize: "23px",
-                                }}
-                            />
-                        }
-                        style={{ backgroundColor: color }}
-                    />
-                ) : (
+                {account && account.role === 2 && (
                     <>
-                        <Button
-                            className="task-table-item-button"
-                            onClick={onClickChange}
-                            icon={
-                                <EditOutlined
-                                    style={{
-                                        color:
-                                            color !== "#ffffff"
-                                                ? "#ffffff"
-                                                : "#000000",
-                                        fontSize: "23px",
-                                    }}
-                                />
+                        <ColorPicker
+                            value={color}
+                            format="hex"
+                            onChange={(color) =>
+                                onChangeColor(color.toHexString())
                             }
-                            style={{ backgroundColor: color }}
+                            className="task-table-item-color-picker"
                         />
-                        <Button
-                            className="task-table-item-button"
-                            onClick={onClickDelete}
-                            icon={
-                                <DeleteOutlined
-                                    style={{
-                                        color:
-                                            color !== "#ffffff"
-                                                ? "#ffffff"
-                                                : "#000000",
-                                        fontSize: "23px",
-                                    }}
+                        {isEdit ? (
+                            <Button
+                                className="task-table-item-button"
+                                onClick={onClickConfirm}
+                                icon={
+                                    <CheckOutlined
+                                        style={{
+                                            color:
+                                                color !== "#ffffff"
+                                                    ? "#ffffff"
+                                                    : "#000000",
+                                            fontSize: "23px",
+                                        }}
+                                    />
+                                }
+                                style={{ backgroundColor: color }}
+                            />
+                        ) : (
+                            <>
+                                <Button
+                                    className="task-table-item-button"
+                                    onClick={onClickChange}
+                                    icon={
+                                        <EditOutlined
+                                            style={{
+                                                color:
+                                                    color !== "#ffffff"
+                                                        ? "#ffffff"
+                                                        : "#000000",
+                                                fontSize: "23px",
+                                            }}
+                                        />
+                                    }
+                                    style={{ backgroundColor: color }}
                                 />
-                            }
-                            style={{ backgroundColor: color }}
-                        />
+                                <Button
+                                    className="task-table-item-button"
+                                    onClick={onClickDelete}
+                                    icon={
+                                        <DeleteOutlined
+                                            style={{
+                                                color:
+                                                    color !== "#ffffff"
+                                                        ? "#ffffff"
+                                                        : "#000000",
+                                                fontSize: "23px",
+                                            }}
+                                        />
+                                    }
+                                    style={{ backgroundColor: color }}
+                                />
+                            </>
+                        )}
                     </>
                 )}
             </div>
