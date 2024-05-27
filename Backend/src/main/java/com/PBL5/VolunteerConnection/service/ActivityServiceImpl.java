@@ -24,8 +24,8 @@ import java.util.List;
 public class ActivityServiceImpl implements ActivityService {
     @Autowired
     private ActivityRepository activityRepository;
-    @Autowired
-    private AccountService accountService;
+    // @Autowired
+    // private AccountService accountService;
     @Autowired
     private AccountRepository accountRepository;
     @Autowired
@@ -96,17 +96,18 @@ public class ActivityServiceImpl implements ActivityService {
         // TODO Auto-generated method stub
         try {
             Activity deleteActivity = activityRepository.findById(deleteRequest.getId());
-            if (deleteActivity.getOrganizationId() == jwtService.getId(token)) {
-                deleteActivity.setIsDeleted(deleteRequest.getIsDeleted());
-                activityRepository.save(deleteActivity);
-                return StatusResponse.builder()
-                        .success(ResponseEntity.status(HttpStatus.ACCEPTED)
-                                .body("Activity has been deleted sucessfully!!"))
-                        .build();
-            }
+            // if (deleteActivity.getOrganizationId() == jwtService.getId(token)) {
+            deleteActivity.setIsDeleted(deleteRequest.getIsDeleted());
+            activityRepository.save(deleteActivity);
             return StatusResponse.builder()
-                    .fail(ResponseEntity.status(HttpStatus.NOT_ACCEPTABLE).body("You are not owner!!"))
+                    .success(ResponseEntity.status(HttpStatus.ACCEPTED)
+                            .body("Activity has been deleted sucessfully!!"))
                     .build();
+            // }
+            // return StatusResponse.builder()
+            // .fail(ResponseEntity.status(HttpStatus.NOT_ACCEPTABLE).body("You are not
+            // owner!!"))
+            // .build();
         } catch (Exception e) {
             return StatusResponse.builder()
                     .fail(ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Exception from server!! " + e))
@@ -134,7 +135,7 @@ public class ActivityServiceImpl implements ActivityService {
 
     @Override
     public ActivityDetailResponse getActivityDetail(String token, int id) {
-        int organizationId = jwtService.getId(token);
+        // int organizationId = jwtService.getId(token);
         List<Object[]> activityDTO = activityRepository.getActivityWithPostsAndCounts(id);
         Activity activityDetail = (Activity) activityDTO.get(0)[0];
         if (!activityDetail.getIsDeleted()) {
