@@ -16,8 +16,6 @@ import { Button } from "antd";
 import { DeleteOutlined, UndoOutlined } from "@ant-design/icons";
 
 function ManageActivity() {
-    const [isDeleteAct, setIsDeleteAct] = useState(false);
-    const [listActivity, setListActivity] = useState([]);
     const [originalRecords, setOriginalRecords] = useState([]);
     const [records, setRecords] = useState();
     const [forms, setForms] = useState();
@@ -29,16 +27,24 @@ function ManageActivity() {
             await activityAPI
                 .deleteActivity(actId, isDeleted)
                 .then((response) => {
-                    const newListActivity = listActivity.map((activity) => {
-                        if (activity.id !== actId)
-                            return { ...activity, isDeleted: isDeleted };
-                        else return activity;
+                    console.log(response.data);
+                    const newListActivity = originalRecords.map((activity) => {
+                        if (activity.id === actId) {
+                            return {
+                                ...activity,
+                                isDeleted: isDeleted ? true : false,
+                            };
+                        } else return activity;
                     });
-                    setListActivity(newListActivity);
+                    console.log(newListActivity);
+
+                    setOriginalRecords(newListActivity);
+                    setRecords(newListActivity);
                     toast.success("Delete activity successfull");
                 })
                 .catch((error) => {
                     toast.error("Delete activity failed");
+                    console.log(error);
                 });
         };
         callAPI();
@@ -49,7 +55,6 @@ function ManageActivity() {
             await activityAPI
                 .getAllActivityByAdmin()
                 .then((response) => {
-                    console.log(response.data);
                     setOriginalRecords(response.data);
                     setRecords(response.data);
                 })
@@ -57,7 +62,6 @@ function ManageActivity() {
             await deletionFormAPI
                 .getAllDeletionForm()
                 .then((response) => {
-                    console.log(response.data);
                     setForms(response.data);
                 })
                 .catch((error) => console.log(error));
@@ -67,6 +71,7 @@ function ManageActivity() {
     }, []);
 
     const onClickChangeStatusDelete = (actId, isDeleted) => {
+        console.log(actId, isDeleted);
         deleteActivity(actId, isDeleted);
     };
     const onClickForm = () => {
