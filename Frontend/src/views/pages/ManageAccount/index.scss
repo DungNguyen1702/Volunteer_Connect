@@ -52,38 +52,50 @@ body {
     font-family: 'Rubik', sans-serif;
 }
 
-.btn-Del, 
-.btn-mail,
-.btn-Edit {
-    background: none;
-    border: none;
-    color: #000;
-    cursor: pointer;
-    padding: 0;
-    margin: 0 5px;
-}
-
-.btn-Del,
-.btn-Edit, 
-.btn-mail svg {
-    width: 18px;
-    height: 18px;
-}
-
-.btn-Edit:hover {
-    color: $button;
-    background-color: rgba(238, 238, 238, 1);
-}
-
-.btn-Del:hover {
-    color: #d9534f;
-}
-.btn-mail :hover{
-    color: #0000FF;
-    background-color: rgba(238, 238, 238, 1);
-}
-
 .align-item-center {
     display: flex;
     align-items: center;
+}
+
+.btn-Del {
+    background: transparent;
+    border: none;
+    color: $danger;
+    margin: 0px 10px;
+}
+
+.btn-Del:hover {
+    background-color: $danger !important;
+    color: $white !important;
+}
+
+.btn-UnDel {
+    background: transparent;
+    border: none;
+    color: $button;
+    margin: 0px 10px;
+}
+
+.btn-UnDel:hover {
+    background-color: $button !important;
+    color: $white !important;
+}
+
+.btn-mail {
+    background: transparent;
+    border: none;
+    color: $mail;
+}
+
+.btn-mail:hover {
+    background-color: $mail !important;
+    color: $white !important;
+}
+
+.lock-icon {
+    color : $danger;
+}
+
+.unlock-icon {
+    color : $success;
 }

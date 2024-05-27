@@ -12,28 +12,40 @@ import SupportFunction from "../../../support/support_function.js";
 import OrganizationIcon from "../../../components/organization/index.jsx";
 import { IMAGES } from "../../../constants/images.js";
 import { ICONS } from "../../../constants/icons.js";
+import { Button } from "antd";
+import { DeleteOutlined, UndoOutlined } from "@ant-design/icons";
 
 function ManageActivity() {
-    const [isDeleteAct, setIsDeleteAct] = useState(false);
-    const [listActivity, setListActivity] = useState([]);
     const [originalRecords, setOriginalRecords] = useState([]);
     const [records, setRecords] = useState();
     const [forms, setForms] = useState();
     const [showFormListModal, setShowFormListModal] = useState(false);
     const [showModalForm, setShowModalForm] = useState(false);
     const [selectedFormData, setSelectedFormData] = useState(null);
-    const deleteActivity = (actId) => {
+    const deleteActivity = (actId, isDeleted) => {
         const callAPI = async () => {
             await activityAPI
-                .deleteActivity(actId)
+                .deleteActivity(actId, isDeleted)
                 .then((response) => {
-                    const newListActivity = listActivity.filter(
-                        (activity) => activity.id !== actId
-                    );
-                    setListActivity(newListActivity);
+                    console.log(response.data);
+                    const newListActivity = originalRecords.map((activity) => {
+                        if (activity.id === actId) {
+                            return {
+                                ...activity,
+                                isDeleted: isDeleted ? true : false,
+                            };
+                        } else return activity;
+                    });
+                    console.log(newListActivity);
+
+                    setOriginalRecords(newListActivity);
+                    setRecords(newListActivity);
                     toast.success("Delete activity successfull");
                 })
-                .catch((error) => console.log(error));
+                .catch((error) => {
+                    toast.error("Delete activity failed");
+                    console.log(error);
+                });
         };
         callAPI();
     };
@@ -43,7 +55,6 @@ function ManageActivity() {
             await activityAPI
                 .getAllActivityByAdmin()
                 .then((response) => {
-                    console.log(response.data);
                     setOriginalRecords(response.data);
                     setRecords(response.data);
                 })
@@ -51,7 +62,6 @@ function ManageActivity() {
             await deletionFormAPI
                 .getAllDeletionForm()
                 .then((response) => {
-                    console.log(response.data);
                     setForms(response.data);
                 })
                 .catch((error) => console.log(error));
@@ -60,8 +70,9 @@ function ManageActivity() {
         callApi();
     }, []);
 
-    const onClickDelete = (actId) => {
-        deleteActivity();
+    const onClickChangeStatusDelete = (actId, isDeleted) => {
+        console.log(actId, isDeleted);
+        deleteActivity(actId, isDeleted);
     };
     const onClickForm = () => {
         deletionFormAPI
@@ -165,7 +176,7 @@ function ManageActivity() {
                         alt="country-icon"
                         src={ICONS[COUNTRY[row.country]]}
                         height={"30px"}
-                        style={{marginLeft : '5px'}}
+                        style={{ marginLeft: "5px" }}
                     />
                 </div>
             ),
@@ -182,6 +193,7 @@ function ManageActivity() {
                         avatar={row.organization.avatar}
                         backgroundNoAva={row.organization.backgroundNoAva}
                         size={30}
+                        avatarLeft={true}
                     />
                 </div>
             ),
@@ -191,22 +203,19 @@ function ManageActivity() {
             name: "Action",
             cell: (row) => (
                 <div className="center-content">
-                    <button className="btn-Del" onClick={onClickDelete}>
-                        <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            strokeWidth="1.5"
-                            stroke="currentColor"
-                            className="w-6 h-6"
-                        >
-                            <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                d="m14.74 9-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 0 1-2.244 2.077H8.084a2.25 2.25 0 0 1-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 0 0-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 0 1 3.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 0 0-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 0 0-7.5 0"
-                            />
-                        </svg>
-                    </button>
+                    {row.isDeleted ? (
+                        <Button
+                            className="btn-UnDel"
+                            onClick={() => onClickChangeStatusDelete(row.id, 0)}
+                            icon={<UndoOutlined />}
+                        />
+                    ) : (
+                        <Button
+                            className="btn-Del"
+                            onClick={() => onClickChangeStatusDelete(row.id, 1)}
+                            icon={<DeleteOutlined />}
+                        />
+                    )}
                 </div>
             ),
         },

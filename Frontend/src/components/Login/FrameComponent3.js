@@ -12,10 +12,10 @@ import SupportFunction from "../../support/support_function";
 import checkTokenAPI from "../../api/checkToken";
 
 const FrameComponent = () => {
-    const [account, setAccount] = useState("");
+    const [accountInput, setAccount] = useState("");
     const [password, setPassword] = useState("");
 
-    const { setToken, token } = useAuth();
+    const { setToken, token, account } = useAuth();
 
     const onChangeAccount = (e) => {
         setAccount(e.target.value);
@@ -33,7 +33,7 @@ const FrameComponent = () => {
         const callAPI = async () => {
             try {
                 const values = {
-                    account: account,
+                    account: accountInput,
                     password: password,
                 };
 
@@ -69,7 +69,13 @@ const FrameComponent = () => {
                         ];
                         callAPI();
                     }
-                    navigate("/user-homepage");
+                    else if(account &&( accountInput === account.account || account === ""))
+                    {
+                        navigate('/user-homepage')
+                    }
+                    else {
+                        callAPI();
+                    }
                 })
                 .catch((error) => {
                     delete axiosClient.application.defaults.headers.common[
@@ -110,7 +116,7 @@ const FrameComponent = () => {
                             className={`${styles.passwordField} input-login`}
                             placeholder="Enter your email"
                             type="text"
-                            value={account}
+                            value={accountInput}
                             onChange={onChangeAccount}
                         />
                     </div>
