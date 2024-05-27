@@ -34,7 +34,7 @@ function ManageAccount() {
             });
             setOriginalRecords(newRecords);
             setRecords(newRecords);
-            toast.success("Delete account successfully");
+            toast.success(isDeleted ? "Delete account successfully" : "Recovery account successfully");
         } catch (error) {
             console.log(error);
             toast.error("Failed to delete account");

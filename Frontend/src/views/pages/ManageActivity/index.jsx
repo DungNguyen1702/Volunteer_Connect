@@ -36,11 +36,14 @@ function ManageActivity() {
                             };
                         } else return activity;
                     });
-                    console.log(newListActivity);
 
                     setOriginalRecords(newListActivity);
                     setRecords(newListActivity);
-                    toast.success("Delete activity successfull");
+                    toast.success(
+                        isDeleted
+                            ? "Delete activity successfully"
+                            : "Recovery activity successfully"
+                    );
                 })
                 .catch((error) => {
                     toast.error("Delete activity failed");
