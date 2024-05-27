@@ -36,6 +36,7 @@ const taskAPI = {
         });
     },
     updateTask : (newTask, taskID, activityId)=>{
+        console.log(newTask)
         const url = `/api/v1/task/update`;
         return axiosClient.application.post(url, {
             ...newTask,
