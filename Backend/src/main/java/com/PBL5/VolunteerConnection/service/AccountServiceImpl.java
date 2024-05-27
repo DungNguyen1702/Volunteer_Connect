@@ -2,7 +2,6 @@ package com.PBL5.VolunteerConnection.service;
 
 import com.PBL5.VolunteerConnection.dto.CandidateContactDTO;
 import com.PBL5.VolunteerConnection.model.Activity;
-import com.PBL5.VolunteerConnection.model.Candidate;
 import com.PBL5.VolunteerConnection.model.User;
 import com.PBL5.VolunteerConnection.repository.CandidateRepository;
 import com.PBL5.VolunteerConnection.repository.UserRespository;
@@ -12,14 +11,12 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.parameters.P;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.PBL5.VolunteerConnection.model.Account;
 import com.PBL5.VolunteerConnection.repository.AccountRepository;
 
-import java.sql.Date;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -53,7 +50,7 @@ public class AccountServiceImpl implements AccountService {
                     Account creAccount = accountRepository.findByAccount(account.getAccount());
                     int account_id = creAccount.getId();
                     User user = new User(account_id, registerRequest.getTel(),
-                            registerRequest.getGender(),registerRequest.getAddress(), registerRequest.getBirthday());
+                            registerRequest.getGender(), registerRequest.getAddress(), registerRequest.getBirthday());
                     user.setAccount(creAccount);
                     userRespository.save(user);
                     creAccount.setUser(user);
@@ -113,7 +110,7 @@ public class AccountServiceImpl implements AccountService {
     }
 
     @Override
-    public StatusResponse deleteAccount(String token) {
+    public StatusResponse deleteAccount(String token, AccountRequest request) {
         String username = jwtService.getUsername(token);
         try {
             Account account = accountRepository.findByAccount(username);
@@ -166,7 +163,6 @@ public class AccountServiceImpl implements AccountService {
                     .build();
 
         }
-
 
         return AccountResponse.builder()
                 .id(account.getId())
@@ -285,6 +281,7 @@ public class AccountServiceImpl implements AccountService {
         // TODO Auto-generated method stub
         return accountRepository.findAll();
     }
+
     public StatusResponse backUpAccount(int id) {
         try {
             Account account = accountRepository.findById(id);
@@ -302,12 +299,13 @@ public class AccountServiceImpl implements AccountService {
         }
 
     }
+
     @Override
-    public StatusResponse deleteAccountByAdnmin(int id) {
+    public StatusResponse deleteAccountByAdnmin(String token, AccountRequest request) {
         try {
-            Account account = accountRepository.findById(id);
-            account.setIsDeleted(true);
-            account.setIsValid(false);
+            Account account = accountRepository.findById(request.getId());
+            account.setIsDeleted(request.getIsDeleted());
+            // account.setIsValid(false);
             accountRepository.save(account);
             return StatusResponse.builder()
                     .success(ResponseEntity.status(HttpStatus.ACCEPTED)
@@ -353,7 +351,7 @@ public class AccountServiceImpl implements AccountService {
 
     @Override
     public StatusResponse resetPassword(String token, String newPassword) {
-        if (jwtService.checkExpired(token)){
+        if (jwtService.checkExpired(token)) {
             String username = jwtService.decodeTokenVerify(token);
             Account account = accountRepository.findByAccount(username);
             account.setPassword(passwordEncoder.encode(newPassword));
@@ -361,8 +359,7 @@ public class AccountServiceImpl implements AccountService {
             return StatusResponse.builder()
                     .fail(ResponseEntity.status(HttpStatus.OK).body("Reset password successfully!"))
                     .build();
-        }
-        else{
+        } else {
             return StatusResponse.builder()
                     .fail(ResponseEntity.status(HttpStatus.NOT_ACCEPTABLE).body("Token was expired"))
                     .build();
@@ -372,16 +369,14 @@ public class AccountServiceImpl implements AccountService {
 
     @Override
     public StatusResponse activeAccount(String token) {
-            String username = jwtService.decodeTokenVerify(token);
-            Account account = accountRepository.findByAccount(username);
-            account.setIsValid(true);
-            accountRepository.save(account);
-            return StatusResponse.builder()
-                    .fail(ResponseEntity.status(HttpStatus.OK).body("Reset password successfully!"))
-                    .build();
-
+        String username = jwtService.decodeTokenVerify(token);
+        Account account = accountRepository.findByAccount(username);
+        account.setIsValid(true);
+        accountRepository.save(account);
+        return StatusResponse.builder()
+                .fail(ResponseEntity.status(HttpStatus.OK).body("Reset password successfully!"))
+                .build();
 
     }
-
 
 }

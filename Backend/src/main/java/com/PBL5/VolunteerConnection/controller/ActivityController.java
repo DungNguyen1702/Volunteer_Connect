@@ -1,6 +1,5 @@
 package com.PBL5.VolunteerConnection.controller;
 
-import com.PBL5.VolunteerConnection.model.Activity;
 import com.PBL5.VolunteerConnection.request.ActivityRequest;
 import com.PBL5.VolunteerConnection.response.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -49,6 +48,5 @@ public class ActivityController {
         token = token.substring("Bearer ".length());
         return ResponseEntity.ok(activityService.getAllActivityByCandidate(token));
     }
-
 
 }
