@@ -3,12 +3,10 @@ package com.PBL5.VolunteerConnection.service;
 import com.PBL5.VolunteerConnection.dto.ActivityDTO;
 import com.PBL5.VolunteerConnection.dto.PostActivityDetailDTO;
 import com.PBL5.VolunteerConnection.model.Account;
-import com.PBL5.VolunteerConnection.model.Candidate;
 import com.PBL5.VolunteerConnection.model.Post;
 import com.PBL5.VolunteerConnection.repository.AccountRepository;
 import com.PBL5.VolunteerConnection.repository.UserRespository;
 import com.PBL5.VolunteerConnection.request.ActivityRequest;
-import com.PBL5.VolunteerConnection.request.CandidateRequest;
 import com.PBL5.VolunteerConnection.response.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -18,11 +16,9 @@ import org.springframework.stereotype.Service;
 import com.PBL5.VolunteerConnection.model.Activity;
 import com.PBL5.VolunteerConnection.repository.ActivityRepository;
 
-import java.sql.Date;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 public class ActivityServiceImpl implements ActivityService {
@@ -101,7 +97,7 @@ public class ActivityServiceImpl implements ActivityService {
         try {
             Activity deleteActivity = activityRepository.findById(deleteRequest.getId());
             if (deleteActivity.getOrganizationId() == jwtService.getId(token)) {
-                deleteActivity.setIsDeleted(true);
+                deleteActivity.setIsDeleted(deleteRequest.getIsDeleted());
                 activityRepository.save(deleteActivity);
                 return StatusResponse.builder()
                         .success(ResponseEntity.status(HttpStatus.ACCEPTED)
@@ -205,8 +201,9 @@ public class ActivityServiceImpl implements ActivityService {
         // TODO Auto-generated method stub
         List<Activity> activityList = activityRepository.findAll();
         List<ActivityDetailResponse> activityDetailResponseList = new ArrayList<>();
-        for (Activity activity : activityList){
-            activityDetailResponseList.add(new ActivityDetailResponse(new ActivityResponse(activity), new AccountResponse(activity.getAccount())));
+        for (Activity activity : activityList) {
+            activityDetailResponseList.add(new ActivityDetailResponse(new ActivityResponse(activity),
+                    new AccountResponse(activity.getAccount())));
         }
         return activityDetailResponseList;
     }
