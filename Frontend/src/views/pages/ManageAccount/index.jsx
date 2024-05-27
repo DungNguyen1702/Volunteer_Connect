@@ -23,15 +23,13 @@ function ManageAccount() {
 
     const deleteAccount = async (accId, isDeleted) => {
         try {
-            await accountAPI.deleteAccount(accId);
+            await accountAPI.deleteAccount(accId, isDeleted);
             const newRecords = records.map((record) => {
-                if(record.id === accId)
-                {
-                    return {...record, isDeleted : isDeleted }
-                }
-                else
-                {
-                    return record
+                if (record.id === accId) {
+                    console.log({ ...record, isDeleted: isDeleted ? true : false }," deleteAccount", record.isDeleted);
+                    return { ...record, isDeleted: isDeleted ? true : false };
+                } else {
+                    return record;
                 }
             });
             setOriginalRecords(newRecords);
@@ -152,13 +150,13 @@ function ManageAccount() {
                     {row.isDeleted ? (
                         <Button
                             className="btn-UnDel"
-                            onClick={() => onClickChangeDeleteStatus(row.id, 1)}
+                            onClick={() => onClickChangeDeleteStatus(row.id, 0)}
                             icon={<UndoOutlined />}
                         />
                     ) : (
                         <Button
                             className="btn-Del"
-                            onClick={() => onClickChangeDeleteStatus(row.id, 0)}
+                            onClick={() => onClickChangeDeleteStatus(row.id, 1)}
                             icon={<DeleteOutlined />}
                         />
                     )}

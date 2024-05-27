@@ -91,3 +91,11 @@ body {
     background-color: $mail !important;
     color: $white !important;
 }
+
+.lock-icon {
+    color : $danger;
+}
+
+.unlock-icon {
+    color : $success;
+}
