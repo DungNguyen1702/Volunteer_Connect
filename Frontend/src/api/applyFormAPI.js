@@ -6,12 +6,13 @@ const applyFormAPI = {
         const url = `/api/v1/registrationform/selectRegistrationFormActivityId?id=${id}`
         return axiosClient.application.get(url)
     },
-    updateApproveStatusApplyForm: (applyFormId, isConfirmed, actId) => {
+    updateApproveStatusApplyForm: (applyFormId, isConfirmed, actId, userId) => {
         const url = `/api/v1/registrationform/aprove`
         return axiosClient.application.post(url, {
             id : applyFormId,
             isConfirmed : isConfirmed,
-            activityId : actId
+            activityId : actId,
+            userId : userId,
         })
     },
     createApplyForm : (activityId)=>{

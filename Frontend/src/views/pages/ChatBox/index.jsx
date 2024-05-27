@@ -44,13 +44,21 @@ function ChatBox() {
                     const newChatBox = new Map();
 
                     response.data
-                        .sort(
-                            (a, b) =>
-                                new Date(
-                                    b.chats[b.chats.length - 1].createdAt
-                                ) -
-                                new Date(a.chats[a.chats.length - 1].createdAt)
-                        )
+                        .sort((a, b) => {
+                            const dateA =
+                                a.chats && a.chats.length > 0
+                                    ? new Date(
+                                          a.chats[a.chats.length - 1].createdAt
+                                      )
+                                    : new Date(Infinity);
+                            const dateB =
+                                b.chats && b.chats.length > 0
+                                    ? new Date(
+                                          b.chats[b.chats.length - 1].createdAt
+                                      )
+                                    : new Date(Infinity);  
+                            return dateB - dateA;
+                        })
                         .forEach((accountData) => {
                             newChatBox.set(parseInt(accountData.id), {
                                 account: accountData.account,

@@ -108,9 +108,10 @@ function TaskManagement() {
         callApi();
     };
     const addTask = (taskTableId, newTask) => {
-        if(!showingTaskTableID)
-        {
-            toast.error("You can't create a task if you don't select any task table");
+        if (!showingTaskTableID) {
+            toast.error(
+                "You can't create a task if you don't select any task table"
+            );
             return;
         }
 
@@ -168,31 +169,33 @@ function TaskManagement() {
         callAPI();
     };
     const updateTaskTable = (newTaskTable, taskTableId) => {
-        const callApi = async () => {
-            await taskAPI
-                .updateTaskTable(newTaskTable, taskTableId, actInfo.id)
-                .then((response) => {
-                    if (response.data.fail) {
-                        toast.error(
-                            "Task table can't be updated because you aren't the organization or the candidate of this activity"
-                        );
-                        return;
-                    }
-
-                    const updatedData = data.map((taskTable) => {
-                        if (taskTable.id === taskTableId) {
-                            return {
-                                ...taskTable,
-                                ...newTaskTable,
-                            };
+        if (account && account.role === 2) {
+            const callApi = async () => {
+                await taskAPI
+                    .updateTaskTable(newTaskTable, taskTableId, actInfo.id)
+                    .then((response) => {
+                        if (response.data.fail) {
+                            toast.error(
+                                "Task table can't be updated because you aren't the organization or the candidate of this activity"
+                            );
+                            return;
                         }
-                        return taskTable;
-                    });
-                    setData(updatedData);
-                })
-                .catch((error) => console.log(error));
-        };
-        callApi();
+
+                        const updatedData = data.map((taskTable) => {
+                            if (taskTable.id === taskTableId) {
+                                return {
+                                    ...taskTable,
+                                    ...newTaskTable,
+                                };
+                            }
+                            return taskTable;
+                        });
+                        setData(updatedData);
+                    })
+                    .catch((error) => console.log(error));
+            };
+            callApi();
+        }
     };
 
     // Search support
@@ -230,7 +233,8 @@ function TaskManagement() {
                             showingTaskTableID={showingTaskTableID}
                         />
                     ))}
-                    {account && parseInt(account.role) === 2 &&
+                    {account &&
+                        parseInt(account.role) === 2 &&
                         (createTask ? (
                             <div class="task-management-create-area">
                                 <TaskTableItem

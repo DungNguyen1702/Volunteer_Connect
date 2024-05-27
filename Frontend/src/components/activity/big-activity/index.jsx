@@ -13,7 +13,6 @@ function ActivityComponent(props) {
     const navigate = useNavigate();
 
     const onClickAct = () => {
-        console.log("click act " + data.id);
         navigate(`/activity-detail/${data.id}`);
     };
 

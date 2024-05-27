@@ -39,7 +39,10 @@ export const ICONS = {
     failIcon : require("../assets/icons/failIcon.png"),
     successIcon : require("../assets/icons/successIcon.png"),
     candidateIcon : require("../assets/icons/candidateIcon.png"),
-    orgIcon : require("../assets/icons/orgIcon.png"),
+    organizationIcon : require("../assets/icons/orgIcon.png"),
     adminIcon : require("../assets/icons/adminIcon.png"),
     iconNoNoti : require("../assets/icons/IconNoNoti.png"),
+    acceptIcon : require("../assets/icons/acceptIcon.png"),
+    denyIcon : require("../assets/icons/denyIcon.png"),
+    wattingIcon : require("../assets/icons/waittingIcon.png"),
 };

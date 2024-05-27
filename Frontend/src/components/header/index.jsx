@@ -20,7 +20,7 @@ import postAPI from "../../api/postAPI";
 import checkTokenAPI from "../../api/checkToken";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import notiAPI from "../../api/notiAPI"
+import notiAPI from "../../api/notiAPI";
 
 const TruncateText = (text, maxLength) => {
     if (text.length <= maxLength) {
@@ -41,9 +41,8 @@ function Header(props) {
     const [listPosts, setListPosts] = useState([]);
     const [filterPosts, setFilterPosts] = useState(listPosts);
     const [notifications, setNotifications] = useState([]);
-    
-    const { account, setAccount, setToken, token } = useAuth();
 
+    const { account, setAccount, setToken, token } = useAuth();
 
     useEffect(() => {
         const fetchNotifications = async () => {
@@ -110,7 +109,6 @@ function Header(props) {
         getAllPostApi();
     }, []);
 
-
     const clickHomePage = () => {
         navigate("/user-homepage");
     };
@@ -136,10 +134,13 @@ function Header(props) {
     };
     const clickNoti = (e) => {
         e.preventDefault();
-        const callAPI = async()=>{
-            notiAPI.getAllNotiByIdAccount(account.id).then(response=>{
-                setNotifications(response.data)
-            }).catch(error=>console.log(error))
+        const callAPI = async () => {
+            notiAPI
+                .getAllNotiByIdAccount(account.id)
+                .then((response) => {
+                    setNotifications(response.data);
+                })
+                .catch((error) => console.log(error));
         };
         callAPI();
     };
@@ -160,19 +161,21 @@ function Header(props) {
         navigate("/user-homepage");
     };
 
-    const updateStatusNoti = (status, idNoti)=>{
-        setNotifications(notifications.map((noti)=>{
-            if(noti.id === idNoti)
-            {
-                return {...noti, status : status}
-            }
-                return noti
-        }))
-    }
-
-    const addNoti = (noti)=>{
-        setNotifications([...notifications, noti])
-    }
+    const updateStatusNoti = (status, idNoti) => {
+        notiAPI
+            .updateStatusNoti(idNoti, status)
+            .then((response) => {
+                setNotifications(
+                    notifications.map((noti) => {
+                        if (noti.id === idNoti) {
+                            return { ...noti, status: status };
+                        }
+                        return noti;
+                    })
+                );
+            })
+            .catch((error) => console.log(error));
+    };
 
     return (
         <div class="header-container">
@@ -296,7 +299,10 @@ function Header(props) {
                             </Badge>
                             <Dropdown
                                 menu={{
-                                    items: getItemDropDownNoti(notifications, updateStatusNoti),
+                                    items: getItemDropDownNoti(
+                                        notifications,
+                                        updateStatusNoti
+                                    ),
                                 }}
                                 trigger={["click"]}
                                 placement="bottomLeft"
@@ -323,7 +329,7 @@ function Header(props) {
                     ) : account.role === 2 ? (
                         <img
                             alt="role-icon"
-                            src={ICONS.orgIcon}
+                            src={ICONS.organizationIcon}
                             class="header-role-icon"
                         />
                     ) : (

@@ -1,17 +1,15 @@
-import React from 'react'
-import { Navigate, Outlet } from 'react-router-dom'
-import useAuth from '../../hooks/useAuth'
+import React from "react";
+import { Navigate, Outlet } from "react-router-dom";
+import useAuth from "../../hooks/useAuth";
 
 const AdminRoute = () => {
-    const { account } = useAuth()
+    const { account } = useAuth();
 
-    if (account.role === 3) {
-
-       return <Outlet />
-        
+    if (account && account.role === 3) {
+        return <Outlet />;
     } else {
-        return <Navigate to="/homepage" />
+        return <Navigate to="/user-homepage" />;
     }
-}
+};
 
-export default AdminRoute
+export default AdminRoute;

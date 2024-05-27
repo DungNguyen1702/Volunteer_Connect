@@ -42,17 +42,22 @@ function ActivityDetail() {
                 .getActivityDetail(id)
                 .then((response) => {
                     console.log(response.data);
-                    if(response.data.error_message)
-                    {
+                    if (response.data.error_message) {
                         setIsError(true);
-                        toast.error("You can't view this activity detail because you aren't the organization or candidate of this activity");
-                    }
-                    else{
+                        toast.error(
+                            "You can't view this activity detail because you aren't the organization or candidate of this activity"
+                        );
+                    } else {
                         setData(response.data);
                         setListCandidate(response.data.candidates);
                         setOrg(response.data.organization);
                         setListPost(response.data.postList);
-                        setActivityStatus(SupportFunction.ActivityStatus(response.data.dateStart, response.data.dateEnd));
+                        setActivityStatus(
+                            SupportFunction.ActivityStatus(
+                                response.data.dateStart,
+                                response.data.dateEnd
+                            )
+                        );
                     }
                 })
                 .catch((error) => {
@@ -116,29 +121,34 @@ function ActivityDetail() {
                 })
                 .catch((error) => {
                     console.log(error);
-                    toast.error("You can't update this candidate because you aren't the organization of this activity");
+                    toast.error(
+                        "You can't update this candidate because you aren't the organization of this activity"
+                    );
                 });
         };
         callApi();
     };
 
     const deleteCandidate = (candidateId) => {
-        const callAPI = async()=>{
-            await candidateAPI.deleteCandidate(candidateId, id).then(response=>{
-                const newListCandidate = listCandidate.filter(
-                    (candidate) => candidate.id !== candidateId
-                );
-                setListCandidate(newListCandidate);
-                toast.success("Delete candidate successfull")
-            }).catch(error => console.log(error))
-        }
+        const callAPI = async () => {
+            await candidateAPI
+                .deleteCandidate(candidateId, id)
+                .then((response) => {
+                    const newListCandidate = listCandidate.filter(
+                        (candidate) => candidate.id !== candidateId
+                    );
+                    setListCandidate(newListCandidate);
+                    toast.success("Delete candidate successfull");
+                })
+                .catch((error) => console.log(error));
+        };
         callAPI();
     };
 
-    const confirmApplyForm = (applyFormId) => {
+    const confirmApplyForm = (applyFormId, userId) => {
         const callAPI = async () => {
             await applyFormAPI
-                .updateApproveStatusApplyForm(applyFormId, 1, id)
+                .updateApproveStatusApplyForm(applyFormId, 1, id, userId)
                 .then((response) => {
                     const findApplyForm = listApplyForm.find(
                         (applyForm) => applyForm.id === applyFormId
@@ -150,8 +160,16 @@ function ActivityDetail() {
                         activity_id: data.id,
                         certificate: null,
                         date_earn_certificate: null,
-                        createdAt: SupportFunction.convertStringToArray(response.data.createdAt),
-                        user: findApplyForm.user,
+                        createdAt: SupportFunction.convertStringToArray(
+                            findApplyForm.createdAt
+                        ),
+                        user: {
+                            ...findApplyForm.user,
+                            birthday:
+                                SupportFunction.convertDateFromArrayToString(
+                                    findApplyForm.user.birthday
+                                ),
+                        },
                         user_id: findApplyForm.user_id,
                     };
 
@@ -161,25 +179,25 @@ function ActivityDetail() {
 
                     setListApplyForm(newListApplyForm);
                     setListCandidate([...listCandidate, newCandidate]);
-                    toast.success("Successful application approval")
+                    toast.success("Successful application approval");
                 })
                 .catch((error) => console.log(error));
         };
         callAPI();
     };
 
-    const denyApplyForm = (applyFormId) => {
+    const denyApplyForm = (applyFormId, userId) => {
         // Gửi api về set thành false
         const callAPI = async () => {
             await applyFormAPI
-                .updateApproveStatusApplyForm(applyFormId, 2, id)
+                .updateApproveStatusApplyForm(applyFormId, 2, id, userId)
                 .then((response) => {
                     const newListApplyForm = listApplyForm.filter(
                         (applyForm) => applyForm.id !== applyFormId
                     );
 
                     setListApplyForm(newListApplyForm);
-                    toast.success('Successful application deny')
+                    toast.success("Successful application deny");
                 })
                 .catch((error) => console.log(error));
         };
@@ -187,20 +205,22 @@ function ActivityDetail() {
     };
 
     const deletePost = (postId) => {
-        const callAPI =  async()=>{
-            await postAPI.deletePost(id, postId).then(response => {
-                if(response.data.success.body)
-                {
-                    toast.error(response.data.success.body)
-                }
-                else
-                {
-                    const newListPost = listPost.filter((post) => post.id !== postId);
-                    setListPost(newListPost);
-                    toast.success("Delete post successfull")
-                }
-            }).catch(error=> console.log(error))
-        }
+        const callAPI = async () => {
+            await postAPI
+                .deletePost(id, postId)
+                .then((response) => {
+                    if (response.data.success.body) {
+                        toast.error(response.data.success.body);
+                    } else {
+                        const newListPost = listPost.filter(
+                            (post) => post.id !== postId
+                        );
+                        setListPost(newListPost);
+                        toast.success("Delete post successfull");
+                    }
+                })
+                .catch((error) => console.log(error));
+        };
         callAPI();
     };
 

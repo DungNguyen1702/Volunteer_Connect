@@ -106,7 +106,7 @@ function PostDetail() {
 
                         if (response.data.fail) {
                             toast.error(
-                                "You can apply this activity because you have already registered this activity before"
+                                "You can't apply this activity because you have already registered this activity before"
                             );
                             return;
                         }

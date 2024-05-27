@@ -120,7 +120,7 @@ function TaskComment(props) {
                 </div>
 
                 {/* reply box */}
-                <div>{showReplyBox && <TaskInputComment data={data} />}</div>
+                <div>{showReplyBox && <TaskInputComment data={data} setShowReplyBox={setShowReplyBox}/>}</div>
 
                 {replies.length !== 0 && !showReplies && (
                     <p

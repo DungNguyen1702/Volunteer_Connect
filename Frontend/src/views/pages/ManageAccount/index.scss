@@ -82,3 +82,8 @@ body {
     color: #0000FF;
     background-color: rgba(238, 238, 238, 1);
 }
+
+.align-item-center {
+    display: flex;
+    align-items: center;
+}

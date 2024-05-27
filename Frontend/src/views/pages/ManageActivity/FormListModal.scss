@@ -1,77 +1,91 @@
 @import "../../../constants/colors.scss";
 
 .modal-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  //background-color: rgba(0, 0, 0, 0.5);
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  padding-top: 20px;
-  z-index: 1000;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    //background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding-top: 20px;
+    z-index: 1000;
 }
 
 .modal {
-  position: relative;
-  background: $background;
-  padding: 20px;
-  border-radius: 8px;
-  width: 700px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    position: relative;
+    background: $background;
+    padding: 20px;
+    border-radius: 8px;
+    width: 700px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
 .modal-header,
 .modal-footer {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .modal-header {
-  border-bottom: 1px solid $background;
-  font-size: 1.5rem;
+    border-bottom: 1px solid $background;
+    font-size: 1.5rem;
 }
 
 .modal-footer {
-  border-top: 1px solid $background;
-  margin-top: 20px;
-  justify-content: center;
+    border-top: 1px solid $background;
+    margin-top: 20px;
+    justify-content: center;
 }
 .form-list {
-  list-style-type: none;
-  font-size: 14px;
-  padding: 0;
+    list-style-type: none;
+    font-size: 14px;
+    padding: 0;
 }
 
 .form-list li {
-  padding: 10px;
-  cursor: pointer;
+    padding: 10px;
+    cursor: pointer;
 }
 
 .form-list li:hover {
-  background-color: #e8fff7;
+    background-color: #e8fff7;
 }
-.btnExit svg {
-  background-color: $danger;
-  width: 18px;
-  height: 16px;
-  display: block;
+.modal-header {
+  margin-bottom: 15px;
 }
-
-.btn-close {
-  background-color: $button_orange;
-  font-size: 1.5rem;
-  color: white;
-  border: none;
-  padding: 5px 10px;
-  cursor: pointer;
+.btnExit {
+  border : 0px;
+  background-color: transparent !important;
+  color : $danger !important;
+  font-size: 15px;
+  padding : 5px 10px;
   border-radius: 5px;
+}
+.btnExit:hover {
+  background-color: $danger !important;
+  color: white !important;
+}
+.btn-close {
+    background-color: $button_orange;
+    font-size: 1.5rem;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 5px;
 }
 
 .btn-close:hover {
-  background-color: $light_orange;
-  color: $button_orange;
+    background-color: $light_orange;
+    color: $button_orange;
+}
+
+.form-list-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }

@@ -234,7 +234,7 @@ public class PostServiceImpl implements PostService {
     public PostDetailResponse getPostDetail(int id) {
         PostDetailDTO postDetailDTO = postRespository.findPostDetailById(id);
         List<PostComment> postComments = postCommentRepository.findByPostId(id);
-        postComments.removeIf(postComment -> postComment.isDeleted());
+        postComments.removeIf(postComment -> postComment.isDeleted() || postComment.getComment_parentId() != null);
         PostDetailResponse postDetailResponse = new PostDetailResponse(
                 new ActivityResponse(postDetailDTO.getActivity(), postDetailDTO.getParticipants()),
                 new PostResponse(postDetailDTO.getPost()), new AccountResponse(postDetailDTO.getOrganization()),
