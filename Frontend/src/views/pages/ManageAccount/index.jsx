@@ -6,6 +6,8 @@ import { ROLE } from "../../../constants/account_role";
 import SupportFunction from "../../../support/support_function";
 import { toast } from "react-toastify";
 import sendMailAPI from "../../../api/sendMail";
+import {ICONS} from "../../../constants/icons"
+import UserIcon from "../../../components/user";
 
 function ManageAccount() {
     const [originalRecords, setOriginalRecords] = useState([]);
@@ -29,6 +31,7 @@ function ManageAccount() {
             try {
                 const response = await accountAPI.getAllAccountByAdmin();
                 setOriginalRecords(response.data);
+                console.log(response.data)
                 setRecords(response.data);
             } catch (error) {
                 console.log(error);
@@ -63,19 +66,37 @@ function ManageAccount() {
         {
             name: "Account",
             selector: (row) => row.account,
+            cell: (row) => (
+                <div className="center-content">
+                    <UserIcon
+                        id={row.id}
+                        name={row.name}
+                        avatar={row.avatar}
+                        backgroundNoAva={row.backgroundNoAva}
+                        size={25}
+                        role={row.role}
+                    />
+                </div>
+            ),
         },
         {
             name: "Locked",
             selector: (row) => (row.isDeleted ? "Locked" : ""),
         },
         {
-            name: "Name",
-            selector: (row) => row.name,
+            name: "Email",
+            selector: (row) => row.account,
             sortable: true,
         },
         {
             name: "Role",
             selector: (row) => ROLE[row.role],
+            cell: (row) => (
+                <div className="center-content align-item-center">
+                    <img alt="role-icon" src={ICONS[`${ROLE[row.role].toLowerCase()}Icon`]} width={20} height={20} style={{marginRight : 5}}/>
+                    {ROLE[row.role]}
+                </div>
+            ),
         },
         {
             name: "Create at",
@@ -114,7 +135,7 @@ function ManageAccount() {
                             </svg>
                         </button>
                     )}
-                    {row.role === 2 && (
+                    {row.role === 2 && row.isValid !== true && (
                         <button
                             className="btn-mail"
                             onClick={() => onClickMail(row.account)}

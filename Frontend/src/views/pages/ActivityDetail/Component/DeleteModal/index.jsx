@@ -3,6 +3,7 @@ import "./index.scss";
 import { Button, Modal } from "antd";
 import TextArea from "antd/es/input/TextArea";
 import { toast } from "react-toastify";
+import deletionForm from "../../../../../api/deletionForn";
 
 function DeleteActModal(props) {
     const { actId, isDeleteAct, setIsDeleteAct } = props;
@@ -13,13 +14,20 @@ function DeleteActModal(props) {
         setIsDeleteAct(false);
     };
     const onConfirmDelete = () => {
-        if(reason === ''){ 
-            toast.error('Please input the reason to delete this activity');
+        if (reason === "") {
+            toast.error("Please input the reason to delete this activity");
             return;
         }
-
-        toast.success('Your request to delete this activity has been recorded');
-        setIsDeleteAct(false);
+        deletionForm
+            .createDeletionForm(actId, reason)
+            .then((response) => {
+                console.log(response.data)
+                toast.success(
+                    "Your request to delete this activity has been recorded"
+                );
+                setIsDeleteAct(false);
+            })
+            .catch((error) => console.log(error));
     };
     const onChangeReason = (e) => {
         setReason(e.target.value);

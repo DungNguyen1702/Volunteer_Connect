@@ -8,7 +8,7 @@ import {
 import { useNavigate } from "react-router-dom";
 import useAuth from "../../../hooks/useAuth";
 import { ICONS } from "../../../constants/icons";
-import SupportFunction from '../../../support/support_function'
+import SupportFunction from "../../../support/support_function";
 
 import("./index.scss");
 
@@ -106,7 +106,7 @@ const useDropdownNavigation = () => {
                     <div
                         class="item-wrapper"
                         onClick={() => {
-                            navigate("/profile/personInfo");
+                            navigate("/profile/accountsetting");
                         }}
                     >
                         <UserOutlined className="item-icon" />
@@ -160,7 +160,7 @@ const useDropdownNavigation = () => {
                     <div
                         class="item-wrapper"
                         onClick={() => {
-                            navigate("/profile/personInfo");
+                            navigate("/profile/accountsetting");
                         }}
                     >
                         <UserOutlined className="item-icon" />
@@ -231,11 +231,11 @@ const useDropdownNavigation = () => {
     const getItemDropDownNoti = (notifications, updateStatusNoti) => {
         const onClickNoti = (e, type, idTO, status, idNoti) => {
             // e.domEvent.stopPropagation();
-            console.log(e)
 
-            if(status===0)
-            {
-                updateStatusNoti(1, idNoti)
+            e.preventDefault();
+
+            if (status === 0) {
+                updateStatusNoti(1, idNoti);
             }
 
             if (type === 1) {
@@ -257,7 +257,15 @@ const useDropdownNavigation = () => {
                           class={`noti-item-wrapper ${
                               noti.status === 0 && "noRead-noti-item"
                           }`}
-                          onClick={(e) => onClickNoti(e, noti.type, noti.idTO, noti.status, noti.id)}
+                          onClick={(e) =>
+                              onClickNoti(
+                                  e,
+                                  noti.type,
+                                  noti.idTO,
+                                  noti.status,
+                                  noti.id
+                              )
+                          }
                       >
                           <img
                               alt="noti-icon"
@@ -265,6 +273,7 @@ const useDropdownNavigation = () => {
                               class="noti-item-icon"
                           />
                           <div class="noti-item-content-wrapper">
+                              <p class={`noti-item-title`}>{noti.title}</p>
                               <p
                                   class={`noti-item-content ${
                                       noti.status === 0 &&
@@ -274,7 +283,9 @@ const useDropdownNavigation = () => {
                                   {noti.content}
                               </p>
                               <p class="noti-item-create-date">
-                                  {SupportFunction.convertDateFromArrayToString(noti.createdAt)}
+                                  {SupportFunction.convertDateFromArrayToString(
+                                      noti.createdAt
+                                  )}
                               </p>
                           </div>
                       </div>

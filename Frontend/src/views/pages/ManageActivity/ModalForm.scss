@@ -21,20 +21,39 @@
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
+.modal-header {
+  margin-bottom: 15px;
+}
 
+.btnExit {
+  border : 0px;
+  background-color: transparent !important;
+  color : $danger !important;
+  font-size: 15px;
+  padding : 5px 10px;
+  border-radius: 5px;
+}
+.btnExit:hover {
+  background-color: $danger !important;
+  color: white !important;
+}
+
+.btnBack {
+  border : 0px;
+  background-color: transparent !important;
+  color : $button !important;
+  font-size: 15px;
+  padding : 5px 10px;
+  border-radius: 5px;
+}
+.btnBack:hover {
+  background-color: $button !important;
+  color: white !important;
+}
 .modal-footer {
   display: flex;
   justify-content: space-between;
   align-items: center;
-}
-.btnExit svg {
-  background-color: $danger;
-  width: 18px;
-  height: 16px;
-  display: block;
-}
-.btnExit:hover{
-  background-color: $background;
 }
 .form-group {
   margin-bottom: 15px;
@@ -55,4 +74,46 @@
   box-sizing: border-box;
 }
 
+.btn-close {
+  background-color: $button_orange;
+  font-size: 1.5rem;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  border-radius: 5px;
+  margin : 0px 20px
+}
 
+.btn-close:hover {
+  background-color: $light_orange;
+  color: $button_orange;
+}
+.btn-accept {
+  background-color: $success;
+  font-size: 1.5rem;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.btn-accept:hover {
+  background-color: white;
+  color: $success;
+}
+.btn-deny {
+  background-color: $danger;
+  font-size: 1.5rem;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.btn-deny:hover {
+  background-color: white;
+  color: $danger;
+}

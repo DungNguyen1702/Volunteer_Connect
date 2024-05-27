@@ -4,7 +4,7 @@ import { Avatar } from "antd";
 import SupportFunction from '../../support/support_function'
 
 function OrganizationIcon(props) {
-    const { id ,name, avatar, backgroundNoAva } = props;
+    const { id ,name, avatar, backgroundNoAva, size } = props;
     const navigate = useNavigate();
 
     const handlerClickOrg = ()=>{
@@ -18,7 +18,7 @@ function OrganizationIcon(props) {
                     <Avatar
                         src={avatar}
                         shape={"circle"}
-                        size={"large"}
+                        size={size ? size : "large"}
                     />
                 ) : (
                     <Avatar
@@ -26,7 +26,7 @@ function OrganizationIcon(props) {
                             backgroundColor: backgroundNoAva,
                         }}
                         shape={"circle"}
-                        size={"large"}
+                        size={size ? size : "large"}
                         className=""
                     >
                         {SupportFunction.getFirstCharacter(name)}

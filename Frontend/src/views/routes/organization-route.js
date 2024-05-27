@@ -1,17 +1,15 @@
-import React from 'react'
-import { Navigate, Outlet } from 'react-router-dom'
-import useAuth from '../../hooks/useAuth'
+import React from "react";
+import { Navigate, Outlet } from "react-router-dom";
+import useAuth from "../../hooks/useAuth";
 
 const OrganizationRoute = () => {
-    const { account } = useAuth()
+    const { account } = useAuth();
 
-    if (account.role === 2) {
-
-       return <Outlet />
-        
+    if (account && account.role === 2) {
+        return <Outlet />;
     } else {
-        return <Navigate to="/homepage" />
+        return <Navigate to="/user-homepage" />;
     }
-}
+};
 
-export default OrganizationRoute
+export default OrganizationRoute;

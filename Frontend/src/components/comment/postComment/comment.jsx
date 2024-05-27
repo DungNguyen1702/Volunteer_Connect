@@ -43,7 +43,7 @@ function Comment(props) {
                 updatePostComment(
                     listComment,
                     {
-                        content : content,
+                        content: content,
                         updatedAt: SupportFunction.convertStringToArray(
                             SupportFunction.getCurrentlyDate()
                         ),
@@ -141,7 +141,8 @@ function Comment(props) {
                         )}
                     </p>
                 )}
-                {replies.length !== 0 &&
+                {Array.isArray(replies) &&
+                    replies.length !== 0 &&
                     showReplies &&
                     replies.map((reply) => (
                         <Comment data={reply} key={reply.id} />

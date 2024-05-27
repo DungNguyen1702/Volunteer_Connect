@@ -92,3 +92,9 @@ body {
     background-color: $background;
     color: #d9534f;
 }
+
+.align-item-center {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
