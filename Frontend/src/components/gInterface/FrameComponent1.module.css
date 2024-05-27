@@ -139,7 +139,7 @@
   }
   .rectangleIcon {
     height: 350px;
-    width: 319px;
+    width: 80%;
     position: absolute;
     margin: 0 !important;
     bottom: -27px;
@@ -154,7 +154,7 @@
     align-items: flex-start;
     justify-content: flex-start;
     box-sizing: border-box;
-    max-width: 100%;
+    margin-top: 20px;
   }
   .rectangleParent {
     flex: 1;

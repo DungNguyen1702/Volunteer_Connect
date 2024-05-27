@@ -183,6 +183,7 @@
     font-weight: 500;
     font-family: inherit;
     z-index: 1;
+    min-width: 500px;
 }
 
 .explanationnavdkadkacds1 {
@@ -245,6 +246,7 @@
     justify-content: flex-end;
     padding: 0 var(--padding-27xl);
     margin-top: -24px;
+    margin-bottom: 77px;
 }
 
 .groupDiv {

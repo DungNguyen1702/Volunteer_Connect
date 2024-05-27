@@ -25,10 +25,11 @@ const activityAPI = {
         const url = `/api/v1/activity/organization/update`
         return axiosClient.application.post(url, updateAct)
     },
-    deleteActivity: (actId) => {
+    deleteActivity: (actId, isDeleted) => {
         const url = `/api/v1/activity/admin/delete`;
         return axiosClient.application.post(url, {
             activityId: actId,
+            isDeleted : isDeleted ? true : false
         });
     },
     
