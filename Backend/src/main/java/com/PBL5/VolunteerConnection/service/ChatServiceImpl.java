@@ -70,6 +70,7 @@ public class ChatServiceImpl implements ChatService{
             }
 
         }
+
         for (Account account : accountList) {
             chatBoxResponses.add(new ChatBoxResponse(account, chatList.get(account.getId())));
         }
@@ -111,7 +112,9 @@ public class ChatServiceImpl implements ChatService{
                 }
             }
         }
+
         ChatBoxResponse chatBoxResponse = new ChatBoxResponse(accountList.get(0), chatList.get(accountList.get(0).getId()));
+
 //        for (Account account : accountList) {
 //            chatBoxResponses.add(new ChatBoxResponse(account, chatList.get(account.getId())));
 //        }

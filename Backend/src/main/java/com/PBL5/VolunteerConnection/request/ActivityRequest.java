@@ -5,7 +5,6 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.sql.Date;
 import java.time.LocalDate;
 
 @Data
@@ -25,4 +24,5 @@ public class ActivityRequest {
     private int country;
     private String location;
     private String content;
+    private Boolean isDeleted;
 }

@@ -51,6 +51,7 @@ body {
 .custom-search-input::placeholder {
     font-family: 'Rubik', sans-serif;
 }
+<<<<<<< HEAD
 .center-content {
     display: flex;
     justify-content: space-between;
@@ -81,12 +82,53 @@ body {
 .btn-Edit:hover {
     color: $button;
     background-color: rgba(238, 238, 238, 1);
+=======
+
+.align-item-center {
+    display: flex;
+    align-items: center;
+}
+
+.btn-Del {
+    background: transparent;
+    border: none;
+    color: $danger;
+    margin: 0px 10px;
+>>>>>>> 6b2395fc151b2a192c47eaddaa2756d6634279bb
 }
 
 .btn-Del:hover {
-    color: #d9534f;
+    background-color: $danger !important;
+    color: $white !important;
 }
-.btn-mail :hover{
-    color: #0000FF;
-    background-color: rgba(238, 238, 238, 1);
+
+.btn-UnDel {
+    background: transparent;
+    border: none;
+    color: $button;
+    margin: 0px 10px;
+}
+
+.btn-UnDel:hover {
+    background-color: $button !important;
+    color: $white !important;
+}
+
+.btn-mail {
+    background: transparent;
+    border: none;
+    color: $mail;
+}
+
+.btn-mail:hover {
+    background-color: $mail !important;
+    color: $white !important;
+}
+
+.lock-icon {
+    color : $danger;
+}
+
+.unlock-icon {
+    color : $success;
 }

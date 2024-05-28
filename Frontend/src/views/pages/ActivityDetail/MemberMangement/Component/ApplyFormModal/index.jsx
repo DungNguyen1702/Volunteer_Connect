@@ -20,12 +20,12 @@ function ApplyFormModal(props) {
         setIsOpenApplyForm(false);
     };
 
-    const onConfirmApplyForm = (applyFormId) => {
-        confirmApplyForm(applyFormId);
+    const onConfirmApplyForm = (applyFormId, userId) => {
+        confirmApplyForm(applyFormId, userId);
     };
 
-    const onDenyApplyForm = (applyFormId) => {
-        denyApplyForm(applyFormId);
+    const onDenyApplyForm = (applyFormId, userId) => {
+        denyApplyForm(applyFormId, userId);
     };
 
     const columns = [
@@ -109,14 +109,14 @@ function ApplyFormModal(props) {
             confirm: (
                 <Button
                     icon={<CheckSquareOutlined />}
-                    onClick={() => onConfirmApplyForm(value.id)}
+                    onClick={() => onConfirmApplyForm(value.id, value.user.id)}
                     className="button-confirm-apply-form"
                 />
             ),
             deny: (
                 <Button
                     icon={<CloseSquareOutlined />}
-                    onClick={() => onDenyApplyForm(value.id)}
+                    onClick={() => onDenyApplyForm(value.id, value.user.id)}
                     className="button-deny-apply-form"
                 />
             ),

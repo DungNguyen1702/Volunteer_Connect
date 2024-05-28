@@ -1,7 +1,5 @@
 package com.PBL5.VolunteerConnection.request;
 
-import java.sql.Date;
-
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -11,11 +9,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class PostCommentRequest {
-    private String token;
+public class NotificationRequest {
     private int id;
-    private Integer comment_parentId;
-    private int postId;
-    private String content;
-    private boolean isDeleted;
+    private int status;
 }

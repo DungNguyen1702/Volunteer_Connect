@@ -106,7 +106,7 @@ function PostDetail() {
 
                         if (response.data.fail) {
                             toast.error(
-                                "You can apply this activity because you have already registered this activity before"
+                                "You can't apply this activity because you have already registered this activity before"
                             );
                             return;
                         }
@@ -123,6 +123,8 @@ function PostDetail() {
     const addPostComment = async (comments, newComment) => {
         try {
             const response = await commentAPI.createPostComment(newComment);
+            
+            
             newComment = { ...newComment, id: response.data.data };
 
             toast.success("commit successfull");

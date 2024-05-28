@@ -6,18 +6,35 @@ import { ROLE } from "../../../constants/account_role";
 import SupportFunction from "../../../support/support_function";
 import { toast } from "react-toastify";
 import sendMailAPI from "../../../api/sendMail";
+import { ICONS } from "../../../constants/icons";
+import UserIcon from "../../../components/user";
+import { Button } from "antd";
+import {
+    DeleteOutlined,
+    LockOutlined,
+    MailOutlined,
+    UndoOutlined,
+    UnlockOutlined,
+} from "@ant-design/icons";
 
 function ManageAccount() {
     const [originalRecords, setOriginalRecords] = useState([]);
     const [records, setRecords] = useState([]);
 
-    const deleteAccount = async (accId) => {
+    const deleteAccount = async (accId, isDeleted) => {
         try {
-            await accountAPI.deleteAccount(accId);
-            const newRecords = records.filter((record) => record.id !== accId);
+            await accountAPI.deleteAccount(accId, isDeleted);
+            const newRecords = records.map((record) => {
+                if (record.id === accId) {
+                    console.log({ ...record, isDeleted: isDeleted ? true : false }," deleteAccount", record.isDeleted);
+                    return { ...record, isDeleted: isDeleted ? true : false };
+                } else {
+                    return record;
+                }
+            });
             setOriginalRecords(newRecords);
             setRecords(newRecords);
-            toast.success("Delete account successfully");
+            toast.success(isDeleted ? "Delete account successfully" : "Recovery account successfully");
         } catch (error) {
             console.log(error);
             toast.error("Failed to delete account");
@@ -29,6 +46,7 @@ function ManageAccount() {
             try {
                 const response = await accountAPI.getAllAccountByAdmin();
                 setOriginalRecords(response.data);
+                console.log(response.data);
                 setRecords(response.data);
             } catch (error) {
                 console.log(error);
@@ -37,13 +55,9 @@ function ManageAccount() {
         callApi();
     }, []);
 
-    const onClickDelete = (id) => {
-        deleteAccount(id);
-    };
-
-    const onClickChange = (id) => {
+    const onClickChangeDeleteStatus = (id, isDeleted) => {
         //Mở khóa tai khoan
-        console.log("Change account with ID:", id);
+        deleteAccount(id, isDeleted);
     };
     const onClickMail = async (email) => {
         try {
@@ -63,19 +77,56 @@ function ManageAccount() {
         {
             name: "Account",
             selector: (row) => row.account,
+            cell: (row) => (
+                <div className="center-content">
+                    <UserIcon
+                        id={row.id}
+                        name={row.name}
+                        avatar={row.avatar}
+                        backgroundNoAva={row.backgroundNoAva}
+                        size={25}
+                        role={row.role}
+                    />
+                </div>
+            ),
         },
         {
             name: "Locked",
+<<<<<<< HEAD
             selector: (row) => (!row.isValid ? "Locked" : ""),
+=======
+            selector: (row) => row.isDeleted,
+            cell: (row) => (
+                <div className="center-content">
+                    {row.isDeleted ? (
+                        <LockOutlined className="lock-icon" />
+                    ) : (
+                        <UnlockOutlined className="unlock-icon" />
+                    )}
+                </div>
+            ),
+>>>>>>> 6b2395fc151b2a192c47eaddaa2756d6634279bb
         },
         {
-            name: "Name",
-            selector: (row) => row.name,
+            name: "Email",
+            selector: (row) => row.account,
             sortable: true,
         },
         {
             name: "Role",
             selector: (row) => ROLE[row.role],
+            cell: (row) => (
+                <div className="center-content align-item-center">
+                    <img
+                        alt="role-icon"
+                        src={ICONS[`${ROLE[row.role].toLowerCase()}Icon`]}
+                        width={20}
+                        height={20}
+                        style={{ marginRight: 5 }}
+                    />
+                    {ROLE[row.role]}
+                </div>
+            ),
         },
         {
             name: "Create at",
@@ -93,6 +144,7 @@ function ManageAccount() {
             name: "Action",
             cell: (row) => (
                 <div className="center-content">
+<<<<<<< HEAD
                     <div className="center-content">
                         {!row.isValid && (
                             <button
@@ -156,6 +208,28 @@ function ManageAccount() {
                             </svg>
                         </button>
                     </div>
+=======
+                    {row.role === 2 && row.isValid !== true && (
+                        <Button
+                            className="btn-mail"
+                            onClick={() => onClickMail(row.account)}
+                            icon={<MailOutlined />}
+                        />
+                    )}
+                    {row.isDeleted ? (
+                        <Button
+                            className="btn-UnDel"
+                            onClick={() => onClickChangeDeleteStatus(row.id, 0)}
+                            icon={<UndoOutlined />}
+                        />
+                    ) : (
+                        <Button
+                            className="btn-Del"
+                            onClick={() => onClickChangeDeleteStatus(row.id, 1)}
+                            icon={<DeleteOutlined />}
+                        />
+                    )}
+>>>>>>> 6b2395fc151b2a192c47eaddaa2756d6634279bb
                 </div>
             ),
         },
@@ -193,6 +267,7 @@ function ManageAccount() {
                         </div>
                     }
                     subHeaderAlign="right"
+                    className="managament-account-table"
                 />
             </div>
         </div>

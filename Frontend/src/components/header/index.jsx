@@ -20,7 +20,7 @@ import postAPI from "../../api/postAPI";
 import checkTokenAPI from "../../api/checkToken";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { Menu } from "antd";
+import notiAPI from "../../api/notiAPI";
 
 const TruncateText = (text, maxLength) => {
     if (text.length <= maxLength) {
@@ -28,35 +28,27 @@ const TruncateText = (text, maxLength) => {
     }
     return <span>{`${text.slice(0, maxLength)}...`}</span>;
 };
-const getNotificationsAPI = async () => {
-    return new Promise((resolve) => {
-        setTimeout(() => {
-            resolve({
-                data: [
-                    { content: "Notification 1" },
-                    { content: "Notification 2" },
-                    { content: "Notification 3" },
-                ],
-            });
-        }, 1000);
-    });
-};
+
 function Header(props) {
     const activeButton = props.stateButton;
     const navigate = useNavigate();
-    const { getItemDropDownAccount, getItemDropDownSearchPost } =
-        useDropdownNavigation();
+    const {
+        getItemDropDownAccount,
+        getItemDropDownSearchPost,
+        getItemDropDownNoti,
+    } = useDropdownNavigation();
     const [search, setSearch] = useState("");
     const [listPosts, setListPosts] = useState([]);
     const [filterPosts, setFilterPosts] = useState(listPosts);
     const [notifications, setNotifications] = useState([]);
+
     const { account, setAccount, setToken, token } = useAuth();
 
     useEffect(() => {
         const fetchNotifications = async () => {
             try {
-                const response = await getNotificationsAPI();
-                setNotifications(response.data);
+                // const response = await getNotificationsAPI();
+                // setNotifications(response.data);
             } catch (error) {
                 console.error("Error fetching notifications:", error);
             }
@@ -117,9 +109,6 @@ function Header(props) {
         getAllPostApi();
     }, []);
 
-    const numberOfNoti = 10;
-    const numberOfChat = 10;
-
     const clickHomePage = () => {
         navigate("/user-homepage");
     };
@@ -145,6 +134,15 @@ function Header(props) {
     };
     const clickNoti = (e) => {
         e.preventDefault();
+        const callAPI = async () => {
+            notiAPI
+                .getAllNotiByIdAccount(account.id)
+                .then((response) => {
+                    setNotifications(response.data);
+                })
+                .catch((error) => console.log(error));
+        };
+        callAPI();
     };
 
     const handleChangeSearch = (e) => {
@@ -162,12 +160,22 @@ function Header(props) {
     const onClickLogo = () => {
         navigate("/user-homepage");
     };
-    const notificationMenuItems = notifications.length
-        ? notifications.map((noti, index) => ({
-              key: index,
-              label: noti.content,
-          }))
-        : [{ key: "no-notifications", label: "No notifications" }];
+
+    const updateStatusNoti = (status, idNoti) => {
+        notiAPI
+            .updateStatusNoti(idNoti, status)
+            .then((response) => {
+                setNotifications(
+                    notifications.map((noti) => {
+                        if (noti.id === idNoti) {
+                            return { ...noti, status: status };
+                        }
+                        return noti;
+                    })
+                );
+            })
+            .catch((error) => console.log(error));
+    };
 
     return (
         <div class="header-container">
@@ -282,7 +290,7 @@ function Header(props) {
                 <div class="header-wrapper button-group-right">
                     {account && (
                         <>
-                            <Badge count={numberOfChat} overflowCount={9}>
+                            <Badge overflowCount={9}>
                                 <Button
                                     className={`header-wrapper button-group-right button`}
                                     onClick={clickChat}
@@ -291,12 +299,15 @@ function Header(props) {
                             </Badge>
                             <Dropdown
                                 menu={{
-                                    items: notificationMenuItems,
+                                    items: getItemDropDownNoti(
+                                        notifications,
+                                        updateStatusNoti
+                                    ),
                                 }}
                                 trigger={["click"]}
-                                placement="bottomRight"
+                                placement="bottomLeft"
                             >
-                                <Badge count={numberOfNoti} overflowCount={9}>
+                                <Badge overflowCount={9}>
                                     <Button
                                         className={`header-wrapper button-group-right button`}
                                         onClick={clickNoti}
@@ -307,6 +318,27 @@ function Header(props) {
                         </>
                     )}
                 </div>
+
+                {account &&
+                    (account.role === 1 ? (
+                        <img
+                            alt="role-icon"
+                            src={ICONS.candidateIcon}
+                            class="header-role-icon"
+                        />
+                    ) : account.role === 2 ? (
+                        <img
+                            alt="role-icon"
+                            src={ICONS.organizationIcon}
+                            class="header-role-icon"
+                        />
+                    ) : (
+                        <img
+                            alt="role-icon"
+                            src={ICONS.adminIcon}
+                            class="header-role-icon"
+                        />
+                    ))}
 
                 <div class="header-wrapper account-info">
                     {account ? (

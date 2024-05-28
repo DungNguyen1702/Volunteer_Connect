@@ -43,3 +43,42 @@ html, body {
     margin-right : 10px
 }
 
+.noti-item-wrapper{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    max-width: 450px;
+    border-radius: 20px;
+    padding: 15px ;
+}   
+
+.noti-item-icon {
+    width: 15%;
+}
+
+.noti-item-content-wrapper {
+    width: 70%;
+}
+
+.noti-item-create-date {
+    width: 100%;
+    text-align: end;
+    color : $subText;
+    margin-top: 10px;
+}
+
+.noRead-noti-item {
+    background-color: #C4C4C4;
+}
+
+.noRead-noti-item-content {
+    font-weight: 700;
+}
+
+.noti-item-title {
+    width: 100%;
+    text-align: center;
+    font-weight: bold;
+    color : $accent;
+    margin-bottom: 5px;
+}

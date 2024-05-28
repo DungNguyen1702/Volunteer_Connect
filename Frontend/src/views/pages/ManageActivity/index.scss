@@ -1,4 +1,4 @@
-@import '../../../constants/colors.scss';
+@import "../../../constants/colors.scss";
 
 * {
     margin: 0;
@@ -16,11 +16,16 @@ body {
     display: flex;
     flex-direction: column;
     overflow: auto;
+    .rdt_TableHead {
+        .rdt_TableCol {
+            text-align: center;
+        }
+    }
 }
 
 .custom-title {
-    font-family: 'Rubik', sans-serif;
-    color: #A45921;
+    font-family: "Rubik", sans-serif;
+    color: #a45921;
     text-align: center;
     font-size: 24px;
     font-weight: 500;
@@ -43,7 +48,7 @@ body {
     padding: 5px 10px;
     margin-right: 10px;
     cursor: pointer;
-    font-family: 'Rubik', sans-serif;
+    font-family: "Rubik", sans-serif;
     border-radius: 5px;
 }
 
@@ -63,7 +68,7 @@ body {
     padding: 12px;
     border: 1px solid;
     border-radius: 5px;
-    font-family: 'Rubik', sans-serif;
+    font-family: "Rubik", sans-serif;
     font-size: 13px;
     background-color: #f8f8f8;
     color: black;
@@ -71,24 +76,42 @@ body {
 }
 
 .custom-search-input::placeholder {
-    font-family: 'Rubik', sans-serif;
+    font-family: "Rubik", sans-serif;
 }
 
 .btn-Del {
-    background: none;
+    background: transparent;
     border: none;
-    color: #000;
-    cursor: pointer;
-    padding: 0;
-    margin: 0;
-}
-
-.btn-Del svg {
-    width: 18px;
-    height: 18px;
+    color: $danger;
+    margin: 0px 10px;
 }
 
 .btn-Del:hover {
-    background-color: $background;
-    color: #d9534f;
+    background-color: $danger !important;
+    color: $white !important;
+}
+
+.btn-UnDel {
+    background: transparent;
+    border: none;
+    color: $button;
+    margin: 0px 10px;
+}
+
+.btn-UnDel:hover {
+    background-color: $button !important;
+    color: $white !important;
+}
+
+.align-item-center {
+    display: flex;
+    align-items: center;
+}
+
+.lock-icon {
+    color: $danger;
+}
+
+.unlock-icon {
+    color: $button;
 }

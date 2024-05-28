@@ -8,15 +8,12 @@ function UserIcon(props) {
 
     const navigate = useNavigate();
 
-    const onClickUser = ()=>{
-        navigate(`/contact-user/${id}/${role}`)
+    const onClickUser = () => {
+        navigate(`/contact-user/${id}/${role}`);
     };
 
     return (
-        <div 
-            class="user-icon-wrapper"
-            onClick={onClickUser}    
-        >
+        <div class="user-icon-wrapper" onClick={onClickUser}>
             <AvatarAccount
                 name={name}
                 avatar={avatar}

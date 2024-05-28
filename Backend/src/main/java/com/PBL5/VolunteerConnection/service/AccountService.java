@@ -11,7 +11,7 @@ public interface AccountService {
 
     StatusResponse updateAccount(String token, AccountRequest request);
 
-    StatusResponse deleteAccount(String token);
+    StatusResponse deleteAccount(String token, AccountRequest request);
 
     AccountResponse getInfoAccount(String token);
 
@@ -24,9 +24,14 @@ public interface AccountService {
     List<OrganizationResponse> getAllOrganization();
 
     List<Account> getAllByAdmin();
+
     StatusResponse backUpAccount(int id);
-    StatusResponse deleteAccountByAdnmin(int id);
+
+    StatusResponse deleteAccountByAdnmin(String token, AccountRequest request);
+
     StatusResponse updateAccountByAdmin(AccountRequest accountRequest);
+
     StatusResponse resetPassword(String token, String newPassword);
+
     StatusResponse activeAccount(String token);
 }

@@ -27,6 +27,7 @@ function TaskItem(props) {
     const [{ isDragging }, drag] = useDrag({
         type: "taskItem",
         item: {
+            ...taskInfo,
             id: taskInfo.id,
             taskTableId: showingTaskTableID,
         },

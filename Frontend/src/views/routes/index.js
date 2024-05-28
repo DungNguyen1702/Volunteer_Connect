@@ -1,10 +1,10 @@
 import { Routes, Route, Navigate } from "react-router-dom";
 import PublicRoute from "./public-route";
-import GuestRoute from "./guest-route";
 import CandidateRoute from "./candidate-route";
 import AdminRoute from "./admin-route";
 import LoadableComponent from "../../components/loadable-component";
 import MainLayout from "../../components/layout/MainLayout.jsx";
+import OrganizationRoute from "./organization-route.js";
 
 const UserHomePage = LoadableComponent(() =>
     import("../pages/Homepage/index.jsx")
@@ -45,15 +45,15 @@ const ManageActivity = LoadableComponent(() =>
 const ForgotPassword = LoadableComponent(() =>
     import("../pages/ForgotPassword/index.jsx")
 );
-const AuthAnnounce = LoadableComponent(()=>
+const AuthAnnounce = LoadableComponent(() =>
     import("../pages/AuthAnnouncement/index.jsx")
 );
-const ResetPassword = LoadableComponent(()=>
+const ResetPassword = LoadableComponent(() =>
     import("../pages/ResetPassword/index.jsx")
 );
-const ConfirmSignUp = LoadableComponent(()=>
+const ConfirmSignUp = LoadableComponent(() =>
     import("../pages/SignUp/ConfirmSignUp/index.jsx")
-)
+);
 
 const AllRoutes = () => {
     return (
@@ -74,30 +74,6 @@ const AllRoutes = () => {
                     element={<MainLayout component={PostDetail} />}
                 />
 
-                <Route
-                    path="/create-post/:activityId"
-                    element={<MainLayout component={CreatePost} />}
-                />
-
-                <Route
-                    path="/list-activity"
-                    element={
-                        <MainLayout component={ListActivity} stateButton={2} />
-                    }
-                />
-
-                <Route
-                    path="/people-searching"
-                    element={
-                        <MainLayout component={ListPeople} stateButton={3} />
-                    }
-                />
-
-                <Route
-                    path="/activity-detail/:id"
-                    element={<MainLayout component={ActivityDetail} />}
-                />
-
                 <Route path="/introduce" element={<Introduce />} />
 
                 <Route path="/about" element={<About />} />
@@ -105,37 +81,6 @@ const AllRoutes = () => {
                 <Route path="/auth/login" element={<Login />} />
 
                 <Route path="/auth/register" element={<SignUp />} />
-
-                <Route path="/profile/:activepage" element={<Profile />} />
-
-                <Route
-                    path="/chat-box/:accountId"
-                    element={
-                        <MainLayout component={ChatBox} isNoFooter={true} />
-                    }
-                />
-
-                <Route
-                    path="/contact-user/:accountId/:role"
-                    element={<MainLayout component={AccountContact} />}
-                />
-
-                <Route
-                    path="/admin/manage-account"
-                    element={
-                        <MainLayout component={ManageAccount} stateButton={3} />
-                    }
-                />
-
-                <Route
-                    path="/admin/manage-activity"
-                    element={
-                        <MainLayout
-                            component={ManageActivity}
-                            stateButton={2}
-                        />
-                    }
-                />
 
                 <Route
                     path="/auth/forgot-password"
@@ -156,16 +101,78 @@ const AllRoutes = () => {
                     path="/auth/register/valid/:token"
                     element={<ConfirmSignUp />}
                 />
+
+                <Route path="/profile/:activepage" element={<Profile />} />
+
+                <Route
+                    path="/chat-box/:accountId"
+                    element={
+                        <MainLayout component={ChatBox} isNoFooter={true} />
+                    }
+                />
+
+                <Route
+                    path="/contact-user/:accountId/:role"
+                    element={<MainLayout component={AccountContact} />}
+                />
+
+                <Route
+                    path="/people-searching"
+                    element={
+                        <MainLayout component={ListPeople} stateButton={3} />
+                    }
+                />
+
+                <Route
+                    path="/list-activity"
+                    element={
+                        <MainLayout component={ListActivity} stateButton={2} />
+                    }
+                />
+
+                <Route
+                    path="/people-searching"
+                    element={
+                        <MainLayout component={ListPeople} stateButton={3} />
+                    }
+                />
+
+                <Route
+                    path="/activity-detail/:id"
+                    element={<MainLayout component={ActivityDetail} />}
+                />
             </Route>
 
-            {/* guest route */}
-            <Route element={<GuestRoute />}></Route>
+            {/* organization route */}
+            <Route element={<OrganizationRoute />}>
+                <Route
+                    path="/create-post/:activityId"
+                    element={<MainLayout component={CreatePost} />}
+                />
+            </Route>
 
             {/* candidate route */}
             <Route element={<CandidateRoute />}></Route>
 
             {/* Admin route */}
-            <Route element={<AdminRoute />}></Route>
+            <Route element={<AdminRoute />}>
+                <Route
+                    path="/admin/manage-account"
+                    element={
+                        <MainLayout component={ManageAccount} stateButton={3} />
+                    }
+                />
+
+                <Route
+                    path="/admin/manage-activity"
+                    element={
+                        <MainLayout
+                            component={ManageActivity}
+                            stateButton={2}
+                        />
+                    }
+                />
+            </Route>
         </Routes>
     );
 };

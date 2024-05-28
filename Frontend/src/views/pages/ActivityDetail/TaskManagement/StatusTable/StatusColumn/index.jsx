@@ -11,14 +11,18 @@ function StatusColumn(props) {
     const { updateTask, listCandidate } = useContext(TaskDataContext);
 
     const { statusName, keyValue, colorColumn, listTaskByStatus } = props;
-    const [ isCreateTask, setIsCreateTask ] = useState(false);
+    const [isCreateTask, setIsCreateTask] = useState(false);
     const onClickCreateTask = () => {
         setIsCreateTask(true);
     };
 
     const [{ isOver }, drop] = useDrop({
         accept: "taskItem",
-        drop: (item) => updateTask(item.taskTableId, item.id, {status : parseInt(keyValue)}),
+        drop: (item) =>
+            updateTask(item.taskTableId, item.id, {
+                ...item,
+                status: parseInt(keyValue),
+            }),
         collect: (monitor) => ({
             isOver: monitor.isOver(),
         }),
@@ -38,13 +42,13 @@ function StatusColumn(props) {
                     style={{ background: colorColumn }}
                 />
                 {isCreateTask && (
-                <CreateTask
-                    setIsCreateTask={setIsCreateTask}
-                    isCreateTask={isCreateTask}
-                    listCandidate={listCandidate}
-                    statusColumn={keyValue}
-                />
-            )}
+                    <CreateTask
+                        setIsCreateTask={setIsCreateTask}
+                        isCreateTask={isCreateTask}
+                        listCandidate={listCandidate}
+                        statusColumn={keyValue}
+                    />
+                )}
             </div>
             <div class="status-column-task-holder">
                 {listTaskByStatus.map((task) => (
