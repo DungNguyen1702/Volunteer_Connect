@@ -51,38 +51,6 @@ body {
 .custom-search-input::placeholder {
     font-family: 'Rubik', sans-serif;
 }
-<<<<<<< HEAD
-.center-content {
-    display: flex;
-    justify-content: space-between;
-    gap: 8px; 
-}
-.hidden {
-    visibility: hidden; 
-}
-.btn-Del, 
-.btn-mail,
-.btn-Edit {
-    background: none;
-    border: none;
-    color: #000;
-    cursor: pointer;
-    padding: 0;
-    margin: 0 5px;
-    flex: 0 0 auto;
-}
-
-.btn-Del,
-.btn-Edit, 
-.btn-mail svg {
-    width: 18px;
-    height: 18px;
-}
-
-.btn-Edit:hover {
-    color: $button;
-    background-color: rgba(238, 238, 238, 1);
-=======
 
 .align-item-center {
     display: flex;
@@ -94,7 +62,6 @@ body {
     border: none;
     color: $danger;
     margin: 0px 10px;
->>>>>>> 6b2395fc151b2a192c47eaddaa2756d6634279bb
 }
 
 .btn-Del:hover {
