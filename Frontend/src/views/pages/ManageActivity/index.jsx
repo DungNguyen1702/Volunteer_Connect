@@ -227,7 +227,7 @@ function ManageActivity() {
     function handleFilter(event) {
         const value = event.target.value.toLowerCase();
         const newData = originalRecords.filter((row) => {
-            return row.id.toString().toLowerCase().includes(value);
+            return row.name.toString().toLowerCase().includes(value);
             //return row.name.toLowerCase().includes(event.target.value.toLowerCase());
         });
         setRecords(newData);
