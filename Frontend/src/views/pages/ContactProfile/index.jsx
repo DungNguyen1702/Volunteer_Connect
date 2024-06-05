@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./index.scss";
 import { useNavigate, useParams } from "react-router-dom";
-import FakeData from "../../../data/fake_data.json";
 import "./index.scss";
 import AvatarAccount from "../../../components/avatar/AvatarAccount";
 import { Button, Pagination } from "antd";
@@ -18,8 +17,6 @@ function AccountContact() {
 
     // Data candidate
     const [data, setData] = useState(null);
-    // Data organization
-    // const data = FakeData.OrganizationContact;
     const [listActivity, setListActivity] = useState(null);
     const [listShowAct, setListShowAct] = useState(
         listActivity ? listActivity.slice(startIndex, startIndex + limit) : []
@@ -152,7 +149,7 @@ function AccountContact() {
                                                 </p>
                                                 <p class="contact-profile-item-content">
                                                     {SupportFunction.getStringCertificate(
-                                                        data.EarnedCertificateNumber
+                                                        data.earnedCertificateNumber
                                                     )}
                                                 </p>
                                             </div>

@@ -1,7 +1,6 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import "./index.scss";
-import FakeData from "../../../data/fake_data.json";
 import TextArea from "antd/es/input/TextArea";
 import { Button, Upload } from "antd";
 import { UPLOADIMAGELINK } from "../../../constants/uploadImageLink";
@@ -16,6 +15,7 @@ import "react-toastify/dist/ReactToastify.css";
 import "react-quill/dist/quill.snow.css";
 import ReactQuill from "react-quill";
 import postAPI from "../../../api/postAPI";
+import activityAPI from "../../../api/activityAPI"
 
 function CreatePost() {
     const { activityId } = useParams();
@@ -25,7 +25,7 @@ function CreatePost() {
     const [image, setImage] = useState("");
     const [content, setContent] = useState("");
 
-    const activityData = FakeData.ActivityCreatePost;
+    const [activityData, setActivityData] = useState({});
 
     const toolbarOptions = [
         ["bold", "italic", "underline", "strike"], // toggled buttons
@@ -52,6 +52,12 @@ function CreatePost() {
     const modules = {
         toolbar: toolbarOptions,
     };
+
+    useEffect(()=>{
+        activityAPI.getActivityDetail(activityId).then((response)=>{
+            setActivityData(response.data)
+        }).catch(error=>console.log(error))
+    },[])
 
     const onChangeTitle = (e) => {
         setTile(e.target.value);
@@ -183,32 +189,32 @@ function CreatePost() {
                             <strong class="primary-color">
                                 Name activity :{" "}
                             </strong>
-                            {activityData.name}
+                            {activityData && activityData.name}
                         </p>
                         <p class="create-post-preview-info-item">
                             <strong class="primary-color">
                                 Host's email :{" "}
                             </strong>
-                            {activityData.email}
+                            {activityData && activityData.email}
                         </p>
                         <p class="create-post-preview-info-item">
                             <strong class="primary-color">Category : </strong>
-                            {TYPES[activityData.type]}
+                            {activityData && TYPES[activityData.type]}
                         </p>
                         <p class="create-post-preview-info-item">
                             <strong class="primary-color">Location : </strong>
-                            {activityData.location},{" "}
-                            {COUNTRY[activityData.country]}
+                            {activityData && activityData.location},{" "}
+                            {activityData && COUNTRY[activityData.country]}
                         </p>
                         <p class="create-post-preview-info-item">
                             <strong class="primary-color">Schedule : </strong>
-                            {activityData.dateStart} - {activityData.dateEnd}
+                            {activityData && activityData.dateStart} - {activityData && activityData.dateEnd}
                         </p>
                         <p class="create-post-preview-info-item">
                             <strong class="primary-color">
                                 Registration deadline :{" "}
                             </strong>
-                            {activityData.deadline}
+                            {activityData && activityData.deadline}
                         </p>
                     </div>
                     <hr class="create-post-preview-hr" />

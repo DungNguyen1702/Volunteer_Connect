@@ -1,7 +1,6 @@
 import TextArea from "antd/es/input/TextArea";
 import "./index.scss";
 import { useEffect, useRef, useState } from "react";
-import FakeData from "../../../data/fake_data.json";
 import { Anchor, Dropdown, Pagination } from "antd";
 import OrganizationItem from "./Component/OrganizationItem";
 import CandidateItem from "./Component/CandidateItem";

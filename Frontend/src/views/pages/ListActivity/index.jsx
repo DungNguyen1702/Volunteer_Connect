@@ -6,7 +6,6 @@ import { COUNTRY } from "../../../constants/activity_countries";
 import { TYPES } from "../../../constants/activity_types";
 import { SearchOutlined } from "@ant-design/icons";
 import Search from "antd/es/transfer/search";
-import fake_data from "../../../data/fake_data.json";
 import ActivityComponent from "../../../components/activity/big-activity";
 import CreateActModal from "./CreateActModal";
 import { ToastContainer } from "react-toastify";
@@ -48,8 +47,12 @@ function ParticipatingActivities() {
                 await activityAPI
                     .getAllActivityByOrganization()
                     .then((response) => {
-                        console.log(response.data)
-                        setListAct(response.data.filter(act=> act.isDeleted !== true));
+                        console.log(response.data);
+                        setListAct(
+                            response.data.filter(
+                                (act) => act.isDeleted !== true
+                            )
+                        );
                     })
                     .catch((error) => {
                         console.log(error);
@@ -58,7 +61,11 @@ function ParticipatingActivities() {
                 await activityAPI
                     .getAllActivityByCandidate()
                     .then((response) => {
-                        setListAct(response.data.filter(act=> act.isDeleted !== true));
+                        setListAct(
+                            response.data.filter(
+                                (act) => act.isDeleted !== true
+                            )
+                        );
                     })
                     .catch((error) => {
                         console.log(error);
@@ -159,13 +166,14 @@ function ParticipatingActivities() {
 
     const createAct = (newAct) => {
         const createAct = async () => {
-            await activityAPI.createActivity(newAct).then((response) => {
-                setListAct([...listAct, response.data])
-            })
-            .catch((error) => {
-                console.log(error);
-            });
-            
+            await activityAPI
+                .createActivity(newAct)
+                .then((response) => {
+                    setListAct([...listAct, response.data]);
+                })
+                .catch((error) => {
+                    console.log(error);
+                });
         };
         createAct();
     };
@@ -305,12 +313,14 @@ function ParticipatingActivities() {
                         size="large"
                     />
 
-                    <Button
-                        className="content-create-button"
-                        onClick={onClickCreate}
-                    >
-                        Create
-                    </Button>
+                    {account && account.role === 2 && (
+                        <Button
+                            className="content-create-button"
+                            onClick={onClickCreate}
+                        >
+                            Create
+                        </Button>
+                    )}
                     {isCreateAct && (
                         <CreateActModal
                             isCreateAct={isCreateAct}

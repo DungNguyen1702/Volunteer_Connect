@@ -6,6 +6,7 @@ import { useContext, useState } from "react";
 import { TaskDataContext } from "../..";
 import { useDrop } from "react-dnd";
 import CreateTask from "../CreateTask";
+import useAuth from "../../../../../../hooks/useAuth";
 
 function StatusColumn(props) {
     const { updateTask, listCandidate } = useContext(TaskDataContext);
@@ -15,6 +16,8 @@ function StatusColumn(props) {
     const onClickCreateTask = () => {
         setIsCreateTask(true);
     };
+
+    const { account } = useAuth();
 
     const [{ isOver }, drop] = useDrop({
         accept: "taskItem",
@@ -35,12 +38,14 @@ function StatusColumn(props) {
                 style={{ backgroundColor: colorColumn }}
             >
                 <h1 class="status-column-name">{statusName}</h1>
-                <Button
-                    className="status-column-button-create-task"
-                    onClick={onClickCreateTask}
-                    icon={<PlusOutlined style={{ fontSize: "20px" }} />}
-                    style={{ background: colorColumn }}
-                />
+                {account && account.role === 2 && (
+                    <Button
+                        className="status-column-button-create-task"
+                        onClick={onClickCreateTask}
+                        icon={<PlusOutlined style={{ fontSize: "20px" }} />}
+                        style={{ background: colorColumn }}
+                    />
+                )}
                 {isCreateTask && (
                     <CreateTask
                         setIsCreateTask={setIsCreateTask}

@@ -2,7 +2,6 @@ import { Carousel, Pagination, Select } from "antd";
 import "./index.scss";
 import { IMAGES } from "../../../constants/images";
 import React, { useEffect, useState } from "react";
-import fake_data from "../../../data/fake_data.json";
 import SmallPost from "../../../components/post/small-post";
 import BigPost from "../../../components/post/big-post";
 import { Button } from "@mui/material";

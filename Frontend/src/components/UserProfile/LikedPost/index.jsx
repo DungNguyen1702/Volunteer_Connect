@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import "./index.scss";
-import fakeData from "../../../data/fake_data.json";
 import LikePostComponent from "../../post/likePost";
 import { Pagination } from "antd";
 import postAPI from "../../../api/postAPI";

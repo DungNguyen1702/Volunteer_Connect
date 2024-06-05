@@ -1,5 +1,4 @@
 import "./index.scss";
-import FakeData from "../../../../data/fake_data.json";
 import TaskTableItem from "./TaskTable";
 import { Avatar, Button, Dropdown } from "antd";
 import { PlusOutlined } from "@ant-design/icons";

@@ -1,6 +1,5 @@
 import { useParams } from "react-router-dom";
 import "./index.scss";
-import fakeData from "../../../data/fake_data.json";
 import SupportFunction from "../../../support/support_function";
 import { Button } from "antd";
 import { DeleteOutlined, EditOutlined } from "@ant-design/icons";

@@ -58,7 +58,7 @@ function MediumActivityComponent(props) {
                         <strong>Category : </strong>
                     </p>
                     <p class="activity-medium-component-info-content">
-                        {SupportFunction.TruncateText(type, 18)}
+                        {SupportFunction.TruncateText(type, 17)}
                     </p>
                 </div>
             </div>

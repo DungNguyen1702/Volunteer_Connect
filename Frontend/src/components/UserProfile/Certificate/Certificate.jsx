@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import "./Certificate.scss";
-import fakeData from "../../../data/fake_data.json";
 import { Pagination } from "antd";
 import CertificateComponent from "../../certificate";
 import candidateAPI from "../../../api/candidateAPI";
